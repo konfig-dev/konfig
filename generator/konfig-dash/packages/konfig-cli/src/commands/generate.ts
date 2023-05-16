@@ -293,6 +293,23 @@ export default class Deploy extends Command {
         requestGenerators.swift = requestJava
       }
 
+      const rubyGeneratorConfig = getConfig('ruby')
+      if (rubyGeneratorConfig && !rubyGeneratorConfig.disabled) {
+        const { files, ...restOfConfig } = rubyGeneratorConfig
+        const requestJava: GenerateRequestBodyInputType['generators']['ruby'] =
+          {
+            files: createTemplateFilesObject(files, 'csharp', configDir),
+            ...handleReadmeSnippet({ config: restOfConfig }),
+            ...handleReadmeSupportingDescriptionSnippet({
+              config: restOfConfig,
+            }),
+            ...handleapiDocumentationAuthenticationPartialSnippet({
+              config: restOfConfig,
+            }),
+          }
+        requestGenerators.ruby = requestJava
+      }
+
       const csharpGeneratorConfig = getConfig('csharp')
       if (csharpGeneratorConfig && !csharpGeneratorConfig.disabled) {
         const { files, ...restOfConfig } = csharpGeneratorConfig
@@ -855,6 +872,33 @@ export default class Deploy extends Command {
               //   JSON.stringify(composerJson, undefined, 2)
               // )
 
+              CliUx.ux.action.stop()
+            }
+          }
+
+          if (body.generators.ruby) {
+            const outputDirectory = body.generators.ruby.outputDirectory
+            this.debug(
+              `ruby generator config: ${JSON.stringify(
+                body.generators.ruby,
+                undefined,
+                2
+              )}`
+            )
+            this.debug(`ruby output directory: ${outputDirectory}`)
+            if (outputDirectory && !flags.doNotCopy) {
+              CliUx.ux.action.start(
+                `Deleting contents of existing directory "${outputDirectory}"`
+              )
+              await safelyDeleteFiles(outputDirectory)
+              CliUx.ux.action.stop()
+
+              // Copy content of generated SDK to existing directory
+              CliUx.ux.action.start(`Copying Ruby SDK to "${outputDirectory}"`)
+              await copyToOutputDirectory({
+                generator: 'ruby',
+                outputDirectory,
+              })
               CliUx.ux.action.stop()
             }
           }
