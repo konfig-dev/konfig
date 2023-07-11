@@ -1,6 +1,9 @@
 import React from "react";
 import clsx from "clsx";
-import { useBlogPost } from "@docusaurus/theme-common/internal";
+import {
+  useBlogPost,
+  BlogPostContextValue,
+} from "@docusaurus/theme-common/internal";
 import EditThisPage from "@theme/EditThisPage";
 import TagsListInline from "@theme/TagsListInline";
 import ReadMoreLink from "@theme/BlogPostItem/Footer/ReadMoreLink";
@@ -11,13 +14,14 @@ export default function BlogPostItemFooter() {
     isBlogPostPage,
     metadata: { authors },
   } = useBlogPost();
+  console.log(isBlogPostPage, metadata, authors);
   const { tags, title, editUrl, hasTruncateMarker } = metadata;
   // A post is truncated if it's in the "list view" and it has a truncate marker
   const truncatedPost = !isBlogPostPage && hasTruncateMarker;
   const tagsExists = tags.length > 0;
   const renderFooter = tagsExists || truncatedPost || editUrl;
   if (!renderFooter) {
-    return null;
+    return isBlogPostPage && <AuthorSection authors={authors} />;
   }
   return (
     <footer
@@ -48,30 +52,33 @@ export default function BlogPostItemFooter() {
         </div>
       )}
 
-      {isBlogPostPage &&
-        authors.map(({ key, name, github, linkedin, imageURL, bio }) => {
-          return (
-            <div key={key} className="p-4 mt-5 flex flex-row gap-5">
-              <img className="rounded-full h-16" src={imageURL} alt={name} />
-              <div>
-                <div className="flex flex-row gap-2 items-center mb-2">
-                  <span className="font-semibold">{name}</span>
-                  {github && (
-                    <a className="text-xs" href={github} target="_blank">
-                      GitHub
-                    </a>
-                  )}
-                  {linkedin && (
-                    <a className="text-xs" href={linkedin} target="_blank">
-                      LinkedIn
-                    </a>
-                  )}
-                </div>
-                <p className="text-sm">{bio}</p>
-              </div>
-            </div>
-          );
-        })}
+      {isBlogPostPage && <AuthorSection authors={authors} />}
     </footer>
   );
+}
+
+function AuthorSection({ authors }) {
+  return authors.map(({ key, name, github, linkedin, imageURL, bio }) => {
+    return (
+      <div key={key} className="p-4 mt-5 flex flex-row gap-5">
+        <img className="rounded-full h-16" src={imageURL} alt={name} />
+        <div>
+          <div className="flex flex-row gap-2 items-center mb-2">
+            <span className="font-semibold">{name}</span>
+            {github && (
+              <a className="text-xs" href={github} target="_blank">
+                GitHub
+              </a>
+            )}
+            {linkedin && (
+              <a className="text-xs" href={linkedin} target="_blank">
+                LinkedIn
+              </a>
+            )}
+          </div>
+          <p className="text-sm">{bio}</p>
+        </div>
+      </div>
+    );
+  });
 }
