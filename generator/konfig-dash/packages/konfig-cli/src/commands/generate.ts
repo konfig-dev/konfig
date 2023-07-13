@@ -836,9 +836,9 @@ export default class Deploy extends Command {
               const topLevelGitRepo = simpleGit()
               if (fs.existsSync(outputDirectory)) {
                 const phpGitRepo = simpleGit(outputDirectory)
-                const isRepo =
-                  path.join(configDir, outputDirectory) ===
-                  (await phpGitRepo.revparse(['--show-toplevel']))
+                // replace backslashes with forward slashes to remain platform-agnostic
+                const fullPath = path.join(configDir, outputDirectory).replace(/\\/g, '/')
+                const isRepo = fullPath === (await phpGitRepo.revparse(['--show-toplevel']))
                 if (!isRepo) {
                   // delete the directory as its probably not important
                   fs.rmSync(outputDirectory, { recursive: true, force: true })
