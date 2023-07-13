@@ -189,7 +189,7 @@ export function EnsureHighQualitySdks() {
                 Testing
               </Text>
               <Text c="dimmed" fz="sm">
-                Konfig writes test cases for every SDK to ensure any API update
+                Konfig writes test cases for every SDK to ensure any API update 
                 {"won't"} break the SDKs your customers are using
               </Text>
             </Box>
