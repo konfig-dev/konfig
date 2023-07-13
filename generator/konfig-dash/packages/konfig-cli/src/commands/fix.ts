@@ -123,6 +123,7 @@ export default class Fix extends Command {
       numberOfIgnoreObjectsWithNoPropertiesAdded,
       numberOfEmptyResponseBodySchemasFixed,
       numberOfDuplicateTagNamesFixed,
+      numberOfInvalidServerUrlsFixed,
       numberOfRedundantSecuritySchemesRemoved,
       numberOfExampleAndExamplesFixed,
       numberOfDisallowedHeaderNamesRemoved,
@@ -155,6 +156,7 @@ Added ${numberOfSchemasDefined} named schemas
 Added ${numberOfMissing200ResponsesAdded} missing 2xx responses
 Added ${numberOfNewTagNames} new tag names
 Fixed ${numberOfDuplicateTagNamesFixed} duplicate tag names fixed
+Fixed ${numberOfInvalidServerUrlsFixed} invalid server URLs fixed
 Fixed ${numberOfUnstructuredRequestBodiesFixed} unstructured request bodies
 Fixed ${numberOfObjectsWithNoPropertiesFixed} objects with no properties
 Fixed ${numberOfExampleAndExamplesFixed} redundant "example" & "examples" fields

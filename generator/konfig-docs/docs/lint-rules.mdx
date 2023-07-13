@@ -19,6 +19,27 @@ This is reference documentation for Konfig's linting rules for [Konfig's OAS Lin
 | Information         | Something to inform about but not a problem                                 |
 | Hint                | Something to hint to a better way of doing it, like proposing a refactoring |
 
+## invalid-server-urls-oas3
+
+Severity: Error
+
+#### Example
+
+```
+"http://{{baseurl}}" is not a valid URL
+```
+
+#### Explanation
+
+Server URLs are hard-coded and used in the generated SDKs so they must be valid
+URLs. So your server URLs must match the following regex.
+
+```regex
+/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/
+```
+
+---
+
 ## missing-date-format
 
 Severity: Warning

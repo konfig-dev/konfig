@@ -29,6 +29,7 @@ import { fixRedundantSecuritySchemes } from './fix-redundant-security-schemes'
 import { fixUnstructuredRequestBody } from './fix-unstructured-request-body'
 import { ignoreObjectsWithNoProperties } from './ignore-objects-with-no-properties'
 import { ignorePotentialIncorrectTypeIfConfirmed } from './ignore-potential-incorrect-type-if-confirmed'
+import { fixInvalidServerUrlsOas3 } from './fix-invalid-server-urls-oas3'
 
 export async function fixOas({
   spec,
@@ -94,6 +95,13 @@ export async function fixOas({
   // Trailing Slashes
   const numberOfTrailingSlashesFixed = fixTrailingSlashes({ spec: spec.spec })
 
+  // valid-server-urls-oas3
+  const numberOfInvalidServerUrlsFixed = await fixInvalidServerUrlsOas3({
+    spec: spec.spec,
+    alwaysYes,
+    progress,
+  })
+
   // TODO: 9b43e-Some-methods-in-fixoas-cause-readonly-bug-to-occur
   // Redundant security requirement and parameters
   const numberOfRedundantSecurityAndParametersFixed =
@@ -101,6 +109,14 @@ export async function fixOas({
 
   const numberOfRedundantSecuritySchemesRemoved =
     await fixRedundantSecuritySchemes({ spec: spec.spec })
+
+  // Fix disallowed header names
+  // Note: This must come before parameters are converted to security
+  // requirements to avoid having the user say no to parameters like "Accept" in
+  // the header
+  const numberOfDisallowedHeaderNamesRemoved = await fixDisallowedHeaderNames({
+    spec,
+  })
 
   // TODO: 9b43e-Some-methods-in-fixoas-cause-readonly-bug-to-occur
   // Parameters converted to security requirements
@@ -186,11 +202,6 @@ export async function fixOas({
     { spec }
   )
 
-  // Fix disallowed header names
-  const numberOfDisallowedHeaderNamesRemoved = await fixDisallowedHeaderNames({
-    spec,
-  })
-
   // Make fixConfig modification from konfig.yaml
   const numberOfCustomModifications = fixCustomModifications({
     fixConfig: konfigYaml?.fixConfig,
@@ -229,6 +240,7 @@ export async function fixOas({
     numberOfEmptyResponseBodySchemasFixed,
     numberOfDuplicateTagNamesFixed,
     numberOfExampleAndExamplesFixed,
+    numberOfInvalidServerUrlsFixed,
     numberOfNewTagNames,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)

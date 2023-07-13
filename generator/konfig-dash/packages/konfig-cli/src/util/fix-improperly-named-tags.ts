@@ -59,6 +59,33 @@ export async function fixImproperlyNamedTags({
       }
     }
 
+    // if there is an existing valid tag present the option to select it or create a new one
+    const validTags = spec.tags?.filter(
+      (tag) => tagSchema.safeParse(tag.name).success
+    )
+    if (validTags && validTags.length > 0) {
+      const createNewTagMsg = '➕ Create a new tag'
+      const { existingName } = await inquirer.prompt<{ existingName: string }>([
+        {
+          type: 'list',
+          name: 'existingName',
+          message: `Select existing tag:`,
+          choices: [...validTags, createNewTagMsg],
+        },
+      ])
+      if (existingName !== createNewTagMsg) {
+        renameTag({
+          oldName: tag.name,
+          newName: existingName,
+          progress,
+          spec,
+          tag,
+        })
+        numberOfImproperlyNamedTags++
+        continue
+      }
+    }
+
     // if no, prompt input
     const { newName } = await inquirer.prompt<{ newName: string }>([
       {

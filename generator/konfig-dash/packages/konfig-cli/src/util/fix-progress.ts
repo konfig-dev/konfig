@@ -95,6 +95,11 @@ const progressSchema = z.object({
   ignoreObjectsWithNoProperties: z.boolean().optional(),
   ignorePotentialIncorrectType: z.boolean().optional(),
   fixOnlyOneTagName: fixOnlyOneTagNameSchema.or(z.literal(false)).optional(),
+  validServerUrls: z
+    .record(z.string(), z.object({ url: z.string() }).optional())
+    .optional()
+    .default({}),
+
   operationIds: z
     .record(pathSchema, z.record(httpMethodSchema, operationIdSchema))
     .optional()
@@ -391,6 +396,15 @@ export class Progress {
     const newName = this.progress.renameTags[oldName]
     if (newName === undefined) return
     return newName
+  }
+
+  getServerUrl({ oldUrl }: { oldUrl: string }) {
+    return this.progress.validServerUrls[oldUrl]
+  }
+
+  saveServerUrl({ oldUrl, newUrl }: { oldUrl: string; newUrl: string }) {
+    this.progress.validServerUrls[oldUrl] = { url: newUrl }
+    this.save()
   }
 
   getExample({ path, method }: { path: string; method: string }) {

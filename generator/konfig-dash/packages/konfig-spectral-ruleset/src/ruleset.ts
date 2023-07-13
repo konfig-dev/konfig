@@ -17,7 +17,7 @@ import {
   OBJECT_WITH_NO_PROPERTIES_RULE_NAME,
   POTENTIAL_INCORRECT_DATA_TYPE_RULE_NAME,
 } from 'konfig-lib/dist/util/get-ignore'
-import { urlRegex } from './functions/util/urlRegex'
+import { urlRegex } from 'konfig-lib/dist/url-regex'
 import { useSecurityInstead } from './functions/useSecurityInstead'
 import { operationIdRegex } from 'konfig-lib/dist/util/operation-id-schema'
 import {
