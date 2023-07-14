@@ -2,7 +2,7 @@
 
 |Language|Version|Package Manager|Documentation|Source|
 |-|-|-|-|-|
-|TypeScript|1.0.0|[npm](https://www.npmjs.com/package/pet-store-typescript-sdk/v/1.0.0)|[Documentation](https://github.com/konfig-dev/petstore-sdks/tree/main/typescript/README.md)|[Source](https://github.com/konfig-dev/petstore-sdks/tree/main/typescript)|
+|TypeScript|1.0.1|[npm](https://www.npmjs.com/package/pet-store-typescript-sdk/v/1.0.1)|[Documentation](https://github.com/konfig-dev/petstore-sdks/tree/main/typescript/README.md)|[Source](https://github.com/konfig-dev/petstore-sdks/tree/main/typescript)|
 
 
 ## How to regenerate SDKs
