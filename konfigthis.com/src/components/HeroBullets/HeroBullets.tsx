@@ -9,8 +9,6 @@ import {
   Box,
 } from "@mantine/core";
 import { IconCalendarEvent, IconExternalLink } from "@tabler/icons-react";
-import { useMdMediaQuery } from "@/utils/use-md-media-query";
-import { LiveSandbox } from "../LiveSandbox/LiveSandbox";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
