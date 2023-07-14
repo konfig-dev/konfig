@@ -3,6 +3,7 @@ import { z } from './zod'
 import { KonfigYamlCommon } from './KonfigYamlCommon'
 import { KonfigYamlFiles } from './KonfigYamlFiles'
 import { testConfig } from './TestConfig'
+import path from 'path'
 
 const clientState = z
   .string()
@@ -440,7 +441,7 @@ export const KonfigYaml = KonfigYamlCommon.merge(
           if (phpConfig === undefined) return
           if (phpConfig.test !== undefined) return phpConfig
           phpConfig.test = {
-            script: ['composer install', './vendor/bin/phpunit'],
+            script: ['composer install', path.join('.', 'vendor', 'bin', 'phpunit')],
           }
           return phpConfig
         }),
