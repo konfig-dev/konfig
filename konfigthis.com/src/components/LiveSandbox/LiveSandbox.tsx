@@ -1,24 +1,9 @@
-import { cyberpunk } from "@codesandbox/sandpack-themes";
-import {
-  SandpackLayout,
-  SandpackCodeEditor,
-  SandpackProvider,
-  Sandpack,
-} from "@codesandbox/sandpack-react";
-import { autocompletion, completionKeymap } from "@codemirror/autocomplete";
-
-const demo = `import { PetStore } from "petstore-typescript-sdk";
-
-const acme = new Acme({});
-console.log(acme);
-`;
-
 export function LiveSandbox() {
   return (
-    <Sandpack
-      options={{ showConsole: true }}
-      customSetup={{ dependencies: { "acme-typescript-sdk": "1.0.0" } }}
-      template="node"
+    <iframe
+      frameBorder="0"
+      style={{ width: "100%", height: "100%" }}
+      src="https://stackblitz.com/edit/stackblitz-starters-pwkjvj?embed=1&file=index.ts&terminalHeight=40&showSidebar=1&theme=dark&view=editor"
     />
   );
 }

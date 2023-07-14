@@ -165,7 +165,7 @@ export function HeroBullets() {
         </div>
         <Box mt={rem(30)}>
           {isMd ? (
-            <Box mx="auto" maw={rem(1000)}>
+            <Box h={rem(600)} mx="auto" maw={rem(1000)}>
               <LiveSandbox />
             </Box>
           ) : (
