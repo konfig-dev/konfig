@@ -24,8 +24,8 @@ in client-side browser code is not recommended as you would expose security cred
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
   accessToken: "ACCESS_TOKEN",
 });
@@ -37,7 +37,7 @@ console.log(paginateResponse);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://petstore.swagger.io/v2*
+All URIs are relative to *https://petstore.swagger.io/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,6 @@
 # MiscellaneousApi
 
-All URIs are relative to *http://petstore.swagger.io/v2*
+All URIs are relative to *https://petstore.swagger.io/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,8 +21,8 @@ Iterate through a bunch of items
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
 });
 
 const paginateResponse = await petstore.miscellaneous.paginate({});

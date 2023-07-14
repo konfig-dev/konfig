@@ -1,6 +1,6 @@
 # UserApi
 
-All URIs are relative to *http://petstore.swagger.io/v2*
+All URIs are relative to *https://petstore.swagger.io/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,8 +28,8 @@ This can only be done by the logged in user.
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
 });
 
@@ -77,8 +77,8 @@ void (empty response body)
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
 });
 
@@ -126,8 +126,8 @@ void (empty response body)
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
 });
 
@@ -175,8 +175,8 @@ This can only be done by the logged in user.
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
 });
 
@@ -228,8 +228,8 @@ void (empty response body)
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
 });
 
 const getByNameResponse = await petstore.user.getByName({
@@ -280,8 +280,8 @@ Name | Type | Description  | Notes
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
 });
 
 const loginResponse = await petstore.user.login({
@@ -334,8 +334,8 @@ Name | Type | Description  | Notes
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
 });
 
@@ -380,8 +380,8 @@ This can only be done by the logged in user.
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
 });
 

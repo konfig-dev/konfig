@@ -1,6 +1,6 @@
 # PetApi
 
-All URIs are relative to *http://petstore.swagger.io/v2*
+All URIs are relative to *https://petstore.swagger.io/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,8 +28,8 @@ Method | HTTP request | Description
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   accessToken: "ACCESS_TOKEN",
 });
 
@@ -82,8 +82,8 @@ Name | Type | Description  | Notes
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
   accessToken: "ACCESS_TOKEN",
 });
@@ -134,8 +134,8 @@ Multiple status values can be provided with comma separated strings
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   accessToken: "ACCESS_TOKEN",
 });
 
@@ -186,8 +186,8 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   accessToken: "ACCESS_TOKEN",
 });
 
@@ -238,8 +238,8 @@ Returns a single pet
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   apiKey: "API_KEY",
 });
 
@@ -291,8 +291,8 @@ Name | Type | Description  | Notes
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   accessToken: "ACCESS_TOKEN",
 });
 
@@ -347,8 +347,8 @@ Name | Type | Description  | Notes
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   accessToken: "ACCESS_TOKEN",
 });
 
@@ -400,8 +400,8 @@ void (empty response body)
 import { PetStore } from "pet-store-typescript-sdk";
 
 const petstore = new PetStore({
-  // Defining the base path is optional and defaults to http://petstore.swagger.io/v2
-  // basePath: "http://petstore.swagger.io/v2",
+  // Defining the base path is optional and defaults to https://petstore.swagger.io/v2
+  // basePath: "https://petstore.swagger.io/v2",
   accessToken: "ACCESS_TOKEN",
 });
 
