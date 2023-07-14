@@ -96,7 +96,6 @@ const useStyles = createStyles((theme) => ({
 
 export function HeroBullets() {
   const { classes } = useStyles();
-  const isMd = useMdMediaQuery();
   return (
     <div>
       <Container className={classes.wrapper} size={1400}>
@@ -164,21 +163,15 @@ export function HeroBullets() {
           </div>
         </div>
         <Box mt={rem(30)}>
-          {isMd ? (
-            <Box h={rem(600)} mx="auto" maw={rem(1000)}>
-              <LiveSandbox />
-            </Box>
-          ) : (
-            <AspectRatio mx="auto" maw={600} ratio={16 / 9}>
-              <iframe
-                src="https://www.youtube.com/embed/_rbFV2RmAc4"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </AspectRatio>
-          )}
+          <AspectRatio mx="auto" maw={600} ratio={16 / 9}>
+            <iframe
+              src="https://www.youtube.com/embed/_rbFV2RmAc4"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </AspectRatio>
         </Box>
       </Container>
     </div>
