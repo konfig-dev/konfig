@@ -253,6 +253,7 @@ public interface GenerateApi {
         putIfPresent(map, "artifactId", additionalProperties.getArtifactId());
         putIfPresent(map, "artifactUrl", additionalProperties.getArtifactUrl());
         putIfPresent(map, "groupId", additionalProperties.getGroupId());
+        putIfPresent(map, "supportPhp7", additionalProperties.getSupportPhp7());
         putIfPresent(map, "projectName", additionalProperties.getProjectName());
         putIfPresent(map, "disallowAdditionalPropertiesIfNotPresent",
                 additionalProperties.getDisallowAdditionalPropertiesIfNotPresent());

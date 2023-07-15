@@ -87,6 +87,9 @@ public class AdditionalProperties {
   @JsonProperty("defaultTimeout")
   private BigDecimal defaultTimeout;
 
+  @JsonProperty("supportPhp7")
+  private Boolean supportPhp7;
+
   @JsonProperty("useSingleRequestParameter")
   private Boolean useSingleRequestParameter;
 
@@ -557,6 +560,25 @@ public class AdditionalProperties {
 
   public void setDefaultTimeout(BigDecimal defaultTimeout) {
     this.defaultTimeout = defaultTimeout;
+  }
+
+  public AdditionalProperties supportPhp7(Boolean supportPhp7) {
+    this.supportPhp7 = supportPhp7;
+    return this;
+  }
+
+  /**
+   * Get supportPhp7
+   * @return supportPhp7
+  */
+  
+  @Schema(name = "supportPhp7", required = false)
+  public Boolean getSupportPhp7() {
+    return supportPhp7;
+  }
+
+  public void setSupportPhp7(Boolean supportPhp7) {
+    this.supportPhp7 = supportPhp7;
   }
 
   public AdditionalProperties useSingleRequestParameter(Boolean useSingleRequestParameter) {
@@ -1192,6 +1214,7 @@ public class AdditionalProperties {
         Objects.equals(this.apiDocumentationAuthenticationPartial, additionalProperties.apiDocumentationAuthenticationPartial) &&
         Objects.equals(this.composerPackageName, additionalProperties.composerPackageName) &&
         Objects.equals(this.defaultTimeout, additionalProperties.defaultTimeout) &&
+        Objects.equals(this.supportPhp7, additionalProperties.supportPhp7) &&
         Objects.equals(this.useSingleRequestParameter, additionalProperties.useSingleRequestParameter) &&
         Objects.equals(this.artifactUrl, additionalProperties.artifactUrl) &&
         Objects.equals(this.artifactId, additionalProperties.artifactId) &&
@@ -1227,7 +1250,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, gitRepoName, clientName, moduleName, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, tagPriority, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, gitRepoName, clientName, moduleName, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, tagPriority, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateIsOptional);
   }
 
   @Override
@@ -1253,6 +1276,7 @@ public class AdditionalProperties {
     sb.append("    apiDocumentationAuthenticationPartial: ").append(toIndentedString(apiDocumentationAuthenticationPartial)).append("\n");
     sb.append("    composerPackageName: ").append(toIndentedString(composerPackageName)).append("\n");
     sb.append("    defaultTimeout: ").append(toIndentedString(defaultTimeout)).append("\n");
+    sb.append("    supportPhp7: ").append(toIndentedString(supportPhp7)).append("\n");
     sb.append("    useSingleRequestParameter: ").append(toIndentedString(useSingleRequestParameter)).append("\n");
     sb.append("    artifactUrl: ").append(toIndentedString(artifactUrl)).append("\n");
     sb.append("    artifactId: ").append(toIndentedString(artifactId)).append("\n");

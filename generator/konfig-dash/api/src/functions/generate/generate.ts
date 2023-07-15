@@ -345,6 +345,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
           userAgent: generatorConfig.userAgent,
           gitRepoName: generatorConfig.git.repoName,
           clientState: generatorConfig.clientState,
+          supportPhp7: generatorConfig.supportPhp7,
         },
         packageName: generatorConfig.packageName,
         artifactVersion: generatorConfig.version,

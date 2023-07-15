@@ -20,6 +20,7 @@ const additionalProperties = z.object({
   clientState: z.string().array().optional(),
   clientStateIsOptional: z.boolean().optional(),
   modelPackage: z.string().optional(),
+  supportPhp7: z.boolean().optional(),
   packagistUsername: z.string().optional(),
   apiKeyAlias: z.record(z.string(), z.string()).optional(),
   apiDocumentationAuthenticationPartial: z.string().optional(),
