@@ -6,7 +6,8 @@ class Client
 {
 {{#apiInfo}}
     {{#apis}}
-    public readonly \{{apiPackage}}\{{classname}} ${{classNameCamelCase}};
+    {{#supportPhp7}}/** @var \{{apiPackage}}\{{classname}} */{{/supportPhp7}}
+    public {{^supportPhp7}}readonly \{{apiPackage}}\{{classname}} {{/supportPhp7}}${{classNameCamelCase}};
     {{/apis}}
 
     /**

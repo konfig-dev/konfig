@@ -36,7 +36,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
       *
       * @var boolean[]
       */
-    protected static array $openAPINullables = [
+    protected static {{^supportPhp7}}array {{/supportPhp7}}$openAPINullables = [
         {{#vars}}'{{name}}' => {{#isNullable}}true{{/isNullable}}{{^isNullable}}false{{/isNullable}}{{^-last}},
 		{{/-last}}{{/vars}}
     ];
@@ -46,7 +46,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
       *
       * @var boolean[]
       */
-    protected array $openAPINullablesSetToNull = [];
+    protected {{^supportPhp7}}array {{/supportPhp7}}$openAPINullablesSetToNull = [];
 
     /**
      * Array of property to type mappings. Used for (de)serialization

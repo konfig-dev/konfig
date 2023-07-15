@@ -18,7 +18,7 @@ class CustomApi
         string &$resourcePath,
         array &$queryParams,
         array &$headers,
-        &$httpBody,
+        &$httpBody
     ) {
     }
 }

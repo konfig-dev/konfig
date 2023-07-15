@@ -30,7 +30,7 @@ try {
     {{/isStrictlyObject}}
 {{/bodyParam}}
 {{#allParamsWithRequestBodyProperties}}
-        {{paramName}}: ${{paramName}}{{^-last}}, {{/-last}}
+        {{^supportPhp7}}{{paramName}}: {{/supportPhp7}}${{paramName}}{{^-last}}, {{/-last}}
 {{/allParamsWithRequestBodyProperties}}
     ){{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}(request){{/vendorExtensions.x-group-parameters}}{{/hasParams}};{{#returnType}}{{#returnModel}}{{#hasVars}}{{#vars}}
     print_r($result->${{{getter}}}());{{/vars}}{{/hasVars}}{{^hasVars}}print_r($result);{{/hasVars}}{{/returnModel}}{{/returnType}}

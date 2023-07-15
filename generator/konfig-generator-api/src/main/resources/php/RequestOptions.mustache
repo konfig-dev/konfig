@@ -4,7 +4,8 @@ namespace {{invokerPackage}};
 
 class RequestOptions
 {
-    private bool $retryOAuth;
+    {{#supportPhp7}}/** @var boolean */ {{/supportPhp7}}
+    private {{^supportPhp7}}bool {{/supportPhp7}}$retryOAuth;
 
     public function __construct(bool $retryOAuth = true)
     {
