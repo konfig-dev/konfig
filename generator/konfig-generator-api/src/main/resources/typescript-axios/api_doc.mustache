@@ -32,8 +32,8 @@ Method | HTTP request | Description
 {{^hasParams}}This endpoint does not need any parameter.{{/hasParams}}{{#allParams}}{{#-last}}
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------{{/-last}}{{/allParams}}
-{{#allParams}}{{^defaultValue}} **{{paramName}}** | {{^isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}{{#isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}| {{description}} |
-{{/defaultValue}}{{/allParams}}{{#allParams}}{{#defaultValue}} **{{paramName}}** | {{^isPrimitiveType}}{{^isEnum}}**{{{dataType}}}**{{/isEnum}}{{/isPrimitiveType}}{{#isPrimitiveType}}{{^isEnum}}[**{{{dataType}}}**]{{/isEnum}}{{/isPrimitiveType}}{{#isEnum}}{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}{{/isEnum}} | {{{description}}} |{{^required}} (optional){{/required}} defaults to {{{.}}}
+{{#allParams}}{{^defaultValue}} **{{> requestPropertyName}}** | {{^isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}{{#isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}| {{description}} |
+{{/defaultValue}}{{/allParams}}{{#allParams}}{{#defaultValue}} **{{> requestPropertyName}}** | {{^isPrimitiveType}}{{^isEnum}}**{{{dataType}}}**{{/isEnum}}{{/isPrimitiveType}}{{#isPrimitiveType}}{{^isEnum}}[**{{{dataType}}}**]{{/isEnum}}{{/isPrimitiveType}}{{#isEnum}}{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}{{/isEnum}} | {{{description}}} |{{^required}} (optional){{/required}} defaults to {{{.}}}
 {{/defaultValue}}{{/allParams}}
 
 ### Return type

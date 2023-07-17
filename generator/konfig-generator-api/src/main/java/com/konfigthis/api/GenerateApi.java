@@ -280,6 +280,11 @@ public interface GenerateApi {
         putIfPresent(map, "readmeSupportingDescriptionSnippet", additionalProperties.getReadmeSupportingDescriptionSnippet());
         putIfPresent(map, "readmeDescriptionSnippet", additionalProperties.getReadmeDescriptionSnippet());
         putIfPresent(map, "objectPropertyNamingConvention", additionalProperties.getObjectPropertyNamingConvention());
+        putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention());
+        if (additionalProperties.getObjectPropertyNamingConvention() != null) {
+            putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention().equals("camelCase"));
+            putIfPresent(map, "useSnakeCase", additionalProperties.getObjectPropertyNamingConvention().equals("snake_case"));
+        }
         putIfPresent(map, "setSkipSerializationToTrueByDefault", additionalProperties.getSetSkipSerializationToTrueByDefault());
         putIfPresent(map, "defaultTimeout", additionalProperties.getDefaultTimeout());
         putIfPresent(map, "composerPackageName", additionalProperties.getComposerPackageName());

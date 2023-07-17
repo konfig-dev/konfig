@@ -715,6 +715,8 @@ async function queueTypeScriptGeneration({
         disallowAdditionalPropertiesIfNotPresent: false,
         readmeSnippet: generatorConfig.readmeSnippet,
         removeKonfigBranding: generatorConfig.removeKonfigBranding,
+        objectPropertyNamingConvention:
+          generatorConfig.objectPropertyNamingConvention,
         readmeSupportingDescriptionSnippet:
           generatorConfig.readmeSupportingDescriptionSnippet,
         readmeDescriptionSnippet: generatorConfig.readmeDescriptionSnippet,

@@ -105,6 +105,10 @@ export const topLevelOperationsSchema = z
   .optional()
 export type TopLevelOperations = z.infer<typeof topLevelOperationsSchema>
 
+const objectPropertyNamingConvention = z
+  .union([z.literal('camelCase'), z.literal('snake_case')])
+  .optional()
+
 export const pythonConfig = z.object({
   packageName: z.string().describe('acme_client'),
   projectName: z.string().describe('acme-python-sdk'),
@@ -112,10 +116,8 @@ export const pythonConfig = z.object({
   pypiApiTokenEnvironmentVariable: z.string().optional(),
   gitlabRepositoryId: z.string().optional(),
   asyncReadmeSnippet: z.string().optional(),
-  objectPropertyNamingConvention: z
-    .union([z.literal('camelCase'), z.literal('snake_case')])
-    .optional()
-    .default('snake_case'),
+  objectPropertyNamingConvention:
+    objectPropertyNamingConvention.default('snake_case'),
   clientName: z.string(),
   clientState,
   clientStateIsOptional: z
@@ -177,6 +179,8 @@ export const typescriptConfig = z.object({
   npmName: z.string().describe('acme-typescript-sdk'),
   pagination: paginationConfigSchema.optional(),
   removeKonfigBranding: z.boolean().optional(),
+  objectPropertyNamingConvention:
+    objectPropertyNamingConvention.default('camelCase'),
   clientState,
   removeRequiredProperties: removeRequiredPropertiesSchema.optional(),
   topLevelOperations: topLevelOperationsSchema,
@@ -442,7 +446,10 @@ export const KonfigYaml = KonfigYamlCommon.merge(
           if (phpConfig === undefined) return
           if (phpConfig.test !== undefined) return phpConfig
           phpConfig.test = {
-            script: ['composer install', path.join('.', 'vendor', 'bin', 'phpunit')],
+            script: [
+              'composer install',
+              path.join('.', 'vendor', 'bin', 'phpunit'),
+            ],
           }
           return phpConfig
         }),

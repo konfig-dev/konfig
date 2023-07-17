@@ -18,6 +18,8 @@
 package org.openapitools.codegen;
 
 import io.swagger.v3.oas.models.media.Schema;
+import org.openapitools.codegen.utils.CamelizeOption;
+import org.openapitools.codegen.utils.StringUtils;
 
 import java.util.*;
 
@@ -33,6 +35,13 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
     public boolean isInnerEnum;
 
     public Schema oasSchema;
+
+    public String paramNameCamelCase() {
+        return StringUtils.camelize(paramName, CamelizeOption.LOWERCASE_FIRST_LETTER);
+    }
+    public String paramNameSnakeCase() {
+        return StringUtils.underscore(paramName);
+    }
 
     // If this schema is an object type schema
     public boolean isObject;
