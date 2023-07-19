@@ -1,0 +1,44 @@
+{{>partial_header}}
+
+using System;
+using Xunit;
+using {{packageName}}.Client;
+using {{packageName}}.Model;
+
+namespace {{packageName}}.Test
+{
+    /// <remarks>
+    /// Boilerplate for writing some simple tests
+    /// </remarks>
+    public class SimpleTests : IDisposable
+    {
+        public SimpleTests()
+        {
+            // Setup
+        }
+
+        public void Dispose()
+        {
+            // Cleanup when everything is done.
+        }
+
+        /// <summary>
+        /// Test Client Initialization
+        /// </summary>
+        [Fact]
+        public void ClientTest()
+        {
+{{> api_doc_auth_partial}}
+            Assert.NotNull(client);
+        }
+
+        /// <summary>
+        /// Simple Test
+        /// </summary>
+        [Fact]
+        public void SimpleTest()
+        {
+{{> api_doc_auth_partial}}
+        }
+    }
+}

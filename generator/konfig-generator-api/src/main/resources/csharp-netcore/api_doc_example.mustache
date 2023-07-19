@@ -14,50 +14,7 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "{{{basePath}}}";
-
-{{#apiDocumentationAuthenticationPartial}}
-{{{apiDocumentationAuthenticationPartial}}}
-
-{{/apiDocumentationAuthenticationPartial}}
-{{^apiDocumentationAuthenticationPartial}}
-            {{#hasAuthMethods}}
-            {{#authMethods}}
-            {{#isBasicBasic}}
-            // Configure HTTP basic authorization: {{{name}}}
-            config.Username = "YOUR_USERNAME";
-            config.Password = "YOUR_PASSWORD";
-            {{/isBasicBasic}}
-            {{#isBasicBearer}}
-            // Configure Bearer token for authorization: {{{name}}}
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-            {{/isBasicBearer}}
-            {{#isApiKey}}
-            // Configure API key authorization: {{{name}}}
-            config.ApiKey.Add("{{{keyParamName}}}", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.ApiKeyPrefix.Add("{{{keyParamName}}}", "Bearer");
-            {{/isApiKey}}
-            {{#isOAuth}}
-            {{#isApplication}}
-            // Configure OAuth2 credentials for "{{{flow}}}" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
-            {{/isApplication}}
-            {{^isApplication}}
-            // Configure OAuth2 access token for authorization: {{{name}}}
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-            {{/isApplication}}
-            {{/isOAuth}}
-            {{/authMethods}}
-
-            {{/hasAuthMethods}}
-{{/apiDocumentationAuthenticationPartial}}
+{{> api_doc_auth_partial}}
             {{#useHttpClient}}
             // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
             HttpClient httpClient = new HttpClient();
@@ -69,7 +26,7 @@ namespace Example
             {{/useHttpClient}}
             {{#allParams}}
             {{#isPrimitiveType}}
-            var {{paramName}} = {{{example}}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+            var {{paramName}} = {{#isString}}"{{/isString}}{{{example}}}{{#isString}}"{{/isString}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
             {{/isPrimitiveType}}
             {{^isPrimitiveType}}
             var {{paramName}} = new {{{dataType}}}(); // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}

@@ -354,11 +354,11 @@ namespace {{packageName}}.Client
         /// <value>The access token.</value>
         public virtual string AccessToken { get; set; }
 
-{{#clientState}}
+{{#clientStateSetterGetterPascalCase}}
         /// <value>Client state</value>
-        public virtual string {{{.}}} { get; set; }
+        public virtual string {{{state}}} { get; set; }
 
-{{/clientState}}
+{{/clientStateSetterGetterPascalCase}}
         {{#useRestSharp}}
         {{#hasOAuthMethods}}
         /// <summary>
@@ -715,9 +715,9 @@ namespace {{packageName}}.Client
                 Password = second.Password ?? first.Password,
                 VerifySsl = second.VerifySsl && first.VerifySsl,
                 AccessToken = second.AccessToken ?? first.AccessToken,
-                {{#clientState}}
-                {{{.}}} = second.{{{.}}} ?? first.{{{.}}},
-                {{/clientState}}
+                {{#clientStateSetterGetterPascalCase}}
+                {{{state}}} = second.{{{state}}} ?? first.{{{state}}},
+                {{/clientStateSetterGetterPascalCase}}
                 {{#useRestSharp}}
                 {{#hasOAuthMethods}}
                 OAuthTokenUrl = second.OAuthTokenUrl ?? first.OAuthTokenUrl,
