@@ -46,6 +46,9 @@ public class CodegenModel implements IJsonSchemaValidationProperties {
     // self-referenced itself and the dictionary-based TypedDict was not working.
     public boolean hasPropertyNameConflictingWithReservedWord;
 
+    // Turns out, we also need to check if its a valid Python identifer
+    public boolean useDictionaryBasedTypedDict;
+
     // References to parent and interface CodegenModels. Only set when code generator supports inheritance.
     public CodegenModel parentModel;
     public List<CodegenModel> interfaceModels;
