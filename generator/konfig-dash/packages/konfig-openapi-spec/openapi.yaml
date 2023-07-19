@@ -607,6 +607,8 @@ components:
                     - response
                 removeKonfigBranding:
                   type: boolean
+                useSecurityKeyParamNameAsPropertyName:
+                  type: boolean
                 objectPropertyNamingConvention:
                   anyOf:
                     - type: string
@@ -1808,6 +1810,8 @@ components:
                       - response
                   removeKonfigBranding:
                     type: boolean
+                  useSecurityKeyParamNameAsPropertyName:
+                    type: boolean
                   objectPropertyNamingConvention:
                     anyOf:
                       - type: string
@@ -2505,6 +2509,28 @@ components:
           type: boolean
         stripRequiredStringProperties:
           type: boolean
+        optionalParameters:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: '"name" field of parameter'
+              in:
+                type: string
+                description: '"in" field of parameter'
+            required:
+              - name
+              - in
+          description: >-
+            Can be configured to make specified parameters optional in the
+              SDKs. This can be useful if you have a set of parameters you would rather
+              instantiate on the top-level client to avoid redundant passing of this
+              parameter. For example if you have a "version" parameter that you repeatedly
+              pass throughout the operations, you can instead make it optional, add it as a
+              client state, and implement a request hook to attach the "version" client
+              state to the operation.
         doNotValidateGloballyRequiredSecurity:
           type: boolean
         infoContactEmail:
