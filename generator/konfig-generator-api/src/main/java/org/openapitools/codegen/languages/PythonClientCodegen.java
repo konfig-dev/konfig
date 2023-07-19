@@ -437,6 +437,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
             supportingFiles.add(new SupportingFile("__init__." + templateExtension, currentPackagePath, "__init__.py"));
         }
 
+        supportingFiles.add(new SupportingFile("test_simple." + templateExtension, testFolder, "test_simple.py"));
         supportingFiles.add(new SupportingFile("exceptions." + templateExtension, packagePath(), "exceptions.py"));
 
         if (Boolean.FALSE.equals(excludeTests)) {

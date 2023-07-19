@@ -1,0 +1,24 @@
+# coding: utf-8
+
+{{>partial_header}}
+
+import unittest
+
+from {{packageName}} import {{clientName}}
+
+class TestSimple(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def test_client(self):
+        {{lower clientName}} = {{clientName}}(
+        {{> api_doc_auth_partial}}
+        )
+        self.assertIsNotNone({{lower clientName}})
+
+    def tearDown(self):
+        pass
+
+
+if __name__ == "__main__":
+    unittest.main()
