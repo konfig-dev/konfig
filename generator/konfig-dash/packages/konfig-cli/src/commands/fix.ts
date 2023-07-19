@@ -54,6 +54,8 @@ export default class Fix extends Command {
     }),
     skipMissingResponseDescriptionFix: Flags.boolean({
       name: 'skip missing response description fix',
+      default: true,
+      allowNo: true,
       description: 'Ignores fixing a missing description in response schema',
     }),
     skipListUsageSecurity: Flags.boolean({
