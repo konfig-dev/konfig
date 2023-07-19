@@ -329,14 +329,14 @@ public interface GenerateApi {
             putIfPresent(map, "clientNameLowercase", additionalProperties.getClientName().toLowerCase());
         putIfPresent(map, "clientStateIsOptional", additionalProperties.getClientStateIsOptional());
         putIfPresent(map, "clientState", additionalProperties.getClientState());
-        putIfPresent(map, "clientStateWithUpperSnakeCase",
-                additionalProperties.getClientState().stream().map(clientState -> {
-                    Map<String, String> object = new HashMap<>();
-                    object.put("upperSnakeCase", StringUtils.underscore(clientState).toUpperCase());
-                    object.put("clientState", clientState);
-                    return object;
-                }).collect(Collectors.toList()));
-        if (additionalProperties.getClientState() != null)
+        if (additionalProperties.getClientState() != null) {
+            putIfPresent(map, "clientStateWithUpperSnakeCase",
+                    additionalProperties.getClientState().stream().map(clientState -> {
+                        Map<String, String> object = new HashMap<>();
+                        object.put("upperSnakeCase", StringUtils.underscore(clientState).toUpperCase());
+                        object.put("clientState", clientState);
+                        return object;
+                    }).collect(Collectors.toList()));
             putIfPresent(map, "clientStateSetterGetterCamelCase", additionalProperties.getClientState().stream().map(state -> {
                 Map<String, String> object = new HashMap<>();
                 object.put("state", state);
@@ -344,6 +344,7 @@ public interface GenerateApi {
                 object.put("getter", "get" + StringUtils.camelize(state));
                 return object;
             }).collect(Collectors.toList())); // added for PHP setter in Configuration.php
+        }
         putIfPresent(map, "apiKeyAlias", additionalProperties.getApiKeyAlias());
 
         // https://openapi-generator.tech/docs/generators/go
