@@ -1,5 +1,5 @@
 {{#if hasVars}}
-{{#if hasPropertyNameConflictingWithReservedWord}}
+{{#if useDictionaryBasedTypedDict}}
 Required{{classname}} = TypedDict("Required{{classname}}", {
     {{#each requiredVars}}
         {{#if description}}
@@ -27,7 +27,7 @@ class Required{{classname}}(TypedDict):
     {{/unless}}
 {{/if}}
 
-{{#if hasPropertyNameConflictingWithReservedWord}}
+{{#if useDictionaryBasedTypedDict}}
 Optional{{classname}} = TypedDict("Optional{{classname}}", {
     {{#each optionalVars}}
         {{#if description}}
