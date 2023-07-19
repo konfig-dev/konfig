@@ -163,6 +163,7 @@ public class PhpClientCodegen extends AbstractPhpCodegen {
         supportingFiles.add(new SupportingFile("RequestOptions.mustache", toSrcPath(invokerPackage, srcBasePath), "RequestOptions.php"));
         supportingFiles.add(new SupportingFile("composer.mustache", "", "composer.json"));
         supportingFiles.add(new SupportingFile("launch.mustache", ".vscode", "launch.json"));
+        supportingFiles.add(new SupportingFile("settings.mustache", ".vscode", "settings.json"));
         supportingFiles.add(new SupportingFile("SimpleTest.mustache", "test", "SimpleTest.php"));
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md"));
         supportingFiles.add(new SupportingFile("phpunit.xml.mustache", "", "phpunit.xml.dist"));
