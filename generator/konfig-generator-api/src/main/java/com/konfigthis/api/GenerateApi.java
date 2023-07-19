@@ -328,6 +328,8 @@ public interface GenerateApi {
         if (additionalProperties.getClientName() != null)
             putIfPresent(map, "clientNameLowercase", additionalProperties.getClientName().toLowerCase());
         putIfPresent(map, "clientStateIsOptional", additionalProperties.getClientStateIsOptional());
+
+
         putIfPresent(map, "clientState", additionalProperties.getClientState());
         if (additionalProperties.getClientState() != null) {
             putIfPresent(map, "clientStateWithUpperSnakeCase",
@@ -344,6 +346,20 @@ public interface GenerateApi {
                 object.put("getter", "get" + StringUtils.camelize(state));
                 return object;
             }).collect(Collectors.toList())); // added for PHP setter in Configuration.php
+            putIfPresent(map, "clientStateSetterGetterPascalCase", additionalProperties.getClientState().stream().map(state -> {
+                Map<String, String> object = new HashMap<>();
+                object.put("stateCamelCase", StringUtils.camelize(state, CamelizeOption.LOWERCASE_FIRST_LETTER));
+                object.put("upperSnakeCase", StringUtils.underscore(state).toUpperCase());
+                object.put("setter", "Set" + StringUtils.camelize(state));
+                object.put("getter", "Get" + StringUtils.camelize(state));
+                // If for some reason have a client state that is "Version" then we have to ensure the additional
+                // property does not have a naming conflict so we suffix everything with "State"
+                // Dylan: I ran into this case with Sportmonks and their "version" path variable that I made into clientState
+                if (additionalProperties.getClientState() != null && generator.equals("csharp-netcore"))
+                    state = state + "State";
+                object.put("state", state);
+                return object;
+            }).collect(Collectors.toList())); // added for CSharp setter in {{clientName}}.cs
         }
         putIfPresent(map, "apiKeyAlias", additionalProperties.getApiKeyAlias());
 
