@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`transformInnerSchemas transforms inner schemas in OpenAPI document 1`] = `
+{
+  "components": {
+    "schemas": {
+      "OtherSchema": {
+        "properties": {
+          "prop1": {
+            "type": "string",
+          },
+        },
+        "type": "object",
+      },
+      "User": {
+        "properties": {
+          "address": {
+            "$ref": "#/components/schemas/UserAddress",
+          },
+          "name": {
+            "type": "string",
+          },
+          "tags": {
+            "$ref": "#/components/schemas/UserTags",
+          },
+        },
+        "type": "object",
+      },
+      "UserAddress": {
+        "properties": {
+          "city": {
+            "type": "string",
+          },
+          "street": {
+            "type": "string",
+          },
+        },
+        "type": "object",
+      },
+      "UserTags": {
+        "items": {
+          "$ref": "#/components/schemas/UserTagsItem",
+        },
+        "type": "array",
+      },
+      "UserTagsItem": {
+        "properties": {
+          "name": {
+            "type": "string",
+          },
+        },
+        "type": "object",
+      },
+    },
+    "securitySchemes": {
+      "apiKey": {
+        "in": "header",
+        "name": "X-API-Key",
+        "type": "apiKey",
+      },
+    },
+  },
+  "info": {
+    "title": "My API",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/users": {
+      "get": {
+        "operationId": "getUsers",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User",
+                },
+              },
+            },
+            "description": "OK",
+          },
+        },
+      },
+      "post": {
+        "operationId": "createUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User",
+              },
+            },
+          },
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User",
+                },
+              },
+            },
+            "description": "OK",
+          },
+        },
+        "security": [
+          {
+            "apiKey": [],
+          },
+        ],
+      },
+    },
+  },
+}
+`;

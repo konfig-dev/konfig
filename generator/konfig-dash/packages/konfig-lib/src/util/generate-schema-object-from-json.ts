@@ -91,6 +91,9 @@ export type SchemaOrReference = SchemaObject | ReferenceObject
 export type NonArraySchemaObject =
   | OpenAPIV3.NonArraySchemaObject
   | OpenAPIV3_1.NonArraySchemaObject
+export type ArraySchemaObject =
+  | OpenAPIV3.ArraySchemaObject
+  | OpenAPIV3_1.ArraySchemaObject
 
 export function reduceSchemaObjects({
   schemaObjects,
