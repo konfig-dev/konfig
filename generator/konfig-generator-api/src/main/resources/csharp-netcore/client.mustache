@@ -1,0 +1,130 @@
+{{>partial_header}}
+
+using {{packageName}}.{{apiPackage}};
+
+namespace {{packageName}}.Client
+{
+    /// <summary>
+    ///  SDK client
+    /// </summary>
+    public class {{clientName}}
+    {
+{{#apiInfo}}
+{{#apis}}
+        /// <summary>
+        /// API instance
+        /// </summary>
+        public {{classname}} {{classNamePascalCase}} { get; private set; }
+
+{{/apis}}
+{{/apiInfo}}
+        /// <summary>
+        /// Configuration instance
+        /// </summary>
+        public readonly Configuration Configuration;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public {{clientName}}()
+        {
+            Configuration = new Configuration();
+            init();
+        }
+
+        private void init()
+        {
+{{#apiInfo}}
+{{#apis}}
+            {{classNamePascalCase}} = new {{classname}}(Configuration);
+{{/apis}}
+{{/apiInfo}}
+        }
+
+        /// <summary>
+        /// Setter for base path
+        /// </summary>
+        public {{clientName}} SetBasePath(string basePath)
+        {
+            Configuration.BasePath = basePath;
+            init();
+            return this;
+        }
+
+        /// <summary>
+        /// Setter for Username
+        /// </summary>
+        public {{clientName}} SetUsername(string username)
+        {
+            Configuration.Username = username;
+            init();
+            return this;
+        }
+
+        /// <summary>
+        /// Setter for Password
+        /// </summary>
+        public {{clientName}} SetPassword(string password)
+        {
+            Configuration.Password = password;
+            init();
+            return this;
+        }
+
+        /// <summary>
+        /// Setter for Access Token
+        /// </summary>
+        public {{clientName}} SetAccessToken(string accessToken)
+        {
+            Configuration.AccessToken = accessToken;
+            init();
+            return this;
+        }
+        {{#hasOAuthMethods}}
+
+        /// <summary>
+        /// Setter for OAuth Client Id
+        /// </summary>
+        public {{clientName}} SetOAuthClientId(string oAuthClientId)
+        {
+            Configuration.OAuthClientId = oAuthClientId;
+            init();
+            return this;
+        }
+
+        /// <summary>
+        /// Setter for OAuth Client Secret
+        /// </summary>
+        public {{clientName}} SetOAuthClientSecret(string oAuthClientSecret)
+        {
+            Configuration.OAuthClientSecret = oAuthClientSecret;
+            init();
+            return this;
+        }
+        {{/hasOAuthMethods}}
+{{#apiKeyMethods}}
+
+        /// <summary>
+        /// Setter for API Key
+        /// </summary>
+        public {{clientName}} Set{{> api_key_name}}(string apiKey)
+        {
+            Configuration.ApiKey["Authorization"] = apiKey;
+            init();
+            return this;
+        }
+{{/apiKeyMethods}}
+{{#clientStateSetterGetterPascalCase}}
+
+        /// <summary>
+        /// Setter for "{{state}}" client state
+        /// </summary>
+        public {{clientName}} {{setter}}(string {{stateCamelCase}})
+        {
+            Configuration.{{state}} = {{stateCamelCase}};
+            init();
+            return this;
+        }
+{{/clientStateSetterGetterPascalCase}}
+    }
+}

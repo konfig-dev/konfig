@@ -628,6 +628,7 @@ public class DefaultGenerator implements Generator {
                 operation.put("classname", config.toApiName(tag));
                 operation.put("classVarName", config.toApiVarName(tag));
                 operation.put("classNameCamelCase", camelize(tag, CamelizeOption.LOWERCASE_FIRST_LETTER));
+                operation.put("classNamePascalCase", camelize(tag, CamelizeOption.UPPERCASE_FIRST_CHAR));
                 operation.put("classNameSnakeCase", underscore(tag));
                 operation.put("importPath", config.toApiImport(tag));
                 operation.put("classFilename", config.toApiFilename(tag));

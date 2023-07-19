@@ -865,7 +865,9 @@ public class CSharpNetCoreClientCodegen extends AbstractCSharpCodegen {
                                    final AtomicReference<Boolean> excludeTests, final String testPackageFolder, final String testPackageName, final String modelPackageDir, final String authPackageDir) {
         supportingFiles.add(new SupportingFile("IApiAccessor.mustache", clientPackageDir, "IApiAccessor.cs"));
         supportingFiles.add(new SupportingFile("Configuration.mustache", clientPackageDir, "Configuration.cs"));
+        supportingFiles.add(new SupportingFile("client.mustache", clientPackageDir, additionalProperties.get("clientName") + ".cs"));
         supportingFiles.add(new SupportingFile("ApiClient.mustache", clientPackageDir, "ApiClient.cs"));
+        supportingFiles.add(new SupportingFile("ApiClientCustom.mustache", clientPackageDir, "ApiClientCustom.cs"));
         supportingFiles.add(new SupportingFile("ApiException.mustache", clientPackageDir, "ApiException.cs"));
         supportingFiles.add(new SupportingFile("ClientException.mustache", clientPackageDir, "ClientException.cs"));
         supportingFiles.add(new SupportingFile("ApiResponse.mustache", clientPackageDir, "ApiResponse.cs"));
@@ -905,6 +907,7 @@ public class CSharpNetCoreClientCodegen extends AbstractCSharpCodegen {
         supportingFiles.add(new SupportingFile("netcore_project.mustache", packageFolder, packageName + ".csproj"));
 
         if (Boolean.FALSE.equals(excludeTests.get())) {
+            supportingFiles.add(new SupportingFile("SimpleTest.mustache", testPackageFolder,  "SimpleTest.cs"));
             supportingFiles.add(new SupportingFile("netcore_testproject.mustache", testPackageFolder, testPackageName + ".csproj"));
         }
 
