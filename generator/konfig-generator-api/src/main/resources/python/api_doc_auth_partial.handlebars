@@ -4,6 +4,11 @@
 {{#if apiDocumentationAuthenticationPartial}}
 {{{apiDocumentationAuthenticationPartial}}}
 {{else}}
+{{#if clientState}}
+{{#each clientStateWithUpperSnakeCase}}
+    {{clientState}} = '{{upperSnakeCase}}',
+{{/each}}
+{{/if}}
 {{#if hasAuthMethods}}
 {{#each authMethods}}
 {{#if isBasic}}
