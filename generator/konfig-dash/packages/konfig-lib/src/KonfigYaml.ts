@@ -74,6 +74,13 @@ export const objcConfig = z.object({
 })
 
 export const csharpConfig = z.object({
+  clientName: z
+    .string()
+    .refine(
+      (clientName) =>
+        clientName.endsWith('Client') ||
+        `clientName must be suffixed with "Client"`
+    ),
   logoPath: z
     .string()
     .refine((logoPath) => logoPath.endsWith('.png'), {

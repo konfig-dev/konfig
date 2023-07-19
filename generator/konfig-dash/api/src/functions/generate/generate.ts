@@ -497,6 +497,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
         additionalProperties: {
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          clientName: generatorConfig.clientName,
           packageVersion: generatorConfig.version,
           readmeSnippet: generatorConfig.readmeSnippet,
           readmeSupportingDescriptionSnippet:

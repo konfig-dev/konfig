@@ -162,7 +162,11 @@ export default class Init extends Command {
     mergeWithExistingObjectAndWrite({
       path: fromVscodeFolder('extensions.json'),
       json: {
-        recommendations: ['stoplight.spectral', 'redhat.vscode-yaml'],
+        recommendations: [
+          'stoplight.spectral',
+          'redhat.vscode-yaml',
+          'csharpier.csharpier-vscode',
+        ],
       },
     })
     CliUx.ux.action.stop()
@@ -211,6 +215,10 @@ export default class Init extends Command {
           },
         },
         'ruby.format': 'rubocop', // use rubocop for formatting
+        '[csharp]': {
+          'editor.formatOnSave': true,
+          'editor.defaultFormatter': 'csharpier.csharpier-vscode',
+        },
       },
     })
     CliUx.ux.action.stop()
@@ -383,6 +391,7 @@ export default class Init extends Command {
           packageName: `${camelcase(answers.sdkName, {
             pascalCase: true,
           })}.Net`,
+          clientName: camelcase(answers.sdkName, { pascalCase: true }),
           outputDirectory: 'csharp',
           logoPath: answers.logoPath,
           git: {
