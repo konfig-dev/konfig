@@ -449,14 +449,26 @@ function parseAuth({ auth }, optAuth, securitySchemes) {
   return parsePostmanAuth(auth, securitySchemes)
 }
 
+function generateSecurityScheme(auth) {
+  if (auth.type !== 'apikey')
+    return {
+      type: 'http',
+      scheme: auth.type,
+    }
+  const where = auth.apikey.find((obj) => obj.key === 'in')?.value
+  const name = auth.apikey.find((obj) => obj.key === 'key')?.value
+  return {
+    type: 'apiKey',
+    in: where === undefined ? 'Header' : where,
+    name,
+  }
+}
+
 /* Parse a postman auth definition */
 function parsePostmanAuth(postmanAuth = {}, securitySchemes) {
   const { type } = postmanAuth
   if (type != null) {
-    securitySchemes[`${type}Auth`] = {
-      type: 'http',
-      scheme: type,
-    }
+    securitySchemes[`${type}Auth`] = generateSecurityScheme(postmanAuth)
     return {
       components: { securitySchemes },
       security: [
@@ -476,10 +488,7 @@ function parseOperationAuth(auth, securitySchemes, optsAuth) {
     return {}
   } else {
     const { type } = auth
-    securitySchemes[`${type}Auth`] = {
-      type: 'http',
-      scheme: type,
-    }
+    securitySchemes[`${type}Auth`] = generateSecurityScheme(auth)
     return {
       security: [{ [`${type}Auth`]: [] }],
     }
