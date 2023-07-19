@@ -1,7 +1,10 @@
 import { z } from './zod'
 
 import { TemplateFiles } from './TemplateFiles'
-import { topLevelOperationsOrderedSchema } from './KonfigYaml'
+import {
+  clientStateWithExamples,
+  topLevelOperationsOrderedSchema,
+} from './KonfigYaml'
 import { tagPrioritySchema } from './KonfigYamlCommon'
 
 const additionalProperties = z.object({
@@ -19,6 +22,7 @@ const additionalProperties = z.object({
   useSecurityKeyParamNameAsPropertyName: z.boolean().optional(),
   objectPropertyNamingConvention: z.string().optional(),
   clientState: z.string().array().optional(),
+  clientStateWithExamples,
   clientStateIsOptional: z.boolean().optional(),
   modelPackage: z.string().optional(),
   supportPhp7: z.boolean().optional(),

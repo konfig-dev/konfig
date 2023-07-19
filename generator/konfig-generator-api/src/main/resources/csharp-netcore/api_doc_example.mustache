@@ -4,7 +4,6 @@ using System.Diagnostics;
 {{#useHttpClient}}
 using System.Net.Http;
 {{/useHttpClient}}
-using {{packageName}}.{{apiPackage}};
 using {{packageName}}.Client;
 using {{packageName}}.{{modelPackage}};
 
@@ -21,9 +20,6 @@ namespace Example
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new {{classname}}(httpClient, config, httpClientHandler);
             {{/useHttpClient}}
-            {{^useHttpClient}}
-            var apiInstance = new {{classname}}(config);
-            {{/useHttpClient}}
             {{#allParams}}
             {{#isPrimitiveType}}
             var {{paramName}} = {{#isString}}"{{/isString}}{{{example}}}{{#isString}}"{{/isString}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
@@ -38,7 +34,7 @@ namespace Example
                 {{#summary}}
                 // {{{.}}}
                 {{/summary}}
-                {{#returnType}}{{{.}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
+                {{#returnType}}{{{.}}} result = {{/returnType}}client.{{classNamePascalCase}}.{{{operationId}}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
                 Console.WriteLine(result);{{/returnType}}
             }
             catch (ApiException e)

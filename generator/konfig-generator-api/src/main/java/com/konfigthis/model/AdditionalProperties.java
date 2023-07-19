@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.konfigthis.model.AdditionalPropertiesClientStateWithExamplesInner;
 import com.konfigthis.model.AdditionalPropertiesTopLevelOperationsInner;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -184,6 +185,10 @@ public class AdditionalProperties {
   @JsonProperty("clientState")
   @Valid
   private List<String> clientState = null;
+
+  @JsonProperty("clientStateWithExamples")
+  @Valid
+  private List<AdditionalPropertiesClientStateWithExamplesInner> clientStateWithExamples = null;
 
   @JsonProperty("clientStateIsOptional")
   private Boolean clientStateIsOptional;
@@ -1189,6 +1194,33 @@ public class AdditionalProperties {
     this.clientState = clientState;
   }
 
+  public AdditionalProperties clientStateWithExamples(List<AdditionalPropertiesClientStateWithExamplesInner> clientStateWithExamples) {
+    this.clientStateWithExamples = clientStateWithExamples;
+    return this;
+  }
+
+  public AdditionalProperties addClientStateWithExamplesItem(AdditionalPropertiesClientStateWithExamplesInner clientStateWithExamplesItem) {
+    if (this.clientStateWithExamples == null) {
+      this.clientStateWithExamples = new ArrayList<>();
+    }
+    this.clientStateWithExamples.add(clientStateWithExamplesItem);
+    return this;
+  }
+
+  /**
+   * Get clientStateWithExamples
+   * @return clientStateWithExamples
+  */
+  @Valid 
+  @Schema(name = "clientStateWithExamples", required = false)
+  public List<AdditionalPropertiesClientStateWithExamplesInner> getClientStateWithExamples() {
+    return clientStateWithExamples;
+  }
+
+  public void setClientStateWithExamples(List<AdditionalPropertiesClientStateWithExamplesInner> clientStateWithExamples) {
+    this.clientStateWithExamples = clientStateWithExamples;
+  }
+
   public AdditionalProperties clientStateIsOptional(Boolean clientStateIsOptional) {
     this.clientStateIsOptional = clientStateIsOptional;
     return this;
@@ -1268,12 +1300,13 @@ public class AdditionalProperties {
         Objects.equals(this.readmeDescriptionSnippet, additionalProperties.readmeDescriptionSnippet) &&
         Objects.equals(this.apiKeyAlias, additionalProperties.apiKeyAlias) &&
         Objects.equals(this.clientState, additionalProperties.clientState) &&
+        Objects.equals(this.clientStateWithExamples, additionalProperties.clientStateWithExamples) &&
         Objects.equals(this.clientStateIsOptional, additionalProperties.clientStateIsOptional);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, gitRepoName, clientName, moduleName, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, gitRepoName, clientName, moduleName, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1331,6 +1364,7 @@ public class AdditionalProperties {
     sb.append("    readmeDescriptionSnippet: ").append(toIndentedString(readmeDescriptionSnippet)).append("\n");
     sb.append("    apiKeyAlias: ").append(toIndentedString(apiKeyAlias)).append("\n");
     sb.append("    clientState: ").append(toIndentedString(clientState)).append("\n");
+    sb.append("    clientStateWithExamples: ").append(toIndentedString(clientStateWithExamples)).append("\n");
     sb.append("    clientStateIsOptional: ").append(toIndentedString(clientStateIsOptional)).append("\n");
     sb.append("}");
     return sb.toString();

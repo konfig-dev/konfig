@@ -166,6 +166,31 @@ class Configuration
         return $this->{{state}};
     }
     {{/clientStateSetterGetterCamelCase}}
+    {{#clientStateWithExamplesSetterGetterCamelCase}}
+
+    /**
+     * {{state}} - client state from konfig.yaml
+     */
+    protected ?string ${{state}} = '';
+
+
+    /**
+     * {{state}} - client state setter from konfig.yaml
+     */
+    public function {{setter}}(${{state}})
+    {
+        $this->{{state}} = ${{state}};
+        return $this;
+    }
+
+    /**
+     * {{state}} - client state getter from konfig.yaml
+     */
+    public function {{getter}}()
+    {
+        return $this->{{state}};
+    }
+    {{/clientStateWithExamplesSetterGetterCamelCase}}
 
     /**
      * Constructor
@@ -174,6 +199,9 @@ class Configuration
         {{#clientState}}
         string ${{.}} = null,
         {{/clientState}}
+        {{#clientStateWithExamples}}
+        string ${{name}} = null,
+        {{/clientStateWithExamples}}
         {{#apiKeyMethods}}
         string ${{> api_key_name}} = null,
         {{/apiKeyMethods}}
@@ -183,6 +211,9 @@ class Configuration
         {{#clientStateSetterGetterCamelCase}}
         $this->{{setter}}(${{state}});
         {{/clientStateSetterGetterCamelCase}}
+        {{#clientStateWithExamplesSetterGetterCamelCase}}
+        $this->{{setter}}(${{state}});
+        {{/clientStateWithExamplesSetterGetterCamelCase}}
         {{#apiKeyMethods}}
         $this->setApiKey("{{keyParamName}}", ${{> api_key_name}});
         {{/apiKeyMethods}}

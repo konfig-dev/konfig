@@ -126,5 +126,17 @@ namespace {{packageName}}.Client
             return this;
         }
 {{/clientStateSetterGetterPascalCase}}
+{{#clientStateWithExamplesSetterGetterPascalCase}}
+
+        /// <summary>
+        /// Setter for "{{state}}" client state
+        /// </summary>
+        public {{clientName}} {{setter}}(string {{stateCamelCase}})
+        {
+            Configuration.{{state}} = {{stateCamelCase}};
+            init();
+            return this;
+        }
+{{/clientStateWithExamplesSetterGetterPascalCase}}
     }
 }

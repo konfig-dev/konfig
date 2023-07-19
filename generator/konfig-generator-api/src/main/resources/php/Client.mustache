@@ -26,6 +26,9 @@ class Client
         {{#clientState}}
         string ${{.}} = null,
         {{/clientState}}
+        {{#clientStateWithExamples}}
+        string ${{name}} = null,
+        {{/clientStateWithExamples}}
         {{#apiKeyMethods}}
         string ${{> api_key_name}} = null,
         {{/apiKeyMethods}}
@@ -39,6 +42,9 @@ class Client
                 {{#clientState}}
                 {{.}}: ${{.}},
                 {{/clientState}}
+                {{#clientStateWithExamples}}
+                {{name}}: ${{name}},
+                {{/clientStateWithExamples}}
                 {{#apiKeyMethods}}
                 {{> api_key_name}}: ${{> api_key_name}},
                 {{/apiKeyMethods}}

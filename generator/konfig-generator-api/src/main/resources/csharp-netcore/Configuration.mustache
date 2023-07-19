@@ -359,6 +359,11 @@ namespace {{packageName}}.Client
         public virtual string {{{state}}} { get; set; }
 
 {{/clientStateSetterGetterPascalCase}}
+{{#clientStateWithExamplesSetterGetterPascalCase}}
+        /// <value>Client state</value>
+        public virtual string {{{state}}} { get; set; }
+
+{{/clientStateWithExamplesSetterGetterPascalCase}}
         {{#useRestSharp}}
         {{#hasOAuthMethods}}
         /// <summary>
@@ -718,6 +723,9 @@ namespace {{packageName}}.Client
                 {{#clientStateSetterGetterPascalCase}}
                 {{{state}}} = second.{{{state}}} ?? first.{{{state}}},
                 {{/clientStateSetterGetterPascalCase}}
+                {{#clientStateWithExamplesSetterGetterPascalCase}}
+                {{{state}}} = second.{{{state}}} ?? first.{{{state}}},
+                {{/clientStateWithExamplesSetterGetterPascalCase}}
                 {{#useRestSharp}}
                 {{#hasOAuthMethods}}
                 OAuthTokenUrl = second.OAuthTokenUrl ?? first.OAuthTokenUrl,

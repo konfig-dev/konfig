@@ -184,6 +184,9 @@ conf = {{{packageName}}}.Configuration(
 {{#each clientState}}
                  {{{.}}}=None,
 {{/each}}
+{{#each clientStateWithExamples}}
+                 {{{name}}}=None,
+{{/each}}
 {{#each apiKeyAlias}}
                  {{{this}}}=None,
 {{/each}}
@@ -209,6 +212,17 @@ conf = {{{packageName}}}.Configuration(
             raise Exception("{{{.}}} is required")
 {{/clientStateIsOptional}}
         self.{{{.}}} = {{{.}}}
+{{#if @last}}
+        """Client State
+        """
+{{/if}}
+{{/each}}
+{{#each clientStateWithExamples}}
+{{^clientStateIsOptional}}
+        if {{{name}}} is None:
+            raise Exception("{{{name}}} is required")
+{{/clientStateIsOptional}}
+        self.{{{name}}} = {{{name}}}
 {{#if @last}}
         """Client State
         """
@@ -249,10 +263,15 @@ conf = {{{packageName}}}.Configuration(
 {{#each apiKeyMethods}}
         if {{{keyParamNameSnakeCase}}}:
             self.api_key['{{{name}}}'] = {{{keyParamNameSnakeCase}}}
-{{#unless @root.clientState}}{{#if vendorExtensions.x-konfig-globally-required-security}}
+{{#unless @root.clientState}}{{#unless @root.clientState}}{{#if vendorExtensions.x-konfig-globally-required-security}}
         {{#if @root.hasMultipleApiKeys}}else{{else}}elif api_key is None{{/if}}:
             raise ClientConfigurationError('API Key "{{{name}}}" is required')
 {{/if}}{{else}}
+{{#unless @root.hasMultipleApiKeys}}
+        elif api_key is None:
+            raise ClientConfigurationError('API Key "{{{name}}}" is required')
+{{/unless}}
+{{/unless}}{{else}}
 {{#unless @root.hasMultipleApiKeys}}
         elif api_key is None:
             raise ClientConfigurationError('API Key "{{{name}}}" is required')

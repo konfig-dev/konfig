@@ -13,6 +13,14 @@ const clientState = z
     'A list of stateful properties generated into the SDK that can be used in custom implementation hooks. This is useful when you need state in the SDK that is not described in the OpenAPI Specification such as a key used for request signing.'
   )
 
+export const clientStateWithExamples = z
+  .object({ name: z.string(), example: z.string() })
+  .array()
+  .optional()
+  .describe(
+    'A list of stateful properties generated into the SDK that can be used in custom implementation hooks. This is useful when you need state in the SDK that is not described in the OpenAPI Specification such as a key used for request signing. This is different from the "clientState" field in that it also includes examples for the generated documentation'
+  )
+
 const javaGroupId = z
   .string()
   .describe(
@@ -26,6 +34,7 @@ export const javaConfig = z.object({
   removeKonfigBranding: z.boolean().optional(),
   clientName: z.string(),
   clientState,
+  clientStateWithExamples,
   toStringReturnsJson: z
     .boolean()
     .optional()
@@ -49,6 +58,7 @@ export const rubyConfig = z.object({
   moduleName: z.string(),
   gemName: z.string(),
   clientState,
+  clientStateWithExamples,
 })
 
 export const goConfig = z.object({
@@ -95,6 +105,7 @@ export const csharpConfig = z.object({
       'The name of this package that shows up on https://nuget.org (e.g. "Acme.Net")'
     ),
   clientState,
+  clientStateWithExamples,
 })
 
 export const topLevelOperationsOrderedSchema = z
@@ -127,6 +138,7 @@ export const pythonConfig = z.object({
     objectPropertyNamingConvention.default('snake_case'),
   clientName: z.string(),
   clientState,
+  clientStateWithExamples,
   clientStateIsOptional: z
     .boolean()
     .describe('Whether or not to raise an error if client state is provided')
@@ -160,6 +172,7 @@ export const swiftConfig = z.object({
 export const phpConfig = z.object({
   packageName: z.string().describe('acme-php'),
   clientState,
+  clientStateWithExamples,
   supportPhp7: z.boolean().optional().default(false),
   packagistUsername: z
     .string()
@@ -190,6 +203,7 @@ export const typescriptConfig = z.object({
   objectPropertyNamingConvention:
     objectPropertyNamingConvention.default('camelCase'),
   clientState,
+  clientStateWithExamples,
   removeRequiredProperties: removeRequiredPropertiesSchema.optional(),
   topLevelOperations: topLevelOperationsSchema,
   gitlab: z

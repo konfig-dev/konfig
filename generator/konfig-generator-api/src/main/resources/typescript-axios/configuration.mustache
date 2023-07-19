@@ -16,6 +16,9 @@ export interface ConfigurationParameters {
 {{#clientState}}
     {{{.}}}?: string;
 {{/clientState}}
+{{#clientStateWithExamples}}
+    {{{name}}}?: string;
+{{/clientStateWithExamples}}
 {{#hasMultipleApiKeys}}
 {{#apiKeyMethods}}
     {{> securityKeyName}}?: string;
@@ -45,6 +48,12 @@ export class Configuration {
     */
     {{{.}}}?: string;
 {{/clientState}}
+{{#clientStateWithExamples}}
+    /**
+    * Client state
+    */
+    {{{name}}}?: string;
+{{/clientStateWithExamples}}
     /**
      * parameter for apiKey security
      * @param name security name
@@ -113,6 +122,9 @@ export class Configuration {
 {{#clientState}}
         this.{{{.}}} = param.{{{.}}}
 {{/clientState}}
+{{#clientStateWithExamples}}
+        this.{{{name}}} = param.{{{name}}}
+{{/clientStateWithExamples}}
         this.apiKey = param.apiKey
         if (this.apiKey === undefined) {
             this.apiKey = {}
