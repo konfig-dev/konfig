@@ -40,6 +40,60 @@ describe('generate-and-merge-schema-objects', () => {
       example: 'test',
     })
   })
+  it('number, string and null', () => {
+    const examples = [2, 'test', null]
+    const schema = generateAndMergeSchemaObjects({ examples, version: '3.0.x' })
+    expect(schema).toStrictEqual({
+      oneOf: [
+        {
+          type: 'number',
+          nullable: true,
+          example: 2,
+        },
+        {
+          type: 'string',
+          nullable: true,
+          example: 'test',
+        },
+      ],
+    })
+  })
+  it('string, number and null', () => {
+    const examples = ['test', 2, null]
+    const schema = generateAndMergeSchemaObjects({ examples, version: '3.0.x' })
+    expect(schema).toStrictEqual({
+      oneOf: [
+        {
+          type: 'string',
+          nullable: true,
+          example: 'test',
+        },
+        {
+          type: 'number',
+          nullable: true,
+          example: 2,
+        },
+      ],
+    })
+  })
+  it('number and null', () => {
+    const examples = [2, null]
+    const schema = generateAndMergeSchemaObjects({ examples, version: '3.0.x' })
+    expect(schema).toStrictEqual({
+      type: 'number',
+      nullable: true,
+      example: 2,
+    })
+  })
+  it('null and number', () => {
+    const examples = [null, 2]
+    const schema = generateAndMergeSchemaObjects({ examples, version: '3.0.x' })
+    expect(schema).toStrictEqual({
+      type: 'number',
+      nullable: true,
+      example: 2,
+    })
+  })
   it('primitive and array', () => {
     const examples = [
       {

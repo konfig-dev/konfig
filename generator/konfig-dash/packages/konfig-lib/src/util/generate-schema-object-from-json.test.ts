@@ -142,6 +142,7 @@ describe('generate-schema-object-from-json', () => {
         nullField: {
           type: 'string',
           nullable: true,
+          'x-konfig-null-placeholder': true,
         },
       },
       example: {
