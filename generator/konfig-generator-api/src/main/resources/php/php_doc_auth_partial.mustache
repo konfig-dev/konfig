@@ -3,9 +3,12 @@ ${{invokerPackageLowerCase}} = new \{{invokerPackage}}\Client(
 {{{apiDocumentationAuthenticationPartial}}}
 {{/apiDocumentationAuthenticationPartial}}
 {{^apiDocumentationAuthenticationPartial}}
+{{#clientStateWithUpperSnakeCase}}
+    {{clientState}}: "{{upperSnakeCase}}",
+{{/clientStateWithUpperSnakeCase}}
 {{#authMethods}}
 {{#isApiKey}}
-    {{keyParamName}}: YOUR_{{keyParamNameSnakeCaseUppercase}},
+    {{> api_key_name}}: "{{keyParamNameSnakeCaseUppercase}}",
 {{/isApiKey}}
 {{#isApplication}}
     clientId: "YOUR_CLIENT_ID",

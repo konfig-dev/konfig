@@ -175,7 +175,7 @@ class Configuration
         string ${{.}} = null,
         {{/clientState}}
         {{#apiKeyMethods}}
-        string ${{{keyParamName}}} = null,
+        string ${{> api_key_name}} = null,
         {{/apiKeyMethods}}
     )
     {
@@ -184,7 +184,7 @@ class Configuration
         $this->{{setter}}(${{state}});
         {{/clientStateSetterGetterCamelCase}}
         {{#apiKeyMethods}}
-        $this->setApiKey("{{keyParamName}}", ${{keyParamName}});
+        $this->setApiKey("{{keyParamName}}", ${{> api_key_name}});
         {{/apiKeyMethods}}
     }
 
