@@ -174,8 +174,10 @@ export function unrollOneOf({
     // handle x-konfig-null-placeholder which is essentially a "poison null pill".
     // if any schemaObject has a schema with the extension, remove it and apply "nullable" to all other schemas
     let poisoned = false
+    let allPoisoned = true
     for (const schema of schemaObject.oneOf) {
       if ('x-konfig-null-placeholder' in schema) poisoned = true
+      else allPoisoned = false
     }
     const oneOf: (SchemaObject | ReferenceObject)[] = []
     for (const schema of schemaObject.oneOf) {
@@ -191,6 +193,12 @@ export function unrollOneOf({
     schemaObject.oneOf = oneOf
 
     if (schemaObject.oneOf.length === 1) return schemaObject.oneOf[0]
+    if (allPoisoned)
+      return {
+        type: 'string',
+        nullable: true,
+        'x-konfig-null-placeholder': true,
+      } as SchemaObject
   }
 
   return schemaObject

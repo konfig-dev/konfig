@@ -22,6 +22,15 @@ describe('generate-and-merge-schema-objects', () => {
     })
     expect(schema).toMatchSnapshot()
   })
+  it('null, null', () => {
+    const examples = [null, null]
+    const schema = generateAndMergeSchemaObjects({ examples, version: '3.0.x' })
+    expect(schema).toStrictEqual({
+      type: 'string',
+      nullable: true,
+      'x-konfig-null-placeholder': true,
+    })
+  })
   it('null and string', () => {
     const examples = [null, 'test']
     const schema = generateAndMergeSchemaObjects({ examples, version: '3.0.x' })
