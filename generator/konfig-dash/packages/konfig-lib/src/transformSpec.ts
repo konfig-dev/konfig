@@ -153,7 +153,7 @@ export const transformSpec = async ({
 
   if (generator === 'python') {
     // The Python generator expects explicit component schemas to properly
-    // generate types For example, if you have an "array" type schema with an
+    // generate types. For example, if you have an "array" type schema with an
     // inner-object, the inner-object must be a "$ref" to generate explicit
     // types for the array items in the Python SDK.
     transformInnerSchemas({ spec })
