@@ -6,6 +6,7 @@ import { Configuration } from "./configuration";
 import { RequiredError, RequestArgs } from "./base";
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { requestAfterHook } from "./requestAfterHook";
+import { requestBeforeUrlHook } from "./requestBeforeUrlHook";
 {{#withNodeImports}}
 import { URL, URLSearchParams } from 'url';
 {{/withNodeImports}}
@@ -182,6 +183,7 @@ export const toPathString = function (url: URL) {
  */
 export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxios: AxiosInstance, BASE_PATH: string, configuration?: Configuration) {
     return <T = unknown, R = AxiosResponse<T>>(axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        requestBeforeUrlHook({axiosArgs, basePath, configuration})
         const url = (configuration?.basePath || basePath) + axiosArgs.url
         requestAfterHook({axiosArgs, basePath, url, configuration})
         return axios.request<T, R>({...axiosArgs.options, url});

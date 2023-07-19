@@ -33,6 +33,20 @@ export const tagPrioritySchema = z
     'Order of tags to be processed by Konfig. This can be used to configure which operation is used when generated the getting started documentation in the generated README for an SDK.'
   )
 
+export const optionalParameters = z
+  .object({
+    name: z.string().describe(`"name" field of parameter`),
+    in: z.string().describe(`"in" field of parameter`),
+  })
+  .array()
+  .describe(`Can be configured to make specified parameters optional in the
+  SDKs. This can be useful if you have a set of parameters you would rather
+  instantiate on the top-level client to avoid redundant passing of this
+  parameter. For example if you have a "version" parameter that you repeatedly
+  pass throughout the operations, you can instead make it optional, add it as a
+  client state, and implement a request hook to attach the "version" client
+  state to the operation.`)
+
 export const KonfigYamlCommon = z
   .object({
     fixConfig: fixConfig.optional(),
@@ -43,6 +57,7 @@ export const KonfigYamlCommon = z
     attachNullabletoAllResponseSchemas: z.boolean().optional(),
     validateRequiredPropertiesAndParametersAreNonEmpty: z.boolean().optional(),
     stripRequiredStringProperties: z.boolean().optional(),
+    optionalParameters: optionalParameters.optional(),
     doNotValidateGloballyRequiredSecurity: z.boolean().optional(),
     infoContactEmail: z.string().optional(),
     infoContactName: z.string().optional(),

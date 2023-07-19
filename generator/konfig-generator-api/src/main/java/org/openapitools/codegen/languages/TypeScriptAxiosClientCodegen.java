@@ -166,6 +166,7 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         supportingFiles.add(new SupportingFile("page-types.mustache", "pagination", "page-types.ts"));
         supportingFiles.add(new SupportingFile("paginate.mustache", "pagination", "paginate.ts"));
         supportingFiles.add(new SupportingFile("requestBeforeHook.mustache", "", "requestBeforeHook.ts"));
+        supportingFiles.add(new SupportingFile("requestBeforeUrlHook.mustache", "", "requestBeforeUrlHook.ts"));
         supportingFiles.add(new SupportingFile("requestAfterHook.mustache", "", "requestAfterHook.ts"));
 
         if (additionalProperties.containsKey(SEPARATE_MODELS_AND_API)) {
@@ -429,6 +430,7 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md"));
         supportingFiles.add(new SupportingFile("package.mustache", "", "package.json"));
         supportingFiles.add(new SupportingFile("tsconfig.mustache", "", "tsconfig.json"));
+        supportingFiles.add(new SupportingFile("index.test.mustache", "", "index.test.ts"));
         supportingFiles.add(new SupportingFile("tsconfig.test.mustache", "", "tsconfig.test.json"));
         supportingFiles.add(new SupportingFile("yarn.mustache", "", "yarn.lock"));
         supportingFiles.add(new SupportingFile("jest.config.mustache", "", "jest.config.ts"));

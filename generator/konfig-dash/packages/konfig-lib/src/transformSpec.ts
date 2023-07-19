@@ -40,6 +40,7 @@ type Options = {
 export const transformSpec = async ({
   specString,
   filterQueryParams,
+  optionalParameters,
   filterTags,
   allObjectsHaveAdditionalProperties,
   filterModels,
@@ -320,6 +321,21 @@ export const transformSpec = async ({
         'x-konfig-globally-required-security':
           isGloballyRequired || securityCount[security] === operations.length,
       })
+    }
+  }
+
+  // konfig.yaml#optionalParameters
+  if (optionalParameters !== undefined) {
+    for (const { operation } of operations) {
+      const parameters = getOperationParameters({ operation, spec })
+      if (parameters === undefined) continue
+      for (const parameter of parameters) {
+        for (const optional of optionalParameters) {
+          if (parameter.name !== optional.name) continue
+          if (parameter.in !== optional.in) continue
+          delete parameter['required']
+        }
+      }
     }
   }
 
