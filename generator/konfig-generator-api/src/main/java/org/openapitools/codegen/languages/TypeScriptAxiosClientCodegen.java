@@ -337,7 +337,7 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         if ((Boolean) bundle.getOrDefault("includeEventSourceParser", false))
             dependencies.add("\"eventsource-parser\": \"^1.0.0\"");
         if ((Boolean) bundle.getOrDefault("includeFetchAdapter", false))
-            dependencies.add("\"konfig-axios-fetch-adapter\": \"^1.0.6\"");
+            dependencies.add("\"konfig-axios-fetch-adapter\": \"^1.0.8\"");
         if ((Boolean) ((Map) bundle.getOrDefault("infoExtensions", new HashMap<String, Object>())).getOrDefault("x-konfig-uses-multipart-form-data", false)) {
             dependencies.add("\"buffer\": \"^6.0.3\"");
             dependencies.add("\"file-type\": \"16.5.4\"");
