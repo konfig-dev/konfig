@@ -31,7 +31,6 @@ import { {{classname}} } from '{{apiRelativeToRoot}}{{tsModelPackage}}';
 {{/imports}}
 import { paginate } from "../pagination/paginate";
 import { requestBeforeHook } from '../requestBeforeHook';
-import { {{classname}}Custom } from "./{{classFilename}}-custom";
 {{/withSeparateModelsAndApi}}
 {{^withSeparateModelsAndApi}}
 {{/withSeparateModelsAndApi}}
@@ -397,17 +396,17 @@ export type {{> singleRequestParameterName}} = {{#onlyHasPrimitiveBodyParameter}
 {{/operation}}
 {{/useSingleRequestParameter}}
 /**
- * {{classname}} - object-oriented interface{{#description}}
+ * {{classname}}Generated - object-oriented interface{{#description}}
  * {{{.}}}{{/description}}
  * @export
- * @class {{classname}}
+ * @class {{classname}}Generated
  * @extends {BaseAPI}
  */
 {{#withInterfaces}}
-export class {{classname}} extends BaseAPI implements {{classname}}Interface {
+export class {{classname}}Generated extends BaseAPI implements {{classname}}Interface {
 {{/withInterfaces}}
 {{^withInterfaces}}
-export class {{classname}} extends {{classname}}Custom {
+export class {{classname}}Generated extends BaseAPI {
 {{/withInterfaces}}
     {{#operation}}
     /**
@@ -428,7 +427,7 @@ export class {{classname}} extends {{classname}}Custom {
      * @param {*} [options] Override http request option.{{#isDeprecated}}
      * @deprecated{{/isDeprecated}}
      * @throws {RequiredError}
-     * @memberof {{classname}}
+     * @memberof {{classname}}Generated
      */
     {{#useSingleRequestParameter}}
     public {{nickname}}({{#allParams.0}}requestParameters: {{classname}}{{operationIdCamelCase}}Request{{^onlyHasPrimitiveBodyParameter}}{{#defaultCanBeEmptyObject}} = {}{{/defaultCanBeEmptyObject}}{{/onlyHasPrimitiveBodyParameter}}, {{/allParams.0}}options?: AxiosRequestConfig) {

@@ -176,8 +176,8 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
                     throw new RuntimeException("apiPackage and modelPackage must be defined");
                 }
                 modelTemplateFiles.put("model.mustache", ".ts");
-                apiTemplateFiles.put("apiInner.mustache", ".ts");
-                apiTemplateFiles.put("apiCustom.mustache", "-custom.ts");
+                apiTemplateFiles.put("apiInner.mustache", "-generated.ts");
+                apiTemplateFiles.put("apiCustom.mustache", ".ts");
                 apiDocTemplateFiles.put("api_doc.mustache", ".md");
                 supportingFiles.add(new SupportingFile("modelIndex.mustache", tsModelPackage, "index.ts"));
             }
