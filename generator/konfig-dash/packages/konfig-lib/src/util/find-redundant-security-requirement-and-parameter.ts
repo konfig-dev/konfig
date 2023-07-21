@@ -39,10 +39,11 @@ export async function findRedundantSecurityRequirementAndParameter({
   const requiredSecuritySchemes = securityRequirements.flatMap((requirement) =>
     Object.keys(requirement).map((name) => {
       const scheme = securitySchemes[name]
-      if (scheme === undefined)
+      if (scheme === undefined) {
         throw Error(
           `Found security requirement ${name} referring to non-existent security scheme`
         )
+      }
       return scheme
     })
   )

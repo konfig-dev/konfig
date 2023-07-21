@@ -95,6 +95,10 @@ const progressSchema = z.object({
   ignoreObjectsWithNoProperties: z.boolean().optional(),
   ignorePotentialIncorrectType: z.boolean().optional(),
   fixOnlyOneTagName: fixOnlyOneTagNameSchema.or(z.literal(false)).optional(),
+  nonExistentSecurityMapping: z
+    .record(z.string(), z.string().optional())
+    .optional()
+    .default({}),
   validServerUrls: z
     .record(z.string(), z.object({ url: z.string() }).optional())
     .optional()
@@ -220,6 +224,15 @@ export class Progress {
 
   getIgnoreObjectsWithNoProperties() {
     return this.progress.ignoreObjectsWithNoProperties
+  }
+
+  getNonExistentSecurityMapping(name: string) {
+    return this.progress.nonExistentSecurityMapping[name]
+  }
+
+  setNonExistentSecurityMapping(name: string, mapping: string) {
+    this.progress.nonExistentSecurityMapping[name] = mapping
+    this.save()
   }
 
   setFixOnlyOneTagNameToFalse() {
