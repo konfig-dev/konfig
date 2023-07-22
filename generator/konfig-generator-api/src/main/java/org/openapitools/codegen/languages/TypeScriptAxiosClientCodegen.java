@@ -160,6 +160,7 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         supportingFiles.add(new SupportingFile("gitignore", "", ".gitignore"));
         supportingFiles.add(new SupportingFile("npmignore", "", ".npmignore"));
         supportingFiles.add(new SupportingFile("client.mustache", "", "client.ts"));
+        supportingFiles.add(new SupportingFile("error.mustache", "", "error.ts"));
         supportingFiles.add(new SupportingFile("clientCustom.mustache", "", "client-custom.ts"));
         supportingFiles.add(new SupportingFile("page.mustache", "pagination", "page.ts"));
         supportingFiles.add(new SupportingFile("pageable.mustache", "pagination", "pageable.ts"));
