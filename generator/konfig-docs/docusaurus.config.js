@@ -170,6 +170,7 @@ const config = {
             label: "Documentation",
           },
           { to: "/blog", label: "Blog", position: "left" },
+          { to: "/live-demo", label: "Live Demo", position: "left" },
           { to: "/schedule-demo", label: "Schedule Demo", position: "right" },
           { to: "/about", label: "About", position: "right" },
         ],
