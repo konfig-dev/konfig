@@ -18,6 +18,7 @@ import Step2 from "./steps/2.mdx";
 import Step3 from "./steps/3.mdx";
 
 import MDXContent from "@theme/MDXContent";
+import clsx from "clsx";
 
 type IsStepComplete = (vm: VM) => Promise<boolean>;
 interface Step {
@@ -51,17 +52,24 @@ const steps: Step[] = [
   },
 ];
 
-export default function LiveDemo() {
+export default function LiveDemo({ sales }: { sales?: boolean }) {
   const [vm, setVm] = useState<VM>(null);
   const [currentStep, setCurrentStep] = useState(0);
+
+  useEffect(() => {
+    window.onbeforeunload = confirmExit;
+    function confirmExit() {
+      return "Leaving this page will erase all progress. Are you sure?";
+    }
+  }, []);
 
   useEffect(() => {
     sdk
       .embedProject(
         "ide",
         {
-          title: "Konfig Live Demo IDE",
-          description: "A basic Node.js project",
+          title: "Konfig Interactive Tutorial",
+          description: "How to generate SDKs for your REST API",
           template: "node",
           files: {
             "setup.sh": `alias konfig="cd ../; yarn konfig"`,
@@ -72,7 +80,7 @@ export default function LiveDemo() {
           },
         },
         {
-          openFile: "README.md",
+          openFile: sales ? "api.yaml" : "README.md",
           terminalHeight: 30,
           view: "editor",
         }
@@ -89,7 +97,7 @@ export default function LiveDemo() {
       description="Learn more about Konfig through a live Demo"
     >
       <div className="flex relative">
-        <div className="w-2/5">
+        <div className={clsx(sales ? "w-0" : "w-2/5")}>
           <MDXContent>
             <Steps
               steps={steps}
@@ -99,7 +107,12 @@ export default function LiveDemo() {
             />
           </MDXContent>
         </div>
-        <div className="w-3/5 sticky h-[calc(100vh-60px)] top-[60px]">
+        <div
+          className={clsx(
+            sales ? "w-full" : "w-3/5",
+            "sticky h-[calc(100vh-60px)] top-[60px]"
+          )}
+        >
           <div id="ide" className="w-full h-full bg-[#14181f]" />
         </div>
       </div>
