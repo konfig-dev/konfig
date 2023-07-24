@@ -11,9 +11,12 @@ import packageJson from "./package.json";
 import sdk, { VM } from "@stackblitz/sdk";
 
 // @ts-ignore
-import Step1 from "./_Step1.mdx";
+import Step1 from "./steps/1.mdx";
 // @ts-ignore
-import Step2 from "./_Step2.mdx";
+import Step2 from "./steps/2.mdx";
+// @ts-ignore
+import Step3 from "./steps/3.mdx";
+
 import MDXContent from "@theme/MDXContent";
 
 type IsStepComplete = (vm: VM) => Promise<boolean>;
@@ -33,8 +36,15 @@ const steps: Step[] = [
     },
   },
   {
-    action: "Cool",
+    action: "Awesome, can't wait to try it!",
     content: <Step2 />,
+    isStepComplete: async (vm: VM) => {
+      return true;
+    },
+  },
+  {
+    action: "Awesome, makes sense.",
+    content: <Step3 />,
     isStepComplete: async (vm: VM) => {
       return true;
     },
