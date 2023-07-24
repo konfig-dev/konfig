@@ -1,0 +1,834 @@
+export const api = `openapi: 3.0.0
+info:
+  title: OpenAPI Petstore
+  description: >-
+    This is a sample server Petstore server. For this sample, you can use the
+    api key \`special-key\` to test the authorization filters.
+  version: 1.0.0
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://petstore.swagger.io/v2
+tags:
+  - description: Everything about your Pets
+    name: pet
+  - description: Operations about user
+    name: user
+  - description: Access to Petstore orders
+    name: store
+  - description: miscellaneous namespace
+    name: miscellaneous
+paths:
+  /pagination:
+    get:
+      tags:
+        - miscellaneous
+      summary: Pagination sandbox
+      operationId: misc_paginate
+      description: Iterate through a bunch of items
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaginateRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginateResponse'
+  /pet:
+    post:
+      tags:
+        - pet
+      summary: Add a new pet to the store
+      operationId: pet_add
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/Pet'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Pet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '405':
+          description: Invalid input
+    put:
+      tags:
+        - pet
+      summary: Update an existing pet
+      operationId: pet_update
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/Pet'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Pet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  /pet/findByStatus:
+    get:
+      tags:
+        - pet
+      summary: Finds Pets by status
+      operationId: pet_findByStatus
+      security:
+        - petstore_auth:
+            - read:pets
+      description: Multiple status values can be provided with comma separated strings
+      parameters:
+        - description: Status values that need to be considered for filter
+          name: status
+          in: query
+          required: true
+          style: form
+          explode: false
+          deprecated: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - available
+                - pending
+                - sold
+              default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/FindByStatusResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindByStatus200Response'
+        '400':
+          description: Invalid status value
+  /pet/findByTags:
+    get:
+      tags:
+        - pet
+      summary: Finds Pets by tags
+      operationId: pet_findByTags
+      security:
+        - petstore_auth:
+            - read:pets
+      description: >-
+        Multiple tags can be provided with comma separated strings. Use tag1,
+        tag2, tag3 for testing.
+      parameters:
+        - description: Tags to filter by
+          name: tags
+          in: query
+          required: true
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/FindByTagsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindByTags200Response'
+        '400':
+          description: Invalid tag value
+      deprecated: true
+  /pet/{petId}:
+    get:
+      tags:
+        - pet
+      summary: Find pet by ID
+      operationId: pet_getById
+      security:
+        - api_key: []
+      description: Returns a single pet
+      parameters:
+        - description: ID of pet to return
+          name: petId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Pet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+    post:
+      tags:
+        - pet
+      summary: Updates a pet in the store with form data
+      operationId: pet_updateWithForm
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+      description: ''
+      parameters:
+        - description: ID of pet that needs to be updated
+          name: petId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpdateWithFormRequest'
+      responses:
+        default:
+          description: Invalid input
+    delete:
+      tags:
+        - pet
+      summary: Deletes a pet
+      operationId: pet_delete
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+          api_key: []
+      description: ''
+      parameters:
+        - description: Pet id to delete
+          name: petId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        default:
+          description: Invalid pet value
+  /pet/{petId}/uploadImage:
+    post:
+      tags:
+        - pet
+      summary: uploads an image
+      operationId: pet_uploadImage
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+      description: ''
+      parameters:
+        - description: ID of pet to update
+          name: petId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadImageRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /store/inventory:
+    get:
+      tags:
+        - store
+      summary: Returns pet inventories by status
+      operationId: store_getInventory
+      security:
+        - api_key: []
+      description: Returns a map of status codes to quantities
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInventoryResponse'
+  /store/order:
+    post:
+      tags:
+        - store
+      summary: Place an order for a pet
+      operationId: store_placeOrder
+      description: ''
+      requestBody:
+        description: order placed for purchasing the pet
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid Order
+  /store/order/{orderId}:
+    get:
+      tags:
+        - store
+      summary: Find purchase order by ID
+      operationId: store_getOrderById
+      description: >-
+        For valid response try integer IDs with value <= 5 or > 10. Other values
+        will generated exceptions
+      parameters:
+        - description: ID of pet that needs to be fetched
+          name: orderId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 5
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Order not found
+    delete:
+      tags:
+        - store
+      summary: Delete purchase order by ID
+      operationId: store_deleteOrder
+      description: >-
+        For valid response try integer IDs with value < 1000. Anything above
+        1000 or nonintegers will generate API errors
+      parameters:
+        - description: ID of the order that needs to be deleted
+          name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Order not found
+  /user:
+    post:
+      tags:
+        - user
+      summary: Create user
+      operationId: user_create
+      security:
+        - api_key: []
+      description: This can only be done by the logged in user.
+      requestBody:
+        description: Created user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          description: successful operation
+  /user/createWithArray:
+    post:
+      tags:
+        - user
+      summary: Creates list of users with given input array
+      operationId: user_createWithArray
+      security:
+        - api_key: []
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/UserArray'
+      responses:
+        default:
+          description: successful operation
+  /user/createWithList:
+    post:
+      tags:
+        - user
+      summary: Creates list of users with given input array
+      operationId: user_createWithList
+      security:
+        - api_key: []
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/UserArray'
+      responses:
+        default:
+          description: successful operation
+  /user/login:
+    get:
+      tags:
+        - user
+      summary: Logs user into the system
+      operationId: user_login
+      description: ''
+      parameters:
+        - description: The user name for login
+          name: username
+          in: query
+          required: true
+          schema:
+            type: string
+            pattern: ^[a-zA-Z0-9]+[a-zA-Z0-9\.\-_]*[a-zA-Z0-9]+$
+        - description: The password for login in clear text
+          name: password
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          headers:
+            Set-Cookie:
+              description: >-
+                Cookie authentication key for use with the \`api_key\` apiKey
+                authentication.
+              schema:
+                type: string
+                example: AUTH_KEY=abcde12345; Path=/; HttpOnly
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login200Response'
+        '400':
+          description: Invalid username/password supplied
+  /user/logout:
+    get:
+      tags:
+        - user
+      summary: Logs out current logged in user session
+      operationId: user_logout
+      security:
+        - api_key: []
+      description: ''
+      responses:
+        default:
+          description: successful operation
+  /user/{username}:
+    get:
+      tags:
+        - user
+      summary: Get user by user name
+      operationId: user_getByName
+      description: ''
+      parameters:
+        - description: The name that needs to be fetched. Use user1 for testing.
+          name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+    put:
+      tags:
+        - user
+      summary: Updated user
+      operationId: user_update
+      security:
+        - api_key: []
+      description: This can only be done by the logged in user.
+      parameters:
+        - description: name that need to be deleted
+          name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Updated user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid user supplied
+        '404':
+          description: User not found
+    delete:
+      tags:
+        - user
+      summary: Delete user
+      operationId: user_delete
+      security:
+        - api_key: []
+      description: This can only be done by the logged in user.
+      parameters:
+        - description: The name that needs to be deleted
+          name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+components:
+  requestBodies:
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateWithArrayRequest'
+      required: true
+    Pet:
+      description: Pet object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Pet'
+      required: true
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://petstore.swagger.io/api/oauth/dialog
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
+  schemas:
+    Order:
+      title: Pet Order
+      description: An order for a pets from the pet store
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        petId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+        shipDate:
+          type: string
+          format: date-time
+        status:
+          description: Order Status
+          type: string
+          enum:
+            - placed
+            - approved
+            - delivered
+        complete:
+          type: boolean
+          default: false
+      xml:
+        name: Order
+    Category:
+      title: Pet category
+      description: A category for a pet
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          pattern: ^[a-zA-Z0-9]+[a-zA-Z0-9\.\-_]*[a-zA-Z0-9]+$
+      xml:
+        name: Category
+    UserCreateRequest:
+      title: a User
+      description: A User who is purchasing from the pet store
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          description: User Status
+          type: integer
+          format: int32
+      xml:
+        name: User
+    User:
+      title: a User
+      description: A User who is purchasing from the pet store
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          description: User Status
+          type: integer
+          format: int32
+      xml:
+        name: User
+    Tag:
+      title: Pet Tag
+      description: A tag for a pet
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      xml:
+        name: Tag
+    Pet:
+      title: a Pet
+      description: A pet for sale in the pet store
+      type: object
+      required:
+        - name
+        - photoUrls
+      properties:
+        tags:
+          type: array
+          xml:
+            name: tag
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Tag'
+        id:
+          type: integer
+          format: int64
+        category:
+          $ref: '#/components/schemas/Category'
+        name:
+          type: string
+          example: doggie
+        photoUrls:
+          type: array
+          xml:
+            name: photoUrl
+            wrapped: true
+          items:
+            type: string
+        status:
+          description: pet status in the store
+          type: string
+          deprecated: true
+          enum:
+            - available
+            - pending
+            - sold
+      xml:
+        name: Pet
+    ApiResponse:
+      title: An uploaded response
+      description: Describes the result of uploading an image resource
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+    PaginateRequest:
+      type: object
+      properties:
+        first:
+          type: integer
+        after:
+          type: string
+    PaginateResponse:
+      type: object
+      properties:
+        edges:
+          type: object
+          properties:
+            node:
+              type: object
+              properties:
+                message:
+                  type: string
+        pageInfo:
+          type: object
+          properties:
+            hasNextPage:
+              type: boolean
+            hasPreviousPage:
+              type: boolean
+            startCursor:
+              type: string
+            endCursor:
+              type: string
+    UpdateWithFormRequest:
+      type: object
+      properties:
+        name:
+          description: Updated name of the pet
+          type: string
+        status:
+          description: Updated status of the pet
+          type: string
+    UploadImageRequest:
+      type: object
+      properties:
+        additionalMetadata:
+          description: Additional data to pass to server
+          type: string
+        file:
+          description: file to upload
+          type: string
+          format: binary
+    CreateWithArrayRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+    FindByStatusResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pet'
+    FindByStatus200Response:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pet'
+    FindByTagsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pet'
+    FindByTags200Response:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pet'
+    GetInventoryResponse:
+      type: object
+      additionalProperties:
+        type: integer
+        format: int32
+    LoginResponse:
+      type: string
+    Login200Response:
+      type: string
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io`;
