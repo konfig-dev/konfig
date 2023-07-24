@@ -11,6 +11,7 @@ import packageJson from "./_vm/package.json";
 import salesPackageJson from "./_vm/sales-demo-package.json";
 import tsconfigJson from "./_vm/tsconfig.json";
 import sdk, { VM } from "@stackblitz/sdk";
+import styles from "./index.module.css";
 
 // @ts-ignore
 import Step1 from "./_steps/1.mdx";
@@ -22,10 +23,10 @@ import Step3 from "./_steps/3.mdx";
 import MDXContent from "@theme/MDXContent";
 import clsx from "clsx";
 
-type IsStepComplete = (vm: VM) => Promise<boolean>;
+type CheckIfStepIsComplete = (vm: VM) => Promise<boolean>;
 interface Step {
   content: React.JSX.Element;
-  isStepComplete: IsStepComplete;
+  checkIfStepIsComplete: CheckIfStepIsComplete;
   hint?: string;
   action: string;
 }
@@ -34,21 +35,21 @@ const steps: Step[] = [
   {
     content: <Step1 />,
     action: "Lets go!",
-    isStepComplete: async (vm: VM) => {
+    checkIfStepIsComplete: async (vm: VM) => {
       return vm != null;
     },
   },
   {
     action: "Awesome, can't wait to try it!",
     content: <Step2 />,
-    isStepComplete: async (vm: VM) => {
+    checkIfStepIsComplete: async (vm: VM) => {
       return true;
     },
   },
   {
     action: "Awesome, makes sense.",
     content: <Step3 />,
-    isStepComplete: async (vm: VM) => {
+    checkIfStepIsComplete: async (vm: VM) => {
       return true;
     },
   },
@@ -138,7 +139,8 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
 
 interface StepButtonProps {
   selected: boolean;
-  isStepComplete: IsStepComplete;
+  checkIfStepIsComplete: CheckIfStepIsComplete;
+  isComplete: boolean;
   increment: () => void;
   hint?: string;
 
@@ -177,13 +179,15 @@ function Steps({
   return steps.map((step, i) => {
     const isNotLastStep = i < steps.length - 1;
     const selected = i === currentStep;
+    const isComplete = i < currentStep;
     return (
       <Step ref={refs[i]} key={i} selected={selected}>
         <div>{step.content}</div>
         {isNotLastStep && (
           <StepButton
+            isComplete={isComplete}
             selected={selected}
-            isStepComplete={step.isStepComplete}
+            checkIfStepIsComplete={step.checkIfStepIsComplete}
             increment={increment}
             hint={step.hint}
             vm={vm}
@@ -196,7 +200,8 @@ function Steps({
 }
 
 function StepButton({
-  isStepComplete,
+  checkIfStepIsComplete,
+  isComplete,
   increment,
   selected,
   hint,
@@ -207,15 +212,24 @@ function StepButton({
   return (
     <div className="flex gap-2 items-end">
       <button
+        className={clsx(
+          selected ? "cursor-pointer" : "cursor-not-allowed",
+          "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 pl-2 pr-4 border border-solid border-gray-400 rounded shadow flex items-center"
+        )}
         disabled={!selected}
         onClick={async (e) => {
           e.preventDefault();
           if (!selected) return;
-          if (await isStepComplete(vm)) {
+          if (await checkIfStepIsComplete(vm)) {
             increment();
           } else setShowHint(true);
         }}
       >
+        <input
+          checked={isComplete}
+          type="checkbox"
+          className={styles.taskStatus}
+        />
         {action}
       </button>
       {showHint && hint && (
