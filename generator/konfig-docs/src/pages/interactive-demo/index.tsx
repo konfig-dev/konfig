@@ -1,122 +1,183 @@
 import Layout from "@theme/Layout";
-import React, { PropsWithChildren, useEffect, useState } from "react";
-import { api } from "./api";
+import React, {
+  PropsWithChildren,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { yarnLock, apiYaml, readmeMd } from "./vm";
 import packageJson from "./package.json";
-import { yarnLock } from "./yarnLock";
 import sdk, { VM } from "@stackblitz/sdk";
 
 // @ts-ignore
 import Step1 from "./_Step1.mdx";
 // @ts-ignore
 import Step2 from "./_Step2.mdx";
-import MDXContent from "@site/src/theme/MDXContent";
+import MDXContent from "@theme/MDXContent";
 
 type IsStepComplete = (vm: VM) => Promise<boolean>;
 interface Step {
   content: React.JSX.Element;
   isStepComplete: IsStepComplete;
   hint?: string;
+  action: string;
 }
+
+const steps: Step[] = [
+  {
+    content: <Step1 />,
+    action: "Lets go!",
+    isStepComplete: async (vm: VM) => {
+      return vm != null;
+    },
+  },
+  {
+    action: "Cool",
+    content: <Step2 />,
+    isStepComplete: async (vm: VM) => {
+      return true;
+    },
+  },
+];
 
 export default function LiveDemo() {
   const [vm, setVm] = useState<VM>(null);
   const [currentStep, setCurrentStep] = useState(0);
 
-  const steps: Step[] = [
-    {
-      content: <Step1 />,
-      isStepComplete: async (vm: VM) => {
-        sdk
-          .embedProject(
-            "ide",
-            {
-              title: "Konfig Live Demo IDE",
-              description: "A basic Node.js project",
-              template: "node",
-              files: {
-                "setup.sh": `alias konfig="cd ../; yarn konfig"`,
-                "package.json": JSON.stringify(packageJson, undefined, 2),
-                "api.yaml": api,
-                "yarn.lock": yarnLock,
-              },
-            },
-            {
-              openFile: "api.yaml",
-              clickToLoad: true,
-              terminalHeight: 30,
-              view: "editor",
-            }
-          )
-          .then((newVm) => setVm(newVm));
-        return true;
-      },
-    },
-    {
-      content: <Step2 />,
-      isStepComplete: async (vm: VM) => {
-        return true;
-      },
-    },
-  ];
+  useEffect(() => {
+    sdk
+      .embedProject(
+        "ide",
+        {
+          title: "Konfig Live Demo IDE",
+          description: "A basic Node.js project",
+          template: "node",
+          files: {
+            "setup.sh": `alias konfig="cd ../; yarn konfig"`,
+            "package.json": JSON.stringify(packageJson, undefined, 2),
+            "api.yaml": apiYaml,
+            "yarn.lock": yarnLock,
+            "README.md": readmeMd,
+          },
+        },
+        {
+          openFile: "README.md",
+          terminalHeight: 30,
+          view: "editor",
+        }
+      )
+      .then((newVm) => setVm(newVm));
+    return () => {
+      setVm(null);
+    };
+  }, []);
 
   return (
     <Layout
       title={`Schedule Demo`}
       description="Learn more about Konfig through a live Demo"
     >
-      <div className="container mx-auto py-6">
-        <div className="flex relative">
-          <div className="flex-1">
-            <MDXContent>
-              {steps.map((step, i) => {
-                return (
-                  <Step key={i} selected={i === currentStep}>
-                    <div>{step.content}</div>
-                    <StepButton
-                      isStepComplete={step.isStepComplete}
-                      increment={() => setCurrentStep((value) => value + 1)}
-                      hint={step.hint}
-                      vm={vm}
-                    />
-                  </Step>
-                );
-              })}
-            </MDXContent>
-          </div>
-          <div className="w-3/5 sticky h-[80vh] top-[9vh]">
-            <div
-              id="ide"
-              className="twisted-shape w-full h-full bg-black"
-            ></div>
-          </div>
+      <div className="flex relative">
+        <div className="w-2/5">
+          <MDXContent>
+            <Steps
+              steps={steps}
+              vm={vm}
+              increment={() => setCurrentStep((step) => step + 1)}
+              currentStep={currentStep}
+            />
+          </MDXContent>
+        </div>
+        <div className="w-3/5 sticky h-[calc(100vh-60px)] top-[60px]">
+          <div id="ide" className="w-full h-full bg-[#14181f]" />
         </div>
       </div>
     </Layout>
   );
 }
 
-function StepButton({
-  isStepComplete,
-  increment,
-  hint,
-  vm,
-}: {
+interface StepButtonProps {
+  selected: boolean;
   isStepComplete: IsStepComplete;
   increment: () => void;
   hint?: string;
+
+  /**
+   * Describe the action to go to the next step
+   */
+  action: string;
+
   vm: VM;
+}
+
+function Steps({
+  steps,
+  vm,
+  increment,
+  currentStep,
+}: {
+  steps: Step[];
+  vm: VM;
+  increment: () => void;
+  currentStep: number;
 }) {
+  const refs = Array.from({ length: steps.length }).map(() =>
+    useRef<HTMLDivElement>()
+  );
+
+  useEffect(() => {
+    if (currentStep === 0) return;
+    refs[currentStep].current.scrollIntoView({
+      behavior: "smooth", // Use 'auto' for immediate scrolling without smooth animation
+      block: "start", // 'start', 'center', 'end', or 'nearest'
+      inline: "nearest", // 'start', 'center', 'end', or 'nearest'
+    });
+  }, [currentStep]);
+
+  return steps.map((step, i) => {
+    const isNotLastStep = i < steps.length - 1;
+    const selected = i === currentStep;
+    return (
+      <Step ref={refs[i]} key={i} selected={selected}>
+        <div>{step.content}</div>
+        {isNotLastStep && (
+          <StepButton
+            selected={selected}
+            isStepComplete={step.isStepComplete}
+            increment={increment}
+            hint={step.hint}
+            vm={vm}
+            action={step.action}
+          />
+        )}
+      </Step>
+    );
+  });
+}
+
+function StepButton({
+  isStepComplete,
+  increment,
+  selected,
+  hint,
+  action,
+  vm,
+}: StepButtonProps) {
   const [showHint, setShowHint] = useState(false);
   return (
     <div className="flex gap-2 items-end">
       <button
+        disabled={!selected}
         onClick={async (e) => {
           e.preventDefault();
-          if (await isStepComplete(vm)) increment();
-          else setShowHint(true);
+          if (!selected) return;
+          if (await isStepComplete(vm)) {
+            increment();
+          } else setShowHint(true);
         }}
       >
-        I clicked "Run Project"
+        {action}
       </button>
       {showHint && hint && (
         <span className="text-xs text-green-700">{hint}</span>
@@ -125,16 +186,18 @@ function StepButton({
   );
 }
 
-function Step({
-  children,
-  selected,
-}: PropsWithChildren<{ selected?: boolean }>) {
+const Step = forwardRef<
+  HTMLDivElement,
+  PropsWithChildren<{ selected?: boolean }>
+>(({ children, selected }, ref) => {
   return (
     <div
+      ref={ref}
+      style={{ scrollMarginTop: "60px", boxShadow: "none", margin: 0 }}
       {...(selected ? { "data-selected": true } : {})}
-      className="ch-scrollycoding-step-content"
+      className="ch-scrollycoding-step-content data-[selected]:opacity-100 opacity-50"
     >
       {children}
     </div>
   );
-}
+});

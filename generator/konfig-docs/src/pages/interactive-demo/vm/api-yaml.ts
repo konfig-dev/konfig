@@ -1,4 +1,4 @@
-export const api = `openapi: 3.0.0
+export const apiYaml = `openapi: 3.0.0
 info:
   title: OpenAPI Petstore
   description: >-
