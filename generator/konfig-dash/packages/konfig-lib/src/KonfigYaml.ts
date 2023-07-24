@@ -402,7 +402,7 @@ const genericGeneratorConfig = z
   ])
   .transform((config) => {
     if (config.generator === 'typescript' && config.test === undefined) {
-      config.test = { script: ['yarn', 'yarn test'] }
+      config.test = { script: ['yarn', 'yarn test', 'yarn build'] }
     }
     return config
   })
