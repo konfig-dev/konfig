@@ -342,6 +342,8 @@ export const go = generatorCommonOptional
   .strict()
 export const swift = generatorCommon.merge(swiftConfig).strict()
 
+const typescriptTestScript: string[] = ['yarn', 'yarn test', 'yarn build']
+
 const genericGeneratorConfig = z
   .union([
     z
@@ -402,7 +404,7 @@ const genericGeneratorConfig = z
   ])
   .transform((config) => {
     if (config.generator === 'typescript' && config.test === undefined) {
-      config.test = { script: ['yarn', 'yarn test', 'yarn build'] }
+      config.test = { script: typescriptTestScript }
     }
     return config
   })
@@ -452,7 +454,7 @@ export const KonfigYaml = KonfigYamlCommon.merge(
           if (typescriptConfig === undefined) return
           if (typescriptConfig.test !== undefined) return typescriptConfig
           typescriptConfig.test = {
-            script: ['yarn', 'yarn test'],
+            script: typescriptTestScript,
           }
           return typescriptConfig
         }),
