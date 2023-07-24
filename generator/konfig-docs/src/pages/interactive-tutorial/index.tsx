@@ -21,6 +21,10 @@ import Step2 from "./_steps/2.mdx";
 // @ts-ignore
 import Step3 from "./_steps/3.mdx";
 // @ts-ignore
+import Step4 from "./_steps/4.mdx";
+// @ts-ignore
+import Step5 from "./_steps/5.mdx";
+// @ts-ignore
 import Recap from "./_steps/recap.mdx";
 
 import MDXContent from "@theme/MDXContent";
@@ -46,12 +50,37 @@ const steps: Step[] = [
     action: "Awesome, can't wait to try it!",
     content: <Step2 />,
     checkIfStepIsComplete: async (vm: VM) => {
+      await vm.editor.openFile("api.yaml");
+      await vm.editor.setCurrentFile("api.yaml");
+      return true;
+    },
+  },
+  {
+    action: `Understood, we are turning an OpenAPI Specification into an SDK`,
+    content: <Step3 />,
+    checkIfStepIsComplete: async (vm: VM) => {
       return true;
     },
   },
   {
     action: `I ran "konfig init" to create a konfig.yaml file`,
-    content: <Step3 />,
+    content: <Step4 />,
+    checkIfStepIsComplete: async (vm: VM) => {
+      const files = await vm.getFsSnapshot();
+      for (const file in files) {
+        if (file !== "konfig.yaml") continue;
+        await vm.editor.openFile("konfig.yaml");
+        await vm.editor.setCurrentFile("konfig.yaml");
+        return true;
+      }
+      return false;
+    },
+    hint: `A "konfig.yaml" does not exist in your development environment. Did you follow the above directions to run "konfig init" in terminal?`,
+  },
+
+  {
+    action: `Understood, "konfig.yaml" is used to configure Konfig`,
+    content: <Step5 />,
     checkIfStepIsComplete: async (vm: VM) => {
       return true;
     },
@@ -179,23 +208,14 @@ function Steps({
 
   useEffect(() => {
     if (currentStep === 0) return;
-    refs[currentStep].current.scrollIntoView({
-      behavior: "smooth", // Use 'auto' for immediate scrolling without smooth animation
-      block: "start", // 'start', 'center', 'end', or 'nearest'
-      inline: "nearest", // 'start', 'center', 'end', or 'nearest'
-    });
-  }, [currentStep]);
-
-  useEffect(() => {
-    document.querySelectorAll(".step-button").forEach((element) => {
-      element.addEventListener("click", function (e) {
-        party.confetti(this, {
-          count: party.variation.range(40, 60),
-          spread: 20,
-        });
+    setTimeout(() => {
+      refs[currentStep].current.scrollIntoView({
+        behavior: "smooth", // Use 'auto' for immediate scrolling without smooth animation
+        block: "start", // 'start', 'center', 'end', or 'nearest'
+        inline: "nearest", // 'start', 'center', 'end', or 'nearest'
       });
-    });
-  }, []);
+    }, 300);
+  }, [currentStep]);
 
   return steps.map((step, i) => {
     const isNotLastStep = i < steps.length - 1;
@@ -230,22 +250,31 @@ function StepButton({
   vm,
 }: StepButtonProps) {
   const [showHint, setShowHint] = useState(false);
+  const ref = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isComplete) return;
+    party.confetti(ref.current, {
+      count: party.variation.range(40, 60),
+      spread: 20,
+    });
+  }, [isComplete]);
+
   return (
-    <div className="flex gap-2 items-end">
+    <div>
       <button
+        ref={ref}
         className={clsx(
-          "step-button",
           selected ? "cursor-pointer" : "cursor-not-allowed",
           "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 pl-2 pr-4 border border-solid border-gray-400 rounded shadow flex items-center"
         )}
         disabled={!selected}
+        data-complete={isComplete}
         onClick={async (e) => {
           e.preventDefault();
           if (!selected) return;
           if (await checkIfStepIsComplete(vm)) {
-            setTimeout(() => {
-              increment();
-            }, 300);
+            increment();
           } else setShowHint(true);
         }}
       >
@@ -256,8 +285,8 @@ function StepButton({
         />
         {action}
       </button>
-      {showHint && hint && (
-        <span className="text-xs text-green-700">{hint}</span>
+      {!isComplete && showHint && hint && (
+        <div className="text-sm mt-2">{hint}</div>
       )}
     </div>
   );

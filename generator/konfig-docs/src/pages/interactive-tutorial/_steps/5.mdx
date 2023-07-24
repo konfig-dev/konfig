@@ -1,0 +1,29 @@
+### About `konfig.yaml`
+
+Checkout the `konfig.yaml` file on the right hand side.
+
+Notice that it includes:
+
+1. The path to your OpenAPI Specification
+
+```yaml konfig.yaml
+specPath: api.yaml
+```
+
+2. Configuration to generate a TypeScript SDK
+
+```yaml konfig.yaml
+generators:
+  typescript:
+    version: 1.0.0
+    npmName: petstore-typescript-sdk
+    outputDirectory: typescript
+    clientName: Petstore
+    git:
+      userId: petstore
+      repoId: petstore-sdks/tree/main/typescript
+```
+
+When we generate SDKs, Konfig will read the contents of `konfig.yaml` to find
+the OpenAPI Specification and configuration for what SDKS to generate and how to
+generate them.
