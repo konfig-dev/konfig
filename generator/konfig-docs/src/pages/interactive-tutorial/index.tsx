@@ -11,6 +11,7 @@ import packageJson from "./_vm/package.json";
 import salesPackageJson from "./_vm/sales-demo-package.json";
 import tsconfigJson from "./_vm/tsconfig.json";
 import sdk, { VM } from "@stackblitz/sdk";
+import party from "party-js";
 import styles from "./index.module.css";
 
 // @ts-ignore
@@ -185,6 +186,17 @@ function Steps({
     });
   }, [currentStep]);
 
+  useEffect(() => {
+    document.querySelectorAll(".step-button").forEach((element) => {
+      element.addEventListener("click", function (e) {
+        party.confetti(this, {
+          count: party.variation.range(40, 60),
+          spread: 20,
+        });
+      });
+    });
+  }, []);
+
   return steps.map((step, i) => {
     const isNotLastStep = i < steps.length - 1;
     const selected = i === currentStep;
@@ -222,6 +234,7 @@ function StepButton({
     <div className="flex gap-2 items-end">
       <button
         className={clsx(
+          "step-button",
           selected ? "cursor-pointer" : "cursor-not-allowed",
           "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 pl-2 pr-4 border border-solid border-gray-400 rounded shadow flex items-center"
         )}
@@ -230,7 +243,9 @@ function StepButton({
           e.preventDefault();
           if (!selected) return;
           if (await checkIfStepIsComplete(vm)) {
-            increment();
+            setTimeout(() => {
+              increment();
+            }, 300);
           } else setShowHint(true);
         }}
       >
