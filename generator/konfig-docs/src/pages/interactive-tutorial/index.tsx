@@ -9,6 +9,7 @@ import React, {
 import { yarnLock, apiYaml, readmeMd } from "./vm";
 import packageJson from "./vm/package.json";
 import salesPackageJson from "./vm/sales-demo-package.json";
+import tsconfigJson from "./vm/tsconfig.json";
 import sdk, { VM } from "@stackblitz/sdk";
 
 // @ts-ignore
@@ -82,6 +83,9 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
             "api.yaml": apiYaml,
             "yarn.lock": yarnLock,
             "README.md": readmeMd,
+            ...(sales
+              ? { "tsconfig.json": JSON.stringify(tsconfigJson, undefined, 2) }
+              : {}),
           },
         },
         {
