@@ -7,7 +7,8 @@ import React, {
   useState,
 } from "react";
 import { yarnLock, apiYaml, readmeMd } from "./vm";
-import packageJson from "./package.json";
+import packageJson from "./vm/package.json";
+import salesPackageJson from "./vm/sales-demo-package.json";
 import sdk, { VM } from "@stackblitz/sdk";
 
 // @ts-ignore
@@ -73,7 +74,11 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
           template: "node",
           files: {
             "setup.sh": `alias konfig="cd ../; yarn konfig"`,
-            "package.json": JSON.stringify(packageJson, undefined, 2),
+            "package.json": JSON.stringify(
+              sales ? salesPackageJson : packageJson,
+              undefined,
+              2
+            ),
             "api.yaml": apiYaml,
             "yarn.lock": yarnLock,
             "README.md": readmeMd,
