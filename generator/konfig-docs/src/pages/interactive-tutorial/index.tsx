@@ -19,6 +19,8 @@ import Step1 from "./_steps/1.mdx";
 import Step2 from "./_steps/2.mdx";
 // @ts-ignore
 import Step3 from "./_steps/3.mdx";
+// @ts-ignore
+import Recap from "./_steps/recap.mdx";
 
 import MDXContent from "@theme/MDXContent";
 import clsx from "clsx";
@@ -47,8 +49,15 @@ const steps: Step[] = [
     },
   },
   {
-    action: "Awesome, makes sense.",
+    action: `I ran "konfig init" to create a konfig.yaml file`,
     content: <Step3 />,
+    checkIfStepIsComplete: async (vm: VM) => {
+      return true;
+    },
+  },
+  {
+    action: "N/A",
+    content: <Recap />,
     checkIfStepIsComplete: async (vm: VM) => {
       return true;
     },
