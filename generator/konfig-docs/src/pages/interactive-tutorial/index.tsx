@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { yarnLock, apiYaml, readmeMd } from "./vm";
+import { yarnLock, apiYaml, readmeMd, makeRequestTs } from "./vm";
 import packageJson from "./vm/package.json";
 import salesPackageJson from "./vm/sales-demo-package.json";
 import tsconfigJson from "./vm/tsconfig.json";
@@ -63,6 +63,9 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
     function confirmExit() {
       return "Leaving this page will erase all progress. Are you sure?";
     }
+    return () => {
+      window.onbeforeunload = null;
+    };
   }, []);
 
   useEffect(() => {
@@ -82,14 +85,18 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
             ),
             "api.yaml": apiYaml,
             "yarn.lock": yarnLock,
-            "README.md": readmeMd,
             ...(sales
-              ? { "tsconfig.json": JSON.stringify(tsconfigJson, undefined, 2) }
-              : {}),
+              ? {
+                  "make-request.ts": makeRequestTs,
+                  "tsconfig.json": JSON.stringify(tsconfigJson, undefined, 2),
+                }
+              : {
+                  "README.md": readmeMd,
+                }),
           },
         },
         {
-          openFile: sales ? "api.yaml" : "README.md",
+          openFile: sales ? "make-request.ts" : "README.md",
           terminalHeight: 30,
           view: "editor",
         }
