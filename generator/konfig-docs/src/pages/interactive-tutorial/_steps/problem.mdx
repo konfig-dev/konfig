@@ -1,0 +1,104 @@
+### The Problem
+
+**APIs can be difficult to integrate.** Especially when an API has <a
+href="/blog/what-is-an-sdk#why-do-developers-need-help-integrating-apis"
+target="_blank">hundreds of operations and data models</a> to learn. Nowadays,
+API-first companies publish SDKs because it accelerates integration and converts
+more customers.
+
+#### The Old Way
+
+<CH.Section>
+This is what it looks like to integrate with your API without an SDK. We are
+manually [importing a request library](focus://1), [constructing request
+bodies](focus://3:5), and [constructing HTTP requests](focus://7:16).
+```typescript make-request.ts
+import axios from 'axios';
+
+let data = JSON.stringify({
+  quantity: '1,000',
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://petstore.swagger.io/v2/store/order',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+  data: data,
+};
+```
+</CH.Section>
+
+Run the following command in the terminal to execute the code to make a request.
+
+<CH.Code lineNumbers={false}>
+```shell Terminal
+yarn make-request
+```
+</CH.Code>
+
+Oh shoot, It doesn't even work and we get an ambiguous error.
+
+<CH.Code lineNumbers={false} rows="focus">
+```shell Terminal focus=5
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { code: 500, type: 'unknown', message: 'something bad happened' }
+  }
+}
+✨  Done in 1.14s.
+```
+</CH.Code>
+
+Turns out the problem is that we are passing in the string of `"1,000"` for
+`quantity` but the expected type is a number.
+
+<CH.Code lineNumbers={false}>
+```typescript make-request.ts
+let data = JSON.stringify({
+// mark diff-minus
+- quantity: '1,000',
+// mark diff-plus
++ quantity: 1000,
+});
+```
+</CH.Code>
+
+Apply the above fix and run the code again.
+
+<CH.Code lineNumbers={false}>
+```shell Terminal
+yarn make-request
+```
+</CH.Code>
+
+Now we get the expected output.
+
+```shell Terminal
+❯ yarn make-request
+yarn run v1.22.19
+$ ts-node make-request.ts
+Place Order Response: {"id":9223372036854776000,"petId":0,"quantity":1000,"complete":false}
+✨  Done in 1.52s.
+```
+
+#### The New Way
+
+Instead, your customers should be using an SDK.
+
+```typescript make-request.ts
+import { Petstore } from "petstore";
+
+new Petstore().store.placeOrder({
+    quantity: 1000
+}).then(response => {
+    console.log("Place Order Response:", response.data);
+})
+```
+
+This is 10x better, but SDKs are time-consuming to create and maintain.

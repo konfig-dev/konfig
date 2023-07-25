@@ -6,7 +6,14 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { yarnLock, apiYaml, readmeMd, makeRequestTs } from "./_vm";
+import {
+  yarnLock,
+  apiYaml,
+  readmeMd,
+  makeRequestTs,
+  makeRequestTsRefactored,
+  makeRequestTsFixed,
+} from "./_vm";
 import packageJson from "./_vm/package.json";
 import salesPackageJson from "./_vm/sales-demo-package.json";
 import tsconfigJson from "./_vm/tsconfig.json";
@@ -14,6 +21,8 @@ import sdk, { VM } from "@stackblitz/sdk";
 import party from "party-js";
 import styles from "./index.module.css";
 
+// @ts-ignore
+import Problem from "./_steps/problem.mdx";
 // @ts-ignore
 import Step1 from "./_steps/1.mdx";
 // @ts-ignore
@@ -26,6 +35,14 @@ import Step4 from "./_steps/4.mdx";
 import Step5 from "./_steps/5.mdx";
 // @ts-ignore
 import Recap from "./_steps/recap.mdx";
+// @ts-ignore
+import Generate from "./_steps/generate.mdx";
+// @ts-ignore
+import GeneratedSdk from "./_steps/generated-sdk.mdx";
+// @ts-ignore
+import Refactoring from "./_steps/refactoring.mdx";
+// @ts-ignore
+import Fixed from "./_steps/fixed.mdx";
 
 import MDXContent from "@theme/MDXContent";
 import clsx from "clsx";
@@ -41,9 +58,25 @@ interface Step {
 const steps: Step[] = [
   {
     content: <Step1 />,
-    action: "Lets go!",
+    action: "Let the learning begin!",
     checkIfStepIsComplete: async (vm: VM) => {
-      return vm != null;
+      const files = await vm.getFsSnapshot();
+      for (const file in files) {
+        console.log(file, files[file]);
+      }
+
+      const hasVmStarted = vm != null;
+      if (!hasVmStarted) return false;
+      await vm.editor.openFile("make-request.ts");
+      await vm.editor.setCurrentFile("make-request.ts");
+      return true;
+    },
+  },
+  {
+    action: "So, how do I publish SDKs for my API...",
+    content: <Problem />,
+    checkIfStepIsComplete: async (vm: VM) => {
+      return true;
     },
   },
   {
@@ -75,12 +108,57 @@ const steps: Step[] = [
       }
       return false;
     },
-    hint: `A "konfig.yaml" does not exist in your development environment. Did you follow the above directions to run "konfig init" in terminal?`,
+    hint: `🤔 A "konfig.yaml" does not exist in your development environment. Did you follow the above directions to run "konfig init" in terminal?`,
   },
-
   {
-    action: `Understood, "konfig.yaml" is used to configure Konfig`,
+    action: `Let's generate a TypeScript SDK!`,
     content: <Step5 />,
+    checkIfStepIsComplete: async (vm: VM) => {
+      return true;
+    },
+  },
+  {
+    action: `I ran "konfig generate"`,
+    content: <Generate />,
+    checkIfStepIsComplete: async (vm: VM) => {
+      const files = await vm.getFsSnapshot();
+      for (const file in files) {
+        if (file !== "typescript/README.md") continue;
+        await vm.editor.openFile("typescript/README.md");
+        await vm.editor.setCurrentFile("typescript/README.md");
+        return true;
+      }
+      return false;
+    },
+    hint: `Did you run "konfig generate"?`,
+  },
+  {
+    action: `Show me the money 💰`,
+    content: <GeneratedSdk />,
+    checkIfStepIsComplete: async (vm: VM) => {
+      await vm.applyFsDiff({
+        create: { "make-request.ts": makeRequestTsRefactored },
+        destroy: [],
+      });
+      await vm.editor.openFile("make-request.ts");
+      await vm.editor.setCurrentFile("make-request.ts");
+      return true;
+    },
+  },
+  {
+    action: `Fix the compilation error`,
+    content: <Refactoring />,
+    checkIfStepIsComplete: async (vm: VM) => {
+      vm.applyFsDiff({
+        create: { "make-request.ts": makeRequestTsFixed },
+        destroy: [],
+      });
+      return true;
+    },
+  },
+  {
+    action: `Recap`,
+    content: <Fixed />,
     checkIfStepIsComplete: async (vm: VM) => {
       return true;
     },
@@ -125,11 +203,10 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
             ),
             "api.yaml": apiYaml,
             "yarn.lock": yarnLock,
+            "make-request.ts": makeRequestTs,
+            "tsconfig.json": JSON.stringify(tsconfigJson, undefined, 2),
             ...(sales
-              ? {
-                  "make-request.ts": makeRequestTs,
-                  "tsconfig.json": JSON.stringify(tsconfigJson, undefined, 2),
-                }
+              ? {}
               : {
                   "README.md": readmeMd,
                 }),
@@ -137,7 +214,6 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
         },
         {
           openFile: sales ? "make-request.ts" : "README.md",
-          terminalHeight: 30,
           view: "editor",
         }
       )

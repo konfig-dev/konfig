@@ -1,0 +1,37 @@
+### Refactored Implementation
+
+We refactored `make-request.ts` to use the SDK you generated.
+
+```typescript make-request.ts
+import { Petstore } from "petstore";
+
+new Petstore().store.placeOrder({
+    quantity: "1,000"
+}).then(response => {
+    console.log("Place Order Response:", response.data);
+})
+```
+
+<CH.Section>
+To [build the SDK](focus://1[1:11]) and [run the refactored implementation](focus://1[16:32]), execute the following command.
+
+```shell Terminal
+konfig test && yarn make-request
+```
+</CH.Section>
+
+This time, we caught an error at compile time that tells us `quantity` should be a number.
+
+```shell Terminal
+make-request.ts:5:5 - error TS2322: Type 'string' is not assignable to type 'number'.
+
+5     quantity: '1,000',
+      ~~~~~~~~
+
+  typescript/dist/models/order.d.ts:34:5
+    34     'quantity'?: number;
+           ~~~~~~~~~~
+    The expected type comes from property 'quantity' which is declared here on type 'Order'
+```
+
+Fixing the compilation error should let us make the request.

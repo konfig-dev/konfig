@@ -63,6 +63,18 @@ const beforeRemarkPlugins = [
   ],
 ];
 
+const beforeRemarkPluginsForPages = [
+  [
+    remarkCodeHike,
+    {
+      theme: "github-from-css",
+      lineNumbers: false,
+      showCopyButton: true,
+      skipLanguages: ["", "mermaid"],
+    },
+  ],
+];
+
 const remarkPlugins = [
   [
     mermaid,
@@ -132,7 +144,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
         },
         pages: {
-          beforeDefaultRemarkPlugins: beforeRemarkPlugins,
+          beforeDefaultRemarkPlugins: beforeRemarkPluginsForPages,
           remarkPlugins: remarkPlugins,
         },
         theme: {
@@ -173,11 +185,11 @@ const config = {
             position: "left",
             label: "Documentation",
           },
-          // {
-          //   to: "/interactive-tutorial",
-          //   label: "Interactive Tutorial",
-          //   position: "left",
-          // },
+          {
+            to: "/interactive-tutorial",
+            label: "Interactive Tutorial",
+            position: "left",
+          },
           { to: "/schedule-demo", label: "Schedule Demo", position: "right" },
           { to: "/blog", label: "Blog", position: "right" },
           { to: "/about", label: "About", position: "right" },
