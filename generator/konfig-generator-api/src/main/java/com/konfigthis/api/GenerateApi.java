@@ -362,7 +362,9 @@ public interface GenerateApi {
                 // If for some reason have a client state that is "Version" then we have to ensure the additional
                 // property does not have a naming conflict so we suffix everything with "State"
                 // Dylan: I ran into this case with Sportmonks and their "version" path variable that I made into clientState
-                if (additionalProperties.getClientState() != null && generator.equals("csharp-netcore"))
+                // Update (Dylan): SnapTrade's SDKs rely on code that does not expect the "State" suffix so I reduced
+                // the scope of this "if" statement to only catch if a state matches the string "Version"
+                if (additionalProperties.getClientState() != null && generator.equals("csharp-netcore") && "Version".equals("State"))
                     state = state + "State";
                 object.put("state", state);
                 return object;
