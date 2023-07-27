@@ -1,5 +1,9 @@
 import { CliUx } from '@oclif/core'
-import { KonfigYamlType, TypeScriptConfigType } from 'konfig-lib'
+import {
+  KonfigYamlAdditionalGeneratorConfig,
+  KonfigYamlGeneratorConfig,
+  KonfigYamlType,
+} from 'konfig-lib'
 import { getDefaultBranch } from './get-default-branch'
 import { getGitRepositoryName } from './get-git-repository-name'
 
@@ -10,23 +14,28 @@ export function generateReadme({
 }): string {
   const defaultBranch = getDefaultBranch()
   CliUx.ux.debug(`Default branch: ${defaultBranch}`)
+  const generatorConfigs = [
+    ...Object.entries(konfigYaml.generators),
+    ...(konfigYaml.additionalGenerators
+      ? Object.entries(konfigYaml.additionalGenerators)
+      : []),
+  ]
   const languages: {
     language: string
     version: string
     documentationUrl: string
     sourceUrl: string
     packageManagerUrl: ReturnType<typeof getPublishedPackageUrl>
-  }[] = [
-    ...Object.entries(konfigYaml.generators),
-    ...(konfigYaml.additionalGenerators
-      ? Object.entries(konfigYaml.additionalGenerators)
-      : []),
-  ]
+  }[] = generatorConfigs
     .filter(
       ([_generator, config]) => !('disabled' in config) || !config.disabled
     )
     .map(([generatorName, config]) => {
       const version = config.version
+      const generator: string =
+        'generator' in config
+          ? (config as KonfigYamlAdditionalGeneratorConfig).generator
+          : generatorName
       const sourceUrl =
         generatorName === 'go'
           ? `https://${config.git.host}/${config.git.userId}/${
@@ -35,16 +44,16 @@ export function generateReadme({
           : `https://${config.git.host}/${config.git.userId}/${config.git.repoId}`
       return {
         language: generatorNameAsDisplayName({
-          generatorName:
-            'generator' in config ? config.generator : generatorName,
+          generatorName: generator,
         }),
         version,
         documentationUrl:
-          generatorName === 'php' ? sourceUrl : `${sourceUrl}/README.md`,
+          generatorName === 'php' || config.git.host === 'gitlab.com'
+            ? sourceUrl
+            : `${sourceUrl}/README.md`,
         sourceUrl,
         packageManagerUrl: getPublishedPackageUrl({
-          generatorName:
-            'generator' in config ? config.generator : generatorName,
+          generatorName: generator,
           generatorConfig: config,
           konfigYaml,
         }),
@@ -106,10 +115,9 @@ export function getPublishedPackageUrl({
   konfigYaml,
 }: {
   generatorName: string
-  generatorConfig: Omit<
-    NonNullable<KonfigYamlType['additionalGenerators']>[string],
-    'generator'
-  >
+  generatorConfig:
+    | KonfigYamlAdditionalGeneratorConfig
+    | KonfigYamlGeneratorConfig
   konfigYaml: KonfigYamlType
 }): { packageManagerName: string; url: string } {
   let config
@@ -138,6 +146,14 @@ export function getPublishedPackageUrl({
     case 'java':
       config = konfigYaml.generators.java
       if (config === undefined) throw Error('Config undefined')
+
+      // We have to use "generatorConfig" to support "additionalGenerators"
+      if ('gitlab' in generatorConfig && generatorConfig.gitlab !== undefined)
+        return {
+          url: `https://${generatorConfig.git.host}/${generatorConfig.git.userId}/${generatorConfig.git.repoId}/-/packages/`,
+          packageManagerName: 'GitLab',
+        }
+
       return {
         url: `https://central.sonatype.com/artifact/${config.groupId}/${config.artifactId}/${config.version}`,
         packageManagerName: 'Maven Central',
@@ -165,9 +181,10 @@ export function getPublishedPackageUrl({
       // this edge case was surfaced when publishing for humanloop
       if (version.includes('a')) version = version.replace(/a/, '-a')
 
+      // We have to use "generatorConfig" to support "additionalGenerators"
       if ('gitlab' in generatorConfig && generatorConfig.gitlab !== undefined)
         return {
-          url: `https://${generatorConfig.git.host}/${generatorConfig.git.userId}/${generatorConfig.git.repoId}`,
+          url: `https://${generatorConfig.git.host}/${generatorConfig.git.userId}/${generatorConfig.git.repoId}/-/packages/`,
           packageManagerName: 'GitLab',
         }
 
