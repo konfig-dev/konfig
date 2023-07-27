@@ -195,6 +195,7 @@ export default class Init extends Command {
           'editor.defaultFormatter': 'ms-python.black-formatter',
           'editor.formatOnSave': true,
         },
+        'terminal.integrated.scrollback': 50000,
         'black-formatter.importStrategy': 'fromEnvironment',
         'python.formatting.provider': 'none',
         'python.analysis.typeCheckingMode': 'basic',
