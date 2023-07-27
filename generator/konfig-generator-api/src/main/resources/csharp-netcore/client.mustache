@@ -52,6 +52,16 @@ namespace {{packageName}}.Client
         }
 
         /// <summary>
+        /// Setter for verify SSL configuration. Set to false when you want to disable SSL verification.
+        /// </summary>
+        public {{clientName}} SetVerifySsl(bool verifySsl)
+        {
+            Configuration.VerifySsl = verifySsl;
+            init();
+            return this;
+        }
+
+        /// <summary>
         /// Setter for Username
         /// </summary>
         public {{clientName}} SetUsername(string username)
@@ -109,7 +119,7 @@ namespace {{packageName}}.Client
         /// </summary>
         public {{clientName}} Set{{> api_key_name}}(string apiKey)
         {
-            Configuration.ApiKey["Authorization"] = apiKey;
+            Configuration.ApiKey["{{keyParamName}}"] = apiKey;
             init();
             return this;
         }
