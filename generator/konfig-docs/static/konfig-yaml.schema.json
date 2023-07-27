@@ -344,6 +344,23 @@
                 "removeKonfigBranding": {
                   "type": "boolean"
                 },
+                "gitlab": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string",
+                      "default": "gitlab.com",
+                      "description": "gitlab.com"
+                    },
+                    "projectId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "projectId"
+                  ],
+                  "additionalProperties": false
+                },
                 "clientName": {
                   "type": "string"
                 },
@@ -655,14 +672,6 @@
                 "keepAllParametersOptional": {
                   "type": "boolean",
                   "description": "This is a feature flag for ensuring that all parameters stay optional in the case of Python SDKs that have been published and distributed to developers already and want to preserve backwards compatability. Particularly we want to handle flattened kwargs and \"query_params\" / \"header_params\" form arguments."
-                },
-                "generator": {
-                  "type": "string",
-                  "enum": [
-                    "python-prior",
-                    "python"
-                  ],
-                  "default": "python"
                 }
               },
               "required": [
@@ -772,21 +781,7 @@
                   "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/topLevelOperations"
                 },
                 "gitlab": {
-                  "type": "object",
-                  "properties": {
-                    "domain": {
-                      "type": "string",
-                      "default": "gitlab.com",
-                      "description": "gitlab.com"
-                    },
-                    "projectId": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "projectId"
-                  ],
-                  "additionalProperties": false
+                  "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/gitlab"
                 },
                 "omitApiDocumentation": {
                   "type": "boolean"
@@ -1271,6 +1266,9 @@
                   "removeKonfigBranding": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
                   },
+                  "gitlab": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/gitlab"
+                  },
                   "clientName": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/clientName"
                   },
@@ -1434,7 +1432,8 @@
                 "type": "object",
                 "properties": {
                   "generator": {
-                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/generator"
+                    "type": "string",
+                    "const": "python"
                   },
                   "files": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/files"
@@ -1537,6 +1536,7 @@
                   }
                 },
                 "required": [
+                  "generator",
                   "version",
                   "outputDirectory",
                   "git",
@@ -1623,7 +1623,7 @@
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/topLevelOperations"
                   },
                   "gitlab": {
-                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/gitlab"
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/gitlab"
                   },
                   "omitApiDocumentation": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/omitApiDocumentation"

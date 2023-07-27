@@ -297,6 +297,7 @@ public interface GenerateApi {
         putIfPresent(map, "composerPackageName", additionalProperties.getComposerPackageName());
         putIfPresent(map, "packageUrl", additionalProperties.getPackageUrl());
         putIfPresent(map, "moduleName", additionalProperties.getModuleName());
+        putIfPresent(map, "gitLabProjectId", additionalProperties.getGitLabProjectId());
         putIfPresent(map, "removeKonfigBranding", additionalProperties.getRemoveKonfigBranding());
         putIfPresent(map, "omitInfoDescription", additionalProperties.getOmitInfoDescription());
         putIfPresent(map, "omitModelDocumentation", additionalProperties.getOmitModelDocumentation());

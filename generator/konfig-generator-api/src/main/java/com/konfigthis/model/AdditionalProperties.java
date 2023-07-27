@@ -41,6 +41,9 @@ public class AdditionalProperties {
   @JsonProperty("moduleName")
   private String moduleName;
 
+  @JsonProperty("gitLabProjectId")
+  private String gitLabProjectId;
+
   @JsonProperty("outputDirectory")
   private String outputDirectory;
 
@@ -267,6 +270,25 @@ public class AdditionalProperties {
 
   public void setModuleName(String moduleName) {
     this.moduleName = moduleName;
+  }
+
+  public AdditionalProperties gitLabProjectId(String gitLabProjectId) {
+    this.gitLabProjectId = gitLabProjectId;
+    return this;
+  }
+
+  /**
+   * Get gitLabProjectId
+   * @return gitLabProjectId
+  */
+  
+  @Schema(name = "gitLabProjectId", required = false)
+  public String getGitLabProjectId() {
+    return gitLabProjectId;
+  }
+
+  public void setGitLabProjectId(String gitLabProjectId) {
+    this.gitLabProjectId = gitLabProjectId;
   }
 
   public AdditionalProperties outputDirectory(String outputDirectory) {
@@ -1253,6 +1275,7 @@ public class AdditionalProperties {
         Objects.equals(this.gitRepoName, additionalProperties.gitRepoName) &&
         Objects.equals(this.clientName, additionalProperties.clientName) &&
         Objects.equals(this.moduleName, additionalProperties.moduleName) &&
+        Objects.equals(this.gitLabProjectId, additionalProperties.gitLabProjectId) &&
         Objects.equals(this.outputDirectory, additionalProperties.outputDirectory) &&
         Objects.equals(this.topLevelOperations, additionalProperties.topLevelOperations) &&
         Objects.equals(this.omitInfoDescription, additionalProperties.omitInfoDescription) &&
@@ -1306,7 +1329,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, gitRepoName, clientName, moduleName, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, gitRepoName, clientName, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1317,6 +1340,7 @@ public class AdditionalProperties {
     sb.append("    gitRepoName: ").append(toIndentedString(gitRepoName)).append("\n");
     sb.append("    clientName: ").append(toIndentedString(clientName)).append("\n");
     sb.append("    moduleName: ").append(toIndentedString(moduleName)).append("\n");
+    sb.append("    gitLabProjectId: ").append(toIndentedString(gitLabProjectId)).append("\n");
     sb.append("    outputDirectory: ").append(toIndentedString(outputDirectory)).append("\n");
     sb.append("    topLevelOperations: ").append(toIndentedString(topLevelOperations)).append("\n");
     sb.append("    omitInfoDescription: ").append(toIndentedString(omitInfoDescription)).append("\n");

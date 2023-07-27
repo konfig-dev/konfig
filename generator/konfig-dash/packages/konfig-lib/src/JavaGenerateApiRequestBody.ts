@@ -18,6 +18,7 @@ const additionalProperties = z.object({
   groupId: z.string().optional(),
   outputDirectory: z.string().optional(),
   gitRepoName: z.string().optional(),
+  gitLabProjectId: z.string().optional(),
   invokerPackage: z.string().optional(),
   useSecurityKeyParamNameAsPropertyName: z.boolean().optional(),
   objectPropertyNamingConvention: z.string().optional(),

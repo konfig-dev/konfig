@@ -227,6 +227,18 @@ components:
                   description: acme-java-sdk
                 removeKonfigBranding:
                   type: boolean
+                gitlab:
+                  type: object
+                  properties:
+                    domain:
+                      type: string
+                      default: gitlab.com
+                      description: gitlab.com
+                    projectId:
+                      type: string
+                  required:
+                    - domain
+                    - projectId
                 clientName:
                   type: string
                 clientState:
@@ -549,15 +561,6 @@ components:
                     backwards compatability. Particularly we want to handle
                     flattened kwargs and "query_params" / "header_params" form
                     arguments.
-                generator:
-                  anyOf:
-                    - type: string
-                      enum:
-                        - python-prior
-                    - type: string
-                      enum:
-                        - python
-                  default: python
               required:
                 - version
                 - git
@@ -1431,6 +1434,18 @@ components:
                     description: acme-java-sdk
                   removeKonfigBranding:
                     type: boolean
+                  gitlab:
+                    type: object
+                    properties:
+                      domain:
+                        type: string
+                        default: gitlab.com
+                        description: gitlab.com
+                      projectId:
+                        type: string
+                    required:
+                      - domain
+                      - projectId
                   clientName:
                     type: string
                   clientState:
@@ -1697,14 +1712,9 @@ components:
               - type: object
                 properties:
                   generator:
-                    anyOf:
-                      - type: string
-                        enum:
-                          - python-prior
-                      - type: string
-                        enum:
-                          - python
-                    default: python
+                    type: string
+                    enum:
+                      - python
                   files:
                     type: object
                     additionalProperties:
@@ -1873,6 +1883,7 @@ components:
                       to handle flattened kwargs and "query_params" /
                       "header_params" form arguments.
                 required:
+                  - generator
                   - version
                   - git
                   - outputDirectory
