@@ -37,11 +37,32 @@
         </license>
     </licenses>
 
+{{#gitLabProjectId}}
+    <repositories>
+        <repository>
+            <id>gitlab-maven</id>
+            <url>https://gitlab.com/api/v4/projects/{{gitLabProjectId}}/packages/maven</url>
+        </repository>
+    </repositories>
+
+{{/gitLabProjectId}}
     <distributionManagement>
+{{#gitLabProjectId}}
+        <repository>
+            <id>gitlab-maven</id>
+            <url>https://gitlab.com/api/v4/projects/{{gitLabProjectId}}/packages/maven</url>
+        </repository>
+        <snapshotRepository>
+            <id>gitlab-maven</id>
+            <url>https://gitlab.com/api/v4/projects/{{gitLabProjectId}}/packages/maven</url>
+        </snapshotRepository>
+{{/gitLabProjectId}}
+{{^gitLabProjectId}}
         <snapshotRepository>
             <id>ossrh</id>
             <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+{{/gitLabProjectId}}
     </distributionManagement>
 
     <build>
@@ -64,6 +85,7 @@
                    </execution>
                </executions>
            </plugin>
+{{^gitLabProjectId}}
            <plugin>
                <groupId>org.sonatype.plugins</groupId>
                <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -75,6 +97,7 @@
                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                </configuration>
            </plugin>
+{{/gitLabProjectId}}
            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
