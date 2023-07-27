@@ -50,6 +50,7 @@ import org.openapitools.codegen.api.TemplatingEngineAdapter;
 import org.openapitools.codegen.config.GlobalSettings;
 import org.openapitools.codegen.examples.ExampleGenerator;
 import org.openapitools.codegen.languages.JavaClientCodegen;
+import org.openapitools.codegen.languages.PythonClientCodegen;
 import org.openapitools.codegen.languages.PythonPriorClientCodegen;
 import org.openapitools.codegen.languages.RustServerCodegen;
 import org.openapitools.codegen.meta.FeatureSet;
@@ -2020,7 +2021,10 @@ public class DefaultCodegen implements CodegenConfig {
      */
     public void setParameterExampleValue(CodegenParameter codegenParameter, Parameter parameter) {
         if (parameter.getExample() != null) {
-            codegenParameter.example = parameter.getExample().toString();
+            if (parameter.getExample() instanceof String)
+                codegenParameter.example = PythonClientCodegen.ensureQuotes(parameter.getExample().toString());
+            else
+                codegenParameter.example = parameter.getExample().toString();
             return;
         }
 

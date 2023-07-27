@@ -1804,7 +1804,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
      * @param in input string
      * @return quoted string
      */
-    private String ensureQuotes(String in) {
+    public static String ensureQuotes(String in) {
         String strPattern = "^['\"].*?['\"]$";
         if (in.matches(strPattern)) {
             return in;
