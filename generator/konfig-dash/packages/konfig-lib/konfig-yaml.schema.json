@@ -255,22 +255,39 @@
                 "copyFiles": {
                   "type": "array",
                   "items": {
-                    "type": "object",
-                    "properties": {
-                      "from": {
-                        "type": "string",
-                        "description": "Relative path from directory that contains konfig.yaml to file that you want to copy"
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "from": {
+                            "type": "string",
+                            "description": "Relative path from directory that contains konfig.yaml to file that you want to copy"
+                          },
+                          "to": {
+                            "type": "string",
+                            "description": "Relative path from directory that contains konfig.yaml to destination you want to copy to"
+                          }
+                        },
+                        "required": [
+                          "from",
+                          "to"
+                        ],
+                        "additionalProperties": false
                       },
-                      "to": {
-                        "type": "string",
-                        "description": "Relative path from directory that contains konfig.yaml to destination you want to copy to"
+                      {
+                        "type": "object",
+                        "properties": {
+                          "konfigIgnore": {
+                            "type": "string",
+                            "description": "Relative path to a .konfigignore file. If specified, we parse the .konfigignore file and copy all files that it matches to the current directory."
+                          }
+                        },
+                        "required": [
+                          "konfigIgnore"
+                        ],
+                        "additionalProperties": false
                       }
-                    },
-                    "required": [
-                      "from",
-                      "to"
-                    ],
-                    "additionalProperties": false
+                    ]
                   },
                   "description": "Configure copying a set of files from a source to a destination. This is useful if you have custom implementations that you would like duplicated across multiple SDK repos."
                 },
