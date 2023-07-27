@@ -111,7 +111,8 @@ function visitComplexInnerSchema({
           refOrObject,
           $ref,
         })
-        if (innerSchema.type === 'array' || innerSchema.type === 'object') {
+        if ((innerSchema.type === 'array' && !('$ref' in innerSchema.items)) 
+             || innerSchema.type === 'object') {
           const visited = visit({
             innerSchema,
             schema,

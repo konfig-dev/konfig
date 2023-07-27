@@ -40,6 +40,12 @@ describe('transformInnerSchemas', () => {
                   },
                 },
               },
+              friends: {
+                type: 'array',
+                items: {
+                  $ref: "#/components/schemas/User"
+                }
+              }
             },
           },
           OtherSchema: {
