@@ -4,6 +4,7 @@ import { parseFilterFlag } from '../util/parseFilterFlag'
 import {
   CSharpConfigType,
   GeneratorCommonGitType,
+  KonfigYamlAdditionalGeneratorConfig,
   KonfigYamlGeneratorNames,
   TypeScriptConfigType,
   csharp,
@@ -113,7 +114,7 @@ const publishScripts = {
       generator: 'java',
       skipTag,
     })
-    return [`mvn clean deploy -Dmaven.test.skip=true}`, ...gitTagCommands]
+    return [`mvn clean deploy -Dmaven.test.skip=true`, ...gitTagCommands]
   },
   php: async ({
     version,
@@ -386,7 +387,11 @@ export default class Publish extends Command {
       // Maven Central config detected
       if (
         'groupId' in generatorConfig &&
-        (generatorName === 'java' || generatorName === 'kotlin')
+        (generatorName === 'java' ||
+          generatorName === 'kotlin' ||
+          ('generator' in generatorConfig &&
+            (generatorConfig as KonfigYamlAdditionalGeneratorConfig)
+              .generator === 'java'))
       ) {
         await executePublishScript({
           script: publishScripts['mavenCentral']({

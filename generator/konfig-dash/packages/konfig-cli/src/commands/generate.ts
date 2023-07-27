@@ -366,19 +366,11 @@ export default class Deploy extends Command {
 
       const javaGeneratorConfig = getConfig('java')
       if (javaGeneratorConfig && !javaGeneratorConfig.disabled) {
-        const { files, ...restOfConfig } = javaGeneratorConfig
-        const requestJava: GenerateRequestBodyInputType['generators']['java'] =
-          {
-            files: createTemplateFilesObject(files, 'java', configDir),
-            ...handleReadmeSnippet({ config: restOfConfig }),
-            ...handleReadmeSupportingDescriptionSnippet({
-              config: restOfConfig,
-            }),
-            ...handleapiDocumentationAuthenticationPartialSnippet({
-              config: restOfConfig,
-            }),
-          }
-        initializeFlowsDirectory('java')
+        const requestJava = constructJavaGenerationRequest({
+          configDir,
+          javaGeneratorConfig,
+          initializeFlowsDirectory,
+        })
         requestGenerators.java = requestJava
       }
 
@@ -402,15 +394,13 @@ export default class Deploy extends Command {
       }
 
       const typescriptGeneratorConfig = getConfig('typescript')
-      if (typescriptGeneratorConfig) {
-        if (!typescriptGeneratorConfig.disabled) {
-          const requestTypescript = constructTypeScriptGenerationRequest({
-            configDir,
-            typescriptGeneratorConfig,
-            initializeFlowsDirectory,
-          })
-          requestGenerators.typescript = requestTypescript
-        }
+      if (typescriptGeneratorConfig && !typescriptGeneratorConfig.disabled) {
+        const requestTypescript = constructTypeScriptGenerationRequest({
+          configDir,
+          typescriptGeneratorConfig,
+          initializeFlowsDirectory,
+        })
+        requestGenerators.typescript = requestTypescript
       }
 
       // handle additional generators
@@ -427,6 +417,15 @@ export default class Deploy extends Command {
               ...constructTypeScriptGenerationRequest({
                 configDir,
                 typescriptGeneratorConfig: config,
+                initializeFlowsDirectory,
+              }),
+            }
+          } else if (config.generator === 'java') {
+            generateRequestBodyAdditionalGenerators[configName] = {
+              generator: 'java',
+              ...constructJavaGenerationRequest({
+                configDir,
+                javaGeneratorConfig: config,
                 initializeFlowsDirectory,
               }),
             }
@@ -711,8 +710,54 @@ export default class Deploy extends Command {
             }
 
             if (generatorConfig.copyFiles) {
-              for (const { from, to } of generatorConfig.copyFiles) {
-                await copyFiles(from, to)
+              for (const copyFileConfiguration of generatorConfig.copyFiles) {
+                if ('konfigIgnore' in copyFileConfiguration) {
+                  if (
+                    !copyFileConfiguration.konfigIgnore.endsWith(
+                      KONFIG_IGNORE_FILE_NAME
+                    )
+                  )
+                    throw Error(
+                      `The "konfigIgnore" configuration for copying files must point to a ".konfigignore" file`
+                    )
+                  const konfigIgnore = fs.readFileSync(
+                    copyFileConfiguration.konfigIgnore,
+                    'utf-8'
+                  )
+
+                  this.debug(
+                    `Read ${KONFIG_IGNORE_FILE_NAME} from ${copyFileConfiguration.konfigIgnore} and got "${konfigIgnore}"`
+                  )
+
+                  // Dylan: handle windows? I pre-emptively wrote this tertiary
+                  // statement assuming windows would be a problem
+                  const lines = (
+                    konfigIgnore.includes('\r\n')
+                      ? konfigIgnore.split('\r\n')
+                      : konfigIgnore.split('\n')
+                  ).filter((line) => line)
+
+                  for (const line of lines) {
+                    this.debug(
+                      `Copying line "${line}" from "${copyFileConfiguration.konfigIgnore}" to ${outputDirectory}`
+                    )
+                    const sourceSdkDir = path.dirname(
+                      copyFileConfiguration.konfigIgnore
+                    )
+                    await copyFiles({
+                      sourcePath: path.join(sourceSdkDir, line),
+                      destinationPath: outputDirectory,
+                      forKonfigIgnore: {
+                        sourceSdkDirName: path.basename(sourceSdkDir),
+                      },
+                    })
+                  }
+                } else {
+                  await copyFiles({
+                    sourcePath: copyFileConfiguration.from,
+                    destinationPath: copyFileConfiguration.to,
+                  })
+                }
               }
             }
           }
@@ -726,6 +771,13 @@ export default class Deploy extends Command {
                 await copyTypeScriptOutput({
                   flags,
                   typescript: config,
+                  sdkDirName: name,
+                  copyToOutputDirectory,
+                })
+              } else if (config.generator === 'java') {
+                await copyJavaOutput({
+                  flags,
+                  java: config,
                   sdkDirName: name,
                   copyToOutputDirectory,
                 })
@@ -1048,24 +1100,11 @@ export default class Deploy extends Command {
           }
 
           if (body.generators.java) {
-            const outputDirectory =
-              flags.copyJavaOutputDir ?? body.generators.java.outputDirectory
-            if (outputDirectory && !flags.doNotCopy) {
-              CliUx.ux.action.start(
-                `Deleting contents of existing directory "${outputDirectory}"`
-              )
-              await safelyDeleteFiles(outputDirectory)
-              CliUx.ux.action.stop()
-
-              // Copy content of generated SDK to existing directory
-              CliUx.ux.action.start(`Copying Java SDK to "${outputDirectory}"`)
-              await copyToOutputDirectory({
-                generator: 'java',
-                outputDirectory,
-                generatorConfig: body.generators.java,
-              })
-              CliUx.ux.action.stop()
-            }
+            await copyJavaOutput({
+              flags,
+              java: body.generators.java,
+              copyToOutputDirectory,
+            })
           }
 
           if (body.generators.python) {
@@ -1287,7 +1326,17 @@ const renameOpenApiGeneratorNameBackToLanguage = ({
  * @param {string} sourcePath - The source path (can be a glob pattern or an exact file path).
  * @param {string} destinationPath - The destination path (can be a file path or a directory path).
  */
-async function copyFiles(sourcePath: string, destinationPath: string) {
+async function copyFiles({
+  sourcePath,
+  destinationPath,
+  forKonfigIgnore,
+}: {
+  sourcePath: string
+  destinationPath: string
+  forKonfigIgnore?: {
+    sourceSdkDirName: string
+  }
+}) {
   try {
     // Check if sourcePath is a glob pattern or an exact file path
     const isGlob = sourcePath.includes('*')
@@ -1306,6 +1355,11 @@ async function copyFiles(sourcePath: string, destinationPath: string) {
       // Determine the destination file path
       const destinationFile = isGlob
         ? path.join(destinationPath, path.basename(sourceFile))
+        : forKonfigIgnore
+        ? path.join(
+            destinationPath,
+            sourceFile.replace(forKonfigIgnore.sourceSdkDirName, '')
+          )
         : destinationPath
 
       // Copy the file
@@ -1395,7 +1449,7 @@ const createIgnore = (dir: string) => {
   const ig = ignore()
   const ignorePaths = [
     path.join(dir, '.gitignore'),
-    path.join(dir, '.konfigignore'),
+    path.join(dir, KONFIG_IGNORE_FILE_NAME),
   ]
   for (const path of ignorePaths) {
     if (fs.existsSync(path)) ig.add(fs.readFileSync(path, 'utf-8').split('\n'))
@@ -1424,7 +1478,9 @@ const DO_NOT_COPY_THESE_FILES = new Set([
   '.travis.yml',
 ])
 
-const DO_NOT_DELETE_THESE_FILES = new Set(['.git', '.konfigignore'])
+const KONFIG_IGNORE_FILE_NAME = '.konfigignore'
+
+const DO_NOT_DELETE_THESE_FILES = new Set(['.git', KONFIG_IGNORE_FILE_NAME])
 
 const safelyDeleteFiles = async (
   directory: string
@@ -1440,6 +1496,31 @@ const safelyDeleteFiles = async (
       fs.rmSync(absolutePath, { recursive: true, force: true })
   }
   return { directoryExists: true }
+}
+
+function constructJavaGenerationRequest({
+  configDir,
+  javaGeneratorConfig: javaGeneratorConfig,
+  initializeFlowsDirectory,
+}: {
+  configDir: string
+  javaGeneratorConfig: NonNullable<KonfigYamlType['generators']['java']>
+  initializeFlowsDirectory: (generatorName: KonfigYamlGeneratorNames) => void
+}) {
+  const { files, ...restOfConfig } = javaGeneratorConfig
+
+  const requestJava: GenerateRequestBodyType['generators']['java'] = {
+    files: createTemplateFilesObject(files, 'java', configDir),
+    ...handleReadmeSnippet({ config: restOfConfig }),
+    ...handleReadmeSupportingDescriptionSnippet({
+      config: restOfConfig,
+    }),
+    ...handleapiDocumentationAuthenticationPartialSnippet({
+      config: restOfConfig,
+    }),
+  }
+  initializeFlowsDirectory('java')
+  return requestJava
 }
 
 function constructTypeScriptGenerationRequest({
@@ -1468,6 +1549,37 @@ function constructTypeScriptGenerationRequest({
     }
   initializeFlowsDirectory('typescript')
   return requestTypescript
+}
+
+async function copyJavaOutput({
+  flags,
+  java,
+  copyToOutputDirectory,
+  sdkDirName,
+}: {
+  flags: { copyJavaOutputDir?: string; doNotCopy?: boolean }
+  java: GenerateRequestBodyInputType['generators']['java']
+  sdkDirName?: string
+  copyToOutputDirectory: (input: CopyFilesInput) => Promise<void>
+}) {
+  if (java === undefined) return
+  const outputDirectory = flags.copyJavaOutputDir ?? java.outputDirectory
+  if (outputDirectory && !flags.doNotCopy) {
+    CliUx.ux.action.start(
+      `Deleting contents of existing directory "${outputDirectory}"`
+    )
+    await safelyDeleteFiles(outputDirectory)
+    CliUx.ux.action.stop()
+
+    // Copy content of generated SDK to existing directory
+    CliUx.ux.action.start(`Copying Java SDK to "${outputDirectory}"`)
+    await copyToOutputDirectory({
+      generator: sdkDirName ? sdkDirName : 'java',
+      outputDirectory,
+      generatorConfig: java,
+    })
+    CliUx.ux.action.stop()
+  }
 }
 
 async function copyTypeScriptOutput({

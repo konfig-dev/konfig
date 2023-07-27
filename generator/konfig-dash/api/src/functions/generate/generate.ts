@@ -191,6 +191,14 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
           typescript: generatorConfig,
           outputDirectoryName: name,
         })
+      } else if (generatorConfig.generator === 'java') {
+        await queueJavaGeneration({
+          body,
+          queue,
+          java: generatorConfig,
+          transformSpecForGenerator,
+          outputDirectoryName: name,
+        })
       } else {
         throw Error(
           `${generatorConfig.generator} not implemented under additional generators`
@@ -427,52 +435,12 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
   }
 
   if (body.generators.java) {
-    const generatorConfig = body.generators.java
-    const packageName = generatorConfig.packageName
-      ? `${generatorConfig.groupId}.${generatorConfig.packageName}.client`
-      : `${generatorConfig.groupId}.client`
-    const requestBody: JavaGenerateApiRequestBodyType = {
-      spec: {
-        src: await transformSpecForGenerator({ generator: 'java' }),
-      },
-      config: {
-        additionalProperties: {
-          omitInfoDescription: body.omitInfoDescription,
-          tagPriority: body.tagPriority,
-          artifactId: generatorConfig.artifactId,
-          groupId: generatorConfig.groupId,
-          invokerPackage: packageName,
-          clientName: generatorConfig.clientName,
-          clientState: generatorConfig.clientState,
-          clientStateWithExamples: generatorConfig.clientStateWithExamples,
-          apiDocumentationAuthenticationPartial:
-            generatorConfig.apiDocumentationAuthenticationPartial,
-          removeKonfigBranding: generatorConfig.removeKonfigBranding,
-          modelPackage: `${packageName}.model`,
-          apiPackage: `${packageName}.api`,
-          toStringReturnsJson: generatorConfig.toStringReturnsJson,
-          artifactUrl: generatorConfig.git
-            ? `https://${generatorConfig.git.host}/${generatorConfig.git.userId}/${generatorConfig.git.repoId}`
-            : 'https://github.com/USER_ID/REPO_ID',
-          readmeSnippet: generatorConfig.readmeSnippet,
-          readmeSupportingDescriptionSnippet:
-            generatorConfig.readmeSupportingDescriptionSnippet,
-          readmeDescriptionSnippet: generatorConfig.readmeDescriptionSnippet,
-          disallowAdditionalPropertiesIfNotPresent: false,
-          defaultTimeout: generatorConfig.defaultTimeout,
-          userAgent: generatorConfig.userAgent,
-          useSingleRequestParameter: true,
-        },
-        artifactVersion: generatorConfig.version,
-        generatorName: 'java',
-        removeOperationIdPrefix: true,
-        gitHost: generatorConfig.git?.host,
-        gitUserId: generatorConfig.git?.userId,
-        gitRepoId: generatorConfig.git?.repoId,
-        files: generatorConfig.files,
-      },
-    }
-    queue(requestBody)
+    await queueJavaGeneration({
+      body,
+      queue,
+      transformSpecForGenerator,
+      java: body.generators.java,
+    })
   }
 
   if (body.generators.swift) {
@@ -678,6 +646,74 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
   }
 }
 
+async function queueJavaGeneration({
+  body,
+  java,
+  queue,
+  transformSpecForGenerator,
+  outputDirectoryName,
+}: {
+  body: GenerateRequestBodyType
+  java: GenerateRequestBodyType['generators']['java']
+  queue: (requestBody: JavaGenerateApiRequestBodyType) => void
+  transformSpecForGenerator: ({
+    generator,
+  }: {
+    generator: KonfigYamlGeneratorNames
+  }) => ReturnType<typeof transformSpec>
+  outputDirectoryName?: string
+}) {
+  if (java === undefined) return
+  const generatorConfig = java
+  const packageName = generatorConfig.packageName
+    ? `${generatorConfig.groupId}.${generatorConfig.packageName}.client`
+    : `${generatorConfig.groupId}.client`
+  const requestBody: JavaGenerateApiRequestBodyType = {
+    spec: {
+      src: await transformSpecForGenerator({ generator: 'java' }),
+    },
+    config: {
+      outputDirectoryName,
+      additionalProperties: {
+        omitInfoDescription: body.omitInfoDescription,
+        tagPriority: body.tagPriority,
+        artifactId: generatorConfig.artifactId,
+        groupId: generatorConfig.groupId,
+        invokerPackage: packageName,
+        clientName: generatorConfig.clientName,
+        gitLabProjectId: generatorConfig.gitlab?.projectId,
+        clientState: generatorConfig.clientState,
+        clientStateWithExamples: generatorConfig.clientStateWithExamples,
+        apiDocumentationAuthenticationPartial:
+          generatorConfig.apiDocumentationAuthenticationPartial,
+        removeKonfigBranding: generatorConfig.removeKonfigBranding,
+        modelPackage: `${packageName}.model`,
+        apiPackage: `${packageName}.api`,
+        toStringReturnsJson: generatorConfig.toStringReturnsJson,
+        artifactUrl: generatorConfig.git
+          ? `https://${generatorConfig.git.host}/${generatorConfig.git.userId}/${generatorConfig.git.repoId}`
+          : 'https://github.com/USER_ID/REPO_ID',
+        readmeSnippet: generatorConfig.readmeSnippet,
+        readmeSupportingDescriptionSnippet:
+          generatorConfig.readmeSupportingDescriptionSnippet,
+        readmeDescriptionSnippet: generatorConfig.readmeDescriptionSnippet,
+        disallowAdditionalPropertiesIfNotPresent: false,
+        defaultTimeout: generatorConfig.defaultTimeout,
+        userAgent: generatorConfig.userAgent,
+        useSingleRequestParameter: true,
+      },
+      artifactVersion: generatorConfig.version,
+      generatorName: 'java',
+      removeOperationIdPrefix: true,
+      gitHost: generatorConfig.git?.host,
+      gitUserId: generatorConfig.git?.userId,
+      gitRepoId: generatorConfig.git?.repoId,
+      files: generatorConfig.files,
+    },
+  }
+  queue(requestBody)
+}
+
 async function queueTypeScriptGeneration({
   body,
   typescript,
@@ -718,7 +754,7 @@ async function queueTypeScriptGeneration({
       src,
     },
     config: {
-      outputDirectoryName,
+      outputDirectoryName, // this is so the directory name from additionalGenerators does not conflict with the one under generators
       additionalProperties: {
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,

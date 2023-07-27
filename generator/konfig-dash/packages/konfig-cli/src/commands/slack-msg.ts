@@ -8,7 +8,6 @@ import {
   getPublishedPackageUrl,
 } from '../util/generate-readme'
 import clipboard from 'clipboardy'
-import { Konfig } from 'konfig-typescript-sdk'
 
 export default class SlackMsg extends Command {
   static description = 'Generates a slack message '
@@ -38,7 +37,10 @@ export default class SlackMsg extends Command {
         configDir: process.cwd(),
       })
     if (flags.generator === undefined)
-      flags.generator = Object.keys(generators).join(',')
+      flags.generator = [
+        ...Object.keys(generators),
+        ...(additionalGenerators ? Object.keys(additionalGenerators) : []),
+      ].join(',')
     const filteredGenerators = parseFilterFlag(flags.generator)
     if (filteredGenerators === null)
       this.error('Either -g or -a should have been specified')
