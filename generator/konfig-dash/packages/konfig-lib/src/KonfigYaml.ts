@@ -27,11 +27,19 @@ const javaGroupId = z
     `Uniquely identifies your JVM-based project (ex. "com.acme"). By default we publish packages under Konfig's group id of "com.konfigthis". If you would like to publish to your own group ID then create a Sonatype account (https://central.sonatype.org/publish/publish-guide/#initial-setup) and claim your group ID and add "dphuang2" to the list of users that can publish to your group ID.`
   )
 
+const gitlab = z
+  .object({
+    domain: z.string().default('gitlab.com').describe('gitlab.com'),
+    projectId: z.string(),
+  })
+  .optional()
+
 export const javaConfig = z.object({
   groupId: javaGroupId,
   packageName: z.string().describe('acme').optional(),
   artifactId: z.string().describe('acme-java-sdk'),
   removeKonfigBranding: z.boolean().optional(),
+  gitlab,
   clientName: z.string(),
   clientState,
   clientStateWithExamples,
@@ -157,11 +165,6 @@ export const pythonConfig = z.object({
     .describe(
       'This is a feature flag for ensuring that all parameters stay optional in the case of Python SDKs that have been published and distributed to developers already and want to preserve backwards compatability. Particularly we want to handle flattened kwargs and "query_params" / "header_params" form arguments.'
     ),
-  generator: z
-    .literal('python-prior')
-    .or(z.literal('python'))
-    .optional()
-    .default('python'),
 })
 
 export const swiftConfig = z.object({
@@ -206,12 +209,7 @@ export const typescriptConfig = z.object({
   clientStateWithExamples,
   removeRequiredProperties: removeRequiredPropertiesSchema.optional(),
   topLevelOperations: topLevelOperationsSchema,
-  gitlab: z
-    .object({
-      domain: z.string().default('gitlab.com').describe('gitlab.com'),
-      projectId: z.string(),
-    })
-    .optional(),
+  gitlab,
   omitApiDocumentation: z.boolean().optional(),
   includeFetchAdapter: z.boolean().optional(),
   includeEventSourceParser: z.boolean().optional(),
@@ -294,6 +292,15 @@ const copyFilesSchema = z
         'Relative path from directory that contains konfig.yaml to destination you want to copy to'
       ),
   })
+  .or(
+    z.object({
+      konfigIgnore: z
+        .string()
+        .describe(
+          'Relative path to a .konfigignore file. If specified, we parse the .konfigignore file and copy all files that it matches to the current directory.'
+        ),
+    })
+  )
   .array()
 
 export type CopyFilesType = z.infer<typeof copyFilesSchema>
@@ -342,159 +349,80 @@ export const go = generatorCommonOptional
   .strict()
 export const swift = generatorCommon.merge(swiftConfig).strict()
 
-const typescriptTestScript: string[] = ['yarn', 'yarn test', 'yarn build']
-
-const genericGeneratorConfig = z
-  .union([
-    z
-      .object({
-        generator: z.literal('java'),
-      })
-      .merge(java),
-    z
-      .object({
-        generator: z.literal('ruby'),
-      })
-      .merge(ruby),
-    z
-      .object({
-        generator: z.literal('android'),
-      })
-      .merge(android),
-    z
-      .object({
-        generator: z.literal('python'),
-      })
-      .merge(python),
-    z
-      .object({
-        generator: z.literal('typescript'),
-      })
-      .merge(typescript),
-    z
-      .object({
-        generator: z.literal('csharp'),
-      })
-      .merge(csharp),
-    z
-      .object({
-        generator: z.literal('php'),
-      })
-      .merge(php),
-    z
-      .object({
-        generator: z.literal('kotlin'),
-      })
-      .merge(kotlin),
-    z
-      .object({
-        generator: z.literal('objc'),
-      })
-      .merge(objc),
-    z
-      .object({
-        generator: z.literal('go'),
-      })
-      .merge(go),
-    z
-      .object({
-        generator: z.literal('swift'),
-      })
-      .merge(swift),
-  ])
-  .transform((config) => {
-    if (config.generator === 'typescript' && config.test === undefined) {
-      config.test = { script: typescriptTestScript }
-    }
-    return config
-  })
+const genericGeneratorConfig = z.union([
+  z
+    .object({
+      generator: z.literal('java'),
+    })
+    .merge(java),
+  z
+    .object({
+      generator: z.literal('ruby'),
+    })
+    .merge(ruby),
+  z
+    .object({
+      generator: z.literal('android'),
+    })
+    .merge(android),
+  z
+    .object({
+      generator: z.literal('python'),
+    })
+    .merge(python),
+  z
+    .object({
+      generator: z.literal('typescript'),
+    })
+    .merge(typescript),
+  z
+    .object({
+      generator: z.literal('csharp'),
+    })
+    .merge(csharp),
+  z
+    .object({
+      generator: z.literal('php'),
+    })
+    .merge(php),
+  z
+    .object({
+      generator: z.literal('kotlin'),
+    })
+    .merge(kotlin),
+  z
+    .object({
+      generator: z.literal('objc'),
+    })
+    .merge(objc),
+  z
+    .object({
+      generator: z.literal('go'),
+    })
+    .merge(go),
+  z
+    .object({
+      generator: z.literal('swift'),
+    })
+    .merge(swift),
+])
 
 export const KonfigYaml = KonfigYamlCommon.merge(
   z
     .object({
       outputDirectory: z.string().optional(),
       generators: z.object({
-        java: java.optional().transform((javaConfig) => {
-          if (javaConfig === undefined) return
-          if (javaConfig.test !== undefined) return javaConfig
-          javaConfig.test = {
-            script: ['mvn test'],
-          }
-          return javaConfig
-        }),
+        java: java.optional(),
         android: android.optional(),
-        ruby: ruby.optional().transform((rubyConfig) => {
-          if (rubyConfig === undefined) return
-          if (rubyConfig.test !== undefined) return rubyConfig
-          rubyConfig.test = {
-            script: [
-              // If you don't remove .gem files you get:
-              // You have one or more invalid gemspecs that need to be fixed.
-              // The gemspec at snaptrade-sdks/sdks/ruby/snaptrade.gemspec is not valid. Please fix this gemspec.
-              // The validation error was 'snaptrade-1.0.0 contains itself (snaptrade-1.0.0.gem), check your files list'
-              `rm *.gem || true`, // "|| true" is used to ensure command exits w/o code of 1 (https://superuser.com/a/887349),
-              'bundle install',
-              `bundle exec rspec`,
-            ],
-          }
-          return rubyConfig
-        }),
-        python: python.optional().transform((pythonConfig) => {
-          if (pythonConfig === undefined) return
-          if (pythonConfig.test !== undefined) return pythonConfig
-          pythonConfig.test = {
-            script: [
-              'poetry install',
-              `poetry run pytest --cov=${pythonConfig.packageName} -o cache_dir=${pythonConfig.outputDirectory}/.pytest_cache`,
-            ],
-          }
-          return pythonConfig
-        }),
-        typescript: typescript.optional().transform((typescriptConfig) => {
-          if (typescriptConfig === undefined) return
-          if (typescriptConfig.test !== undefined) return typescriptConfig
-          typescriptConfig.test = {
-            script: typescriptTestScript,
-          }
-          return typescriptConfig
-        }),
-        csharp: csharp.optional().transform((csharpConfig) => {
-          if (csharpConfig === undefined) return
-          if (csharpConfig.test !== undefined) return csharpConfig
-          csharpConfig.test = {
-            script: ['dotnet test'],
-          }
-          return csharpConfig
-        }),
-        php: php.optional().transform((phpConfig) => {
-          if (phpConfig === undefined) return
-          if (phpConfig.test !== undefined) return phpConfig
-          phpConfig.test = {
-            script: [
-              'composer install',
-              path.join('.', 'vendor', 'bin', 'phpunit'),
-            ],
-          }
-          return phpConfig
-        }),
+        ruby: ruby.optional(),
+        python: python.optional(),
+        typescript: typescript.optional(),
+        csharp: csharp.optional(),
+        php: php.optional(),
         kotlin: kotlin.optional(),
         objc: objc.optional(),
-        go: go.optional().transform((goConfig) => {
-          if (goConfig === undefined) return
-          if (goConfig.test !== undefined) return goConfig
-          goConfig.test = {
-            script: ['go clean -testcache', 'go test ./... -v'],
-          }
-          return goConfig
-        }),
-        swift: swift.optional().transform((swiftConfig) => {
-          if (swiftConfig === undefined) return
-          if (swiftConfig.test !== undefined) return swiftConfig
-          swiftConfig.test = {
-            script: ['swift test'],
-          }
-          return swiftConfig
-        }),
+        go: go.optional(),
+        swift: swift.optional(),
       }),
       specPath: z.string(),
       specInputPath: z.string().optional(),
@@ -507,6 +435,12 @@ export const KonfigYaml = KonfigYamlCommon.merge(
 export type KonfigYamlInputType = z.input<typeof KonfigYaml>
 export type KonfigYamlType = z.output<typeof KonfigYaml>
 export type KonfigYamlGeneratorNames = keyof KonfigYamlType['generators']
+export type KonfigYamlGeneratorConfig = NonNullable<
+  KonfigYamlType['generators'][KonfigYamlGeneratorNames]
+>
+export type KonfigYamlAdditionalGeneratorConfig = z.infer<
+  typeof genericGeneratorConfig
+>
 export type JavaConfigType = z.infer<typeof javaConfig>
 export type TypeScriptConfigType = z.infer<typeof typescriptConfig>
 export type TypeScriptGeneratorInputType = z.input<typeof typescript>

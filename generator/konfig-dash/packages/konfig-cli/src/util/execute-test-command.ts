@@ -1,6 +1,12 @@
 import { CliUx } from '@oclif/core'
 import execa, { ExecaSyncReturnValue, SyncOptions } from 'execa'
-import { RequiredEnvironmentVariablesConfig, TestConfig } from 'konfig-lib'
+import {
+  KonfigYamlGeneratorNames,
+  KonfigYamlGeneratorConfig,
+  RequiredEnvironmentVariablesConfig,
+  TestConfig,
+  KonfigYamlAdditionalGeneratorConfig,
+} from 'konfig-lib'
 import path from 'path'
 import { parseKonfigYaml } from './parse-konfig-yaml'
 import { parseFilterFlag } from './parseFilterFlag'
@@ -47,15 +53,23 @@ export async function executeTestCommand({
     outputDirectory,
     disabled,
     generatorName,
+    generatorConfig,
   }: {
     test?: TestConfig['test']
     outputDirectory?: string
     disabled?: boolean
     generatorName: string
+    generatorConfig: KonfigYamlGeneratorConfig
   }) {
     if (filter !== null && !filter.includes(generatorName)) return
     if (disabled) return
-    if (test === undefined) return
+    const testScript =
+      test?.script === undefined
+        ? defaultTestScript({
+            generatorName: generatorName as KonfigYamlGeneratorNames,
+            generatorConfig,
+          })
+        : test.script
     if (outputDirectory === undefined)
       throw Error(
         `Generator "${generatorName}" must provide "outputDirectory" for "testScript" to work`
@@ -64,7 +78,7 @@ export async function executeTestCommand({
       CliUx.ux.action.start(`Running tests for ${generatorName} SDK`)
 
     // verify environment variables are set if specified
-    validateRequiredEnvironmentVariables(test)
+    if (test !== undefined) validateRequiredEnvironmentVariables(test)
 
     const commandOptions: SyncOptions = {
       cwd: path.join(configDir, outputDirectory),
@@ -74,9 +88,9 @@ export async function executeTestCommand({
 
     if (sequence) {
       // Sequential
-      for (const idx in test.script) {
-        const result = execa.commandSync(test.script[idx], commandOptions)
-        if (parseInt(idx) == test.script.length - 1) {
+      for (const idx in testScript) {
+        const result = execa.commandSync(testScript[idx], commandOptions)
+        if (parseInt(idx) == testScript.length - 1) {
           results.push({
             generatorName,
             result,
@@ -87,9 +101,9 @@ export async function executeTestCommand({
       // Parallel
       asyncResults.push(
         new Promise(async (resolve) => {
-          for (const idx in test.script) {
-            const result = await execa.command(test.script[idx], commandOptions)
-            if (parseInt(idx) === test.script.length - 1) {
+          for (const idx in testScript) {
+            const result = await execa.command(testScript[idx], commandOptions)
+            if (parseInt(idx) === testScript.length - 1) {
               resolve({ generatorName, result })
             }
           }
@@ -103,7 +117,7 @@ export async function executeTestCommand({
     ...Object.entries(generators),
     ...(additionalGenerators ? Object.entries(additionalGenerators) : []),
   ]) {
-    runTest({ ...generatorConfig, generatorName })
+    runTest({ ...generatorConfig, generatorName, generatorConfig })
   }
 
   results.push(...(await Promise.all(asyncResults)))
@@ -121,4 +135,63 @@ export async function executeTestCommand({
 
   // If we made it here then we successfully ran all tests
   CliUx.ux.info('Successfully ran all tests!')
+}
+
+const defaultTestScripts: Record<
+  KonfigYamlGeneratorNames,
+  ((config: KonfigYamlGeneratorConfig) => string[]) | undefined
+> = {
+  typescript: () => ['yarn', 'yarn test', 'yarn build'],
+  csharp: () => ['dotnet test'],
+  java: () => ['mvn test'],
+  ruby: () => [
+    // If you don't remove .gem files you get:
+    // You have one or more invalid gemspecs that need to be fixed.
+    // The gemspec at snaptrade-sdks/sdks/ruby/snaptrade.gemspec is not valid. Please fix this gemspec.
+    // The validation error was 'snaptrade-1.0.0 contains itself (snaptrade-1.0.0.gem), check your files list'
+    `rm *.gem || true`, // "|| true" is used to ensure command exits w/o code of 1 (https://superuser.com/a/887349),
+    'bundle install',
+    `bundle exec rspec`,
+  ],
+  python: (config) => {
+    if (!('packageName' in config))
+      throw Error('Got unexpected config for Python SDK')
+    return [
+      'poetry install',
+      `poetry run pytest --cov=${config.packageName} -o cache_dir=${path.join(
+        config.outputDirectory,
+        '.pytest_cache'
+      )}`,
+    ]
+  },
+  php: () => ['composer install', path.join('.', 'vendor', 'bin', 'phpunit')],
+  go: () => ['go clean -testcache', 'go test ./... -v'],
+  swift: () => ['swift test'],
+  android: () => {
+    throw Error('Android generator not supported, use Java instead')
+  },
+  kotlin: () => {
+    throw Error('Kotlin generator not supported, use Java instead')
+  },
+  objc: () => {
+    throw Error('Objective-C generator not supported, use Swift instead')
+  },
+}
+function defaultTestScript({
+  generatorName,
+  generatorConfig,
+}: {
+  generatorName: KonfigYamlGeneratorNames
+  generatorConfig:
+    | KonfigYamlGeneratorConfig
+    | KonfigYamlAdditionalGeneratorConfig
+}): string[] {
+  const name =
+    'generator' in generatorConfig ? generatorConfig.generator : generatorName
+  const testScript = defaultTestScripts[name]
+  if (testScript === undefined)
+    throw Error(
+      `Could not find default test script for generator with name: "${generatorName}"`
+    )
+  return testScript(generatorConfig)
 }
