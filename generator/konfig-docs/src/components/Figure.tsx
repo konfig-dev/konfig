@@ -8,14 +8,14 @@ export function Figure({
   children,
 }: PropsWithChildren<{ src?: string; caption: ReactNode }>) {
   return (
-    <figure className="flex gap-2 flex-col">
+    <figure className="flex flex-col">
       {src && (
         <img
           src={useBaseUrl(src)}
           alt={typeof caption === "string" ? caption : innerText(caption)}
         />
       )}
-      {children}
+      {children && <div className="mb-[-5px]">{children}</div>}
       <b>
         <figcaption style={{ textAlign: "center" }}>{caption}</figcaption>
       </b>

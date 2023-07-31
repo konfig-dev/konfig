@@ -1,18 +1,19 @@
 ---
 slug: code-generation
-title: "What is Code Generation? Programming Languages to AI Assistants"
+title: "The Power of Code Generation: Programming Languages to AI Assistants"
 authors: dylan
 tags: [Code Generation]
 image: /img/code-generation.png
 ---
 
 Code generation is ubiquitous in software engineering, it exists in literally
-every part of the stack from the lowest level of programming to the highest
-level of descriptions of Web APIs. So why is code generation everywhere?
+every part of the stack from the programming languages we use every day to the
+websites we browse. So why is code generation everywhere? **Because code
+generation is a superpower for developers**.
 
 ![Code Generation Mindmap](/img/code-generation.png)
 
-### Introduction to Code Generation
+### Introduction to Code Generation: Programming Languages
 
 Code generation is the automated process of producing source code or machine
 code from a high-level representation. Code generation tools parse input data to
@@ -20,14 +21,14 @@ produce target code in programming languages.
 
 ![Code Generation Flow](/img/code-generation-flow.png)
 
-### Why would you want to generate code?
+#### Why would you want to generate code?
 
-When the first electrical computers were created, switches were used to define
-programs. Physical switches are extremely error-prone and time-consuming to
-operate so with the invention of the CPU and machine code instruction set, one of the
-first forms of programming languages was invented called assembly.
+When the first electrical computers were created, physical switches were used to
+define programs. Physical switches are extremely error-prone and time-consuming
+to operate. So with the invention of the CPU and instruction sets, the first
+form of a programming language was invented, assembly.
 
-<Figure caption='Example of a "Hello, World!" program in x86 assembly language.'>
+<Figure caption='Example of a "Hello, World!" program in Intel x86 assembly language.'>
 ```x86 hello_world.X86
 section .data
     hello db 'Hello, World!',0xA
@@ -51,16 +52,17 @@ _start:
 ```
 </Figure>
 
-Instead of physical switches, we can encode a series of instructions for the
-computer to execute in files stored on hard disks.
+Assembly is essentially a series of instructions for the computer to execute.
+Assembly is used to generate the lowest level of instructions for computers in
+the form of [machine code](https://en.wikipedia.org/wiki/Machine_code).
 
 <Admonition type="tip" title="Can you believe this?">
-The game popular amusement park simulator [RollerCoaster Tycoon](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon) was [written using assembly](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon_(video_game)#:~:text=The%20game%20was%20developed%20in,one%20percent%20written%20in%20C.)
+The classic amusement park simulator [RollerCoaster Tycoon](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon) was [written using assembly](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon_(video_game)#:~:text=The%20game%20was%20developed%20in,one%20percent%20written%20in%20C.).
 </Admonition>
 
-Still, assembly instructions
-are tedious and error-prone, so higher-level programming languages were invented
-such as C++, TypeScript, Python, Go, and Java.
+But still, assembly code is tedious and error-prone to write so programming
+languages were invented. Programming languages such as C++, TypeScript, Python,
+Go, and Java are just code generators for assembly code.
 
 <CH.Code>
 ```cpp C++
@@ -98,46 +100,58 @@ public class HelloWorld {
 ```
 </CH.Code>
 
-Ultimately, all higher-level programming languages generate assembly which makes
-it much easier to build computer programs. Computer languages are some of the
-"lowest" forms of code generation and all leverage a type of computer program
-known as a [compiler](https://en.wikipedia.org/wiki/Compiler). Compilers are
-essentially code generators that turn a source language into a target language.
-Most computer languages target raw assembly instruction sets such as x86 and ARM
-but others target their own instruction set such as Java to the
-[JVM](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html).
+In essence, the day-to-day development work in software engineering can be
+boiled down to operating code generators to produce machine code.
+
+<Figure caption="The flow of code generation from programming languages to machine code">
+![Programming Language, Assembly, Machine Code](/img/pl-a-mc.png)
+</Figure>
+
+#### Compilers
+
+Computer languages leverage a type of computer program known as a
+[compiler](https://en.wikipedia.org/wiki/Compiler). Compilers are code
+generators that turn a source language into a target language. Most computer
+languages target assembly instruction sets such as
+[x86](https://en.wikipedia.org/wiki/X86_instruction_listings) and
+[ARM](https://iitd-plos.github.io/col718/ref/arm-instructionset.pdf), but others
+such as Java generate to their [own instruction
+set](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html).
+
 
 <Admonition type="tip" title="Fun fact">
-[Compilers themselves are typically written in the programming
+Compilers themselves are typically written in the programming
 language
-itself](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)#:~:text=In%20computer%20science%2C%20bootstrapping%20is,that%20it%20intends%20to%20compile.).
+itself. This concept is called [bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)#:~:text=In%20computer%20science%2C%20bootstrapping%20is,that%20it%20intends%20to%20compile.).
 </Admonition>
 
-Nowadays, programming languages are so advanced that there is rarely a reason to
-write pure assembly code. In some cases, writing programs with a higher-level
-programming language leads to faster programs than writing programs with
-assembly due to compiler infrastructures like [GCC](https://gcc.gnu.org/) and
-[LLVM](https://llvm.org/) as seen in this [fascinating video about branchless
-programming](https://youtu.be/bVJ-mWWL7cE) I highly recommend.
+Nowadays, compilers are so advanced that there is rarely a reason to
+write pure assembly code. In most cases, writing applications in a programming
+language leads to faster programs than writing programs in assembly due to
+battle-tested compiler infrastructures like [GCC](https://gcc.gnu.org/) and
+[LLVM](https://llvm.org/).
 
+
+<Admonition type="note" title="Interesting Topic">
+Take a look at this [fascinating video about branchless
+programming](https://youtu.be/bVJ-mWWL7cE).  The video explains how you pretty
+much have to know exactly what you are doing to beat the compiler.
+</Admonition>
 ### Database Code Generation
 
-Code generation allows us to build software faster by abstracting away the
-complicated details of how computers operate. What other parts of the stack use
-code generation?
-
-Over time, engineers have built even higher-level representations that leverage
-code generation. One pattern that has found a lot of traction is the
-Object-Relational Mapping (ORM) patterns.
+One code-generation pattern that has found a lot of traction is
+[Object-Relational Mapping
+(ORM)](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping).
 
 ![ORM](/img/orm.png)
 
-For context, databases define their query language which allows them to build an
-execution engine for querying data. This allows the database to optimize the
-execution while providing a flexible interface for querying data.  Today the
-most common query language for databases is still SQL. But SQL itself can be
-tedious to write, especially if you just want to make some simple read or write
-operations to a database.
+For context, databases define a domain-specific query language that allows them
+to build a generic execution engine for querying data. Databases can then
+optimize the execution engine while still providing a flexible interface for
+querying data.  Today the most common query language for databases is SQL (aka
+Structured query language).  But SQL itself can be tedious to read and write,
+especially if you have to write many read or write operations to a database in a
+single codebase.
 
 <Figure caption="An example SQL query for employees over the age of 30">
 ```sql query.sql
@@ -148,99 +162,55 @@ ORDER BY name;
 ```
 </Figure>
 
-Enter Prisma, an ORM that leverages code generation to allow developers to
-easily write database queries by mapping "objects" to "tables" in a SQL
-database. Prisma is an [extremely popular library with 33k stars on
+Enter Prisma, an [extremely popular library with 33k stars on
 GitHub](https://github.com/prisma/prisma) for building applications that
 interact with a database like [PostgreSQL](https://www.postgresql.org/) or
-[MongoDB](https://www.mongodb.com/).
+[MongoDB](https://www.mongodb.com/). Prisma is an ORM that leverages code
+generation to allow developers to easily write database queries by mapping
+"objects" to "tables" in a SQL database and generating type-safe clients to
+interact with the database.
 
-![Prisma](/img/prisma.png)
+<Figure src="/img/prisma.png" caption={<div>Source: <a href="https://www.prisma.io/">prisma.io</a></div>}/>
 
-Without Prisma, we would write code with SQL queries embedded in the code itself.
+Take for example a TypeScript function that makes two simple queries and returns
+the data. With Prisma, we can convert plain-text SQL statements to typed
+function calls and delete over 50% of the code.
 
-<CH.Scrollycoding>
+![With Prisma](/img/with-prisma.png)
 
-Here is an example in TypeScript for a PostgreSQL database that makes two
-requests. Lets breakdown the code step-by-step to understand what it does.
+Prisma is relatively new but its superior developer experience allows developers
+to move fast without breaking things. It has become a newfound fan favorite
+amongst Node.js developers and quickly growing in popularity.
 
-```typescript query-database.ts
-// from ./assets/typescript-sql.ts
-```
+<Figure src="/img/prisma-vs-sequelize.png" caption={<div>Despite only appearing
+in 2019, Prisma is rapidly beating out Sequelize, a much older ORM for Node.js,
+according to <a
+href="https://star-history.com/#sequelize/sequelize&prisma/prisma&Date">star-history.com</a></div>}/>
 
----
-
-Set up a connection to our database.
-
-```typescript query-database.ts focus=2:14
-// from ./assets/typescript-sql.ts
-```
-
----
-
-Manually declare types that we expect from the database. This will need to be
-updated every time we change the schema of the database.
-
-```typescript query-database.ts focus=16:32
-// from ./assets/typescript-sql.ts
-```
-
----
-
-Fetch a user with a particular ID. Notice that we have to embed
-plain-text SQL queries into the codebase. This can be challenging because typos
-and unexpected data can cause errors in the program.
-
-```typescript query-database.ts focus=37:42
-// from ./assets/typescript-sql.ts
-```
-
----
-
-Fetch all posts for that user.
-
-```typescript query-database.ts focus=44:49
-// from ./assets/typescript-sql.ts
-```
-
----
-
-Finally, we merge the queries and return an object.
-
-```typescript query-database.ts focus=52:56
-// from ./assets/typescript-sql.ts
-```
-
----
-
-Now let's rewrite this code to use Prisma.
-
-```typescript query-database.ts
-// from ./assets/typescript-sql.ts
-```
-
----
-
-To start, you must define a `.prisma` file that contains the description of the
-data model. To learn more about `.prisma` files checkout the [official
-documentation](https://www.prisma.io/docs/concepts/components/prisma-schema).
-
-```prisma schema.prisma
-// from ./assets/orm-example.prisma
-```
-
----
-
-Now we can start modifying our implementation to use Prisma.
-
-```typescript query-database.ts
-// from ./assets/typescript-sql.ts
-```
-
-
-</CH.Scrollycoding>
+<Admonition type="note" title="Prisma Alternative">
+Other up-and-coming ORMs like EdgeDB recognize the benefits of code generation
+and [are actively integrating code generation capabilities into their
+ORM](https://www.edgedb.com/docs/changelog/3_x#client-libraries).
+<Figure src="/img/edgedb.png" caption={<div>Source: <a target="_blank" href="https://www.edgedb.com/">edgedb.com</a></div>}/>
+</Admonition>
 
 ### Web Application Code Generation
+
+Full-stack web applications are notorious for requiring tedious work. Most of
+that work is in setting up databases, defining endpoints, views, and more. Web
+application frameworks like [Ruby on Rails](https://rubyonrails.org/) have long
+understood this and created a [command line
+utility](https://guides.rubyonrails.org/command_line.html#bin-rails-generate)
+for generating scaffolds of commonly used code.
+
+<Figure src="/img/ruby-on-rails.png" caption={<div>Source: <a href="https://rubyonrails.org/">rubyonrails.org</a></div>}/>
+
+
+#### Svelte
+
+#### Ruby on Rails
+
+### RedwoodJS
 
 
 ### API Code Generation

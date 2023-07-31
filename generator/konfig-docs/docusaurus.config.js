@@ -63,6 +63,18 @@ const beforeRemarkPlugins = [
   ],
 ];
 
+const beforeRemarkPluginsForBlogs = [
+  [
+    remarkCodeHike,
+    {
+      theme: "github-from-css",
+      lineNumbers: true,
+      showCopyButton: false,
+      skipLanguages: ["", "mermaid"],
+    },
+  ],
+];
+
 const beforeRemarkPluginsForPages = [
   [
     remarkCodeHike,
@@ -152,7 +164,7 @@ const config = {
           ],
         },
         blog: {
-          beforeDefaultRemarkPlugins: beforeRemarkPlugins,
+          beforeDefaultRemarkPlugins: beforeRemarkPluginsForBlogs,
           remarkPlugins: remarkPlugins,
           showReadingTime: true,
           blogDescription: "Generate SDKs for your REST API",
