@@ -8,8 +8,7 @@ image: /img/code-generation.png
 
 Code generation is ubiquitous in software engineering, it exists in literally
 every part of the stack from the lowest level of programming to the highest
-level of descriptions of Web APIs. So why is code
-generation omnipresent in every part of the stack?
+level of descriptions of Web APIs. So why is code generation everywhere?
 
 ![Code Generation Mindmap](/img/code-generation.png)
 
@@ -25,8 +24,8 @@ produce target code in programming languages.
 
 When the first electrical computers were created, switches were used to define
 programs. Physical switches are extremely error-prone and time-consuming to
-operate so with the invention of the CPU and machine code instruction set, a new
-type of programming language was invented called assembly.
+operate so with the invention of the CPU and machine code instruction set, one of the
+first forms of programming languages was invented called assembly.
 
 <Figure caption='Example of a "Hello, World!" program in x86 assembly language.'>
 ```x86 hello_world.X86
@@ -53,9 +52,15 @@ _start:
 </Figure>
 
 Instead of physical switches, we can encode a series of instructions for the
-computer to execute in files stored on the machine itself. Still, assembly
-instructions are tedious and error-prone, so higher-level programming languages
-were invented such as C++, TypeScript, Python, Go, and Java.
+computer to execute in files stored on hard disks.
+
+<Admonition type="tip" title="Can you believe this?">
+The game popular amusement park simulator [RollerCoaster Tycoon](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon) was [written using assembly](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon_(video_game)#:~:text=The%20game%20was%20developed%20in,one%20percent%20written%20in%20C.)
+</Admonition>
+
+Still, assembly instructions
+are tedious and error-prone, so higher-level programming languages were invented
+such as C++, TypeScript, Python, Go, and Java.
 
 <CH.Code>
 ```cpp C++
@@ -93,10 +98,23 @@ public class HelloWorld {
 ```
 </CH.Code>
 
-Ultimately, all higher-level programming languages generate machine code which
-makes it relatively easy to build higher-level applications. Nowadays,
-programming languages are so advanced that there is rarely a reason to write
-pure assembly code. In some cases, writing programs with a higher-level
+Ultimately, all higher-level programming languages generate assembly which makes
+it much easier to build computer programs. Computer languages are some of the
+"lowest" forms of code generation and all leverage a type of computer program
+known as a [compiler](https://en.wikipedia.org/wiki/Compiler). Compilers are
+essentially code generators that turn a source language into a target language.
+Most computer languages target raw assembly instruction sets such as x86 and ARM
+but others target their own instruction set such as Java to the
+[JVM](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html).
+
+<Admonition type="tip" title="Fun fact">
+[Compilers themselves are typically written in the programming
+language
+itself](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)#:~:text=In%20computer%20science%2C%20bootstrapping%20is,that%20it%20intends%20to%20compile.).
+</Admonition>
+
+Nowadays, programming languages are so advanced that there is rarely a reason to
+write pure assembly code. In some cases, writing programs with a higher-level
 programming language leads to faster programs than writing programs with
 assembly due to compiler infrastructures like [GCC](https://gcc.gnu.org/) and
 [LLVM](https://llvm.org/) as seen in this [fascinating video about branchless
@@ -104,11 +122,13 @@ programming](https://youtu.be/bVJ-mWWL7cE) I highly recommend.
 
 ### Database Code Generation
 
-So code generation allows us to build software faster by abstracting away the
+Code generation allows us to build software faster by abstracting away the
 complicated details of how computers operate. What other parts of the stack use
-code generation? Over time, engineers have built even higher-level
-representations that leverage code generation. One pattern that has found a lot
-of traction is the Object-Relational Mapping (ORM) patterns.
+code generation?
+
+Over time, engineers have built even higher-level representations that leverage
+code generation. One pattern that has found a lot of traction is the
+Object-Relational Mapping (ORM) patterns.
 
 ![ORM](/img/orm.png)
 
