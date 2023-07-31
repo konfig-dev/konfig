@@ -1,0 +1,224 @@
+---
+slug: code-generation
+title: "The Power of Code Generation: From Low-Level Programming to AI Assistants"
+authors: dylan
+tags: [Code Generation]
+image: /img/code-generation.png
+---
+
+Code generation is ubiquitous in software engineering, it exists in literally
+every part of the stack from the lowest level of programming to the highest
+level of descriptions of Web APIs. So why is code
+generation omnipresent in every part of the stack? In this post, we will do
+
+![Code Generation Mindmap](/img/code-generation.png)
+
+### Introduction to Code Generation
+
+Code generation is the automated process of producing source code or machine
+code from a high-level representation. Code generation tools parse input data to
+produce target code in programming languages.
+
+![Code Generation Flow](/img/code-generation-flow.png)
+
+### Why would you want to generate code?
+
+When the first electrical computers were created, the most archaic form of
+computer programming was used, switches! Physical switches are extremely
+error-prone and time-consuming to operate so with the invention of the CPU and
+machine code instruction set, a new type of programming language was invented
+called assembly.
+
+<Figure caption='Example of a "Hello, World!" program in x86 assembly language.'>
+```x86 hello_world.X86
+section .data
+    hello db 'Hello, World!',0xA
+    hello_len equ $ - hello
+
+section .text
+    global _start
+
+_start:
+    ; syscall to print the message
+    mov eax, 4          ; sys_write syscall number
+    mov ebx, 1          ; file descriptor (stdout)
+    mov ecx, hello      ; pointer to the message
+    mov edx, hello_len  ; message length
+    int 0x80
+
+    ; syscall to exit the program
+    mov eax, 1          ; sys_exit syscall number
+    xor ebx, ebx        ; exit status (0 = success)
+    int 0x80
+```
+</Figure>
+
+Instead of using laborious physical switches, we can simply write a series of
+instructions for the computer to execute. Still, assembly instructions are
+tedious and error-prone, so higher-level programming languages were invented
+such as C++, TypeScript, Python, Go, and Java.
+
+<CH.Code>
+```cpp C++
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+```
+
+```typescript TypeScript
+console.log("Hello, World!");
+```
+
+```python Python
+print("Hello, World!")
+```
+
+```go Go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+```
+```java Java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+</CH.Code>
+
+I am glad that we don't have to write assembly anymore  😮‍💨.
+
+Ultimately, all higher-level programming languages generate machine code which
+makes it relatively easy to build higher-level applications. Nowadays,
+programming languages are so advanced that there is rarely a reason to write
+pure assembly code. In some cases, writing programs with a higher-level
+programming language leads to faster programs than writing programs with
+assembly due to compiler infrastructures like [GCC](https://gcc.gnu.org/) and
+[LLVM](https://llvm.org/) as seen in this [fascinating video about branchless
+programming](https://youtu.be/bVJ-mWWL7cE) I highly recommend.
+
+### Database Code Generation
+
+So code generation allows us to build software faster by abstracting away the
+complicated details of how computers operate. What other parts of the stack use
+code generation? Over time, engineers have built even higher-level
+representations that leverage code generation. One pattern that has found a lot
+of traction is the Object-Relational Mapping (ORM) patterns.
+
+![ORM](/img/orm.png)
+
+For context, databases define their query language which allows them to build an
+execution engine for querying data. This allows the database to optimize the
+execution while providing a flexible interface for querying data.  Today the
+most common query language for databases is still SQL. But SQL itself can be
+tedious to write, especially if you just want to make some simple read or write
+operations to a database.
+
+<Figure caption="An example SQL query for employees over the age of 30">
+```sql query.sql
+SELECT id, name, age, department
+FROM employees
+WHERE age > 30
+ORDER BY name;
+```
+</Figure>
+
+Enter Prisma, an ORM that leverages code generation to allow developers to
+easily write database queries by mapping "objects" to "tables" in a SQL
+database. Prisma is an [extremely popular library with 33k stars on
+GitHub](https://github.com/prisma/prisma) for building applications that
+interact with a database like [PostgreSQL](https://www.postgresql.org/) or
+[MongoDB](https://www.mongodb.com/).
+
+![Prisma](/img/prisma.png)
+
+Without Prisma, we would write code with SQL queries embedded in the code itself.
+
+<CH.Scrollycoding>
+
+Here is an example in TypeScript for a PostgreSQL database that makes two
+requests. Lets breakdown the code step-by-step to understand what it does.
+
+```typescript query-database.ts
+// from ./assets/typescript-sql.ts
+```
+
+---
+
+Set up a connection to our database.
+
+```typescript query-database.ts focus=2:14
+// from ./assets/typescript-sql.ts
+```
+
+---
+
+Manually declare types that we expect from the database. This will need to be
+updated every time we change the schema of the database.
+
+```typescript query-database.ts focus=16:32
+// from ./assets/typescript-sql.ts
+```
+
+---
+
+Fetch a user with a particular ID. Notice that we have to embed
+plain-text SQL queries into the codebase. This can be challenging because typos
+and unexpected data can cause errors in the program.
+
+```typescript query-database.ts focus=37:42
+// from ./assets/typescript-sql.ts
+```
+
+---
+
+Fetch all posts for that user.
+
+```typescript query-database.ts focus=44:49
+// from ./assets/typescript-sql.ts
+```
+
+---
+
+Finally, we merge the queries and return an object.
+
+```typescript query-database.ts focus=52:56
+// from ./assets/typescript-sql.ts
+```
+
+---
+
+Now let's rewrite this code to use Prisma.
+
+```typescript query-database.ts
+// from ./assets/typescript-sql.ts
+```
+
+---
+
+To start, you must define a `.prisma` file that contains the description of the
+data model. To learn more about `.prisma` files checkout the [official
+documentation](https://www.prisma.io/docs/concepts/components/prisma-schema).
+
+```prisma schema.prisma
+// from ./assets/orm-example.prisma
+```
+
+---
+
+Now we can start modifying our implementation to use Prisma.
+
+```typescript query-database.ts
+// from ./assets/typescript-sql.ts
+```
+
+
+</CH.Scrollycoding>
