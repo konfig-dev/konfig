@@ -7,26 +7,32 @@ image: /img/code-generation.png
 ---
 
 Code generation is ubiquitous in software engineering, it exists in literally
-every part of the stack from the programming languages we use every day to the
-websites we browse. So why is code generation everywhere? **Because code
-generation is a superpower for developers**.
+every part of the stack from programming languages to the websites we browse. So
+why is code generation everywhere? **Because code generation empowers
+developers**. By automating tasks and creating simpler abstractions, code
+generation makes developers more productive and less error-prone.
+
+At [C3.ai](https://c3.ai/), I worked on a [tool that leverages code
+generation](https://c3.ai/what-is-enterprise-ai/it-for-enterprise-ai/c3-ai-type-system/)
+to build enterprise AI applications. At the same time, I became deeply immersed
+in the art of code generation by building the tooling myself. Since then, I
+enjoy learning about code-generation technologies across the entire software
+stack from programming languages to AI assistants.
 
 ![Code Generation Mindmap](/img/code-generation.png)
 
-### Introduction to Code Generation: Programming Languages
+### Why generate code?
 
-Code generation is the automated process of producing source code or machine
-code from a high-level representation. Code generation tools parse input data to
-produce target code in programming languages.
+Code generation is the automated process of producing code from a high-level
+representation. Code generation tools parse input data to produce target code in
+programming languages. The most notable high-level representation are programming languages themselves.
 
 ![Code Generation Flow](/img/code-generation-flow.png)
 
-#### Why would you want to generate code?
-
 When the first electrical computers were created, physical switches were used to
-define programs. Physical switches are extremely error-prone and time-consuming
-to operate. So with the invention of the CPU and instruction sets, the first
-form of a programming language was invented, assembly.
+program computers. Physical switches are extremely error-prone and
+time-consuming to operate. So with the invention of the CPU and instruction
+sets, the first form of a programming language was invented, assembly.
 
 <Figure caption='Example of a "Hello, World!" program in Intel x86 assembly language.'>
 ```x86 hello_world.X86
@@ -52,17 +58,17 @@ _start:
 ```
 </Figure>
 
-Assembly is essentially a series of instructions for the computer to execute.
-Assembly is used to generate the lowest level of instructions for computers in
-the form of [machine code](https://en.wikipedia.org/wiki/Machine_code).
+Assembly is a linear series of instructions for the computer to execute.
+Assembly is used to generate the lowest level of instructions for computers,
+[machine code](https://en.wikipedia.org/wiki/Machine_code).
 
 <Admonition type="tip" title="Can you believe this?">
 The classic amusement park simulator [RollerCoaster Tycoon](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon) was [written using assembly](https://en.wikipedia.org/wiki/RollerCoaster_Tycoon_(video_game)#:~:text=The%20game%20was%20developed%20in,one%20percent%20written%20in%20C.).
 </Admonition>
 
 But still, assembly code is tedious and error-prone to write so programming
-languages were invented. Programming languages such as C++, TypeScript, Python,
-Go, and Java are just code generators for assembly code.
+languages that generate to assembly were invented. Here is the same "Hello,
+World!" program written in popular programming languages.
 
 <CH.Code>
 ```cpp C++
@@ -74,7 +80,7 @@ int main() {
 }
 ```
 
-```typescript TypeScript
+```javascript JavaScript
 console.log("Hello, World!");
 ```
 
@@ -100,23 +106,22 @@ public class HelloWorld {
 ```
 </CH.Code>
 
-In essence, the day-to-day development work in software engineering can be
-boiled down to operating code generators to produce machine code.
+After comparing the "Hello, World!" program in assembly to the ones written in
+higher-level programming languages, it's clear that code generation empowers
+developers to be 100x more productive when building applications. If you think
+about it, software engineering is simply operating code generators to produce
+performant machine code 🤯.
 
-<Figure caption="The flow of code generation from programming languages to machine code">
-![Programming Language, Assembly, Machine Code](/img/pl-a-mc.png)
-</Figure>
-
-#### Compilers
-
-Computer languages leverage a type of computer program known as a
-[compiler](https://en.wikipedia.org/wiki/Compiler). Compilers are code
-generators that turn a source language into a target language. Most computer
-languages target assembly instruction sets such as
+[Compilers](https://en.wikipedia.org/wiki/Compiler) are the code generators that power programming languages. Compilers turn a source
+language into a target language. In practice, most computer languages target
+assembly code in instruction sets such as
 [x86](https://en.wikipedia.org/wiki/X86_instruction_listings) and
 [ARM](https://iitd-plos.github.io/col718/ref/arm-instructionset.pdf), but others
-such as Java generate to their [own instruction
-set](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html).
+like Java target their [own instruction
+set](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html). Some
+programming languages compile to other programming languages such as
+[TypeScript](https://www.typescriptlang.org/) to
+[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 
 <Admonition type="tip" title="Fun fact">
@@ -128,28 +133,31 @@ itself. This concept is called [bootstrapping](https://en.wikipedia.org/wiki/Boo
 Nowadays, compilers are so advanced that there is rarely a reason to
 write pure assembly code. In most cases, writing applications in a programming
 language leads to faster programs than writing programs in assembly due to
-battle-tested compiler infrastructures like [GCC](https://gcc.gnu.org/) and
+amazing compiler infrastructures like [GCC](https://gcc.gnu.org/) and
 [LLVM](https://llvm.org/).
 
 
 <Admonition type="note" title="Interesting Topic">
-Take a look at this [fascinating video about branchless
-programming](https://youtu.be/bVJ-mWWL7cE).  The video explains how you pretty
-much have to know exactly what you are doing to beat the compiler.
+Watch this [fascinating video about branchless
+programming](https://youtu.be/bVJ-mWWL7cE).  The video covers an example of why
+in some cases you need to know exactly how programming languages work to beat
+the compiler.
 </Admonition>
+
 ### Database Code Generation
 
 One code-generation pattern that has found a lot of traction is
-[Object-Relational Mapping
+in [Object-Relational Mapping
 (ORM)](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping).
 
 ![ORM](/img/orm.png)
 
-For context, databases define a domain-specific query language that allows them
-to build a generic execution engine for querying data. Databases can then
+For context, databases define a [domain-specific
+language](https://en.wikipedia.org/wiki/Domain-specific_language) that allows
+them to build a generic execution engine for querying data. Databases can then
 optimize the execution engine while still providing a flexible interface for
-querying data.  Today the most common query language for databases is SQL (aka
-Structured query language).  But SQL itself can be tedious to read and write,
+querying data.  Today the most common type of query language for databases is
+SQL (aka Structured query language).  But SQL is tedious to read and write,
 especially if you have to write many read or write operations to a database in a
 single codebase.
 
@@ -166,9 +174,8 @@ Enter Prisma, an [extremely popular library with 33k stars on
 GitHub](https://github.com/prisma/prisma) for building applications that
 interact with a database like [PostgreSQL](https://www.postgresql.org/) or
 [MongoDB](https://www.mongodb.com/). Prisma is an ORM that leverages code
-generation to allow developers to easily write database queries by mapping
-"objects" to "tables" in a SQL database and generating type-safe clients to
-interact with the database.
+generation to allow developers to easily use databases by generating database
+migration queries in SQL and type-safe clients to interact with the database.
 
 <Figure src="/img/prisma.png" caption={<div>Source: <a href="https://www.prisma.io/">prisma.io</a></div>}/>
 
@@ -176,47 +183,419 @@ Take for example a TypeScript function that makes two simple queries and returns
 the data. With Prisma, we can convert plain-text SQL statements to typed
 function calls and delete over 50% of the code.
 
-![With Prisma](/img/with-prisma.png)
+<Figure src="/img/with-prisma.png" caption="The same function for querying a database in TypeScript using plain-text SQL statements (Left) and Prisma (Right)"/>
 
 Prisma is relatively new but its superior developer experience allows developers
-to move fast without breaking things. It has become a newfound fan favorite
-amongst Node.js developers and quickly growing in popularity.
+to move fast without breaking things. Unsurprisingly, Prisma has found itself as
+a fan favorite amongst Node.js developers, quickly beating out existing ORMs.
 
 <Figure src="/img/prisma-vs-sequelize.png" caption={<div>Despite only appearing
-in 2019, Prisma is rapidly beating out Sequelize, a much older ORM for Node.js,
-according to <a
-href="https://star-history.com/#sequelize/sequelize&prisma/prisma&Date">star-history.com</a></div>}/>
+in 2019, Prisma is rapidly beating out <a href="https://github.com/sequelize/sequelize">Sequelize</a>, a much older ORM for Node.js (Source: <a
+href="https://star-history.com/#sequelize/sequelize&prisma/prisma&Date">star-history.com</a>)</div>}/>
 
-<Admonition type="note" title="Prisma Alternative">
-Other up-and-coming ORMs like EdgeDB recognize the benefits of code generation
-and [are actively integrating code generation capabilities into their
+Other modern ORMs like [EdgeDB](https://www.edgedb.com/) recognize the benefits
+of code generation in delivering a great developer experience and [are actively
+integrating code generation capabilities into their
 ORM](https://www.edgedb.com/docs/changelog/3_x#client-libraries).
+
 <Figure src="/img/edgedb.png" caption={<div>Source: <a target="_blank" href="https://www.edgedb.com/">edgedb.com</a></div>}/>
-</Admonition>
+
+By taking database interactions to a higher level, Prisma and EdgeDB hope to
+build an intelligent layer over SQL that can produce queries that would take a
+human hours or even days to craft. But in general, ORMs like Prisma and EdgeDB
+leverage code generation to fulfill an ongoing pursuit of more efficient,
+developer-friendly, and maintainable solutions for database interactions in
+modern software development.
 
 ### Web Application Code Generation
 
-Full-stack web applications are notorious for requiring tedious work. Most of
-that work is in setting up databases, defining endpoints, views, and more. Web
-application frameworks like [Ruby on Rails](https://rubyonrails.org/) have long
-understood this and created a [command line
-utility](https://guides.rubyonrails.org/command_line.html#bin-rails-generate)
-for generating scaffolds of commonly used code.
+Web application technologies have existed since the dawn of [Web
+2.0](https://en.wikipedia.org/wiki/Web_2.0). In parallel, frameworks for
+building web applications have found traction amongst developers. This is
+because web frameworks abstract or automate the tedious code needed to build
+full-stack applications.
+
+[Ruby on Rails](https://rubyonrails.org/), which has been used to build giant tech companies such as
+[Shopify](https://en.wikipedia.org/wiki/Shopify#:~:text=used%20the,of%20development.)
+and
+[GitHub](https://en.wikipedia.org/wiki/GitHub#:~:text=The%20GitHub%20Service,on%20Rails),
+is famous for tooling that automates the tedious work when building a full-stack application. Rails does this by providing a
+[CLI](https://guides.rubyonrails.org/command_line.html) for
+generating commonly used code while developing.
 
 <Figure src="/img/ruby-on-rails.png" caption={<div>Source: <a href="https://rubyonrails.org/">rubyonrails.org</a></div>}/>
 
+For example, if you wanted to create a blog as a Rails application, you would simply
+run:
 
-#### Svelte
+```bash Terminal
+rails new blog
+```
 
-#### Ruby on Rails
+The CLI will then set up all the boilerplate code to start developing your web
+application in Rails under the `blog/` folder. The `rails` CLI also offers [code generation for tests,
+database migrations, models, and more](https://guides.rubyonrails.org/command_line.html#bin-rails-generate). Code generation with Rails saves
+developers hours of setup and maintenance work. Teams of developers also move
+faster with code generation by enforcing best practices within the generators
+themselves.
 
-### RedwoodJS
+<Admonition type="note" title="other examples">
+[RedwoodJS](https://redwoodjs.com/), a full-stack framework built on top of
+modern web technologies like GraphQL, TypeScript, and Prisma, leverages code
+generation to generate UI components in the form of
+[cells](https://redwoodjs.com/docs/cells#generating-a-cell).
 
+<Figure src="/img/redwoodjs.png" caption={<div>Source: <a href="https://redwoodjs.com/">redwoodjs.com</a></div>}/>
+
+[Django](https://www.djangoproject.com/), the Python project powering products
+like Instagram, leverages code generation to [generate database
+migrations](https://docs.djangoproject.com/en/4.2/ref/django-admin/#django-admin-makemigrations).
+
+<Figure src="/img/django.png" caption={<div>Source: <a href="https://www.djangoproject.com/">djangoproject.com</a></div>}/>
+
+</Admonition>
+
+Another use case for code generation appears in the latest front-end framework
+for browsers, [Svelte](https://svelte.dev/). Svelte disrupts front-end
+frameworks such as [React](https://react.dev/) or [Vue](https://vuejs.org/) by
+introducing a compiler that drastically improves the developer experience when
+building complex front-end applications.
+
+<Figure src="/img/svelte.png" caption={<div>Source: <a href="https://svelte.dev/">svelte.dev</a></div>}/>
+
+The main benefits of the Svelte compiler are reduced bundle sizes, performant
+front-end code, and improved developer experience. For example, here is a simple
+web page written in Svelte that displays how many times a button was clicked.
+
+```svelte index.svelte
+<script>
+  let count = 0;
+
+  function increment() {
+    count += 1;
+  }
+</script>
+
+<main>
+  <h1>Reactivity in Svelte</h1>
+  <p>Count: {count}</p>
+  <button on:click={increment}>Increment</button>
+</main>
+```
+
+<CH.Section>
+
+The same web page written in React has additional import statements and
+boilerplate code from setting up a functional component and state.
+
+```jsx index.jsx focus=1,3,4,10,16,17,19
+import React, { useState } from 'react';
+
+function ReactiveReact() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Reactivity in React</h1>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+
+export default ReactiveReact;
+```
+</CH.Section>
+
+The simplicity of Svelte is made possible by its compiler. By adding a code
+generation layer at build time, Svelte can provide a clean interface for
+building front ends while maintaining reactivity and state management
+functionality.
+
+<Figure src="/img/svelte-compiler.png" caption={<div>The <a href="https://svelte.dev/repl/hello-world?version=4.1.2">Svelte REPL</a> showing the input file (left) and the compiled JavaScript output (right)</div>}/>
 
 ### API Code Generation
 
+Adjacent to web applications are APIs, which [can be
+really
+complex](/blog/what-is-an-sdk#why-do-developers-need-help-integrating-apis).
+But code generation drastically simplifies API integrations by generating boilerplate code and
+client libraries. Network protocols such as [GraphQL](https://graphql.org/),
+[gRPC](https://grpc.io/), and [OpenAPI](/blog/openapi) not only
+streamline API development but also leverage code generation to create
+server-side scaffolding and client-side SDKs, enhancing API consistency and
+reducing complexity.
+
+GraphQL has found a lot of traction when building front-end applications due to
+its self-documenting workflow and flexibility for front-ends to query for only
+necessary data. Developers can generate clients for a GraphQL API to remove any
+boilerplate code and enforce type safety. For example given the simple GraphQL
+schema for a `User` model and a `getUser` query.
+
+```graphql schema.graphql
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Query {
+  getUser(id: ID!): User
+}
+```
+
+We can leverage
+[graphql-code-generator](https://github.com/dotansimha/graphql-code-generator)
+to generate type-safe query hooks in React. Notice that we simply import the
+query and pass in the necessary variable, `userId`. No need to manually
+construct an HTTP request, serialize a request body or deserialize a response
+body.
+
+```jsx focus=2,5,20:25
+import React from 'react';
+import { useGetUserQuery } from '../generated/graphql';
+
+const UserComponent = ({ userId }) => {
+  const { loading, error, data } = useGetUserQuery({ variables: { userId } });
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const user = data?.getUser;
+
+  return (
+    <div>
+      <h2>User Information</h2>
+      {user && (
+        <div>
+          <p>Name: {user.name}</p>
+          <p>Email: {user.email}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default UserComponent;
+```
+
+For gRPC, communication happens between two backend systems so code is
+generated for a server-side language such as Python. Using the same `User`
+example in GraphQL, the `.proto` file for `gRPC` is the following.
+
+```proto user_service.proto
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc GetUser(GetUserRequest) returns (UserResponse) {}
+}
+
+message GetUserRequest {
+  int32 user_id = 1;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+}
+```
+
+Using [grpcio-tools](https://pypi.org/project/grpcio-tools/) to generate a
+client in Python we can write the following code to communicate with the
+`UserService`.
+
+```python make_request.py focus=11:15
+import grpc
+import user_service_pb2
+import user_service_pb2_grpc
+
+def run_grpc_client():
+    channel = grpc.insecure_channel('localhost:50051')
+    client = user_service_pb2_grpc.UserServiceStub(channel)
+
+    try:
+        user_id = 1
+        request = user_service_pb2.GetUserRequest(user_id=user_id)
+        response = client.GetUser(request)
+        print(f"User ID: {response.id}")
+        print(f"Name: {response.name}")
+        print(f"Email: {response.email}")
+
+    except grpc.RpcError as e:
+        print(f"Error: {e}")
+
+if __name__ == '__main__':
+    run_grpc_client()
+
+```
+
+In OpenAPI, communication is typically between a third-party developer and a
+public API such as [Stripe](https://stripe.com/). Using the same `User` example
+again we can define the following OpenAPI.
+
+```yaml api.yaml
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /users/{user_id}:
+    get:
+      summary: Get user by ID
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+```
+
+And use [openapi-generator](https://github.com/OpenAPITools/openapi-generator)
+to generate a publishable client SDK in Python.
+
+```python make_request.py focus=11:14
+from python_client.api_client import ApiClient
+from python_client.api.default_api import DefaultApi
+
+def get_user_by_id(user_id):
+    configuration = Configuration()
+
+    api_client = ApiClient(configuration)
+    api_instance = DefaultApi(api_client)
+
+    try:
+        response = api_instance.get_user_by_id(user_id)
+        print(f"User ID: {response.id}")
+        print(f"Name: {response.name}")
+        print(f"Email: {response.email}")
+
+    except ApiException as e:
+        print(f"Error: {e}")
+
+if __name__ == '__main__':
+    get_user_by_id(1)  # Replace '1' with the desired user ID
+```
+
+In all three examples, generated client SDKs remove unnecessary code to
+construct an HTTP request or handle serialization and deserialization.
+Furthermore, any unexpected data errors are caught during development time.  As
+the number of operations and data models grows, the same code generation tooling
+can be used to ensure consistency throughout any API integrations.
+
+### When not to use Code Generation?
+
+Like everything in engineering, there are tradeoffs. Even though code generation
+is powerful, generating code adds a layer of complexity that is not always
+warranted.  In some cases, it does not make sense to generate code as it slows
+the development process or the same effect can be achieved more simply.
+Compilers are not simple; the [LLVM has over 400,000
+commits](https://github.com/llvm/llvm-project) for a good reason. Compilers
+essentially treat written code as data so imagine how complex the [ASTs](https://en.wikipedia.org/wiki/Abstract_syntax_tree) and
+program flows can be.
+
+An example of when code generation should not be used is when building a data
+validation library for TypeScript or Python.  You could theoretically generate
+data validation code from a standard specification such as [JSON
+Schema](https://json-schema.org/).  But languages like TypeScript and Python
+already come prepared with the typing functionality.  Instead, we should re-use
+the typing functionality to create our data validation library. Popular examples
+of non-code-generation-based data validation libraries include
+[zod](https://github.com/colinhacks/zod) for TypeScript or
+[pydantic](https://github.com/pydantic/pydantic) for Python.
+
+To use these libraries, no compilation step is necessary which means they can be
+imported at any time and used in any runtime. But in some cases, where process
+boundaries are crossed such as web APIs, data validation is not possible to
+achieve without code generation; hence the use of code generation in network
+protocols like GraphQL, gRPC, and OpenAPI.
+
 ### AI Assistants
 
-### Whats next?
+The latest form of code generation looks completely different than previous
+generations. Instead of domain-specific toolings like how ORMs generate SQL, AI
+assistants define a whole new input and output model. In particular, products
+such as [CodePilot](https://github.com/features/copilot) and
+[Tabnine](https://www.tabnine.com/) live inside of a developer's IDE, generating
+contextual code from the currently open files.
+
+<Figure src="/img/github-copilot.png" caption={<div>Demonstration of AI-generated code inside the IDE (Source: <a href="https://github.com/features/copilot">github.com/features/copilot</a>)</div>}/>
+
+What do I mean by contextual code? This time, instead of providing a standard
+input format such as a programming language or API specification, the input
+format is simply the surrounding code in the open files. A suggested completion
+is predicted based on the context and offered as a tab-completion in the IDE.
+Since LLMs are [probability-based
+models](https://en.wikipedia.org/wiki/Large_language_model#Output), its
+usefulness revolves entirely around prediction accuracy.
+
+A probability model works out great in this context because the generated code
+can be assessed by a human and there is virtually no risk when the suggestion is
+wrong. And it truly feels like your development workflow is being "augmented" as
+opposed to being replaced.
+
+But these products introduce a new complexity. Microsoft even published a video
+guide on ["Prompting with
+Copilot"](https://www.youtube.com/watch?v=ImWfIDTxn7E), to help you be more
+effective while using Copilot. One tip from the video is to write a comment like
+`# Description: The file processes a JSON` at the top of a Python file to give
+Copilot more context. Writing extraneous comments is not typical so developers
+have to be aware of these nuances to properly prompt the AI.
+
+Since everything is probability-based, providing enough context for the AI is
+crucial to improve its accuracy. But sometimes prompt engineering can take more
+time and effort than simply writing the code. When lots of context is required,
+which is often the case in larger codebases, the accuracy of the AI drops which
+can then lead to misleading or incorrect suggestions.
+[Magic](https://magic.dev/) recognizes this limitation and is on a mission to
+solve it. But despite these complexities, AI shows a lot of immediate value when
+properly used.
 
 
+### Final Thoughts on AI
+
+Over time, we have engineered ourselves into [higher and higher levels of
+abstraction to build performant software](https://www.modular.com/mojo). From
+low-level assembly to AI assistants, compilers and code generation has proven to
+be a major productivity multiplier for software engineers. And with the most
+recent advancements in AI, we find ourselves asking, "Is natural language the
+final form of programming?". At Konfig, we leave the answer up to practical
+experimentation. After all, if a rules-based engine can be outperformed by LLMs,
+why spend thousands of engineering hours building one?
+
+I believe completion-based assistants have strong fit in the software
+development lifecycle, but LLMs just don't cut it when you need 100% accuracy.
+Where I see AI falling short is when 100% accuracy is expected. Although [some
+are choosing to go all-in on AI-based code
+generation](https://blog.darklang.com/gpt/). But I am always open to the
+possibility of being wrong and would happily delete our entire codebase if AI
+can solve the problem.
