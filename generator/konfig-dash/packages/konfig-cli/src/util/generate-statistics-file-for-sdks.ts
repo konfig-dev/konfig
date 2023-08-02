@@ -50,7 +50,7 @@ async function getLineCountForGenerator({
   const debugLineCounts: Record<string, number> = {}
   for (const [file, fileContents] of Object.entries(files)) {
     if (file === '') continue
-    if (!file.includes(directory)) continue
+    if (!isSubPath(directory, file)) continue
     const count = (fileContents.toString().match(/\n/g) || []).length
     debugLineCounts[file] = count
     // count the number of '\n' characters in fileContents and add to lineCount
@@ -75,6 +75,12 @@ async function getLineCountForGenerator({
   }
 
   return lineCount
+}
+
+// OS-agnostic subpath check
+function isSubPath(from: string, to: string) {
+  const relative = path.relative(from, to)
+  return relative && !relative.startsWith('..') && !path.isAbsolute(relative)
 }
 
 async function readGitTrackedFiles(directory: string, root: string) {
