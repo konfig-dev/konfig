@@ -109,16 +109,33 @@ async function readGitTrackedFiles(directory: string, root: string) {
   for (const file of files) {
     // if file includes a submodule path then continue
     if (
-      allSudmobulePaths.some((submodulePath) => file.includes(submodulePath))
+      allSudmobulePaths.some((submodulePath) =>
+        isSubPath({ subpath: file, parentPath: submodulePath })
+      )
     ) {
       continue
     }
 
     const content = await fs.readFile(file, 'utf-8')
-    fileContents[file.replace(`${root}/`, '')] = content
+    fileContents[file.replace(`${root}${path.sep}`, '')] = content
   }
 
   return fileContents
+}
+
+/**
+ * Returns true if subpath is a subpath of parentPath. Is OS agnostic.
+ */
+function isSubPath({
+  subpath,
+  parentPath,
+}: {
+  subpath: string
+  parentPath: string
+}) {
+  const relative = path.relative(parentPath, subpath)
+  console.log('relative', relative)
+  return relative && !relative.startsWith('..') && !path.isAbsolute(relative)
 }
 
 type Statistics = {
