@@ -89,7 +89,7 @@ async function readGitTrackedFiles(directory: string, root: string) {
   const fileContents: Record<string, string> = {}
 
   // Use globby to get all files tracked by git
-  const files = await globby(path.join(directory, '**', '*'), {
+  const files = await globby(`${directory}/**/*`, {
     cwd: directory,
     absolute: true,
     onlyFiles: true,
