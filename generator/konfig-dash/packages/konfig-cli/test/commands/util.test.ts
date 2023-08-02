@@ -67,6 +67,13 @@ describe('util', () => {
     fs.writeFileSync(path.join(phpOutputDirectory, 'test-2.txt'), 'test\n')
     const php = Git(phpOutputDirectory)
     await php.init()
+    await php.addConfig('user.name', 'konfig-dev', false, 'local')
+    await php.addConfig(
+      'user.email',
+      'engineering@konfigthis.com',
+      false,
+      'local'
+    )
     await php.add('test.txt')
     await php.commit('init')
     await git.subModule(['add', phpOutputDirectory])
