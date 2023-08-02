@@ -18,6 +18,7 @@ export async function generateStatisticsFileForSdks({
   const { generators, additionalGenerators } = konfigYaml
   const lineCounts: Statistics['lineCounts'] = {}
   const files = await readGitTrackedFiles(cwd, cwd)
+  console.log('gitTrackedFiles:', files)
   for (const [generatorName, generatorConfig] of [
     ...Object.entries(generators),
     ...(additionalGenerators ? Object.entries(additionalGenerators) : []),
@@ -76,6 +77,9 @@ async function readGitTrackedFiles(directory: string, root: string) {
     onlyFiles: true,
   })
 
+  console.log('ignore', ignore)
+  console.log('files', files)
+
   // Handle submodules (basic example)
   const gitmodulesPath = path.join(directory, '.gitmodules')
   // all submodule paths
@@ -98,6 +102,8 @@ async function readGitTrackedFiles(directory: string, root: string) {
       }
     }
   }
+
+  console.log('allSudmobulePaths', allSudmobulePaths)
 
   // Read the content of each file (untracked and tracked)
   for (const file of files) {
