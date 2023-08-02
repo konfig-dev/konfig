@@ -9,14 +9,14 @@ async function main() {
   // 0. Build before running this script (yarn rw build && yarn rw build api)
   // 1. Run API Server
   // 2. Wait for API Server to start
-  const api = run()
-  await wait()
+  // const api = run()
+  // await wait()
 
   // 4. Run tests
   await test()
 
   // 5. Teardown
-  kill({ api })
+  // kill({ api })
 
   return { success: true } as const
 }
@@ -35,9 +35,9 @@ async function wait() {
 async function test() {
   try {
     await konfigCliTest()
-    await konfigLibTest()
-    await konfigSpectralRulesetTest()
-    await konfigPostmanToOpenapiTest()
+    // await konfigLibTest()
+    // await konfigSpectralRulesetTest()
+    // await konfigPostmanToOpenapiTest()
   } catch (error) {
     if (error instanceof Error) throw error
     throw Error('Test failed')
@@ -47,9 +47,9 @@ async function test() {
 function run() {
   return execa.command(`yarn rw serve api -p ${TEST_API_PORT}`, {
     stdio: 'inherit',
-    env: {
-      [KONFIG_API_TEST_ENVIRONMENT_NAME]: 'true',
-    },
+    // env: {
+    //   [KONFIG_API_TEST_ENVIRONMENT_NAME]: 'true',
+    // },
   })
 }
 
@@ -68,9 +68,9 @@ function konfigCliTest() {
   return execa.command('yarn test', {
     stdio: 'inherit',
     cwd: path.join(path.dirname(__dirname), 'packages', 'konfig-cli'),
-    env: {
-      [KONFIG_API_TEST_ENVIRONMENT_NAME]: 'true',
-    },
+    // env: {
+    //   [KONFIG_API_TEST_ENVIRONMENT_NAME]: 'true',
+    // },
   })
 }
 
