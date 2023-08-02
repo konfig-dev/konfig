@@ -2,6 +2,7 @@ import { KonfigYamlType } from 'konfig-lib'
 import path from 'path'
 import * as fs from 'fs-extra'
 import execa from 'execa'
+import * as os from 'os'
 
 /**
  * Collects statistics about the SDKs in this repository.
@@ -54,14 +55,14 @@ function getLineCountForGenerator({
   const isPhp = generator === 'php'
 
   const command = generateGitLsFilesCommand({ isPhp, directory })
-  const files = execa
-    .commandSync(
-      command,
-      isPhp ? { cwd: absoluteDirectoryPath, shell: true } : { cwd, shell: true }
-    )
-    .stdout.split('\n')
+  const stdout = execa.commandSync(
+    command,
+    isPhp ? { cwd: absoluteDirectoryPath, shell: true } : { cwd, shell: true }
+  ).stdout
+  const files = stdout.split(os.EOL)
 
-  console.log(files)
+  console.log('stdout:', stdout)
+  console.log('files:', files)
 
   // count number of lines in each file
   let lineCount = 0
