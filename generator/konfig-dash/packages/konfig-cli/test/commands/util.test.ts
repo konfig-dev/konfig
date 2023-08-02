@@ -20,6 +20,7 @@ describe('util', () => {
 
     // init git directory in tmpDir using "simple-git"
     const git = Git(testDir)
+    await git.init()
     await git.addConfig('user.name', 'konfig-dev', false, 'local')
     await git.addConfig(
       'user.email',
@@ -27,7 +28,6 @@ describe('util', () => {
       false,
       'local'
     )
-    await git.init()
 
     const typescriptOutputDirectory = path.join(testDir, 'typescript')
     const phpOutputDirectory = path.join(testDir, 'php')
