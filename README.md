@@ -1,7 +1,6 @@
 # Konfig
 
 The monorepo that holds everything...
-
 ## Getting started
 
 Get the repository on your local machine. **Takes a minute.**
