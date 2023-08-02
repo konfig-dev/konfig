@@ -45,6 +45,8 @@ async function getLineCountForGenerator({
   cwd: string
 }): Promise<number> {
   const files = await readGitTrackedFiles(path.join(cwd, directory), cwd)
+  console.log('directory', directory)
+  console.log('files', files)
   // count number of lines in each file
   let lineCount = 0
   const debugLineCounts: Record<string, number> = {}
