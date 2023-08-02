@@ -59,8 +59,7 @@ function getLineCountForGenerator({
       command,
       isPhp ? { cwd: absoluteDirectoryPath, shell: true } : { cwd, shell: true }
     )
-    .toString()
-    .split('\n')
+    .stdout.split('\n')
 
   console.log(files)
 
