@@ -1,7 +1,7 @@
 import { KonfigYamlType } from 'konfig-lib'
-import { execSync } from 'child_process'
 import path from 'path'
 import * as fs from 'fs-extra'
+import execa from 'execa'
 
 /**
  * Collects statistics about the SDKs in this repository.
@@ -54,10 +54,11 @@ function getLineCountForGenerator({
   const isPhp = generator === 'php'
 
   const command = generateGitLsFilesCommand({ isPhp, directory })
-  const files = execSync(
-    command,
-    isPhp ? { cwd: absoluteDirectoryPath } : { cwd }
-  )
+  const files = execa
+    .commandSync(
+      command,
+      isPhp ? { cwd: absoluteDirectoryPath, shell: true } : { cwd, shell: true }
+    )
     .toString()
     .split('\n')
 
