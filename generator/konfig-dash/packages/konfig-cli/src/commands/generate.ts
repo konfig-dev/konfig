@@ -40,6 +40,7 @@ import { getUserId } from '../util/get-user-id'
 import prettier from 'prettier'
 import replaceAsync from 'string-replace-async'
 import { removeTrailingSlash } from '../util/remove-trailing-slash'
+import { generateStatisticsFileForSdks } from '../util/generate-statistics-file-for-sdks'
 
 function getOutputDir(
   outputFlag: string | undefined,
@@ -1173,6 +1174,15 @@ export default class Deploy extends Command {
           const readme = generateReadme({ konfigYaml: parsedKonfigYaml })
           fs.writeFileSync(path.join(configDir, 'README.md'), readme)
           CliUx.ux.action.stop()
+
+          CliUx.ux.action.start('Generating STATISTICS.md')
+          const statistics = generateStatisticsFileForSdks({
+            konfigYaml: parsedKonfigYaml,
+            cwd: configDir,
+          })
+          fs.writeFileSync(path.join(configDir, 'STATISTICS.md'), statistics)
+          CliUx.ux.action.stop()
+
           CliUx.ux.action.start('Writing top-level LICENSE')
           fs.writeFileSync(path.join(configDir, 'LICENSE'), generateLicense())
           CliUx.ux.action.stop()
