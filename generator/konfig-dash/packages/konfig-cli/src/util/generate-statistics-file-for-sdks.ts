@@ -1,36 +1,32 @@
 import { KonfigYamlType } from 'konfig-lib'
 import path from 'path'
 import * as fs from 'fs-extra'
-import execa from 'execa'
-import * as os from 'os'
+import globby from 'globby'
 
 /**
  * Collects statistics about the SDKs in this repository.
  * 1. The number of lines of each SDK
  * 2. The sum of lines of code from (1)
  */
-export function generateStatisticsFileForSdks({
+export async function generateStatisticsFileForSdks({
   konfigYaml,
   cwd,
 }: {
   konfigYaml: KonfigYamlType
   cwd: string
-}): string {
+}): Promise<string> {
   const { generators, additionalGenerators } = konfigYaml
   const lineCounts: Statistics['lineCounts'] = {}
+  const files = await readGitTrackedFiles(cwd, cwd)
   for (const [generatorName, generatorConfig] of [
     ...Object.entries(generators),
     ...(additionalGenerators ? Object.entries(additionalGenerators) : []),
   ]) {
     if (generatorConfig.disabled) continue
-    const lineCount = getLineCountForGenerator({
+    const lineCount = await getLineCountForGenerator({
       directory: generatorConfig.outputDirectory,
       absoluteDirectoryPath: path.join(cwd, generatorConfig.outputDirectory),
-      cwd,
-      generator:
-        'generator' in generatorConfig
-          ? (generatorConfig.generator as string)
-          : generatorName,
+      files,
     })
     lineCounts[generatorName] = lineCount
   }
@@ -41,36 +37,19 @@ export function generateStatisticsFileForSdks({
 // For PHP make sure that the "cwd" is set to the directory of the generator and "ls-files" is called with "."
 // Otherwise the line count will be 0
 // If not PHP then cwd should not be passed to execSync
-function getLineCountForGenerator({
+async function getLineCountForGenerator({
   directory,
-  absoluteDirectoryPath,
-  generator,
-  cwd,
+  files,
 }: {
   directory: string
   absoluteDirectoryPath: string
-  generator: string
-  cwd: string
-}): number {
-  const isPhp = generator === 'php'
-
-  const command = generateGitLsFilesCommand({ isPhp, directory })
-  const stdout = execa.commandSync(
-    command,
-    isPhp ? { cwd: absoluteDirectoryPath, shell: true } : { cwd, shell: true }
-  ).stdout
-  const files = stdout.split(os.EOL)
-
-  console.log('stdout:', stdout)
-  console.log('files:', files)
-
+  files: Record<string, string>
+}): Promise<number> {
   // count number of lines in each file
   let lineCount = 0
-  for (const file of files) {
+  for (const [file, fileContents] of Object.entries(files)) {
     if (file === '') continue
-    const fileContents = fs.readFileSync(
-      path.join(cwd, isPhp ? directory : '', file)
-    )
+    if (!file.includes(directory)) continue
     // count the number of '\n' characters in fileContents and add to lineCount
     lineCount += (fileContents.toString().match(/\n/g) || []).length
   }
@@ -85,15 +64,55 @@ function getLineCountForGenerator({
   return lineCount
 }
 
-function generateGitLsFilesCommand({
-  isPhp,
-  directory,
-}: {
-  isPhp: boolean
-  directory: string
-}): string {
-  const command = `git ls-files -c -o ${isPhp ? '.' : `'${directory}'`}`
-  return command
+async function readGitTrackedFiles(directory: string, root: string) {
+  const fileContents: Record<string, string> = {}
+
+  // Use globby to get all files tracked by git
+  const ignore = getIgnoreGlobs(directory)
+  const files = await globby('**/*', {
+    cwd: directory,
+    absolute: true,
+    ignore,
+    onlyFiles: true,
+  })
+
+  // Handle submodules (basic example)
+  const gitmodulesPath = path.join(directory, '.gitmodules')
+  // all submodule paths
+  const allSudmobulePaths: string[] = []
+  if (await fs.pathExists(gitmodulesPath)) {
+    const gitmodulesContent = await fs.readFile(gitmodulesPath, 'utf-8')
+    const submodulePaths = gitmodulesContent.match(/path = (.+)/g)
+    if (submodulePaths) {
+      for (const submodulePath of submodulePaths) {
+        const submoduleDirectory = path.join(
+          directory,
+          submodulePath.replace('path = ', '')
+        )
+        allSudmobulePaths.push(submoduleDirectory)
+        const submoduleContents = await readGitTrackedFiles(
+          submoduleDirectory,
+          root
+        )
+        Object.assign(fileContents, submoduleContents) // Merge submodule contents
+      }
+    }
+  }
+
+  // Read the content of each file (untracked and tracked)
+  for (const file of files) {
+    // if file includes a submodule path then continue
+    if (
+      allSudmobulePaths.some((submodulePath) => file.includes(submodulePath))
+    ) {
+      continue
+    }
+
+    const content = await fs.readFile(file, 'utf-8')
+    fileContents[file.replace(`${root}/`, '')] = content
+  }
+
+  return fileContents
 }
 
 type Statistics = {
@@ -118,4 +137,14 @@ function generateMarkdownFromStatistics({ lineCounts }: Statistics) {
     0
   )} |\n`
   return markdown
+}
+
+/**
+ * Reads .gitignore in directory and adds all lines to a file
+ */
+function getIgnoreGlobs(dir: string): string[] {
+  const gitignorePath = path.join(dir, '.gitignore')
+  if (!fs.existsSync(gitignorePath)) return []
+  const gitignore = fs.readFileSync(gitignorePath, 'utf-8')
+  return gitignore.split('\n').filter((line) => line !== '')
 }

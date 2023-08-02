@@ -1176,7 +1176,7 @@ export default class Deploy extends Command {
           CliUx.ux.action.stop()
 
           CliUx.ux.action.start('Generating STATISTICS.md')
-          const statistics = generateStatisticsFileForSdks({
+          const statistics = await generateStatisticsFileForSdks({
             konfigYaml: parsedKonfigYaml,
             cwd: configDir,
           })

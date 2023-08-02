@@ -65,6 +65,10 @@ describe('util', () => {
     fs.ensureDirSync(phpOutputDirectory)
     fs.writeFileSync(path.join(phpOutputDirectory, 'test.txt'), 'test\n')
     fs.writeFileSync(path.join(phpOutputDirectory, 'test-2.txt'), 'test\n')
+    fs.writeFileSync(
+      path.join(phpOutputDirectory, '.gitignore'),
+      'test-2.txt\n'
+    )
     const php = Git(phpOutputDirectory)
     await php.init()
     await php.addConfig('user.name', 'konfig-dev', false, 'local')
@@ -80,7 +84,7 @@ describe('util', () => {
 
     const konfigYaml = KonfigYaml.parse(konfigYamlInput)
 
-    const statistics = generateStatisticsFileForSdks({
+    const statistics = await generateStatisticsFileForSdks({
       konfigYaml,
       cwd: testDir,
     })
@@ -91,8 +95,8 @@ describe('util', () => {
       | SDK Name | Lines of Code |
       | -------- | ------------- |
       | typescript | 1 |
-      | php | 2 |
-      | **Total** | 3 |
+      | php | 1 |
+      | **Total** | 2 |
       "
     `)
   })
