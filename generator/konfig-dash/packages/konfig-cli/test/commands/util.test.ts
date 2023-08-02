@@ -31,9 +31,24 @@ describe('util', () => {
 
     const typescriptOutputDirectory = path.join(testDir, 'typescript')
     const phpOutputDirectory = path.join(testDir, 'php')
+    const csharpOutputDirectory = path.join(testDir, 'csharp')
     fs.ensureDirSync(testDir)
     const konfigYamlInput: KonfigYamlInputType = {
       specPath: 'big-oas.yaml',
+      additionalGenerators: {
+        cs: {
+          clientName: 'Acme',
+          generator: 'csharp',
+          outputDirectory: 'csharp',
+          version: '1.0.0',
+          packageName: 'Acme.Net',
+          logoPath: 'logo.png',
+          git: {
+            userId: 'konfig-dev',
+            repoId: 'acme-sdks',
+          },
+        },
+      },
       generators: {
         typescript: {
           outputDirectory: 'typescript',
@@ -60,6 +75,28 @@ describe('util', () => {
     // put a file inside all output directories with 1 line, ensure a directory exists first
     fs.ensureDirSync(typescriptOutputDirectory)
     fs.writeFileSync(path.join(typescriptOutputDirectory, 'test.txt'), 'test\n')
+    fs.writeFileSync(
+      path.join(typescriptOutputDirectory, 'test-2.txt'),
+      'test\n'
+    )
+
+    // do the same for csharp
+    fs.ensureDirSync(csharpOutputDirectory)
+    fs.writeFileSync(path.join(csharpOutputDirectory, 'test.txt'), 'test\n')
+    // add a .gitignore with Debug/ in it and add a file under src/Acme.Net.Test/bin/Debug/
+    const debugDir = path.join(
+      csharpOutputDirectory,
+      'src',
+      'Acme.Net.Test',
+      'bin',
+      'Debug'
+    )
+    fs.ensureDirSync(debugDir)
+    fs.writeFileSync(path.join(debugDir, 'test.txt'), 'test\n')
+    fs.writeFileSync(
+      path.join(csharpOutputDirectory, '.gitignore'),
+      '[Dd]ebug/\n[Bb]in/'
+    )
 
     // make PHP a submodule of the testDir
     fs.ensureDirSync(phpOutputDirectory)
@@ -94,9 +131,10 @@ describe('util', () => {
 
       | SDK Name | Lines of Code |
       | -------- | ------------- |
-      | typescript | 1 |
-      | php | 1 |
-      | **Total** | 2 |
+      | typescript | 2 |
+      | php | 2 |
+      | cs | 2 |
+      | **Total** | 6 |
       "
     `)
   })

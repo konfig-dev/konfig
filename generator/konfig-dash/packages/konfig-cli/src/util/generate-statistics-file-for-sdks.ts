@@ -1,6 +1,8 @@
 import { KonfigYamlType } from 'konfig-lib'
+import ignore, { Ignore } from 'ignore'
 import path from 'path'
 import * as fs from 'fs-extra'
+import * as os from 'os'
 import globby from 'globby'
 
 /**
@@ -17,8 +19,6 @@ export async function generateStatisticsFileForSdks({
 }): Promise<string> {
   const { generators, additionalGenerators } = konfigYaml
   const lineCounts: Statistics['lineCounts'] = {}
-  const files = await readGitTrackedFiles(cwd, cwd)
-  console.log('gitTrackedFiles:', files)
   for (const [generatorName, generatorConfig] of [
     ...Object.entries(generators),
     ...(additionalGenerators ? Object.entries(additionalGenerators) : []),
@@ -26,8 +26,7 @@ export async function generateStatisticsFileForSdks({
     if (generatorConfig.disabled) continue
     const lineCount = await getLineCountForGenerator({
       directory: generatorConfig.outputDirectory,
-      absoluteDirectoryPath: path.join(cwd, generatorConfig.outputDirectory),
-      files,
+      cwd,
     })
     lineCounts[generatorName] = lineCount
   }
@@ -40,19 +39,32 @@ export async function generateStatisticsFileForSdks({
 // If not PHP then cwd should not be passed to execSync
 async function getLineCountForGenerator({
   directory,
-  files,
+  cwd,
 }: {
   directory: string
-  absoluteDirectoryPath: string
-  files: Record<string, string>
+  cwd: string
 }): Promise<number> {
+  const files = await readGitTrackedFiles(path.join(cwd, directory), cwd)
   // count number of lines in each file
   let lineCount = 0
+  const debugLineCounts: Record<string, number> = {}
   for (const [file, fileContents] of Object.entries(files)) {
     if (file === '') continue
     if (!file.includes(directory)) continue
+    const count = (fileContents.toString().match(/\n/g) || []).length
+    debugLineCounts[file] = count
     // count the number of '\n' characters in fileContents and add to lineCount
-    lineCount += (fileContents.toString().match(/\n/g) || []).length
+    lineCount += count
+  }
+  if (process.env.DEBUG) {
+    const debugFilePath = path.join(
+      os.tmpdir(),
+      directory,
+      'debug-line-counts.json'
+    )
+    fs.ensureDirSync(path.dirname(debugFilePath))
+    console.debug(debugFilePath)
+    fs.writeFileSync(debugFilePath, JSON.stringify(debugLineCounts, null, 2))
   }
 
   // check if lineCount is 0 or NaN
@@ -69,73 +81,48 @@ async function readGitTrackedFiles(directory: string, root: string) {
   const fileContents: Record<string, string> = {}
 
   // Use globby to get all files tracked by git
-  const ignore = getIgnoreGlobs(directory)
-  const files = await globby('**/*', {
+  const files = await globby(path.join(directory, '**', '*'), {
     cwd: directory,
     absolute: true,
-    ignore,
     onlyFiles: true,
+    dot: true,
+    // ignore .git
+    ignore: ['**/.git/**'],
   })
 
-  console.log('ignore', ignore)
-  console.log('files', files)
-
-  // Handle submodules (basic example)
-  const gitmodulesPath = path.join(directory, '.gitmodules')
-  // all submodule paths
-  const allSudmobulePaths: string[] = []
-  if (await fs.pathExists(gitmodulesPath)) {
-    const gitmodulesContent = await fs.readFile(gitmodulesPath, 'utf-8')
-    const submodulePaths = gitmodulesContent.match(/path = (.+)/g)
-    if (submodulePaths) {
-      for (const submodulePath of submodulePaths) {
-        const submoduleDirectory = path.join(
-          directory,
-          submodulePath.replace('path = ', '')
-        )
-        allSudmobulePaths.push(submoduleDirectory)
-        const submoduleContents = await readGitTrackedFiles(
-          submoduleDirectory,
-          root
-        )
-        Object.assign(fileContents, submoduleContents) // Merge submodule contents
-      }
-    }
-  }
-
-  console.log('allSudmobulePaths', allSudmobulePaths)
+  const ig = await collectIgnores([root, directory])
 
   // Read the content of each file (untracked and tracked)
   for (const file of files) {
-    // if file includes a submodule path then continue
-    if (
-      allSudmobulePaths.some((submodulePath) =>
-        isSubPath({ subpath: file, parentPath: submodulePath })
-      )
-    ) {
-      continue
-    }
+    const relativePathFromRoot = path.relative(root, file)
+    const relativePathFromDirectory = path.relative(directory, file)
+    // if file is ignored by the "ig" .gitignore object then continue
+    if (ig.ignores(relativePathFromRoot)) continue
+    if (ig.ignores(relativePathFromDirectory)) continue
 
     const content = await fs.readFile(file, 'utf-8')
-    fileContents[file.replace(`${root}${path.sep}`, '')] = content
+    fileContents[relativePathFromRoot] = content
   }
 
   return fileContents
 }
 
 /**
- * Returns true if subpath is a subpath of parentPath. Is OS agnostic.
+ * Returns an ignore object that includes .gitignore in all subdirectories for the provided directory.
  */
-function isSubPath({
-  subpath,
-  parentPath,
-}: {
-  subpath: string
-  parentPath: string
-}) {
-  const relative = path.relative(parentPath, subpath)
-  console.log('relative', relative)
-  return relative && !relative.startsWith('..') && !path.isAbsolute(relative)
+async function collectIgnores(directories: string[]): Promise<Ignore> {
+  // Use globby to get all .gitignore files
+  const gitignoreFiles = directories.map((directory) =>
+    path.join(directory, '.gitignore')
+  )
+
+  // Create an ignore object that includes all .gitignore files
+  const ig = ignore()
+  for (const gitignoreFile of gitignoreFiles) {
+    if (!fs.existsSync(gitignoreFile)) continue
+    ig.add(fs.readFileSync(gitignoreFile, 'utf-8'))
+  }
+  return ig
 }
 
 type Statistics = {
@@ -160,14 +147,4 @@ function generateMarkdownFromStatistics({ lineCounts }: Statistics) {
     0
   )} |\n`
   return markdown
-}
-
-/**
- * Reads .gitignore in directory and adds all lines to a file
- */
-function getIgnoreGlobs(dir: string): string[] {
-  const gitignorePath = path.join(dir, '.gitignore')
-  if (!fs.existsSync(gitignorePath)) return []
-  const gitignore = fs.readFileSync(gitignorePath, 'utf-8')
-  return gitignore.split('\n').filter((line) => line !== '')
 }
