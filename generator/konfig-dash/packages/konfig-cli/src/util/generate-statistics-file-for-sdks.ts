@@ -1,6 +1,7 @@
 import { KonfigYamlType } from 'konfig-lib'
 import { execSync } from 'child_process'
 import path from 'path'
+import * as fs from 'fs-extra'
 
 /**
  * Collects statistics about the SDKs in this repository.
@@ -52,13 +53,26 @@ function getLineCountForGenerator({
 }): number {
   const isPhp = generator === 'php'
 
-  const command = generateCommand({ isPhp, directory })
-  const lineCount = parseInt(
-    execSync(
-      command,
-      isPhp ? { cwd: absoluteDirectoryPath } : { cwd }
-    ).toString()
+  const command = generateGitLsFilesCommand({ isPhp, directory })
+  const files = execSync(
+    command,
+    isPhp ? { cwd: absoluteDirectoryPath } : { cwd }
   )
+    .toString()
+    .split('\n')
+
+  console.log(files)
+
+  // count number of lines in each file
+  let lineCount = 0
+  for (const file of files) {
+    if (file === '') continue
+    const fileContents = fs.readFileSync(
+      path.join(cwd, isPhp ? directory : '', file)
+    )
+    // count the number of '\n' characters in fileContents and add to lineCount
+    lineCount += (fileContents.toString().match(/\n/g) || []).length
+  }
 
   // check if lineCount is 0 or NaN
   if (lineCount === 0 || isNaN(lineCount)) {
@@ -70,18 +84,14 @@ function getLineCountForGenerator({
   return lineCount
 }
 
-function generateCommand({
+function generateGitLsFilesCommand({
   isPhp,
   directory,
 }: {
   isPhp: boolean
   directory: string
 }): string {
-  const common =
-    " | xargs wc -l | tail -n 1 | awk '{ total += $1 } END { print total }'"
-  const command = `git ls-files -c -o ${
-    isPhp ? '.' : `'${directory}'`
-  }${common}`
+  const command = `git ls-files -c -o ${isPhp ? '.' : `'${directory}'`}`
   return command
 }
 
