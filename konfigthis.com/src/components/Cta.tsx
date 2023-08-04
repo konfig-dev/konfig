@@ -23,7 +23,7 @@ const useStyles = createStyles((theme) => ({
     }`,
 
     [theme.fn.smallerThan("sm")]: {
-      flexDirection: "column-reverse",
+      flexDirection: "column",
       padding: theme.spacing.xl,
     },
   },
@@ -41,7 +41,7 @@ const useStyles = createStyles((theme) => ({
 
     [theme.fn.smallerThan("sm")]: {
       paddingRight: 0,
-      marginTop: theme.spacing.xl,
+      margin: theme.spacing.xl,
     },
   },
 
