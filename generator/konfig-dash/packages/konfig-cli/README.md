@@ -284,7 +284,13 @@ DESCRIPTION
   Lint your python SDK with ruff linter
 
 EXAMPLES
+  $ konfig lint-python
+
+  $ konfig lint-python -p test/
+
   $ konfig lint-python -f -p test/**/*test*.py
+
+  $ konfig lint-python -f -p test/simple_test.py
 ```
 
 _See code: [dist/commands/lint-python.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.0.239/dist/commands/lint-python.ts)_
