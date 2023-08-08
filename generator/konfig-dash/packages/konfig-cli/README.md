@@ -36,6 +36,7 @@ USAGE
 * [`konfig ignore`](#konfig-ignore)
 * [`konfig init`](#konfig-init)
 * [`konfig lint`](#konfig-lint)
+* [`konfig lint-python`](#konfig-lint-python)
 * [`konfig login`](#konfig-login)
 * [`konfig logout`](#konfig-logout)
 * [`konfig mock`](#konfig-mock)
@@ -265,6 +266,28 @@ EXAMPLES
 ```
 
 _See code: [dist/commands/lint.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.0.239/dist/commands/lint.ts)_
+
+## `konfig lint-python`
+
+Lint your python SDK with ruff linter
+
+```
+USAGE
+  $ konfig lint-python [-f] [-p <value>]
+
+FLAGS
+  -f, --fix           fix linting errors which ruff marks as fixable
+  -p, --path=<value>  lint only specified path (file or directory) within python sdk directory. Glob patterns are
+                      allowed.
+
+DESCRIPTION
+  Lint your python SDK with ruff linter
+
+EXAMPLES
+  $ konfig lint-python -f -p test/**/*test*.py
+```
+
+_See code: [dist/commands/lint-python.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.0.239/dist/commands/lint-python.ts)_
 
 ## `konfig login`
 
