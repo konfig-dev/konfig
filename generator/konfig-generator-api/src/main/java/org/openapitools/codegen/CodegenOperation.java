@@ -54,6 +54,7 @@ public class CodegenOperation {
     public List<CodegenParameter> flattenedParamsFromRequestBodyProperties = new ArrayList<CodegenParameter>();
     public List<CodegenParameter> bodyParams = new ArrayList<CodegenParameter>();
     public List<CodegenParameter> pathParams = new ArrayList<CodegenParameter>();
+    public List<CodegenParameter> requiredPathParams = new ArrayList<CodegenParameter>();
     public List<CodegenParameter> queryParams = new ArrayList<CodegenParameter>();
     public List<CodegenParameter> headerParams = new ArrayList<CodegenParameter>();
     public List<CodegenParameter> implicitHeadersParams = new ArrayList<CodegenParameter>();

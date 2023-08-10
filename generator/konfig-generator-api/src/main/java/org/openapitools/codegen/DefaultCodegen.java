@@ -4567,6 +4567,7 @@ public class DefaultCodegen implements CodegenConfig {
         List<CodegenParameter> allParamsWithRequestBodyProperties = new ArrayList<>();
         List<CodegenParameter> bodyParams = new ArrayList<>();
         List<CodegenParameter> pathParams = new ArrayList<>();
+        List<CodegenParameter> requiredPathParams = new ArrayList<>();
         List<CodegenParameter> queryParams = new ArrayList<>();
         List<CodegenParameter> headerParams = new ArrayList<>();
         List<CodegenParameter> cookieParams = new ArrayList<>();
@@ -4669,6 +4670,9 @@ public class DefaultCodegen implements CodegenConfig {
                     queryParams.add(p.copy());
                 } else if (param instanceof PathParameter || "path".equalsIgnoreCase(param.getIn())) {
                     pathParams.add(p.copy());
+                    if (param.getRequired()) {
+                        requiredPathParams.add(p.copy());
+                    }
                 } else if (param instanceof HeaderParameter || "header".equalsIgnoreCase(param.getIn())) {
                     headerParams.add(p.copy());
                 } else if (param instanceof CookieParameter || "cookie".equalsIgnoreCase(param.getIn())) {
@@ -4756,6 +4760,7 @@ public class DefaultCodegen implements CodegenConfig {
         op.flattenedParamsFromRequestBodyProperties = flattenedParamsFromRequestBodyProperties;
         op.bodyParams = bodyParams;
         op.pathParams = pathParams;
+        op.requiredPathParams = requiredPathParams;
         op.queryParams = queryParams;
         op.headerParams = headerParams;
         op.cookieParams = cookieParams;
@@ -7728,6 +7733,8 @@ public class DefaultCodegen implements CodegenConfig {
         return codegenParameter;
     }
 
+    // Checks if Schema is composed (e.g. anyOf/oneOf/allOf) and includes an object type schema
+    //
     // Dylan: This was created because Humanloop has an operation "Logs_log" with a request body that is
     // anyOf[array, object]. We want to know whether anyOf includes an Object so we can make the "body" parameter
     // optional. By default the "body" parameter is required if the schema is not an object type schema. But in this

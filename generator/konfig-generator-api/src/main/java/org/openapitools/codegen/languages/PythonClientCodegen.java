@@ -2179,7 +2179,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
                 }
                 addPropsExample = exampleFromStringOrArraySchema(addPropsSchema, addPropsExample, key, false);
                 String addPropPrefix = key + "=";
-                if (schema instanceof MapSchema) {
+                if (modelName == null || schema instanceof MapSchema) {
                     addPropPrefix = ensureQuotes(key) + ": ";
                 }
                 String addPropsModelName = getModelName(addPropsSchema);

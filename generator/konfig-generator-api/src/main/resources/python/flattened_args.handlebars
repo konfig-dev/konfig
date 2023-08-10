@@ -4,7 +4,13 @@
     {{/each}}
 {{else}}
     {{#each requiredParamsWithRequestBodyProperties}}
+{{#unless skipRequiredPathParams}}
 {{paramName}}: {{dataType}},
+{{else}}
+    {{#unless isPathParam}}
+{{paramName}}: {{dataType}},
+    {{/unless}}
+{{/unless}}
     {{/each}}
     {{#each optionalParamsWithRequestBodyProperties}}
 {{paramName}}: typing.Optional[{{dataType}}] = None,

@@ -27,9 +27,12 @@
             {{#if bodyParam.required}}
                 {{!-- reference: 3964bce6904246ad8e95118225e94883 --}}
                 {{#if bodyParam.isComposedObject}}
+                    {{#if interface}}
+    {{> required_path_args}}
+                    {{/if}}
     {{> body_arg isOptional=true}}
                     {{#if interface}}
-    {{> flattened_args allOptional=false}}
+    {{> flattened_args allOptional=false skipRequiredPathParams=true}}
                     {{/if}}
                 {{else}}
     {{> body_arg isOptional=false}}
