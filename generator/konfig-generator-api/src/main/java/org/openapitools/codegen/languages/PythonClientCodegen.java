@@ -1850,16 +1850,16 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
     /***
      * Recursively generates string examples for schemas
      *
-     * @param modelName the string name of the refed model that will be generated for the schema or null
+     * @param modelName the string name of the ref'd model that will be generated for the schema or null
      * @param schema the schema that we need an example for
      * @param objExample the example that applies to this schema, for now only string example are used
      * @param indentationLevel integer indentation level that we are currently at
-     *                         we assume the indentaion amount is 4 spaces times this integer
+     *                         we assume the indentation amount is 4 spaces times this integer
      * @param prefix the string prefix that we will use when assigning an example for this line
      *               this is used when setting key: value, pairs "key: " is the prefix
      *               and this is used when setting properties like some_property='some_property_example'
-     * @param exampleLine this is the current line that we are generatign an example for, starts at 0
-     *                    we don't indentin the 0th line because using the example value looks like:
+     * @param exampleLine this is the current line that we are generating an example for, starts at 0
+     *                    we don't indent the 0th line because using the example value looks like:
      *                    prop = ModelName( line 0
      *                        some_property='some_property_example' line 1
      *                    ) line 2
@@ -2179,7 +2179,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
                 }
                 addPropsExample = exampleFromStringOrArraySchema(addPropsSchema, addPropsExample, key, false);
                 String addPropPrefix = key + "=";
-                if (modelName == null) {
+                if (schema instanceof MapSchema) {
                     addPropPrefix = ensureQuotes(key) + ": ";
                 }
                 String addPropsModelName = getModelName(addPropsSchema);
