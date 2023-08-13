@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.1.5
+
+### Patch Changes
+
+- bb4c6c7d: add description to useSecurityKeyParamNameAsPropertyName
+
 ## 1.1.4
 
 ### Patch Changes
