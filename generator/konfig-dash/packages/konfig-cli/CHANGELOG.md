@@ -1,5 +1,14 @@
 # konfig-cli
 
+## 1.0.247
+
+### Patch Changes
+
+- Updated dependencies [541aded4]
+  - konfig-lib@1.1.3
+  - konfig-openapi-spec@1.0.128
+  - konfig-postman-to-openapi@3.0.106
+
 ## 1.0.246
 
 ### Patch Changes

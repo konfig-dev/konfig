@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.1.3
+
+### Patch Changes
+
+- 541aded4: add description to artifactId of Java SDK config
+
 ## 1.1.2
 
 ### Patch Changes
