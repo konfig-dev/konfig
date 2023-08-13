@@ -1,5 +1,15 @@
 # konfig-cli
 
+## 1.0.249
+
+### Patch Changes
+
+- af4f33fc: add warning if update is available
+- Updated dependencies [bb4c6c7d]
+  - konfig-lib@1.1.5
+  - konfig-openapi-spec@1.0.130
+  - konfig-postman-to-openapi@3.0.108
+
 ## 1.0.248
 
 ### Patch Changes

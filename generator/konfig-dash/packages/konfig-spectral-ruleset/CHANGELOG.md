@@ -1,5 +1,12 @@
 # konfig-spectral-ruleset
 
+## 1.1.136
+
+### Patch Changes
+
+- Updated dependencies [bb4c6c7d]
+  - konfig-lib@1.1.5
+
 ## 1.1.135
 
 ### Patch Changes
