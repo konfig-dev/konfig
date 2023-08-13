@@ -1,5 +1,15 @@
 # konfig-cli
 
+## 1.0.248
+
+### Patch Changes
+
+- 0ec9bfad: add description for npmName
+- Updated dependencies [c833b8d1]
+  - konfig-lib@1.1.4
+  - konfig-openapi-spec@1.0.129
+  - konfig-postman-to-openapi@3.0.107
+
 ## 1.0.247
 
 ### Patch Changes

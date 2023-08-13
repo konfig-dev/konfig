@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.1.4
+
+### Patch Changes
+
+- c833b8d1: add description for npmName
+
 ## 1.1.3
 
 ### Patch Changes
