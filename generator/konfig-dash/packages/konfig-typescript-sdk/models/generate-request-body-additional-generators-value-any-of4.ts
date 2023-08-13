@@ -142,6 +142,12 @@ export interface GenerateRequestBodyAdditionalGeneratorsValueAnyOf4 {
      */
     'language': GenerateRequestBodyAdditionalGeneratorsValueAnyOf4LanguageEnum;
     /**
+     * A map of scripts to add to the generated package.json. This is useful for adding custom scripts that run tests or build the SDK.
+     * @type {{ [key: string]: string; }}
+     * @memberof GenerateRequestBodyAdditionalGeneratorsValueAnyOf4
+     */
+    'packageJsonScripts'?: { [key: string]: string; };
+    /**
      * 
      * @type {string}
      * @memberof GenerateRequestBodyAdditionalGeneratorsValueAnyOf4

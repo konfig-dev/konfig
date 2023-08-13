@@ -136,6 +136,12 @@ export interface GenerateRequestBodyGeneratorsTypescript {
      */
     'language': GenerateRequestBodyGeneratorsTypescriptLanguageEnum;
     /**
+     * A map of scripts to add to the generated package.json. This is useful for adding custom scripts that run tests or build the SDK.
+     * @type {{ [key: string]: string; }}
+     * @memberof GenerateRequestBodyGeneratorsTypescript
+     */
+    'packageJsonScripts'?: { [key: string]: string; };
+    /**
      * 
      * @type {string}
      * @memberof GenerateRequestBodyGeneratorsTypescript

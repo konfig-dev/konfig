@@ -1,4 +1,4 @@
-# konfig-typescript-sdk@1.2.0
+# konfig-typescript-sdk@1.3.0
 
 To help you generate SDKs with Konfig
 ## Installing

@@ -1744,6 +1744,17 @@ async function copyTypeScriptOutput({
       fs.writeFileSync(path.join(outputDirectory, '.npmrc'), npmrc)
     }
 
+    // add packageJsonScripts to generated package.json file if exists
+    if (typescript.packageJsonScripts !== undefined) {
+      const packageJsonPath = path.join(outputDirectory, 'package.json')
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
+      Object.assign(packageJson.scripts, typescript.packageJsonScripts)
+      fs.writeFileSync(
+        packageJsonPath,
+        JSON.stringify(packageJson, undefined, 2)
+      )
+    }
+
     CliUx.ux.action.stop()
   }
 }

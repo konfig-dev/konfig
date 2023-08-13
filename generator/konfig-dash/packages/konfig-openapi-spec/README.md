@@ -2,7 +2,7 @@
 
 |Language|Version|Package Manager|Documentation|Source|
 |-|-|-|-|-|
-|TypeScript|1.2.0|[npm](https://www.npmjs.com/package/konfig-typescript-sdk/v/1.2.0)|[Documentation](https://github.com/konfig-dev/konfig-typescript-sdk/README.md)|[Source](https://github.com/konfig-dev/konfig-typescript-sdk)|
+|TypeScript|1.3.0|[npm](https://www.npmjs.com/package/konfig-typescript-sdk/v/1.3.0)|[Documentation](https://github.com/konfig-dev/konfig-typescript-sdk/README.md)|[Source](https://github.com/konfig-dev/konfig-typescript-sdk)|
 
 
 ## How to regenerate SDKs

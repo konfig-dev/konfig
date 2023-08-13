@@ -2,5 +2,5 @@
 
 | SDK Name | Lines of Code |
 | -------- | ------------- |
-| typescript | 6984 |
-| **Total** | 6984 |
+| typescript | 6996 |
+| **Total** | 6996 |

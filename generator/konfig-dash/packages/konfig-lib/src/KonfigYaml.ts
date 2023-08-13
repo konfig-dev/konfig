@@ -222,6 +222,12 @@ export type RemoveRequiredProperties = z.infer<
 export const typescriptConfig = z.object({
   useDescriptionInOperationTableDocumentation,
   language: z.literal('typescript').default('typescript'),
+  packageJsonScripts: z
+    .record(z.string(), z.string())
+    .optional()
+    .describe(
+      'A map of scripts to add to the generated package.json. This is useful for adding custom scripts that run tests or build the SDK.'
+    ),
   clientName: z.string(),
   npmName: z.string().describe('acme-typescript-sdk'),
   pagination: paginationConfigSchema.optional(),
