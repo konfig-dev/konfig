@@ -1,0 +1,13 @@
+diff --git a/dist/read.cjs.dev.js b/dist/read.cjs.dev.js
+index e8bd37f3c23d27174ed404430bd821a1c40677d3..40be7cdb886dce2646dd45389df72d4901716147 100644
+--- a/dist/read.cjs.dev.js
++++ b/dist/read.cjs.dev.js
+@@ -108,7 +108,7 @@ async function filterChangesetsSinceRef(changesets, changesetBase, sinceRef) {
+     cwd: changesetBase,
+     ref: sinceRef
+   });
+-  const newHashes = newChangesets.map(c => c.split("/")[1]);
++  const newHashes = newChangesets.map(c => path.basename(c));
+   return changesets.filter(dir => newHashes.includes(dir));
+ }
+ 
