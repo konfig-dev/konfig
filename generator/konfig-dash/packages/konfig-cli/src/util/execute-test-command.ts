@@ -7,6 +7,8 @@ import {
   TestConfig,
   KonfigYamlAdditionalGeneratorConfig,
 } from 'konfig-lib'
+import waiton from 'wait-on'
+import kill from 'kill-port'
 import path from 'path'
 import { parseKonfigYaml } from './parse-konfig-yaml'
 import { parseFilterFlag } from './parseFilterFlag'
@@ -35,6 +37,47 @@ export async function executeTestCommand({
   const { generators, common, additionalGenerators } = parseKonfigYaml({
     configDir,
   })
+
+  // kill any existing process on 4010
+  const port = 4010
+  CliUx.ux.log(`Killing any process using port ${port}`)
+  await kill(port)
+
+  // spawn process that run "konfig mock -d {specPath}" from konfig.yaml
+  CliUx.ux.log('💻 Starting mock server')
+  const mockServer = execa.command(`konfig mock -d ${common.specPath}`, {
+    cwd: configDir,
+    stdio: 'inherit',
+    shell: true,
+  })
+
+  // if this process exits in any way, kill the mock server
+  process.on('exit', () => {
+    mockServer.kill()
+  })
+  process.on('SIGINT', () => {
+    mockServer.kill()
+  })
+  process.on('SIGTERM', () => {
+    mockServer.kill()
+  })
+  process.on('SIGUSR1', () => {
+    mockServer.kill()
+  })
+  process.on('SIGUSR2', () => {
+    mockServer.kill()
+  })
+
+  await waiton({
+    resources: [`http://127.0.0.1:${port}`],
+    timeout: 60_000,
+    validateStatus: (status) => {
+      console.log(status)
+      return status === 405 || status === 200
+    },
+  })
+  CliUx.ux.log('✅ Started mock server')
+
   validateRequiredEnvironmentVariables(common)
   const results: {
     generatorName: string
@@ -135,6 +178,8 @@ export async function executeTestCommand({
 
   // If we made it here then we successfully ran all tests
   CliUx.ux.info('Successfully ran all tests!')
+
+  mockServer.kill()
 }
 
 const defaultTestScripts: Record<
