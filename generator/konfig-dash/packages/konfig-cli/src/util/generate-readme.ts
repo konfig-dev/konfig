@@ -160,7 +160,10 @@ export function getPublishedPackageUrl({
       config = konfigYaml.generators.python
       if (config === undefined) throw Error('Config undefined')
       return {
-        url: `https://pypi.org/project/${config.projectName}/${config.version}`,
+        url: generatePyPiPackageUrl({
+          packageName: config.projectName,
+          version: config.version,
+        }),
         packageManagerName: 'PyPI',
       }
     case 'typescript':
@@ -210,6 +213,16 @@ export function getPublishedPackageUrl({
       }
   }
   throw Error(`Unexpected generator name: ${generatorName}`)
+}
+
+export function generatePyPiPackageUrl({
+  packageName,
+  version,
+}: {
+  packageName: string
+  version: string
+}) {
+  return `https://pypi.org/project/${packageName}/${version}`
 }
 
 export function generateNpmVersion({ version }: { version: string }) {

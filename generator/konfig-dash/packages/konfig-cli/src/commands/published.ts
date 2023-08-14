@@ -1,4 +1,4 @@
-import { Command } from '@oclif/core'
+import { Command, Flags } from '@oclif/core'
 import axios from 'axios'
 import { parseKonfigYaml } from '../util/parse-konfig-yaml'
 import z from 'zod'
@@ -6,13 +6,10 @@ import { table } from 'table'
 import {
   generateNpmPackageUrl,
   generateNpmVersion,
+  generatePyPiPackageUrl,
   generatorNameAsDisplayName,
 } from '../util/generate-readme'
 import semver from 'semver'
-
-const pypiPackageSchema = z.object({
-  releases: z.record(z.object({}).array()),
-})
 
 const npmPackageSchema = z.object({
   name: z.string(),
@@ -41,12 +38,20 @@ export default class Published extends Command {
 
   static examples = ['<%= config.bin %> <%= command.id %>']
 
-  static flags = {}
+  static flags = {
+    limit: Flags.integer({
+      default: 5,
+      name: 'limit',
+      char: 'l',
+    }),
+  }
 
   static args = []
 
   public async run(): Promise<void> {
-    await this.parse(Published)
+    const {
+      flags: { limit },
+    } = await this.parse(Published)
     const { allGenerators } = parseKonfigYaml({
       configDir: process.cwd(),
     })
@@ -57,11 +62,9 @@ export default class Published extends Command {
         const metadata = npmPackageSchema.parse(
           (await axios.get(`https://registry.npmjs.org/${config.npmName}`)).data
         )
-        const versionsOrdered = Object.keys(metadata.versions).sort(
-          semver.rcompare
-        )
+        const versionsOrdered = sortVersions(Object.keys(metadata.versions))
 
-        for (let index = 0; index < 5; index++) {
+        for (let index = 0; index < limit; index++) {
           const version = versionsOrdered[index]
           packages.push({
             displayName: generatorNameAsDisplayName({
@@ -78,7 +81,25 @@ export default class Published extends Command {
           })
         }
       } else if (config.language === 'python') {
-        config.projectName
+        const versions = sortVersions(
+          await getPyPiPackageVersions(config.projectName)
+        )
+        for (let index = 0; index < limit; index++) {
+          const version = versions[index]
+          packages.push({
+            displayName: generatorNameAsDisplayName({
+              generatorConfig: config,
+            }),
+            generator: name,
+            packageName: config.projectName,
+            registryName: 'PyPi',
+            packageUrl: generatePyPiPackageUrl({
+              packageName: config.projectName,
+              version,
+            }),
+            version,
+          })
+        }
       }
     }
 
@@ -106,4 +127,36 @@ export default class Published extends Command {
       )
     }
   }
+}
+
+async function getPyPiPackageVersions(packageName: string) {
+  try {
+    const url = `https://pypi.org/pypi/${packageName}/json`
+    const response = await axios.get(url)
+
+    if (response.status === 200 && response.data && response.data.releases) {
+      return Object.keys(response.data.releases)
+    } else {
+      console.error(`Failed to retrieve versions for ${packageName}.`)
+      return []
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(`An error occurred: ${error.message}`)
+    }
+    return []
+  }
+}
+
+function sortVersions(versions: string[]) {
+  return versions.sort((a, b) =>
+    semver.rcompare(extractSemver(a), extractSemver(b))
+  )
+}
+
+function extractSemver(version: string) {
+  const semver = version.match(/^(\d+\.\d+\.\d+)/)?.[1]
+  if (semver === undefined)
+    throw Error(`Could not extract semantic version from ${version}`)
+  return semver
 }
