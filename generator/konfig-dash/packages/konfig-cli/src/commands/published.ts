@@ -18,6 +18,7 @@ const npmPackageSchema = z.object({
       name: z.string(),
       version: z.string(),
       description: z.string(),
+      deprecated: z.string().optional(),
     })
   ),
 })
@@ -64,21 +65,25 @@ export default class Published extends Command {
         )
         const versionsOrdered = sortVersions(Object.keys(metadata.versions))
 
-        for (let index = 0; index < limit; index++) {
+        let index = 0
+        while (packages.length < limit || index >= packages.length) {
           const version = versionsOrdered[index]
-          packages.push({
-            displayName: generatorNameAsDisplayName({
-              generatorConfig: config,
-            }),
-            generator: name,
-            packageName: metadata.name,
-            registryName: 'npm',
-            packageUrl: generateNpmPackageUrl({
-              npmName: metadata.name,
-              version: generateNpmVersion({ version }),
-            }),
-            version,
-          })
+          if (metadata.versions[version].deprecated === undefined) {
+            packages.push({
+              displayName: generatorNameAsDisplayName({
+                generatorConfig: config,
+              }),
+              generator: name,
+              packageName: metadata.name,
+              registryName: 'npm',
+              packageUrl: generateNpmPackageUrl({
+                npmName: metadata.name,
+                version: generateNpmVersion({ version }),
+              }),
+              version,
+            })
+          }
+          index++
         }
       } else if (config.language === 'python') {
         const versions = sortVersions(
