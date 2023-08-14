@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.2.0
+
+### Minor Changes
+
+- [#113](https://github.com/konfig-dev/konfig/pull/113) [`29864036`](https://github.com/konfig-dev/konfig/commit/29864036e04a6e2cdc393e83ca189b7d09bc8323) Thanks [@dphuang2](https://github.com/dphuang2)! - add description to gemName
+
 ## 1.1.6
 
 ### Patch Changes
