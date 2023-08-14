@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.2.0
+
+### Minor Changes
+
+- [#110](https://github.com/konfig-dev/konfig/pull/110) [`af14940f`](https://github.com/konfig-dev/konfig/commit/af14940fa215d60666a202511d35c1a7b56631e2) Thanks [@dphuang2](https://github.com/dphuang2)! - handle additional generators in "konfig bump"
+
 ## 1.1.0
 
 ### Minor Changes
