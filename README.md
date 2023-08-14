@@ -60,3 +60,7 @@ Then create `~/.envvars` with values from Dylan.
 
 1. Start `generator/konfig-generator-api` w/ IntelliJ
 1. `cd` into an SDK repo and run `konfig generate -d`
+
+## Making Changes
+
+See [Changesets](https://github.com/changesets/changesets)
