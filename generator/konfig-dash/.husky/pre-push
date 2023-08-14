@@ -5,6 +5,7 @@
 cd generator/konfig-dash
 
 # This hook is run before git push to wake up the changeset bot
+echo "Sending HTTP GET request to changeset bot..."
 while read local_ref local_sha remote_ref remote_sha
 do
     branch_name=$(echo $remote_ref | sed -E 's/^refs\/heads\///')
@@ -16,6 +17,7 @@ do
         }
     fi
 done
+echo "Done."
 
 # if NO_RELEASE is set, skip this hook
 if [ -n "$NO_RELEASE" ]; then
