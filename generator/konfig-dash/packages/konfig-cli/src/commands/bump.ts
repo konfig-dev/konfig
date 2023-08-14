@@ -1,6 +1,5 @@
 import { CliUx, Command, Flags } from '@oclif/core'
 import { parseKonfigYaml } from '../util/parse-konfig-yaml'
-import incrementVersion from 'semver/functions/inc'
 import {
   getPackageVersion,
   KonfigYamlType,
@@ -11,6 +10,7 @@ import * as fs from 'fs-extra'
 import { parseFilterFlag } from '../util/parseFilterFlag'
 import { generateKonfigYamlString } from '../util/generate-konfig-yaml-string'
 import { detectReleaseType } from '../util/detect-release-type'
+import { incrementVersionWithPreservedTag } from '../util/increment-version-with-preserved-tag'
 
 export default class Bump extends Command {
   static description =
@@ -57,13 +57,17 @@ export default class Bump extends Command {
       CliUx.ux.info(`Performing ${releaseType} bump of ${filter.join(', ')}`)
     else CliUx.ux.info(`Performing "${releaseType}" bump`)
 
-    for (const [generatorName, generatorConfig] of Object.entries(
-      loadedKonfigYaml.generators
-    )) {
+    for (const [generatorName, generatorConfig] of [
+      ...Object.entries(loadedKonfigYaml.generators),
+      ...Object.entries(loadedKonfigYaml.additionalGenerators ?? []),
+    ]) {
       if (filter !== null && !filter.includes(generatorName)) continue
       if ('disabled' in generatorConfig && generatorConfig.disabled) continue
       const currentVersion = getPackageVersion({ generatorConfig })
-      const newVersion = incrementVersion(currentVersion, releaseType)
+      const newVersion = incrementVersionWithPreservedTag(
+        currentVersion,
+        releaseType
+      )
       CliUx.ux.info(
         `Bumping ${generatorName} SDK from ${currentVersion} --> ${newVersion}`
       )
