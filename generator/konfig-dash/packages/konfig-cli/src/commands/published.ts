@@ -10,6 +10,10 @@ import {
 } from '../util/generate-readme'
 import semver from 'semver'
 
+const pypiPackageSchema = z.object({
+  releases: z.record(z.object({}).array()),
+})
+
 const npmPackageSchema = z.object({
   name: z.string(),
   versions: z.record(
