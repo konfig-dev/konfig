@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.4.0
+
+### Minor Changes
+
+- [#115](https://github.com/konfig-dev/konfig/pull/115) [`bcac735e`](https://github.com/konfig-dev/konfig/commit/bcac735e66deca7a8e549d6cff1e175b5cb977a9) Thanks [@dphuang2](https://github.com/dphuang2)! - filter deprecated packages for npm in "konfig published"
+
 ## 1.3.0
 
 ### Minor Changes
