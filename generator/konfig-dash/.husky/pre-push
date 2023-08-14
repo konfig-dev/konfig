@@ -1,7 +1,10 @@
 #!/usr/bin/env sh
-
 . "$(dirname -- "$0")/_/husky.sh"
+. "$(dirname -- "$0")/common.sh"
 
+cd generator/konfig-dash
+
+# This hook is run before git push to wake up the changeset bot
 while read local_ref local_sha remote_ref remote_sha
 do
     branch_name=$(echo $remote_ref | sed -E 's/^refs\/heads\///')
@@ -12,3 +15,18 @@ do
         }
     fi
 done
+
+# if NO_RELEASE is set, skip this hook
+if [ -n "$NO_RELEASE" ]; then
+  exit 0
+fi
+
+# run "yarn changeset status --since=main" but don't exit if fails, instead capture the exit code in a variable
+yarn changeset status --since=main || exit_code=$?
+
+# If last exit code is not 0, print a message saying that you can also prefix your commit with NO_RELEASE=1 to skip this hook
+if [ "$exit_code" -ne 0 ]; then
+  # add a little warning sign in a red bordered box
+  echo "\033[0;31m WARNING: You can also prefix your commit with NO_RELEASE=1 if this change doesn't need a release \033[0m"
+  exit 1
+fi

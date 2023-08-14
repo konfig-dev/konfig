@@ -76,7 +76,11 @@ export const rubyConfig = z.object({
   language: z.literal('ruby').default('ruby'),
 
   moduleName: z.string(),
-  gemName: z.string(),
+  gemName: z
+    .string()
+    .describe(
+      'The name of the gem on rubygems.org (e.g. https://rubygems.org/gems/GEM_NAME)'
+    ),
   clientState,
   clientStateWithExamples,
 })
