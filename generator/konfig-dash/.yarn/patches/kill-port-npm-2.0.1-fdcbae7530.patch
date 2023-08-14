@@ -1,0 +1,13 @@
+diff --git a/index.js b/index.js
+index 584168b6babd4e8eb307a981c11678faabb4fb8b..6f312a5b8e41d4bb95156b5c5585297e0e686cac 100644
+--- a/index.js
++++ b/index.js
+@@ -31,7 +31,7 @@ module.exports = function (port, method = 'tcp') {
+       })
+   }
+ 
+-  return sh('lsof -i -P')
++  return sh(`lsof -i:${port} -P`)
+     .then(res => {
+       const { stdout } = res
+       if (!stdout) return res
