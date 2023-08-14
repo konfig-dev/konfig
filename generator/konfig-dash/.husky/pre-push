@@ -29,6 +29,10 @@ yarn changeset status --since=main || exit_code=$?
 
 # If last exit code is not 0, print a message saying that you can also prefix your commit with NO_RELEASE=1 to skip this hook
 if [ $exit_code -ne 0 ]; then
+  # add directions to cd into "generator/konfig-dash" and run "yarn changeset" to add a changeset
+  echo "\033[0;31m ERROR: You need to add a changeset before pushing. \033[0m"
+  echo "\033[0;31m ERROR: Run 'cd generator/konfig-dash && yarn changeset' to add a changeset. \033[0m"
+
   # add a little warning sign in a red bordered box
   echo "\033[0;31m WARNING: You can also prefix your commit with NO_RELEASE=1 if this change doesn't need a release \033[0m"
   exit 1
