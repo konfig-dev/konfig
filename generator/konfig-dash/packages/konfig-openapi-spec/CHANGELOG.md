@@ -1,5 +1,12 @@
 # konfig-openapi-spec
 
+## 1.0.131
+
+### Patch Changes
+
+- Updated dependencies [7f3a6349]
+  - konfig-lib@1.1.6
+
 ## 1.0.130
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.1.6
+
+### Patch Changes
+
+- 7f3a6349: add description for filterModels field
+
 ## 1.1.5
 
 ### Patch Changes
