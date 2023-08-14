@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.0.251
+
+### Patch Changes
+
+- 244817ff: reduce timeout for checking updates to 30 minutes
+
 ## 1.0.250
 
 ### Patch Changes
