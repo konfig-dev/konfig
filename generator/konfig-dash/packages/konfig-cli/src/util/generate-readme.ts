@@ -215,7 +215,7 @@ export function getPublishedPackageUrl({
 export function generateNpmVersion({ version }: { version: string }) {
   // 0.4.0a1 gets converted to 0.4.0-a1 on npm
   // this edge case was surfaced when publishing for humanloop
-  if (version.includes('a')) return version.replace(/a/, '-a')
+  if (/^\d+\.\d+\.\d+a/.test(version)) return version.replace(/a/, '-a')
   return version
 }
 
