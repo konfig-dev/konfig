@@ -17,7 +17,7 @@
     "changeset:version": "./bash-scripts/changeset-version.sh",
     "changeset:publish": "./bash-scripts/changeset-publish.sh",
     "release": "./bash-scripts/release.sh",
-    "postinstall": "cd ../../ && husky install generator/konfig-dash/.husky"
+    "postinstall": "is-ci || cd ../../ && husky install generator/konfig-dash/.husky"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
@@ -25,6 +25,7 @@
     "@redwoodjs/core": "^3.3.1",
     "@types/wait-on": "^5.3.1",
     "husky": "^8.0.0",
+    "is-ci": "^3.0.1",
     "wait-on": "^7.0.1"
   },
   "eslintConfig": {
