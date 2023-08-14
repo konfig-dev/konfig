@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.1.0
+
+### Minor Changes
+
+- [#108](https://github.com/konfig-dev/konfig/pull/108) [`a2edaaa4`](https://github.com/konfig-dev/konfig/commit/a2edaaa428db01a65586db277970c35bac09ba24) Thanks [@dphuang2](https://github.com/dphuang2)! - fix invalid URL in "konfig published" + improve formatting
+
+- [#108](https://github.com/konfig-dev/konfig/pull/108) [`a2edaaa4`](https://github.com/konfig-dev/konfig/commit/a2edaaa428db01a65586db277970c35bac09ba24) Thanks [@dphuang2](https://github.com/dphuang2)! - adds "konfig published" to CLI to query published packages
+
 ## 1.0.251
 
 ### Patch Changes
