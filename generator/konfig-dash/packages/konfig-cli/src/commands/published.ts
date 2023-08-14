@@ -2,10 +2,13 @@ import { Command } from '@oclif/core'
 import axios from 'axios'
 import { parseKonfigYaml } from '../util/parse-konfig-yaml'
 import z from 'zod'
-import { getPublishedPackageUrl } from '../util/generate-readme'
+import { table } from 'table'
+import {
+  generateNpmPackageUrl,
+  generateNpmVersion,
+  generatorNameAsDisplayName,
+} from '../util/generate-readme'
 import semver from 'semver'
-import { Transform } from 'stream'
-import { Console } from 'console'
 
 const npmPackageSchema = z.object({
   name: z.string(),
@@ -20,47 +23,14 @@ const npmPackageSchema = z.object({
 
 const packageSchema = z.object({
   generator: z.string(),
+  displayName: z.string(),
   registryName: z.string(),
   packageName: z.string(),
   packageUrl: z.string(),
-  versions: z
-    .object({
-      name: z.string(),
-      version: z.string(),
-      description: z.string(),
-    })
-    .array(),
+  version: z.string(),
 })
 
 type Package = z.infer<typeof packageSchema>
-
-class TableRow {
-  generatorName: string
-  registryName: string
-  packageName: string
-  packageUrl: string
-  version: string
-
-  constructor({
-    generatorName,
-    registryName,
-    packageName,
-    packageUrl,
-    version,
-  }: {
-    generatorName: string
-    registryName: string
-    packageName: string
-    packageUrl: string
-    version: string
-  }) {
-    this.generatorName = generatorName
-    this.registryName = registryName
-    this.packageName = packageName
-    this.packageUrl = packageUrl
-    this.version = version
-  }
-}
 
 export default class Published extends Command {
   static description = 'Queries public package managers for published packages'
@@ -73,7 +43,7 @@ export default class Published extends Command {
 
   public async run(): Promise<void> {
     await this.parse(Published)
-    const { allGenerators, parsedKonfigYaml } = parseKonfigYaml({
+    const { allGenerators } = parseKonfigYaml({
       configDir: process.cwd(),
     })
 
@@ -86,56 +56,50 @@ export default class Published extends Command {
         const versionsOrdered = Object.keys(metadata.versions).sort(
           semver.rcompare
         )
-        packages.push({
-          generator: name,
-          packageName: metadata.name,
-          registryName: 'npm',
-          packageUrl: getPublishedPackageUrl({
-            generatorName: config.language,
-            generatorConfig: config,
-            konfigYaml: parsedKonfigYaml,
-          }).url,
-          versions: versionsOrdered.map(
-            (version) => metadata.versions[version]
-          ),
-        })
+
+        for (let index = 0; index < 5; index++) {
+          const version = versionsOrdered[index]
+          packages.push({
+            displayName: generatorNameAsDisplayName({
+              generatorConfig: config,
+            }),
+            generator: name,
+            packageName: metadata.name,
+            registryName: 'npm',
+            packageUrl: generateNpmPackageUrl({
+              npmName: metadata.name,
+              version: generateNpmVersion({ version }),
+            }),
+            version,
+          })
+        }
       } else if (config.language === 'python') {
         config.projectName
       }
     }
 
-    const rows = packages.map((pkg) => {
-      return new TableRow({
-        generatorName: pkg.generator,
-        registryName: pkg.registryName,
-        packageName: pkg.packageName,
-        packageUrl: pkg.packageUrl,
-        version: pkg.versions[0].version,
-      })
-    })
+    const rows = packages.reduce((acc, pkg) => {
+      const key = pkg.displayName
+      if (!acc[key]) acc[key] = []
+      acc[key].push([
+        pkg.packageName,
+        pkg.registryName,
+        pkg.packageUrl,
+        pkg.version,
+      ])
+      return acc
+    }, {} as Record<string, string[][]>)
 
-    printTable(rows)
+    for (const generator in rows) {
+      const packages = rows[generator]
+      console.log(
+        table([['NAME', 'REGISTRY', 'URL', 'VERSION'], ...packages], {
+          header: {
+            content: generator,
+            alignment: 'center',
+          },
+        })
+      )
+    }
   }
-}
-
-function printTable(input: any[]) {
-  // @see https://stackoverflow.com/a/67859384
-  const ts = new Transform({
-    transform(chunk, enc, cb) {
-      cb(null, chunk)
-    },
-  })
-  const logger = new Console({ stdout: ts })
-  logger.table(input)
-  const table = (ts.read() || '').toString()
-  let result = ''
-  for (let row of table.split(/[\r\n]+/)) {
-    let r = row.replace(/[^┬]*┬/, '┌')
-    r = r.replace(/^├─*┼/, '├')
-    r = r.replace(/│[^│]*/, '')
-    r = r.replace(/^└─*┴/, '└')
-    r = r.replace(/'/g, ' ')
-    result += `${r}\n`
-  }
-  console.log(result)
 }

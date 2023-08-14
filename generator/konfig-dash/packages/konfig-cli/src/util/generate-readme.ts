@@ -166,11 +166,7 @@ export function getPublishedPackageUrl({
     case 'typescript':
       config = konfigYaml.generators.typescript
       if (config === undefined) throw Error('Config undefined')
-      let version = config.version
-
-      // 0.4.0a1 gets converted to 0.4.0-a1 on npm
-      // this edge case was surfaced when publishing for humanloop
-      if (version.includes('a')) version = version.replace(/a/, '-a')
+      let version = generateNpmVersion({ version: config.version })
 
       // We have to use "generatorConfig" to support "additionalGenerators"
       if ('gitlab' in generatorConfig && generatorConfig.gitlab !== undefined)
@@ -180,7 +176,7 @@ export function getPublishedPackageUrl({
         }
 
       return {
-        url: `https://www.npmjs.com/package/${config.npmName}/v/${version}`,
+        url: generateNpmPackageUrl({ npmName: config.npmName, version }),
         packageManagerName: 'npm',
       }
     case 'kotlin':
@@ -214,6 +210,23 @@ export function getPublishedPackageUrl({
       }
   }
   throw Error(`Unexpected generator name: ${generatorName}`)
+}
+
+export function generateNpmVersion({ version }: { version: string }) {
+  // 0.4.0a1 gets converted to 0.4.0-a1 on npm
+  // this edge case was surfaced when publishing for humanloop
+  if (version.includes('a')) return version.replace(/a/, '-a')
+  return version
+}
+
+export function generateNpmPackageUrl({
+  npmName,
+  version,
+}: {
+  npmName: string
+  version: string
+}) {
+  return `https://www.npmjs.com/package/${npmName}/v/${version}`
 }
 
 export function generatorNameAsDisplayName({
