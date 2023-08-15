@@ -41,31 +41,37 @@ export async function executeTestCommand({
   // kill any existing process on 4010
   const port = 4010
   CliUx.ux.log(`Killing any process using port ${port}`)
-  await kill(port)
+  try {
+    await kill(port)
+  } catch (e) {
+    if (e instanceof Error) {
+      if (e.message !== 'No process running on port') throw e
+    }
+  }
 
   // spawn process that run "konfig mock -d {specPath}" from konfig.yaml
   CliUx.ux.log('💻 Starting mock server')
-  const mockServer = execa.command(`konfig mock -d ${common.specPath}`, {
+  execa.command(`konfig mock -d ${common.specPath}`, {
     cwd: configDir,
     stdio: 'inherit',
     shell: true,
   })
 
   // if this process exits in any way, kill the mock server
-  process.on('exit', () => {
-    mockServer.kill()
+  process.on('exit', async () => {
+    await kill(port)
   })
-  process.on('SIGINT', () => {
-    mockServer.kill()
+  process.on('SIGINT', async () => {
+    await kill(port)
   })
-  process.on('SIGTERM', () => {
-    mockServer.kill()
+  process.on('SIGTERM', async () => {
+    await kill(port)
   })
-  process.on('SIGUSR1', () => {
-    mockServer.kill()
+  process.on('SIGUSR1', async () => {
+    await kill(port)
   })
-  process.on('SIGUSR2', () => {
-    mockServer.kill()
+  process.on('SIGUSR2', async () => {
+    await kill(port)
   })
 
   await waiton({
@@ -179,7 +185,7 @@ export async function executeTestCommand({
   // If we made it here then we successfully ran all tests
   CliUx.ux.info('Successfully ran all tests!')
 
-  mockServer.kill()
+  await kill(port)
 }
 
 const defaultTestScripts: Record<
