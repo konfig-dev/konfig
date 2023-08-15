@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.5.0
+
+### Minor Changes
+
+- [#117](https://github.com/konfig-dev/konfig/pull/117) [`453424f1`](https://github.com/konfig-dev/konfig/commit/453424f1077e9a46aa0fc41a9ef1d8727586f64d) Thanks [@dphuang2](https://github.com/dphuang2)! - fix killing of mock server in testing
+
 ## 1.4.0
 
 ### Minor Changes
