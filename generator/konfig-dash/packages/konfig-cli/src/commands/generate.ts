@@ -1,6 +1,7 @@
 /* eslint-disable complexity */
 import { CliUx, Command, Flags } from '@oclif/core'
 import { getSessionToken } from '../util/get-session-token'
+import { executeFixCommand } from '../util/execute-fix-command'
 import waiton from 'wait-on'
 import {
   GenerateRequestBodyInputType,
@@ -190,6 +191,15 @@ export default class Deploy extends Command {
           `${yamlLanguageServerComment}${os.EOL}${os.EOL}${konfigYamlRaw}`
         )
       this.debug('after parseKonfigYaml')
+
+      // if specInputPath is defined then run executeFixCommand automatically
+      if (parsedKonfigYaml.specInputPath !== undefined) {
+        await executeFixCommand({
+          spec: parsedKonfigYaml.specPath,
+          specInputPath: parsedKonfigYaml.specInputPath,
+        })
+      }
+
       const inputSpecPath = path.join(
         configDir,
         flags.inputSpec ?? common.specPath
