@@ -88,7 +88,8 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "List of model names to filter out. This is useful if you don't want to generate a model for a specific schema."
         },
         "filterRequestBodies": {
           "type": "array",
@@ -361,7 +362,7 @@
                 },
                 "artifactId": {
                   "type": "string",
-                  "description": "acme-java-sdk"
+                  "description": "Example: \"acme-java-sdk\" (see https://maven.apache.org/guides/mini/guide-naming-conventions.html)"
                 },
                 "removeKonfigBranding": {
                   "type": "boolean"
@@ -547,7 +548,8 @@
                   "type": "string"
                 },
                 "gemName": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "The name of the gem on rubygems.org (e.g. https://rubygems.org/gems/GEM_NAME)"
                 },
                 "clientState": {
                   "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/clientState"
@@ -784,11 +786,11 @@
                 },
                 "clientName": {
                   "type": "string",
-                  "description": "The top-level client's name. (e.g. \"Acme\" in \"import { Acme } from 'acme-typescript-sdk'\")"
+                  "description": "The top-level client's name. (e.g. 'Acme' in \"import { Acme } from 'acme-typescript-sdk'\")"
                 },
                 "npmName": {
                   "type": "string",
-                  "description": "acme-typescript-sdk"
+                  "description": "The name of the npm package (e.g. \"acme-typescript-sdk\" in \"import { Acme } from 'acme-typescript-sdk'\")"
                 },
                 "pagination": {
                   "type": "object",
@@ -816,7 +818,8 @@
                   "type": "boolean"
                 },
                 "useSecurityKeyParamNameAsPropertyName": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "Whether to use the security requirement's key as the property name. For example, if the security requirement is called \"apiKey\" but the \"Header\" key is \"X-Api-Key\" then setting this to true will make the parameter name \"xApiKey\"."
                 },
                 "objectPropertyNamingConvention": {
                   "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/objectPropertyNamingConvention",
@@ -1285,7 +1288,8 @@
           "type": "string"
         },
         "specInputPath": {
-          "type": "string"
+          "type": "string",
+          "description": "Configure an \"input\" path for your OpenAPI Specification. This is useful when you want to persist two different versions of your OpenAPI Specification. One that is an exact copy from another location that is either polled from an endpoint or pushed from another Git repository. Another that is modified to be used for code generation. Konfig will detect that this field is set and write or read from it in place of \"specPath\" for operations like \"konfig fix\", \"konfig pull\", and \"konfig push\"."
         },
         "specRemotePath": {
           "type": "string",

@@ -476,7 +476,12 @@ export const KonfigYaml = KonfigYamlCommon.merge(
         swift: swift.optional(),
       }),
       specPath: z.string(),
-      specInputPath: z.string().optional(),
+      specInputPath: z
+        .string()
+        .optional()
+        .describe(
+          `Configure an "input" path for your OpenAPI Specification. This is useful when you want to persist two different versions of your OpenAPI Specification. One that is an exact copy from another location that is either polled from an endpoint or pushed from another Git repository. Another that is modified to be used for code generation. Konfig will detect that this field is set and write or read from it in place of "specPath" for operations like "konfig fix", "konfig pull", and "konfig push".`
+        ),
       specRemotePath: z.string().url().optional(),
       additionalGenerators: z.record(genericGeneratorConfig).optional(),
     })
