@@ -1,5 +1,20 @@
 # konfig-cli
 
+## 1.6.0
+
+### Minor Changes
+
+- [#119](https://github.com/konfig-dev/konfig/pull/119) [`e41378f0`](https://github.com/konfig-dev/konfig/commit/e41378f0f074e03c0cc512c546fd55c1e55d3411) Thanks [@dphuang2](https://github.com/dphuang2)! - - Run "konfig fix" at beginning of "konfig generate" if "specInputPath" is defined
+  - fix "waiton" logic for mock server in "konfig test"
+  - add prerelease "-r" flag for "konfig bump"
+
+### Patch Changes
+
+- Updated dependencies [[`e41378f0`](https://github.com/konfig-dev/konfig/commit/e41378f0f074e03c0cc512c546fd55c1e55d3411)]:
+  - konfig-lib@1.3.0
+  - konfig-openapi-spec@1.0.133
+  - konfig-postman-to-openapi@3.0.111
+
 ## 1.5.0
 
 ### Minor Changes

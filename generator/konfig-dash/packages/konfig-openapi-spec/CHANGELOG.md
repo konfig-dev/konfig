@@ -1,5 +1,12 @@
 # konfig-openapi-spec
 
+## 1.0.133
+
+### Patch Changes
+
+- Updated dependencies [[`e41378f0`](https://github.com/konfig-dev/konfig/commit/e41378f0f074e03c0cc512c546fd55c1e55d3411)]:
+  - konfig-lib@1.3.0
+
 ## 1.0.132
 
 ### Patch Changes
