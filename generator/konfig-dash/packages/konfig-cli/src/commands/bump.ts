@@ -23,17 +23,22 @@ export default class Bump extends Command {
     patch: Flags.boolean({
       char: 'p',
       name: 'patch',
-      exclusive: ['minor', 'major'],
+      exclusive: ['minor', 'major', 'prerelease'],
     }),
     major: Flags.boolean({
       char: 'M',
       name: 'major',
-      exclusive: ['minor', 'patch'],
+      exclusive: ['minor', 'patch', 'prerelease'],
+    }),
+    prerelease: Flags.boolean({
+      char: 'r',
+      name: 'prerelease',
+      exclusive: ['major', 'patch', 'minor'],
     }),
     minor: Flags.boolean({
       char: 'm',
       name: 'minor',
-      exclusive: ['major', 'patch'],
+      exclusive: ['major', 'patch', 'prerelease'],
     }),
   }
 
@@ -48,6 +53,7 @@ export default class Bump extends Command {
       major: flags.major,
       minor: flags.minor,
       patch: flags.patch,
+      prerelease: flags.prerelease,
       loadedKonfigYaml,
       cwd: this.config.root,
     })
@@ -89,15 +95,18 @@ async function getReleaseType({
   major,
   minor,
   patch,
+  prerelease,
 }: {
   cwd: string
   loadedKonfigYaml: KonfigYamlType
   major: boolean
   minor: boolean
   patch: boolean
+  prerelease: boolean
 }): Promise<semver.ReleaseType> {
   if (major) return 'major'
   if (minor) return 'minor'
   if (patch) return 'patch'
+  if (prerelease) return 'prerelease'
   return await detectReleaseType({ cwd, specPath: loadedKonfigYaml.specPath })
 }

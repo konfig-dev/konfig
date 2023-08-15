@@ -36,4 +36,24 @@ describe('incrementVersionWithPreservedTag', () => {
       '2.0.0-alpha.1'
     )
   })
+  it('should increment tag in semver - a', () => {
+    expect(incrementVersionWithPreservedTag('1.0.0-a.5', 'prerelease')).toBe(
+      '1.0.0-a.6'
+    )
+  })
+  it('should increment tag in semver - alpha', () => {
+    expect(
+      incrementVersionWithPreservedTag('1.0.0-alpha.1', 'prerelease')
+    ).toBe('1.0.0-alpha.2')
+  })
+  it('should increment tag in semver - beta', () => {
+    expect(incrementVersionWithPreservedTag('1.0.0-beta.1', 'prerelease')).toBe(
+      '1.0.0-beta.2'
+    )
+  })
+  it('should increment tag in semver - rc', () => {
+    expect(incrementVersionWithPreservedTag('1.0.0-rc.1', 'prerelease')).toBe(
+      '1.0.0-rc.2'
+    )
+  })
 })
