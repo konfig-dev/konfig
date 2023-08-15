@@ -79,7 +79,7 @@ export async function executeTestCommand({
     timeout: 60_000,
     validateStatus: (status) => {
       console.log(status)
-      return status === 405 || status === 200
+      return status === 405 || status === 404 || status === 200
     },
   })
   CliUx.ux.log('✅ Started mock server')
