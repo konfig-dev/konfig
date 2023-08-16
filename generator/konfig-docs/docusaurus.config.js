@@ -85,7 +85,13 @@ const beforeRemarkPluginsForPages = [
   ],
 ];
 
+
+/**
+ * @returns {Promise<import('@docusaurus/types').Config>}
+ */
+async function createConfig() {
 const remarkPlugins = [
+  (await import('remark-gfm')).default,
   [
     mermaid,
     {
@@ -93,9 +99,7 @@ const remarkPlugins = [
     },
   ],
 ];
-
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+  return {
   title: "Konfig",
   tagline: "Generate SDKs for your REST API",
   url: "https://konfigthis.com",
@@ -274,6 +278,7 @@ const config = {
         additionalLanguages: ["ruby", "csharp", "php"],
       },
     }),
+}
 };
 
-module.exports = config;
+module.exports = createConfig;
