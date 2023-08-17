@@ -37,6 +37,7 @@ describe('fix-oas', () => {
         spec,
         progress,
         konfigYaml: {
+          defaultChangesetBumpType: 'patch',
           generators: {},
           specPath: '',
           fixConfig: { modify: { '$.info.description': 'New Test' } },
