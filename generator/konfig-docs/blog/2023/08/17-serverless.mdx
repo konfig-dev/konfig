@@ -31,7 +31,15 @@ But still, everyone and their pet goldfish seem to be creating a serverless runt
 [Planetscale](https://planetscale.com/), [Xata](https://xata.io/),
 [FaunaDB](https://fauna.com/), [Convex](https://www.convex.dev/),
 [Supabase](https://supabase.com/edge-functions), [Hasura](https://hasura.io/), [Banana](https://www.banana.dev/),
-and literally hundreds more). Is it all hype? Is there real 100% objective merit to it? Where
+and literally hundreds more). One research paper from Berkeley even claimed:
+
+> Serverless computing will become the default computing paradigm of the Cloud Era, largely
+> replacing serverful computing and thereby bringing closure to the Client-Server Era.
+>
+> -- [Source](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2019/EECS-2019-3.pdf)
+
+
+Is it all hype? Is there real 100% objective merit to it? Where
 does serverless excel? Where do the trade-offs make sense?
 
 To answer these questions and understand how developers are receiving
@@ -46,9 +54,7 @@ findings in this article, striving to present only thought-provoking opinions.
 Next, I transcribed these discussions onto a whiteboard, organizing them into
 "Pro Serverless," "Anti Serverless," or "Neutral" categories, and then
 clustering them into distinct opinions. Each section in this post showcases
-an opinion while referencing pertinent discussions. To conclude, I highlight
-a thought-provoking blog post from Amazon that serve as informative case studies
-in this ongoing debate.
+an opinion while referencing pertinent discussions.
 
 ## Anti-Serverless Opinions
 
@@ -146,6 +152,11 @@ and be a compelling reason to abandon serverless in favor of a traditional VPS.
   </Carousel.Slide>
   <Carousel.Slide>
     <Figure caption={<span>Source: <a href="">Source: </a></span>}>
+      ![scared](./serverless-assets/slides/after/fad/scared.png)
+    </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+    <Figure caption={<span>Source: <a href="">Source: </a></span>}>
       ![hype-train](./serverless-assets/slides/after/fad/hype-train.png)
     </Figure>
   </Carousel.Slide>
@@ -185,36 +196,38 @@ and be a compelling reason to abandon serverless in favor of a traditional VPS.
 
 Serverless is a fad, and the hype will fade.
 
-Kudos to AWS's marketing team, as they have managed to persuade thousands of
-developers to stake their entire technology stack on a contentious new paradigm
+Kudos to AWS's marketing team, as they successfully persuaded thousands of
+CTOs to stake their entire technology stack on a contentious new paradigm
 for building applications.
 
-Some even go as far as to say serverless is a "dangerous" creation
-by cloud providers, aimed at seizing control of the market. In some ways, this
-viewpoint is not entirely without merit. If cloud providers were not striving to
-lock everyone into their products to capture market share and boost revenue,
-what kind of corporate entities would they be?
+Some even go as far as to say serverless is "dangerous" or "wrong". In some
+ways, this viewpoint is not entirely without merit. If cloud providers were not
+striving to lock everyone into their products to capture market share and boost
+revenue, what kind of corporate entities would they be?
 
-It's rational to be weary of a technology that necessitates developers to
-acquire a new set of skills and tools, [potentially wasting developer's time in a potentially
-cyclic
-technology](https://www.reddit.com/r/FlutterDev/comments/15njq61/i_feel_like_i_mad_a_mistake_investing/).
-Engineering teams that adopt serverless need to be cautious about serverless or
-else be trapped by "vendor lock-in". When things go wrong, good luck with
+
+Early adopters and evangelists did a great job at highlighting 10x features and
+pushing the cloud computing agenda.  But it is rational to be weary of a
+technology that necessitates developers to acquire a new set of skills and
+tools, [potentially wasting developer's time in a low-demand technology](https://www.reddit.com/r/FlutterDev/comments/15njq61/i_feel_like_i_mad_a_mistake_investing/).
+Engineering teams should exercise caution when betting the farm on serverless as
+it may lead to vendor lock-in.  When things go wrong, good luck with
 troubleshooting and refactoring!
 
-Serverless represents a substantial investment that could arguably be better
-allocated to other aspects of the business. Why not utilize long-running servers
-that were already [deployable and maintainable in the late
+At the end of the day, serverless represents a substantial investment that could
+arguably be better allocated to other aspects of the business. Why not utilize
+long-running servers that were already [deployable and maintainable in the late
 2000s](https://www.google.com/search?q=when+was+heroku+founded&sca_esv=557804163&ei=a1beZJLcDLiWkPIPpa2UiAQ&ved=0ahUKEwjSvZXRmeSAAxU4C0QIHaUWBUEQ4dUDCBA&uact=5&oq=when+was+heroku+founded&gs_lp=Egxnd3Mtd2l6LXNlcnAiF3doZW4gd2FzIGhlcm9rdSBmb3VuZGVkMgUQIRigATIFECEYoAEyBRAhGKABSPIUUABYlxRwBHgAkAEBmAFxoAGFEKoBBDE4Lja4AQPIAQD4AQHCAg4QABiKBRixAxiDARiRAsICDhAuGIoFGLEDGIMBGJECwgIREC4YgAQYsQMYgwEYxwEY0QPCAgsQLhiDARixAxiABMICBRAuGIAEwgIIEAAYgAQYsQPCAgsQABiABBixAxiDAcICCxAuGIAEGMcBGNEDwgIHEAAYigUYQ8ICCBAAGIoFGJECwgINEAAYigUYsQMYgwEYQ8ICDhAuGIAEGLEDGMcBGNEDwgILEC4YigUYsQMYgwHCAgUQABiABMICCBAuGIAEGLEDwgIIEAAYgAQYyQPCAggQABiKBRiSA8ICDRAAGIoFGJECGEYY-wHCAg4QABiKBRixAxiDARjJA8ICBxAuGIAEGArCAgcQABiABBgKwgIWEC4YgAQYChiXBRjcBBjeBBjgBNgBAcICChAAGIAEGEYY-wHCAgoQABiABBixAxgKwgIGEAAYFhgewgIIEAAYigUYhgPiAwQYACBBiAYBugYGCAEQARgU&sclient=gws-wiz-serp).
 
-So, do you **really** need serverless, or are you just succumbing to the hype?
+So, does serverless **really** solve your problems, or are you just succumbing to the hype?
 
 ## Pro Serverless Opinions
 
-Technologies that find adoption are not without their merits. And as with all
-new technologies, there are early adopters and evangelists that do a great job at
-advertising the 10x features.
+Technologies that catch on usually have something good going for them, and
+serverless is no exception. Despite all the buzz and marketing blitz, there's
+some real enthusiasm for it. Some companies are saving time and money with
+serverless, making it a win-win. Some devs think serverless is the new must-have
+tool in the toolbox.
 
 ### Opinion: Serverless accelerates the pace of feature development
 
