@@ -125,5 +125,5 @@ export const KonfigYamlCommon = z
   })
   .merge(requiredEnvironmentVariablesConfig)
 
-export type KonfigYamlCommonType = z.input<typeof KonfigYamlCommon>
+export type KonfigYamlCommonType = z.infer<typeof KonfigYamlCommon>
 export type FixConfig = z.infer<typeof fixConfig>
