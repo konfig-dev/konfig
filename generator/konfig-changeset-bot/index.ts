@@ -156,6 +156,8 @@ export default (app: Probot) => {
       try {
         let number = context.payload.number;
 
+        console.log(`Commenting on PR with title: ${context.payload.pull_request.title}`);
+
         let repo = {
           repo: context.payload.repository.name,
           owner: context.payload.repository.owner.login,
