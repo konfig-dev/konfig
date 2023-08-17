@@ -11,10 +11,7 @@ do
     branch_name=$(echo $remote_ref | sed -E 's/^refs\/heads\///')
     if [ "$branch_name" != "main" ]; then
         # supress output to make curl silent
-        curl -s -X GET "https://changeset-bot.konfigthis.com/api/webhook" > /dev/null || {
-            echo "Failed to send HTTP GET request. Please check your connection to the internet."
-            exit 1
-        }
+        curl -s -X GET "https://changeset-bot.konfigthis.com/api/webhook" > /dev/null &
     fi
 done
 echo "Done."
