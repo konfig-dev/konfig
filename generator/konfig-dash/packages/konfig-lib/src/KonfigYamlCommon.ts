@@ -49,6 +49,11 @@ export const optionalParameters = z
 
 export const KonfigYamlCommon = z
   .object({
+    defaultChangesetBumpType: z
+      .enum(['major', 'minor', 'patch', 'prerelease'])
+      .optional()
+      .default('patch')
+      .describe("Default changeset bump type for 'konfig changeset' command"),
     fixConfig: fixConfig.optional(),
     filterQueryParams: z.string().array().optional(),
     filterTags: z.array(z.string()).optional(),
@@ -120,5 +125,5 @@ export const KonfigYamlCommon = z
   })
   .merge(requiredEnvironmentVariablesConfig)
 
-export type KonfigYamlCommonType = z.infer<typeof KonfigYamlCommon>
+export type KonfigYamlCommonType = z.input<typeof KonfigYamlCommon>
 export type FixConfig = z.infer<typeof fixConfig>
