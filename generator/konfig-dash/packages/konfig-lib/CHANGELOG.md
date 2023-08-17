@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.3.1
+
+### Patch Changes
+
+- [#123](https://github.com/konfig-dev/konfig/pull/123) [`f9ff241c`](https://github.com/konfig-dev/konfig/commit/f9ff241c03c5bd0645cde46ebaf1d0437a86a301) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add konfig changeset cli command
+
 ## 1.3.0
 
 ### Minor Changes

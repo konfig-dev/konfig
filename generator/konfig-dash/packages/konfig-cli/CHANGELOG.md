@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.7.1
+
+### Patch Changes
+
+- [#123](https://github.com/konfig-dev/konfig/pull/123) [`f9ff241c`](https://github.com/konfig-dev/konfig/commit/f9ff241c03c5bd0645cde46ebaf1d0437a86a301) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add konfig changeset cli command
+
+- Updated dependencies [[`f9ff241c`](https://github.com/konfig-dev/konfig/commit/f9ff241c03c5bd0645cde46ebaf1d0437a86a301)]:
+  - konfig-openapi-spec@1.0.134
+  - konfig-lib@1.3.1
+  - konfig-postman-to-openapi@3.0.112
+
 ## 1.7.0
 
 ### Minor Changes
