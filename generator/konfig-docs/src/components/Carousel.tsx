@@ -35,7 +35,6 @@ function Wrapper({ children }: PropsWithChildren<{}>) {
       navigation
       pagination
       pagination-clickable
-      autoplay-delay="70000"
       init={false}
     >
       {Children.toArray(children)
