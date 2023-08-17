@@ -10,11 +10,14 @@ while read local_ref local_sha remote_ref remote_sha
 do
     branch_name=$(echo $remote_ref | sed -E 's/^refs\/heads\///')
     if [ "$branch_name" != "main" ]; then
-        # supress output to make curl silent
-        curl -s -X GET "https://changeset-bot.konfigthis.com/api/webhook" > /dev/null &
+        # suppress output to make curl silent
+        (
+            curl -s -X GET "https://changeset-bot.konfigthis.com/api/webhook" > /dev/null
+            echo "Request to changeset bot has finished."
+        ) &
     fi
 done
-echo "Done."
+
 
 # if NO_RELEASE is set, skip this hook
 if [ -n "$NO_RELEASE" ]; then
