@@ -37,7 +37,7 @@ type Options = {
   paginationConfig?: PaginationConfig
   topLevelOperations?: TopLevelOperations
   removeRequiredProperties?: RemoveRequiredProperties
-} & KonfigYamlCommonType
+} & Omit<KonfigYamlCommonType, 'defaultChangesetBumpType'>
 export const transformSpec = async ({
   specString,
   filterQueryParams,
