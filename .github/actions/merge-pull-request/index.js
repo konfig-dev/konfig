@@ -1,16 +1,30 @@
-// const core = require('@actions/core');
-// const github = require('@actions/github');
+const core = require('@actions/core');
+const github = require('@actions/github');
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  // const nameToGreet = core.getInput('who-to-greet');
-  // console.log(`Hello ${nameToGreet}!`);
-  // const time = (new Date()).toTimeString();
-  // core.setOutput("time", time);
-  // // Get the JSON webhook payload for the event that triggered the workflow
-  // const payload = JSON.stringify(github.context.payload, undefined, 2)
-  // console.log(`The event payload: ${payload}`);
-  console.log('Hello World!');
-} catch (error) {
-  core.setFailed(error.message);
+async function run() {
+  try {
+    const prNumber = core.getInput('pr_number');
+    const mergeMethod = core.getInput('merge_method');
+
+    const token = process.env.GITHUB_TOKEN;
+    const octokit = github.getOctokit(token);
+
+    const owner = github.context.repo.owner;
+    const repo = github.context.repo.repo;
+
+    // await octokit.pulls.merge({
+    //   owner,
+    //   repo,
+    //   pull_number: prNumber,
+    //   merge_method: mergeMethod
+    // });
+
+    console.log("Merge PR: " + prNumber + " with method: " + mergeMethod  + " in repo: " + repo + " by user: " + owner)
+    core.setOutput('merged', 'true');
+  } catch (error) {
+    core.setOutput('merged', 'false');
+    core.setFailed(error.message);
+  }
 }
+
+run();

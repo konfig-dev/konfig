@@ -1,5 +1,17 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: Merge Pull Request
+description: Merge a pull request using a specific strategy
+inputs:
+  pr_number:
+    description: 'Pull Request Number'
+    required: true
+    default: ''
+  merge_method:
+    description: 'Merge Method (merge, squash, rebase)'
+    required: true
+    default: 'squash'
+outputs:
+  merged: 
+    description: 'Whether the PR was merged successfully'
 runs:
   using: 'node16'
   main: 'index.js'
