@@ -632,7 +632,6 @@ public class DefaultGenerator implements Generator {
                 operation.put("classNameSnakeCase", underscore(tag));
                 operation.put("importPath", config.toApiImport(tag));
                 operation.put("classFilename", config.toApiFilename(tag));
-                operation.put("clientApiName", config.toClientApiName(tag));
                 operation.put("strictSpecBehavior", config.isStrictSpecBehavior());
 
                 if (allModels == null || allModels.isEmpty()) {
@@ -1377,6 +1376,7 @@ public class DefaultGenerator implements Generator {
         // Pass additionalProperties through to operations (needed for Python SDK)
         objs.put("additionalProperties", config.additionalProperties());
 
+        operations.put("clientApiName", config.toClientApiName(tag));
         config.postProcessOperationsWithModels(operations, allModels);
         return operations;
     }

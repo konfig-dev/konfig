@@ -15,6 +15,7 @@ import tempfile
 import time
 import typing
 import typing_extensions
+import warnings
 import aiohttp
 import urllib3
 from urllib3._collections import HTTPHeaderDict
@@ -61,6 +62,23 @@ class RequestField(RequestFieldBase):
             return False
         return self.__dict__ == other.__dict__
 
+def DeprecationWarningOnce(func=None, *, prefix=None):
+    def decorator(func):
+        warned = False
+        def wrapper(instance, *args, **kwargs):
+            nonlocal warned
+            if not warned:
+                msg = f"{func.__name__} is deprecated"
+                if prefix:
+                    msg = f"{prefix}.{msg}"
+                warnings.warn(msg, DeprecationWarning)
+                warned = True
+            return func(instance, *args, **kwargs)
+        return wrapper
+    if func is None:
+        return decorator
+    else:
+        return decorator(func)
 
 class JSONEncoder(json.JSONEncoder):
     compact_separators = (',', ':')

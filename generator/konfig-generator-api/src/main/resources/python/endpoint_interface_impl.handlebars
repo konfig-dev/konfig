@@ -1,4 +1,5 @@
-async def a{{methodName}}(
+{{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
+{{/if}}async def a{{methodName}}(
 {{> endpoint_args async=true isOverload=false skipDeserialization="null" contentType="null" interface=true}}
     args = self._{{operationId}}_mapped_args(
         {{> endpoint_args_call_mapped_args}}
@@ -7,7 +8,8 @@ async def a{{methodName}}(
         {{> endpoint_args_passed }}
     )
 
-def {{methodName}}(
+{{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
+{{/if}}def {{methodName}}(
 {{> endpoint_args isOverload=false skipDeserialization="null" contentType="null" interface=true}}
     args = self._{{operationId}}_mapped_args(
         {{> endpoint_args_call_mapped_args}}

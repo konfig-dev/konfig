@@ -439,6 +439,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         }
 
         supportingFiles.add(new SupportingFile("test_simple." + templateExtension, testFolder, "test_simple.py"));
+        supportingFiles.add(new SupportingFile("test_deprecation_warning." + templateExtension, testFolder, "test_deprecation_warning.py"));
         supportingFiles.add(new SupportingFile("exceptions." + templateExtension, packagePath(), "exceptions.py"));
 
         if (Boolean.FALSE.equals(excludeTests)) {
@@ -600,6 +601,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
             }
             Map<String, Object> endpointMap = new HashMap<>();
             endpointMap.put("operation", co);
+            endpointMap.put("clientApiName", objs.get("clientApiName"));
             endpointMap.put("imports", co.imports);
             endpointMap.put("schemaImports", co.schemaImports);
             endpointMap.put("typeImports", co.typeImports);
