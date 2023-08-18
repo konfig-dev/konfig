@@ -43,8 +43,8 @@ Is it all hype? Is there real 100% objective merit to it? Where
 does serverless excel? Where do the trade-offs make sense?
 
 To answer these questions and understand how developers are receiving
-serverless, let's look at what developers have to say on Reddit, Twitter, Hacker
-News, and YouTube. To do this, I parsed 1,000s of discussions and synthesized my
+serverless, I went to where developers live: Reddit, Twitter, Hacker
+News, and YouTube. I parsed 1,000s of discussions and synthesized my
 findings in this article, striving to present only thought-provoking opinions.
 
 <Figure caption='Funnel for gathering through-provoking opinions'>
@@ -201,7 +201,7 @@ CTOs to stake their entire technology stack on a contentious new paradigm
 for building applications.
 
 Some even go as far as to say serverless is "dangerous" or "wrong". In some
-ways, this viewpoint is not entirely without merit. If cloud providers were not
+ways, this viewpoint is not exaggerated. If cloud providers were not
 striving to lock everyone into their products to capture market share and boost
 revenue, what kind of corporate entities would they be?
 
@@ -219,7 +219,7 @@ arguably be better allocated to other aspects of the business. Why not utilize
 long-running servers that were already [deployable and maintainable in the late
 2000s](https://www.google.com/search?q=when+was+heroku+founded&sca_esv=557804163&ei=a1beZJLcDLiWkPIPpa2UiAQ&ved=0ahUKEwjSvZXRmeSAAxU4C0QIHaUWBUEQ4dUDCBA&uact=5&oq=when+was+heroku+founded&gs_lp=Egxnd3Mtd2l6LXNlcnAiF3doZW4gd2FzIGhlcm9rdSBmb3VuZGVkMgUQIRigATIFECEYoAEyBRAhGKABSPIUUABYlxRwBHgAkAEBmAFxoAGFEKoBBDE4Lja4AQPIAQD4AQHCAg4QABiKBRixAxiDARiRAsICDhAuGIoFGLEDGIMBGJECwgIREC4YgAQYsQMYgwEYxwEY0QPCAgsQLhiDARixAxiABMICBRAuGIAEwgIIEAAYgAQYsQPCAgsQABiABBixAxiDAcICCxAuGIAEGMcBGNEDwgIHEAAYigUYQ8ICCBAAGIoFGJECwgINEAAYigUYsQMYgwEYQ8ICDhAuGIAEGLEDGMcBGNEDwgILEC4YigUYsQMYgwHCAgUQABiABMICCBAuGIAEGLEDwgIIEAAYgAQYyQPCAggQABiKBRiSA8ICDRAAGIoFGJECGEYY-wHCAg4QABiKBRixAxiDARjJA8ICBxAuGIAEGArCAgcQABiABBgKwgIWEC4YgAQYChiXBRjcBBjeBBjgBNgBAcICChAAGIAEGEYY-wHCAgoQABiABBixAxgKwgIGEAAYFhgewgIIEAAYigUYhgPiAwQYACBBiAYBugYGCAEQARgU&sclient=gws-wiz-serp).
 
-So, does serverless **really** solve your problems, or are you just succumbing to the hype?
+So, does serverless really solve your problems, or are you just succumbing to the hype?
 
 ## Pro Serverless Opinions
 
@@ -266,7 +266,7 @@ tool in the toolbox.
 
 #### Key Takeaway 🔑
 
-An interesting aspect of serverless computing that counter-intuitively appeals
+Counter-intuitively, an interesting aspect of serverless computing is that it appeals
 more to early product development than to enterprise products is the speed at
 which features can be developed. The virtually negligible time and cost required
 to provision cloud computing resources make serverless computing particularly
@@ -330,6 +330,23 @@ arise, other options can be considered at that time.
 </Carousel.Wrapper>
 
 #### Key Takeaway 🔑
+
+For those who have successfully adopted serverless and lived to share their
+experiences, the enthusiasm is palpable.
+
+It appears that building on serverless from first principles can yield
+outstanding results. Beyond the marketing hype, the true benefits of serverless
+become evident. As the Berkeley researchers predicted, maintaining your own
+server is becoming a thing of the past. With serverless, you can save money,
+reduce development time, and cut maintenance costs—a triple win!
+
+Moreover, as serverless offerings like storage, background jobs, and databases
+continue to improve, the ecosystem will support the construction of increasingly
+complex apps, while still upholding the promise of serverless.
+
+If you can navigate the downsides of serverless, you can create a product with
+an infrastructure that feels almost effortless. Perhaps the naysayers' tales are
+louder than the truth.
 
 ## Neutral Opinions
 
@@ -406,8 +423,35 @@ developers tend to be set in their ways.
 
 #### Key Takeaway 🔑
 
+No technology is a silver bullet, and serverless is no exception.
+
+Every technological decision is about choosing the right tool for the job.
+Serverless has some distinct trade-offs that need to be understood before it's
+adopted. Conduct thorough research on compute density, single-responsibility
+microservices, and performance requirements. Once you do, you'll see that
+serverless can offer immediate and tangible value. Recognize that serverless is
+not a replacement, but an alternative.
+
+Whenever you hear someone criticize serverless, be wary of the problems they
+encountered. Were they design problems? Were there clear misuses of serverless?
+It's important to keep in mind that serverless is not a panacea.
+
 ## Conclusion
 
+The anticlimactic conclusion? As always, it depends.
+
+Though, I am more convinced that developers should strongly consider using serverless during the early stages of their SDLC[^sdlc]. I have previously built entire applications on serverless platforms but was burned by lop-sided unit economics[^burned]. In retrospect, I can attribute that failure to not considering the downsides of serverless before adopting it.
+
+That being said, I have also grown accustomed to [Render](https://render.com/) for fast-paced development, and so far, I have no complaints. However, as I am always striving to become a 10x engineer, I will consider adding serverless to my toolbox.
+
+Did you enjoy this article? I'm looking for more ideas to cover, so please let me know if you have any topics you'd like me to review. You can email me at dylan@konfigthis.com.
+
+
 [^DHH]: David Heinemeier Hansson, The creator of [Ruby on Rails](https://rubyonrails.org/) and founder of [Basecamp](https://basecamp.com/).
+[^sdlc]: Software development life cycle
+[^burned]: I built a [Shopify App](https://github.com/dphuang2/browser-record-app) that gave shop owners pixel-perfect replays of
+customers navigating their online store. I stored session data (using
+[rrweb](https://www.rrweb.io/)) in S3 and processed events using lambda and
+racked up a large bill for S3 bandwidth costs.
 [^1]: Please note that this article addresses a specific issue related to the
 design of Amazon's system when using serverless technology. There was no inherent problem with the serverless service itself.
