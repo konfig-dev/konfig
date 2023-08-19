@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-const Snaptrade = observer(
+const Demo = observer(
   ({
     organization,
     portal,
@@ -84,4 +84,4 @@ const Snaptrade = observer(
   }
 );
 
-export default Snaptrade;
+export default Demo;
