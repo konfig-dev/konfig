@@ -181,7 +181,7 @@ export default function DemoTableOfContents({ demoDiv }: TableOfContentsProps) {
 
   return (
     <MediaQuery smallerThan="lg" styles={{ display: "none" }}>
-      <Aside p="sm" hiddenBreakpoint="lg" width={{ base: 300 }}>
+      <Aside style={{backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white, border: "none"}} p="sm" hiddenBreakpoint="lg" width={{ base: 300 }}>
         <nav className={cx(classes.wrapper)}>
           <div className={classes.inner}>
             <div>
