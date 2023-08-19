@@ -1,11 +1,10 @@
-import { App } from 'octokit'
-import * as path from 'path'
+import { App, Octokit } from 'octokit'
 import { Demo, Organization, Portal } from './demos'
 import * as yaml from 'js-yaml'
 import { z } from 'zod'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { FetchCache } from '@/server/routers/_app'
-import { KonfigYaml, parseSpec, type Spec } from 'konfig-lib'
+import { KonfigYaml, type Spec } from 'konfig-lib'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -256,7 +255,7 @@ async function _fetch({
     if (typeof content.data !== 'string')
       throw Error('Unexpected type for content string')
     return {
-      content: content.data as string,
+      content: content.data,
       sha: metadata.data.sha,
     }
   }
@@ -285,12 +284,14 @@ async function _fetch({
     const { content: konfigYaml } = await getContent({ path: konfigYamlPath })
     const konfigYamlLoaded = yaml.load(konfigYaml)
     const konfigYamlParsed = KonfigYaml.parse(konfigYamlLoaded)
-    const specPath = konfigYamlParsed.specPath
+    const specPath = parsedDemoYaml.specPath
     if (specPath === undefined) return null
-    const { content } = await getContent({
-      path: path.join(path.dirname(konfigYamlPath), specPath),
-    })
-    return (await parseSpec(content)).spec
+    const spec = z
+      .object({
+        spec: z.any(),
+      })
+      .parse(konfigYamlParsed)
+    return spec.spec
   }
 
   const files = await getFilePaths({ path: 'demos' })
