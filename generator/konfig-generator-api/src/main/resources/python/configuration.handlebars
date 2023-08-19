@@ -320,22 +320,14 @@ conf = {{{packageName}}}.Configuration(
         """
 {{/if}}
 {{/unless}}
-        self.logger = {}
         """Logging Settings
         """
-        self.logger["package_logger"] = logging.getLogger("{{packageName}}")
-        self.logger["urllib3_logger"] = logging.getLogger("urllib3")
-        self.logger_format = '%(asctime)s %(levelname)s %(message)s'
+        self.logger = logging.getLogger("snaptrade_client")
+        # if no handler for logger, add a stream handler
+        if not self.logger.handlers:
+            self.logger.addHandler(logging.StreamHandler())
+        self.logger_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
         """Log format
-        """
-        self.logger_stream_handler = None
-        """Log stream handler
-        """
-        self.logger_file_handler = None
-        """Log file handler
-        """
-        self.logger_file = None
-        """Debug file location
         """
         self.debug = False
         """Debug switch
@@ -398,12 +390,10 @@ conf = {{{packageName}}}.Configuration(
         result = cls.__new__(cls)
         memo[id(self)] = result
         for k, v in self.__dict__.items():
-            if k not in ('logger', 'logger_file_handler'):
+            if k not in ('logger'):
                 setattr(result, k, copy.deepcopy(v, memo))
         # shallow copy of loggers
         result.logger = copy.copy(self.logger)
-        # use setters to configure loggers
-        result.logger_file = self.logger_file
         result.debug = self.debug
         return result
 
@@ -472,12 +462,11 @@ conf = {{{packageName}}}.Configuration(
         """
         self.__logger_file = value
         if self.__logger_file:
-            # If set logging file,
-            # then add file handler and remove stream handler.
-            self.logger_file_handler = logging.FileHandler(self.__logger_file)
-            self.logger_file_handler.setFormatter(self.logger_formatter)
-            for _, logger in self.logger.items():
-                logger.addHandler(self.logger_file_handler)
+            # If set logging file, then add file handler to self.logger if one
+            # does not already exist. Otherwise, do nothing.
+            if not any(isinstance(handler, logging.FileHandler)
+                          for handler in self.logger.handlers):
+                 self.logger.addHandler(logging.FileHandler(self.__logger_file))
 
     @property
     def debug(self):
@@ -498,15 +487,13 @@ conf = {{{packageName}}}.Configuration(
         self.__debug = value
         if self.__debug:
             # if debug status is True, turn on debug logging
-            for _, logger in self.logger.items():
-                logger.setLevel(logging.DEBUG)
+            self.logger.setLevel(logging.DEBUG)
             # turn on http_client debug
             http_client.HTTPConnection.debuglevel = 1
         else:
             # if debug status is False, turn off debug logging,
             # setting log level to default `logging.WARNING`
-            for _, logger in self.logger.items():
-                logger.setLevel(logging.WARNING)
+            self.logger.setLevel(logging.WARNING)
             # turn off http_client debug
             http_client.HTTPConnection.debuglevel = 0
 
@@ -531,7 +518,9 @@ conf = {{{packageName}}}.Configuration(
         :type: str
         """
         self.__logger_format = value
-        self.logger_formatter = logging.Formatter(self.__logger_format)
+        # set Formatter for all handlers in self.logger
+        for handler in self.logger.handlers:
+            handler.setFormatter(logging.Formatter(self.__logger_format))
 
     def get_api_key_with_prefix(self, identifier, alias=None):
         """Gets API key (with prefix if set).
