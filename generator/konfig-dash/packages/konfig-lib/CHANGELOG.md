@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.3.2
+
+### Patch Changes
+
+- [#128](https://github.com/konfig-dev/konfig/pull/128) [`297d5e45`](https://github.com/konfig-dev/konfig/commit/297d5e450613478d49bbc92357ea2a7e5f677acc) Thanks [@dphuang2](https://github.com/dphuang2)! - make openapi-types a non-dev dependency for konfig-lib
+
 ## 1.3.1
 
 ### Patch Changes
