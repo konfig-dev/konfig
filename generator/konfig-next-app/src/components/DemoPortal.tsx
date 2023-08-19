@@ -7,28 +7,13 @@ import {
   Navbar,
   Stack,
   NavLink,
-  MediaQuery,
-  Header,
-  Group,
-  Burger,
-  Title,
-  SegmentedControl,
-  ActionIcon,
   useMantineColorScheme,
   useMantineTheme,
   Box,
-  Button,
   Divider,
   rem,
 } from '@mantine/core'
-import {
-  IconBug,
-  IconChevronRight,
-  IconSun,
-  IconMoonStars,
-  IconRefresh,
-  IconBrandGithub,
-} from '@tabler/icons-react'
+import { IconBug, IconChevronRight } from '@tabler/icons-react'
 import { observer } from 'mobx-react'
 import { useState, createContext } from 'react'
 import DemoMarkdown, { DemoState } from './DemoMarkdown'
@@ -42,9 +27,9 @@ import { navigateToDemo } from '@/utils/navigate-to-demo'
 import { DemoSocials } from './DemoSocials'
 import { SocialObject } from '@/utils/generate-demos-from-github'
 import DemoTableOfContents from './DemoTableOfContents'
-import { TITLE_OFFSET_PX } from './DemoTitle'
 import { DemoEditThisPage } from './DemoEditThisPage'
 import { DemoLastRan } from './DemoLastRan'
+import { DemoHeader } from './DemoHeader'
 
 type DemosInput = Demo[]
 
@@ -237,80 +222,13 @@ export const DemoPortal = observer(
           }
           aside={<DemoTableOfContents demoDiv={state.currentDemo.demoDiv} />}
           header={
-            <Header height={{ base: 50, md: TITLE_OFFSET_PX }} p="md">
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <Group spacing={0}>
-                  <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-                    <Burger
-                      opened={opened}
-                      onClick={() => setOpened((o) => !o)}
-                      size="sm"
-                      color={theme.colors.gray[6]}
-                      mr="md"
-                    />
-                  </MediaQuery>
-                  <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-                    <Title order={5}>{state.portalName}</Title>
-                  </MediaQuery>
-                </Group>
-                <Group>
-                  <SegmentedControl
-                    size="xs"
-                    color="blue"
-                    value={state.showCode ? 'show-code' : 'hide-code'}
-                    data={[
-                      { label: 'Show Code', value: 'show-code' },
-                      { label: 'Hide Code', value: 'hide-code' },
-                    ]}
-                    onChange={(value) => {
-                      state.setShowCode(value === 'show-code')
-                    }}
-                  />
-                  <ActionIcon
-                    variant="default"
-                    onClick={() => toggleColorScheme()}
-                    size={30}
-                  >
-                    {colorScheme === 'dark' ? (
-                      <IconSun size="1rem" />
-                    ) : (
-                      <IconMoonStars size="1rem" />
-                    )}
-                  </ActionIcon>
-                  {!sandbox && (
-                    <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-                      <Button
-                        component="a"
-                        target="_blank"
-                        size="xs"
-                        leftIcon={<IconBrandGithub size="1rem" />}
-                        href={`https://github.com/${state.organizationId}/${state.portalId}/tree/${state.mainBranch}/demos`}
-                        color="gray"
-                        variant="default"
-                      >
-                        Source
-                      </Button>
-                    </MediaQuery>
-                  )}
-                  {refreshSandbox && (
-                    <ActionIcon
-                      onClick={refreshSandbox}
-                      color="green"
-                      variant="light"
-                    >
-                      <IconRefresh size="1rem" />
-                    </ActionIcon>
-                  )}
-                </Group>
-              </div>
-            </Header>
+            <DemoHeader
+              refreshSandbox={refreshSandbox}
+              opened={opened}
+              setOpened={setOpened}
+              state={state}
+              sandbox={sandbox}
+            />
           }
         >
           {/* We have to render all demos states at the start so they can each initialize their cells */}
