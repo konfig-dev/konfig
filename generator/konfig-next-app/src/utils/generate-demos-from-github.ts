@@ -1,10 +1,9 @@
-import { App, Octokit } from 'octokit'
+import { App } from 'octokit'
 import { Demo, Organization, Portal } from './demos'
 import * as yaml from 'js-yaml'
 import { z } from 'zod'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { FetchCache } from '@/server/routers/_app'
-import { KonfigYaml, type Spec } from 'konfig-lib'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -32,7 +31,6 @@ export const demoYamlSchema = z.object({
   organizationName: z.string(),
   portalName: z.string(),
   socials: socialObjectSchema.optional(),
-  specPath: z.string().optional(),
   demos: z
     .object({
       id: z.string(),
@@ -116,14 +114,6 @@ export async function generateDemosDataFromGithub({
       mainBranch: string
       demo: Demo
     }
-  | {
-      result: 'success'
-      socials?: SocialObject
-      organization: Organization
-      portal: Portal
-      mainBranch: string
-      openapi: Spec['spec']
-    }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
 > {
@@ -147,18 +137,7 @@ export async function generateDemosDataFromGithub({
   } else {
     demo = demos[0]
   }
-  if (demo === undefined) {
-    if (demoId === 'reference') {
-      // return {
-      //   result: 'success',
-      //   ...(socials ? { socials } : {}),
-      //   mainBranch,
-      //   organization,
-      //   portal,
-      // }
-    }
-    return { result: 'error', reason: 'demo not found' }
-  }
+  if (demo === undefined) return { result: 'error', reason: 'demo not found' }
 
   return {
     result: 'success',
@@ -202,23 +181,6 @@ async function _fetch({
   if (repository === null)
     throw Error(`Could not find repository under ${repoFullName}`)
 
-  /**
-   * Search for file by name using the Search API and "filename:" query
-   */
-  const findFilesByName = async ({
-    name,
-  }: {
-    name: string
-  }): Promise<{ path: string; name: string }[]> => {
-    const { data } = await repository.octokit.rest.search.code({
-      q: `filename:${name} repo:${repoFullName}`,
-    })
-    return data.items.map(({ path, name }) => ({ path, name }))
-  }
-
-  /**
-   * Gets all the files in a repository including subdirectories
-   */
   const getFilePaths = async ({
     path,
     ref,
@@ -260,39 +222,8 @@ async function _fetch({
     }
   }
 
-  // use getFilePaths to find all demo.yaml files in the repository
-  const demoYamlFiles = await findFilesByName({ name: 'demo.yaml' })
-  console.log(demoYamlFiles)
-
-  const demoYamlPath = demoYamlFiles[0].path
-
-  const { content: demoYaml } = await getContent({ path: demoYamlPath })
+  const { content: demoYaml } = await getContent({ path: 'demos/demo.yaml' })
   const parsedDemoYaml = demoYamlSchema.parse(yaml.load(demoYaml))
-
-  const konfigYamlFiles = await findFilesByName({ name: 'konfig.yaml' })
-  console.log(konfigYamlFiles)
-
-  /**
-   * use KonfigYaml.parse on the first konfig.yaml file found in the repository
-   * if no konfig.yaml file is found, then return null
-   * if the konfig.yaml file is invalid, then throw an error
-   * if the konfig.yaml file is valid, then return the parsed openapi from konfig.yaml#specPath
-   */
-  const findOpenapi = async (): Promise<Spec['spec'] | null> => {
-    if (konfigYamlFiles.length === 0) return null
-    const konfigYamlPath = konfigYamlFiles[0].path
-    const { content: konfigYaml } = await getContent({ path: konfigYamlPath })
-    const konfigYamlLoaded = yaml.load(konfigYaml)
-    const konfigYamlParsed = KonfigYaml.parse(konfigYamlLoaded)
-    const specPath = parsedDemoYaml.specPath
-    if (specPath === undefined) return null
-    const spec = z
-      .object({
-        spec: z.any(),
-      })
-      .parse(konfigYamlParsed)
-    return spec.spec
-  }
 
   const files = await getFilePaths({ path: 'demos' })
 
