@@ -5,9 +5,7 @@ import * as yaml from 'js-yaml'
 import { z } from 'zod'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { FetchCache } from '@/server/routers/_app'
-import { type Spec } from 'konfig-lib'
-import { parseSpec } from 'konfig-lib/dist/parseSpec'
-import { KonfigYaml } from 'konfig-lib/dist/KonfigYaml'
+import { KonfigYaml, parseSpec, type Spec } from 'konfig-lib'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -84,7 +82,6 @@ export type FetchResult = {
   organization: Organization
   portal: Portal
   demos: Demo[]
-  openapi: Spec['spec'] | null
   socials?: SocialObject
   mainBranch: string
 }
@@ -106,9 +103,6 @@ export type GenerationInput = {
   _cache?: FetchCache
 }
 
-/**
- * Generates the demos data from the GitHub repository.
- */
 export async function generateDemosDataFromGithub({
   orgId,
   portalId,
@@ -121,9 +115,7 @@ export async function generateDemosDataFromGithub({
       organization: Organization
       portal: Portal
       mainBranch: string
-      demoId: Demo['id']
       demo: Demo
-      type: 'demo'
     }
   | {
       result: 'success'
@@ -132,9 +124,7 @@ export async function generateDemosDataFromGithub({
       portal: Portal
       mainBranch: string
       openapi: Spec['spec']
-      type: 'reference'
     }
-  | { result: 'error'; reason: 'openapi specification not found' }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
 > {
@@ -148,8 +138,7 @@ export async function generateDemosDataFromGithub({
     _cache[cacheKey] = fetchResult
   }
 
-  const { demos, organization, portal, socials, mainBranch, openapi } =
-    fetchResult
+  const { demos, organization, portal, socials, mainBranch } = fetchResult
 
   if (demos.length < 1) return { result: 'error', reason: 'no demos' }
 
@@ -161,45 +150,27 @@ export async function generateDemosDataFromGithub({
   }
   if (demo === undefined) {
     if (demoId === 'reference') {
-      if (openapi != null) {
-        return {
-          result: 'success',
-          ...(socials ? { socials } : {}),
-          mainBranch,
-          organization,
-          portal,
-          openapi,
-          type: 'reference',
-        }
-      } else {
-        return { result: 'error', reason: 'openapi specification not found' }
-      }
+      // return {
+      //   result: 'success',
+      //   ...(socials ? { socials } : {}),
+      //   mainBranch,
+      //   organization,
+      //   portal,
+      // }
     }
     return { result: 'error', reason: 'demo not found' }
   }
 
   return {
-    type: 'demo',
     result: 'success',
     ...(socials ? { socials } : {}),
     mainBranch,
     organization,
     portal,
     demo,
-    demoId: demo.id,
   }
 }
 
-/**
- * Fetches the demos from the GitHub repository. This function is memoized. Also
- * handles custom mappings for SnapTrade.  Also searches for konfig.yaml and
- * parses the specPath to find the OpenAPI spec. If no konfig.yaml is found,
- * then the openapi property will be null.
- *
- * @param orgId The GitHub organization ID
- * @param portalId The GitHub repository ID
- * @returns The demos
- */
 async function _fetch({
   orgId,
   portalId,
@@ -292,6 +263,7 @@ async function _fetch({
 
   // use getFilePaths to find all demo.yaml files in the repository
   const demoYamlFiles = await findFilesByName({ name: 'demo.yaml' })
+  console.log(demoYamlFiles)
 
   const demoYamlPath = demoYamlFiles[0].path
 
@@ -299,6 +271,7 @@ async function _fetch({
   const parsedDemoYaml = demoYamlSchema.parse(yaml.load(demoYaml))
 
   const konfigYamlFiles = await findFilesByName({ name: 'konfig.yaml' })
+  console.log(konfigYamlFiles)
 
   /**
    * use KonfigYaml.parse on the first konfig.yaml file found in the repository
@@ -319,8 +292,6 @@ async function _fetch({
     })
     return (await parseSpec(content)).spec
   }
-
-  const openapi = await findOpenapi()
 
   const files = await getFilePaths({ path: 'demos' })
 
@@ -353,7 +324,6 @@ async function _fetch({
     organization,
     portal,
     demos,
-    openapi,
     mainBranch: repository.repository.default_branch,
     ...(parsedDemoYaml.socials ? { socials: parsedDemoYaml.socials } : {}),
   }
