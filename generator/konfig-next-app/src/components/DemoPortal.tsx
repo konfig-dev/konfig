@@ -207,9 +207,6 @@ export const DemoPortal = observer(
               sx={{ overflowY: 'scroll' }}
             >
               <Navbar.Section>
-                <NavbarSelect />
-              </Navbar.Section>
-              <Navbar.Section grow mt="xs" component={ScrollArea}>
                 <Stack spacing="xs">
                   {state.demos.map(({ name }, i) => {
                     const isCurrentlySelected = state.currentDemoIndex === i
