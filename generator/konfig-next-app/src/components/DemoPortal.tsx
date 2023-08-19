@@ -51,6 +51,7 @@ import DemoTableOfContents from './DemoTableOfContents'
 import { TITLE_OFFSET_PX } from './DemoTitle'
 import { DemoEditThisPage } from './DemoEditThisPage'
 import { DemoLastRan } from './DemoLastRan'
+import { type Spec } from 'konfig-lib'
 
 type DemosInput = Demo[]
 
@@ -59,38 +60,42 @@ type Demos = DemoState[]
 export class PortalState {
   demos: Demos
   showCode = false
-  id: string
+  demoId: string
   uuid = uuid()
   portalName: string
-  currentDemoIndex: number
+  currentView:
+    | { type: 'demos'; currentDemoIndex: number }
+    | { type: 'reference'; openapi: Spec['spec'] }
   organizationId: string
   portalId: string
-  currentDemo: DemoState
   mainBranch?: string
   socials?: SocialObject
 
   constructor({
     demos,
     portalName,
-    id,
     organizationId,
     portalId,
-    demoId,
     socials,
     mainBranch,
+    ...rest
   }: {
     demos: DemosInput
     portalName: string
-    id: string
     organizationId: string
     portalId: string
-    demoId?: string
     socials?: SocialObject
     mainBranch?: string
-  }) {
+  } & (
+    | {
+        demoId: Demo['id']
+      }
+    | {
+        openapi: Spec['spec']
+      }
+  )) {
     makeAutoObservable(this)
     this.socials = socials
-    this.id = id
     this.portalId = portalId
     this.mainBranch = mainBranch
     this.organizationId = organizationId
@@ -99,12 +104,25 @@ export class PortalState {
         new DemoState({ markdown, name, portal: this, id, showCode })
     )
 
-    this.currentDemoIndex = this.demos.findIndex((demo) => demo.id === demoId)
-    if (this.currentDemoIndex === -1)
-      throw Error(`Could not find demo with id ${demoId}`)
-    this.currentDemo = this.demos[this.currentDemoIndex]
+    this.currentView =
+      'demoId' in rest
+        ? {
+            type: 'demos',
+            currentDemoIndex: this.demos.findIndex(
+              (demo) => demo.id === rest.demoId
+            ),
+          }
+        : { type: 'reference', openapi: rest.openapi }
 
-    if (demos[this.currentDemoIndex].showCode) this.setShowCode(true)
+    if (this.currentView.type === 'demos') {
+      if (demos[this.currentView.currentDemoIndex].showCode)
+        this.setShowCode(true)
+    }
+
+    this.demoId =
+      this.currentView.type === 'demos'
+        ? this.demos[this.currentView.currentDemoIndex].id
+        : this.demos[0].id
 
     this.portalName = portalName
 
@@ -122,7 +140,7 @@ export class PortalState {
             return {
               sessionId: demo.sessionId,
               organizationId: demo.portal.organizationId,
-              portalId: demo.portal.id,
+              portalId: demo.portal.demoId,
               demoId: demo.id,
             }
           }),
@@ -142,8 +160,13 @@ export class PortalState {
   }
 
   setCurrentDemoIndex(index: number) {
-    this.currentDemoIndex = index
-    this.currentDemo = this.demos[this.currentDemoIndex]
+    if (this.currentView.type === 'reference') return
+    this.currentView.currentDemoIndex = index
+  }
+
+  get currentDemo() {
+    if (this.currentView.type === 'reference') return this.demos[0]
+    return this.demos[this.currentView.currentDemoIndex]
   }
 }
 
@@ -209,7 +232,9 @@ export const DemoPortal = observer(
               <Navbar.Section>
                 <Stack spacing="xs">
                   {state.demos.map(({ name }, i) => {
-                    const isCurrentlySelected = state.currentDemoIndex === i
+                    if (state.currentView.type === 'reference') return null
+                    const isCurrentlySelected =
+                      state.currentView.currentDemoIndex === i
                     return (
                       <NavLink
                         key={name}
@@ -321,6 +346,7 @@ export const DemoPortal = observer(
         >
           {/* We have to render all demos states at the start so they can each initialize their cells */}
           {state.demos.map((demo, i) => {
+            if (state.currentView.type === 'reference') return null
             const previousDemoState: DemoState | undefined =
               i === 0 ? undefined : state.demos[i - 1]
             const nextDemoState: DemoState | undefined =
@@ -346,7 +372,9 @@ export const DemoPortal = observer(
             return (
               <Box
                 key={demo.name}
-                display={state.currentDemoIndex !== i ? 'none' : undefined}
+                display={
+                  state.currentView.currentDemoIndex !== i ? 'none' : undefined
+                }
               >
                 <DemoLastRan demo={demo} />
                 <DemoMarkdown state={demo} />

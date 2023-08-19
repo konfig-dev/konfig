@@ -17,14 +17,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<{
-  organization: Organization
-  portal: Portal
-  socials?: SocialObject
-  mainBranch: string
-  demo?: Demo
-  openapi?: Spec['spec']
-}> = async (ctx) => {
+export const getStaticProps: GetStaticProps<
+  {
+    organization: Organization
+    portal: Portal
+    socials?: SocialObject
+    mainBranch: string
+  } & ({ demoId: Demo['id'] } | { openapi: Spec['spec'] })
+> = async (ctx) => {
   if (!ctx.params?.org || Array.isArray(ctx.params.org)) {
     return {
       notFound: true,
@@ -58,15 +58,15 @@ export const getStaticProps: GetStaticProps<{
 
 const Demo = observer(
   (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-    const { organization, portal, mainBranch, socials } = props
+    const { organization, portal, mainBranch, socials, ...rest } = props
     const [state] = useState(
       new PortalState({
         ...portal,
         portalId: portal.id,
         organizationId: organization.id,
-        demoId: props.demo?.id,
         mainBranch,
         socials,
+        ...rest,
       })
     )
 
