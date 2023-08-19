@@ -84,7 +84,7 @@ export class PortalState {
     id: string
     organizationId: string
     portalId: string
-    demoId: string
+    demoId?: string
     socials?: SocialObject
     mainBranch?: string
   }) {
