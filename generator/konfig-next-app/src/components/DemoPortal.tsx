@@ -18,11 +18,8 @@ import {
   useMantineTheme,
   Box,
   Button,
-  Image,
   Divider,
   rem,
-  Aside,
-  ScrollArea,
 } from '@mantine/core'
 import {
   IconBug,
@@ -37,14 +34,11 @@ import { useState, createContext } from 'react'
 import DemoMarkdown, { DemoState } from './DemoMarkdown'
 import { makeAutoObservable } from 'mobx'
 import { useRouter } from 'next/router'
-import { DemoPortalAside } from './DemoPortalAside'
-import { NavbarSelect } from './NavbarSelect'
 import { api } from '@/utils/api'
 import { v4 as uuid } from 'uuid'
 import { Demo } from '@/utils/demos'
 import { DemoSiblings, Sibling } from './DemoSiblings'
 import { navigateToDemo } from '@/utils/navigate-to-demo'
-import { useWindowScroll } from '@mantine/hooks'
 import { DemoSocials } from './DemoSocials'
 import { SocialObject } from '@/utils/generate-demos-from-github'
 import DemoTableOfContents from './DemoTableOfContents'
