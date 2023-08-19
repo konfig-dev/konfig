@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.3.3
+
+### Patch Changes
+
+- [#130](https://github.com/konfig-dev/konfig/pull/130) [`b0010205`](https://github.com/konfig-dev/konfig/commit/b001020545daad367d634c1a290722894976c95a) Thanks [@dphuang2](https://github.com/dphuang2)! - add undeclared dependencies
+
 ## 1.3.2
 
 ### Patch Changes
