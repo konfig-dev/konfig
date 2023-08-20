@@ -45,7 +45,7 @@ const Reference = () => {
       }
       header={
         <Header height={{ base: 50, md: TITLE_OFFSET_PX }}>
-          <LayoutHeader />
+          <LayoutHeader title="test" />
         </Header>
       }
     >
