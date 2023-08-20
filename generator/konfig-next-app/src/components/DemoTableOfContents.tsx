@@ -194,10 +194,12 @@ export default function DemoTableOfContents({ demoDiv }: TableOfContentsProps) {
         <nav className={cx(classes.wrapper)}>
           <div className={classes.inner}>
             <div>
-              <div className={classes.header}>
-                <IconList size={20} stroke={1.5} />
-                <Text className={classes.title}>Table of contents</Text>
-              </div>
+              {items.length !== 0 && (
+                <div className={classes.header}>
+                  <IconList size={20} stroke={1.5} />
+                  <Text className={classes.title}>Table of contents</Text>
+                </div>
+              )}
               <ScrollArea.Autosize
                 mah={`calc(100vh - ${rem(140)})`}
                 type="scroll"
