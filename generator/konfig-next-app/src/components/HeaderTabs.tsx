@@ -4,6 +4,7 @@ import { HeaderTab } from './HeaderTab'
 export const TABS = {
   reference: 'API Reference',
   demos: 'Demos',
+  sdks: 'SDKs',
 } as const
 
 export type Tab = (typeof TABS)[keyof typeof TABS]
@@ -25,6 +26,7 @@ export function HeaderTabs({ currentTab }: { currentTab: Tab }) {
         active={currentTab === TABS.demos}
         link="#"
       />
+      <HeaderTab label={TABS.sdks} active={currentTab === TABS.sdks} link="#" />
     </Group>
   )
 }
