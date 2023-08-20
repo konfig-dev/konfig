@@ -27,7 +27,9 @@ const _DemoButton: Components['button'] = ({
       <DemoOutput cell={cell} />
       <MantineButton
         loading={cell.running}
-        color={cell.ranSuccessfully ? 'blue' : cell.failed ? 'red' : 'cyan'}
+        color={
+          cell.ranSuccessfully ? undefined : cell.failed ? 'red' : 'blue.3'
+        }
         disabled={cell.canRunCell === 'no'}
         leftIcon={
           cell.ranSuccessfully ? (
