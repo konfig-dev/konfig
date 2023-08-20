@@ -57,7 +57,7 @@ export const DemoHeader = observer(
           <Group h="100%">
             <SegmentedControl
               size="xs"
-              color="blue"
+              color="brand"
               value={state.showCode ? 'show-code' : 'hide-code'}
               data={[
                 { label: 'Show Code', value: 'show-code' },
