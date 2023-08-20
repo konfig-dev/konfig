@@ -17,6 +17,7 @@ import { Organization, Portal } from '@/utils/demos'
 import { DemoPortal, PortalState } from '@/components/DemoPortal'
 import * as yaml from 'js-yaml'
 import {
+  DEMO_YAML_FILE_NAME,
   SocialObject,
   demoYamlSchema,
 } from '@/utils/generate-demos-from-github'
@@ -62,7 +63,9 @@ class SandboxState {
   }
 
   get demoYaml() {
-    const demoYamlFile = this.files.find((di) => di.fileName === 'demo.yaml')
+    const demoYamlFile = this.files.find(
+      (di) => di.fileName === DEMO_YAML_FILE_NAME
+    )
     if (demoYamlFile === undefined) return undefined
     const demoYaml = demoYamlSchema.parse(yaml.load(demoYamlFile.content))
     return demoYaml
@@ -171,7 +174,7 @@ const MarkdownSandboxPage = observer(() => {
               state.setFiles(files)
             }}
           >
-            {`Specify directory with "demo.yaml"`}
+            {`Specify directory with "${DEMO_YAML_FILE_NAME}"`}
           </Button>
         </Center>
       )}
