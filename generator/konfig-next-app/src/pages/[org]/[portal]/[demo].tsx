@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { Organization, Portal, Demo, demos } from '@/utils/demos'
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { useState } from 'react'
+import { useMemo } from 'react'
 import {
   SocialObject,
   generateDemosDataFromGithub,
@@ -64,15 +64,17 @@ const Demo = observer(
     mainBranch,
     socials,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
-    const [state] = useState(
-      new PortalState({
-        ...portal,
-        portalId: portal.id,
-        organizationId: organization.id,
-        demoId: demo.id,
-        mainBranch,
-        socials,
-      })
+    const state = useMemo(
+      () =>
+        new PortalState({
+          ...portal,
+          portalId: portal.id,
+          organizationId: organization.id,
+          demoId: demo.id,
+          mainBranch,
+          socials,
+        }),
+      [demo.id, mainBranch, organization.id, portal, socials]
     )
     const { colorScheme } = useMantineColorScheme()
 
