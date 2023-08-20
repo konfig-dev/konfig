@@ -15,19 +15,20 @@ import {
   Group,
   MantineProvider,
 } from '@mantine/core'
-import {
-  GetServerSideProps,
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetServerSidePropsType,
-  InferGetStaticPropsType,
-} from 'next'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
 import type { KonfigYamlType } from 'konfig-lib/dist/KonfigYaml'
 import { createOctokitInstance } from '@/utils/octokit'
 import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { githubGetDemoYamls } from '@/utils/github-get-demo-yamls'
 import { DemoYaml } from '@/utils/generate-demos-from-github'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
 
 /**
  * create a getStaticProps function that gets the konfig.yaml file.
@@ -38,7 +39,7 @@ import { DemoYaml } from '@/utils/generate-demos-from-github'
  * konfig.yaml contents and return it as a props
  */
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
   konfigYaml: KonfigYamlType
   demoYaml: DemoYaml
 }> = async (ctx) => {
@@ -71,7 +72,7 @@ export const getServerSideProps: GetServerSideProps<{
 const Reference = ({
   konfigYaml,
   demoYaml,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
   const [opened, setOpened] = useState(false)
