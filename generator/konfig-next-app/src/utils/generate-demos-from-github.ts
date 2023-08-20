@@ -7,6 +7,7 @@ import { FetchCache } from '@/server/routers/_app'
 import { createOctokitInstance } from './octokit'
 import { githubSearchFiles } from './github-search-files'
 import { githubGetFileContent } from './github-get-file-content'
+import { KonfigYaml } from 'konfig-lib/dist/KonfigYaml'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -79,6 +80,8 @@ export function computeCacheKey({
   return `${orgId}-${portalId}`
 }
 export type FetchResult = {
+  primaryColor?: string
+  portalTitle?: string
   organization: Organization
   portal: Portal
   demos: Demo[]
@@ -103,6 +106,17 @@ export type GenerationInput = {
   _cache?: FetchCache
 }
 
+type ReturnTypeOfGenerateDemosDataFromGithub = ReturnType<
+  typeof generateDemosDataFromGithub
+>
+type UnwrapPromise<T> = T extends Promise<infer U> ? U : never
+type UnpackedReturnType = UnwrapPromise<ReturnTypeOfGenerateDemosDataFromGithub>
+
+export type GenerationSuccess = Extract<
+  UnpackedReturnType,
+  { result: 'success' }
+>
+
 export async function generateDemosDataFromGithub({
   orgId,
   portalId,
@@ -116,6 +130,8 @@ export async function generateDemosDataFromGithub({
       portal: Portal
       mainBranch: string
       demo: Demo
+      portalTitle?: string
+      primaryColor?: string
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -149,6 +165,8 @@ export async function generateDemosDataFromGithub({
     organization,
     portal,
     demo,
+    portalTitle: fetchResult.portalTitle,
+    primaryColor: fetchResult.primaryColor,
   }
 }
 
@@ -245,9 +263,9 @@ async function _fetch({
     octokit,
   })
 
-  const konfigYaml = yaml.load(konfigYamlContent)
+  const konfigYamlLoaded = yaml.load(konfigYamlContent)
 
-  console.log(konfigYaml)
+  const konfigYaml = KonfigYaml.parse(konfigYamlLoaded)
 
   const files = await getFilePaths({ path: 'demos' })
 
@@ -280,6 +298,8 @@ async function _fetch({
     organization,
     portal,
     demos,
+    portalTitle: konfigYaml.portalTitle,
+    primaryColor: konfigYaml.primaryColor,
     mainBranch: repository.repository.default_branch,
     ...(parsedDemoYaml.socials ? { socials: parsedDemoYaml.socials } : {}),
   }
