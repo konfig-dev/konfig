@@ -9,6 +9,8 @@ import { githubSearchFiles } from './github-search-files'
 import { githubGetFileContent } from './github-get-file-content'
 import { KonfigYaml } from 'konfig-lib/dist/KonfigYaml'
 
+export const DEMO_YAML_FILE_NAME = 'demo.yaml'
+
 /**
  * Custom mappings to preserve existing links for SnapTrade
  */
@@ -243,7 +245,9 @@ async function _fetch({
     }
   }
 
-  const { content: demoYaml } = await getContent({ path: 'demos/demo.yaml' })
+  const { content: demoYaml } = await getContent({
+    path: `demos/${DEMO_YAML_FILE_NAME}`,
+  })
   const parsedDemoYaml = demoYamlSchema.parse(yaml.load(demoYaml))
 
   const octokit = await createOctokitInstance({ owner, repo })
