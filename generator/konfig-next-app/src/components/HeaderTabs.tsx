@@ -1,5 +1,6 @@
 import { Group } from '@mantine/core'
 import { HeaderTab } from './HeaderTab'
+import { useRouter } from 'next/router'
 
 export const TABS = {
   reference: 'API Reference',
@@ -10,6 +11,8 @@ export const TABS = {
 export type Tab = (typeof TABS)[keyof typeof TABS]
 
 export function HeaderTabs({ currentTab }: { currentTab: Tab }) {
+  const referencePath = useReferencePath()
+  const basePath = useBasePath()
   return (
     <Group
       h="100%"
@@ -19,14 +22,27 @@ export function HeaderTabs({ currentTab }: { currentTab: Tab }) {
       <HeaderTab
         label={TABS.reference}
         active={currentTab === TABS.reference}
-        link="#"
+        link={referencePath}
       />
       <HeaderTab
         label={TABS.demos}
         active={currentTab === TABS.demos}
-        link="#"
+        link={basePath}
       />
       <HeaderTab label={TABS.sdks} active={currentTab === TABS.sdks} link="#" />
     </Group>
   )
+}
+
+function useBasePath() {
+  const router = useRouter()
+  const parts = router.asPath.split('/')
+
+  // Keeping the first two sections and appending /reference
+  return `/${parts[1]}/${parts[2]}`
+}
+
+function useReferencePath() {
+  const basePath = useBasePath()
+  return `${basePath}/reference`
 }

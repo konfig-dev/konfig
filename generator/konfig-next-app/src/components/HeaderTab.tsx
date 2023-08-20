@@ -1,4 +1,5 @@
 import { Anchor, createStyles, rem } from '@mantine/core'
+import { useRouter } from 'next/router'
 
 const useStyles = createStyles((theme) => ({
   tab: {
@@ -34,11 +35,15 @@ export function HeaderTab({
   label: string
 }) {
   const { classes, cx } = useStyles()
+  const router = useRouter()
 
   return (
     <Anchor<'a'>
-      href={link}
       key={label}
+      onClick={(e) => {
+        e.preventDefault()
+        router.push(link, undefined)
+      }}
       className={cx(classes.tab, { [classes.tabActive]: active })}
     >
       {label}
