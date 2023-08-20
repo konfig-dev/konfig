@@ -4,6 +4,9 @@ import * as yaml from 'js-yaml'
 import { z } from 'zod'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { FetchCache } from '@/server/routers/_app'
+import { createOctokitInstance } from './octokit'
+import { githubSearchFiles } from './github-search-files'
+import { githubGetFileContent } from './github-get-file-content'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -224,6 +227,27 @@ async function _fetch({
 
   const { content: demoYaml } = await getContent({ path: 'demos/demo.yaml' })
   const parsedDemoYaml = demoYamlSchema.parse(yaml.load(demoYaml))
+
+  const octokit = await createOctokitInstance({ owner, repo })
+  const konfigYamlFiles = await githubSearchFiles({
+    filename: 'konfig.yaml',
+    owner,
+    repo,
+    octokit,
+  })
+
+  const konfigYamlFile = konfigYamlFiles[0]
+
+  const konfigYamlContent = await githubGetFileContent({
+    owner,
+    repo,
+    path: konfigYamlFile.path,
+    octokit,
+  })
+
+  const konfigYaml = yaml.load(konfigYamlContent)
+
+  console.log(konfigYaml)
 
   const files = await getFilePaths({ path: 'demos' })
 
