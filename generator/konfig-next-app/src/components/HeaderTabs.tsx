@@ -1,6 +1,7 @@
 import { Group } from '@mantine/core'
 import { HeaderTab } from './HeaderTab'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 export const TABS = {
   reference: 'API Reference',
@@ -10,9 +11,16 @@ export const TABS = {
 
 export type Tab = (typeof TABS)[keyof typeof TABS]
 
-export function HeaderTabs({ currentTab }: { currentTab: Tab }) {
+export function HeaderTabs({
+  currentTab,
+  isSandbox,
+}: {
+  currentTab: Tab
+  isSandbox?: boolean
+}) {
   const referencePath = useReferencePath()
   const basePath = useBasePath()
+  const githubUrl = useGithubUrl()
   return (
     <Group
       h="100%"
@@ -20,6 +28,7 @@ export function HeaderTabs({ currentTab }: { currentTab: Tab }) {
       spacing={0}
     >
       <HeaderTab
+        disabled={isSandbox}
         label={TABS.reference}
         active={currentTab === TABS.reference}
         link={referencePath}
@@ -28,10 +37,36 @@ export function HeaderTabs({ currentTab }: { currentTab: Tab }) {
         label={TABS.demos}
         active={currentTab === TABS.demos}
         link={basePath}
+        disabled={isSandbox}
       />
-      <HeaderTab label={TABS.sdks} active={currentTab === TABS.sdks} link="#" />
+      <HeaderTab
+        external
+        disabled={isSandbox}
+        label={TABS.sdks}
+        active={currentTab === TABS.sdks}
+        link={githubUrl ?? '#'}
+      />
     </Group>
   )
+}
+
+function useGithubUrl(): string | null {
+  const router = useRouter()
+  const [githubUrl, setGithubUrl] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (router.isReady) {
+      const subpaths = router.asPath.split('/').filter((p) => p !== '')
+
+      if (subpaths.length >= 2) {
+        setGithubUrl(
+          `https://github.com/${subpaths[0]}/${subpaths[1]}#${subpaths[1]}`
+        )
+      }
+    }
+  }, [router])
+
+  return githubUrl
 }
 
 function useBasePath() {

@@ -1,4 +1,5 @@
-import { Anchor, createStyles, rem } from '@mantine/core'
+import { Anchor, Group, createStyles, rem } from '@mantine/core'
+import { IconExternalLink } from '@tabler/icons-react'
 import { useRouter } from 'next/router'
 
 const useStyles = createStyles((theme) => ({
@@ -19,6 +20,18 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  tabDisabled: {
+    cursor: 'not-allowed',
+    color: 'grey',
+    textDecoration: 'none',
+    opacity: 0.5,
+
+    '&:hover': {
+      color: 'grey', // Override the hover color
+      textDecoration: 'none', // Override the hover text decoration
+    },
+  },
+
   tabActive: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     borderBottomColor:
@@ -29,24 +42,50 @@ export function HeaderTab({
   active,
   link,
   label,
+  external,
+  disabled,
 }: {
   active: boolean
   link: string
   label: string
+  external?: boolean
+  disabled?: boolean
 }) {
   const { classes, cx } = useStyles()
   const router = useRouter()
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (disabled) {
+      e.preventDefault()
+      return
+    }
+
+    if (external) return
+
+    e.preventDefault()
+    router.push(link, undefined)
+  }
+
   return (
     <Anchor<'a'>
       key={label}
-      onClick={(e) => {
-        e.preventDefault()
-        router.push(link, undefined)
-      }}
-      className={cx(classes.tab, { [classes.tabActive]: active })}
+      href={external ? link : undefined}
+      target="_blank"
+      aria-disabled={disabled}
+      onClick={handleClick}
+      className={cx(classes.tab, {
+        [classes.tabActive]: active,
+        [classes.tabDisabled]: disabled,
+      })}
     >
-      {label}
+      {external ? (
+        <Group spacing={5}>
+          <IconExternalLink size="1rem" />
+          <span>{label}</span>
+        </Group>
+      ) : (
+        label
+      )}
     </Anchor>
   )
 }

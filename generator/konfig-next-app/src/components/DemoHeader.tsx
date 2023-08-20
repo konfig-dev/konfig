@@ -1,16 +1,5 @@
-import {
-  Header,
-  Group,
-  MediaQuery,
-  Burger,
-  Title,
-  SegmentedControl,
-  ActionIcon,
-  Button,
-  useMantineTheme,
-  Box,
-} from '@mantine/core'
-import { IconBrandGithub, IconRefresh } from '@tabler/icons-react'
+import { Header, Group, SegmentedControl, ActionIcon, Box } from '@mantine/core'
+import { IconRefresh } from '@tabler/icons-react'
 import { TITLE_OFFSET_PX } from './DemoTitle'
 import { Dispatch, SetStateAction } from 'react'
 import { PortalState } from './DemoPortal'
@@ -54,7 +43,7 @@ export const DemoHeader = observer(
                 mr="md"
               />
             </MediaQuery> */}
-          <HeaderTabs currentTab={TABS.demos} />
+          <HeaderTabs currentTab={TABS.demos} isSandbox={sandbox} />
           <Group h="100%">
             <SegmentedControl
               size="xs"
