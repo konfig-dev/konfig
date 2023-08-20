@@ -1,4 +1,3 @@
-import sandbox from '@/pages/sandbox'
 import {
   Header,
   Group,
@@ -9,18 +8,15 @@ import {
   ActionIcon,
   Button,
   useMantineTheme,
-  useMantineColorScheme,
+  Box,
 } from '@mantine/core'
-import {
-  IconSun,
-  IconMoonStars,
-  IconBrandGithub,
-  IconRefresh,
-} from '@tabler/icons-react'
+import { IconBrandGithub, IconRefresh } from '@tabler/icons-react'
 import { TITLE_OFFSET_PX } from './DemoTitle'
 import { Dispatch, SetStateAction } from 'react'
 import { PortalState } from './DemoPortal'
 import { observer } from 'mobx-react'
+import { LayoutHeader } from './LayoutHeader'
+import { HeaderTabs, TABS } from './HeaderTabs'
 
 export const DemoHeader = observer(
   ({
@@ -37,19 +33,18 @@ export const DemoHeader = observer(
     sandbox?: boolean
   }) => {
     const theme = useMantineTheme()
-    const { colorScheme, toggleColorScheme } = useMantineColorScheme()
     return (
-      <Header height={{ base: 50, md: TITLE_OFFSET_PX }} p="md">
-        <div
+      <Header height={TITLE_OFFSET_PX}>
+        <LayoutHeader />
+        <Box
+          px="md"
           style={{
             display: 'flex',
-            alignItems: 'center',
             justifyContent: 'space-between',
-            height: '100%',
+            height: '45%',
           }}
         >
-          <Group spacing={0}>
-            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+          {/* <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
                 onClick={() => setOpened((o) => !o)}
@@ -57,12 +52,9 @@ export const DemoHeader = observer(
                 color={theme.colors.gray[6]}
                 mr="md"
               />
-            </MediaQuery>
-            <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-              <Title order={5}>{state.portalName}</Title>
-            </MediaQuery>
-          </Group>
-          <Group>
+            </MediaQuery> */}
+          <HeaderTabs currentTab={TABS.demos} />
+          <Group h="100%">
             <SegmentedControl
               size="xs"
               color="blue"
@@ -75,18 +67,7 @@ export const DemoHeader = observer(
                 state.setShowCode(value === 'show-code')
               }}
             />
-            <ActionIcon
-              variant="default"
-              onClick={() => toggleColorScheme()}
-              size={30}
-            >
-              {colorScheme === 'dark' ? (
-                <IconSun size="1rem" />
-              ) : (
-                <IconMoonStars size="1rem" />
-              )}
-            </ActionIcon>
-            {!sandbox && (
+            {/* {!sandbox && (
               <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                 <Button
                   component="a"
@@ -100,7 +81,7 @@ export const DemoHeader = observer(
                   Source
                 </Button>
               </MediaQuery>
-            )}
+            )} */}
             {refreshSandbox && (
               <ActionIcon
                 onClick={refreshSandbox}
@@ -111,7 +92,7 @@ export const DemoHeader = observer(
               </ActionIcon>
             )}
           </Group>
-        </div>
+        </Box>
       </Header>
     )
   }

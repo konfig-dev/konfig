@@ -204,7 +204,7 @@ export const DemoPortal = observer(
                           })
                         }}
                         p="xs"
-                        variant="filled"
+                        variant={colorScheme === 'dark' ? 'light' : 'filled'}
                         sx={(theme) => ({ borderRadius: theme.radius.sm })}
                         rightSection={
                           isCurrentlySelected ? (
