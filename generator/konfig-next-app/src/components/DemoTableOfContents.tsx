@@ -50,8 +50,8 @@ const useStyles = createStyles((theme) => ({
     borderLeftColor: theme.colors.brand[5],
     backgroundColor:
       theme.colorScheme === 'dark'
-        ? theme.fn.rgba(theme.colors.brand[9], 0.45)
-        : theme.colors.brand[0],
+        ? theme.fn.rgba(theme.colors.brand[8], 0.2)
+        : theme.colors.brand[1],
     color:
       theme.colorScheme === 'dark'
         ? theme.colors.brand[1]

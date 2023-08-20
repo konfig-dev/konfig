@@ -28,7 +28,17 @@ const _DemoButton: Components['button'] = ({
       <MantineButton
         loading={cell.running}
         color={
-          cell.ranSuccessfully ? undefined : cell.failed ? 'red' : 'primary.3'
+          colorScheme === 'dark'
+            ? cell.ranSuccessfully
+              ? 'brand.9'
+              : cell.failed
+              ? 'red'
+              : 'brand.8'
+            : cell.ranSuccessfully
+            ? 'brand.6'
+            : cell.failed
+            ? 'red'
+            : 'brand.7'
         }
         disabled={cell.canRunCell === 'no'}
         leftIcon={
@@ -40,7 +50,7 @@ const _DemoButton: Components['button'] = ({
         }
         type="submit"
         compact
-        variant={colorScheme === 'dark' ? 'light' : 'filled'}
+        variant="filled"
         sx={{ borderRadius: theme.radius.xs }}
         {...props}
       >

@@ -2,7 +2,13 @@ import { makeAutoObservable } from 'mobx'
 import ReactMarkdown from 'react-markdown'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
-import { Anchor, Stack, Text } from '@mantine/core'
+import {
+  Anchor,
+  Stack,
+  Text,
+  useMantineColorScheme,
+  useMantineTheme,
+} from '@mantine/core'
 import { createContext, useEffect, useRef } from 'react'
 import { api } from '@/utils/api'
 import { observer } from 'mobx-react'
@@ -106,6 +112,7 @@ export const DemoStateContext = createContext<DemoState | null>(null)
 
 const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
   const demoDiv = useRef<HTMLDivElement | null>(null)
+  const { colors } = useMantineTheme()
   useEffect(() => {
     state.demoDiv = demoDiv.current
   }, [state])
@@ -116,7 +123,11 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
           remarkPlugins={[remarkDirective, remarkDirectiveRehype]}
           components={{
             a({ children, node, siblingCount, ...props }) {
-              return <Anchor {...props}>{children}</Anchor>
+              return (
+                <Anchor color={colors.brand[7]} {...props}>
+                  {children}
+                </Anchor>
+              )
             },
             p({ node, children, siblingCount, ...props }) {
               return <Text {...props}>{children}</Text>

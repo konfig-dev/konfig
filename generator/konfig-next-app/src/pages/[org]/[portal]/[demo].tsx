@@ -9,6 +9,7 @@ import {
   generateDemosDataFromGithub,
 } from '@/utils/generate-demos-from-github'
 import { MantineProvider, useMantineColorScheme } from '@mantine/core'
+import { generateShadePalette } from '@/utils/generate-shade-palette'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -76,7 +77,13 @@ const Demo = observer(
     const { colorScheme } = useMantineColorScheme()
 
     return (
-      <MantineProvider theme={{ colorScheme }}>
+      <MantineProvider
+        theme={{
+          colorScheme,
+          colors: { brand: generateShadePalette('#9fc1be') },
+          primaryColor: 'brand',
+        }}
+      >
         <Head>
           <title>{`${organization.organizationName} | Konfig`}</title>
         </Head>
