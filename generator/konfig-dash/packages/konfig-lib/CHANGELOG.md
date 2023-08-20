@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.5.0
+
+### Minor Changes
+
+- [#132](https://github.com/konfig-dev/konfig/pull/132) [`d41dfb06`](https://github.com/konfig-dev/konfig/commit/d41dfb0680db49ca09f39a3e82164ea72a2b6b00) Thanks [@dphuang2](https://github.com/dphuang2)! - add primaryColor / portalTitle to konfig.yaml
+
 ## 1.4.0
 
 ### Minor Changes
