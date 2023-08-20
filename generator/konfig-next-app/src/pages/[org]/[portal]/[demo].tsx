@@ -1,14 +1,13 @@
 import { DemoPortal, PortalState } from '@/components/DemoPortal'
 import { observer } from 'mobx-react'
-import { Organization, Portal, Demo, demos } from '@/utils/demos'
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useMemo } from 'react'
 import {
-  SocialObject,
+  GenerationSuccess,
   generateDemosDataFromGithub,
 } from '@/utils/generate-demos-from-github'
-import { MantineProvider, useMantineColorScheme } from '@mantine/core'
+import { MantineProvider, useMantineTheme } from '@mantine/core'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -18,13 +17,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<{
-  organization: Organization
-  portal: Portal
-  demo: Demo
-  socials?: SocialObject
-  mainBranch: string
-}> = async (ctx) => {
+export const getStaticProps: GetStaticProps<GenerationSuccess> = async (
+  ctx
+) => {
   if (!ctx.params?.org || Array.isArray(ctx.params.org)) {
     return {
       notFound: true,
@@ -56,13 +51,15 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-const Demo = observer(
+const DemoPage = observer(
   ({
     organization,
     portal,
     demo,
     mainBranch,
     socials,
+    portalTitle,
+    primaryColor,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const state = useMemo(
       () =>
@@ -73,16 +70,22 @@ const Demo = observer(
           demoId: demo.id,
           mainBranch,
           socials,
+          portalTitle,
         }),
-      [demo.id, mainBranch, organization.id, portal, socials]
+      [demo.id, mainBranch, organization.id, portal, socials, portalTitle]
     )
-    const { colorScheme } = useMantineColorScheme()
+    const { colorScheme, colors } = useMantineTheme()
 
     return (
       <MantineProvider
         theme={{
           colorScheme,
-          colors: { brand: generateShadePalette('#9fc1be') },
+          colors: {
+            brand:
+              primaryColor !== undefined
+                ? generateShadePalette(primaryColor)
+                : colors.blue,
+          },
           primaryColor: 'brand',
         }}
       >
@@ -95,4 +98,4 @@ const Demo = observer(
   }
 )
 
-export default Demo
+export default DemoPage

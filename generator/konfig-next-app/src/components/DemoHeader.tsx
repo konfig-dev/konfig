@@ -34,7 +34,9 @@ export const DemoHeader = observer(
   }) => {
     return (
       <Header height={TITLE_OFFSET_PX}>
-        <LayoutHeader title={state.portalName} />
+        <LayoutHeader
+          title={state.portalTitle ? state.portalTitle : state.portalName}
+        />
         <Box
           px="md"
           style={{
