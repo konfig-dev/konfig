@@ -1,20 +1,27 @@
-import { Button, Center } from "@mantine/core";
-import { observer } from "mobx-react";
-import Head from "next/head";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { makeAutoObservable, observable } from "mobx";
+import {
+  Button,
+  Center,
+  MantineProvider,
+  useMantineColorScheme,
+  useMantineTheme,
+} from '@mantine/core'
+import { observer } from 'mobx-react'
+import Head from 'next/head'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { makeAutoObservable, observable } from 'mobx'
 import {
   DemoInput,
   generateDemosFromFilenameAndContent,
-} from "@/utils/generate-demos-from-file-name-and-content";
-import { Organization, Portal } from "@/utils/demos";
-import { DemoPortal, PortalState } from "@/components/DemoPortal";
-import * as yaml from "js-yaml";
+} from '@/utils/generate-demos-from-file-name-and-content'
+import { Organization, Portal } from '@/utils/demos'
+import { DemoPortal, PortalState } from '@/components/DemoPortal'
+import * as yaml from 'js-yaml'
 import {
   SocialObject,
   demoYamlSchema,
-} from "@/utils/generate-demos-from-github";
-import { notifications } from "@mantine/notifications";
+} from '@/utils/generate-demos-from-github'
+import { notifications } from '@mantine/notifications'
+import { generateShadePalette } from '@/utils/generate-shade-palette'
 
 /**
  * This is here to force this page to be SSR only so Next.js doesn't try to make
@@ -22,123 +29,132 @@ import { notifications } from "@mantine/notifications";
  */
 export const getServerSideProps: GetServerSideProps<{}> =
   async ({}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    return { props: {} };
-  };
+    return { props: {} }
+  }
 
 async function open(parameters?: { showPicker?: boolean }) {
   try {
     if (parameters?.showPicker !== false)
-      state.setDirectoryHandle(await (window as any).showDirectoryPicker());
-    const files: DemoInput[] = [];
+      state.setDirectoryHandle(await (window as any).showDirectoryPicker())
+    const files: DemoInput[] = []
 
     for await (const entry of state.directoryHandle.get().values()) {
-      if (entry.kind !== "file") {
-        continue;
+      if (entry.kind !== 'file') {
+        continue
       }
-      const file = await entry.getFile();
-      files.push({ fileName: file.name, content: await file.text() });
+      const file = await entry.getFile()
+      files.push({ fileName: file.name, content: await file.text() })
     }
-    return files;
+    return files
   } catch (error) {}
 }
 
 class SandboxState {
-  files: DemoInput[] = [];
-  directoryHandle = observable.box<any>();
+  files: DemoInput[] = []
+  directoryHandle = observable.box<any>()
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this)
   }
 
   setFiles(files: DemoInput[]) {
-    this.files = files;
+    this.files = files
   }
 
   get demoYaml() {
-    const demoYamlFile = this.files.find((di) => di.fileName === "demo.yaml");
-    if (demoYamlFile === undefined) return undefined;
-    const demoYaml = demoYamlSchema.parse(yaml.load(demoYamlFile.content));
-    return demoYaml;
+    const demoYamlFile = this.files.find((di) => di.fileName === 'demo.yaml')
+    if (demoYamlFile === undefined) return undefined
+    const demoYaml = demoYamlSchema.parse(yaml.load(demoYamlFile.content))
+    return demoYaml
   }
 
   get demos() {
-    if (this.demoYaml === undefined) return [];
+    if (this.demoYaml === undefined) return []
     return generateDemosFromFilenameAndContent({
-      demos: this.files.filter((di) => di.fileName.endsWith(".md")),
+      demos: this.files.filter((di) => di.fileName.endsWith('.md')),
       demoYaml: this.demoYaml,
-    });
+    })
   }
 
   get socials(): SocialObject | undefined {
-    return this.demoYaml?.socials;
+    return this.demoYaml?.socials
   }
 
   get organization(): Organization {
     return {
-      id: "sandbox",
-      organizationName: "Sandbox",
+      id: 'sandbox',
+      organizationName: 'Sandbox',
       portals: [this.portal],
-    };
+    }
   }
 
   get portal(): Portal {
     return {
-      id: "demo",
-      portalName: "Sandbox",
+      id: 'demo',
+      portalName: 'Sandbox',
       demos: this.demos,
-    };
+    }
   }
 
   get portalState() {
-    if (state.demos.length === 0) return null;
+    if (state.demos.length === 0) return null
     const portalState = new PortalState({
       ...state.portal,
-      portalId: "demos",
+      portalId: 'demos',
       organizationId: state.organization.id,
       demoId: state.demos[0].id,
       socials: this.socials,
-    });
-    return portalState;
+    })
+    return portalState
   }
 
   setDirectoryHandle(directoryHandle: any) {
-    this.directoryHandle.set(directoryHandle);
+    this.directoryHandle.set(directoryHandle)
   }
 }
 
-const state = new SandboxState();
+const state = new SandboxState()
 
 const DemoPortalWrapper = observer(() => {
-  if (state.portalState === null) return null;
+  const { colorScheme, colors } = useMantineTheme()
+  if (state.portalState === null) return null
   return (
-    <DemoPortal
-      refreshSandbox={async () => {
-        const files = await open({ showPicker: false });
-        if (files === undefined) return;
-
-        // Preserve current demo index
-        const currentDemoIndex = state.portalState?.currentDemoIndex;
-        const showCode = state.portalState?.showCode;
-
-        state.setFiles(files);
-
-        // Restore current demo index
-        if (currentDemoIndex !== undefined)
-          state.portalState?.setCurrentDemoIndex(currentDemoIndex);
-        if (showCode !== undefined) state.portalState?.setShowCode(showCode);
-
-        notifications.show({
-          id: "refresh-sandbox",
-          title: "Sandbox Refreshed",
-          message: "Files successfully reloaded from local file system",
-          autoClose: 3000,
-        });
+    <MantineProvider
+      theme={{
+        colorScheme,
+        colors: { brand: generateShadePalette('#1d344e') },
+        primaryColor: 'brand',
       }}
-      sandbox
-      state={state.portalState}
-    />
-  );
-});
+    >
+      <DemoPortal
+        refreshSandbox={async () => {
+          const files = await open({ showPicker: false })
+          if (files === undefined) return
+
+          // Preserve current demo index
+          const currentDemoIndex = state.portalState?.currentDemoIndex
+          const showCode = state.portalState?.showCode
+
+          state.setFiles(files)
+
+          // Restore current demo index
+          if (currentDemoIndex !== undefined)
+            state.portalState?.setCurrentDemoIndex(currentDemoIndex)
+          if (showCode !== undefined) state.portalState?.setShowCode(showCode)
+
+          notifications.show({
+            id: 'refresh-sandbox',
+            title: 'Sandbox Refreshed',
+            message: 'Files successfully reloaded from local file system',
+            autoClose: 3000,
+          })
+        }}
+        sandbox
+        state={state.portalState}
+      />
+    </MantineProvider>
+  )
+})
 
 const MarkdownSandboxPage = observer(() => {
   return (
@@ -150,9 +166,9 @@ const MarkdownSandboxPage = observer(() => {
         <Center pt="xl">
           <Button
             onClick={async () => {
-              const files = await open();
-              if (files === undefined) return;
-              state.setFiles(files);
+              const files = await open()
+              if (files === undefined) return
+              state.setFiles(files)
             }}
           >
             {`Specify directory with "demo.yaml"`}
@@ -161,7 +177,7 @@ const MarkdownSandboxPage = observer(() => {
       )}
       {state.directoryHandle.get() !== undefined && <DemoPortalWrapper />}
     </>
-  );
-});
+  )
+})
 
-export default MarkdownSandboxPage;
+export default MarkdownSandboxPage
