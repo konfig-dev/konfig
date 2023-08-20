@@ -47,15 +47,15 @@ const useStyles = createStyles((theme) => ({
   },
 
   linkActive: {
-    borderLeftColor: theme.colors.blue[5],
+    borderLeftColor: theme.colors.brand[5],
     backgroundColor:
       theme.colorScheme === 'dark'
-        ? theme.fn.rgba(theme.colors.blue[9], 0.45)
-        : theme.colors.blue[0],
+        ? theme.fn.rgba(theme.colors.brand[9], 0.45)
+        : theme.colors.brand[0],
     color:
       theme.colorScheme === 'dark'
-        ? theme.colors.blue[1]
-        : theme.colors.blue[8],
+        ? theme.colors.brand[1]
+        : theme.colors.brand[9],
   },
 
   header: {
@@ -154,9 +154,9 @@ export default function DemoTableOfContents({ demoDiv }: TableOfContentsProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
-  if (filteredHeadings.length === 0) {
-    return null
-  }
+  // if (filteredHeadings.length === 0) {
+  //   return null
+  // }
 
   const items = filteredHeadings.map((heading, index) => {
     return (
@@ -177,7 +177,7 @@ export default function DemoTableOfContents({ demoDiv }: TableOfContentsProps) {
     )
   })
 
-  if (headings.length === 0) return null
+  // if (headings.length === 0) return null
 
   return (
     <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
