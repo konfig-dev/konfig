@@ -32,10 +32,9 @@ export const DemoHeader = observer(
     refreshSandbox?: () => void
     sandbox?: boolean
   }) => {
-    const theme = useMantineTheme()
     return (
       <Header height={TITLE_OFFSET_PX}>
-        <LayoutHeader />
+        <LayoutHeader title={state.portalName} />
         <Box
           px="md"
           style={{
