@@ -1,28 +1,34 @@
-import { observer } from "mobx-react";
-import { Components } from "react-markdown";
-import { Button as MantineButton } from "@mantine/core";
-import { useContext } from "react";
-import { CellContext } from "./DemoForm";
-import { IconCheck, IconAlertCircle } from "@tabler/icons-react";
-import { DemoOutput } from "./DemoOutput";
+import { observer } from 'mobx-react'
+import { Components } from 'react-markdown'
+import {
+  Button as MantineButton,
+  useMantineColorScheme,
+  useMantineTheme,
+} from '@mantine/core'
+import { useContext } from 'react'
+import { CellContext } from './DemoForm'
+import { IconCheck, IconAlertCircle } from '@tabler/icons-react'
+import { DemoOutput } from './DemoOutput'
 
-const _DemoButton: Components["button"] = ({
+const _DemoButton: Components['button'] = ({
   node,
   children,
   siblingCount,
   ...props
 }) => {
-  const cell = useContext(CellContext);
+  const cell = useContext(CellContext)
+  const theme = useMantineTheme()
+  const { colorScheme } = useMantineColorScheme()
   if (cell === null) {
-    return <MantineButton {...props}>{children}</MantineButton>;
+    return <MantineButton {...props}>{children}</MantineButton>
   }
   return (
     <>
       <DemoOutput cell={cell} />
       <MantineButton
         loading={cell.running}
-        color={cell.ranSuccessfully ? "blue" : cell.failed ? "red" : "cyan"}
-        disabled={cell.canRunCell === "no"}
+        color={cell.ranSuccessfully ? 'blue' : cell.failed ? 'red' : 'cyan'}
+        disabled={cell.canRunCell === 'no'}
         leftIcon={
           cell.ranSuccessfully ? (
             <IconCheck size="1rem" />
@@ -32,13 +38,14 @@ const _DemoButton: Components["button"] = ({
         }
         type="submit"
         compact
-        variant="light"
+        variant={colorScheme === 'dark' ? 'light' : 'filled'}
+        sx={{ borderRadius: theme.radius.xs }}
         {...props}
       >
         {children}
       </MantineButton>
     </>
-  );
-};
+  )
+}
 
-export const DemoButton = observer(_DemoButton);
+export const DemoButton = observer(_DemoButton)

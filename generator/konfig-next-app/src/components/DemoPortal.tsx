@@ -205,7 +205,7 @@ export const DemoPortal = observer(
                         }}
                         p="xs"
                         variant={colorScheme === 'dark' ? 'light' : 'filled'}
-                        sx={(theme) => ({ borderRadius: theme.radius.sm })}
+                        sx={(theme) => ({ borderRadius: theme.radius.xs })}
                         rightSection={
                           isCurrentlySelected ? (
                             <IconChevronRight size="0.8rem" stroke={1.5} />
