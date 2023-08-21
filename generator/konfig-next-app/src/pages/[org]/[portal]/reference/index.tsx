@@ -2,6 +2,7 @@ import { TITLE_OFFSET_PX } from '@/components/DemoTitle'
 import { HeaderTabs, TABS } from '@/components/HeaderTabs'
 import { LayoutHeader } from '@/components/LayoutHeader'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
+import { parseSpec } from 'konfig-lib/dist/parseSpec'
 import {
   AppShell,
   Navbar,
@@ -71,6 +72,10 @@ export const getStaticProps: GetStaticProps<{
     octokit,
     path: path.join(path.dirname(konfigYaml.info.path), specPath),
   })
+
+  const spec = await parseSpec(openapi)
+
+  console.log(spec.spec)
 
   return {
     props: {
