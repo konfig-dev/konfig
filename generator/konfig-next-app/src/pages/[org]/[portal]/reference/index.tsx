@@ -5,12 +5,9 @@ import { generateShadePalette } from '@/utils/generate-shade-palette'
 import {
   AppShell,
   Navbar,
-  Text,
   useMantineColorScheme,
   useMantineTheme,
   Header,
-  Aside,
-  MediaQuery,
   Box,
   Group,
   MantineProvider,
@@ -22,6 +19,7 @@ import { createOctokitInstance } from '@/utils/octokit'
 import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { githubGetDemoYamls } from '@/utils/github-get-demo-yamls'
 import { DemoYaml } from '@/utils/generate-demos-from-github'
+import { ReferenceNavbar } from '@/components/ReferenceNavbar'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -61,9 +59,11 @@ export const getStaticProps: GetStaticProps<{
   const konfigYaml = konfigYamls?.[0]
   const demoYaml = demoYamls?.[0]
 
+  if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
+
   return {
     props: {
-      konfigYaml: konfigYaml ?? null,
+      konfigYaml: konfigYaml,
       demoYaml: demoYaml ?? null,
     },
   }
@@ -105,15 +105,8 @@ const Reference = ({
             width={{ sm: 225, lg: 325 }}
             sx={{ overflowY: 'scroll' }}
           >
-            <Text>Application navbar</Text>
+            <ReferenceNavbar />
           </Navbar>
-        }
-        aside={
-          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-            <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-              <Text>Application sidebar</Text>
-            </Aside>
-          </MediaQuery>
         }
         header={
           <Header height={TITLE_OFFSET_PX}>
