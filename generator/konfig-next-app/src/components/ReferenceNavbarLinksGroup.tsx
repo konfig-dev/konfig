@@ -36,7 +36,7 @@ const useStyles = createStyles((theme) => ({
   link: {
     fontWeight: 500,
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    paddingLeft: rem(31),
+    paddingLeft: rem(20),
     marginLeft: rem(30),
     fontSize: theme.fontSizes.sm,
     borderLeft: `${rem(1)} solid ${
@@ -113,7 +113,6 @@ export function ReferenceNavbarLinksGroup() {
   return (
     <Box
       sx={(theme) => ({
-        minHeight: rem(220),
         padding: theme.spacing.md,
         backgroundColor:
           theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
