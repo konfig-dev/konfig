@@ -18,15 +18,13 @@ export async function githubSearchFiles({
   repo: string
   filename: string
   octokit: Octokit
-}): Promise<FileInfo[]> {
+}): Promise<FileInfo[] | null> {
   try {
     const query = `filename:${filename} repo:${owner}/${repo}`
     const response: SearchResponse = await octokit.search.code({ q: query })
 
     if (response.data.total_count === 0) {
-      throw new Error(
-        `No files found with the name '${filename}' in repository '${owner}/${repo}'`
-      )
+      return null
     }
 
     return response.data.items.map((item) => ({

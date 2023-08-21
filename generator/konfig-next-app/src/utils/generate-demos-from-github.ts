@@ -5,9 +5,7 @@ import { z } from 'zod'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { FetchCache } from '@/server/routers/_app'
 import { createOctokitInstance } from './octokit'
-import { githubSearchFiles } from './github-search-files'
-import { githubGetFileContent } from './github-get-file-content'
-import { KonfigYaml } from 'konfig-lib/dist/KonfigYaml'
+import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 
 export const DEMO_YAML_FILE_NAME = 'demo.yaml'
 
@@ -132,8 +130,13 @@ export async function generateDemosDataFromGithub({
       portal: Portal
       mainBranch: string
       demo: Demo
-      portalTitle?: string
-      primaryColor?: string
+      /**
+       * Have to make this nullable because of the following error:
+       * Error: Error serializing `.portalTitle` returned from `getStaticProps` in "/[org]/[portal]/[demo]".
+       * Reason: `undefined` cannot be serialized as JSON. Please use `null` or omit this value.
+       */
+      portalTitle: string | null
+      primaryColor: string | null
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -167,8 +170,8 @@ export async function generateDemosDataFromGithub({
     organization,
     portal,
     demo,
-    portalTitle: fetchResult.portalTitle,
-    primaryColor: fetchResult.primaryColor,
+    portalTitle: fetchResult.portalTitle ?? null,
+    primaryColor: fetchResult.primaryColor ?? null,
   }
 }
 
@@ -251,25 +254,10 @@ async function _fetch({
   const parsedDemoYaml = demoYamlSchema.parse(yaml.load(demoYaml))
 
   const octokit = await createOctokitInstance({ owner, repo })
-  const konfigYamlFiles = await githubSearchFiles({
-    filename: 'konfig.yaml',
-    owner,
-    repo,
-    octokit,
-  })
+  const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
 
-  const konfigYamlFile = konfigYamlFiles[0]
-
-  const konfigYamlContent = await githubGetFileContent({
-    owner,
-    repo,
-    path: konfigYamlFile.path,
-    octokit,
-  })
-
-  const konfigYamlLoaded = yaml.load(konfigYamlContent)
-
-  const konfigYaml = KonfigYaml.parse(konfigYamlLoaded)
+  // TODO: handle multiple konfig.yaml files
+  const konfigYaml = konfigYamls?.[0]
 
   const files = await getFilePaths({ path: 'demos' })
 
@@ -302,8 +290,8 @@ async function _fetch({
     organization,
     portal,
     demos,
-    portalTitle: konfigYaml.portalTitle,
-    primaryColor: konfigYaml.primaryColor,
+    portalTitle: konfigYaml?.portalTitle,
+    primaryColor: konfigYaml?.primaryColor,
     mainBranch: repository.repository.default_branch,
     ...(parsedDemoYaml.socials ? { socials: parsedDemoYaml.socials } : {}),
   }

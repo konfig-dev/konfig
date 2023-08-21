@@ -22,6 +22,7 @@ export async function githubGetDemoYamls({
     repo,
     octokit,
   })
+  if (demoYamls === null) return null
   return await Promise.all(
     demoYamls.map(async (demoYamlInfo) => {
       const konfigYamlContent = yaml.load(
