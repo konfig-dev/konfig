@@ -1,8 +1,6 @@
 import { _cache } from '@/server/routers/_app'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
-import { clearCache as clearSearchFilesCache } from '@/utils/github-search-files'
-import { clearCache as clearGetFileContentCache } from '@/utils/github-get-file-content'
 import { githubGetReferenceResources } from '@/utils/github-get-reference-resources'
 
 const requestBodySchema = z.object({
@@ -16,20 +14,34 @@ export default async function handler(
 ) {
   const { owner, repo } = requestBodySchema.parse(req.body)
 
-  clearSearchFilesCache()
-  clearGetFileContentCache()
-
   const { navbarData } = await githubGetReferenceResources({ owner, repo })
 
-  res.revalidate('/${owner}/${repo}/reference')
+  const toRevalidate = [`/${owner}/${repo}/reference`]
 
   navbarData.forEach(({ links }) => {
     links.forEach(({ link }) => {
-      res.revalidate(link)
+      toRevalidate.push(link)
     })
   })
 
+  const revalidated: string[] = []
+
+  for (const path of toRevalidate) {
+    try {
+      await res.revalidate(path)
+      revalidated.push(path)
+    } catch (e) {
+      if (e instanceof Error) {
+        if (e.message.includes('404')) {
+          console.warn(`Tried to revalidate ${path} but got 404`)
+          continue
+        }
+      }
+      throw e
+    }
+  }
+
   return res.json({
-    revalidated: true,
+    revalidated,
   })
 }
