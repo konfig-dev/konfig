@@ -1,13 +1,16 @@
 import { useState } from 'react'
+import type { HttpMethods } from 'konfig-lib'
+import { HttpMethodsEnum } from 'konfig-lib/dist/forEachOperation'
 import {
   Group,
   Box,
   Collapse,
-  Text,
   UnstyledButton,
   createStyles,
   rem,
   NavLink,
+  Badge,
+  MantineColor,
 } from '@mantine/core'
 import {
   IconCalendarStats,
@@ -34,7 +37,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   linkWrapper: {
-    paddingLeft: rem(25),
+    paddingLeft: rem(20),
   },
 
   link: {
@@ -53,7 +56,7 @@ const useStyles = createStyles((theme) => ({
 export interface LinksGroupProps {
   label: string
   initiallyOpened?: boolean
-  links?: { label: string; link: string }[]
+  links?: { label: string; link: string; httpMethod: HttpMethods }[]
 }
 
 export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
@@ -61,18 +64,38 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
   const hasLinks = Array.isArray(links)
   const [opened, setOpened] = useState(initiallyOpened || false)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
-  const items = (hasLinks ? links : []).map((link) => (
-    <Box className={classes.linkWrapper} key={link.label}>
-      <NavLink<'a'>
-        component="a"
-        className={classes.link}
-        href={link.link}
-        onClick={(event) => event.preventDefault()}
-        variant={theme.colorScheme === 'dark' ? 'light' : 'filled'}
-        label={link.label}
-      />
-    </Box>
-  ))
+  const items = (hasLinks ? links : []).map((link) => {
+    const httpMethodColor = (method: HttpMethods): MantineColor => {
+      if (method === HttpMethodsEnum.GET) return 'green'
+      if (method === HttpMethodsEnum.POST) return 'blue'
+      if (method === HttpMethodsEnum.PUT) return 'blue'
+      if (method === HttpMethodsEnum.DELETE) return 'red'
+      if (method === HttpMethodsEnum.PATCH) return 'yellow'
+      if (method === HttpMethodsEnum.OPTIONS) return 'yellow'
+      if (method === HttpMethodsEnum.TRACE) return 'yellow'
+      return 'gray'
+    }
+    return (
+      <Box className={classes.linkWrapper} key={link.label}>
+        <NavLink<'a'>
+          component="a"
+          className={classes.link}
+          href={link.link}
+          onClick={(event) => event.preventDefault()}
+          label={link.label}
+          rightSection={
+            <Badge
+              variant={theme.colorScheme === 'light' ? 'filled' : 'light'}
+              color={httpMethodColor(link.httpMethod)}
+              radius="xs"
+            >
+              {link.httpMethod}
+            </Badge>
+          }
+        />
+      </Box>
+    )
+  })
 
   return (
     <>

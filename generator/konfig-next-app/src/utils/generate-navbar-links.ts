@@ -33,7 +33,8 @@ export function generateNavbarLinks({
         if (operation?.tags?.includes(tag.name)) {
           navbarLink.links.push({
             label: operation.summary ?? path,
-            link: `/${owner}/${repo}/reference/${operation.operationId}`,
+            link: `/${owner}/${repo}/reference/${operation.tags}/${operation.operationId}`,
+            httpMethod: method as HttpMethods,
           })
         }
       })
