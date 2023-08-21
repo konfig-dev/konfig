@@ -6,8 +6,7 @@ import {
   createStyles,
   rem,
 } from '@mantine/core'
-import { LinksGroup } from './LinksGroup'
-import { NavbarDataItem } from '@/pages/[org]/[portal]/reference'
+import { LinksGroup, NavbarDataItem } from './LinksGroup'
 
 const useStyles = createStyles((theme) => ({
   navbar: {

@@ -1,4 +1,4 @@
-import { NavbarDataItem } from '@/pages/[org]/[portal]/reference'
+import { NavbarDataItem } from '@/components/LinksGroup'
 import type { Spec, HttpMethods, KonfigYamlType } from 'konfig-lib'
 
 /**

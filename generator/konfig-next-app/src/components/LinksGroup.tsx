@@ -60,6 +60,11 @@ export interface LinksGroupProps {
   links?: { label: string; link: string; httpMethod: HttpMethods }[]
 }
 
+export interface NavbarDataItem {
+  label: LinksGroupProps['label']
+  links: NonNullable<LinksGroupProps['links']>
+}
+
 export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
   const { classes, theme } = useStyles()
   const hasLinks = Array.isArray(links)
