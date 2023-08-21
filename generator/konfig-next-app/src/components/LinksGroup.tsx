@@ -17,6 +17,7 @@ import {
   IconChevronLeft,
   IconChevronRight,
 } from '@tabler/icons-react'
+import Link from 'next/link'
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -77,8 +78,8 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
     }
     return (
       <Box className={classes.linkWrapper} key={link.label}>
-        <NavLink<'a'>
-          component="a"
+        <NavLink<typeof Link>
+          component={Link}
           className={classes.link}
           href={link.link}
           label={link.label}
