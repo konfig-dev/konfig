@@ -121,12 +121,12 @@ const Reference = ({
             background: colorScheme === 'dark' ? colors.dark[8] : undefined,
           },
         }}
-        navbarOffsetBreakpoint="sm"
+        navbarOffsetBreakpoint="lg"
         asideOffsetBreakpoint="lg"
         navbar={
           <Navbar
             p="md"
-            hiddenBreakpoint="sm"
+            hiddenBreakpoint="lg"
             hidden={!opened}
             width={{ sm: 225, lg: 325 }}
             sx={{ overflowY: 'scroll' }}

@@ -33,11 +33,12 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  linkWrapper: {
+    paddingLeft: rem(25),
+  },
+
   link: {
     fontWeight: 500,
-    padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    paddingLeft: rem(20),
-    marginLeft: rem(30),
     fontSize: theme.fontSizes.sm,
     borderLeft: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
@@ -61,15 +62,16 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
   const [opened, setOpened] = useState(initiallyOpened || false)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
   const items = (hasLinks ? links : []).map((link) => (
-    <NavLink<'a'>
-      component="a"
-      className={classes.link}
-      href={link.link}
-      key={link.label}
-      onClick={(event) => event.preventDefault()}
-      variant={theme.colorScheme === 'dark' ? 'light' : 'filled'}
-      label={link.label}
-    />
+    <Box className={classes.linkWrapper} key={link.label}>
+      <NavLink<'a'>
+        component="a"
+        className={classes.link}
+        href={link.link}
+        onClick={(event) => event.preventDefault()}
+        variant={theme.colorScheme === 'dark' ? 'light' : 'filled'}
+        label={link.label}
+      />
+    </Box>
   ))
 
   return (
@@ -79,7 +81,7 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
         className={classes.control}
       >
         <Group position="apart" spacing={0}>
-          <Box ml="md">{label}</Box>
+          <Box>{label}</Box>
           {hasLinks && (
             <ChevronIcon
               className={classes.chevron}
