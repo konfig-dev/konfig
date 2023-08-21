@@ -63,8 +63,13 @@ export const getStaticProps: GetStaticProps<{
 
   const octokit = await createOctokitInstance({ owner, repo })
 
+  // time the next two lines
+  const start = Date.now()
   const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
   const demoYamls = await githubGetDemoYamls({ owner, repo, octokit })
+  console.log(
+    `githubGetKonfigYamls + githubGetDemoYamls took ${Date.now() - start}ms`
+  )
 
   // TODO: handle multiple konfig.yaml / demo.yaml files
   const konfigYaml = konfigYamls?.[0]
@@ -74,6 +79,8 @@ export const getStaticProps: GetStaticProps<{
 
   const specPath = konfigYaml.content.specPath
 
+  // time the next three lines
+  const start2 = Date.now()
   const openapi = await githubGetFileContent({
     owner,
     repo,
@@ -83,7 +90,13 @@ export const getStaticProps: GetStaticProps<{
 
   const spec = await parseSpec(openapi)
 
-  const navbarData = generateNavbarLinks({ spec: spec.spec, owner, repo })
+  const navbarData = generateNavbarLinks({
+    spec: spec.spec,
+    owner,
+    repo,
+    konfigYaml: konfigYaml.content,
+  })
+  console.log(`generation of navbarLinks took ${Date.now() - start2}ms`)
 
   return {
     props: {

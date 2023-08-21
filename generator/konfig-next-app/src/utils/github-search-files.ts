@@ -8,6 +8,24 @@ type FileInfo = {
 
 type SearchResponse = RestEndpointMethodTypes['search']['code']['response']
 
+const _cache: Map<string, FileInfo[] | null> = new Map()
+
+function computeCacheKey({
+  filename,
+  owner,
+  repo,
+}: {
+  filename: string
+  owner: string
+  repo: string
+}): string {
+  return `${owner}/${repo}/${filename}`
+}
+
+export function clearCache() {
+  _cache.clear()
+}
+
 export async function githubSearchFiles({
   filename,
   owner,
@@ -19,6 +37,12 @@ export async function githubSearchFiles({
   filename: string
   octokit: Octokit
 }): Promise<FileInfo[] | null> {
+  const cacheKey = computeCacheKey({ filename, owner, repo })
+  if (_cache.has(cacheKey)) {
+    const cached = _cache.get(cacheKey)
+    if (cached === undefined) return null
+    return cached
+  }
   try {
     const query = `filename:${filename} repo:${owner}/${repo}`
     const response: SearchResponse = await octokit.search.code({ q: query })
@@ -27,11 +51,13 @@ export async function githubSearchFiles({
       return null
     }
 
-    return response.data.items.map((item) => ({
+    const result = response.data.items.map((item) => ({
       name: item.name,
       path: item.path,
       url: item.html_url,
     }))
+    _cache.set(cacheKey, result)
+    return result
   } catch (error) {
     if (error instanceof Error)
       throw new Error(

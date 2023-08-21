@@ -1,5 +1,23 @@
 import { Octokit } from '@octokit/rest'
 
+const _cache = new Map<string, string>()
+
+function computeCacheKey({
+  owner,
+  repo,
+  path,
+}: {
+  owner: string
+  repo: string
+  path: string
+}): string {
+  return `${owner}/${repo}/${path}`
+}
+
+export function clearCache() {
+  _cache.clear()
+}
+
 export async function githubGetFileContent({
   octokit,
   owner,
@@ -11,6 +29,12 @@ export async function githubGetFileContent({
   repo: string
   path: string
 }): Promise<string> {
+  const cacheKey = computeCacheKey({ owner, repo, path })
+  if (_cache.has(cacheKey)) {
+    const cached = _cache.get(cacheKey)
+    if (cached === undefined) throw new Error('Cache is undefined')
+    return cached
+  }
   try {
     const response = await octokit.repos.getContent({
       owner,
@@ -28,6 +52,7 @@ export async function githubGetFileContent({
       const content = Buffer.from(response.data.content, 'base64').toString(
         'utf-8'
       )
+      _cache.set(cacheKey, content)
       return content
     } else {
       throw new Error('The specified path does not point to a file')
