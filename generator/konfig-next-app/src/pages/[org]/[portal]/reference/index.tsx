@@ -20,6 +20,8 @@ import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { githubGetDemoYamls } from '@/utils/github-get-demo-yamls'
 import { DemoYaml } from '@/utils/generate-demos-from-github'
 import { ReferenceNavbar } from '@/components/ReferenceNavbar'
+import { githubGetFileContent } from '@/utils/github-get-file-content'
+import path from 'path'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -61,9 +63,18 @@ export const getStaticProps: GetStaticProps<{
 
   if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
 
+  const specPath = konfigYaml.content.specPath
+
+  const openapi = await githubGetFileContent({
+    owner,
+    repo,
+    octokit,
+    path: path.join(path.dirname(konfigYaml.info.path), specPath),
+  })
+
   return {
     props: {
-      konfigYaml: konfigYaml,
+      konfigYaml: konfigYaml.content,
       demoYaml: demoYaml ?? null,
     },
   }

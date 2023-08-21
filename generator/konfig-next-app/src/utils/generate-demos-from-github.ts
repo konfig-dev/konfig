@@ -290,8 +290,8 @@ async function _fetch({
     organization,
     portal,
     demos,
-    portalTitle: konfigYaml?.portalTitle,
-    primaryColor: konfigYaml?.primaryColor,
+    portalTitle: konfigYaml?.content.portalTitle,
+    primaryColor: konfigYaml?.content.primaryColor,
     mainBranch: repository.repository.default_branch,
     ...(parsedDemoYaml.socials ? { socials: parsedDemoYaml.socials } : {}),
   }
