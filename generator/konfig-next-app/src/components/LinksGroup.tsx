@@ -49,7 +49,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-interface LinksGroupProps {
+export interface LinksGroupProps {
   label: string
   initiallyOpened?: boolean
   links?: { label: string; link: string }[]
