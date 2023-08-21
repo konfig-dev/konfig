@@ -6,7 +6,7 @@ import {
   createStyles,
   rem,
 } from '@mantine/core'
-import { LinksGroup } from './ReferenceNavbarLinksGroup'
+import { LinksGroup } from './LinksGroup'
 
 const mockdata = [
   { label: 'Dashboard' },

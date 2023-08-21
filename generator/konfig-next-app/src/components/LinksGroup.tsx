@@ -108,17 +108,3 @@ const mockdata = {
     { label: 'Releases schedule', link: '/' },
   ],
 }
-
-export function ReferenceNavbarLinksGroup() {
-  return (
-    <Box
-      sx={(theme) => ({
-        padding: theme.spacing.md,
-        backgroundColor:
-          theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
-      })}
-    >
-      <LinksGroup {...mockdata} />
-    </Box>
-  )
-}
