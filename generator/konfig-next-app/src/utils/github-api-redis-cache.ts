@@ -25,6 +25,11 @@ function computeCacheKey({
   return `${namespace}:${key}`
 }
 
+export async function clearGithubApiCache() {
+  const client = await githubApiRedisCache()
+  await client.flushAll()
+}
+
 export async function setGithubApiCache({
   namespace,
   key,
