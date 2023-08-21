@@ -23,12 +23,19 @@ import { DemoYaml } from '@/utils/generate-demos-from-github'
 import { ReferenceNavbar } from '@/components/ReferenceNavbar'
 import { githubGetFileContent } from '@/utils/github-get-file-content'
 import path from 'path'
+import { LinksGroupProps } from '@/components/LinksGroup'
+import { generateNavbarLinks } from '@/utils/generate-navbar-links'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: 'blocking',
   }
+}
+
+export interface NavbarDataItem {
+  label: LinksGroupProps['label']
+  links: NonNullable<LinksGroupProps['links']>
 }
 
 /**
@@ -43,6 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   konfigYaml: KonfigYamlType | null
   demoYaml: DemoYaml | null
+  navbarData: NavbarDataItem[]
 }> = async (ctx) => {
   const owner = ctx.params?.org
   const repo = ctx.params?.portal
@@ -75,12 +83,13 @@ export const getStaticProps: GetStaticProps<{
 
   const spec = await parseSpec(openapi)
 
-  console.log(spec.spec)
+  const navbarData = generateNavbarLinks({ spec: spec.spec, owner, repo })
 
   return {
     props: {
       konfigYaml: konfigYaml.content,
       demoYaml: demoYaml ?? null,
+      navbarData,
     },
   }
 }
@@ -88,6 +97,7 @@ export const getStaticProps: GetStaticProps<{
 const Reference = ({
   konfigYaml,
   demoYaml,
+  navbarData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
@@ -121,7 +131,7 @@ const Reference = ({
             width={{ sm: 225, lg: 325 }}
             sx={{ overflowY: 'scroll' }}
           >
-            <ReferenceNavbar />
+            <ReferenceNavbar navbarData={navbarData} />
           </Navbar>
         }
         header={

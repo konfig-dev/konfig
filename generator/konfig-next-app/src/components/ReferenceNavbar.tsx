@@ -7,41 +7,7 @@ import {
   rem,
 } from '@mantine/core'
 import { LinksGroup } from './LinksGroup'
-
-const mockdata = [
-  { label: 'Dashboard' },
-  {
-    label: 'Market news',
-
-    initiallyOpened: true,
-    links: [
-      { label: 'Overview', link: '/' },
-      { label: 'Forecasts', link: '/' },
-      { label: 'Outlook', link: '/' },
-      { label: 'Real time', link: '/' },
-    ],
-  },
-  {
-    label: 'Releases',
-
-    links: [
-      { label: 'Upcoming releases', link: '/' },
-      { label: 'Previous releases', link: '/' },
-      { label: 'Releases schedule', link: '/' },
-    ],
-  },
-  { label: 'Analytics' },
-  { label: 'Contracts' },
-  { label: 'Settings' },
-  {
-    label: 'Security',
-    links: [
-      { label: 'Enable 2FA', link: '/' },
-      { label: 'Change password', link: '/' },
-      { label: 'Recovery codes', link: '/' },
-    ],
-  },
-]
+import { NavbarDataItem } from '@/pages/[org]/[portal]/reference'
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -80,9 +46,13 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function ReferenceNavbar() {
+export function ReferenceNavbar({
+  navbarData,
+}: {
+  navbarData: NavbarDataItem[]
+}) {
   const { classes } = useStyles()
-  const links = mockdata.map((item) => (
+  const links = navbarData.map((item) => (
     <LinksGroup {...item} key={item.label} />
   ))
 
