@@ -82,7 +82,7 @@ const DemoPage = observer(
           colorScheme,
           colors: {
             brand:
-              primaryColor !== undefined
+              primaryColor !== null
                 ? generateShadePalette(primaryColor)
                 : colors.blue,
           },

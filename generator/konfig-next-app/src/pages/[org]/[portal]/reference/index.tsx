@@ -40,8 +40,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
  */
 
 export const getStaticProps: GetStaticProps<{
-  konfigYaml: KonfigYamlType
-  demoYaml: DemoYaml
+  konfigYaml: KonfigYamlType | null
+  demoYaml: DemoYaml | null
 }> = async (ctx) => {
   const owner = ctx.params?.org
   const repo = ctx.params?.portal
@@ -58,13 +58,13 @@ export const getStaticProps: GetStaticProps<{
   const demoYamls = await githubGetDemoYamls({ owner, repo, octokit })
 
   // TODO: handle multiple konfig.yaml / demo.yaml files
-  const konfigYaml = konfigYamls[0]
-  const demoYaml = demoYamls[0]
+  const konfigYaml = konfigYamls?.[0]
+  const demoYaml = demoYamls?.[0]
 
   return {
     props: {
-      konfigYaml,
-      demoYaml,
+      konfigYaml: konfigYaml ?? null,
+      demoYaml: demoYaml ?? null,
     },
   }
 }
@@ -82,7 +82,7 @@ const Reference = ({
         colorScheme,
         colors: {
           brand:
-            konfigYaml.primaryColor !== undefined
+            konfigYaml?.primaryColor !== undefined
               ? generateShadePalette(konfigYaml.primaryColor)
               : colors.blue,
         },
@@ -118,7 +118,9 @@ const Reference = ({
         header={
           <Header height={TITLE_OFFSET_PX}>
             <LayoutHeader
-              title={konfigYaml.portalTitle ?? demoYaml.portalName}
+              title={
+                konfigYaml?.portalTitle ?? demoYaml?.portalName ?? 'API Portal'
+              }
             />
             <Box
               px="md"

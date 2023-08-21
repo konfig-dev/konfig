@@ -41,7 +41,7 @@ export class PortalState {
   id: string
   uuid = uuid()
   portalName: string
-  portalTitle?: string
+  portalTitle: string | null
   currentDemoIndex: number
   organizationId: string
   portalId: string
@@ -68,7 +68,7 @@ export class PortalState {
     demoId: string
     socials?: SocialObject
     mainBranch?: string
-    portalTitle?: string
+    portalTitle: string | null
   }) {
     makeAutoObservable(this)
     this.socials = socials
