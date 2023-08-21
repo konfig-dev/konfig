@@ -126,9 +126,10 @@ const Reference = ({
         navbar={
           <Navbar
             p="md"
+            pb={0}
             hiddenBreakpoint="lg"
             hidden={!opened}
-            width={{ sm: 225, lg: 325 }}
+            width={{ base: 350 }}
             sx={{ overflowY: 'scroll' }}
           >
             <ReferenceNavbar navbarData={navbarData} />
