@@ -1,4 +1,20 @@
 import { Octokit } from '@octokit/rest'
+import {
+  getGithubApiCache,
+  setGithubApiCache,
+} from '@/utils/github-api-redis-cache'
+
+function computeCacheKey({
+  owner,
+  repo,
+  path,
+}: {
+  owner: string
+  repo: string
+  path: string
+}): string {
+  return `${owner}/${repo}/${path}`
+}
 
 export async function githubGetFileContent({
   octokit,
@@ -11,6 +27,15 @@ export async function githubGetFileContent({
   repo: string
   path: string
 }): Promise<string> {
+  const cacheKey = computeCacheKey({ owner, repo, path })
+  const cached = await getGithubApiCache({
+    namespace: 'content',
+    key: cacheKey,
+  })
+  if (cached) {
+    return cached
+  }
+
   try {
     const response = await octokit.repos.getContent({
       owner,
@@ -28,6 +53,11 @@ export async function githubGetFileContent({
       const content = Buffer.from(response.data.content, 'base64').toString(
         'utf-8'
       )
+      await setGithubApiCache({
+        namespace: 'content',
+        key: cacheKey,
+        value: content,
+      })
       return content
     } else {
       throw new Error('The specified path does not point to a file')

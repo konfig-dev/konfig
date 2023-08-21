@@ -16,13 +16,13 @@ import {
 import { Organization, Portal } from '@/utils/demos'
 import { DemoPortal, PortalState } from '@/components/DemoPortal'
 import * as yaml from 'js-yaml'
-import {
-  DEMO_YAML_FILE_NAME,
-  SocialObject,
-  demoYamlSchema,
-} from '@/utils/generate-demos-from-github'
 import { notifications } from '@mantine/notifications'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
+import {
+  DEMO_YAML_FILE_NAME,
+  demoYamlSchema,
+  SocialObject,
+} from '@/utils/generate-demos-from-github-utils'
 
 /**
  * This is here to force this page to be SSR only so Next.js doesn't try to make

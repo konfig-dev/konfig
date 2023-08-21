@@ -1,13 +1,15 @@
 import { App } from 'octokit'
 import { Demo, Organization, Portal } from './demos'
 import * as yaml from 'js-yaml'
-import { z } from 'zod'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { FetchCache } from '@/server/routers/_app'
 import { createOctokitInstance } from './octokit'
 import { githubGetKonfigYamls } from './github-get-konfig-yamls'
-
-export const DEMO_YAML_FILE_NAME = 'demo.yaml'
+import {
+  SocialObject,
+  DEMO_YAML_FILE_NAME,
+  demoYamlSchema,
+} from './generate-demos-from-github-utils'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -23,28 +25,6 @@ const _mappings: {
     'snaptrade-demos': 'snaptrade-sdks',
   },
 }
-
-const socialObjectSchema = z.object({
-  website: z.string().optional(),
-  documentation: z.string().optional(),
-})
-
-export type SocialObject = z.infer<typeof socialObjectSchema>
-
-export const demoYamlSchema = z.object({
-  organizationName: z.string(),
-  portalName: z.string(),
-  socials: socialObjectSchema.optional(),
-  demos: z
-    .object({
-      id: z.string(),
-      showCode: z.boolean().optional(),
-    })
-    .array()
-    .optional(),
-})
-
-export type DemoYaml = z.infer<typeof demoYamlSchema>
 
 async function _findRepository({
   gitHub,

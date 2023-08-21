@@ -25,11 +25,11 @@ import { Demo } from '@/utils/demos'
 import { DemoSiblings, Sibling } from './DemoSiblings'
 import { navigateToDemo } from '@/utils/navigate-to-demo'
 import { DemoSocials } from './DemoSocials'
-import { SocialObject } from '@/utils/generate-demos-from-github'
 import DemoTableOfContents from './DemoTableOfContents'
 import { DemoEditThisPage } from './DemoEditThisPage'
 import { DemoLastRan } from './DemoLastRan'
 import { DemoHeader } from './DemoHeader'
+import { SocialObject } from '@/utils/generate-demos-from-github-utils'
 
 type DemosInput = Demo[]
 
