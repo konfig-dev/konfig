@@ -2,6 +2,7 @@ import { _cache } from '@/server/routers/_app'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
 import { githubGetReferenceResources } from '@/utils/github-get-reference-resources'
+import { clearGithubApiCache } from '@/utils/github-api-redis-cache'
 
 const requestBodySchema = z.object({
   owner: z.string(),
@@ -13,6 +14,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { owner, repo } = requestBodySchema.parse(req.body)
+
+  await clearGithubApiCache()
 
   const { navbarData } = await githubGetReferenceResources({ owner, repo })
 
