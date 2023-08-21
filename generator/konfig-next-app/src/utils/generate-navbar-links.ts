@@ -1,5 +1,5 @@
 import { NavbarDataItem } from '@/pages/[org]/[portal]/reference'
-import type { Spec, HttpMethods } from 'konfig-lib'
+import type { Spec, HttpMethods, KonfigYamlType } from 'konfig-lib'
 
 /**
  * Generates the navbar links as NavbarDataItem[]. Each group is determined by the tag of an operation.
@@ -10,10 +10,12 @@ export function generateNavbarLinks({
   spec,
   owner,
   repo,
+  konfigYaml,
 }: {
   spec: Spec['spec']
   owner: string
   repo: string
+  konfigYaml: KonfigYamlType
 }): NavbarDataItem[] {
   const navbarLinks: NavbarDataItem[] = []
   const tags = spec.tags
@@ -43,5 +45,13 @@ export function generateNavbarLinks({
   })
 
   // filter navbarLinks that have no links
-  return navbarLinks.filter((navbarLink) => navbarLink.links.length > 0)
+  const hasLinks = navbarLinks.filter(
+    (navbarLink) => navbarLink.links.length > 0
+  )
+  // filter navbarLinks that are specified in the konfig.yaml#filterTags
+  const filterTags = konfigYaml.filterTags ?? []
+  const filteredNavbarLinks = hasLinks.filter(
+    (navbarLink) => !filterTags.includes(navbarLink.label)
+  )
+  return filteredNavbarLinks
 }
