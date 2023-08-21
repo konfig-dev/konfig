@@ -9,8 +9,13 @@ import {
   useMantineTheme,
   Header,
   Box,
+  Title,
   Group,
+  Text,
   MantineProvider,
+  SimpleGrid,
+  Flex,
+  Code,
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
@@ -19,7 +24,8 @@ import {
   GithubResources,
   githubGetReferenceResources,
 } from '@/utils/github-get-reference-resources'
-import { forEachOperation, type Operation } from 'konfig-lib'
+import { forEachOperation, type OperationObject } from 'konfig-lib'
+import { HttpMethodBadge } from '@/components/HttpMethodBadge'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -40,7 +46,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<
   GithubResources & {
     operationId: string
-    operation: Operation
+    operation: OperationObject
   }
 > = async (ctx) => {
   const owner = ctx.params?.org
@@ -139,7 +145,21 @@ const Operation = ({
           </Header>
         }
       >
-        Test
+        <SimpleGrid cols={2}>
+          <Flex direction="column" gap="sm">
+            <Title order={2}>
+              {operation.operation.summary ?? operation.path}
+            </Title>
+            <Group>
+              <HttpMethodBadge httpMethod={operation.method} />
+              <Code>{operation.path}</Code>
+            </Group>
+            {operation.operation.description && (
+              <Text>{operation.operation.description}</Text>
+            )}
+          </Flex>
+          <Box>Code / Response</Box>
+        </SimpleGrid>
       </AppShell>
     </MantineProvider>
   )

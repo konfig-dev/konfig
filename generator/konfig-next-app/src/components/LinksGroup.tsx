@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import type { HttpMethods } from 'konfig-lib'
-import { HttpMethodsEnum } from 'konfig-lib/dist/forEachOperation'
 import {
   Group,
   Box,
@@ -9,8 +8,6 @@ import {
   createStyles,
   rem,
   NavLink,
-  Badge,
-  MantineColor,
 } from '@mantine/core'
 import {
   IconCalendarStats,
@@ -18,6 +15,7 @@ import {
   IconChevronRight,
 } from '@tabler/icons-react'
 import Link from 'next/link'
+import { HttpMethodBadge } from './HttpMethodBadge'
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -71,16 +69,6 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
   const [opened, setOpened] = useState(initiallyOpened || false)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
   const items = (hasLinks ? links : []).map((link) => {
-    const httpMethodColor = (method: HttpMethods): MantineColor => {
-      if (method === HttpMethodsEnum.GET) return 'green'
-      if (method === HttpMethodsEnum.POST) return 'blue'
-      if (method === HttpMethodsEnum.PUT) return 'blue'
-      if (method === HttpMethodsEnum.DELETE) return 'red'
-      if (method === HttpMethodsEnum.PATCH) return 'yellow'
-      if (method === HttpMethodsEnum.OPTIONS) return 'yellow'
-      if (method === HttpMethodsEnum.TRACE) return 'yellow'
-      return 'gray'
-    }
     return (
       <Box className={classes.linkWrapper} key={link.label}>
         <NavLink<typeof Link>
@@ -88,15 +76,7 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
           className={classes.link}
           href={link.link}
           label={link.label}
-          rightSection={
-            <Badge
-              variant={theme.colorScheme === 'light' ? 'filled' : 'light'}
-              color={httpMethodColor(link.httpMethod)}
-              radius="xs"
-            >
-              {link.httpMethod}
-            </Badge>
-          }
+          rightSection={<HttpMethodBadge httpMethod={link.httpMethod} />}
         />
       </Box>
     )
