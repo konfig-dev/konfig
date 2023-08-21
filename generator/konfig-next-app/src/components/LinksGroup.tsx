@@ -81,7 +81,6 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
           component="a"
           className={classes.link}
           href={link.link}
-          onClick={(event) => event.preventDefault()}
           label={link.label}
           rightSection={
             <Badge
