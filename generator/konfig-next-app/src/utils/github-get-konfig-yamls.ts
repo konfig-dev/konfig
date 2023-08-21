@@ -31,7 +31,10 @@ export async function githubGetKonfigYamls({
           path: konfigYamlInfo.path,
         })
       )
-      return KonfigYaml.parse(konfigYamlContent)
+      return {
+        content: KonfigYaml.parse(konfigYamlContent),
+        info: konfigYamlInfo,
+      }
     })
   )
 }
