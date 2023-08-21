@@ -2,7 +2,6 @@ import { TITLE_OFFSET_PX } from '@/components/DemoTitle'
 import { HeaderTabs, TABS } from '@/components/HeaderTabs'
 import { LayoutHeader } from '@/components/LayoutHeader'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
-import { parseSpec } from 'konfig-lib/dist/parseSpec'
 import {
   AppShell,
   Navbar,
@@ -16,15 +15,10 @@ import {
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
 import type { KonfigYamlType } from 'konfig-lib/dist/KonfigYaml'
-import { createOctokitInstance } from '@/utils/octokit'
-import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
-import { githubGetDemoYamls } from '@/utils/github-get-demo-yamls'
 import { DemoYaml } from '@/utils/generate-demos-from-github'
 import { ReferenceNavbar } from '@/components/ReferenceNavbar'
-import { githubGetFileContent } from '@/utils/github-get-file-content'
-import path from 'path'
 import { LinksGroupProps } from '@/components/LinksGroup'
-import { generateNavbarLinks } from '@/utils/generate-navbar-links'
+import { githubGetReferenceResources } from '@/utils/github-get-reference-resources'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -61,49 +55,10 @@ export const getStaticProps: GetStaticProps<{
   if (Array.isArray(owner) || Array.isArray(repo))
     throw Error('Got unexpected array type for parameters')
 
-  const octokit = await createOctokitInstance({ owner, repo })
-
-  // time the next two lines
-  const start = Date.now()
-  const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
-  const demoYamls = await githubGetDemoYamls({ owner, repo, octokit })
-  console.log(
-    `githubGetKonfigYamls + githubGetDemoYamls took ${Date.now() - start}ms`
-  )
-
-  // TODO: handle multiple konfig.yaml / demo.yaml files
-  const konfigYaml = konfigYamls?.[0]
-  const demoYaml = demoYamls?.[0]
-
-  if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
-
-  const specPath = konfigYaml.content.specPath
-
-  // time the next three lines
-  const start2 = Date.now()
-  const openapi = await githubGetFileContent({
-    owner,
-    repo,
-    octokit,
-    path: path.join(path.dirname(konfigYaml.info.path), specPath),
-  })
-
-  const spec = await parseSpec(openapi)
-
-  const navbarData = generateNavbarLinks({
-    spec: spec.spec,
-    owner,
-    repo,
-    konfigYaml: konfigYaml.content,
-  })
-  console.log(`generation of navbarLinks took ${Date.now() - start2}ms`)
+  const props = await githubGetReferenceResources({ owner, repo })
 
   return {
-    props: {
-      konfigYaml: konfigYaml.content,
-      demoYaml: demoYaml ?? null,
-      navbarData,
-    },
+    props,
   }
 }
 
