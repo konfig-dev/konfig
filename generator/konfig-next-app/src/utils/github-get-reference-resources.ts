@@ -5,6 +5,11 @@ import { githubGetFileContent } from './github-get-file-content'
 import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { createOctokitInstance } from './octokit'
 import { parseSpec } from 'konfig-lib/dist/parseSpec'
+import { UnwrapPromise } from 'next/dist/lib/coalesced-function'
+
+export type GithubResources = UnwrapPromise<
+  ReturnType<typeof githubGetReferenceResources>
+>
 
 export async function githubGetReferenceResources({
   owner,
@@ -51,6 +56,7 @@ export async function githubGetReferenceResources({
   console.log(`generation of navbarLinks took ${Date.now() - start2}ms`)
   return {
     navbarData,
+    spec: spec.spec,
     konfigYaml: konfigYaml.content,
     demoYaml: demoYaml ?? null,
   }

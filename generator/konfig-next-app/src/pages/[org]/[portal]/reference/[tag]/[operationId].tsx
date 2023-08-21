@@ -14,11 +14,12 @@ import {
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
-import type { KonfigYamlType } from 'konfig-lib/dist/KonfigYaml'
 import { ReferenceNavbar } from '@/components/ReferenceNavbar'
-import { NavbarDataItem } from '@/components/LinksGroup'
-import { githubGetReferenceResources } from '@/utils/github-get-reference-resources'
-import { DemoYaml } from '@/utils/generate-demos-from-github-utils'
+import {
+  GithubResources,
+  githubGetReferenceResources,
+} from '@/utils/github-get-reference-resources'
+import { forEachOperation, type Operation } from 'konfig-lib'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -36,24 +37,40 @@ export const getStaticPaths: GetStaticPaths = async () => {
  * konfig.yaml contents and return it as a props
  */
 
-export const getStaticProps: GetStaticProps<{
-  konfigYaml: KonfigYamlType | null
-  demoYaml: DemoYaml | null
-  navbarData: NavbarDataItem[]
-}> = async (ctx) => {
+export const getStaticProps: GetStaticProps<
+  GithubResources & {
+    operationId: string
+    operation: Operation
+  }
+> = async (ctx) => {
   const owner = ctx.params?.org
   const repo = ctx.params?.portal
+  const tag = ctx.params?.tag
+  const operationId = ctx.params?.operationId
 
   if (owner === undefined || repo === undefined)
     throw Error('Missing owner/repo parameters')
 
+  if (tag === undefined || operationId === undefined)
+    throw Error('Missing tag/operationId parameters')
+
   if (Array.isArray(owner) || Array.isArray(repo))
+    throw Error('Got unexpected array type for parameters')
+
+  if (Array.isArray(tag) || Array.isArray(operationId))
     throw Error('Got unexpected array type for parameters')
 
   const props = await githubGetReferenceResources({ owner, repo })
 
+  let operation = null
+  forEachOperation(props.spec, (op) => {
+    if (op.operation.operationId === operationId) operation = op
+  })
+  if (operation === null)
+    throw Error(`Operation with operation ID ${operationId} not found`)
+
   return {
-    props,
+    props: { ...props, operationId, operation },
   }
 }
 
@@ -61,6 +78,9 @@ const Operation = ({
   konfigYaml,
   demoYaml,
   navbarData,
+  operationId,
+  spec,
+  operation,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
