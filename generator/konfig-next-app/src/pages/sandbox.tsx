@@ -107,6 +107,7 @@ class SandboxState {
       organizationId: state.organization.id,
       demoId: state.demos[0].id,
       socials: this.socials,
+      portalTitle: 'Sandbox',
     })
     return portalState
   }
