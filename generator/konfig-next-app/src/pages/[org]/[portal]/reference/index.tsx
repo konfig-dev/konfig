@@ -15,10 +15,10 @@ import {
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
 import type { KonfigYamlType } from 'konfig-lib/dist/KonfigYaml'
-import { DemoYaml } from '@/utils/generate-demos-from-github'
 import { ReferenceNavbar } from '@/components/ReferenceNavbar'
 import { LinksGroupProps } from '@/components/LinksGroup'
 import { githubGetReferenceResources } from '@/utils/github-get-reference-resources'
+import { DemoYaml } from '@/utils/generate-demos-from-github-utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

@@ -5,7 +5,7 @@ import yaml from 'js-yaml'
 import {
   DEMO_YAML_FILE_NAME,
   demoYamlSchema,
-} from './generate-demos-from-github'
+} from './generate-demos-from-github-utils'
 
 export async function githubGetDemoYamls({
   owner,

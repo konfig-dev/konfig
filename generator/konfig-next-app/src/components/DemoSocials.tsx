@@ -1,4 +1,4 @@
-import { SocialObject } from '@/utils/generate-demos-from-github'
+import { SocialObject } from '@/utils/generate-demos-from-github-utils'
 import { ActionIcon, Anchor, Group, createStyles, rem } from '@mantine/core'
 import { IconBook, IconWorld } from '@tabler/icons-react'
 
