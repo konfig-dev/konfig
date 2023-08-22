@@ -14,8 +14,8 @@ import {
   Text,
   MantineProvider,
   SimpleGrid,
-  Flex,
   Code,
+  Stack,
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
@@ -107,11 +107,24 @@ const Operation = ({
   navbarData,
   operationId,
   spec,
+  operationParameters,
   operation,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
   const [opened, setOpened] = useState(false)
+  const pathParameters = operationParameters.filter(
+    (param) => param.in === 'path'
+  )
+  const queryParameters = operationParameters.filter(
+    (param) => param.in === 'query'
+  )
+  const headerParameters = operationParameters.filter(
+    (param) => param.in === 'header'
+  )
+  const cookieParameters = operationParameters.filter(
+    (param) => param.in === 'cookie'
+  )
   return (
     <MantineProvider
       theme={{
@@ -167,20 +180,82 @@ const Operation = ({
         }
       >
         <SimpleGrid cols={2}>
-          <Flex direction="column" gap="sm">
-            <Title order={2}>
-              {operation.operation.summary ?? operation.path}
-            </Title>
-            <Group>
-              <HttpMethodBadge httpMethod={operation.method} />
-              <Code>{operation.path}</Code>
-            </Group>
-            {operation.operation.description && (
-              <Text c="dimmed" fz="sm">
-                {operation.operation.description}
-              </Text>
+          <Stack spacing="xl">
+            <Stack spacing="xs">
+              <Title order={2}>
+                {operation.operation.summary ?? operation.path}
+              </Title>
+              <Group>
+                <HttpMethodBadge httpMethod={operation.method} />
+                <Code>{operation.path}</Code>
+              </Group>
+              {operation.operation.description && (
+                <Text c="dimmed" fz="sm">
+                  {operation.operation.description}
+                </Text>
+              )}
+            </Stack>
+            {pathParameters.length > 0 && (
+              <Box>
+                <Title order={4}>Path Parameters</Title>
+                <Stack>
+                  {pathParameters.map((param) => (
+                    <Box key={param.name}>
+                      <Code>{param.name}</Code>
+                      <Text c="dimmed" fz="sm">
+                        {param.description}
+                      </Text>
+                    </Box>
+                  ))}
+                </Stack>
+              </Box>
             )}
-          </Flex>
+            {queryParameters.length > 0 && (
+              <Box>
+                <Title order={4}>Query Parameters</Title>
+                <Stack>
+                  {queryParameters.map((param) => (
+                    <Box key={param.name}>
+                      <Code>{param.name}</Code>
+                      <Text c="dimmed" fz="sm">
+                        {param.description}
+                      </Text>
+                    </Box>
+                  ))}
+                </Stack>
+              </Box>
+            )}
+            {headerParameters.length > 0 && (
+              <Box>
+                <Title order={4}>Header Parameters</Title>
+                <Stack>
+                  {headerParameters.map((param) => (
+                    <Box key={param.name}>
+                      <Code>{param.name}</Code>
+                      <Text c="dimmed" fz="sm">
+                        {param.description}
+                      </Text>
+                    </Box>
+                  ))}
+                </Stack>
+              </Box>
+            )}
+            {cookieParameters.length > 0 && (
+              <Box>
+                <Title order={4}>Cookie Parameters</Title>
+                <Stack>
+                  {cookieParameters.map((param) => (
+                    <Box key={param.name}>
+                      <Code>{param.name}</Code>
+                      <Text c="dimmed" fz="sm">
+                        {param.description}
+                      </Text>
+                    </Box>
+                  ))}
+                </Stack>
+              </Box>
+            )}
+          </Stack>
           <Box>Code / Response</Box>
         </SimpleGrid>
       </AppShell>
