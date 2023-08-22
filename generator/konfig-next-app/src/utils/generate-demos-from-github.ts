@@ -12,6 +12,7 @@ import {
 } from './generate-demos-from-github-utils'
 import { githubGetFilesInDir } from './github-get-files-in-dir'
 import { githubGetFileContent } from './github-get-file-content'
+import { githubGetRepository } from './github-get-repository'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -169,27 +170,18 @@ async function _fetch({
   if (privateKey === undefined)
     throw Error('Missing GITHUB_APP_PRIVATE_KEY Environment Variable')
 
-  const { eachRepository } = new App({
-    appId: 276014,
-    privateKey,
-  })
-
   const owner =
     orgId in _mappings.organization ? _mappings.organization[orgId] : orgId
   const repo =
     portalId in _mappings.repository ? _mappings.repository[portalId] : portalId
 
-  const gitHub = { owner, repo }
-  const repository = await _findRepository({
-    gitHub,
-    eachRepository,
-  })
-
-  const repoFullName = `${gitHub.owner}/${gitHub.repo}`
-  if (repository === null)
-    throw Error(`Could not find repository under ${repoFullName}`)
-
   const octokit = await createOctokitInstance({ owner, repo })
+
+  const repository = await githubGetRepository({
+    owner,
+    repo,
+    octokit,
+  })
 
   const demoYaml = await githubGetFileContent({
     octokit,
@@ -246,7 +238,7 @@ async function _fetch({
     demos,
     portalTitle: konfigYaml?.content.portalTitle,
     primaryColor: konfigYaml?.content.primaryColor,
-    mainBranch: repository.repository.default_branch,
+    mainBranch: repository.data.default_branch,
     ...(parsedDemoYaml.socials ? { socials: parsedDemoYaml.socials } : {}),
   }
 }
