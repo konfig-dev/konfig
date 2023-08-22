@@ -13,9 +13,9 @@ import {
   Group,
   Text,
   MantineProvider,
-  SimpleGrid,
   Code,
   Stack,
+  Flex,
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
@@ -24,7 +24,6 @@ import {
   GithubResources,
   githubGetReferenceResources,
 } from '@/utils/github-get-reference-resources'
-import { getOperationParameters } from 'konfig-lib/dist/util/get-operation-parameters'
 import {
   ParameterObject,
   type OperationObject,
@@ -32,6 +31,7 @@ import {
   getOperations,
 } from 'konfig-lib'
 import { HttpMethodBadge } from '@/components/HttpMethodBadge'
+import { OperationParameter } from '@/components/OperationParameter'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -76,26 +76,23 @@ export const getStaticProps: GetStaticProps<
 
   const { spec, ...props } = await githubGetReferenceResources({ owner, repo })
 
+  if (spec.specDereferenced === null) throw Error('specDereferenced is null')
+
   let operation: OperationObject | null = null
-  const operations = getOperations({ spec: spec.spec })
+  const operations = getOperations({ spec: spec.specDereferenced })
   for (const op of operations) {
     if (op.operation.operationId === operationId) operation = op
   }
   if (operation === null)
     throw Error(`Operation with operation ID ${operationId} not found`)
 
-  const operationParameters =
-    getOperationParameters({
-      operation: operation.operation,
-      spec,
-    }) ?? []
-
   return {
     props: {
       ...props,
       operationId,
       operation,
-      operationParameters,
+      operationParameters: (operation.operation?.parameters ??
+        []) as ParameterObject[],
       spec: spec.spec,
     },
   }
@@ -179,8 +176,8 @@ const Operation = ({
           </Header>
         }
       >
-        <SimpleGrid cols={2}>
-          <Stack spacing="xl">
+        <Flex>
+          <Stack w="60%" spacing="xl">
             <Stack spacing="xs">
               <Title order={2}>
                 {operation.operation.summary ?? operation.path}
@@ -200,12 +197,7 @@ const Operation = ({
                 <Title order={4}>Path Parameters</Title>
                 <Stack>
                   {pathParameters.map((param) => (
-                    <Box key={param.name}>
-                      <Code>{param.name}</Code>
-                      <Text c="dimmed" fz="sm">
-                        {param.description}
-                      </Text>
-                    </Box>
+                    <OperationParameter key={param.name} param={param} />
                   ))}
                 </Stack>
               </Box>
@@ -215,12 +207,7 @@ const Operation = ({
                 <Title order={4}>Query Parameters</Title>
                 <Stack>
                   {queryParameters.map((param) => (
-                    <Box key={param.name}>
-                      <Code>{param.name}</Code>
-                      <Text c="dimmed" fz="sm">
-                        {param.description}
-                      </Text>
-                    </Box>
+                    <OperationParameter key={param.name} param={param} />
                   ))}
                 </Stack>
               </Box>
@@ -230,12 +217,7 @@ const Operation = ({
                 <Title order={4}>Header Parameters</Title>
                 <Stack>
                   {headerParameters.map((param) => (
-                    <Box key={param.name}>
-                      <Code>{param.name}</Code>
-                      <Text c="dimmed" fz="sm">
-                        {param.description}
-                      </Text>
-                    </Box>
+                    <OperationParameter key={param.name} param={param} />
                   ))}
                 </Stack>
               </Box>
@@ -245,19 +227,14 @@ const Operation = ({
                 <Title order={4}>Cookie Parameters</Title>
                 <Stack>
                   {cookieParameters.map((param) => (
-                    <Box key={param.name}>
-                      <Code>{param.name}</Code>
-                      <Text c="dimmed" fz="sm">
-                        {param.description}
-                      </Text>
-                    </Box>
+                    <OperationParameter key={param.name} param={param} />
                   ))}
                 </Stack>
               </Box>
             )}
           </Stack>
           <Box>Code / Response</Box>
-        </SimpleGrid>
+        </Flex>
       </AppShell>
     </MantineProvider>
   )
