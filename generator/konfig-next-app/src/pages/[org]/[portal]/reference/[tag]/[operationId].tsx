@@ -155,7 +155,9 @@ const Operation = ({
               <Code>{operation.path}</Code>
             </Group>
             {operation.operation.description && (
-              <Text>{operation.operation.description}</Text>
+              <Text c="dimmed" fz="sm">
+                {operation.operation.description}
+              </Text>
             )}
           </Flex>
           <Box>Code / Response</Box>
