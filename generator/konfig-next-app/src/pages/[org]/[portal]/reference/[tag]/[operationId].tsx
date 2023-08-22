@@ -24,7 +24,13 @@ import {
   GithubResources,
   githubGetReferenceResources,
 } from '@/utils/github-get-reference-resources'
-import { forEachOperation, type OperationObject } from 'konfig-lib'
+import { getOperationParameters } from 'konfig-lib/dist/util/get-operation-parameters'
+import {
+  ParameterObject,
+  type OperationObject,
+  Spec,
+  getOperations,
+} from 'konfig-lib'
 import { HttpMethodBadge } from '@/components/HttpMethodBadge'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -44,9 +50,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
  */
 
 export const getStaticProps: GetStaticProps<
-  GithubResources & {
+  Omit<GithubResources, 'spec'> & {
+    spec: Spec['spec']
     operationId: string
     operation: OperationObject
+    operationParameters: ParameterObject[]
   }
 > = async (ctx) => {
   const owner = ctx.params?.org
@@ -66,17 +74,30 @@ export const getStaticProps: GetStaticProps<
   if (Array.isArray(tag) || Array.isArray(operationId))
     throw Error('Got unexpected array type for parameters')
 
-  const props = await githubGetReferenceResources({ owner, repo })
+  const { spec, ...props } = await githubGetReferenceResources({ owner, repo })
 
-  let operation = null
-  forEachOperation(props.spec, (op) => {
+  let operation: OperationObject | null = null
+  const operations = getOperations({ spec: spec.spec })
+  for (const op of operations) {
     if (op.operation.operationId === operationId) operation = op
-  })
+  }
   if (operation === null)
     throw Error(`Operation with operation ID ${operationId} not found`)
 
+  const operationParameters =
+    getOperationParameters({
+      operation: operation.operation,
+      spec,
+    }) ?? []
+
   return {
-    props: { ...props, operationId, operation },
+    props: {
+      ...props,
+      operationId,
+      operation,
+      operationParameters,
+      spec: spec.spec,
+    },
   }
 }
 

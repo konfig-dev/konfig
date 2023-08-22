@@ -56,7 +56,7 @@ export async function githubGetReferenceResources({
   console.log(`generation of navbarLinks took ${Date.now() - start2}ms`)
   return {
     navbarData,
-    spec: spec.spec,
+    spec,
     konfigYaml: konfigYaml.content,
     demoYaml: demoYaml ?? null,
   }
