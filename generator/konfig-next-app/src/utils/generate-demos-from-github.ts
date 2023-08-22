@@ -10,6 +10,8 @@ import {
   DEMO_YAML_FILE_NAME,
   demoYamlSchema,
 } from './generate-demos-from-github-utils'
+import { githubGetFilesInDir } from './github-get-files-in-dir'
+import { githubGetFileContent } from './github-get-file-content'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -187,65 +189,37 @@ async function _fetch({
   if (repository === null)
     throw Error(`Could not find repository under ${repoFullName}`)
 
-  const getFilePaths = async ({
-    path,
-    ref,
-  }: {
-    path: string
-    ref?: string
-  }): Promise<{ path: string; name: string }[]> => {
-    const content = await repository.octokit.rest.repos.getContent({
-      ...repository,
-      path,
-      ref,
-    })
-    if (!Array.isArray(content.data))
-      throw Error(`Expected directory at ${path}`)
-    return content.data.map((file) => ({ path: file.path, name: file.name }))
-  }
+  const octokit = await createOctokitInstance({ owner, repo })
 
-  const getContent = async ({ path, ref }: { path: string; ref?: string }) => {
-    const metadata = await repository.octokit.rest.repos.getContent({
-      ...repository,
-      path,
-      ref,
-    })
-    if (typeof metadata !== 'object' || !('content' in metadata.data))
-      throw Error('Unexpected type for content object')
-    const content = await repository.octokit.rest.repos.getContent({
-      ...repository,
-      path,
-      mediaType: {
-        format: 'raw',
-      },
-      ref,
-    })
-    if (typeof content.data !== 'string')
-      throw Error('Unexpected type for content string')
-    return {
-      content: content.data,
-      sha: metadata.data.sha,
-    }
-  }
-
-  const { content: demoYaml } = await getContent({
+  const demoYaml = await githubGetFileContent({
+    octokit,
+    repo,
+    owner,
     path: `demos/${DEMO_YAML_FILE_NAME}`,
   })
+
   const parsedDemoYaml = demoYamlSchema.parse(yaml.load(demoYaml))
 
-  const octokit = await createOctokitInstance({ owner, repo })
   const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
 
   // TODO: handle multiple konfig.yaml files
   const konfigYaml = konfigYamls?.[0]
 
-  const files = await getFilePaths({ path: 'demos' })
+  const files = await githubGetFilesInDir({
+    path: 'demos',
+    owner,
+    repo,
+    octokit,
+  })
 
   const markdownFiles = files.filter(({ name }) => name.endsWith('.md'))
 
   const content = await Promise.all(
     markdownFiles.map(async ({ path, name: fileName }) => {
-      return { content: (await getContent({ path })).content, fileName }
+      return {
+        content: await githubGetFileContent({ path, repo, owner, octokit }),
+        fileName,
+      }
     })
   )
 
