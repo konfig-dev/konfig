@@ -76,7 +76,9 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
           className={classes.link}
           href={link.link}
           label={link.label}
-          rightSection={<HttpMethodBadge httpMethod={link.httpMethod} />}
+          rightSection={
+            <HttpMethodBadge size="xs" httpMethod={link.httpMethod} />
+          }
         />
       </Box>
     )
