@@ -39,6 +39,7 @@ import { HttpMethodBadge } from '@/components/HttpMethodBadge'
 import { OperationParameter, Parameter } from '@/components/OperationParameter'
 import { httpResponseCodeMeaning } from '@/utils/http-response-code-meaning'
 import { sortParametersByRequired } from '@/utils/sort-parameters-by-required'
+import { NavbarDataItem } from '@/components/LinksGroup'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -98,6 +99,23 @@ export const getStaticProps: GetStaticProps<
   }
   if (operation === null)
     throw Error(`Operation with operation ID ${operationId} not found`)
+
+  // find links group with operation id that matches operation in metadata.operationId and set initiallyOpened to true
+  // if not found then set initiallyOpened to false
+  // also sets "active" to true to make it highlighted in the navbar
+  props.navbarData = props.navbarData.map(
+    (item: NavbarDataItem): NavbarDataItem => {
+      const hasOperation = item.links.find((link) => {
+        if (link.metadata?.operationId === operationId) {
+          link.active = true
+          return true
+        }
+        return false
+      })
+      item.initiallyOpened = hasOperation ? true : false
+      return item
+    }
+  )
 
   const requestBody = (operation.operation.requestBody ??
     null) as RequestBodyObject | null
