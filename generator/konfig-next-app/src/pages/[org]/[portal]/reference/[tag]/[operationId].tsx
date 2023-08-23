@@ -17,6 +17,7 @@ import {
   Stack,
   Flex,
   Divider,
+  Badge,
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
@@ -32,9 +33,12 @@ import {
   getOperations,
   RequestBodyObject,
   SchemaObject,
+  ResponseObject,
 } from 'konfig-lib'
 import { HttpMethodBadge } from '@/components/HttpMethodBadge'
 import { OperationParameter, Parameter } from '@/components/OperationParameter'
+import { httpResponseCodeMeaning } from '@/utils/http-response-code-meaning'
+import { sortParametersByRequired } from '@/utils/sort-parameters-by-required'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -57,9 +61,13 @@ export const getStaticProps: GetStaticProps<
     spec: Spec['spec']
     operationId: string
     operation: OperationObject
-    operationParameters: Parameter[]
+    pathParameters: Parameter[]
+    queryParameters: Parameter[]
+    headerParameters: Parameter[]
+    cookieParameters: Parameter[]
     requestBodyProperties: Record<string, SchemaObject> | null
     requestBodyRequired: string[] | null
+    responses: Record<string, ResponseObject>
   }
 > = async (ctx) => {
   const owner = ctx.params?.org
@@ -134,17 +142,45 @@ export const getStaticProps: GetStaticProps<
     requestBodyRequired = allRequestBodyRequired[firstMediaType] ?? null
   }
 
+  // put responses into a map of response code -> response object
+  const responses: Record<string, ResponseObject> = {}
+  if (operation.operation.responses) {
+    for (const [responseCode, responseObject] of Object.entries(
+      operation.operation.responses
+    )) {
+      responses[responseCode] = responseObject as ResponseObject
+    }
+  }
+  const operationParameters = (operation.operation?.parameters ??
+    []) as Parameter[]
+
+  const pathParameters = sortParametersByRequired(
+    operationParameters.filter((param) => param.in === 'path')
+  )
+  const queryParameters = sortParametersByRequired(
+    operationParameters.filter((param) => param.in === 'query')
+  )
+  const headerParameters = sortParametersByRequired(
+    operationParameters.filter((param) => param.in === 'header')
+  )
+  const cookieParameters = sortParametersByRequired(
+    operationParameters.filter((param) => param.in === 'cookie')
+  )
+
   return {
     props: {
       ...props,
       operationId,
       operation,
-      operationParameters: (operation.operation?.parameters ??
-        []) as Parameter[],
       spec: spec.spec,
       requestBody,
+      pathParameters,
+      queryParameters,
+      headerParameters,
+      cookieParameters,
       requestBodyProperties,
       requestBodyRequired,
+      responses,
     },
   }
 }
@@ -153,28 +189,18 @@ const Operation = ({
   konfigYaml,
   demoYaml,
   navbarData,
-  operationId,
-  spec,
-  operationParameters,
+  pathParameters,
+  queryParameters,
+  headerParameters,
+  cookieParameters,
   requestBodyProperties,
   requestBodyRequired,
   operation,
+  responses,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
   const [opened, setOpened] = useState(false)
-  const pathParameters = operationParameters.filter(
-    (param) => param.in === 'path'
-  )
-  const queryParameters = operationParameters.filter(
-    (param) => param.in === 'query'
-  )
-  const headerParameters = operationParameters.filter(
-    (param) => param.in === 'header'
-  )
-  const cookieParameters = operationParameters.filter(
-    (param) => param.in === 'cookie'
-  )
   return (
     <MantineProvider
       theme={{
@@ -307,6 +333,57 @@ const Operation = ({
                       />
                     )
                   )}
+                </Stack>
+              </Box>
+            )}
+            {responses && (
+              <Box>
+                <Title order={4}>Responses</Title>
+                <Divider my="sm" />
+                <Stack>
+                  {Object.entries(responses).map(([responseCode, response]) => (
+                    <Box key={responseCode}>
+                      {/* 1. Render response code
+                          2. Render meaning of response code like "OK" for 200 and "Not Found" for 404 in same text box as (1)
+                          3. Render green "Success" badge next to 2xx codes and red "Error" badge next to 4xx and 5xx codes
+                          4. Render response description if it exists under the response code + badge
+                       */}
+
+                      <Flex gap="xs" align="center">
+                        <Title order={6}>
+                          {responseCode} {httpResponseCodeMeaning(responseCode)}
+                        </Title>
+                        {responseCode.startsWith('2') ? (
+                          <Badge
+                            variant={
+                              colorScheme === 'dark' ? 'light' : 'filled'
+                            }
+                            radius="xs"
+                            color="teal"
+                            size="xs"
+                          >
+                            Success
+                          </Badge>
+                        ) : (
+                          <Badge
+                            variant={
+                              colorScheme === 'dark' ? 'light' : 'filled'
+                            }
+                            radius="xs"
+                            color="red"
+                            size="xs"
+                          >
+                            Error
+                          </Badge>
+                        )}
+                      </Flex>
+                      {response.description && (
+                        <Text c="dimmed" fz="sm">
+                          {response.description}
+                        </Text>
+                      )}
+                    </Box>
+                  ))}
                 </Stack>
               </Box>
             )}
