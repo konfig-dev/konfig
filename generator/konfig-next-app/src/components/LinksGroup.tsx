@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { use, useEffect, useRef, useState } from 'react'
 import type { HttpMethods } from 'konfig-lib'
 import {
   Group,
@@ -55,11 +55,20 @@ const useStyles = createStyles((theme) => ({
 export interface LinksGroupProps {
   label: string
   initiallyOpened?: boolean
-  links?: { label: string; link: string; httpMethod: HttpMethods }[]
+  links?: {
+    label: string
+    link: string
+    httpMethod: HttpMethods
+    active?: boolean
+    metadata?: {
+      operationId?: string
+    }
+  }[]
 }
 
 export interface NavbarDataItem {
   label: LinksGroupProps['label']
+  initiallyOpened?: LinksGroupProps['initiallyOpened']
   links: NonNullable<LinksGroupProps['links']>
 }
 
@@ -68,14 +77,24 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
   const hasLinks = Array.isArray(links)
   const [opened, setOpened] = useState(initiallyOpened || false)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
+  const ref = useRef<HTMLAnchorElement>(null)
+  useEffect(() => {
+    ref.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'nearest',
+    })
+  }, [])
   const items = (hasLinks ? links : []).map((link) => {
     return (
       <Box className={classes.linkWrapper} key={link.label}>
         <NavLink<typeof Link>
+          ref={ref}
           component={Link}
           className={classes.link}
           href={link.link}
           label={link.label}
+          active={link.active}
           rightSection={
             <HttpMethodBadge size="xs" httpMethod={link.httpMethod} />
           }
