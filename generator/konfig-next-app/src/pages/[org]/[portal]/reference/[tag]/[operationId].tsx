@@ -16,6 +16,7 @@ import {
   Code,
   Stack,
   Flex,
+  Divider,
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
@@ -29,9 +30,11 @@ import {
   type OperationObject,
   Spec,
   getOperations,
+  RequestBodyObject,
+  SchemaObject,
 } from 'konfig-lib'
 import { HttpMethodBadge } from '@/components/HttpMethodBadge'
-import { OperationParameter } from '@/components/OperationParameter'
+import { OperationParameter, Parameter } from '@/components/OperationParameter'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -54,7 +57,9 @@ export const getStaticProps: GetStaticProps<
     spec: Spec['spec']
     operationId: string
     operation: OperationObject
-    operationParameters: ParameterObject[]
+    operationParameters: Parameter[]
+    requestBodyProperties: Record<string, SchemaObject> | null
+    requestBodyRequired: string[] | null
   }
 > = async (ctx) => {
   const owner = ctx.params?.org
@@ -86,14 +91,60 @@ export const getStaticProps: GetStaticProps<
   if (operation === null)
     throw Error(`Operation with operation ID ${operationId} not found`)
 
+  const requestBody = (operation.operation.requestBody ??
+    null) as RequestBodyObject | null
+
+  // extract all properties from requestBody schema for every media type into a map of media type -> properties
+  const allRequestBodyProperties: Record<
+    string,
+    Record<string, SchemaObject>
+  > = {}
+  if (requestBody?.content) {
+    for (const mediaType in requestBody.content) {
+      const mediaTypeObject = requestBody.content[mediaType]
+      if (mediaTypeObject.schema === undefined) continue
+      if ('$ref' in mediaTypeObject.schema)
+        throw Error('Spec should be dereferenced')
+      if (mediaTypeObject.schema?.properties) {
+        allRequestBodyProperties[mediaType] = mediaTypeObject.schema
+          .properties as Record<string, SchemaObject>
+      }
+    }
+  }
+
+  // put all required properties into a map of media type -> required properties
+  const allRequestBodyRequired: Record<string, string[]> = {}
+  if (requestBody?.content) {
+    for (const [mediaType, mediaTypeObject] of Object.entries(
+      requestBody.content
+    )) {
+      if (mediaTypeObject.schema?.required) {
+        allRequestBodyRequired[mediaType] = mediaTypeObject.schema.required
+      }
+    }
+  }
+
+  // extract the first mediaType from requestBody and create two variables: requestBodyProperties and requestBodyRequired
+  // if no requestBody then set requestBodyProperties and requestBodyRequired to null
+  let requestBodyProperties: Record<string, SchemaObject> | null = null
+  let requestBodyRequired: string[] | null = null
+  if (requestBody?.content) {
+    const firstMediaType = Object.keys(requestBody.content)[0]
+    requestBodyProperties = allRequestBodyProperties[firstMediaType] ?? null
+    requestBodyRequired = allRequestBodyRequired[firstMediaType] ?? null
+  }
+
   return {
     props: {
       ...props,
       operationId,
       operation,
       operationParameters: (operation.operation?.parameters ??
-        []) as ParameterObject[],
+        []) as Parameter[],
       spec: spec.spec,
+      requestBody,
+      requestBodyProperties,
+      requestBodyRequired,
     },
   }
 }
@@ -105,6 +156,8 @@ const Operation = ({
   operationId,
   spec,
   operationParameters,
+  requestBodyProperties,
+  requestBodyRequired,
   operation,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
@@ -195,6 +248,7 @@ const Operation = ({
             {pathParameters.length > 0 && (
               <Box>
                 <Title order={4}>Path Parameters</Title>
+                <Divider my="sm" />
                 <Stack>
                   {pathParameters.map((param) => (
                     <OperationParameter key={param.name} param={param} />
@@ -205,6 +259,7 @@ const Operation = ({
             {queryParameters.length > 0 && (
               <Box>
                 <Title order={4}>Query Parameters</Title>
+                <Divider my="sm" />
                 <Stack>
                   {queryParameters.map((param) => (
                     <OperationParameter key={param.name} param={param} />
@@ -215,6 +270,7 @@ const Operation = ({
             {headerParameters.length > 0 && (
               <Box>
                 <Title order={4}>Header Parameters</Title>
+                <Divider my="sm" />
                 <Stack>
                   {headerParameters.map((param) => (
                     <OperationParameter key={param.name} param={param} />
@@ -225,10 +281,32 @@ const Operation = ({
             {cookieParameters.length > 0 && (
               <Box>
                 <Title order={4}>Cookie Parameters</Title>
+                <Divider my="sm" />
                 <Stack>
                   {cookieParameters.map((param) => (
                     <OperationParameter key={param.name} param={param} />
                   ))}
+                </Stack>
+              </Box>
+            )}
+            {requestBodyProperties && (
+              <Box>
+                <Title order={4}>Request Body Parameters</Title>
+                <Divider my="sm" />
+                <Stack>
+                  {Object.entries(requestBodyProperties).map(
+                    ([propertyName, property]) => (
+                      <OperationParameter
+                        key={propertyName}
+                        param={{
+                          name: propertyName,
+                          in: 'body',
+                          required: requestBodyRequired?.includes(propertyName),
+                          schema: property,
+                        }}
+                      />
+                    )
+                  )}
                 </Stack>
               </Box>
             )}

@@ -1,11 +1,27 @@
-import { Box, Code, Text } from '@mantine/core'
-import type { OperationParameter, ParameterObject } from 'konfig-lib'
+import { Box, Code, Group, Text } from '@mantine/core'
+import type {
+  OperationParameter,
+  ParameterObject,
+  SchemaObject,
+} from 'konfig-lib'
 
-export function OperationParameter({ param }: { param: ParameterObject }) {
+export type Parameter = Omit<ParameterObject, 'schema'> & {
+  schema: SchemaObject
+}
+
+export function OperationParameter({ param }: { param: Parameter }) {
   const description = getDescription(param)
   return (
     <Box key={param.name}>
-      <Code>{param.name}</Code>
+      <Group spacing={'xs'}>
+        <Code>{param.name}</Code>
+        <Text fz="sm">{param.schema.type && param.schema.type}</Text>
+        {param.required && (
+          <Text fz="xs" color="red">
+            {'required'}
+          </Text>
+        )}
+      </Group>
       {description && (
         <Text c="dimmed" fz="sm">
           {description}
@@ -15,7 +31,7 @@ export function OperationParameter({ param }: { param: ParameterObject }) {
   )
 }
 
-function getDescription(param: ParameterObject) {
+function getDescription(param: Parameter) {
   if (param.description !== undefined) return param.description
   if (param.schema !== undefined) {
     if ('$ref' in param.schema) throw Error('Did not expect $ref in schema')
