@@ -36,7 +36,7 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
 // You have to use "-" instead of "." because Mantine forms uses "." for nested
 // objects. See https://mantine.dev/core/forms/#nested-objects
 export function generateParameterInputName(parameter: Parameter) {
-  return `parameter-${parameter.in}-${parameter.name}`
+  return `parameter/${parameter.in}/${parameter.name}`
 }
 
 function example(example: unknown) {
