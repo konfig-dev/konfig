@@ -1,13 +1,14 @@
-import { Input, NumberInput, TextInput } from '@mantine/core'
+import { NumberInput, TextInput } from '@mantine/core'
 import { Parameter } from './OperationParameter'
 import { useFormContext } from '@/utils/operation-form-context'
 
 export function ParameterInput({ parameter }: { parameter: Parameter }) {
   const form = useFormContext()
+  const formInputName = generateParameterInputName(parameter)
   if (parameter.schema.type === 'integer') {
     return (
       <NumberInput
-        {...form.getInputProps(parameter.name)}
+        {...form.getInputProps(formInputName)}
         radius="xs"
         placeholder={example(parameter.schema.example)}
       />
@@ -16,7 +17,7 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
   if (parameter.schema.type === 'number') {
     return (
       <NumberInput
-        {...form.getInputProps(parameter.name)}
+        {...form.getInputProps(formInputName)}
         radius="xs"
         precision={2}
         placeholder={example(parameter.schema.example)}
@@ -25,11 +26,17 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
   }
   return (
     <TextInput
-      {...form.getInputProps(parameter.name)}
+      {...form.getInputProps(formInputName)}
       radius="xs"
       placeholder={example(parameter.schema.example)}
     />
   )
+}
+
+// You have to use "-" instead of "." because Mantine forms uses "." for nested
+// objects. See https://mantine.dev/core/forms/#nested-objects
+export function generateParameterInputName(parameter: Parameter) {
+  return `parameter-${parameter.in}-${parameter.name}`
 }
 
 function example(example: unknown) {

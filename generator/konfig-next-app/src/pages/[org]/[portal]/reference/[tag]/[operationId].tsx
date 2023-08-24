@@ -35,6 +35,7 @@ import {
   RequestBodyObject,
   SchemaObject,
   ResponseObject,
+  SecurityScheme,
 } from 'konfig-lib'
 import { HttpMethodBadge } from '@/components/HttpMethodBadge'
 import { OperationParameter, Parameter } from '@/components/OperationParameter'
@@ -75,6 +76,8 @@ export const getStaticProps: GetStaticProps<
     requestBodyProperties: Record<string, SchemaObject> | null
     requestBodyRequired: string[] | null
     responses: Record<string, ResponseObject>
+    securityRequirements: Record<string, string[]> | null
+    securitySchemes: Record<string, SecurityScheme> | null
   }
 > = async (ctx) => {
   const owner = ctx.params?.org
@@ -191,6 +194,45 @@ export const getStaticProps: GetStaticProps<
     operationParameters.filter((param) => param.in === 'cookie')
   )
 
+  // get global security requirements from spec and operation-specific security
+  // requirements, merge them together, and map them to the corresponding
+  // security schema under securitySchemes. If no security requirements are
+  // found, set securityRequirements to null
+  let securityRequirements: Record<string, string[]> | null = null
+  if (spec.specDereferenced.security) {
+    securityRequirements = {}
+    for (const securityRequirement of spec.specDereferenced.security) {
+      for (const [securitySchema, scopes] of Object.entries(
+        securityRequirement
+      )) {
+        securityRequirements[securitySchema] = scopes
+      }
+    }
+  }
+  if (operation.operation.security) {
+    if (securityRequirements === null) securityRequirements = {}
+    for (const securityRequirement of operation.operation.security) {
+      for (const [securitySchema, scopes] of Object.entries(
+        securityRequirement
+      )) {
+        securityRequirements[securitySchema] = scopes
+      }
+    }
+  }
+  let securitySchemes: Record<string, SecurityScheme> | null = null
+  if (
+    securityRequirements &&
+    spec.specDereferenced.components?.securitySchemes
+  ) {
+    for (const [security, scopes] of Object.entries(securityRequirements)) {
+      if (security in spec.specDereferenced.components.securitySchemes) {
+        if (securitySchemes === null) securitySchemes = {}
+        securitySchemes[security] = spec.specDereferenced.components
+          .securitySchemes[security] as SecurityScheme
+      }
+    }
+  }
+
   return {
     props: {
       ...props,
@@ -204,6 +246,8 @@ export const getStaticProps: GetStaticProps<
       cookieParameters,
       requestBodyProperties,
       requestBodyRequired,
+      securityRequirements,
+      securitySchemes,
       responses,
     },
   }
@@ -219,6 +263,8 @@ const Operation = ({
   cookieParameters,
   requestBodyProperties,
   requestBodyRequired,
+  securityRequirements,
+  securitySchemes,
   operation,
   responses,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -383,8 +429,16 @@ const Operation = ({
                   pos="sticky"
                   top="calc(var(--mantine-header-height, 0px) + 1rem)"
                   w="100%"
-                  spacing="xs"
+                  spacing="sm"
                 >
+                  {securitySchemes && (
+                    <>
+                      <Title order={4}> Authorization </Title>
+                      {Object.entries(securitySchemes).map(
+                        ([name, scheme]) => {}
+                      )}
+                    </>
+                  )}
                   <OperationFormGeneratedCode
                     operation={operation.operation}
                     values={form.values}

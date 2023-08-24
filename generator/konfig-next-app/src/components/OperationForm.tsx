@@ -1,6 +1,7 @@
 import { Box, Title, Divider, Stack, Button } from '@mantine/core'
 import { OperationParameter, Parameter } from './OperationParameter'
-import type { SchemaObject } from 'konfig-lib'
+import { type SchemaObject } from 'konfig-lib'
+import { generateParameterFromBodyParameter } from '@/utils/generate-parameter-from-body-property'
 
 export function OperationForm({
   pathParameters,
@@ -72,12 +73,11 @@ export function OperationForm({
               ([propertyName, property]) => (
                 <OperationParameter
                   key={propertyName}
-                  param={{
+                  param={generateParameterFromBodyParameter({
                     name: propertyName,
-                    in: 'body',
-                    required: requestBodyRequired?.includes(propertyName),
                     schema: property,
-                  }}
+                    requestBodyRequired,
+                  })}
                 />
               )
             )}
