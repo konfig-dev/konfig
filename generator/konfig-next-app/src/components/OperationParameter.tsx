@@ -1,9 +1,11 @@
-import { Box, Code, Group, Text } from '@mantine/core'
+import { Box, Code, Flex, Group, Text } from '@mantine/core'
 import type {
   OperationParameter,
   ParameterObject,
   SchemaObject,
 } from 'konfig-lib'
+import { ParameterInput } from './ParameterInput'
+import { schemaTypeLabel } from '@/utils/schema-type-label'
 
 export type Parameter = Omit<ParameterObject, 'schema'> & {
   schema: SchemaObject
@@ -12,22 +14,27 @@ export type Parameter = Omit<ParameterObject, 'schema'> & {
 export function OperationParameter({ param }: { param: Parameter }) {
   const description = getDescription(param)
   return (
-    <Box key={param.name}>
-      <Group spacing={'xs'}>
-        <Code>{param.name}</Code>
-        <Text fz="sm">{param.schema.type && param.schema.type}</Text>
-        {param.required && (
-          <Text fz="xs" color="red">
-            {'required'}
+    <Flex justify="space-between">
+      <Box maw="50%" key={param.name}>
+        <Group spacing={'xs'}>
+          <Code>{param.name}</Code>
+          <Text fz="sm">{schemaTypeLabel({ schema: param.schema })}</Text>
+          {param.required && (
+            <Text fz="xs" color="red">
+              {'required'}
+            </Text>
+          )}
+        </Group>
+        {description && (
+          <Text c="dimmed" fz="sm">
+            {description}
           </Text>
         )}
-      </Group>
-      {description && (
-        <Text c="dimmed" fz="sm">
-          {description}
-        </Text>
-      )}
-    </Box>
+      </Box>
+      <Box w="35%">
+        <ParameterInput parameter={param} />
+      </Box>
+    </Flex>
   )
 }
 
