@@ -312,6 +312,7 @@ const Operation = ({
         }
       >
         <OperationReferenceMain
+          konfigYaml={konfigYaml}
           pathParameters={pathParameters}
           queryParameters={queryParameters}
           headerParameters={headerParameters}
