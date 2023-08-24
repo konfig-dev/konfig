@@ -19,6 +19,7 @@ import { FormProvider, useForm } from './utils/operation-form-context'
 import { generateInitialFormValues } from './utils/generate-initial-operation-form-values'
 import { StaticProps } from './pages/[org]/[portal]/reference/[tag]/[operationId]'
 import { OperationSecuritySchemeForm } from './components/OperationSecuritySchemeForm'
+import { SecurityScheme } from 'konfig-lib'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -30,6 +31,7 @@ export function OperationReferenceMain({
   responses,
   securitySchemes,
   operation,
+  konfigYaml,
 }: Pick<
   StaticProps,
   | 'pathParameters'
@@ -41,6 +43,7 @@ export function OperationReferenceMain({
   | 'responses'
   | 'securitySchemes'
   | 'operation'
+  | 'konfigYaml'
 >) {
   const initialValues = generateInitialFormValues({
     parameters: [
@@ -58,6 +61,20 @@ export function OperationReferenceMain({
   })
 
   const { colorScheme } = useMantineColorScheme()
+
+  const authorization: [string, SecurityScheme][] = [
+    ...(securitySchemes ? [...Object.entries(securitySchemes)] : []),
+    ...(konfigYaml.generators.typescript?.clientState
+      ? konfigYaml.generators.typescript.clientState.map(
+          (clientState): [string, SecurityScheme] => {
+            return [
+              clientState,
+              { type: 'apiKey', in: 'header', name: clientState },
+            ]
+          }
+        )
+      : []),
+  ]
 
   return (
     <FormProvider form={form}>
@@ -149,11 +166,11 @@ export function OperationReferenceMain({
               w="100%"
               spacing="sm"
             >
-              {securitySchemes && (
+              {authorization.length > 0 && (
                 <>
                   <Title order={5}> Authorization </Title>
 
-                  {Object.entries(securitySchemes).map(([name, scheme]) => {
+                  {authorization.map(([name, scheme]) => {
                     return (
                       <OperationSecuritySchemeForm
                         key={name}
