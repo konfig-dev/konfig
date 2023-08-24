@@ -91,6 +91,7 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
         <NavLink<typeof Link>
           ref={ref}
           component={Link}
+          variant={theme.colorScheme === 'dark' ? 'light' : 'filled'}
           className={classes.link}
           href={link.link}
           label={link.label}

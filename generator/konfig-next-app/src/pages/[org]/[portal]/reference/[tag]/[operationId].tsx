@@ -18,6 +18,7 @@ import {
   Flex,
   Divider,
   Badge,
+  Button,
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
@@ -40,6 +41,11 @@ import { OperationParameter, Parameter } from '@/components/OperationParameter'
 import { httpResponseCodeMeaning } from '@/utils/http-response-code-meaning'
 import { sortParametersByRequired } from '@/utils/sort-parameters-by-required'
 import { NavbarDataItem } from '@/components/LinksGroup'
+import { OperationForm } from '@/components/OperationForm'
+import { FormProvider, useForm } from '@/utils/operation-form-context'
+import { generateInitialFormValues } from '@/utils/generate-initial-operation-form-values'
+import { OperationFormGeneratedCode } from '@/components/OperationFormGeneratedCode'
+import { useRouter } from 'next/router'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -218,6 +224,20 @@ const Operation = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
+  const initialValues = generateInitialFormValues({
+    parameters: [
+      ...pathParameters,
+      ...queryParameters,
+      ...headerParameters,
+      ...cookieParameters,
+    ],
+    requestBodyProperties,
+  })
+
+  const form = useForm({
+    initialValues,
+  })
+
   const [opened, setOpened] = useState(false)
   return (
     <MantineProvider
@@ -273,141 +293,113 @@ const Operation = ({
           </Header>
         }
       >
-        <Flex>
-          <Stack w="60%" spacing="xl">
-            <Stack spacing="xs">
-              <Title order={2}>
-                {operation.operation.summary ?? operation.path}
-              </Title>
-              <Group>
-                <HttpMethodBadge httpMethod={operation.method} />
-                <Code>{operation.path}</Code>
-              </Group>
-              {operation.operation.description && (
-                <Text c="dimmed" fz="sm">
-                  {operation.operation.description}
-                </Text>
-              )}
-            </Stack>
-            {pathParameters.length > 0 && (
-              <Box>
-                <Title order={4}>Path Parameters</Title>
-                <Divider my="sm" />
-                <Stack>
-                  {pathParameters.map((param) => (
-                    <OperationParameter key={param.name} param={param} />
-                  ))}
-                </Stack>
-              </Box>
-            )}
-            {queryParameters.length > 0 && (
-              <Box>
-                <Title order={4}>Query Parameters</Title>
-                <Divider my="sm" />
-                <Stack>
-                  {queryParameters.map((param) => (
-                    <OperationParameter key={param.name} param={param} />
-                  ))}
-                </Stack>
-              </Box>
-            )}
-            {headerParameters.length > 0 && (
-              <Box>
-                <Title order={4}>Header Parameters</Title>
-                <Divider my="sm" />
-                <Stack>
-                  {headerParameters.map((param) => (
-                    <OperationParameter key={param.name} param={param} />
-                  ))}
-                </Stack>
-              </Box>
-            )}
-            {cookieParameters.length > 0 && (
-              <Box>
-                <Title order={4}>Cookie Parameters</Title>
-                <Divider my="sm" />
-                <Stack>
-                  {cookieParameters.map((param) => (
-                    <OperationParameter key={param.name} param={param} />
-                  ))}
-                </Stack>
-              </Box>
-            )}
-            {requestBodyProperties && (
-              <Box>
-                <Title order={4}>Request Body Parameters</Title>
-                <Divider my="sm" />
-                <Stack>
-                  {Object.entries(requestBodyProperties).map(
-                    ([propertyName, property]) => (
-                      <OperationParameter
-                        key={propertyName}
-                        param={{
-                          name: propertyName,
-                          in: 'body',
-                          required: requestBodyRequired?.includes(propertyName),
-                          schema: property,
-                        }}
-                      />
-                    )
+        <FormProvider form={form}>
+          <form
+            onSubmit={form.onSubmit((values) => {
+              console.log(values)
+            })}
+          >
+            <Flex justify="space-between">
+              <Stack w="55%" spacing="xl">
+                <Stack spacing="xs">
+                  <Title order={2}>
+                    {operation.operation.summary ?? operation.path}
+                  </Title>
+                  <Group>
+                    <HttpMethodBadge httpMethod={operation.method} />
+                    <Code>{operation.path}</Code>
+                  </Group>
+                  {operation.operation.description && (
+                    <Text c="dimmed" fz="sm">
+                      {operation.operation.description}
+                    </Text>
                   )}
                 </Stack>
-              </Box>
-            )}
-            {responses && (
-              <Box>
-                <Title order={4}>Responses</Title>
-                <Divider my="sm" />
-                <Stack>
-                  {Object.entries(responses).map(([responseCode, response]) => (
-                    <Box key={responseCode}>
-                      {/* 1. Render response code
+                <OperationForm
+                  pathParameters={pathParameters}
+                  queryParameters={queryParameters}
+                  headerParameters={headerParameters}
+                  cookieParameters={cookieParameters}
+                  requestBodyProperties={requestBodyProperties}
+                  requestBodyRequired={requestBodyRequired}
+                />
+                {responses && (
+                  <Box>
+                    <Title order={4}>Responses</Title>
+                    <Divider my="sm" />
+                    <Stack>
+                      {Object.entries(responses).map(
+                        ([responseCode, response]) => (
+                          <Box key={responseCode}>
+                            {/* 1. Render response code
                           2. Render meaning of response code like "OK" for 200 and "Not Found" for 404 in same text box as (1)
                           3. Render green "Success" badge next to 2xx codes and red "Error" badge next to 4xx and 5xx codes
                           4. Render response description if it exists under the response code + badge
                        */}
 
-                      <Flex gap="xs" align="center">
-                        <Title order={6}>
-                          {responseCode} {httpResponseCodeMeaning(responseCode)}
-                        </Title>
-                        {responseCode.startsWith('2') ? (
-                          <Badge
-                            variant={
-                              colorScheme === 'dark' ? 'light' : 'filled'
-                            }
-                            radius="xs"
-                            color="teal"
-                            size="xs"
-                          >
-                            Success
-                          </Badge>
-                        ) : (
-                          <Badge
-                            variant={
-                              colorScheme === 'dark' ? 'light' : 'filled'
-                            }
-                            radius="xs"
-                            color="red"
-                            size="xs"
-                          >
-                            Error
-                          </Badge>
-                        )}
-                      </Flex>
-                      {response.description && (
-                        <Text c="dimmed" fz="sm">
-                          {response.description}
-                        </Text>
+                            <Flex gap="xs" align="center">
+                              <Title order={6}>
+                                {responseCode}{' '}
+                                {httpResponseCodeMeaning(responseCode)}
+                              </Title>
+                              {responseCode.startsWith('2') ? (
+                                <Badge
+                                  variant={
+                                    colorScheme === 'dark' ? 'light' : 'filled'
+                                  }
+                                  radius="xs"
+                                  color="teal"
+                                  size="xs"
+                                >
+                                  Success
+                                </Badge>
+                              ) : (
+                                <Badge
+                                  variant={
+                                    colorScheme === 'dark' ? 'light' : 'filled'
+                                  }
+                                  radius="xs"
+                                  color="red"
+                                  size="xs"
+                                >
+                                  Error
+                                </Badge>
+                              )}
+                            </Flex>
+                            {response.description && (
+                              <Text c="dimmed" fz="sm">
+                                {response.description}
+                              </Text>
+                            )}
+                          </Box>
+                        )
                       )}
-                    </Box>
-                  ))}
+                    </Stack>
+                  </Box>
+                )}
+              </Stack>
+              <Box w="40%">
+                <Stack
+                  pos="sticky"
+                  top="calc(var(--mantine-header-height, 0px) + 1rem)"
+                  w="100%"
+                  spacing="xs"
+                >
+                  <OperationFormGeneratedCode
+                    operation={operation.operation}
+                    values={form.values}
+                  />
+                  <Button
+                    variant={colorScheme === 'dark' ? 'light' : 'filled'}
+                    type="submit"
+                  >
+                    Request API
+                  </Button>
                 </Stack>
               </Box>
-            )}
-          </Stack>
-          <Box>Code / Response</Box>
-        </Flex>
+            </Flex>
+          </form>
+        </FormProvider>
       </AppShell>
     </MantineProvider>
   )
