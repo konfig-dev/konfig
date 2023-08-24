@@ -18,6 +18,7 @@ import { httpResponseCodeMeaning } from './utils/http-response-code-meaning'
 import { FormProvider, useForm } from './utils/operation-form-context'
 import { generateInitialFormValues } from './utils/generate-initial-operation-form-values'
 import { StaticProps } from './pages/[org]/[portal]/reference/[tag]/[operationId]'
+import { OperationSecuritySchemeForm } from './components/OperationSecuritySchemeForm'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -49,6 +50,7 @@ export function OperationReferenceMain({
       ...cookieParameters,
     ],
     requestBodyProperties,
+    securitySchemes,
   })
 
   const form = useForm({
@@ -149,8 +151,17 @@ export function OperationReferenceMain({
             >
               {securitySchemes && (
                 <>
-                  <Title order={4}> Authorization </Title>
-                  {Object.entries(securitySchemes).map(([name, scheme]) => {})}
+                  <Title order={5}> Authorization </Title>
+
+                  {Object.entries(securitySchemes).map(([name, scheme]) => {
+                    return (
+                      <OperationSecuritySchemeForm
+                        key={name}
+                        name={name}
+                        scheme={scheme}
+                      />
+                    )
+                  })}
                 </>
               )}
               <OperationFormGeneratedCode
