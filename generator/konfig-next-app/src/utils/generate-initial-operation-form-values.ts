@@ -51,5 +51,5 @@ export function generateInitialFormValues({
       initialValues[formName] = ''
     }
   }
-  return { initialValues }
+  return { initialValues, validate }
 }
