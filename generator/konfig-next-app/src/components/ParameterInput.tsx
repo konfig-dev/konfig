@@ -28,6 +28,7 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
     <TextInput
       {...form.getInputProps(formInputName)}
       radius="xs"
+      required={parameter.required}
       placeholder={example(parameter.schema.example)}
     />
   )
