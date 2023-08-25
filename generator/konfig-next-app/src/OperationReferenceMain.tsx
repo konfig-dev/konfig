@@ -45,7 +45,8 @@ export function OperationReferenceMain({
   | 'operation'
   | 'konfigYaml'
 >) {
-  const initialValues = generateInitialFormValues({
+  const formValues = generateInitialFormValues({
+    requestBodyRequired,
     parameters: [
       ...pathParameters,
       ...queryParameters,
@@ -56,9 +57,7 @@ export function OperationReferenceMain({
     securitySchemes,
   })
 
-  const form = useForm({
-    initialValues,
-  })
+  const form = useForm(formValues)
 
   const { colorScheme } = useMantineColorScheme()
 
