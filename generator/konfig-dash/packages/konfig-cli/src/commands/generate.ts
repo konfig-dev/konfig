@@ -1448,7 +1448,11 @@ const DO_NOT_COPY_THESE_FILES = new Set([
 
 const KONFIG_IGNORE_FILE_NAME = '.konfigignore'
 
-const DO_NOT_DELETE_THESE_FILES = new Set(['.git', KONFIG_IGNORE_FILE_NAME])
+const DO_NOT_DELETE_THESE_FILES = new Set([
+  '.git',
+  KONFIG_IGNORE_FILE_NAME,
+  'yarn.lock', // for TypeScript SDK
+])
 
 const safelyDeleteFiles = async (
   directory: string
