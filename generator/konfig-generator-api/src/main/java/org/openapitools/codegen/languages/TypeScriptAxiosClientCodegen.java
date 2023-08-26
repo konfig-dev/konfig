@@ -434,7 +434,13 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         supportingFiles.add(new SupportingFile("tsconfig.mustache", "", "tsconfig.json"));
         supportingFiles.add(new SupportingFile("index.test.mustache", "", "index.test.ts"));
         supportingFiles.add(new SupportingFile("tsconfig.test.mustache", "", "tsconfig.test.json"));
-        supportingFiles.add(new SupportingFile("yarn.mustache", "", "yarn.lock"));
+        supportingFiles.add(new SupportingFile("webpack.mustache", "", "webpack.config.js"));
+
+        // Dylan: I tried maintaining a yarn.lock template but its too cumbersome to keep up to date
+        // So I think we should just generate a yarn.lock file from the package.json file using yarn install
+        // and then just check that in.
+        // supportingFiles.add(new SupportingFile("yarn.mustache", "", "yarn.lock"));
+
         supportingFiles.add(new SupportingFile("jest.config.mustache", "", "jest.config.ts"));
         // in case ECMAScript 6 is supported add another tsconfig for an ESM (ECMAScript Module)
         if (supportsES6) {
