@@ -59,6 +59,7 @@ Then create `~/.envvars` with values from Dylan.
    ```shell
    cd generator/konfig-dash
    yarn # takes some time
+   yarn rw prisma migrate dev # setup the DB
    ```
 1. Start the server with `yarn dev`
 
