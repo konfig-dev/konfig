@@ -32,6 +32,7 @@ import { Parameter } from '@/components/OperationParameter'
 import { sortParametersByRequired } from '@/utils/sort-parameters-by-required'
 import { NavbarDataItem } from '@/components/LinksGroup'
 import { OperationReferenceMain } from '@/OperationReferenceMain'
+import Script from 'next/script'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -270,6 +271,9 @@ const Operation = ({
         primaryColor: 'brand',
       }}
     >
+      <Script
+        src={`https://unpkg.com/${konfigYaml.generators.typescript?.npmName}@${konfigYaml.generators.typescript?.version}/dist/browser.js`}
+      />
       <AppShell
         styles={{
           main: {
