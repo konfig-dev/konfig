@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.8.0
+
+### Minor Changes
+
+- [#135](https://github.com/konfig-dev/konfig/pull/135) [`c1e90ed5`](https://github.com/konfig-dev/konfig/commit/c1e90ed530e5998a8bec15019bd4be6b09f160b7) Thanks [@dphuang2](https://github.com/dphuang2)! - add yarn.lock to hard-coded list of files to not delete
+
 ## 1.7.4
 
 ### Patch Changes
