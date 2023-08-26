@@ -19,6 +19,15 @@ git submodule update --init --recursive --remote --merge
 ## Environment Setup
 
 1. Run Postgres as a background process
+
+   ```shell
+   # in /konfig
+   brew install postgresql
+   mkdir -p postgres/data
+   initdb -D ./postgres/data
+   pg_ctl -D ./postgres/data start
+   ```
+
 1. Setup `.env` file in `generator/konfig-dash` to something like:
 
    ```
