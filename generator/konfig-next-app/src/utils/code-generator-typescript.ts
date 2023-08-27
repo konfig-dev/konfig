@@ -17,7 +17,7 @@ export class CodeGeneratorTypeScript extends CodeGenerator {
   protected gen(): string {
     return `${this.importStatement}
 
-const ${this.clientNameLowercase} = new ${this.clientName}(${this.setupArgs})
+const ${this.clientNameLowercase} = new ${this.client}(${this.setupArgs})
 
 const response = await ${this.clientNameLowercase}.${this.namespace}.${this.methodName}(${this.args})
 console.log(response.data)
@@ -25,7 +25,16 @@ console.log(response.data)
   }
 
   get importStatement(): string {
-    return `import { ${this.clientName} } from '${this.packageName}'`
+    if (this.mode === 'production')
+      return `import { ${this.clientName} } from '${this.packageName}'`
+    return ``
+  }
+
+  get client(): string {
+    if (this.mode === 'production') {
+      return `${this.clientName}`
+    }
+    return `client.${this.clientName}`
   }
 
   get setupArgs(): string {
@@ -39,6 +48,11 @@ ${this.nonEmptySecurity
     return `  ${securityKey}: '${securityValue}',`
   })
   .join('\n')}
+  ${
+    this.mode === 'production'
+      ? ''
+      : `basePath: "/api/proxy", baseOptions: {headers: {"x-proxy-target": "${this.basePath}"}}`
+  }
 }`
   }
 

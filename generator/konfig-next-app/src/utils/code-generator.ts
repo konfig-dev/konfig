@@ -9,20 +9,23 @@ import {
 } from './generate-initial-operation-form-values'
 
 export type CodeGeneratorConstructorArgs = {
+  basePath: string
   formData: FormDataType
   parameters: Parameter[]
   clientName: string
   packageName: string
   tag: string
   operationId: string
+
+  /**
+   *  Sandbox is for executing the code in a sandboxed environment while
+   *  production is meant to be copy-pasted into a project.
+   */
+  mode?: 'sandbox' | 'production'
 }
 
 export abstract class CodeGenerator {
-  /**
-   * Sandbox is for executing the code in a sandboxed environment while
-   * production is meant to be copy-pasted into a project.
-   */
-  mode: 'sandbox' | 'production'
+  mode: CodeGeneratorConstructorArgs['mode']
 
   /**
    * Contains the inputs to the request
@@ -54,6 +57,11 @@ export abstract class CodeGenerator {
    */
   operationId: string
 
+  /**
+   * The base path of the API
+   */
+  basePath: string
+
   constructor({
     formData,
     parameters,
@@ -61,10 +69,13 @@ export abstract class CodeGenerator {
     packageName,
     tag,
     operationId,
+    basePath,
+    mode = 'production',
   }: CodeGeneratorConstructorArgs) {
+    this.basePath = basePath
     this._formData = formData
     this._parameters = parameters
-    this.mode = 'sandbox'
+    this.mode = mode
     this.clientName = clientName
     this.packageName = packageName
     this.tag = tag

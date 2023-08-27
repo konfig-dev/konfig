@@ -27,6 +27,8 @@ import { useEffect, useMemo } from 'react'
 import { FormProvider, useForm } from './utils/operation-form-context'
 import { useRouter } from 'next/router'
 import deepmerge from 'deepmerge'
+import { CodeGeneratorConstructorArgs } from './utils/code-generator'
+import { CodeGeneratorTypeScript } from './utils/code-generator-typescript'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -39,6 +41,7 @@ export function OperationReferenceMain({
   securitySchemes,
   operation,
   konfigYaml,
+  basePath,
 }: Pick<
   StaticProps,
   | 'pathParameters'
@@ -48,6 +51,7 @@ export function OperationReferenceMain({
   | 'requestBodyProperties'
   | 'requestBodyRequired'
   | 'responses'
+  | 'basePath'
   | 'securitySchemes'
   | 'operation'
   | 'konfigYaml'
@@ -105,11 +109,28 @@ export function OperationReferenceMain({
     ? [...Object.entries(securitySchemes)]
     : []
 
+  const codegenArgs: CodeGeneratorConstructorArgs = {
+    parameters: parameters,
+    formData: form.values,
+    clientName: typecriptConfig.clientName,
+    packageName: typecriptConfig.npmName,
+    operationId: operation.operation.operationId,
+    tag: tag,
+    basePath,
+  }
+
   return (
     <FormProvider form={form}>
       <form
-        onSubmit={form.onSubmit((values) => {
-          console.log(values)
+        onSubmit={form.onSubmit(async (values) => {
+          const snippet = await new CodeGeneratorTypeScript({
+            mode: 'sandbox',
+            ...codegenArgs,
+          }).snippet()
+          const wrapped = `(async () => {
+            ${snippet}
+            })()`
+          eval(wrapped)
         })}
       >
         <Flex justify="space-between">
@@ -213,14 +234,7 @@ export function OperationReferenceMain({
                   })}
                 </>
               )}
-              <OperationFormGeneratedCode
-                parameters={parameters}
-                formData={form.values}
-                clientName={typecriptConfig.clientName}
-                packageName={typecriptConfig.npmName}
-                operationId={operation.operation.operationId}
-                tag={tag}
-              />
+              <OperationFormGeneratedCode {...codegenArgs} />
               <Button
                 variant={colorScheme === 'dark' ? 'light' : 'filled'}
                 type="submit"

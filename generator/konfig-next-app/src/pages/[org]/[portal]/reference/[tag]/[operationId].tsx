@@ -54,6 +54,7 @@ export type StaticProps = Omit<GithubResources, 'spec'> & {
   spec: Spec['spec']
   operationId: string
   operation: OperationObject
+  basePath: string
   pathParameters: Parameter[]
   queryParameters: Parameter[]
   headerParameters: Parameter[]
@@ -218,6 +219,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       }
     }
   }
+  const basePath = spec.spec.servers?.[0].url
+  if (basePath === undefined) throw Error('No servers found in spec')
 
   return {
     props: {
@@ -225,6 +228,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       operationId,
       operation,
       spec: spec.spec,
+      basePath,
       requestBody,
       pathParameters,
       queryParameters,
@@ -251,6 +255,7 @@ const Operation = ({
   requestBodyRequired,
   securityRequirements,
   securitySchemes,
+  basePath,
   operation,
   responses,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -326,6 +331,7 @@ const Operation = ({
           responses={responses}
           securitySchemes={securitySchemes}
           operation={operation}
+          basePath={basePath}
         />
       </AppShell>
     </MantineProvider>
