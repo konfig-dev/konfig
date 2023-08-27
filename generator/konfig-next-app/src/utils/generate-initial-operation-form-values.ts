@@ -1,5 +1,4 @@
 import { Parameter } from '@/components/OperationParameter'
-import type { SchemaObject, SecurityScheme } from 'konfig-lib'
 import { JSONValue } from './json-value'
 import { generateParameterInputName } from '@/components/ParameterInput'
 import { generateParameterFromBodyParameter } from './generate-parameter-from-body-property'
@@ -8,8 +7,8 @@ import type { UseFormInput } from '@mantine/form/lib/types'
 import { isNotEmpty } from '@mantine/form'
 import { StaticProps } from '@/pages/[org]/[portal]/reference/[tag]/[operationId]'
 
-export type InitialValues = Record<string, JSONValue>
-type FormValues = UseFormInput<InitialValues, (values: unknown) => unknown>
+export type FormDataType = Record<string, JSONValue>
+type FormValues = UseFormInput<FormDataType, (values: unknown) => unknown>
 
 export function generateInitialFormValues({
   parameters,

@@ -19,8 +19,9 @@ export function OperationSecuritySchemeForm({
   )
 }
 
+export const SECURITY_FORM_NAME_PREFIX = `security/`
 export function generateSecurityFormInputName({ name }: { name: string }) {
-  return `security/${name}`
+  return `${SECURITY_FORM_NAME_PREFIX}${name}`
 }
 
 function getInputPlaceholder({ scheme }: { scheme: SecurityScheme }) {
