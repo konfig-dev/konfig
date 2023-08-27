@@ -23,12 +23,15 @@ import {
 } from './components/OperationSecuritySchemeForm'
 import { SecurityScheme } from 'konfig-lib'
 import { generateParametersFromRequestBodyProperties } from './utils/generate-parameters-from-request-body-properties'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { FormProvider, useForm } from './utils/operation-form-context'
 import { useRouter } from 'next/router'
 import deepmerge from 'deepmerge'
 import { CodeGeneratorConstructorArgs } from './utils/code-generator'
 import { CodeGeneratorTypeScript } from './utils/code-generator-typescript'
+import { ExecuteOutput } from './components/ExecuteOutput'
+import { tryJsonOutput } from './utils/try-json-output'
+import { tryTableOutput } from './utils/try-table-output'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -90,6 +93,7 @@ export function OperationReferenceMain({
   useEffect(() => {
     if (formValues.initialValues)
       form.setValues(deepmerge(formValues.initialValues, form.values))
+    setResult(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath])
 
@@ -119,18 +123,29 @@ export function OperationReferenceMain({
     basePath,
   }
 
+  const [requestInProgress, setRequestInProgress] = useState(false)
+
+  const [result, setResult] = useState<any>(null)
+
   return (
     <FormProvider form={form}>
       <form
         onSubmit={form.onSubmit(async (values) => {
-          const snippet = await new CodeGeneratorTypeScript({
-            mode: 'sandbox',
-            ...codegenArgs,
-          }).snippet()
-          const wrapped = `(async () => {
+          setRequestInProgress(true)
+          try {
+            const snippet = await new CodeGeneratorTypeScript({
+              mode: 'sandbox',
+              ...codegenArgs,
+            }).snippet()
+            const wrapped = `(async () => {
             ${snippet}
             })()`
-          eval(wrapped)
+            const result = await eval(wrapped)
+            console.log(result)
+            setResult(result.data)
+          } finally {
+            setRequestInProgress(false)
+          }
         })}
       >
         <Flex justify="space-between">
@@ -238,9 +253,18 @@ export function OperationReferenceMain({
               <Button
                 variant={colorScheme === 'dark' ? 'light' : 'filled'}
                 type="submit"
+                loading={requestInProgress}
               >
                 Request API
               </Button>
+              {result && (
+                <ExecuteOutput
+                  jsonOutput={tryJsonOutput(JSON.stringify(result))}
+                  tableOutput={tryTableOutput(JSON.stringify(result))}
+                  processedOutput={JSON.stringify(result, null, 2)}
+                  show={true}
+                />
+              )}
             </Stack>
           </Box>
         </Flex>

@@ -219,6 +219,14 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       }
     }
   }
+
+  // Dylan: note that we can't do this because TypeScript SDK guards against no security
+  // if security is set to "[]" on the operation then no security should exist
+  // if (operation.operation.security?.length === 0) {
+  //   securityRequirements = null
+  //   securitySchemes = null
+  // }
+
   const basePath = spec.spec.servers?.[0].url
   if (basePath === undefined) throw Error('No servers found in spec')
 

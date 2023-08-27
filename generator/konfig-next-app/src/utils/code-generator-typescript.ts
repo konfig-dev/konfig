@@ -19,8 +19,10 @@ export class CodeGeneratorTypeScript extends CodeGenerator {
 
 const ${this.clientNameLowercase} = new ${this.client}(${this.setupArgs})
 
-const response = await ${this.clientNameLowercase}.${this.namespace}.${this.methodName}(${this.args})
-console.log(response.data)
+${this.mode === 'production' ? `const response =` : 'return'} await ${
+      this.clientNameLowercase
+    }.${this.namespace}.${this.methodName}(${this.args})
+${this.mode === 'production' ? `console.log(response.data)` : ''}
 `
   }
 
