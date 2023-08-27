@@ -20,6 +20,7 @@ import { generateInitialFormValues } from './utils/generate-initial-operation-fo
 import { StaticProps } from './pages/[org]/[portal]/reference/[tag]/[operationId]'
 import { OperationSecuritySchemeForm } from './components/OperationSecuritySchemeForm'
 import { SecurityScheme } from 'konfig-lib'
+import { generateParametersFromRequestBodyProperties } from './utils/generate-parameters-from-request-body-properties'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -45,15 +46,19 @@ export function OperationReferenceMain({
   | 'operation'
   | 'konfigYaml'
 >) {
+  const parameters = [
+    ...pathParameters,
+    ...queryParameters,
+    ...headerParameters,
+    ...cookieParameters,
+    ...generateParametersFromRequestBodyProperties({
+      requestBodyProperties,
+      requestBodyRequired,
+    }),
+  ]
+
   const formValues = generateInitialFormValues({
-    requestBodyRequired,
-    parameters: [
-      ...pathParameters,
-      ...queryParameters,
-      ...headerParameters,
-      ...cookieParameters,
-    ],
-    requestBodyProperties,
+    parameters: parameters,
     securitySchemes,
   })
 
@@ -181,7 +186,7 @@ export function OperationReferenceMain({
                 </>
               )}
               <OperationFormGeneratedCode
-                operation={operation.operation}
+                parameters={parameters}
                 values={form.values}
               />
               <Button

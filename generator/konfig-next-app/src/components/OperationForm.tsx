@@ -1,7 +1,7 @@
 import { Box, Title, Divider, Stack, Button } from '@mantine/core'
 import { OperationParameter, Parameter } from './OperationParameter'
 import { type SchemaObject } from 'konfig-lib'
-import { generateParameterFromBodyParameter } from '@/utils/generate-parameter-from-body-property'
+import { generateParametersFromRequestBodyProperties } from '@/utils/generate-parameters-from-request-body-properties'
 
 export function OperationForm({
   pathParameters,
@@ -69,18 +69,12 @@ export function OperationForm({
           <Title order={4}>Request Body Parameters</Title>
           <Divider my="sm" />
           <Stack>
-            {Object.entries(requestBodyProperties).map(
-              ([propertyName, property]) => (
-                <OperationParameter
-                  key={propertyName}
-                  param={generateParameterFromBodyParameter({
-                    name: propertyName,
-                    schema: property,
-                    requestBodyRequired,
-                  })}
-                />
-              )
-            )}
+            {generateParametersFromRequestBodyProperties({
+              requestBodyProperties,
+              requestBodyRequired,
+            }).map((param) => (
+              <OperationParameter key={param.name} param={param} />
+            ))}
           </Stack>
         </Box>
       )}

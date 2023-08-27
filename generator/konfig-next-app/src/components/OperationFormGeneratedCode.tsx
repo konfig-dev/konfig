@@ -1,5 +1,6 @@
+import { FormDataType } from '@/utils/generate-initial-operation-form-values'
 import { Prism } from '@mantine/prism'
-import { Operation } from 'konfig-lib'
+import { Parameter } from './OperationParameter'
 
 function TsIcon(props: React.ComponentProps<'svg'>) {
   return (
@@ -14,11 +15,11 @@ function TsIcon(props: React.ComponentProps<'svg'>) {
 }
 
 export function OperationFormGeneratedCode({
-  operation,
+  parameters,
   values,
 }: {
-  operation: Operation
-  values: unknown
+  parameters: Parameter[]
+  values: FormDataType
 }) {
   return (
     <Prism.Tabs defaultValue="ts">
@@ -28,6 +29,7 @@ export function OperationFormGeneratedCode({
         </Prism.Tab>
       </Prism.TabsList>
       <Prism.Panel language="typescript" value="ts">
+        {/* {new CodeGeneratorTypeScript({ formData: values, parameters }).gen()} */}
         {JSON.stringify(values, undefined, 2)}
       </Prism.Panel>
     </Prism.Tabs>
