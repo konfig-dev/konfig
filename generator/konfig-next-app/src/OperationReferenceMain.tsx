@@ -15,12 +15,16 @@ import { HttpMethodBadge } from './components/HttpMethodBadge'
 import { OperationForm } from './components/OperationForm'
 import { OperationFormGeneratedCode } from './components/OperationFormGeneratedCode'
 import { httpResponseCodeMeaning } from './utils/http-response-code-meaning'
-import { FormProvider, useForm } from './utils/operation-form-context'
 import { generateInitialFormValues } from './utils/generate-initial-operation-form-values'
 import { StaticProps } from './pages/[org]/[portal]/reference/[tag]/[operationId]'
-import { OperationSecuritySchemeForm } from './components/OperationSecuritySchemeForm'
+import {
+  OperationClientStateForm,
+  OperationSecuritySchemeForm,
+} from './components/OperationSecuritySchemeForm'
 import { SecurityScheme } from 'konfig-lib'
 import { generateParametersFromRequestBodyProperties } from './utils/generate-parameters-from-request-body-properties'
+import { useMemo } from 'react'
+import { FormProvider, useForm } from './utils/operation-form-context'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -57,28 +61,39 @@ export function OperationReferenceMain({
     }),
   ]
 
+  const typecriptConfig = konfigYaml.generators.typescript
+  if (!typecriptConfig) {
+    throw new Error('TypeScript generator not configured')
+  }
+
+  const clientState = useMemo(
+    () => typecriptConfig.clientState ?? [],
+    [typecriptConfig]
+  )
+
   const formValues = generateInitialFormValues({
     parameters: parameters,
     securitySchemes,
+    clientState,
   })
 
   const form = useForm(formValues)
 
   const { colorScheme } = useMantineColorScheme()
 
-  const authorization: [string, SecurityScheme][] = [
-    ...(securitySchemes ? [...Object.entries(securitySchemes)] : []),
-    ...(konfigYaml.generators.typescript?.clientState
-      ? konfigYaml.generators.typescript.clientState.map(
-          (clientState): [string, SecurityScheme] => {
-            return [
-              clientState,
-              { type: 'apiKey', in: 'header', name: clientState },
-            ]
-          }
-        )
-      : []),
-  ]
+  const tag = operation.operation.tags?.[0]
+
+  if (tag === undefined) {
+    throw new Error('Tag not defined')
+  }
+
+  if (operation.operation.operationId === undefined) {
+    throw new Error('Operation ID not defined')
+  }
+
+  const authorization: [string, SecurityScheme][] = securitySchemes
+    ? [...Object.entries(securitySchemes)]
+    : []
 
   return (
     <FormProvider form={form}>
@@ -183,11 +198,18 @@ export function OperationReferenceMain({
                       />
                     )
                   })}
+                  {clientState.map((name) => {
+                    return <OperationClientStateForm key={name} name={name} />
+                  })}
                 </>
               )}
               <OperationFormGeneratedCode
                 parameters={parameters}
-                values={form.values}
+                formData={form.values}
+                clientName={typecriptConfig.clientName}
+                packageName={typecriptConfig.npmName}
+                operationId={operation.operation.operationId}
+                tag={tag}
               />
               <Button
                 variant={colorScheme === 'dark' ? 'light' : 'filled'}

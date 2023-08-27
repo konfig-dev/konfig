@@ -1,6 +1,7 @@
-import { FormDataType } from '@/utils/generate-initial-operation-form-values'
 import { Prism } from '@mantine/prism'
-import { Parameter } from './OperationParameter'
+import { CodeGeneratorTypeScript } from '@/utils/code-generator-typescript'
+import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
+import { useEffect, useState } from 'react'
 
 function TsIcon(props: React.ComponentProps<'svg'>) {
   return (
@@ -14,13 +15,14 @@ function TsIcon(props: React.ComponentProps<'svg'>) {
   )
 }
 
-export function OperationFormGeneratedCode({
-  parameters,
-  values,
-}: {
-  parameters: Parameter[]
-  values: FormDataType
-}) {
+export function OperationFormGeneratedCode(args: CodeGeneratorConstructorArgs) {
+  const [data, setData] = useState('Loading...') // Initial state
+
+  useEffect(() => {
+    new CodeGeneratorTypeScript(args).snippet().then((result) => {
+      setData(result)
+    })
+  }, [args])
   return (
     <Prism.Tabs defaultValue="ts">
       <Prism.TabsList>
@@ -29,8 +31,7 @@ export function OperationFormGeneratedCode({
         </Prism.Tab>
       </Prism.TabsList>
       <Prism.Panel language="typescript" value="ts">
-        {/* {new CodeGeneratorTypeScript({ formData: values, parameters }).gen()} */}
-        {JSON.stringify(values, undefined, 2)}
+        {`${JSON.stringify(args.formData, undefined, 2)}\n\n${data}`}
       </Prism.Panel>
     </Prism.Tabs>
   )
