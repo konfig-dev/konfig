@@ -25,7 +25,7 @@ export function OperationSecuritySchemeForm({
 }
 
 export function OperationClientStateForm({ name }: { name: string }) {
-  const form = useForm()
+  const form = useFormContext()
   const formInputName = `${SECURITY_FORM_NAME_PREFIX}.${name}.${CLIENT_STATE_VALUE_PROPERTY}`
   return <TextInput placeholder={name} {...form.getInputProps(formInputName)} />
 }

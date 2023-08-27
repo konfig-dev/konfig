@@ -31,7 +31,8 @@ export function OperationFormGeneratedCode(args: CodeGeneratorConstructorArgs) {
         </Prism.Tab>
       </Prism.TabsList>
       <Prism.Panel language="typescript" value="ts">
-        {`${JSON.stringify(args.formData, undefined, 2)}\n\n${data}`}
+        {/* {`${JSON.stringify(args.formData, undefined, 2)}\n\n${data}`} */}
+        {data}
       </Prism.Panel>
     </Prism.Tabs>
   )
