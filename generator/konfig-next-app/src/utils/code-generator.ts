@@ -1,9 +1,21 @@
 import { Parameter } from '@/components/OperationParameter'
-import { JSONValue } from './json-value'
-import { FormDataType } from './generate-initial-operation-form-values'
-import { SECURITY_FORM_NAME_PREFIX } from '@/components/OperationSecuritySchemeForm'
+import {
+  API_KEY_VALUE_PROPERTY,
+  CLIENT_STATE_NAME_PROPERTY,
+  FormDataType,
+  PARAMETER_FORM_NAME_PREFIX,
+  PARAMETER_VALUE_PROPERTY,
+  SECURITY_FORM_NAME_PREFIX,
+} from './generate-initial-operation-form-values'
 
-type ParameterValue = Omit<Parameter, 'schema'> & { value: JSONValue }
+export type CodeGeneratorConstructorArgs = {
+  formData: FormDataType
+  parameters: Parameter[]
+  clientName: string
+  packageName: string
+  tag: string
+  operationId: string
+}
 
 export abstract class CodeGenerator {
   /**
@@ -11,11 +23,6 @@ export abstract class CodeGenerator {
    * production is meant to be copy-pasted into a project.
    */
   mode: 'sandbox' | 'production'
-
-  /**
-   * Single entrypoint for generating code.
-   */
-  abstract gen(): string
 
   /**
    * Contains the inputs to the request
@@ -27,49 +34,96 @@ export abstract class CodeGenerator {
    */
   _parameters: Parameter[]
 
+  /**
+   * The top-level client name in the SDK
+   */
+  clientName: string
+
+  /**
+   * The package name of the SDK (i.e. "konfig-js" for TypeScript in npm)
+   */
+  packageName: string
+
+  /**
+   *  The tag of the operation
+   */
+  tag: string
+
+  /**
+   *  The operationId of the operation
+   */
+  operationId: string
+
   constructor({
     formData,
     parameters,
-  }: {
-    formData: FormDataType
-    parameters: Parameter[]
-  }) {
+    clientName,
+    packageName,
+    tag,
+    operationId,
+  }: CodeGeneratorConstructorArgs) {
     this._formData = formData
     this._parameters = parameters
     this.mode = 'sandbox'
+    this.clientName = clientName
+    this.packageName = packageName
+    this.tag = tag
+    this.operationId = operationId
+  }
+
+  protected abstract format(code: string): Promise<string>
+
+  /**
+   * Single entrypoint for generating code.
+   */
+  protected abstract gen(): string
+
+  async snippet(): Promise<string> {
+    return await this.format(this.gen())
+  }
+
+  get clientNameLowercase(): string {
+    return this.clientName.toLowerCase()
   }
 
   /**
-   * A representation of _formData + _parameters that can easily be used in
-   * generation of SDK snippets
+   * Returns the setup values that are non-empty and exist as part of passed parameters
    */
-  get inputs(): {
-    parameters: ParameterValue[]
-    setupValues: Record<string, string>
-  } {
-    const nonEmptyParameters: ParameterValue[] = []
-    for (const parameter of this._parameters) {
-      const input = this._formData[parameter.name]
-      // if input is not empty (e.g. not null / undefined / empty string)
-      if (input !== null && input !== undefined && input !== '') {
-        nonEmptyParameters.push({
-          ...parameter,
-          value: this._formData[parameter.name],
-        })
+  get nonEmptyParameters() {
+    return Object.entries(this._formData[PARAMETER_FORM_NAME_PREFIX]).filter(
+      ([name, parameter]) => {
+        return (
+          parameter[PARAMETER_VALUE_PROPERTY] !== '' &&
+          parameter[PARAMETER_VALUE_PROPERTY] !== null &&
+          parameter[PARAMETER_VALUE_PROPERTY] !== undefined &&
+          this._parameters.find((p) => p.name === name)
+        )
       }
-    }
-    const setupValues: Record<string, string> = {}
-    for (const [name, value] of Object.entries(this._formData)) {
-      if (
-        name.startsWith(SECURITY_FORM_NAME_PREFIX) &&
-        typeof value === 'string'
-      ) {
-        setupValues[name.replace(SECURITY_FORM_NAME_PREFIX, '')] = value
+    )
+  }
+
+  /**
+   * Returns the security schemes that are non-empty
+   */
+  get nonEmptySecurity() {
+    return Object.entries(this._formData[SECURITY_FORM_NAME_PREFIX]).filter(
+      ([_name, security]) => {
+        if (security.type === 'apiKey') {
+          return (
+            security[API_KEY_VALUE_PROPERTY] !== '' &&
+            security[API_KEY_VALUE_PROPERTY] !== null &&
+            security[API_KEY_VALUE_PROPERTY] !== undefined
+          )
+        } else if (security.type == 'clientState') {
+          return (
+            security[CLIENT_STATE_NAME_PROPERTY] !== '' &&
+            security[CLIENT_STATE_NAME_PROPERTY] !== null &&
+            security[CLIENT_STATE_NAME_PROPERTY] !== undefined
+          )
+        } else {
+          throw new Error(`Unknown security type: ${(security as any).type}`)
+        }
       }
-    }
-    return {
-      parameters: nonEmptyParameters,
-      setupValues,
-    }
+    )
   }
 }
