@@ -262,6 +262,7 @@ export function OperationReferenceMain({
                   jsonOutput={tryJsonOutput(JSON.stringify(result))}
                   tableOutput={tryTableOutput(JSON.stringify(result))}
                   processedOutput={JSON.stringify(result, null, 2)}
+                  disableTable
                   show={true}
                 />
               )}

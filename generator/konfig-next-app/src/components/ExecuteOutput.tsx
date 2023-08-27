@@ -13,20 +13,26 @@ export function ExecuteOutput({
   tableOutput,
   processedOutput,
   show,
+  disableTable,
 }: {
   jsonOutput: ReturnType<typeof tryJsonOutput>
   tableOutput: ReturnType<typeof tryTableOutput>
   processedOutput: string
   show: boolean
+  disableTable?: boolean
 }) {
   const [activeTab, setActiveTab] = useState<string | null>('raw')
   const [haveClickedTab, setHaveClickedTab] = useState<boolean>(false)
   useEffect(() => {
     if (haveClickedTab) return
     const newTab =
-      tableOutput !== null ? 'table' : jsonOutput !== null ? 'json' : 'raw'
+      tableOutput !== null && !disableTable
+        ? 'table'
+        : jsonOutput !== null
+        ? 'json'
+        : 'raw'
     setActiveTab(newTab)
-  }, [jsonOutput, tableOutput, haveClickedTab])
+  }, [jsonOutput, tableOutput, haveClickedTab, disableTable])
   const { colorScheme } = useMantineColorScheme()
   return (
     <Transition
@@ -49,7 +55,10 @@ export function ExecuteOutput({
             <Tabs.Tab disabled={jsonOutput === null} value="json">
               JSON
             </Tabs.Tab>
-            <Tabs.Tab disabled={tableOutput === null} value="table">
+            <Tabs.Tab
+              disabled={tableOutput === null || disableTable}
+              value="table"
+            >
               Table
             </Tabs.Tab>
           </Tabs.List>
