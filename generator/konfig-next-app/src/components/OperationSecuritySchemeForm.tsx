@@ -1,4 +1,9 @@
-import { useFormContext } from '@/utils/operation-form-context'
+import {
+  CLIENT_STATE_VALUE_PROPERTY,
+  SECURITY_FORM_NAME_PREFIX,
+  SECURITY_FORM_VALUE_SUFFIX,
+} from '@/utils/generate-initial-operation-form-values'
+import { useForm, useFormContext } from '@/utils/operation-form-context'
 import { TextInput } from '@mantine/core'
 import type { SecurityScheme } from 'konfig-lib'
 
@@ -19,9 +24,14 @@ export function OperationSecuritySchemeForm({
   )
 }
 
-export const SECURITY_FORM_NAME_PREFIX = `security/`
+export function OperationClientStateForm({ name }: { name: string }) {
+  const form = useForm()
+  const formInputName = `${SECURITY_FORM_NAME_PREFIX}.${name}.${CLIENT_STATE_VALUE_PROPERTY}`
+  return <TextInput placeholder={name} {...form.getInputProps(formInputName)} />
+}
+
 export function generateSecurityFormInputName({ name }: { name: string }) {
-  return `${SECURITY_FORM_NAME_PREFIX}${name}`
+  return `${SECURITY_FORM_NAME_PREFIX}.${name}.${SECURITY_FORM_VALUE_SUFFIX}`
 }
 
 function getInputPlaceholder({ scheme }: { scheme: SecurityScheme }) {

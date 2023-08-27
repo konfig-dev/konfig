@@ -1,6 +1,10 @@
 import { NumberInput, TextInput } from '@mantine/core'
 import { Parameter } from './OperationParameter'
-import { useFormContext } from '@/utils/operation-form-context'
+import {
+  PARAMETER_FORM_NAME_PREFIX,
+  PARAMETER_VALUE_PROPERTY,
+} from '@/utils/generate-initial-operation-form-values'
+import { useForm, useFormContext } from '@/utils/operation-form-context'
 
 export function ParameterInput({ parameter }: { parameter: Parameter }) {
   const form = useFormContext()
@@ -33,10 +37,9 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
   )
 }
 
-// You have to use "-" instead of "." because Mantine forms uses "." for nested
-// objects. See https://mantine.dev/core/forms/#nested-objects
+// See https://mantine.dev/core/forms/#nested-objects for explanation of "." protocol
 export function generateParameterInputName(parameter: Parameter) {
-  return `parameter/${parameter.in}/${parameter.name}`
+  return `${PARAMETER_FORM_NAME_PREFIX}.${parameter.name}.${PARAMETER_VALUE_PROPERTY}`
 }
 
 function example(example: unknown) {
