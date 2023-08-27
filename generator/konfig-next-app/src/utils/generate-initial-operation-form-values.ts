@@ -59,17 +59,19 @@ export function generateInitialFormValues({
     parameters: {},
     security: {},
   }
-  const validate: FormValues['validate'] = {}
+  let validate: FormValues['validate'] = {}
   for (const parameter of parameters) {
     if (parameter.required) {
       const validation: FormValues['validate'] = {
         [PARAMETER_FORM_NAME_PREFIX]: {
-          [parameter.name]: ({ value }) => {
-            return isNotEmpty(`${parameter.name} is required`)(value)
+          [parameter.name]: {
+            value: (value) => {
+              return isNotEmpty(`${parameter.name} is required`)(value)
+            },
           },
         },
       }
-      deepmerge(validate, validation)
+      validate = deepmerge(validation, validate)
     }
     initialValues.parameters[parameter.name] = {
       [PARAMETER_IN_PROPERTY]: parameter.in,
