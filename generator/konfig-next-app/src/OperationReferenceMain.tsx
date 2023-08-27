@@ -23,8 +23,10 @@ import {
 } from './components/OperationSecuritySchemeForm'
 import { SecurityScheme } from 'konfig-lib'
 import { generateParametersFromRequestBodyProperties } from './utils/generate-parameters-from-request-body-properties'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { FormProvider, useForm } from './utils/operation-form-context'
+import { useRouter } from 'next/router'
+import deepmerge from 'deepmerge'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -78,6 +80,14 @@ export function OperationReferenceMain({
   })
 
   const form = useForm(formValues)
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (formValues.initialValues)
+      form.setValues(deepmerge(formValues.initialValues, form.values))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.asPath])
 
   const { colorScheme } = useMantineColorScheme()
 
