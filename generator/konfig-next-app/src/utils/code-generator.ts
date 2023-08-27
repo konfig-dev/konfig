@@ -1,7 +1,7 @@
 import { Parameter } from '@/components/OperationParameter'
 import {
   API_KEY_VALUE_PROPERTY,
-  CLIENT_STATE_NAME_PROPERTY,
+  CLIENT_STATE_VALUE_PROPERTY,
   FormDataType,
   PARAMETER_FORM_NAME_PREFIX,
   PARAMETER_VALUE_PROPERTY,
@@ -127,9 +127,9 @@ export abstract class CodeGenerator {
           )
         } else if (security.type == 'clientState') {
           return (
-            security[CLIENT_STATE_NAME_PROPERTY] !== '' &&
-            security[CLIENT_STATE_NAME_PROPERTY] !== null &&
-            security[CLIENT_STATE_NAME_PROPERTY] !== undefined
+            security[CLIENT_STATE_VALUE_PROPERTY] !== '' &&
+            security[CLIENT_STATE_VALUE_PROPERTY] !== null &&
+            security[CLIENT_STATE_VALUE_PROPERTY] !== undefined
           )
         } else {
           throw new Error(`Unknown security type: ${(security as any).type}`)
