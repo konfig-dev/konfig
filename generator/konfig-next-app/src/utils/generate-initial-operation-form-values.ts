@@ -25,7 +25,7 @@ export type FormDataType = {
     {
       [PARAMETER_IN_PROPERTY]: string
       [PARAMETER_VALUE_PROPERTY]: string
-      schema: SchemaObject
+      // schema: SchemaObject
     }
   >
   [SECURITY_FORM_NAME_PREFIX]: Record<
@@ -80,7 +80,7 @@ export function generateInitialFormValues({
     initialValues.parameters[parameter.name] = {
       [PARAMETER_IN_PROPERTY]: parameter.in,
       [PARAMETER_VALUE_PROPERTY]: '',
-      schema: parameter.schema,
+      // schema: parameter.schema,
     }
   }
   if (securitySchemes != null) {
