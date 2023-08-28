@@ -1,10 +1,16 @@
-import { NumberInput, SegmentedControl, TextInput } from '@mantine/core'
+import {
+  NumberInput,
+  SegmentedControl,
+  Select,
+  TextInput,
+  useMantineTheme,
+} from '@mantine/core'
 import { Parameter } from './OperationParameter'
 import {
   PARAMETER_FORM_NAME_PREFIX,
   PARAMETER_VALUE_PROPERTY,
 } from '@/utils/generate-initial-operation-form-values'
-import { useForm, useFormContext } from '@/utils/operation-form-context'
+import { useFormContext } from '@/utils/operation-form-context'
 import { IconCalendar } from '@tabler/icons-react'
 import { DatePickerInput } from '@mantine/dates'
 import { parseDateString } from '@/utils/parse-date-string'
@@ -13,12 +19,26 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
   const form = useFormContext()
   const formInputName = generateParameterInputName(parameter)
   const inputProps = form.getInputProps(formInputName)
+  const { colorScheme, colors } = useMantineTheme()
   if (parameter.schema.type === 'integer') {
     return (
       <NumberInput
         {...inputProps}
         radius="xs"
         placeholder={example(parameter.schema.example)}
+      />
+    )
+  }
+  if (
+    parameter.schema.type === 'string' &&
+    parameter.schema.enum !== undefined
+  ) {
+    return (
+      <Select
+        {...inputProps}
+        clearable={!parameter.required}
+        radius="xs"
+        data={parameter.schema.enum}
       />
     )
   }
@@ -40,6 +60,7 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
     return (
       <DatePickerInput
         icon={<IconCalendar size="1.1rem" stroke={1.5} />}
+        radius="xs"
         clearable
         value={parseDateString(value)}
         onChange={(date) => {
@@ -59,6 +80,8 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
   if (parameter.schema.type === 'boolean') {
     return (
       <SegmentedControl
+        bg={colorScheme === 'dark' ? colors.dark[6] : undefined}
+        color="brand"
         value={
           inputProps.value === true
             ? 'true'
