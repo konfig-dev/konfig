@@ -55,12 +55,11 @@ export function ExecuteOutput({
             <Tabs.Tab disabled={jsonOutput === null} value="json">
               JSON
             </Tabs.Tab>
-            <Tabs.Tab
-              disabled={tableOutput === null || disableTable}
-              value="table"
-            >
-              Table
-            </Tabs.Tab>
+            {!disableTable && (
+              <Tabs.Tab disabled={tableOutput === null} value="table">
+                Table
+              </Tabs.Tab>
+            )}
           </Tabs.List>
 
           <Tabs.Panel value="raw">
@@ -87,14 +86,16 @@ export function ExecuteOutput({
               />
             )}
           </Tabs.Panel>
-          <Tabs.Panel pt="xs" value="table">
-            {tableOutput && (
-              <DemoTable
-                data={tableOutput.data}
-                columns={tableOutput.columns}
-              />
-            )}
-          </Tabs.Panel>
+          {!disableTable && (
+            <Tabs.Panel pt="xs" value="table">
+              {tableOutput && (
+                <DemoTable
+                  data={tableOutput.data}
+                  columns={tableOutput.columns}
+                />
+              )}
+            </Tabs.Panel>
+          )}
         </Tabs>
       )}
     </Transition>
