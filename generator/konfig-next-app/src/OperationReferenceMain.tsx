@@ -147,7 +147,6 @@ export function OperationReferenceMain({
             ${snippet}
             })()`
             const result = await eval(wrapped)
-            console.log(result)
             setResult(result.data)
           } finally {
             if (typeof window !== 'undefined') {
