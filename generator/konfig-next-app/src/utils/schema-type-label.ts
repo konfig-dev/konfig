@@ -6,6 +6,10 @@ export function schemaTypeLabel({ schema }: { schema: SchemaObject }) {
   const nullable = 'nullable' in schema && schema.nullable ? ' or null' : ''
   const innerType =
     schema.type === 'array' ? (schema.items as SchemaObject).type : null
-  const arrayOf = innerType !== null ? ` of ${pluralize(innerType)}` : ''
-  return `${type}${arrayOf}${nullable}`
+  const arrayOf =
+    innerType !== null && typeof innerType === 'string'
+      ? ` of ${pluralize(innerType)}`
+      : ''
+  const format = schema.format ? ` (format: ${schema.format})` : ''
+  return `${type}${format}${arrayOf}${nullable}`
 }
