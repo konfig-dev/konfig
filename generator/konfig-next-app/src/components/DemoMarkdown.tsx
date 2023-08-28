@@ -59,6 +59,10 @@ export class DemoState {
     this.init()
   }
 
+  setDemoDiv(demoDiv: HTMLDivElement | null) {
+    this.demoDiv = demoDiv
+  }
+
   pushCell({ cell }: { cell: CellState }) {
     this.cells.push(cell)
     return cell
@@ -114,7 +118,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
   const demoDiv = useRef<HTMLDivElement | null>(null)
   const { colors } = useMantineTheme()
   useEffect(() => {
-    state.demoDiv = demoDiv.current
+    state.setDemoDiv(demoDiv.current)
   }, [state])
   return (
     <DemoStateContext.Provider value={state}>

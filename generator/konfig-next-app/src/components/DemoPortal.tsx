@@ -29,7 +29,7 @@ import DemoTableOfContents from './DemoTableOfContents'
 import { DemoEditThisPage } from './DemoEditThisPage'
 import { DemoLastRan } from './DemoLastRan'
 import { DemoHeader } from './DemoHeader'
-import { SocialObject } from '@/utils/generate-demos-from-github-utils'
+import type { SocialObject } from 'konfig-lib/dist/KonfigYamlCommon'
 
 type DemosInput = Demo[]
 
@@ -79,7 +79,13 @@ export class PortalState {
     this.organizationId = organizationId
     this.demos = demos.map(
       ({ name, markdown, id, showCode }) =>
-        new DemoState({ markdown, name, portal: this, id, showCode })
+        new DemoState({
+          markdown,
+          name,
+          portal: this,
+          id,
+          showCode: showCode ?? undefined,
+        })
     )
 
     this.currentDemoIndex = this.demos.findIndex((demo) => demo.id === demoId)
