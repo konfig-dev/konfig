@@ -24,7 +24,7 @@ import {
   OperationClientStateForm,
   OperationSecuritySchemeForm,
 } from './components/OperationSecuritySchemeForm'
-import { SecurityScheme } from 'konfig-lib'
+import type { SecurityScheme, RequestBodyObject } from 'konfig-lib'
 import { generateParametersFromRequestBodyProperties } from './utils/generate-parameters-from-request-body-properties'
 import { useEffect, useMemo, useState } from 'react'
 import { FormProvider, useForm } from './utils/operation-form-context'
@@ -127,6 +127,8 @@ export function OperationReferenceMain({
     operationId: operation.operation.operationId,
     tag: tag,
     basePath,
+    requestBodyRequired:
+      (operation.operation.requestBody as RequestBodyObject)?.required ?? false,
   }
 
   const [requestInProgress, setRequestInProgress] = useState(false)

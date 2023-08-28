@@ -16,6 +16,7 @@ export type CodeGeneratorConstructorArgs = {
   packageName: string
   tag: string
   operationId: string
+  requestBodyRequired: boolean
 
   /**
    *  Sandbox is for executing the code in a sandboxed environment while
@@ -62,6 +63,11 @@ export abstract class CodeGenerator {
    */
   basePath: string
 
+  /**
+   * Whether or not the request body is required
+   */
+  requestBodyRequired: boolean
+
   constructor({
     formData,
     parameters,
@@ -70,6 +76,7 @@ export abstract class CodeGenerator {
     tag,
     operationId,
     basePath,
+    requestBodyRequired,
     mode = 'production',
   }: CodeGeneratorConstructorArgs) {
     this.basePath = basePath
@@ -80,6 +87,7 @@ export abstract class CodeGenerator {
     this.packageName = packageName
     this.tag = tag
     this.operationId = operationId
+    this.requestBodyRequired = requestBodyRequired
   }
 
   protected abstract format(code: string): Promise<string>

@@ -68,6 +68,9 @@ ${this.nonEmptySecurity
 
   get args(): string {
     if (this.nonEmptyParameters.length === 0) {
+      if (this.requestBodyRequired) {
+        return `{}`
+      }
       return ''
     }
     const parameters = this.nonEmptyParameters
