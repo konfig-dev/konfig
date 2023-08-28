@@ -10,6 +10,7 @@ import {
   Button,
   Text,
   useMantineColorScheme,
+  Paper,
 } from '@mantine/core'
 import { HttpMethodBadge } from './components/HttpMethodBadge'
 import { OperationForm } from './components/OperationForm'
@@ -133,7 +134,11 @@ export function OperationReferenceMain({
 
   const [requestInProgress, setRequestInProgress] = useState(false)
 
-  const [result, setResult] = useState<any>(null)
+  const [result, setResult] = useState<{
+    data: unknown
+    status: number
+    statusText: string
+  } | null>(null)
 
   return (
     <FormProvider form={form}>
@@ -149,7 +154,7 @@ export function OperationReferenceMain({
             ${snippet}
             })()`
             const result = await eval(wrapped)
-            setResult(result.data)
+            setResult(result)
           } finally {
             if (typeof window !== 'undefined') {
               window.localStorage.setItem(
@@ -276,14 +281,23 @@ export function OperationReferenceMain({
               >
                 Request API
               </Button>
-              {result && (
-                <ExecuteOutput
-                  jsonOutput={tryJsonOutput(JSON.stringify(result))}
-                  tableOutput={tryTableOutput(JSON.stringify(result))}
-                  processedOutput={JSON.stringify(result, null, 2)}
-                  disableTable
-                  show={true}
-                />
+              {result?.data != null && (
+                <Paper shadow="sm" radius="xs" p={0} withBorder>
+                  <Box p="sm">
+                    {/* if status is not successful (e.g. 4xx or 5xx), the badge is red */}
+                    <Badge
+                      variant={colorScheme === 'dark' ? 'light' : 'filled'}
+                      color={result.status >= 300 ? 'red' : 'green'}
+                    >{`${result.status} ${result.statusText}`}</Badge>
+                  </Box>
+                  <ExecuteOutput
+                    jsonOutput={tryJsonOutput(JSON.stringify(result.data))}
+                    tableOutput={tryTableOutput(JSON.stringify(result.data))}
+                    processedOutput={JSON.stringify(result.data, null, 2)}
+                    disableTable
+                    show={true}
+                  />
+                </Paper>
               )}
             </Stack>
           </Box>
