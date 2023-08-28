@@ -31,7 +31,7 @@ export function OperationParameter({ param }: { param: Parameter }) {
           </Text>
         )}
       </Box>
-      <Box w="35%">
+      <Box ta="right" w="35%">
         <ParameterInput parameter={param} />
       </Box>
     </Flex>
