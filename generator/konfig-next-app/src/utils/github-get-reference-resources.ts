@@ -26,7 +26,7 @@ export async function githubGetReferenceResources({
     `githubGetKonfigYamls + githubGetDemoYamls took ${Date.now() - start}ms`
   )
 
-  // TODO: handle multiple konfig.yaml / demo.yaml files
+  // TODO: handle multiple konfig.yaml
   const konfigYaml = konfigYamls?.[0]
 
   if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
