@@ -155,6 +155,22 @@ export function OperationReferenceMain({
             })()`
             const result = await eval(wrapped)
             setResult(result)
+          } catch (e) {
+            if (
+              typeof e === 'object' &&
+              e !== null &&
+              'status' in e &&
+              typeof e.status === 'number' &&
+              'statusText' in e &&
+              typeof e.statusText === 'string' &&
+              'responseBody' in e
+            ) {
+              setResult({
+                data: e.responseBody,
+                status: e.status,
+                statusText: e.statusText,
+              })
+            }
           } finally {
             if (typeof window !== 'undefined') {
               window.localStorage.setItem(
@@ -213,7 +229,7 @@ export function OperationReferenceMain({
                               colorScheme === 'dark' ? 'light' : 'filled'
                             }
                             radius="xs"
-                            color="teal"
+                            color="blue"
                             size="xs"
                           >
                             Success
@@ -287,7 +303,7 @@ export function OperationReferenceMain({
                     {/* if status is not successful (e.g. 4xx or 5xx), the badge is red */}
                     <Badge
                       variant={colorScheme === 'dark' ? 'light' : 'filled'}
-                      color={result.status >= 300 ? 'red' : 'green'}
+                      color={result.status >= 300 ? 'red' : 'blue'}
                     >{`${result.status} ${result.statusText}`}</Badge>
                   </Box>
                   <ExecuteOutput
