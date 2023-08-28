@@ -62,30 +62,27 @@ ${this.nonEmptySecurity
     return JSON.stringify(value, undefined, 2)
   }
 
+  argName(name: string): string {
+    return camelCase(name)
+  }
+
   get args(): string {
     if (this.nonEmptyParameters.length === 0) {
       return ''
     }
     const parameters = this.nonEmptyParameters
       .map(([name, value]) => {
-        return `  ${name}: ${this.argValue(value.value)},`
+        return `  ${this.argName(name)}: ${this.argValue(value.value)},`
       })
       .join('\n')
     return `{${parameters}}`
   }
 
   get namespace() {
-    return this.camelCase(this.tag)
+    return camelCase(this.tag)
   }
 
   get methodName() {
     return this.operationId.split('_')[1]
-  }
-
-  /**
-   * Converts a string to camelCase
-   */
-  camelCase(str: string): string {
-    return camelCase(str)
   }
 }
