@@ -261,7 +261,6 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
 
 const Operation = ({
   konfigYaml,
-  demoYaml,
   navbarData,
   pathParameters,
   queryParameters,

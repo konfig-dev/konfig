@@ -1,18 +1,11 @@
-import { App } from 'octokit'
 import { Demo, Organization, Portal } from './demos'
-import * as yaml from 'js-yaml'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { FetchCache } from '@/server/routers/_app'
 import { createOctokitInstance } from './octokit'
 import { githubGetKonfigYamls } from './github-get-konfig-yamls'
-import {
-  SocialObject,
-  DEMO_YAML_FILE_NAME,
-  demoYamlSchema,
-} from './generate-demos-from-github-utils'
-import { githubGetFilesInDir } from './github-get-files-in-dir'
 import { githubGetFileContent } from './github-get-file-content'
 import { githubGetRepository } from './github-get-repository'
+import type { SocialObject } from 'konfig-lib'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -27,22 +20,6 @@ const _mappings: {
   repository: {
     'snaptrade-demos': 'snaptrade-sdks',
   },
-}
-
-async function _findRepository({
-  gitHub,
-  eachRepository,
-}: {
-  gitHub: { owner: string; repo: string }
-  eachRepository: App['eachRepository']
-}) {
-  for await (const { octokit, repository } of eachRepository.iterator()) {
-    if (!repository.owner.login) continue
-    if (repository.owner.login !== gitHub.owner) continue
-    if (repository.name !== gitHub.repo) continue
-    return { ...gitHub, octokit, repository }
-  }
-  return null
 }
 
 export function invalidateDemoGenerationCache({
@@ -183,52 +160,39 @@ async function _fetch({
     octokit,
   })
 
-  const demoYaml = await githubGetFileContent({
-    octokit,
-    repo,
-    owner,
-    path: `demos/${DEMO_YAML_FILE_NAME}`,
-  })
-
-  const parsedDemoYaml = demoYamlSchema.parse(yaml.load(demoYaml))
-
   const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
 
   // TODO: handle multiple konfig.yaml files
   const konfigYaml = konfigYamls?.[0]
 
-  const files = await githubGetFilesInDir({
-    path: 'demos',
-    owner,
-    repo,
-    octokit,
-  })
+  if (konfigYaml?.content.portal?.demos === undefined) {
+    throw Error('Missing demos in konfig.yaml')
+  }
 
-  const markdownFiles = files.filter(({ name }) => name.endsWith('.md'))
+  const markdownFiles = konfigYaml.content.portal.demos
 
   const content = await Promise.all(
-    markdownFiles.map(async ({ path, name: fileName }) => {
+    markdownFiles.map(async ({ path, ...rest }) => {
       return {
         content: await githubGetFileContent({ path, repo, owner, octokit }),
-        fileName,
+        ...rest,
       }
     })
   )
 
   const demos = generateDemosFromFilenameAndContent({
     demos: content,
-    demoYaml: parsedDemoYaml,
   })
 
   const portal: Portal = {
     id: repo,
-    portalName: parsedDemoYaml.portalName,
+    portalName: konfigYaml.content.portal.title,
     demos,
   }
 
   const organization: Organization = {
     id: owner,
-    organizationName: parsedDemoYaml.organizationName,
+    organizationName: konfigYaml.content.portal.title,
     portals: [portal],
   }
 
@@ -236,9 +200,11 @@ async function _fetch({
     organization,
     portal,
     demos,
-    portalTitle: konfigYaml?.content.portalTitle,
-    primaryColor: konfigYaml?.content.primaryColor,
+    portalTitle: konfigYaml.content.portal.title,
+    primaryColor: konfigYaml.content.portal.primaryColor,
     mainBranch: repository.data.default_branch,
-    ...(parsedDemoYaml.socials ? { socials: parsedDemoYaml.socials } : {}),
+    ...(konfigYaml.content.portal.socials
+      ? { socials: konfigYaml.content.portal.socials }
+      : {}),
   }
 }

@@ -1,6 +1,5 @@
 import path from 'path'
 import { generateNavbarLinks } from './generate-navbar-links'
-import { githubGetDemoYamls } from './github-get-demo-yamls'
 import { githubGetFileContent } from './github-get-file-content'
 import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { createOctokitInstance } from './octokit'
@@ -23,14 +22,12 @@ export async function githubGetReferenceResources({
   // time the next two lines
   const start = Date.now()
   const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
-  const demoYamls = await githubGetDemoYamls({ owner, repo, octokit })
   console.log(
     `githubGetKonfigYamls + githubGetDemoYamls took ${Date.now() - start}ms`
   )
 
   // TODO: handle multiple konfig.yaml / demo.yaml files
   const konfigYaml = konfigYamls?.[0]
-  const demoYaml = demoYamls?.[0]
 
   if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
 
@@ -58,6 +55,5 @@ export async function githubGetReferenceResources({
     navbarData,
     spec,
     konfigYaml: konfigYaml.content,
-    demoYaml: demoYaml ?? null,
   }
 }
