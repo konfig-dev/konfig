@@ -127,6 +127,8 @@ export function OperationReferenceMain({
 
   const [result, setResult] = useState<any>(null)
 
+  const filter = konfigYaml.portal?.hideSecurity ?? []
+
   return (
     <FormProvider form={form}>
       <form
@@ -235,15 +237,19 @@ export function OperationReferenceMain({
                 <>
                   <Title order={5}> Authorization </Title>
 
-                  {authorization.map(([name, scheme]) => {
-                    return (
-                      <OperationSecuritySchemeForm
-                        key={name}
-                        name={name}
-                        scheme={scheme}
-                      />
-                    )
-                  })}
+                  {authorization
+                    .filter(([name]) => {
+                      return !filter.map(({ name }) => name).includes(name)
+                    })
+                    .map(([name, scheme]) => {
+                      return (
+                        <OperationSecuritySchemeForm
+                          key={name}
+                          name={name}
+                          scheme={scheme}
+                        />
+                      )
+                    })}
                   {clientState.map((name) => {
                     return <OperationClientStateForm key={name} name={name} />
                   })}
