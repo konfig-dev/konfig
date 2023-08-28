@@ -51,10 +51,12 @@ export function generateInitialFormValues({
   parameters,
   securitySchemes,
   clientState,
+  hideSecurity,
 }: {
   parameters: Parameter[]
   securitySchemes: StaticProps['securitySchemes']
   clientState: string[]
+  hideSecurity: { name: string }[]
 }): FormValues {
   const initialValues: FormValues['initialValues'] = {
     parameters: {},
@@ -82,6 +84,9 @@ export function generateInitialFormValues({
   }
   if (securitySchemes != null) {
     for (const [name, securityScheme] of Object.entries(securitySchemes)) {
+      if (hideSecurity.some((scheme) => scheme.name === name)) {
+        continue
+      }
       if (securityScheme.type === 'apiKey') {
         initialValues.security[name] = {
           [SECURITY_TYPE_PROPERTY]: 'apiKey',

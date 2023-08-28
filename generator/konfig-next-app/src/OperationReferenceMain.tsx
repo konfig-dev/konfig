@@ -80,10 +80,13 @@ export function OperationReferenceMain({
     [typecriptConfig]
   )
 
+  const hideSecurity = konfigYaml.portal?.hideSecurity ?? []
+
   const formValues = generateInitialFormValues({
     parameters: parameters,
     securitySchemes,
     clientState,
+    hideSecurity,
   })
 
   const form = useForm(formValues)
@@ -126,8 +129,6 @@ export function OperationReferenceMain({
   const [requestInProgress, setRequestInProgress] = useState(false)
 
   const [result, setResult] = useState<any>(null)
-
-  const filter = konfigYaml.portal?.hideSecurity ?? []
 
   return (
     <FormProvider form={form}>
@@ -239,7 +240,9 @@ export function OperationReferenceMain({
 
                   {authorization
                     .filter(([name]) => {
-                      return !filter.map(({ name }) => name).includes(name)
+                      return !hideSecurity
+                        .map(({ name }) => name)
+                        .includes(name)
                     })
                     .map(([name, scheme]) => {
                       return (
