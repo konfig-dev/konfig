@@ -55,6 +55,7 @@ export type StaticProps = Omit<GithubResources, 'spec'> & {
   operationId: string
   operation: OperationObject
   basePath: string
+  title: string
   pathParameters: Parameter[]
   queryParameters: Parameter[]
   headerParameters: Parameter[]
@@ -230,9 +231,16 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   const basePath = spec.spec.servers?.[0].url
   if (basePath === undefined) throw Error('No servers found in spec')
 
+  // return a 404 if "portal" property is not configured
+  if (props.konfigYaml.portal === undefined)
+    return {
+      notFound: true,
+    }
+
   return {
     props: {
       ...props,
+      title: props.konfigYaml.portal.title,
       operationId,
       operation,
       spec: spec.spec,
@@ -259,6 +267,7 @@ const Operation = ({
   queryParameters,
   headerParameters,
   cookieParameters,
+  title,
   requestBodyProperties,
   requestBodyRequired,
   securityRequirements,
@@ -277,8 +286,8 @@ const Operation = ({
         colorScheme,
         colors: {
           brand:
-            konfigYaml?.primaryColor !== undefined
-              ? generateShadePalette(konfigYaml.primaryColor)
+            konfigYaml.portal?.primaryColor !== undefined
+              ? generateShadePalette(konfigYaml.portal?.primaryColor)
               : colors.blue,
         },
         primaryColor: 'brand',
@@ -309,11 +318,7 @@ const Operation = ({
         }
         header={
           <Header height={TITLE_OFFSET_PX}>
-            <LayoutHeader
-              title={
-                konfigYaml?.portalTitle ?? demoYaml?.portalName ?? 'API Portal'
-              }
-            />
+            <LayoutHeader title={title} />
             <Box
               px="md"
               style={{
