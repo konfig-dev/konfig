@@ -6,6 +6,7 @@ import deepmerge from 'deepmerge'
 import { SchemaObject } from 'konfig-lib'
 import { getInputPlaceholder } from '@/components/OperationSecuritySchemeForm'
 
+export const FORM_VALUES_LOCAL_STORAGE_KEY = 'form-values'
 export const PARAMETER_FORM_NAME_PREFIX = `parameters` as const
 export const SECURITY_FORM_NAME_PREFIX = `security` as const
 export const SECURITY_FORM_VALUE_SUFFIX = 'value' as const
@@ -58,7 +59,7 @@ export function generateInitialFormValues({
   clientState: string[]
   hideSecurity: { name: string }[]
 }): FormValues {
-  const initialValues: FormValues['initialValues'] = {
+  let initialValues: FormValues['initialValues'] = {
     parameters: {},
     security: {},
   }
@@ -125,6 +126,18 @@ export function generateInitialFormValues({
         [SECURITY_TYPE_PROPERTY]: 'clientState',
         [CLIENT_STATE_NAME_PROPERTY]: state,
         [CLIENT_STATE_VALUE_PROPERTY]: '',
+      }
+    }
+  }
+  if (typeof window !== 'undefined') {
+    const storedValue = window.localStorage.getItem(
+      FORM_VALUES_LOCAL_STORAGE_KEY
+    )
+    if (storedValue) {
+      try {
+        initialValues = deepmerge(initialValues, JSON.parse(storedValue))
+      } catch (e) {
+        console.log('Failed to parse stored value')
       }
     }
   }

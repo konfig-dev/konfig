@@ -15,7 +15,10 @@ import { HttpMethodBadge } from './components/HttpMethodBadge'
 import { OperationForm } from './components/OperationForm'
 import { OperationFormGeneratedCode } from './components/OperationFormGeneratedCode'
 import { httpResponseCodeMeaning } from './utils/http-response-code-meaning'
-import { generateInitialFormValues } from './utils/generate-initial-operation-form-values'
+import {
+  FORM_VALUES_LOCAL_STORAGE_KEY,
+  generateInitialFormValues,
+} from './utils/generate-initial-operation-form-values'
 import { StaticProps } from './pages/[org]/[portal]/reference/[tag]/[operationId]'
 import {
   OperationClientStateForm,
@@ -147,6 +150,12 @@ export function OperationReferenceMain({
             console.log(result)
             setResult(result.data)
           } finally {
+            if (typeof window !== 'undefined') {
+              window.localStorage.setItem(
+                FORM_VALUES_LOCAL_STORAGE_KEY,
+                JSON.stringify(values)
+              )
+            }
             setRequestInProgress(false)
           }
         })}
