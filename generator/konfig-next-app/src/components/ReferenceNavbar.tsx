@@ -58,10 +58,7 @@ export function ReferenceNavbar({
   return (
     <>
       <Navbar.Section className={classes.header}>
-        <Group position="apart">
-          <Code>api.snaptrade.com/api/v1</Code>
-          <Code>v3.1.2</Code>
-        </Group>
+        <Code>api.snaptrade.com/api/v1</Code>
       </Navbar.Section>
 
       <Navbar.Section grow className={classes.links} component={ScrollArea}>
