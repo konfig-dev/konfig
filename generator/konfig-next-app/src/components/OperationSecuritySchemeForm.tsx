@@ -18,6 +18,8 @@ export function OperationSecuritySchemeForm({
   const formInputName = generateSecurityFormInputName({ name })
   return (
     <TextInput
+      withAsterisk
+      label={getInputPlaceholder({ scheme })}
       placeholder={getInputPlaceholder({ scheme })}
       {...form.getInputProps(formInputName)}
     />
@@ -27,14 +29,21 @@ export function OperationSecuritySchemeForm({
 export function OperationClientStateForm({ name }: { name: string }) {
   const form = useFormContext()
   const formInputName = `${SECURITY_FORM_NAME_PREFIX}.${name}.${CLIENT_STATE_VALUE_PROPERTY}`
-  return <TextInput placeholder={name} {...form.getInputProps(formInputName)} />
+  return (
+    <TextInput
+      withAsterisk
+      label={name}
+      placeholder={name}
+      {...form.getInputProps(formInputName)}
+    />
+  )
 }
 
 export function generateSecurityFormInputName({ name }: { name: string }) {
   return `${SECURITY_FORM_NAME_PREFIX}.${name}.${SECURITY_FORM_VALUE_SUFFIX}`
 }
 
-function getInputPlaceholder({ scheme }: { scheme: SecurityScheme }) {
+export function getInputPlaceholder({ scheme }: { scheme: SecurityScheme }) {
   if (scheme.type === 'apiKey') {
     return scheme.name
   }

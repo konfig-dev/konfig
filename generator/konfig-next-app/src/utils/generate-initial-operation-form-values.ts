@@ -4,6 +4,7 @@ import { isNotEmpty } from '@mantine/form'
 import { StaticProps } from '@/pages/[org]/[portal]/reference/[tag]/[operationId]'
 import deepmerge from 'deepmerge'
 import { SchemaObject } from 'konfig-lib'
+import { getInputPlaceholder } from '@/components/OperationSecuritySchemeForm'
 
 export const PARAMETER_FORM_NAME_PREFIX = `parameters` as const
 export const SECURITY_FORM_NAME_PREFIX = `security` as const
@@ -88,9 +89,33 @@ export function generateInitialFormValues({
           [API_KEY_NAME_PROPERTY]: securityScheme.name,
           [API_KEY_VALUE_PROPERTY]: '',
         }
+        const validation: FormValues['validate'] = {
+          [SECURITY_FORM_NAME_PREFIX]: {
+            [name]: {
+              value: (value) => {
+                return isNotEmpty(
+                  `${getInputPlaceholder({
+                    scheme: securityScheme,
+                  })} is required`
+                )(value)
+              },
+            },
+          },
+        }
+        validate = deepmerge(validation, validate)
       }
     }
     for (const state of clientState) {
+      const validation: FormValues['validate'] = {
+        [SECURITY_FORM_NAME_PREFIX]: {
+          [state]: {
+            value: (value) => {
+              return isNotEmpty(`${state} is required`)(value)
+            },
+          },
+        },
+      }
+      validate = deepmerge(validation, validate)
       initialValues.security[state] = {
         [SECURITY_TYPE_PROPERTY]: 'clientState',
         [CLIENT_STATE_NAME_PROPERTY]: state,
