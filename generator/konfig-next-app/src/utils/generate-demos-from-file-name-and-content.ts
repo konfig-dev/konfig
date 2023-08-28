@@ -6,10 +6,12 @@ import { Demo } from './demos'
 import { toString } from 'mdast-util-to-string'
 import { Demo as DemoObject } from 'konfig-lib/dist/KonfigYamlCommon'
 
+export type DemoInput = Omit<DemoObject, 'path'> & { content: string }
+
 export function generateDemosFromFilenameAndContent({
   demos,
 }: {
-  demos: (Omit<DemoObject, 'path'> & { content: string })[]
+  demos: DemoInput[]
 }): Demo[] {
   const result: Demo[] = []
 

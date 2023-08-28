@@ -1,28 +1,20 @@
-import {
-  Button,
-  Center,
-  MantineProvider,
-  useMantineColorScheme,
-  useMantineTheme,
-} from '@mantine/core'
 import { observer } from 'mobx-react'
 import Head from 'next/head'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { makeAutoObservable, observable } from 'mobx'
-import {
-  DemoInput,
-  generateDemosFromFilenameAndContent,
-} from '@/utils/generate-demos-from-file-name-and-content'
-import { Organization, Portal } from '@/utils/demos'
+import { Demo, Organization, Portal } from '@/utils/demos'
 import { DemoPortal, PortalState } from '@/components/DemoPortal'
 import * as yaml from 'js-yaml'
 import { notifications } from '@mantine/notifications'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
+import { type KonfigYamlType, type SocialObject } from 'konfig-lib'
+import { KonfigYaml } from 'konfig-lib/dist/KonfigYaml'
+import { KONFIG_YAML_NAME } from 'konfig-lib/dist/util/konfig-yaml-name'
+import { Button, Center, MantineProvider, useMantineTheme } from '@mantine/core'
 import {
-  DEMO_YAML_FILE_NAME,
-  demoYamlSchema,
-  SocialObject,
-} from '@/utils/generate-demos-from-github-utils'
+  DemoInput,
+  generateDemosFromFilenameAndContent,
+} from '@/utils/generate-demos-from-file-name-and-content'
 
 /**
  * This is here to force this page to be SSR only so Next.js doesn't try to make
@@ -33,54 +25,90 @@ export const getServerSideProps: GetServerSideProps<{}> =
     return { props: {} }
   }
 
-async function open(parameters?: { showPicker?: boolean }) {
+type FileOrDirInfo = {
+  name: string
+  path: string
+} & (
+  | {
+      handle: FileSystemDirectoryHandle
+      kind: Extract<FileSystemHandleKind, 'directory'>
+    }
+  | {
+      handle: FileSystemFileHandle
+      kind: Extract<FileSystemHandleKind, 'file'>
+    }
+)
+
+async function listAllFilesAndDirs(
+  dirHandle: FileSystemDirectoryHandle,
+  path: string[] = []
+): Promise<FileOrDirInfo[]> {
+  const files: FileOrDirInfo[] = []
+  for await (let [name, handle] of dirHandle as any) {
+    const newPath = [...path, name]
+    const { kind } = handle
+    if (handle.kind === 'directory') {
+      const directoryHandle = handle as FileSystemDirectoryHandle // Type assertion
+      files.push({ name, handle, kind, path: newPath.join('/') })
+      files.push(...(await listAllFilesAndDirs(directoryHandle, newPath)))
+    } else {
+      files.push({ name, handle, kind, path: newPath.join('/') })
+    }
+  }
+  return files
+}
+
+async function rescursivelyReadAllFiles(parameters?: {
+  showPicker?: boolean
+}): Promise<FileOrDirInfo[]> {
   try {
     if (parameters?.showPicker !== false)
       state.setDirectoryHandle(await (window as any).showDirectoryPicker())
-    const files: DemoInput[] = []
-
-    for await (const entry of state.directoryHandle.get().values()) {
-      if (entry.kind !== 'file') {
-        continue
-      }
-      const file = await entry.getFile()
-      files.push({ fileName: file.name, content: await file.text() })
-    }
-    return files
+    return await listAllFilesAndDirs(state.directoryHandle.get())
   } catch (error) {}
+  return []
+}
+
+async function generateDemos(files: FileOrDirInfo[]): Promise<Demo[]> {
+  const demos: DemoInput[] = []
+  const konfigYamlFile = files.find((file) => file.name === KONFIG_YAML_NAME)
+  if (konfigYamlFile && konfigYamlFile.kind === 'file') {
+    const file = await konfigYamlFile.handle.getFile()
+    const konfigYaml = KonfigYaml.parse(yaml.load(await file.text()))
+    state.setKonfigYaml(konfigYaml)
+    for (const demo of konfigYaml.portal?.demos ?? []) {
+      const demoFile = files.find((file) => file.path === demo.path)
+      if (demoFile === undefined) continue
+      if (demoFile.kind !== 'file') continue
+      demos.push({
+        id: demo.id,
+        content: await (await demoFile.handle.getFile()).text(),
+        showCode: demo.showCode,
+      })
+    }
+  }
+  return generateDemosFromFilenameAndContent({ demos })
 }
 
 class SandboxState {
-  files: DemoInput[] = []
+  demos: Demo[] = []
   directoryHandle = observable.box<any>()
+  konfigYaml: KonfigYamlType | undefined
 
   constructor() {
     makeAutoObservable(this)
   }
 
-  setFiles(files: DemoInput[]) {
-    this.files = files
+  setDemos(demos: Demo[]) {
+    this.demos = demos
   }
 
-  get demoYaml() {
-    const demoYamlFile = this.files.find(
-      (di) => di.fileName === DEMO_YAML_FILE_NAME
-    )
-    if (demoYamlFile === undefined) return undefined
-    const demoYaml = demoYamlSchema.parse(yaml.load(demoYamlFile.content))
-    return demoYaml
-  }
-
-  get demos() {
-    if (this.demoYaml === undefined) return []
-    return generateDemosFromFilenameAndContent({
-      demos: this.files.filter((di) => di.fileName.endsWith('.md')),
-      demoYaml: this.demoYaml,
-    })
+  setKonfigYaml(konfigYaml: KonfigYamlType) {
+    this.konfigYaml = konfigYaml
   }
 
   get socials(): SocialObject | undefined {
-    return this.demoYaml?.socials
+    return this.konfigYaml?.portal?.socials
   }
 
   get organization(): Organization {
@@ -132,14 +160,14 @@ const DemoPortalWrapper = observer(() => {
     >
       <DemoPortal
         refreshSandbox={async () => {
-          const files = await open({ showPicker: false })
+          const files = await rescursivelyReadAllFiles({ showPicker: false })
           if (files === undefined) return
 
           // Preserve current demo index
           const currentDemoIndex = state.portalState?.currentDemoIndex
           const showCode = state.portalState?.showCode
 
-          state.setFiles(files)
+          state.setDemos(await generateDemos(files))
 
           // Restore current demo index
           if (currentDemoIndex !== undefined)
@@ -170,12 +198,13 @@ const MarkdownSandboxPage = observer(() => {
         <Center pt="xl">
           <Button
             onClick={async () => {
-              const files = await open()
+              const files = await rescursivelyReadAllFiles()
               if (files === undefined) return
-              state.setFiles(files)
+
+              state.setDemos(await generateDemos(files))
             }}
           >
-            {`Specify directory with "${DEMO_YAML_FILE_NAME}"`}
+            {`Specify directory with "${KONFIG_YAML_NAME}"`}
           </Button>
         </Center>
       )}
