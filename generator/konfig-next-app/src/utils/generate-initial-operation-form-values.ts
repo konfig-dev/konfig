@@ -2,9 +2,8 @@ import { Parameter } from '@/components/OperationParameter'
 import type { UseFormInput } from '@mantine/form/lib/types'
 import { isNotEmpty } from '@mantine/form'
 import { StaticProps } from '@/pages/[org]/[portal]/reference/[tag]/[operationId]'
-import deepmerge from 'deepmerge'
-import { SchemaObject } from 'konfig-lib'
 import { getInputPlaceholder } from '@/components/OperationSecuritySchemeForm'
+import { deepmerge } from './deepmerge'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = 'form-values'
 export const PARAMETER_FORM_NAME_PREFIX = `parameters` as const

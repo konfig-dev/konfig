@@ -30,13 +30,13 @@ import { generateParametersFromRequestBodyProperties } from './utils/generate-pa
 import { useEffect, useMemo, useState } from 'react'
 import { FormProvider, useForm } from './utils/operation-form-context'
 import { useRouter } from 'next/router'
-import deepmerge from 'deepmerge'
 import { CodeGeneratorConstructorArgs } from './utils/code-generator'
 import { CodeGeneratorTypeScript } from './utils/code-generator-typescript'
 import { ExecuteOutput } from './components/ExecuteOutput'
 import { tryJsonOutput } from './utils/try-json-output'
 import { tryTableOutput } from './utils/try-table-output'
 import { IconTerminal } from '@tabler/icons-react'
+import { deepmerge } from './utils/deepmerge'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -99,8 +99,9 @@ export function OperationReferenceMain({
   const router = useRouter()
 
   useEffect(() => {
-    if (formValues.initialValues)
+    if (formValues.initialValues) {
       form.setValues(deepmerge(formValues.initialValues, form.values))
+    }
     setResult(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath])
