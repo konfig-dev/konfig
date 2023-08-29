@@ -36,6 +36,7 @@ import { CodeGeneratorTypeScript } from './utils/code-generator-typescript'
 import { ExecuteOutput } from './components/ExecuteOutput'
 import { tryJsonOutput } from './utils/try-json-output'
 import { tryTableOutput } from './utils/try-table-output'
+import { IconTerminal } from '@tabler/icons-react'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -294,6 +295,7 @@ export function OperationReferenceMain({
                 variant={colorScheme === 'dark' ? 'light' : 'filled'}
                 type="submit"
                 loading={requestInProgress}
+                leftIcon={<IconTerminal size="1rem" />}
               >
                 Request API
               </Button>
