@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.8.1
+
+### Patch Changes
+
+- [#137](https://github.com/konfig-dev/konfig/pull/137) [`75de250b`](https://github.com/konfig-dev/konfig/commit/75de250b4a18f77d6dc0eae2c98383bf19c01b93) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix mock server not terminating in docker container
+
 ## 1.8.0
 
 ### Minor Changes
