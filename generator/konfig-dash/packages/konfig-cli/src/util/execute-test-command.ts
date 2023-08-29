@@ -51,6 +51,7 @@ export async function executeTestCommand({
 
   // spawn process that run "konfig mock -d {specPath}" from konfig.yaml
   CliUx.ux.log('💻 Starting mock server')
+  // TODO: ENG-1099 Use a function call here instead of CLI
   execa.command(`konfig mock -d ${common.specPath}`, {
     cwd: configDir,
     stdio: 'inherit',
@@ -58,21 +59,17 @@ export async function executeTestCommand({
   })
 
   // if this process exits in any way, kill the mock server
-  process.on('exit', async () => {
+  const handleTermination = async () => {
+    CliUx.ux.log('🛑 Killing mock server')
     await kill(port)
-  })
-  process.on('SIGINT', async () => {
-    await kill(port)
-  })
-  process.on('SIGTERM', async () => {
-    await kill(port)
-  })
-  process.on('SIGUSR1', async () => {
-    await kill(port)
-  })
-  process.on('SIGUSR2', async () => {
-    await kill(port)
-  })
+    process.exit()
+  };
+
+  process.on('exit', handleTermination)
+  process.on('SIGINT', handleTermination)
+  process.on('SIGTERM', handleTermination)
+  process.on('SIGUSR1', handleTermination)
+  process.on('SIGUSR2', handleTermination)
 
   await waiton({
     resources: [`http://127.0.0.1:${port}`],
@@ -185,7 +182,7 @@ export async function executeTestCommand({
   // If we made it here then we successfully ran all tests
   CliUx.ux.info('Successfully ran all tests!')
 
-  await kill(port)
+  process.exit()
 }
 
 const defaultTestScripts: Record<
