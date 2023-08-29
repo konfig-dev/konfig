@@ -8,7 +8,10 @@ import { ParameterInput } from './ParameterInput'
 import { schemaTypeLabel } from '@/utils/schema-type-label'
 import dynamic from 'next/dynamic'
 
-const OperationParameterInnerForm = dynamic(
+/**
+ * dynamic import to avoid SSR hydration errors where server-rendered HTML does not match client-rendered HTML
+ */
+const OperationParameterArrayForm = dynamic(
   () =>
     import('./OperationParameterArrayForm').then(
       (mod) => mod.OperationParameterArrayForm
@@ -20,7 +23,13 @@ export type Parameter = Omit<ParameterObject, 'schema'> & {
   schema: SchemaObject
 }
 
-export function OperationParameter({ param }: { param: Parameter }) {
+export function OperationParameter({
+  param,
+  prefix,
+}: {
+  param: Parameter
+  prefix?: string
+}) {
   const description = getDescription(param)
   return (
     <Stack>
@@ -42,10 +51,10 @@ export function OperationParameter({ param }: { param: Parameter }) {
           )}
         </Box>
         <Box ta="right" w="35%">
-          <ParameterInput parameter={param} />
+          <ParameterInput prefix={prefix} parameter={param} />
         </Box>
       </Flex>
-      <OperationParameterInnerForm param={param} />
+      <OperationParameterArrayForm prefix={prefix} param={param} />
     </Stack>
   )
 }

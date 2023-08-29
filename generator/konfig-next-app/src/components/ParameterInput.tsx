@@ -22,9 +22,15 @@ import {
 } from '@/utils/generate-parameter-from-body-property'
 import type { SchemaObject } from 'konfig-lib'
 
-export function ParameterInput({ parameter }: { parameter: Parameter }) {
+export function ParameterInput({
+  parameter,
+  prefix,
+}: {
+  parameter: Parameter
+  prefix?: string
+}) {
   const form = useFormContext()
-  const formInputName = generateParameterInputName(parameter)
+  const formInputName = generateParameterInputName(parameter, prefix)
   const inputProps = form.getInputProps(formInputName)
   const { colorScheme, colors } = useMantineTheme()
   if (parameter.schema.type === 'array') {
@@ -177,9 +183,19 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
   )
 }
 
-// See https://mantine.dev/core/forms/#nested-objects for explanation of "." protocol
-export function generateParameterInputName(parameter: Parameter) {
-  return `${PARAMETER_FORM_NAME_PREFIX}.${parameter.name}`
+/**
+ * See https://mantine.dev/core/forms/#nested-objects for explanation of "." protocol
+ * @param parameter OpenAPI Parameter
+ * @param prefix Optional prefix to replace default form prefix (this is used for inner forms)
+ * @returns string passed to form.getInputProps
+ */
+export function generateParameterInputName(
+  parameter: Parameter,
+  prefix?: string
+) {
+  return `${prefix !== undefined ? prefix : PARAMETER_FORM_NAME_PREFIX}.${
+    parameter.name
+  }`
 }
 
 function example(example: unknown) {

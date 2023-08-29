@@ -3,7 +3,13 @@ import { Paper } from '@mantine/core'
 import { Parameter } from './OperationParameter'
 import { generateParameterInputName } from './ParameterInput'
 
-export function OperationParameterArrayForm({ param }: { param: Parameter }) {
+export function OperationParameterArrayForm({
+  param,
+  prefix,
+}: {
+  param: Parameter
+  prefix?: string
+}) {
   const form = useFormContext()
   const formInputName = generateParameterInputName(param)
   const inputProps = form.getInputProps(formInputName)
