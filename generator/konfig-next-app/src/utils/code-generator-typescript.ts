@@ -58,7 +58,27 @@ ${this.nonEmptySecurity
 }`
   }
 
+  object(entries: [string, JSONValue][]) {
+    const parameters = entries
+      .map(([name, value]) => {
+        return `  ${this.argName(name)}: ${this.argValue(value)},`
+      })
+      .join('\n')
+    return `{${parameters}}`
+  }
+
   argValue(value: JSONValue): string {
+    if (Array.isArray(value)) {
+      return `[${value.map((v) => this.argValue(v)).join(', ')}]`
+    }
+    if (typeof value === 'object' && value !== null) {
+      // filter properties that have empty string ('') as a value
+      const filtered = Object.entries(value).filter(([_, v]) => v !== '')
+      if (filtered.length === 0) {
+        return '{}'
+      }
+      return this.object(filtered)
+    }
     return JSON.stringify(value, undefined, 2)
   }
 
@@ -73,12 +93,7 @@ ${this.nonEmptySecurity
       }
       return ''
     }
-    const parameters = this.nonEmptyParameters
-      .map(([name, value]) => {
-        return `  ${this.argName(name)}: ${this.argValue(value.value)},`
-      })
-      .join('\n')
-    return `{${parameters}}`
+    return this.object(this.nonEmptyParameters)
   }
 
   get namespace() {

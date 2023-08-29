@@ -14,20 +14,20 @@ export const SECURITY_TYPE_PROPERTY = 'type'
 export const API_KEY_IN_PROPERTY = 'in'
 export const API_KEY_NAME_PROPERTY = 'key'
 export const API_KEY_VALUE_PROPERTY = 'value'
-export const PARAMETER_IN_PROPERTY = 'in'
-export const PARAMETER_VALUE_PROPERTY = 'value'
 export const CLIENT_STATE_VALUE_PROPERTY = 'value'
 export const CLIENT_STATE_NAME_PROPERTY = 'name'
-// descendent of https://swagger.io/specification/
+
+export type FormInputValues = {
+  [property: string]:
+    | string
+    | FormInputValues
+    | string[]
+    | number[]
+    | Array<FormInputValues>
+}
+
 export type FormDataType = {
-  [PARAMETER_FORM_NAME_PREFIX]: Record<
-    string,
-    {
-      [PARAMETER_IN_PROPERTY]: string
-      [PARAMETER_VALUE_PROPERTY]: string
-      // schema: SchemaObject
-    }
-  >
+  [PARAMETER_FORM_NAME_PREFIX]: FormInputValues
   [SECURITY_FORM_NAME_PREFIX]: Record<
     string,
     | {
@@ -53,11 +53,13 @@ export function generateInitialFormValues({
   securitySchemes,
   clientState,
   hideSecurity,
+  doNotRestoreFromStorage,
 }: {
   parameters: Parameter[]
   securitySchemes: StaticProps['securitySchemes']
   clientState: string[]
   hideSecurity: { name: string }[]
+  doNotRestoreFromStorage?: boolean
 }): FormValues {
   let initialValues: FormValues['initialValues'] = {
     parameters: {},
@@ -67,21 +69,15 @@ export function generateInitialFormValues({
   for (const parameter of parameters) {
     if (parameter.required) {
       const validation: FormValues['validate'] = {
-        [PARAMETER_FORM_NAME_PREFIX]: {
-          [parameter.name]: {
-            value: (value) => {
-              return isNotEmpty(`${parameter.name} is required`)(value)
-            },
+        parameters: {
+          [parameter.name]: (value) => {
+            return isNotEmpty(`${parameter.name} is required`)(value)
           },
         },
       }
       validate = deepmerge(validation, validate)
     }
-    initialValues.parameters[parameter.name] = {
-      [PARAMETER_IN_PROPERTY]: parameter.in,
-      [PARAMETER_VALUE_PROPERTY]: '',
-      // schema: parameter.schema,
-    }
+    initialValues.parameters[parameter.name] = ''
   }
   if (securitySchemes != null) {
     for (const [name, securityScheme] of Object.entries(securitySchemes)) {
@@ -129,7 +125,7 @@ export function generateInitialFormValues({
       }
     }
   }
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && doNotRestoreFromStorage !== true) {
     const storedValue = window.localStorage.getItem(
       FORM_VALUES_LOCAL_STORAGE_KEY
     )

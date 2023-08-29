@@ -1,25 +1,81 @@
 import {
+  Button,
   NumberInput,
   SegmentedControl,
   Select,
   TextInput,
   useMantineTheme,
 } from '@mantine/core'
+import { IconPlus } from '@tabler/icons-react'
 import { Parameter } from './OperationParameter'
 import {
   PARAMETER_FORM_NAME_PREFIX,
-  PARAMETER_VALUE_PROPERTY,
+  generateInitialFormValues,
 } from '@/utils/generate-initial-operation-form-values'
 import { useFormContext } from '@/utils/operation-form-context'
 import { IconCalendar } from '@tabler/icons-react'
 import { DatePickerInput } from '@mantine/dates'
 import { parseDateString } from '@/utils/parse-date-string'
+import {
+  ParameterFromBodyParameterInput,
+  generateParameterFromBodyParameter,
+} from '@/utils/generate-parameter-from-body-property'
+import type { SchemaObject } from 'konfig-lib'
 
 export function ParameterInput({ parameter }: { parameter: Parameter }) {
   const form = useFormContext()
   const formInputName = generateParameterInputName(parameter)
   const inputProps = form.getInputProps(formInputName)
   const { colorScheme, colors } = useMantineTheme()
+  if (parameter.schema.type === 'array') {
+    return (
+      <Button
+        radius="xs"
+        size="xs"
+        leftIcon={<IconPlus size={'1rem'} />}
+        onClick={() => {
+          if (
+            !('items' in parameter.schema) ||
+            parameter.schema.items === undefined
+          )
+            return
+          const innerType = parameter.schema.items as SchemaObject
+          if (innerType.type === 'object') {
+            const bodyParameters: ParameterFromBodyParameterInput[] = []
+            for (const iterator of Object.entries(innerType.properties || {})) {
+              const [key, value] = iterator
+              bodyParameters.push({
+                name: key,
+                schema: value,
+                requestBodyRequired: innerType.required ?? null,
+              })
+            }
+            const parameters = bodyParameters.map((parameter) =>
+              generateParameterFromBodyParameter(parameter)
+            )
+            const formValues = generateInitialFormValues({
+              parameters,
+              securitySchemes: {},
+              hideSecurity: [],
+              clientState: [],
+              doNotRestoreFromStorage: true,
+            })
+            const initialValues = formValues.initialValues
+            if (initialValues === undefined) return
+
+            // if the currenty value is not an Array, then we need to convert it to an array
+            if (!Array.isArray(inputProps.value)) {
+              form.setFieldValue(formInputName, [])
+            }
+            form.insertListItem(formInputName, initialValues.parameters)
+          }
+        }}
+        variant={colorScheme === 'dark' ? 'light' : 'filled'}
+      >
+        Add Item
+      </Button>
+    )
+  }
   if (parameter.schema.type === 'integer') {
     return (
       <NumberInput
@@ -123,7 +179,7 @@ export function ParameterInput({ parameter }: { parameter: Parameter }) {
 
 // See https://mantine.dev/core/forms/#nested-objects for explanation of "." protocol
 export function generateParameterInputName(parameter: Parameter) {
-  return `${PARAMETER_FORM_NAME_PREFIX}.${parameter.name}.${PARAMETER_VALUE_PROPERTY}`
+  return `${PARAMETER_FORM_NAME_PREFIX}.${parameter.name}`
 }
 
 function example(example: unknown) {

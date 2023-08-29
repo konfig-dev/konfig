@@ -4,7 +4,6 @@ import {
   CLIENT_STATE_VALUE_PROPERTY,
   FormDataType,
   PARAMETER_FORM_NAME_PREFIX,
-  PARAMETER_VALUE_PROPERTY,
   SECURITY_FORM_NAME_PREFIX,
 } from './generate-initial-operation-form-values'
 
@@ -112,9 +111,8 @@ export abstract class CodeGenerator {
     return Object.entries(this._formData[PARAMETER_FORM_NAME_PREFIX]).filter(
       ([name, parameter]) => {
         return (
-          parameter[PARAMETER_VALUE_PROPERTY] !== '' &&
-          parameter[PARAMETER_VALUE_PROPERTY] !== null &&
-          parameter[PARAMETER_VALUE_PROPERTY] !== undefined &&
+          parameter !== '' &&
+          parameter !== undefined &&
           this._parameters.find((p) => p.name === name)
         )
       }
@@ -130,13 +128,11 @@ export abstract class CodeGenerator {
         if (security.type === 'apiKey') {
           return (
             security[API_KEY_VALUE_PROPERTY] !== '' &&
-            security[API_KEY_VALUE_PROPERTY] !== null &&
             security[API_KEY_VALUE_PROPERTY] !== undefined
           )
         } else if (security.type == 'clientState') {
           return (
             security[CLIENT_STATE_VALUE_PROPERTY] !== '' &&
-            security[CLIENT_STATE_VALUE_PROPERTY] !== null &&
             security[CLIENT_STATE_VALUE_PROPERTY] !== undefined
           )
         } else {

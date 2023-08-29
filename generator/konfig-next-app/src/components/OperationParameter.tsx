@@ -1,4 +1,4 @@
-import { Box, Code, Flex, Group, Text } from '@mantine/core'
+import { Box, Code, Flex, Group, Stack, Text } from '@mantine/core'
 import type {
   OperationParameter,
   ParameterObject,
@@ -6,6 +6,15 @@ import type {
 } from 'konfig-lib'
 import { ParameterInput } from './ParameterInput'
 import { schemaTypeLabel } from '@/utils/schema-type-label'
+import dynamic from 'next/dynamic'
+
+const OperationParameterInnerForm = dynamic(
+  () =>
+    import('./OperationParameterArrayForm').then(
+      (mod) => mod.OperationParameterArrayForm
+    ),
+  { ssr: false }
+)
 
 export type Parameter = Omit<ParameterObject, 'schema'> & {
   schema: SchemaObject
@@ -14,27 +23,30 @@ export type Parameter = Omit<ParameterObject, 'schema'> & {
 export function OperationParameter({ param }: { param: Parameter }) {
   const description = getDescription(param)
   return (
-    <Flex justify="space-between">
-      <Box maw="50%" key={param.name}>
-        <Group spacing={'xs'}>
-          <Code>{param.name}</Code>
-          <Text fz="sm">{schemaTypeLabel({ schema: param.schema })}</Text>
-          {param.required && (
-            <Text fz="xs" color="red">
-              {'required'}
+    <Stack>
+      <Flex justify="space-between">
+        <Box maw="50%" key={param.name}>
+          <Group spacing={'xs'}>
+            <Code>{param.name}</Code>
+            <Text fz="sm">{schemaTypeLabel({ schema: param.schema })}</Text>
+            {param.required && (
+              <Text fz="xs" color="red">
+                {'required'}
+              </Text>
+            )}
+          </Group>
+          {description && (
+            <Text c="dimmed" fz="sm">
+              {description}
             </Text>
           )}
-        </Group>
-        {description && (
-          <Text c="dimmed" fz="sm">
-            {description}
-          </Text>
-        )}
-      </Box>
-      <Box ta="right" w="35%">
-        <ParameterInput parameter={param} />
-      </Box>
-    </Flex>
+        </Box>
+        <Box ta="right" w="35%">
+          <ParameterInput parameter={param} />
+        </Box>
+      </Flex>
+      <OperationParameterInnerForm param={param} />
+    </Stack>
   )
 }
 
