@@ -139,6 +139,14 @@ public class ApiClient extends ApiClientCustom {
                 this.set{{{nameInCamelCase}}}(configuration.{{keyParamName}});
             }
             {{/apiKeyMethods}}
+            {{#authMethods}}
+            {{#isBasicBearer}}
+            if (configuration.token != null) {
+                this.setBearerToken(configuration.token);
+            }
+            {{/isBasicBearer}}
+            {{/authMethods}}
+
             {{#clientState}}
             if (configuration.{{.}} != null) {
                 this.{{.}} = configuration.{{.}};
