@@ -1,5 +1,15 @@
 # konfig-lib
 
+## 1.5.0
+
+### Minor Changes
+
+- [#143](https://github.com/konfig-dev/konfig/pull/143) [`79cd79f0`](https://github.com/konfig-dev/konfig/commit/79cd79f0380e8c414d0d97dc9e9c97eeed521f2c) Thanks [@dphuang2](https://github.com/dphuang2)! - add portal configuration to top-level konfig.yaml
+
+### Patch Changes
+
+- [#143](https://github.com/konfig-dev/konfig/pull/143) [`79cd79f0`](https://github.com/konfig-dev/konfig/commit/79cd79f0380e8c414d0d97dc9e9c97eeed521f2c) Thanks [@dphuang2](https://github.com/dphuang2)! - remove strictness from KonfigYaml schema for forward compatability
+
 ## 1.4.0
 
 ### Minor Changes
