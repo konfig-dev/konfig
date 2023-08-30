@@ -8,7 +8,7 @@ export function OperationParameterArrayForm({
   prefix,
 }: {
   param: Parameter
-  prefix?: string
+  prefix?: string // for nested forms
 }) {
   const form = useFormContext()
   const formInputName = generateParameterInputName(param)
