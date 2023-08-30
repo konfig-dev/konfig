@@ -13,7 +13,9 @@ export function OperationParameterArrayForm({
   const form = useFormContext()
   const formInputName = generateParameterInputName(param)
   const inputProps = form.getInputProps(formInputName)
-  param.schema.type === 'array'
+  if (param.schema.type !== 'array') {
+    return null
+  }
   return (
     Array.isArray(inputProps.value) &&
     inputProps.value.map((value, index) => (
