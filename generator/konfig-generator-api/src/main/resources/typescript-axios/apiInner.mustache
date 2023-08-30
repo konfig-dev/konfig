@@ -177,9 +177,27 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             {{#isArray}}
             if ({{> requestPropertyName}}) {
             {{#isCollectionFormatMulti}}
-                {{> requestPropertyName}}.forEach((element) => {
-                    localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}', element as any);
-                })
+                const baseName = '{{baseName}}'
+                for (const element of {{> requestPropertyName}}) { {{#multipartFormData}}
+                {{#items}}
+                {{#isBinary}}
+                    if (element instanceof Uint8Array) {
+                        // Node.js
+                        const { ext } = await fromBuffer(element)
+                        localVarFormParams.append(baseName, element as any, `${baseName}.${ext}`);
+                    } else if ("name" in element) {
+                        // Browser
+                        localVarFormParams.append(baseName, element as any, element.name);
+                    }
+                {{/isBinary}}
+                {{^isBinary}}
+                    localVarFormParams.set(baseName, element as any);
+                {{/isBinary}}
+                {{/items}}
+                {{/multipartFormData}}{{^multipartFormData}}
+                    localVarFormParams.set('{{baseName}}', element as any);
+                {{/multipartFormData}}
+                }
             {{/isCollectionFormatMulti}}
             {{^isCollectionFormatMulti}}
                 localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}', {{> requestPropertyName}}.join(COLLECTION_FORMATS.{{collectionFormat}}));
