@@ -89,4 +89,9 @@ public class PythonForTypeScriptAxiosClientCodegen extends PythonClientCodegen {
     public String toParamName(String name) {
         return new TypeScriptAxiosClientCodegen().toParamName(name);
     }
+
+    @Override
+    public String toVarName(String name) {
+        return new TypeScriptAxiosClientCodegen().toVarName(name);
+    }
 }
