@@ -173,6 +173,11 @@ conf = {{{packageName}}}.Configuration(
 
     def __init__(self, host=None,
                  api_key=None, api_key_prefix=None,
+{{#each authMethods}}
+    {{#if isBasicBearer}}
+                 access_token=None,
+    {{/if}}
+{{/each}}
 {{#if hasOAuthMethods}}
                  client_id=None, client_secret=None, token_url: typing.Optional[str] = None,
 {{/if}}
@@ -293,6 +298,13 @@ conf = {{{packageName}}}.Configuration(
         self.refresh_api_key_hook = None
         """function hook to refresh API key if expired
         """
+{{#each authMethods}}
+    {{#if isBasicBearer}}
+        self.access_token = access_token
+        """Token for HTTP Basic Bearer Authentication
+        """
+    {{/if}}
+{{/each}}
         self.username = username
         """Username for HTTP basic authentication
         """
