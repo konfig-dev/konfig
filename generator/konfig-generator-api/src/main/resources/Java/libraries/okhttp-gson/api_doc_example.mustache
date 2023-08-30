@@ -60,10 +60,8 @@ public class Example {
               .{{{operationId}}}{{^vendorExtensions.x-group-parameters}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}({{#requiredParamsWithRequestBodyProperties}}{{{paramName}}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}}){{#optionalParamsWithRequestBodyProperties}}
               .{{{paramName}}}({{{paramName}}}){{/optionalParamsWithRequestBodyProperties}}
               .execute();{{/vendorExtensions.x-group-parameters}}{{#returnModel}}
-      System.out.println(result);
-{{^returnProperty.isArray}}{{#vars}}
-      System.out.println(result.{{{getter}}}());
-{{/vars}}{{/returnProperty.isArray}}{{/returnModel}}
+      System.out.println(result);{{^returnProperty.isArray}}{{#vars}}
+      System.out.println(result.{{{getter}}}());{{/vars}}{{/returnProperty.isArray}}{{/returnModel}}
     } catch (ApiException e) {
       System.err.println("Exception when calling {{{classname}}}#{{{operationId}}}");
       System.err.println("Status code: " + e.getStatusCode());
