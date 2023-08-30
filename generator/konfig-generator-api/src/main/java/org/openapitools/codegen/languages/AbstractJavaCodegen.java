@@ -980,7 +980,9 @@ public abstract class AbstractJavaCodegen extends DefaultCodegen implements Code
                 } else if (SchemaTypeUtil.DOUBLE_FORMAT.equals(schema.getFormat())) {
                     return schema.getDefault().toString() + "d";
                 } else {
-                    return "new BigDecimal(\"" + schema.getDefault().toString() + "\")";
+                    // Dylan: Use to be "BigDecimal" but that seems like overkill so I changed it to Double. It also
+                    // caused some bugs in the generated code so changing it to double was a fast fix
+                    return schema.getDefault().toString() + "d";
                 }
             }
             return null;
