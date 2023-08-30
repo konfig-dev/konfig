@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.9.0
+
+### Minor Changes
+
+- [#139](https://github.com/konfig-dev/konfig/pull/139) [`ffcc4c0a`](https://github.com/konfig-dev/konfig/commit/ffcc4c0a1f406d6bf65f96eb8302f312d15d2bcd) Thanks [@dphuang2](https://github.com/dphuang2)! - removes generation instructions from top-level README
+
 ## 1.8.1
 
 ### Patch Changes
