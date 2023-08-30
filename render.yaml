@@ -4,6 +4,7 @@
 # YAML (all config values): https://render.com/docs/yaml-spec
 #####
 
+previewsEnabled: true
 services:
   - name: splitit-web-polling
     type: cron
@@ -58,6 +59,12 @@ services:
     domains:
       - apidemo.konfigthis.com
 
+  - type: redis
+    name: github-api-cache
+    ipAllowList: [] # only allow internal connections
+    plan: free
+    previewPlan: free
+
   - name: konfig-demo-portal
     type: web
     env: node
@@ -65,9 +72,15 @@ services:
     startCommand: yarn start;
     repo: https://github.com/konfig-dev/konfig
     rootDir: generator/konfig-next-app
+    previewPlan: free
     domains:
       - demo.konfigthis.com
     envVars:
+      - key: GITHUB_API_REDIS_CACHE
+        fromService:
+          name: github-api-cache
+          type: redis
+          property: connectionString
       - key: PYTHON_RCE_API_HOST_PORT
         fromService:
           name: konfig-python-remote-code-executor
@@ -108,6 +121,7 @@ services:
   - name: konfig-changeset-bot
     type: web
     plan: free
+    previewPlan: free
     env: node
     region: oregon
     repo: https://github.com/konfig-dev/konfig
@@ -122,6 +136,7 @@ services:
   - name: konfig-api
     type: web
     plan: starter
+    previewPlan: free
     env: node
     region: oregon
     repo: https://github.com/konfig-dev/konfig
@@ -163,6 +178,7 @@ services:
   - type: pserv
     name: konfig-python-remote-code-executor
     env: python
+    previewPlan: free
     buildCommand: ./build-render.sh
     startCommand: ./start.sh
     repo: https://github.com/konfig-dev/konfig
@@ -176,6 +192,7 @@ services:
   - type: pserv
     name: konfig-python-formatter
     env: python
+    previewPlan: free
     buildCommand: ./build-render.sh
     startCommand: ./start.sh
     repo: https://github.com/konfig-dev/konfig
@@ -184,6 +201,7 @@ services:
   - type: pserv
     name: konfig-openapi-generator-api
     env: docker
+    previewPlan: free
     rootDir: generator/konfig-generator-api
     repo: https://github.com/konfig-dev/konfig
     envVars:
@@ -194,6 +212,7 @@ services:
   - type: web
     env: static
     name: konfig-docs
+    previewPlan: free
     rootDir: generator/konfig-docs
     buildCommand: yarn install; yarn build
     staticPublishPath: ./build
@@ -205,6 +224,7 @@ databases:
   - name: konfig-db
     region: oregon
     plan: starter
+    previewPlan: free
 
 envVarGroups:
   - name: konfig-changeset-bot
