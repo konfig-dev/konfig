@@ -1,87 +1,101 @@
-import { DemoPortal, PortalState } from "@/components/DemoPortal";
-import { observer } from "mobx-react";
-import { Organization, Portal, Demo, demos } from "@/utils/demos";
-import Head from "next/head";
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { useState } from "react";
+import { DemoPortal, PortalState } from '@/components/DemoPortal'
+import { observer } from 'mobx-react'
+import Head from 'next/head'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { useMemo } from 'react'
 import {
-  SocialObject,
+  GenerationSuccess,
   generateDemosDataFromGithub,
-} from "@/utils/generate-demos-from-github";
+} from '@/utils/generate-demos-from-github'
+import { MantineProvider, useMantineTheme } from '@mantine/core'
+import { generateShadePalette } from '@/utils/generate-shade-palette'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
-    fallback: "blocking",
-  };
-};
+    fallback: 'blocking',
+  }
+}
 
-export const getStaticProps: GetStaticProps<{
-  organization: Organization;
-  portal: Portal;
-  demo: Demo;
-  socials?: SocialObject;
-  mainBranch: string;
-}> = async (ctx) => {
+export const getStaticProps: GetStaticProps<GenerationSuccess> = async (
+  ctx
+) => {
   if (!ctx.params?.org || Array.isArray(ctx.params.org)) {
     return {
       notFound: true,
-    };
+    }
   }
 
   if (!ctx.params?.portal || Array.isArray(ctx.params.portal)) {
     return {
       notFound: true,
-    };
+    }
   }
 
   if (!ctx.params?.demo || Array.isArray(ctx.params.demo)) {
     return {
       notFound: true,
-    };
+    }
   }
 
   const props = await generateDemosDataFromGithub({
     orgId: ctx.params.org,
     portalId: ctx.params.portal,
     demoId: ctx.params.demo,
-  });
+  })
 
-  if (props.result === "error") return { notFound: true };
+  if (props.result === 'error') return { notFound: true }
 
   return {
     props,
-  };
-};
+  }
+}
 
-const Snaptrade = observer(
+const DemoPage = observer(
   ({
     organization,
     portal,
     demo,
     mainBranch,
     socials,
+    portalTitle,
+    primaryColor,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
-    const [state] = useState(
-      new PortalState({
-        ...portal,
-        portalId: portal.id,
-        organizationId: organization.id,
-        demoId: demo.id,
-        mainBranch,
-        socials,
-      })
-    );
+    const state = useMemo(
+      () =>
+        new PortalState({
+          ...portal,
+          portalId: portal.id,
+          organizationId: organization.id,
+          demoId: demo.id,
+          mainBranch,
+          socials,
+          portalTitle,
+        }),
+      [demo.id, mainBranch, organization.id, portal, socials, portalTitle]
+    )
+    const { colorScheme, colors } = useMantineTheme()
 
     return (
-      <>
+      <MantineProvider
+        theme={{
+          colorScheme,
+          colors: {
+            brand:
+              primaryColor !== null
+                ? generateShadePalette(primaryColor)
+                : colors.blue,
+          },
+          primaryColor: 'brand',
+        }}
+      >
         <Head>
           <title>{`${organization.organizationName} | Konfig`}</title>
         </Head>
         <DemoPortal state={state} />
-      </>
-    );
+      </MantineProvider>
+    )
   }
-);
+)
 
-export default Snaptrade;
+export default DemoPage

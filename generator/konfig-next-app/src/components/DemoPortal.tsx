@@ -7,65 +7,47 @@ import {
   Navbar,
   Stack,
   NavLink,
-  MediaQuery,
-  Header,
-  Group,
-  Burger,
-  Title,
-  SegmentedControl,
-  ActionIcon,
   useMantineColorScheme,
   useMantineTheme,
   Box,
-  Button,
-  Image,
   Divider,
   rem,
-  Aside,
-} from "@mantine/core";
-import {
-  IconBug,
-  IconChevronRight,
-  IconSun,
-  IconMoonStars,
-  IconRefresh,
-  IconBrandGithub,
-} from "@tabler/icons-react";
-import { observer } from "mobx-react";
-import { useState, createContext } from "react";
-import DemoMarkdown, { DemoState } from "./DemoMarkdown";
-import { makeAutoObservable } from "mobx";
-import { useRouter } from "next/router";
-import { DemoPortalAside } from "./DemoPortalAside";
-import { api } from "@/utils/api";
-import { v4 as uuid } from "uuid";
-import { Demo } from "@/utils/demos";
-import { DemoSiblings, Sibling } from "./DemoSiblings";
-import { navigateToDemo } from "@/utils/navigate-to-demo";
-import { useWindowScroll } from "@mantine/hooks";
-import { DemoSocials } from "./DemoSocials";
-import { SocialObject } from "@/utils/generate-demos-from-github";
-import DemoTableOfContents from "./DemoTableOfContents";
-import { TITLE_OFFSET_PX } from "./DemoTitle";
-import { DemoEditThisPage } from "./DemoEditThisPage";
-import { DemoLastRan } from "./DemoLastRan";
+} from '@mantine/core'
+import { IconBug, IconChevronRight } from '@tabler/icons-react'
+import { observer } from 'mobx-react'
+import { useState, createContext } from 'react'
+import DemoMarkdown, { DemoState } from './DemoMarkdown'
+import { makeAutoObservable } from 'mobx'
+import { useRouter } from 'next/router'
+import { api } from '@/utils/api'
+import { v4 as uuid } from 'uuid'
+import { Demo } from '@/utils/demos'
+import { DemoSiblings, Sibling } from './DemoSiblings'
+import { navigateToDemo } from '@/utils/navigate-to-demo'
+import { DemoSocials } from './DemoSocials'
+import DemoTableOfContents from './DemoTableOfContents'
+import { DemoEditThisPage } from './DemoEditThisPage'
+import { DemoLastRan } from './DemoLastRan'
+import { DemoHeader } from './DemoHeader'
+import type { SocialObject } from 'konfig-lib/dist/KonfigYamlCommon'
 
-type DemosInput = Demo[];
+type DemosInput = Demo[]
 
-type Demos = DemoState[];
+type Demos = DemoState[]
 
 export class PortalState {
-  demos: Demos;
-  showCode = false;
-  id: string;
-  uuid = uuid();
-  portalName: string;
-  currentDemoIndex: number;
-  organizationId: string;
-  portalId: string;
-  currentDemo: DemoState;
-  mainBranch?: string;
-  socials?: SocialObject;
+  demos: Demos
+  showCode = false
+  id: string
+  uuid = uuid()
+  portalName: string
+  portalTitle: string | null
+  currentDemoIndex: number
+  organizationId: string
+  portalId: string
+  currentDemo: DemoState
+  mainBranch?: string
+  socials?: SocialObject
 
   constructor({
     demos,
@@ -76,76 +58,85 @@ export class PortalState {
     demoId,
     socials,
     mainBranch,
+    portalTitle,
   }: {
-    demos: DemosInput;
-    portalName: string;
-    id: string;
-    organizationId: string;
-    portalId: string;
-    demoId: string;
-    socials?: SocialObject;
-    mainBranch?: string;
+    demos: DemosInput
+    portalName: string
+    id: string
+    organizationId: string
+    portalId: string
+    demoId: string
+    socials?: SocialObject
+    mainBranch?: string
+    portalTitle: string | null
   }) {
-    makeAutoObservable(this);
-    this.socials = socials;
-    this.id = id;
-    this.portalId = portalId;
-    this.mainBranch = mainBranch;
-    this.organizationId = organizationId;
+    makeAutoObservable(this)
+    this.socials = socials
+    this.portalTitle = portalTitle
+    this.id = id
+    this.portalId = portalId
+    this.mainBranch = mainBranch
+    this.organizationId = organizationId
     this.demos = demos.map(
       ({ name, markdown, id, showCode }) =>
-        new DemoState({ markdown, name, portal: this, id, showCode })
-    );
+        new DemoState({
+          markdown,
+          name,
+          portal: this,
+          id,
+          showCode: showCode ?? undefined,
+        })
+    )
 
-    this.currentDemoIndex = this.demos.findIndex((demo) => demo.id === demoId);
+    this.currentDemoIndex = this.demos.findIndex((demo) => demo.id === demoId)
     if (this.currentDemoIndex === -1)
-      throw Error(`Could not find demo with id ${demoId}`);
-    this.currentDemo = this.demos[this.currentDemoIndex];
+      throw Error(`Could not find demo with id ${demoId}`)
+    this.currentDemo = this.demos[this.currentDemoIndex]
 
-    if (demos[this.currentDemoIndex].showCode) this.setShowCode(true);
+    if (demos[this.currentDemoIndex].showCode) this.setShowCode(true)
 
-    this.portalName = portalName;
+    this.portalName = portalName
 
     // Only start intervals in browser
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setInterval(async () => {
         const activeSessions = this.demos.filter(
           ({ sessionId }) => sessionId !== null
-        );
-        if (activeSessions.length === 0) return;
+        )
+        if (activeSessions.length === 0) return
         const { lastSuccessfulExecutions } = await api.pingSessions.query({
           sessions: activeSessions.map((demo) => {
             if (demo.sessionId === null)
-              throw Error("Demo sessions must be active");
+              throw Error('Demo sessions must be active')
             return {
               sessionId: demo.sessionId,
               organizationId: demo.portal.organizationId,
               portalId: demo.portal.id,
               demoId: demo.id,
-            };
+            }
           }),
-        });
+        })
         lastSuccessfulExecutions.forEach(({ demoId, when }) => {
-          if (when === undefined) return;
+          if (when === undefined) return
           this.demos
             .find((demo) => demo.id === demoId)
-            ?.setLastSuccessfulExecution(new Date(when));
-        });
-      }, 30000);
+            ?.setLastSuccessfulExecution(new Date(when))
+        })
+      }, 30000)
     }
   }
 
   setShowCode(value: boolean) {
-    this.showCode = value;
+    this.showCode = value
   }
 
   setCurrentDemoIndex(index: number) {
-    this.currentDemoIndex = index;
-    this.currentDemo = this.demos[this.currentDemoIndex];
+    this.currentDemoIndex = index
+    this.currentDemo = this.demos[this.currentDemoIndex]
   }
 }
 
-export const SandboxContext = createContext<boolean>(false);
+export const SandboxContext = createContext<boolean>(false)
 
 export const DemoPortal = observer(
   ({
@@ -153,19 +144,19 @@ export const DemoPortal = observer(
     sandbox,
     refreshSandbox,
   }: {
-    state: PortalState;
-    sandbox?: boolean;
-    refreshSandbox?: () => void;
+    state: PortalState
+    sandbox?: boolean
+    refreshSandbox?: () => void
   }) => {
-    const theme = useMantineTheme();
-    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-    const [opened, setOpened] = useState(false);
-    const router = useRouter();
+    const theme = useMantineTheme()
+    const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+    const [opened, setOpened] = useState(false)
+    const router = useRouter()
 
     return (
       <SandboxContext.Provider value={!!sandbox}>
         {sandbox && (
-          <Affix position={{ bottom: "0.5rem", right: "1rem" }}>
+          <Affix position={{ bottom: '0.5rem', right: '1rem' }}>
             <HoverCard width={280} shadow="md">
               <HoverCard.Target>
                 <ThemeIcon size="xs" color="gray">
@@ -187,43 +178,11 @@ export const DemoPortal = observer(
             </HoverCard>
           </Affix>
         )}
-        <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-          <Affix position={{ bottom: "1rem", left: "1rem" }}>
-            <Button
-              variant={colorScheme === "light" ? "white" : undefined}
-              size="xs"
-              component="a"
-              href="https://apidemo.konfigthis.com"
-              sx={{
-                ...(colorScheme === "light"
-                  ? {
-                      color: "black",
-                      boxShadow:
-                        "0 0 0 1px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.1)",
-                    }
-                  : {
-                      ":hover": {
-                        backgroundColor: "#151515",
-                      },
-                      color: "#e3e3e3",
-                      backgroundColor: "#151515",
-                      borderColor: "rgba(255,255,255,.15)",
-                    }),
-              }}
-              leftIcon={
-                <Image alt="Logo" width={20} height={20} src="/logo.png" />
-              }
-              target="_blank"
-            >
-              Made with Konfig
-            </Button>
-          </Affix>
-        </MediaQuery>
         <AppShell
           styles={{
             main: {
               background:
-                colorScheme === "dark" ? theme.colors.dark[8] : undefined,
+                colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
             },
           }}
           navbarOffsetBreakpoint="sm"
@@ -234,17 +193,17 @@ export const DemoPortal = observer(
               hiddenBreakpoint="sm"
               hidden={!opened}
               width={{ sm: 225, lg: 325 }}
-              sx={{ overflowY: "scroll" }}
+              sx={{ overflowY: 'scroll' }}
             >
-              <Navbar.Section mt="xs" mb={rem(35)}>
+              <Navbar.Section>
                 <Stack spacing="xs">
                   {state.demos.map(({ name }, i) => {
-                    const isCurrentlySelected = state.currentDemoIndex === i;
+                    const isCurrentlySelected = state.currentDemoIndex === i
                     return (
                       <NavLink
                         key={name}
                         onClick={() => {
-                          setOpened(false);
+                          setOpened(false)
                           navigateToDemo({
                             demoId: state.demos[i].id,
                             demoIndex: i,
@@ -252,11 +211,11 @@ export const DemoPortal = observer(
                             portal: state,
                             router,
                             sandbox,
-                          });
+                          })
                         }}
                         p="xs"
-                        variant="filled"
-                        sx={(theme) => ({ borderRadius: theme.radius.sm })}
+                        variant={colorScheme === 'dark' ? 'light' : 'filled'}
+                        sx={(theme) => ({ borderRadius: theme.radius.xs })}
                         rightSection={
                           isCurrentlySelected ? (
                             <IconChevronRight size="0.8rem" stroke={1.5} />
@@ -265,7 +224,7 @@ export const DemoPortal = observer(
                         label={name}
                         active={isCurrentlySelected}
                       />
-                    );
+                    )
                   })}
                 </Stack>
               </Navbar.Section>
@@ -273,88 +232,21 @@ export const DemoPortal = observer(
           }
           aside={<DemoTableOfContents demoDiv={state.currentDemo.demoDiv} />}
           header={
-            <Header height={{ base: 50, md: TITLE_OFFSET_PX }} p="md">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  height: "100%",
-                }}
-              >
-                <Group spacing={0}>
-                  <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-                    <Burger
-                      opened={opened}
-                      onClick={() => setOpened((o) => !o)}
-                      size="sm"
-                      color={theme.colors.gray[6]}
-                      mr="md"
-                    />
-                  </MediaQuery>
-                  <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-                    <Title order={5}>{state.portalName}</Title>
-                  </MediaQuery>
-                </Group>
-                <Group>
-                  <SegmentedControl
-                    size="xs"
-                    color="blue"
-                    value={state.showCode ? "show-code" : "hide-code"}
-                    data={[
-                      { label: "Show Code", value: "show-code" },
-                      { label: "Hide Code", value: "hide-code" },
-                    ]}
-                    onChange={(value) => {
-                      state.setShowCode(value === "show-code");
-                    }}
-                  />
-                  <ActionIcon
-                    variant="default"
-                    onClick={() => toggleColorScheme()}
-                    size={30}
-                  >
-                    {colorScheme === "dark" ? (
-                      <IconSun size="1rem" />
-                    ) : (
-                      <IconMoonStars size="1rem" />
-                    )}
-                  </ActionIcon>
-                  {!sandbox && (
-                    <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-                      <Button
-                        component="a"
-                        target="_blank"
-                        size="xs"
-                        leftIcon={<IconBrandGithub size="1rem" />}
-                        href={`https://github.com/${state.organizationId}/${state.portalId}/tree/${state.mainBranch}/demos`}
-                        color="gray"
-                        variant="default"
-                      >
-                        Source
-                      </Button>
-                    </MediaQuery>
-                  )}
-                  {refreshSandbox && (
-                    <ActionIcon
-                      onClick={refreshSandbox}
-                      color="green"
-                      variant="light"
-                    >
-                      <IconRefresh size="1rem" />
-                    </ActionIcon>
-                  )}
-                </Group>
-              </div>
-            </Header>
+            <DemoHeader
+              refreshSandbox={refreshSandbox}
+              opened={opened}
+              setOpened={setOpened}
+              state={state}
+              sandbox={sandbox}
+            />
           }
         >
           {/* We have to render all demos states at the start so they can each initialize their cells */}
           {state.demos.map((demo, i) => {
             const previousDemoState: DemoState | undefined =
-              i === 0 ? undefined : state.demos[i - 1];
+              i === 0 ? undefined : state.demos[i - 1]
             const nextDemoState: DemoState | undefined =
-              i === state.demos.length - 1 ? undefined : state.demos[i + 1];
+              i === state.demos.length - 1 ? undefined : state.demos[i + 1]
             const previous: Sibling | undefined =
               previousDemoState === undefined
                 ? undefined
@@ -363,7 +255,7 @@ export const DemoPortal = observer(
                     organizationId: previousDemoState.portal.organizationId,
                     demoId: previousDemoState.id,
                     demoIndex: i - 1,
-                  };
+                  }
             const next: Sibling | undefined =
               nextDemoState === undefined
                 ? undefined
@@ -372,11 +264,11 @@ export const DemoPortal = observer(
                     demoIndex: i + 1,
                     organizationId: nextDemoState.portal.organizationId,
                     demoId: nextDemoState.id,
-                  };
+                  }
             return (
               <Box
                 key={demo.name}
-                display={state.currentDemoIndex !== i ? "none" : undefined}
+                display={state.currentDemoIndex !== i ? 'none' : undefined}
               >
                 <DemoLastRan demo={demo} />
                 <DemoMarkdown state={demo} />
@@ -389,10 +281,10 @@ export const DemoPortal = observer(
                   <DemoSocials socials={state.socials} />
                 </Box>
               </Box>
-            );
+            )
           })}
         </AppShell>
       </SandboxContext.Provider>
-    );
+    )
   }
-);
+)

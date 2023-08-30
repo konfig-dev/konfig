@@ -1,0 +1,60 @@
+import { NavbarDataItem } from '@/components/LinksGroup'
+import type { Spec, HttpMethods, KonfigYamlType } from 'konfig-lib'
+
+/**
+ * Generates the navbar links as NavbarDataItem[]. Each group is determined by the tag of an operation.
+ * @param spec @type Spec["spec"]
+ * @returns NavbarDataItem[]
+ */
+export function generateNavbarLinks({
+  spec,
+  owner,
+  repo,
+  konfigYaml,
+}: {
+  spec: Spec['spec']
+  owner: string
+  repo: string
+  konfigYaml: KonfigYamlType
+}): NavbarDataItem[] {
+  const navbarLinks: NavbarDataItem[] = []
+  const tags = spec.tags
+  const paths = spec.paths
+  if (paths === undefined) return []
+  tags?.forEach((tag) => {
+    const navbarLink: NavbarDataItem = {
+      label: tag.name,
+      links: [],
+    }
+    Object.keys(paths).forEach((path) => {
+      const pathItem = paths[path]
+      if (pathItem === undefined) return
+      Object.keys(pathItem).forEach((method) => {
+        if (pathItem === undefined) return
+        const operation = pathItem[method as HttpMethods]
+        if (operation?.tags?.includes(tag.name)) {
+          navbarLink.links.push({
+            label: operation.summary ?? path,
+            metadata: {
+              operationId: operation.operationId,
+            },
+            link: `/${owner}/${repo}/reference/${operation.tags}/${operation.operationId}`,
+            httpMethod: method as HttpMethods,
+          })
+        }
+      })
+    })
+    navbarLinks.push(navbarLink)
+  })
+
+  // filter navbarLinks that have no links
+  const hasLinks = navbarLinks.filter(
+    (navbarLink) => navbarLink.links.length > 0
+  )
+  // filter navbarLinks that are specified in the konfig.yaml#filterTags
+  const filterTags = konfigYaml.filterTags ?? []
+  const filteredNavbarLinks = hasLinks.filter(
+    (navbarLink) => !filterTags.includes(navbarLink.label)
+  )
+  return filteredNavbarLinks
+}

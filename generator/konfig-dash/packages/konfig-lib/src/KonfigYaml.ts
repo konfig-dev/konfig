@@ -383,22 +383,22 @@ export const generatorCommon = generatorCommonRequired
   .merge(generatorCommonOptional)
   .merge(generatorCommonGitRequired)
 
-export const java = generatorCommon.merge(javaConfig).strict()
-export const android = generatorCommon.merge(androidConfig).strict()
-export const ruby = generatorCommon.merge(rubyConfig).strict()
-export const python = generatorCommon.merge(pythonConfig).strict()
-export const typescript = generatorCommon.merge(typescriptConfig).strict()
+export const java = generatorCommon.merge(javaConfig)
+export const android = generatorCommon.merge(androidConfig)
+export const ruby = generatorCommon.merge(rubyConfig)
+export const python = generatorCommon.merge(pythonConfig)
+export const typescript = generatorCommon.merge(typescriptConfig)
 
-export const csharp = generatorCommon.merge(csharpConfig).strict()
-export const php = generatorCommon.merge(phpConfig).strict()
-export const kotlin = generatorCommon.merge(kotlinConfig).strict()
-export const objc = generatorCommon.merge(objcConfig).strict()
+export const csharp = generatorCommon.merge(csharpConfig)
+export const php = generatorCommon.merge(phpConfig)
+export const kotlin = generatorCommon.merge(kotlinConfig)
+export const objc = generatorCommon.merge(objcConfig)
 export const go = generatorCommonOptional
   .merge(generatorCommonRequired)
   .merge(generatorCommonGitRequired)
   .merge(goConfig)
-  .strict()
-export const swift = generatorCommon.merge(swiftConfig).strict()
+
+export const swift = generatorCommon.merge(swiftConfig)
 
 const genericGeneratorConfig = z.union([
   z
@@ -459,33 +459,31 @@ const genericGeneratorConfig = z.union([
 ])
 
 export const KonfigYaml = KonfigYamlCommon.merge(
-  z
-    .object({
-      outputDirectory: z.string().optional(),
-      generators: z.object({
-        java: java.optional(),
-        android: android.optional(),
-        ruby: ruby.optional(),
-        python: python.optional(),
-        typescript: typescript.optional(),
-        csharp: csharp.optional(),
-        php: php.optional(),
-        kotlin: kotlin.optional(),
-        objc: objc.optional(),
-        go: go.optional(),
-        swift: swift.optional(),
-      }),
-      specPath: z.string(),
-      specInputPath: z
-        .string()
-        .optional()
-        .describe(
-          `Configure an "input" path for your OpenAPI Specification. This is useful when you want to persist two different versions of your OpenAPI Specification. One that is an exact copy from another location that is either polled from an endpoint or pushed from another Git repository. Another that is modified to be used for code generation. Konfig will detect that this field is set and write or read from it in place of "specPath" for operations like "konfig fix", "konfig pull", and "konfig push".`
-        ),
-      specRemotePath: z.string().url().optional(),
-      additionalGenerators: z.record(genericGeneratorConfig).optional(),
-    })
-    .strict()
+  z.object({
+    outputDirectory: z.string().optional(),
+    generators: z.object({
+      java: java.optional(),
+      android: android.optional(),
+      ruby: ruby.optional(),
+      python: python.optional(),
+      typescript: typescript.optional(),
+      csharp: csharp.optional(),
+      php: php.optional(),
+      kotlin: kotlin.optional(),
+      objc: objc.optional(),
+      go: go.optional(),
+      swift: swift.optional(),
+    }),
+    specPath: z.string(),
+    specInputPath: z
+      .string()
+      .optional()
+      .describe(
+        `Configure an "input" path for your OpenAPI Specification. This is useful when you want to persist two different versions of your OpenAPI Specification. One that is an exact copy from another location that is either polled from an endpoint or pushed from another Git repository. Another that is modified to be used for code generation. Konfig will detect that this field is set and write or read from it in place of "specPath" for operations like "konfig fix", "konfig pull", and "konfig push".`
+      ),
+    specRemotePath: z.string().url().optional(),
+    additionalGenerators: z.record(genericGeneratorConfig).optional(),
+  })
 )
 
 export type KonfigYamlInputType = z.input<typeof KonfigYaml>

@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "redis": "docker run -p 6379:6379 -i redis/redis-stack-server:latest",
+    "dev:next": "next dev",
+    "dev:prce": "cd ../konfig-python-remote-code-executor && ./dev.sh",
+    "dev": "concurrently \"yarn:redis\" \"yarn:dev:next\" \"yarn:dev:prce\"",
     "build": "next build",
-    "start": "next start",
+    "start:next": "next start",
+    "start": "concurrently \"yarn:redis\" \"yarn:start:next\" \"yarn:dev:prce\"",
     "lint": "next lint"
   },
   "dependencies": {
@@ -18,6 +22,8 @@
     "@mantine/next": "^6.0.13",
     "@mantine/notifications": "^6.0.13",
     "@mantine/prism": "^6.0.13",
+    "@octokit/auth-app": "^6.0.0",
+    "@octokit/rest": "^20.0.1",
     "@tabler/icons-react": "^2.21.0",
     "@tanstack/react-query": "^4.29.12",
     "@trpc/client": "^10.29.0",
@@ -27,13 +33,19 @@
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
+    "ajv": "^8.12.0",
+    "ajv-draft-04": "^1.0.0",
     "axios": "^1.4.0",
+    "camelcase": "^8.0.0",
+    "chroma-js": "^2.4.2",
     "dayjs": "^1.11.8",
+    "deepmerge": "^4.3.1",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "github-slugger": "^2.0.0",
     "hast-util-to-text": "^3.1.2",
     "js-yaml": "^4.1.0",
+    "konfig-lib": "link:../konfig-dash/packages/konfig-lib",
     "mdast-util-to-string": "^3.2.0",
     "mobx": "^6.9.0",
     "mobx-react": "^7.6.0",
@@ -44,6 +56,7 @@
     "react-dom": "18.2.0",
     "react-json-view": "^1.21.3",
     "react-markdown": "^8.0.7",
+    "redis": "^4.6.7",
     "remark-directive": "^2.0.1",
     "remark-directive-rehype": "^0.4.2",
     "remark-parse": "^10.0.2",
@@ -57,7 +70,10 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/chroma-js": "^2.4.0",
     "@types/js-yaml": "^4.0.5",
-    "@types/uuid": "^9.0.2"
+    "@types/uuid": "^9.0.2",
+    "concurrently": "^8.2.1",
+    "prettier": "^3.0.2"
   }
 }
