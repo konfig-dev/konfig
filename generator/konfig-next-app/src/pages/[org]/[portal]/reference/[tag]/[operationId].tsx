@@ -58,6 +58,8 @@ export type StaticProps = Omit<GithubResources, 'spec'> & {
   operation: OperationObject
   basePath: string
   title: string
+  owner: string
+  repo: string
   pathParameters: Parameter[]
   queryParameters: Parameter[]
   headerParameters: Parameter[]
@@ -256,6 +258,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       requestBody,
       pathParameters,
       queryParameters,
+      owner,
+      repo,
       headerParameters,
       cookieParameters,
       requestBodyProperties,
@@ -288,6 +292,8 @@ const Operation = ({
   securitySchemes,
   basePath,
   operation,
+  owner,
+  repo,
   responses,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
@@ -364,6 +370,8 @@ const Operation = ({
         }
       >
         <OperationReferenceMain
+          owner={owner}
+          repo={repo}
           konfigYaml={konfigYaml}
           pathParameters={pathParameters}
           queryParameters={queryParameters}
