@@ -1,16 +1,16 @@
-import { Container, NavLink, Stack, Paper } from "@mantine/core";
-import Head from "next/head";
-import { useRouter } from "next/navigation";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { Container, NavLink, Stack, Paper } from '@mantine/core'
+import Head from 'next/head'
+import { useRouter } from 'next/navigation'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
 export const getServerSideProps: GetServerSideProps<{}> = async () => {
-  return { props: {} };
-};
+  return { props: {} }
+}
 
 export default function Home({}: InferGetServerSidePropsType<
   typeof getServerSideProps
 >) {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -20,26 +20,31 @@ export default function Home({}: InferGetServerSidePropsType<
         <Paper withBorder shadow="lg" p="lg">
           <Stack>
             <NavLink
-              onClick={() => router.push("/snaptrade/snaptrade-demos")}
+              onClick={() => router.push('/snaptrade/snaptrade-demos')}
               label="SnapTrade"
               description="https://snaptrade.com"
             />
             <NavLink
-              onClick={() => router.push("/konfig-dev/konfig-demo-docs")}
+              onClick={() => router.push('/konfig-dev/splitit-web-sdks')}
+              label="Splitit"
+              description="https://splitit.com"
+            />
+            <NavLink
+              onClick={() => router.push('/konfig-dev/konfig-demo-docs')}
               label="Konfig"
               description="https://apidemo.konfigthis.com"
             />
             <NavLink
-              onClick={() => router.push("/konfig-dev/drdroid-sdks")}
+              onClick={() => router.push('/konfig-dev/drdroid-sdks')}
               label="Dr. Droid"
               description="https://drdroid.io"
             />
             <NavLink
-              onClick={() => router.push("/konfig-dev/acme-sdks")}
+              onClick={() => router.push('/konfig-dev/acme-sdks')}
               label="Acme"
             />
             <NavLink
-              onClick={() => router.push("/sandbox")}
+              onClick={() => router.push('/sandbox')}
               label="Sandbox"
               description="Create your demo"
             />
@@ -47,5 +52,5 @@ export default function Home({}: InferGetServerSidePropsType<
         </Paper>
       </Container>
     </>
-  );
+  )
 }
