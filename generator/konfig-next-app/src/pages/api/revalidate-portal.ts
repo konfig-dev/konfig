@@ -32,12 +32,11 @@ export default async function handler(
     portalId: repo,
   })
 
-  if (demos.result === 'error')
-    return res.status(500).send('Error fetching demos')
-
-  for (const demo of demos.portal.demos) {
-    const path = `/${owner}/${repo}/${demo.id}`
-    toRevalidate.push(path)
+  if (demos.result !== 'error') {
+    for (const demo of demos.portal.demos) {
+      const path = `/${owner}/${repo}/${demo.id}`
+      toRevalidate.push(path)
+    }
   }
 
   const revalidated: string[] = []
