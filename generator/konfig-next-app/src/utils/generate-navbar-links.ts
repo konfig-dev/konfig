@@ -18,9 +18,28 @@ export function generateNavbarLinks({
   konfigYaml: KonfigYamlType
 }): NavbarDataItem[] {
   const navbarLinks: NavbarDataItem[] = []
-  const tags = spec.tags
+  let tags = spec.tags
   const paths = spec.paths
   if (paths === undefined) return []
+  // if tags is undefined then iterate through all operations and collect all unique tags
+  if (tags === undefined) {
+    const allTags = new Set<string>()
+    Object.keys(paths).forEach((path) => {
+      const pathItem = paths[path]
+      if (pathItem === undefined) return
+      Object.keys(pathItem).forEach((method) => {
+        if (pathItem === undefined) return
+        const operation = pathItem[method as HttpMethods]
+        if (operation?.tags) {
+          operation.tags.forEach((tag) => {
+            allTags.add(tag)
+          })
+        }
+      })
+    })
+    tags = Array.from(allTags).map((tag) => ({ name: tag }))
+  }
+
   tags?.forEach((tag) => {
     const navbarLink: NavbarDataItem = {
       label: tag.name,
