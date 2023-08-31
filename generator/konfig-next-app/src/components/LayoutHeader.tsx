@@ -35,14 +35,13 @@ export const LayoutHeader = observer(
           justifyContent: 'space-between',
         }}
       >
-        <Group>
+        <Group spacing="xs">
           <MediaQuery largerThan={breakpoint} styles={{ display: 'none' }}>
             <Burger
               opened={opened}
               onClick={() => setOpened((o) => !o)}
               size="sm"
               color={theme.colors.gray[6]}
-              mr="md"
             />
           </MediaQuery>
           <Title order={4}>{title}</Title>
