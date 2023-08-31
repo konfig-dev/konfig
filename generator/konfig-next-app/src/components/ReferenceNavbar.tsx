@@ -9,6 +9,8 @@ import {
 import { LinksGroup, NavbarDataItem } from './LinksGroup'
 import { Dispatch, SetStateAction } from 'react'
 
+export const NAVBAR_WIDTH = 350
+
 const useStyles = createStyles((theme) => ({
   navbar: {
     backgroundColor:
@@ -17,10 +19,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   header: {
-    padding: theme.spacing.md,
-    paddingTop: 0,
-    marginLeft: `calc(${theme.spacing.md} * -1)`,
-    marginRight: `calc(${theme.spacing.md} * -1)`,
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     borderBottom: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
@@ -30,11 +28,11 @@ const useStyles = createStyles((theme) => ({
   links: {
     marginLeft: `calc(${theme.spacing.md} * -1)`,
     marginRight: `calc(${theme.spacing.md} * -1)`,
+    width: '100%',
   },
 
   linksInner: {
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
+    width: NAVBAR_WIDTH,
   },
 
   footer: {
@@ -62,12 +60,12 @@ export function ReferenceNavbar({
 
   return (
     <>
-      <Navbar.Section className={classes.header}>
+      <Navbar.Section p="md" className={classes.header}>
         <Code>{basePath}</Code>
       </Navbar.Section>
 
-      <Navbar.Section grow className={classes.links} component={ScrollArea}>
-        <div className={classes.linksInner}>{links}</div>
+      <Navbar.Section py="md" grow>
+        {links}
       </Navbar.Section>
     </>
   )

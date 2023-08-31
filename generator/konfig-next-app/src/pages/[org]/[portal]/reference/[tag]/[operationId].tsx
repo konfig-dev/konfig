@@ -14,7 +14,7 @@ import {
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
-import { ReferenceNavbar } from '@/components/ReferenceNavbar'
+import { NAVBAR_WIDTH, ReferenceNavbar } from '@/components/ReferenceNavbar'
 import {
   GithubResources,
   githubGetReferenceResources,
@@ -312,11 +312,9 @@ const Operation = ({
         asideOffsetBreakpoint="lg"
         navbar={
           <Navbar
-            p="md"
-            pb={0}
             hiddenBreakpoint="lg"
             hidden={!opened}
-            width={{ lg: 350 }}
+            width={{ lg: NAVBAR_WIDTH }}
             sx={{ overflowY: 'scroll' }}
           >
             <ReferenceNavbar

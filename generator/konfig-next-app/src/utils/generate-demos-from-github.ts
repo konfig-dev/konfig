@@ -10,9 +10,9 @@ import { Octokit } from '@octokit/rest'
 /**
  * Custom mappings to preserve existing links for SnapTrade
  */
-const _mappings: {
-  organization: Record<string, string>
-  repository: Record<string, string>
+export const _mappings: {
+  organization: Record<string, string | undefined>
+  repository: Record<string, string | undefined>
 } = {
   organization: {
     snaptrade: 'passiv',
@@ -115,10 +115,8 @@ async function _fetch({
   orgId: string
   portalId: string
 }): Promise<FetchResult> {
-  const owner =
-    orgId in _mappings.organization ? _mappings.organization[orgId] : orgId
-  const repo =
-    portalId in _mappings.repository ? _mappings.repository[portalId] : portalId
+  const owner = _mappings.organization[orgId] ?? orgId
+  const repo = _mappings.repository[portalId] ?? portalId
 
   const octokit = await createOctokitInstance({ owner, repo })
 
