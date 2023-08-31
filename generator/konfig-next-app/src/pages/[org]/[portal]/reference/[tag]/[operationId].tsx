@@ -309,15 +309,20 @@ const Operation = ({
             pb={0}
             hiddenBreakpoint="lg"
             hidden={!opened}
-            width={{ base: 350 }}
+            width={{ lg: 350 }}
             sx={{ overflowY: 'scroll' }}
           >
-            <ReferenceNavbar navbarData={navbarData} />
+            <ReferenceNavbar setOpened={setOpened} navbarData={navbarData} />
           </Navbar>
         }
         header={
           <Header height={TITLE_OFFSET_PX}>
-            <LayoutHeader title={title} />
+            <LayoutHeader
+              breakpoint="lg"
+              opened={opened}
+              setOpened={setOpened}
+              title={title}
+            />
             <Box
               px="md"
               style={{

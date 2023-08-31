@@ -1,4 +1,11 @@
-import { use, useEffect, useRef, useState } from 'react'
+import {
+  Dispatch,
+  SetStateAction,
+  use,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import type { HttpMethods } from 'konfig-lib'
 import {
   Group,
@@ -72,7 +79,14 @@ export interface NavbarDataItem {
   links: NonNullable<LinksGroupProps['links']>
 }
 
-export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
+export function LinksGroup({
+  label,
+  initiallyOpened,
+  links,
+  setOpened: setNavbarOpen,
+}: LinksGroupProps & {
+  setOpened: Dispatch<SetStateAction<boolean>>
+}) {
   const { classes, theme } = useStyles()
   const hasLinks = Array.isArray(links)
   const [opened, setOpened] = useState(initiallyOpened || false)
@@ -89,6 +103,7 @@ export function LinksGroup({ label, initiallyOpened, links }: LinksGroupProps) {
     return (
       <Box className={classes.linkWrapper} key={link.label}>
         <NavLink<typeof Link>
+          onClick={() => setNavbarOpen(false)}
           ref={ref}
           component={Link}
           variant={theme.colorScheme === 'dark' ? 'light' : 'filled'}

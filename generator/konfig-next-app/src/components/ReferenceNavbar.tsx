@@ -7,6 +7,7 @@ import {
   rem,
 } from '@mantine/core'
 import { LinksGroup, NavbarDataItem } from './LinksGroup'
+import { Dispatch, SetStateAction } from 'react'
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -47,12 +48,14 @@ const useStyles = createStyles((theme) => ({
 
 export function ReferenceNavbar({
   navbarData,
+  setOpened,
 }: {
   navbarData: NavbarDataItem[]
+  setOpened: Dispatch<SetStateAction<boolean>>
 }) {
   const { classes } = useStyles()
   const links = navbarData.map((item) => (
-    <LinksGroup {...item} key={item.label} />
+    <LinksGroup setOpened={setOpened} {...item} key={item.label} />
   ))
 
   return (

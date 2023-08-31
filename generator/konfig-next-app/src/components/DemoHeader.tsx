@@ -24,6 +24,9 @@ export const DemoHeader = observer(
     return (
       <Header height={TITLE_OFFSET_PX}>
         <LayoutHeader
+          breakpoint="sm"
+          opened={opened}
+          setOpened={setOpened}
           title={state.portalTitle ? state.portalTitle : state.portalName}
         />
         <Box
@@ -34,15 +37,6 @@ export const DemoHeader = observer(
             height: '45%',
           }}
         >
-          {/* <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-              <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size="sm"
-                color={theme.colors.gray[6]}
-                mr="md"
-              />
-            </MediaQuery> */}
           <HeaderTabs currentTab={TABS.demos} isSandbox={sandbox} />
           <Group h="100%">
             <SegmentedControl
