@@ -22,9 +22,7 @@ export async function githubGetReferenceResources({
   // time the next two lines
   const start = Date.now()
   const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
-  console.log(
-    `githubGetKonfigYamls + githubGetDemoYamls took ${Date.now() - start}ms`
-  )
+  console.log(`githubGetKonfigYamls took ${Date.now() - start}ms`)
 
   // TODO: handle multiple konfig.yaml
   const konfigYaml = konfigYamls?.[0]
