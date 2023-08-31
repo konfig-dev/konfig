@@ -7,12 +7,13 @@ function redisUrl() {
   return 'redis://127.0.0.1:6379'
 }
 
+let globalClient: ReturnType<typeof createClient> | null = null
 async function githubApiRedisCache() {
-  const client = createClient({ url: redisUrl() })
-
-  client.on('error', (err) => console.log('Redis Client Error', err))
-  await client.connect()
-  return client
+  if (globalClient != null) return globalClient
+  globalClient = createClient({ url: redisUrl() })
+  globalClient.on('error', (err) => console.log('Redis Client Error', err))
+  await globalClient.connect()
+  return globalClient
 }
 
 function computeCacheKey({
