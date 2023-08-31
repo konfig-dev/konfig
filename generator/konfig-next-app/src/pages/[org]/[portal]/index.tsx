@@ -23,25 +23,9 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       notFound: true,
     }
   }
-  const generation = await generateDemosDataFromGithub({ orgId, portalId })
-  if (generation.result === 'error') return { notFound: true }
-  const { organization } = generation
-  if (organization === undefined) {
-    return {
-      notFound: true,
-    }
-  }
-  if (organization.portals.length < 1) {
-    return { notFound: true }
-  }
-  const portal = organization.portals[0]
-  if (portal.demos.length < 1) {
-    return { notFound: true }
-  }
-  const demo = portal.demos[0]
   return {
     redirect: {
-      destination: `/${organization.id}/${portal.id}/reference`,
+      destination: `/${orgId}/${portalId}/reference`,
       permanent: false,
     },
   }
