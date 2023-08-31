@@ -1,5 +1,6 @@
 import {
   Button,
+  Input,
   NumberInput,
   SegmentedControl,
   Select,
@@ -35,51 +36,57 @@ export function ParameterInput({
   const { colorScheme, colors } = useMantineTheme()
   if (parameter.schema.type === 'array') {
     return (
-      <Button
-        radius="xs"
-        size="xs"
-        leftIcon={<IconPlus size={'1rem'} />}
-        onClick={() => {
-          if (
-            !('items' in parameter.schema) ||
-            parameter.schema.items === undefined
-          )
-            return
-          const innerType = parameter.schema.items as SchemaObject
-          if (innerType.type === 'object') {
-            const bodyParameters: ParameterFromBodyParameterInput[] = []
-            for (const iterator of Object.entries(innerType.properties || {})) {
-              const [key, value] = iterator
-              bodyParameters.push({
-                name: key,
-                schema: value,
-                requestBodyRequired: innerType.required ?? null,
-              })
-            }
-            const parameters = bodyParameters.map((parameter) =>
-              generateParameterFromBodyParameter(parameter)
+      <Input.Wrapper {...inputProps}>
+        <Button
+          mb="calc(0.625rem / 2);"
+          radius="xs"
+          size="xs"
+          leftIcon={<IconPlus size={'1rem'} />}
+          onClick={() => {
+            form.clearFieldError(formInputName)
+            if (
+              !('items' in parameter.schema) ||
+              parameter.schema.items === undefined
             )
-            const formValues = generateInitialFormValues({
-              parameters,
-              securitySchemes: {},
-              hideSecurity: [],
-              clientState: [],
-              doNotRestoreFromStorage: true,
-            })
-            const initialValues = formValues.initialValues
-            if (initialValues === undefined) return
+              return
+            const innerType = parameter.schema.items as SchemaObject
+            if (innerType.type === 'object') {
+              const bodyParameters: ParameterFromBodyParameterInput[] = []
+              for (const iterator of Object.entries(
+                innerType.properties || {}
+              )) {
+                const [key, value] = iterator
+                bodyParameters.push({
+                  name: key,
+                  schema: value,
+                  requestBodyRequired: innerType.required ?? null,
+                })
+              }
+              const parameters = bodyParameters.map((parameter) =>
+                generateParameterFromBodyParameter(parameter)
+              )
+              const formValues = generateInitialFormValues({
+                parameters,
+                securitySchemes: {},
+                hideSecurity: [],
+                clientState: [],
+                doNotRestoreFromStorage: true,
+              })
+              const initialValues = formValues.initialValues
+              if (initialValues === undefined) return
 
-            // if the currenty value is not an Array, then we need to convert it to an array
-            if (!Array.isArray(inputProps.value)) {
-              form.setFieldValue(formInputName, [])
+              // if the currenty value is not an Array, then we need to convert it to an array
+              if (!Array.isArray(inputProps.value)) {
+                form.setFieldValue(formInputName, [])
+              }
+              form.insertListItem(formInputName, initialValues.parameters)
             }
-            form.insertListItem(formInputName, initialValues.parameters)
-          }
-        }}
-        variant={colorScheme === 'dark' ? 'light' : 'filled'}
-      >
-        Add Item
-      </Button>
+          }}
+          variant={colorScheme === 'dark' ? 'light' : 'filled'}
+        >
+          Add Item
+        </Button>
+      </Input.Wrapper>
     )
   }
   if (parameter.schema.type === 'integer') {
@@ -95,9 +102,15 @@ export function ParameterInput({
     parameter.schema.type === 'string' &&
     parameter.schema.enum !== undefined
   ) {
+    const { onChange, ...rest } = inputProps
     return (
       <Select
-        {...inputProps}
+        {...rest}
+        onChange={(value) => {
+          // Dylan: setting value to null does not make sense if schema is not nullable
+          // TODO: handle nullable schema
+          return onChange(value === null ? '' : value)
+        }}
         clearable={!parameter.required}
         radius="xs"
         data={parameter.schema.enum}
