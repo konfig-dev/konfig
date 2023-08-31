@@ -30,6 +30,7 @@ import { DemoEditThisPage } from './DemoEditThisPage'
 import { DemoLastRan } from './DemoLastRan'
 import { DemoHeader } from './DemoHeader'
 import type { SocialObject } from 'konfig-lib/dist/KonfigYamlCommon'
+import Head from 'next/head'
 
 type DemosInput = Demo[]
 
@@ -266,21 +267,32 @@ export const DemoPortal = observer(
                     demoId: nextDemoState.id,
                   }
             return (
-              <Box
-                key={demo.name}
-                display={state.currentDemoIndex !== i ? 'none' : undefined}
-              >
-                <DemoLastRan demo={demo} />
-                <DemoMarkdown state={demo} />
-                <Box my={rem(40)}>
-                  <DemoEditThisPage portalState={state} />
+              <>
+                {state.currentDemoIndex === i && (
+                  <Head>
+                    <title>{demo.name}</title>
+                  </Head>
+                )}
+                <Box
+                  key={demo.name}
+                  display={state.currentDemoIndex !== i ? 'none' : undefined}
+                >
+                  <DemoLastRan demo={demo} />
+                  <DemoMarkdown state={demo} />
+                  <Box my={rem(40)}>
+                    <DemoEditThisPage portalState={state} />
+                  </Box>
+                  <DemoSiblings
+                    portal={state}
+                    previous={previous}
+                    next={next}
+                  />
+                  <Divider mt={rem(60)} />
+                  <Box my={rem(20)}>
+                    <DemoSocials socials={state.socials} />
+                  </Box>
                 </Box>
-                <DemoSiblings portal={state} previous={previous} next={next} />
-                <Divider mt={rem(60)} />
-                <Box my={rem(20)}>
-                  <DemoSocials socials={state.socials} />
-                </Box>
-              </Box>
+              </>
             )
           })}
         </AppShell>

@@ -89,9 +89,6 @@ const DemoPage = observer(
           primaryColor: 'brand',
         }}
       >
-        <Head>
-          <title>{`${organization.organizationName} | Konfig`}</title>
-        </Head>
         <DemoPortal state={state} />
       </MantineProvider>
     )

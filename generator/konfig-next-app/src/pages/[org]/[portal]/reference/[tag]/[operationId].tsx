@@ -33,6 +33,7 @@ import { sortParametersByRequired } from '@/utils/sort-parameters-by-required'
 import { NavbarDataItem } from '@/components/LinksGroup'
 import { OperationReferenceMain } from '@/OperationReferenceMain'
 import Script from 'next/script'
+import Head from 'next/head'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -292,6 +293,12 @@ const Operation = ({
         primaryColor: 'brand',
       }}
     >
+      <Head>
+        <title>
+          {operation.operation.summary ??
+            `${operation.method} ${operation.path}`}
+        </title>
+      </Head>
       <Script
         src={`https://unpkg.com/${konfigYaml.generators.typescript?.npmName}@${konfigYaml.generators.typescript?.version}/dist/browser.js`}
       />
