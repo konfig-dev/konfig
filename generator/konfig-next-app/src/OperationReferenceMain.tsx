@@ -11,6 +11,7 @@ import {
   Text,
   useMantineColorScheme,
   Paper,
+  MediaQuery,
 } from '@mantine/core'
 import { HttpMethodBadge } from './components/HttpMethodBadge'
 import { OperationForm } from './components/OperationForm'
@@ -37,6 +38,7 @@ import { tryJsonOutput } from './utils/try-json-output'
 import { tryTableOutput } from './utils/try-table-output'
 import { IconTerminal } from '@tabler/icons-react'
 import { deepmerge } from './utils/deepmerge'
+import { useMediaQuery } from '@mantine/hooks'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -184,8 +186,11 @@ export function OperationReferenceMain({
           }
         })}
       >
-        <Flex justify="space-between">
-          <Stack w="55%" spacing="xl">
+        <Flex
+          direction={{ base: 'column', sm: 'row' }}
+          justify={{ base: undefined, sm: 'space-between' }}
+        >
+          <Stack w={{ base: '100%', sm: '55%' }} spacing="xl">
             <Stack spacing="xs">
               <Title order={2}>
                 {operation.operation.summary ?? operation.path}
@@ -260,7 +265,10 @@ export function OperationReferenceMain({
               </Box>
             )}
           </Stack>
-          <Box w="40%">
+          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+            <Divider my="sm" />
+          </MediaQuery>
+          <Box w={{ base: '100%', sm: '40%' }}>
             <Stack
               pos="sticky"
               top="calc(var(--mantine-header-height, 0px) + 1rem)"
