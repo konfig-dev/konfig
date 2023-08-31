@@ -22,7 +22,10 @@ export function generateNavbarLinks({
   const paths = spec.paths
   if (paths === undefined) return []
   // if tags is undefined then iterate through all operations and collect all unique tags
-  if (tags === undefined) {
+  if (
+    tags === undefined ||
+    (typeof tags === 'string' && tags === 'undefined')
+  ) {
     const allTags = new Set<string>()
     Object.keys(paths).forEach((path) => {
       const pathItem = paths[path]
