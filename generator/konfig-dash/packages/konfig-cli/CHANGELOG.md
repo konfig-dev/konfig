@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.10.0
+
+### Minor Changes
+
+- [#147](https://github.com/konfig-dev/konfig/pull/147) [`fe2fdd90`](https://github.com/konfig-dev/konfig/commit/fe2fdd90ff6a9e68501f45e379ff05f3a9439b84) Thanks [@dphuang2](https://github.com/dphuang2)! - add "revalidate-portal" command to replace "revalidate-demos"
+
 ## 1.9.1
 
 ### Patch Changes
