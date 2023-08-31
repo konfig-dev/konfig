@@ -4,7 +4,8 @@ import { createOctokitInstance } from './octokit'
 import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { githubGetFileContent } from './github-get-file-content'
 import { githubGetRepository } from './github-get-repository'
-import type { SocialObject } from 'konfig-lib'
+import type { KonfigYamlType, SocialObject } from 'konfig-lib'
+import { Octokit } from '@octokit/rest'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -132,24 +133,17 @@ async function _fetch({
   // TODO: handle multiple konfig.yaml files
   const konfigYaml = konfigYamls?.[0]
 
-  if (konfigYaml?.content.portal?.demos === undefined) {
-    throw Error('Missing demos in konfig.yaml')
-  }
+  if (konfigYaml === undefined) throw Error('No konfig.yaml file found')
+  if (konfigYaml.content.portal === undefined)
+    throw Error('No portal configuration found')
 
-  const markdownFiles = konfigYaml.content.portal.demos
-
-  const content = await Promise.all(
-    markdownFiles.map(async ({ path, ...rest }) => {
-      return {
-        content: await githubGetFileContent({ path, repo, owner, octokit }),
-        ...rest,
-      }
-    })
-  )
-
-  const demos = generateDemosFromFilenameAndContent({
-    demos: content,
-  })
+  const demos =
+    (await getDemos({
+      octokit,
+      repo,
+      owner,
+      konfigYaml: konfigYaml.content,
+    })) ?? []
 
   const portal: Portal = {
     id: repo,
@@ -174,4 +168,37 @@ async function _fetch({
       ? { socials: konfigYaml.content.portal.socials }
       : {}),
   }
+}
+
+async function getDemos({
+  konfigYaml,
+  repo,
+  owner,
+  octokit,
+}: {
+  konfigYaml: KonfigYamlType
+  repo: string
+  owner: string
+  octokit: Octokit
+}) {
+  if (konfigYaml?.portal?.demos === undefined) {
+    return null
+  }
+
+  const markdownFiles = konfigYaml.portal.demos
+
+  const content = await Promise.all(
+    markdownFiles.map(async ({ path, ...rest }) => {
+      return {
+        content: await githubGetFileContent({ path, repo, owner, octokit }),
+        ...rest,
+      }
+    })
+  )
+
+  const demos = generateDemosFromFilenameAndContent({
+    demos: content,
+  })
+
+  return demos
 }

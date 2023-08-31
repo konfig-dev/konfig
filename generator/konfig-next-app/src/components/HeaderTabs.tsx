@@ -14,9 +14,11 @@ export type Tab = (typeof TABS)[keyof typeof TABS]
 export function HeaderTabs({
   currentTab,
   isSandbox,
+  hideDemoTab,
 }: {
   currentTab: Tab
   isSandbox?: boolean
+  hideDemoTab?: boolean
 }) {
   const referencePath = useReferencePath()
   const basePath = useBasePath()
@@ -33,12 +35,14 @@ export function HeaderTabs({
         active={currentTab === TABS.reference}
         link={referencePath}
       />
-      <HeaderTab
-        label={TABS.demos}
-        active={currentTab === TABS.demos}
-        link={basePath}
-        disabled={isSandbox}
-      />
+      {!hideDemoTab && (
+        <HeaderTab
+          label={TABS.demos}
+          active={currentTab === TABS.demos}
+          link={basePath}
+          disabled={isSandbox}
+        />
+      )}
       <HeaderTab
         external
         disabled={isSandbox}
