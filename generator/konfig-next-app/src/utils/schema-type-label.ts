@@ -11,5 +11,7 @@ export function schemaTypeLabel({ schema }: { schema: SchemaObject }) {
       ? ` of ${pluralize(innerType)}`
       : ''
   const format = schema.format ? ` (format: ${schema.format})` : ''
-  return `${type}${format}${arrayOf}${nullable}`
+  const label = `${type}${format}${arrayOf}${nullable}`
+  if (label === 'undefined') return ''
+  return label
 }
