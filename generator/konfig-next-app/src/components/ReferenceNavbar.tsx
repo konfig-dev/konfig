@@ -63,7 +63,7 @@ export function ReferenceNavbar({
   return (
     <>
       <Navbar.Section className={classes.header}>
-        <Code>api.snaptrade.com/api/v1</Code>
+        <Code>{basePath}</Code>
       </Navbar.Section>
 
       <Navbar.Section grow className={classes.links} component={ScrollArea}>
