@@ -34,6 +34,7 @@ export interface ConfigurationParameters {
     useFetch?: boolean;
 {{/includeFetchAdapter}}
 {{#hasOAuthMethods}}
+    oauthTokenUrl?: string;
     oauthClientId?: string;
     oauthClientSecret?: string;
 {{/hasOAuthMethods}}
@@ -68,6 +69,10 @@ export class Configuration {
      */
     username?: string;
 {{#hasOAuthMethods}}
+    /**
+     * token url for OAuth2 Application flow
+     */
+    oauthTokenUrl?: string;
     /**
      * client id for OAuth2 Application flow
      */
@@ -147,6 +152,7 @@ export class Configuration {
 {{/includeFetchAdapter}}
         this.userAgent = param.userAgent === undefined ? "{{#userAgent}}{{{userAgent}}}{{/userAgent}}{{^userAgent}}Konfig{{/userAgent}}/{{{npmVersion}}}/typescript" : param.userAgent;
 {{#hasOAuthMethods}}
+        this.oauthTokenUrl = param.oauthTokenUrl;
         this.oauthClientId = param.oauthClientId;
         this.oauthClientSecret = param.oauthClientSecret;
 {{/hasOAuthMethods}}
