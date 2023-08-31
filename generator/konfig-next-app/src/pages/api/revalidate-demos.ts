@@ -1,8 +1,4 @@
-import { _cache } from '@/server/routers/_app'
-import {
-  generateDemosDataFromGithub,
-  invalidateDemoGenerationCache,
-} from '@/utils/generate-demos-from-github'
+import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
 import { clearGithubApiCache } from '@/utils/github-api-redis-cache'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
@@ -20,11 +16,6 @@ export default async function handler(
 
   await clearGithubApiCache()
 
-  invalidateDemoGenerationCache({
-    orgId: organizationId,
-    portalId,
-    _cache,
-  })
   const generation = await generateDemosDataFromGithub({
     orgId: organizationId,
     portalId,

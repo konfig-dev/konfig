@@ -1,8 +1,8 @@
-import { _cache } from '@/server/routers/_app'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
 import { githubGetReferenceResources } from '@/utils/github-get-reference-resources'
 import { clearGithubApiCache } from '@/utils/github-api-redis-cache'
+import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
 
 const requestBodySchema = z.object({
   owner: z.string(),
@@ -17,15 +17,28 @@ export default async function handler(
 
   await clearGithubApiCache()
 
-  const { navbarData } = await githubGetReferenceResources({ owner, repo })
-
   const toRevalidate = [`/${owner}/${repo}/reference`]
 
+  // revalidate reference page
+  const { navbarData } = await githubGetReferenceResources({ owner, repo })
   navbarData.forEach(({ links }) => {
     links.forEach(({ link }) => {
       toRevalidate.push(link)
     })
   })
+
+  const demos = await generateDemosDataFromGithub({
+    orgId: owner,
+    portalId: repo,
+  })
+
+  if (demos.result === 'error')
+    return res.status(500).send('Error fetching demos')
+
+  for (const demo of demos.portal.demos) {
+    const path = `/${owner}/${repo}/${demo.id}`
+    toRevalidate.push(path)
+  }
 
   const revalidated: string[] = []
 

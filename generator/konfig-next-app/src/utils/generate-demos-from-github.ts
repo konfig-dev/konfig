@@ -1,6 +1,5 @@
 import { Demo, Organization, Portal } from './demos'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
-import { FetchCache } from '@/server/routers/_app'
 import { createOctokitInstance } from './octokit'
 import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { githubGetFileContent } from './github-get-file-content'
@@ -22,23 +21,6 @@ const _mappings: {
   },
 }
 
-export function invalidateDemoGenerationCache({
-  orgId,
-  portalId,
-  _cache,
-}: {
-  orgId: string
-  portalId: string
-  _cache: FetchCache
-}) {
-  delete _cache[computeCacheKey({ orgId, portalId })]
-}
-export function computeCacheKey({
-  orgId,
-  portalId,
-}: Omit<GenerationInput, 'demoId'>): string {
-  return `${orgId}-${portalId}`
-}
 export type FetchResult = {
   primaryColor?: string
   portalTitle?: string
@@ -63,7 +45,6 @@ export type GenerationInput = {
   orgId: string
   portalId: string
   demoId?: string
-  _cache?: FetchCache
 }
 
 type ReturnTypeOfGenerateDemosDataFromGithub = ReturnType<
@@ -81,7 +62,6 @@ export async function generateDemosDataFromGithub({
   orgId,
   portalId,
   demoId,
-  _cache,
 }: GenerationInput): Promise<
   | {
       result: 'success'
@@ -101,15 +81,7 @@ export async function generateDemosDataFromGithub({
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
 > {
-  const cacheKey = computeCacheKey({ orgId, portalId })
-  const inCache = _cache !== undefined ? cacheKey in _cache : false
-  const fetchResult: FetchResult =
-    inCache && _cache !== undefined
-      ? _cache[cacheKey]
-      : await _fetch({ orgId, portalId })
-  if (_cache !== undefined) {
-    _cache[cacheKey] = fetchResult
-  }
+  const fetchResult: FetchResult = await _fetch({ orgId, portalId })
 
   const { demos, organization, portal, socials, mainBranch } = fetchResult
 
@@ -142,11 +114,6 @@ async function _fetch({
   orgId: string
   portalId: string
 }): Promise<FetchResult> {
-  // Find the SDK repository
-  const privateKey = process.env.GITHUB_APP_PRIVATE_KEY
-  if (privateKey === undefined)
-    throw Error('Missing GITHUB_APP_PRIVATE_KEY Environment Variable')
-
   const owner =
     orgId in _mappings.organization ? _mappings.organization[orgId] : orgId
   const repo =
