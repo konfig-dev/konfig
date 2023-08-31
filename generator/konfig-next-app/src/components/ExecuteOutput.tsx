@@ -1,5 +1,5 @@
 import { useMantineColorScheme, Transition, Tabs, Code } from '@mantine/core'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 const ReactJson = dynamic(() => import('react-json-view'), {
   ssr: false,
 })
@@ -23,6 +23,44 @@ export function ExecuteOutput({
 }) {
   const [activeTab, setActiveTab] = useState<string | null>('raw')
   const [haveClickedTab, setHaveClickedTab] = useState<boolean>(false)
+
+  const [isFocusedOnJson, setIsFocusedOnJson] = useState(false)
+
+  const onCopy = useCallback(
+    (e: ClipboardEvent) => {
+      if (isFocusedOnJson) {
+        e.preventDefault() // Prevent the default copy behavior
+
+        let text = (e.target as HTMLTextAreaElement)?.innerHTML
+
+        // Check if text is a URL
+        try {
+          new URL(JSON.parse(text)) // Will throw if not a valid URL
+
+          // Remove quotes if they are present
+          if (text.startsWith('"') && text.endsWith('"')) {
+            text = text.slice(1, -1)
+          }
+        } catch (error) {
+          // Not a URL, do nothing special
+        }
+
+        e.clipboardData?.setData('text/plain', text)
+      }
+    },
+    [isFocusedOnJson]
+  )
+
+  useEffect(() => {
+    // Add an event listener when the component mounts
+    document.addEventListener('copy', onCopy)
+
+    // Cleanup: Remove the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('copy', onCopy)
+    }
+  }, [isFocusedOnJson, onCopy])
+
   useEffect(() => {
     if (haveClickedTab) return
     const newTab =
@@ -70,20 +108,25 @@ export function ExecuteOutput({
 
           <Tabs.Panel value="json">
             {jsonOutput && (
-              <ReactJson
-                collapsed={1}
-                displayObjectSize
-                displayDataTypes={false}
-                name={false}
-                theme={colorScheme === 'dark' ? 'tomorrow' : undefined}
-                style={{
-                  fontSize: '0.85rem',
-                  padding: '0.75rem',
-                  maxHeight: '500px',
-                  overflowY: 'scroll',
-                }}
-                src={jsonOutput}
-              />
+              <div
+                onMouseEnter={() => setIsFocusedOnJson(true)}
+                onMouseLeave={() => setIsFocusedOnJson(false)}
+              >
+                <ReactJson
+                  collapsed={1}
+                  displayObjectSize
+                  displayDataTypes={false}
+                  name={false}
+                  theme={colorScheme === 'dark' ? 'tomorrow' : undefined}
+                  style={{
+                    fontSize: '0.85rem',
+                    padding: '0.75rem',
+                    maxHeight: '500px',
+                    overflowY: 'scroll',
+                  }}
+                  src={jsonOutput}
+                />
+              </div>
             )}
           </Tabs.Panel>
           {!disableTable && (
