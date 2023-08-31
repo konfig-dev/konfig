@@ -34,6 +34,7 @@ import { NavbarDataItem } from '@/components/LinksGroup'
 import { OperationReferenceMain } from '@/OperationReferenceMain'
 import Script from 'next/script'
 import Head from 'next/head'
+import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -66,6 +67,7 @@ export type StaticProps = Omit<GithubResources, 'spec'> & {
   responses: Record<string, ResponseObject>
   securityRequirements: Record<string, string[]> | null
   securitySchemes: Record<string, SecurityScheme> | null
+  hideDemoTab: boolean
 }
 
 export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
@@ -87,6 +89,11 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     throw Error('Got unexpected array type for parameters')
 
   const { spec, ...props } = await githubGetReferenceResources({ owner, repo })
+
+  const demos = await generateDemosDataFromGithub({
+    orgId: owner,
+    portalId: repo,
+  })
 
   if (spec.specDereferenced === null) throw Error('specDereferenced is null')
 
@@ -252,6 +259,12 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       headerParameters,
       cookieParameters,
       requestBodyProperties,
+      hideDemoTab:
+        demos.result === 'error'
+          ? true
+          : demos.portal.demos.length === 0
+          ? true
+          : false,
       requestBodyRequired,
       securityRequirements,
       securitySchemes,
@@ -271,6 +284,7 @@ const Operation = ({
   requestBodyProperties,
   requestBodyRequired,
   securityRequirements,
+  hideDemoTab,
   securitySchemes,
   basePath,
   operation,
@@ -340,7 +354,10 @@ const Operation = ({
                 height: '45%',
               }}
             >
-              <HeaderTabs currentTab={TABS.reference} />
+              <HeaderTabs
+                hideDemoTab={hideDemoTab}
+                currentTab={TABS.reference}
+              />
               <Group h="100%"></Group>
             </Box>
           </Header>
