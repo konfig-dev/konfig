@@ -1,16 +1,10 @@
-import { CliUx, Command, Flags } from '@oclif/core'
+import { Command, Flags } from '@oclif/core'
 import { parseKonfigYaml } from '../util/parse-konfig-yaml'
-import {
-  getPackageVersion,
-  KonfigYamlType,
-  setPackageVersion,
-} from 'konfig-lib'
+import { KonfigYamlType } from 'konfig-lib'
 import semver from 'semver'
-import * as fs from 'fs-extra'
 import { parseFilterFlag } from '../util/parseFilterFlag'
-import { generateKonfigYamlString } from '../util/generate-konfig-yaml-string'
 import { detectReleaseType } from '../util/detect-release-type'
-import { incrementVersionWithPreservedTag } from '../util/increment-version-with-preserved-tag'
+import { executeBumpCommand } from '../util/execute-bump-command'
 
 export default class Bump extends Command {
   static description =
@@ -59,33 +53,7 @@ export default class Bump extends Command {
     })
 
     const filter = parseFilterFlag(flags.generator)
-    if (filter !== null)
-      CliUx.ux.info(`Performing ${releaseType} bump of ${filter.join(', ')}`)
-    else CliUx.ux.info(`Performing "${releaseType}" bump`)
-
-    for (const [generatorName, generatorConfig] of [
-      ...Object.entries(loadedKonfigYaml.generators),
-      ...Object.entries(loadedKonfigYaml.additionalGenerators ?? []),
-    ]) {
-      if (filter !== null && !filter.includes(generatorName)) continue
-      if ('disabled' in generatorConfig && generatorConfig.disabled) continue
-      const currentVersion = getPackageVersion({ generatorConfig })
-      const newVersion = incrementVersionWithPreservedTag(
-        currentVersion,
-        releaseType
-      )
-      CliUx.ux.info(
-        `Bumping ${generatorName} SDK from ${currentVersion} --> ${newVersion}`
-      )
-      if (newVersion === null)
-        CliUx.ux.error(
-          `Could not compute new version for ${generatorName} SDK currently at ${currentVersion}`
-        )
-      setPackageVersion({ generatorConfig, version: newVersion })
-    }
-    CliUx.ux.action.start('Writing new version to konfig.yaml')
-    fs.writeFileSync(konfigYamlPath, generateKonfigYamlString(loadedKonfigYaml))
-    CliUx.ux.action.stop()
+    executeBumpCommand({ filter, releaseType, loadedKonfigYaml, konfigYamlPath })
   }
 }
 
