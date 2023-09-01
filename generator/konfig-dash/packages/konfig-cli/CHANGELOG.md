@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.10.1
+
+### Patch Changes
+
+- [#153](https://github.com/konfig-dev/konfig/pull/153) [`dce62b34`](https://github.com/konfig-dev/konfig/commit/dce62b3459583c84cbaca62fb115b9e536976282) Thanks [@eddiechayes](https://github.com/eddiechayes)! - added konfig version CLI command
+
 ## 1.10.0
 
 ### Minor Changes
