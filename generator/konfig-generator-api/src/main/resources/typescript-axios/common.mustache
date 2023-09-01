@@ -104,7 +104,7 @@ export const setOAuthToObject = async function (object: any, name: string, scope
     if (configuration && configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
         configuration.accessToken = await wrapAxiosRequest(async () => {
             const oauthResponse = await axios.request({
-                url: configuration.oauthTokenUrl ?? "https://id.production.splitit.com/connect/token",
+                url: configuration.oauthTokenUrl ?? "{{{tokenUrl}}}",
                 method: "POST",
                 headers: {
                     "content-type": "application/x-www-form-urlencoded",
@@ -200,21 +200,22 @@ async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
                     e.response?.data instanceof ReadableStream
                     ? await readableStreamToString(e.response.data)
                     : e.response?.data
-                throw new SplititError(e, parseIfJson(responseBody))
+                throw new {{clientName}}Error(e, parseIfJson(responseBody))
             } catch (innerError) {
                 if (innerError instanceof ReferenceError) {
                     // Got: "ReferenceError: ReadableStream is not defined"
                     // This means we are in a Node environment so just throw the original error
-                    throw new SplititError(e, e.response?.data)
+                    throw new {{clientName}}Error(e, e.response?.data)
                 }
-                if (innerError instanceof SplititError) {
-                    // Got "SplititError" from the above try block
+                if (innerError instanceof {{clientName}}Error) {
+                    // Got "{{clientName}}Error" from the above try block
                     throw innerError;
                 }
                 // Something unexpected happened: propagate the error
                 throw e
             }
         }
+        throw e
     }
 }
 
