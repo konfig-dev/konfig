@@ -31,7 +31,9 @@ export function ExecuteOutput({
       if (isFocusedOnJson) {
         e.preventDefault() // Prevent the default copy behavior
 
-        let text = (e.target as HTMLTextAreaElement)?.innerHTML
+        // Have to use "value" to decode the JSON, not "innerHTML"
+        // othewise "&" is turned into "&amp;"
+        let text = (e.target as HTMLTextAreaElement)?.value
 
         // Check if text is a URL
         try {
