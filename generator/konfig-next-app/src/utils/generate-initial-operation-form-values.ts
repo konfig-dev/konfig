@@ -135,10 +135,10 @@ export function generateInitialFormValues({
           [SECURITY_FORM_NAME_PREFIX]: {
             [name]: {
               [OAUTH2_CLIENT_SECRET_PROPERTY]: (value) => {
-                return isNotEmpty(`oauthClientSecret is required`)(value)
+                return isNotEmpty(`OAuth Client Secret is required`)(value)
               },
               [OAUTH2_CLIENT_ID_PROPERTY]: (value) => {
-                return isNotEmpty(`oauthClientId is required`)(value)
+                return isNotEmpty(`OAuth Client ID is required`)(value)
               },
             },
           },
