@@ -167,6 +167,7 @@ export function OperationReferenceMain({
             const result = await eval(wrapped)
             setResult(result)
           } catch (e) {
+            console.error(e)
             if (
               typeof e === 'object' &&
               e !== null &&

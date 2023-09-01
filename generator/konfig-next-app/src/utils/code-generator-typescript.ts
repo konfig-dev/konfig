@@ -44,7 +44,11 @@ ${this.mode === 'production' ? `console.log(response.data)` : ''}
       ? ''
       : `{
 ${this.nonEmptySecurity
-  .map(([name, value]) => {
+  .map(([_name, value]) => {
+    if (value.type === 'oauth2-client-credentials') {
+      return ` "oauthClientId": "${value.clientId}",
+      "oauthClientSecret": "${value.clientSecret}",`
+    }
     const securityValue = value.type === 'apiKey' ? value.value : value.value
     const securityKey = value.type === 'apiKey' ? value.key : value.name
     return `  ${securityKey}: '${securityValue}',`
@@ -101,6 +105,6 @@ ${this.nonEmptySecurity
   }
 
   get methodName() {
-    return this.operationId.split('_')[1]
+    return camelCase(this.operationId.split('_')[1])
   }
 }

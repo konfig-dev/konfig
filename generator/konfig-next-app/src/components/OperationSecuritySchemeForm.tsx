@@ -1,9 +1,11 @@
 import {
   CLIENT_STATE_VALUE_PROPERTY,
+  OAUTH2_CLIENT_ID_PROPERTY,
+  OAUTH2_CLIENT_SECRET_PROPERTY,
   SECURITY_FORM_NAME_PREFIX,
   SECURITY_FORM_VALUE_SUFFIX,
 } from '@/utils/generate-initial-operation-form-values'
-import { useForm, useFormContext } from '@/utils/operation-form-context'
+import { useFormContext } from '@/utils/operation-form-context'
 import { TextInput } from '@mantine/core'
 import type { SecurityScheme } from 'konfig-lib'
 
@@ -15,6 +17,32 @@ export function OperationSecuritySchemeForm({
   scheme: SecurityScheme
 }) {
   const form = useFormContext()
+  if (
+    scheme.type === 'oauth2' &&
+    'flows' in scheme &&
+    scheme.flows.clientCredentials !== undefined
+  ) {
+    return (
+      <>
+        <TextInput
+          withAsterisk
+          label={'OAuth Client ID'}
+          placeholder={'OAuth Client Secret'}
+          {...form.getInputProps(
+            `${SECURITY_FORM_NAME_PREFIX}.${name}.${OAUTH2_CLIENT_ID_PROPERTY}`
+          )}
+        />
+        <TextInput
+          withAsterisk
+          label={'OAuth Client Secret'}
+          placeholder={'OAuth Client Secret'}
+          {...form.getInputProps(
+            `${SECURITY_FORM_NAME_PREFIX}.${name}.${OAUTH2_CLIENT_SECRET_PROPERTY}`
+          )}
+        />
+      </>
+    )
+  }
   const formInputName = generateSecurityFormInputName({ name })
   return (
     <TextInput

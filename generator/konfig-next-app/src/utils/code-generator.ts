@@ -3,6 +3,8 @@ import {
   API_KEY_VALUE_PROPERTY,
   CLIENT_STATE_VALUE_PROPERTY,
   FormDataType,
+  OAUTH2_CLIENT_ID_PROPERTY,
+  OAUTH2_CLIENT_SECRET_PROPERTY,
   PARAMETER_FORM_NAME_PREFIX,
   SECURITY_FORM_NAME_PREFIX,
 } from './generate-initial-operation-form-values'
@@ -135,8 +137,13 @@ export abstract class CodeGenerator {
             security[CLIENT_STATE_VALUE_PROPERTY] !== '' &&
             security[CLIENT_STATE_VALUE_PROPERTY] !== undefined
           )
-        } else {
-          throw new Error(`Unknown security type: ${(security as any).type}`)
+        } else if (security.type === 'oauth2-client-credentials') {
+          return (
+            security[OAUTH2_CLIENT_ID_PROPERTY] !== '' &&
+            security[OAUTH2_CLIENT_ID_PROPERTY] !== undefined &&
+            security[OAUTH2_CLIENT_SECRET_PROPERTY] !== '' &&
+            security[OAUTH2_CLIENT_SECRET_PROPERTY] !== undefined
+          )
         }
       }
     )
