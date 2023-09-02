@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.6.0
+
+### Minor Changes
+
+- [#155](https://github.com/konfig-dev/konfig/pull/155) [`b4366328`](https://github.com/konfig-dev/konfig/commit/b4366328b6c17a95b3d56a200e5d1808593c8528) Thanks [@dphuang2](https://github.com/dphuang2)! - add readmeOperatin.operationId
+
 ## 1.5.0
 
 ### Minor Changes
