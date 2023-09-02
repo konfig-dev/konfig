@@ -107,6 +107,11 @@ export const KonfigYamlCommon = z
   .object({
     primaryColor,
     portal,
+    readmeOperation: z
+      .object({
+        operationId: z.string(),
+      })
+      .optional(),
     portalTitle: z
       .string()
       .optional()

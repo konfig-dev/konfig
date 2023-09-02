@@ -1029,6 +1029,27 @@ public class DefaultGenerator implements Generator {
             });
         }
 
+        if (config.additionalProperties().get("readmeOperationId") != null) {
+            String readmeOperationId = (String) config.additionalProperties().get("readmeOperationId");
+            // iterate through "allOperations" and ensure that any operation matching "readmeOperationId" is the
+            // first element by using allOperations.get(i).getOperations().sort
+            for (int i = 0; i < allOperations.size(); i++) {
+                OperationsMap operationsMap = allOperations.get(i);
+                List<CodegenOperation> operations = operationsMap.getOperations().getOperation();
+                if (operations != null && operations.size() > 0) {
+                    for (int j = 0; j < operations.size(); j++) {
+                        CodegenOperation operation = operations.get(j);
+                        if (operation.operationIdOriginal.equals(readmeOperationId)) {
+                            // move this element to the front of the list
+                            operations.remove(j);
+                            operations.add(0, operation);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         // supporting files
         Map<String, Object> bundle = buildSupportFileBundle(allOperations, allModels);
         generateSupportingFiles(files, bundle);

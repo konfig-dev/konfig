@@ -238,6 +238,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
         additionalProperties: {
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
           podVersion: version,
           podName,
           classPrefix,
@@ -270,6 +271,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
         additionalProperties: {
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
           packageVersion: generatorConfig.version,
           readmeSnippet: generatorConfig.readmeSnippet,
           readmeSupportingDescriptionSnippet:
@@ -302,6 +304,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
         additionalProperties: {
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
           groupId: generatorConfig.groupId,
           artifactId: generatorConfig.artifactId,
           readmeSnippet: generatorConfig.readmeSnippet,
@@ -350,6 +353,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
           clientState: generatorConfig.clientState,
           clientStateWithExamples: generatorConfig.clientStateWithExamples,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
         },
         artifactVersion: generatorConfig.version,
         generatorName: 'ruby',
@@ -385,6 +389,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
         additionalProperties: {
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
           artifactId: generatorConfig.artifactId,
           groupId: generatorConfig.groupId,
           invokerPackage: packageName,
@@ -433,6 +438,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
         additionalProperties: {
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
           podVersion: generatorConfig.version,
           podAuthors: generatorConfig.podAuthors,
           projectName: generatorConfig.projectName,
@@ -470,6 +476,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
         additionalProperties: {
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
           clientName: generatorConfig.clientName,
           packageVersion: generatorConfig.version,
           readmeSnippet: generatorConfig.readmeSnippet,
@@ -514,6 +521,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
             generatorConfig.useDescriptionInOperationTableDocumentation,
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          readmeOperation: body.readmeOperation,
           projectName: generatorConfig.projectName,
           disallowAdditionalPropertiesIfNotPresent: false,
           packageVersion: generatorConfig.version,
@@ -655,6 +663,7 @@ async function queuePhpGeneration({
       additionalProperties: {
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
+        readmeOperation: body.readmeOperation,
         invokerPackage: generatorConfig.invokerPackage,
         readmeSnippet: generatorConfig.readmeSnippet,
         readmeSupportingDescriptionSnippet:
@@ -714,6 +723,7 @@ async function queueJavaGeneration({
       additionalProperties: {
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
+        readmeOperation: body.readmeOperation,
         artifactId: generatorConfig.artifactId,
         groupId: generatorConfig.groupId,
         invokerPackage: packageName,
@@ -795,6 +805,7 @@ async function queueTypeScriptGeneration({
       additionalProperties: {
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
+        readmeOperation: body.readmeOperation,
         npmName: generatorConfig.npmName,
         npmVersion: generatorConfig.version,
         useDescriptionInOperationTableDocumentation:

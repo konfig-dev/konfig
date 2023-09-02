@@ -251,6 +251,7 @@ public interface GenerateApi {
         if (generator.equals("ruby"))
             putIfPresent(map, "isFaraday", true);
         putIfPresent(map, "apiPackage", additionalProperties.getApiPackage());
+        putIfPresent(map, "readmeOperationId", additionalProperties.getReadmeOperation().getOperationId());
         putIfPresent(map, "useDescriptionInOperationTableDocumentation", additionalProperties.getUseDescriptionInOperationTableDocumentation());
         putIfPresent(map, "invokerPackage", additionalProperties.getInvokerPackage());
         if (additionalProperties.getInvokerPackage() != null)

@@ -49,6 +49,11 @@ const additionalProperties = z.object({
   npmVersion: z.string().optional(),
   clientName: z.string().optional(),
   packageVersion: z.string().describe('1.0.0').optional(),
+  readmeOperation: z
+    .object({
+      operationId: z.string(),
+    })
+    .optional(),
   topLevelOperations: topLevelOperationsOrderedSchema.optional(),
   podAuthors: z.string().optional(),
   podName: z.string().describe('AcmeClient').optional(),
