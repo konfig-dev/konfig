@@ -7,6 +7,7 @@ import type {
 import { ParameterInput } from './ParameterInput'
 import { schemaTypeLabel } from '@/utils/schema-type-label'
 import dynamic from 'next/dynamic'
+import { OperationParameterObjectForm } from './OperationParameterObjectForm'
 
 /**
  * dynamic import to avoid SSR hydration errors where server-rendered HTML does not match client-rendered HTML
@@ -68,6 +69,12 @@ export function OperationParameter({
         repo={repo}
         prefix={prefix}
         param={param}
+      />
+      <OperationParameterObjectForm
+        param={param}
+        owner={owner}
+        repo={repo}
+        prefix={prefix}
       />
     </Stack>
   )

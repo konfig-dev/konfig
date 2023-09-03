@@ -18,7 +18,10 @@ export function OperationParameterArrayForm({
   const form = useFormContext()
   const formInputName = generateParameterInputName(param, prefix)
   const inputProps = form.getInputProps(formInputName)
+
+  // This could happen if value was previously non-array
   if (!Array.isArray(inputProps.value)) return null
+
   return inputProps.value.map((value, index) => {
     if (param.schema.type !== 'array') {
       return null

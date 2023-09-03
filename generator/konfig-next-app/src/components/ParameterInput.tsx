@@ -38,6 +38,7 @@ export function ParameterInput({
   const formInputName = generateParameterInputName(parameter, prefix)
   const inputProps = form.getInputProps(formInputName)
   const { colorScheme, colors } = useMantineTheme()
+  if (parameter.schema.type === 'object') return null
   if (parameter.schema.type === 'array') {
     return (
       <Input.Wrapper {...inputProps}>
