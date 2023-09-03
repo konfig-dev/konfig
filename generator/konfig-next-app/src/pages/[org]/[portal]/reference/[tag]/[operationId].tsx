@@ -230,7 +230,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     }
   }
 
-  // Dylan: note that we can't do this because TypeScript SDK guards against no security
+  // Dylan: note that we can't do this because TypeScript SDK throws an error if security is not provided
+  //
   // if security is set to "[]" on the operation then no security should exist
   // if (operation.operation.security?.length === 0) {
   //   securityRequirements = null
