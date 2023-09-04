@@ -184,9 +184,6 @@ export function ParameterInput({
             }
             inputProps.onChange('')
           }}
-          onError={inputProps.error}
-          onFocus={inputProps.onFocus}
-          onBlur={inputProps.onBlur}
           size="xs"
           data={[
             ...(parameter.required ? [] : [{ label: 'Unset', value: '' }]),
