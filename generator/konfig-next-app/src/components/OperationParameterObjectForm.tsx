@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { Parameter, OperationParameter } from './OperationParameter'
-import { Paper, Stack, Text, Group, CloseButton } from '@mantine/core'
+import { Paper, Stack, Text, Group, CloseButton, rem } from '@mantine/core'
 import { generateParameterInputName } from './ParameterInput'
 
 export function OperationParameterObjectForm({
@@ -38,7 +38,7 @@ export function OperationParameterObjectForm({
     )
   }
   return (
-    <Paper radius="xs" p="xs" withBorder>
+    <Paper mt={rem(-10)} radius="xs" p="xs" withBorder>
       <Stack>{reactNodes}</Stack>
     </Paper>
   )
