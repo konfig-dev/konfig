@@ -25,7 +25,7 @@ export const CLIENT_STATE_VALUE_PROPERTY = 'value'
 export const CLIENT_STATE_NAME_PROPERTY = 'name'
 
 export type FormInputValues = {
-  [property: string]:
+  [parameter: string]:
     | string
     | FormInputValues
     | string[]
@@ -60,15 +60,7 @@ type FormValues = UseFormInput<
   (values: FormDataType) => FormDataType
 >
 
-export function generateInitialFormValues({
-  parameters,
-  securitySchemes,
-  clientState,
-  hideSecurity,
-  doNotRestoreFromStorage,
-  owner,
-  repo,
-}: {
+type GenerateInitialFormValuesInput = {
   parameters: Parameter[]
   securitySchemes: StaticProps['securitySchemes']
   clientState: string[]
@@ -76,7 +68,40 @@ export function generateInitialFormValues({
   doNotRestoreFromStorage?: boolean
   owner: string
   repo: string
-}): FormValues {
+}
+
+export function generateInitialFormValues(
+  input: GenerateInitialFormValuesInput
+): FormValues {
+  let { initialValues, validate } = generateFormInputValues(input)
+  const { doNotRestoreFromStorage, owner, repo } = input
+  if (typeof window !== 'undefined' && doNotRestoreFromStorage !== true) {
+    const storedValue = window.localStorage.getItem(
+      FORM_VALUES_LOCAL_STORAGE_KEY({ owner, repo })
+    )
+    if (storedValue) {
+      try {
+        initialValues = deepmerge(initialValues, JSON.parse(storedValue))
+      } catch (e) {
+        console.log('Failed to parse stored value')
+      }
+    }
+  }
+  return { initialValues, validate }
+}
+
+type GenerateFormInputValuesInput = Pick<
+  GenerateInitialFormValuesInput,
+  'parameters' | 'securitySchemes' | 'hideSecurity' | 'clientState'
+>
+function generateFormInputValues({
+  parameters,
+  securitySchemes,
+  hideSecurity,
+  clientState,
+}: GenerateFormInputValuesInput): Required<
+  Pick<FormValues, 'initialValues' | 'validate'>
+> {
   let initialValues: FormValues['initialValues'] = {
     parameters: {},
     security: {},
@@ -93,7 +118,29 @@ export function generateInitialFormValues({
       }
       validate = deepmerge(validation, validate)
     }
-    initialValues.parameters[parameter.name] = ''
+    if (parameter.schema.type === 'object' && parameter.schema.properties) {
+      const parameters: GenerateFormInputValuesInput['parameters'] =
+        Object.entries(parameter.schema.properties).map(([name, schema]) => {
+          return {
+            name,
+            in: 'body',
+            required: parameter.schema.required?.includes(name) ?? false,
+            schema,
+            example: parameter.example,
+          }
+        })
+      const innerInput: GenerateFormInputValuesInput = {
+        parameters,
+        securitySchemes: {},
+        hideSecurity,
+        clientState,
+      }
+      const innerInitialValues = generateFormInputValues(innerInput)
+      initialValues.parameters[parameter.name] =
+        innerInitialValues.initialValues.parameters
+    } else {
+      initialValues.parameters[parameter.name] = ''
+    }
   }
   if (securitySchemes != null) {
     for (const [name, securityScheme] of Object.entries(securitySchemes)) {
@@ -161,18 +208,6 @@ export function generateInitialFormValues({
         [SECURITY_TYPE_PROPERTY]: 'clientState',
         [CLIENT_STATE_NAME_PROPERTY]: state,
         [CLIENT_STATE_VALUE_PROPERTY]: '',
-      }
-    }
-  }
-  if (typeof window !== 'undefined' && doNotRestoreFromStorage !== true) {
-    const storedValue = window.localStorage.getItem(
-      FORM_VALUES_LOCAL_STORAGE_KEY({ owner, repo })
-    )
-    if (storedValue) {
-      try {
-        initialValues = deepmerge(initialValues, JSON.parse(storedValue))
-      } catch (e) {
-        console.log('Failed to parse stored value')
       }
     }
   }
