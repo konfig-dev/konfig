@@ -43,7 +43,7 @@ export function ParameterInput({
     return (
       <Input.Wrapper {...inputProps}>
         <Button
-          mb="calc(0.625rem / 2);"
+          mb="calc(0.625rem / 2);" // taken from Input.Wrapper source code
           radius="xs"
           size="xs"
           leftIcon={<IconPlus size={'1rem'} />}
@@ -161,37 +161,40 @@ export function ParameterInput({
   }
   if (parameter.schema.type === 'boolean') {
     return (
-      <SegmentedControl
-        bg={colorScheme === 'dark' ? colors.dark[6] : undefined}
-        color="brand"
-        value={
-          inputProps.value === true
-            ? 'true'
-            : inputProps.value === false
-            ? 'false'
-            : ''
-        }
-        onChange={(value) => {
-          if (value === 'true') {
-            inputProps.onChange(true)
-            return
+      <Input.Wrapper {...inputProps}>
+        <SegmentedControl
+          mb="calc(0.625rem / 2);" // taken from Input.Wrapper source code
+          bg={colorScheme === 'dark' ? colors.dark[6] : undefined}
+          color="brand"
+          value={
+            inputProps.value === true
+              ? 'true'
+              : inputProps.value === false
+              ? 'false'
+              : ''
           }
-          if (value === 'false') {
-            inputProps.onChange(false)
-            return
-          }
-          inputProps.onChange('')
-        }}
-        onError={inputProps.error}
-        onFocus={inputProps.onFocus}
-        onBlur={inputProps.onBlur}
-        size="xs"
-        data={[
-          ...(parameter.required ? [] : [{ label: 'Unset', value: '' }]),
-          { label: 'False', value: 'false' },
-          { label: 'True', value: 'true' },
-        ]}
-      />
+          onChange={(value) => {
+            if (value === 'true') {
+              inputProps.onChange(true)
+              return
+            }
+            if (value === 'false') {
+              inputProps.onChange(false)
+              return
+            }
+            inputProps.onChange('')
+          }}
+          onError={inputProps.error}
+          onFocus={inputProps.onFocus}
+          onBlur={inputProps.onBlur}
+          size="xs"
+          data={[
+            ...(parameter.required ? [] : [{ label: 'Unset', value: '' }]),
+            { label: 'False', value: 'false' },
+            { label: 'True', value: 'true' },
+          ]}
+        />
+      </Input.Wrapper>
     )
   }
   const { value, ...rest } = inputProps

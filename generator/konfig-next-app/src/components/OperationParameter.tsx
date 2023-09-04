@@ -57,7 +57,7 @@ export function OperationParameter({
             </Text>
           )}
         </Box>
-        <Box ta="right" w="35%">
+        <Box ta="right" w="40%">
           <ParameterInput
             owner={owner}
             repo={repo}
