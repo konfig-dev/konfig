@@ -108,16 +108,6 @@ function generateFormInputValues({
   }
   let validate: FormValues['validate'] = {}
   for (const parameter of parameters) {
-    if (parameter.required) {
-      const validation: FormValues['validate'] = {
-        parameters: {
-          [parameter.name]: (value) => {
-            return isNotEmpty(`${parameter.name} is required`)(value)
-          },
-        },
-      }
-      validate = deepmerge(validation, validate)
-    }
     if (parameter.schema.type === 'object' && parameter.schema.properties) {
       const parameters: GenerateFormInputValuesInput['parameters'] =
         Object.entries(parameter.schema.properties).map(([name, schema]) => {
@@ -135,10 +125,23 @@ function generateFormInputValues({
         hideSecurity,
         clientState,
       }
+
+      // TODO: handle nested field validation
+
       const innerInitialValues = generateFormInputValues(innerInput)
       initialValues.parameters[parameter.name] =
         innerInitialValues.initialValues.parameters
     } else {
+      if (parameter.required) {
+        const validation: FormValues['validate'] = {
+          parameters: {
+            [parameter.name]: (value) => {
+              return isNotEmpty(`${parameter.name} is required`)(value)
+            },
+          },
+        }
+        validate = deepmerge(validation, validate)
+      }
       initialValues.parameters[parameter.name] = ''
     }
   }
