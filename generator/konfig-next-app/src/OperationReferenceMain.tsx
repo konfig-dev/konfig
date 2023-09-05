@@ -39,6 +39,7 @@ import { tryJsonOutput } from './utils/try-json-output'
 import { tryTableOutput } from './utils/try-table-output'
 import { IconAlertCircle, IconTerminal } from '@tabler/icons-react'
 import { deepmerge } from './utils/deepmerge'
+import { notifications } from '@mantine/notifications'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -150,6 +151,12 @@ export function OperationReferenceMain({
     statusText: string
   } | null>(null)
 
+  const handleError = (errors: typeof form.errors) => {
+    for (const message of Object.values(errors)) {
+      notifications.show({ message, color: 'red' })
+    }
+  }
+
   return (
     <FormProvider form={form}>
       <form
@@ -191,7 +198,7 @@ export function OperationReferenceMain({
             }
             setRequestInProgress(false)
           }
-        })}
+        }, handleError)}
       >
         <Flex
           direction={{ base: 'column', sm: 'row' }}
