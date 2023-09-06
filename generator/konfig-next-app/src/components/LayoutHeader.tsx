@@ -41,7 +41,7 @@ export const LayoutHeader = observer(
               opened={opened}
               onClick={() => setOpened((o) => !o)}
               size="sm"
-              color={theme.colors.gray[6]}
+              color={theme.white}
             />
           </MediaQuery>
           <Title order={4}>{title}</Title>
