@@ -1,9 +1,9 @@
 import { Parameter } from '@/components/OperationParameter'
 import type { UseFormInput } from '@mantine/form/lib/types'
-import { isNotEmpty } from '@mantine/form'
 import { StaticProps } from '@/pages/[org]/[portal]/reference/[tag]/[operationId]'
 import { getInputPlaceholder } from '@/components/OperationSecuritySchemeForm'
 import { deepmerge } from './deepmerge'
+import { isNotEmpty } from './is-not-empty'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   owner,
@@ -127,10 +127,18 @@ function generateFormInputValues({
       }
 
       // TODO: handle nested field validation
+      // we should recursively handle validation so multi-nested inner forms are validated
 
       const innerInitialValues = generateFormInputValues(innerInput)
       initialValues.parameters[parameter.name] =
         innerInitialValues.initialValues.parameters
+
+      const validation: FormValues['validate'] = {
+        parameters: {
+          [parameter.name]: (innerInitialValues.validate as any).parameters,
+        },
+      }
+      validate = deepmerge(validation, validate)
     } else {
       if (parameter.required) {
         const validation: FormValues['validate'] = {
