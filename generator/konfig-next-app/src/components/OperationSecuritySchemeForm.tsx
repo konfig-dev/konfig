@@ -6,7 +6,7 @@ import {
   SECURITY_FORM_VALUE_SUFFIX,
 } from '@/utils/generate-initial-operation-form-values'
 import { useFormContext } from '@/utils/operation-form-context'
-import { TextInput } from '@mantine/core'
+import { PasswordInput } from '@mantine/core'
 import type { SecurityScheme } from 'konfig-lib'
 
 export function OperationSecuritySchemeForm({
@@ -24,7 +24,7 @@ export function OperationSecuritySchemeForm({
   ) {
     return (
       <>
-        <TextInput
+        <PasswordInput
           withAsterisk
           label={'OAuth Client ID'}
           placeholder={'OAuth Client Secret'}
@@ -32,7 +32,7 @@ export function OperationSecuritySchemeForm({
             `${SECURITY_FORM_NAME_PREFIX}.${name}.${OAUTH2_CLIENT_ID_PROPERTY}`
           )}
         />
-        <TextInput
+        <PasswordInput
           withAsterisk
           label={'OAuth Client Secret'}
           placeholder={'OAuth Client Secret'}
@@ -45,7 +45,7 @@ export function OperationSecuritySchemeForm({
   }
   const formInputName = generateSecurityFormInputName({ name })
   return (
-    <TextInput
+    <PasswordInput
       withAsterisk
       label={getInputPlaceholder({ scheme })}
       placeholder={getInputPlaceholder({ scheme })}
@@ -58,7 +58,7 @@ export function OperationClientStateForm({ name }: { name: string }) {
   const form = useFormContext()
   const formInputName = `${SECURITY_FORM_NAME_PREFIX}.${name}.${CLIENT_STATE_VALUE_PROPERTY}`
   return (
-    <TextInput
+    <PasswordInput
       withAsterisk
       label={name}
       placeholder={name}

@@ -39,7 +39,6 @@ import { tryJsonOutput } from './utils/try-json-output'
 import { tryTableOutput } from './utils/try-table-output'
 import { IconAlertCircle, IconTerminal } from '@tabler/icons-react'
 import { deepmerge } from './utils/deepmerge'
-import { useMediaQuery } from '@mantine/hooks'
 
 export function OperationReferenceMain({
   pathParameters,
