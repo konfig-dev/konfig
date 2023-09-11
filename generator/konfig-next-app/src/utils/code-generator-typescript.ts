@@ -88,12 +88,14 @@ ${this.nonEmptySecurity
     return `{${parameters}}`
   }
 
-  argValue(value: JSONValue): string {
+  argValue(value: JSONValue, index?: number): string {
     if (Array.isArray(value)) {
-      return `[${value.map((v) => this.argValue(v)).join(', ')}]`
+      return `[${value.map((v, index) => this.argValue(v, index)).join(', ')}]`
     }
     if (value instanceof File) {
-      return 'fs.readFileSync("FILE_PATH")'
+      return `fs.readFileSync("FILE_PATH${
+        index !== undefined ? `_${index}` : ``
+      }")`
     } else if (typeof value === 'object' && value !== null) {
       // filter properties that have empty string ('') as a value
       const filtered = Object.entries(value).filter(([_, v]) => v !== '')
