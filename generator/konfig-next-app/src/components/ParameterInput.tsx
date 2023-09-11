@@ -55,7 +55,13 @@ export function ParameterInput({
             )
               return
             const innerType = parameter.schema.items as SchemaObject
-            if (innerType.type === 'object') {
+            // if the currenty value is not an Array, then we need to convert it to an array
+            if (!Array.isArray(inputProps.value)) {
+              form.setFieldValue(formInputName, [])
+            }
+            if (innerType.type === 'string') {
+              form.insertListItem(formInputName, '')
+            } else if (innerType.type === 'object') {
               const bodyParameters: ParameterFromBodyParameterInput[] = []
               for (const iterator of Object.entries(
                 innerType.properties || {}
@@ -82,10 +88,6 @@ export function ParameterInput({
               const initialValues = formValues.initialValues
               if (initialValues === undefined) return
 
-              // if the currenty value is not an Array, then we need to convert it to an array
-              if (!Array.isArray(inputProps.value)) {
-                form.setFieldValue(formInputName, [])
-              }
               form.insertListItem(formInputName, initialValues.parameters)
             }
           }}

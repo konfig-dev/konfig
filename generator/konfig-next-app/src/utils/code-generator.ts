@@ -116,6 +116,8 @@ export abstract class CodeGenerator {
         return (
           parameter !== '' &&
           parameter !== undefined &&
+          Array.isArray(parameter) &&
+          parameter.length > 0 &&
           this._parameters.find((p) => p.name === name)
         )
       }

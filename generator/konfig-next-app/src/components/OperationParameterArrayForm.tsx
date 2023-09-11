@@ -27,7 +27,35 @@ export function OperationParameterArrayForm({
       return null
     }
     if ('$ref' in param.schema.items) return null
-    if (param.schema.items.type === 'object') {
+    if (param.schema.items.type === 'string') {
+      return (
+        <Paper key={index} radius="xs" p="xs" withBorder>
+          <Stack spacing="xs">
+            <Group position="apart">
+              <Text color="dimmed" fw="bold" size="xs">
+                string{` ${index + 1}`}
+              </Text>
+              <CloseButton
+                onClick={() => form.removeListItem(formInputName, index)}
+                title="Remove string from array"
+              />
+            </Group>
+            <OperationParameter
+              noLabel
+              owner={owner}
+              repo={repo}
+              key={index}
+              prefix={formInputName}
+              param={{
+                name: index.toString(),
+                in: 'body',
+                schema: param.schema.items,
+              }}
+            />
+          </Stack>
+        </Paper>
+      )
+    } else if (param.schema.items.type === 'object') {
       if (param.schema.items.properties === undefined) return null
       const reactNodes: ReactNode[] = []
       for (const name in param.schema.items.properties) {
