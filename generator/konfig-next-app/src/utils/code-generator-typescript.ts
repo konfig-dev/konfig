@@ -93,6 +93,9 @@ ${this.nonEmptySecurity
       return `[${value.map((v, index) => this.argValue(v, index)).join(', ')}]`
     }
     if (value instanceof File) {
+      if (value.name !== '') {
+        return `fs.readFileSync("${value.name}")`
+      }
       return `fs.readFileSync("FILE_PATH${
         index !== undefined ? `_${index + 1}` : ``
       }")`
