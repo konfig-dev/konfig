@@ -27,8 +27,11 @@ ${this.mode === 'production' ? `console.log(response.data)` : ''}
   }
 
   get importStatement(): string {
-    if (this.mode === 'production')
+    if (this.mode === 'production') {
+      if (this.args.includes('fs.readFileSync'))
+        return `import { ${this.clientName} } from '${this.packageName}'\nimport fs from 'fs'`
       return `import { ${this.clientName} } from '${this.packageName}'`
+    }
     return ``
   }
 
@@ -46,15 +49,26 @@ ${this.mode === 'production' ? `console.log(response.data)` : ''}
 ${this.nonEmptySecurity
   .map(([_name, value]) => {
     if (value.type === 'oauth2-client-credentials') {
+      // convert value.clientSecret to string of same length with all values replace with char 'X'
+      const clientSecret =
+        this.mode === 'sandbox'
+          ? value.clientSecret
+          : value.clientSecret.replace(/./g, 'X')
       return ` "oauthClientId": "${value.clientId}",
-      "oauthClientSecret": "${value.clientSecret}",`
+      "oauthClientSecret": "${clientSecret}",`
     }
     if (value.type === 'bearer') {
-      return ` "accessToken": "${value.value}",`
+      // convert value.value to string of same length with all values replace with char 'X'
+      const bearer =
+        this.mode === 'sandbox' ? value.value : value.value.replace(/./g, 'X')
+      return ` "accessToken": "${bearer}",`
     }
     const securityValue = value.type === 'apiKey' ? value.value : value.value
     const securityKey = value.type === 'apiKey' ? value.key : value.name
-    return `  ${securityKey}: '${securityValue}',`
+    // convert securityValue to string of same length with all values replace with char 'X'
+    const securityValueMasked =
+      this.mode === 'sandbox' ? securityValue : securityValue.replace(/./g, 'X')
+    return `  ${securityKey}: '${securityValueMasked}',`
   })
   .join('\n')}
   ${
@@ -78,7 +92,9 @@ ${this.nonEmptySecurity
     if (Array.isArray(value)) {
       return `[${value.map((v) => this.argValue(v)).join(', ')}]`
     }
-    if (typeof value === 'object' && value !== null) {
+    if (value instanceof File) {
+      return 'fs.readFileSync("FILE_PATH")'
+    } else if (typeof value === 'object' && value !== null) {
       // filter properties that have empty string ('') as a value
       const filtered = Object.entries(value).filter(([_, v]) => v !== '')
       if (filtered.length === 0) {
