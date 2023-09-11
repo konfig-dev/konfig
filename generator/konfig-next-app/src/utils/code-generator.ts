@@ -4,6 +4,7 @@ import {
   BEARER_VALUE_PROPERTY,
   CLIENT_STATE_VALUE_PROPERTY,
   FormDataType,
+  FormInputValues,
   OAUTH2_CLIENT_ID_PROPERTY,
   OAUTH2_CLIENT_SECRET_PROPERTY,
   PARAMETER_FORM_NAME_PREFIX,
@@ -110,18 +111,61 @@ export abstract class CodeGenerator {
   /**
    * Returns the setup values that are non-empty and exist as part of passed parameters
    */
-  get nonEmptyParameters() {
-    return Object.entries(this._formData[PARAMETER_FORM_NAME_PREFIX]).filter(
-      ([name, parameter]) => {
+  get nonEmptyParameters(): [string, FormInputValues[string]][] {
+    const parameters = Object.entries(
+      this._formData[PARAMETER_FORM_NAME_PREFIX]
+    )
+
+    return parameters
+      .filter(([name]) => {
+        return this.isInThisOperation(name)
+      })
+      .filter(([_name, value]) => this.isNonEmpty(value))
+      .map(([name, value]) => {
+        console.log(name, value)
+        return [name, this.recursivelyRemoveEmptyValuesFromObject(value)]
+      })
+  }
+
+  isInThisOperation(name: string): boolean {
+    return this._parameters.find((p) => p.name === name) !== undefined
+  }
+
+  recursivelyRemoveEmptyValuesFromObject(
+    object: FormInputValues[string]
+  ): FormInputValues[string] {
+    if (typeof object !== 'object') return object
+    if (Array.isArray(object)) return object
+
+    const clone = { ...object }
+    Object.entries(object).forEach(([key, value]) => {
+      if (typeof value === 'object') {
+        clone[key] = this.recursivelyRemoveEmptyValuesFromObject(value)
+        if (!this.isNonEmpty(clone[key])) delete clone[key]
+      } else if (!this.isNonEmpty(value)) {
+        delete clone[key]
+      }
+    })
+    return clone
+  }
+
+  /**
+   * Returns whether or not the parameter is non-empty (i.e. not undefined, not an empty string, not an empty array).
+   * Recursively checks if the parameter is an object and checks if any of the values are non-empty
+   * @param parameter The parameter to check
+   * @returns boolean
+   */
+  isNonEmpty(parameter: FormInputValues[string]): boolean {
+    if (parameter === undefined) return false
+    if (!Array.isArray(parameter)) {
+      if (typeof parameter === 'object') {
         return (
-          (!Array.isArray(parameter) &&
-            parameter !== '' &&
-            parameter !== undefined &&
-            this._parameters.find((p) => p.name === name)) ||
-          (Array.isArray(parameter) && parameter.length > 0)
+          Object.values(parameter).filter((p) => this.isNonEmpty(p)).length > 0
         )
       }
-    )
+      return parameter !== ''
+    }
+    return parameter.length > 0
   }
 
   /**
