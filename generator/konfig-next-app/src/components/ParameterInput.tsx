@@ -80,7 +80,12 @@ export function ParameterInput({
             if (!Array.isArray(inputProps.value)) {
               form.setFieldValue(formInputName, [])
             }
-            if (innerType.type === 'string' && innerType.format === 'binary') {
+            if (innerType.type === 'number' || innerType.type === 'integer') {
+              form.insertListItem(formInputName, NaN)
+            } else if (
+              innerType.type === 'string' &&
+              innerType.format === 'binary'
+            ) {
               // empty file to signify that the user has not selected a file
               form.insertListItem(formInputName, new File([], ''))
             } else if (innerType.type === 'string') {
