@@ -94,7 +94,7 @@ ${this.nonEmptySecurity
     }
     if (value instanceof File) {
       return `fs.readFileSync("FILE_PATH${
-        index !== undefined ? `_${index}` : ``
+        index !== undefined ? `_${index + 1}` : ``
       }")`
     } else if (typeof value === 'object' && value !== null) {
       // filter properties that have empty string ('') as a value
