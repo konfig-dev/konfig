@@ -152,8 +152,8 @@ export function OperationReferenceMain({
   } | null>(null)
 
   const handleError = (errors: typeof form.errors) => {
-    for (const message of Object.values(errors)) {
-      notifications.show({ message, color: 'red' })
+    for (const [id, message] of Object.entries(errors)) {
+      notifications.show({ message, color: 'red', id })
     }
   }
 
