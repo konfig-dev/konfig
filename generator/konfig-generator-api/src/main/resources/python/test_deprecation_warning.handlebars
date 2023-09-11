@@ -2,10 +2,14 @@ import unittest
 from unittest.mock import patch
 
 from {{packageName}}.api_client import ApiClient, DeprecationWarningOnce
+from {{packageName}}.configuration import Configuration
 
 
 class RandomClass:
-    api_client = ApiClient()
+    configuration = Configuration(
+    {{> api_doc_auth_partial}}
+    )
+    api_client = ApiClient(configuration)
 
     @DeprecationWarningOnce
     def deprecated_method(self):
