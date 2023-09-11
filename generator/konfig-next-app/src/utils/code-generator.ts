@@ -122,7 +122,7 @@ export abstract class CodeGenerator {
       })
       .filter(([_name, value]) => this.isNonEmpty(value))
       .map(([name, value]) => {
-        return [name, this.recursivelyRemoveEmptyValuesFromObject(value)]
+        return [name, this.recursivelyRemoveEmptyValues(value)]
       })
   }
 
@@ -130,16 +130,27 @@ export abstract class CodeGenerator {
     return this._parameters.find((p) => p.name === name) !== undefined
   }
 
-  recursivelyRemoveEmptyValuesFromObject(
+  /**
+   * Useful for pruning tree of argument values to only those that are
+   * significant when constructing the SDK method call
+   * @param object  The object to recursively remove empty values from
+   * @returns The object with empty values removed
+   */
+  recursivelyRemoveEmptyValues(
     object: FormInputValues[string]
   ): FormInputValues[string] {
     if (typeof object !== 'object') return object
-    if (Array.isArray(object)) return object
+
+    if (Array.isArray(object)) {
+      // remove all empty values from array and return
+      const filtered = (object as any).filter((p: any) => this.isNonEmpty(p))
+      return filtered
+    }
 
     const clone = { ...object }
     Object.entries(object).forEach(([key, value]) => {
       if (typeof value === 'object') {
-        clone[key] = this.recursivelyRemoveEmptyValuesFromObject(value)
+        clone[key] = this.recursivelyRemoveEmptyValues(value)
         if (!this.isNonEmpty(clone[key])) delete clone[key]
       } else if (!this.isNonEmpty(value)) {
         delete clone[key]
@@ -164,7 +175,13 @@ export abstract class CodeGenerator {
       }
       return parameter !== ''
     }
-    return parameter.length > 0
+    // filter parameter for non-empty filters
+    const filtered: FormInputValues[string][] = []
+    for (const p of parameter) {
+      if (this.isNonEmpty(p)) filtered.push(p)
+    }
+
+    return filtered.length > 0
   }
 
   /**

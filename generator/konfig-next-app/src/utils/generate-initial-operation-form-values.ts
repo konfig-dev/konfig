@@ -28,10 +28,11 @@ export const BEARER_VALUE_PROPERTY = 'value' as const
 export type FormInputValues = {
   [parameter: string]:
     | string
+    | number
     | FormInputValues
     | string[]
     | number[]
-    | Array<FormInputValues>
+    | FormInputValues[]
 }
 
 export type FormDataType = {

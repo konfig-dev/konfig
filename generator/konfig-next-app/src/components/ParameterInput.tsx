@@ -81,7 +81,7 @@ export function ParameterInput({
               form.setFieldValue(formInputName, [])
             }
             if (innerType.type === 'number' || innerType.type === 'integer') {
-              form.insertListItem(formInputName, NaN)
+              form.insertListItem(formInputName, '')
             } else if (
               innerType.type === 'string' &&
               innerType.format === 'binary'
