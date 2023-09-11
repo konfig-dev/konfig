@@ -125,7 +125,13 @@ ${this.nonEmptySecurity
   }
 
   get namespace() {
-    return camelCase(this.tag)
+    // remove all non-alphanumeric characters from this.tag and assign to variable. preserve spaces
+    const tag = this.tag.replace(/[^a-zA-Z0-9 ]/g, '')
+
+    // convert capital letters to lowercase that aren't at the beginning of a word
+    const lowercased = tag.replace(/\B[A-Z]/g, (s) => s.toLowerCase())
+
+    return camelCase(lowercased)
   }
 
   get methodName() {
