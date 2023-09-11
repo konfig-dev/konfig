@@ -122,7 +122,6 @@ export abstract class CodeGenerator {
       })
       .filter(([_name, value]) => this.isNonEmpty(value))
       .map(([name, value]) => {
-        console.log(name, value)
         return [name, this.recursivelyRemoveEmptyValuesFromObject(value)]
       })
   }
