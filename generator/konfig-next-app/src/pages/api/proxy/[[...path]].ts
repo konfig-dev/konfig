@@ -2,32 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import axios, { AxiosRequestConfig } from 'axios'
 import { URL } from 'url'
 
-// CORS middleware
-function handleCors(req: NextApiRequest, res: NextApiResponse) {
-  const allowedOrigin =
-    process.env.NODE_ENV === 'production' ? 'https://demo.konfigthis.com' : '*'
-
-  const requestHeaders = req.headers['access-control-request-headers']
-
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin)
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', requestHeaders || '*')
-
-  if (req.method === 'OPTIONS') {
-    // Preflight request. Reply successfully:
-    res.status(204).send('')
-    return false
-  }
-
-  return true
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (!handleCors(req, res)) return // handle preflight CORS requests
-
   const targetUrl = req.headers['x-proxy-target']
 
   if (!targetUrl || typeof targetUrl !== 'string') {
