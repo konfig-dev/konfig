@@ -114,11 +114,11 @@ export abstract class CodeGenerator {
     return Object.entries(this._formData[PARAMETER_FORM_NAME_PREFIX]).filter(
       ([name, parameter]) => {
         return (
-          parameter !== '' &&
-          parameter !== undefined &&
-          Array.isArray(parameter) &&
-          parameter.length > 0 &&
-          this._parameters.find((p) => p.name === name)
+          (!Array.isArray(parameter) &&
+            parameter !== '' &&
+            parameter !== undefined &&
+            this._parameters.find((p) => p.name === name)) ||
+          (Array.isArray(parameter) && parameter.length > 0)
         )
       }
     )
