@@ -28,6 +28,35 @@ export function OperationParameterArrayForm({
     }
     if ('$ref' in param.schema.items) return null
     if (param.schema.items.type === 'string') {
+      if (param.schema.items.format === 'binary') {
+        return (
+          <Paper key={index} radius="xs" p="xs" withBorder>
+            <Stack spacing="xs">
+              <Group position="apart">
+                <Text color="dimmed" fw="bold" size="xs">
+                  file{` ${index + 1}`}
+                </Text>
+                <CloseButton
+                  onClick={() => form.removeListItem(formInputName, index)}
+                  title="Remove file from array"
+                />
+              </Group>
+              <OperationParameter
+                noLabel
+                owner={owner}
+                repo={repo}
+                key={index}
+                prefix={formInputName}
+                param={{
+                  name: index.toString(),
+                  in: 'body',
+                  schema: param.schema.items,
+                }}
+              />
+            </Stack>
+          </Paper>
+        )
+      }
       return (
         <Paper key={index} radius="xs" p="xs" withBorder>
           <Stack spacing="xs">
