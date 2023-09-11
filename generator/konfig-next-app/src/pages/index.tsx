@@ -30,6 +30,11 @@ export default function Home({}: InferGetServerSidePropsType<
               description="https://splitit.com"
             />
             <NavLink
+              onClick={() => router.push('/leap-ai/leap-sdks')}
+              label="Leap"
+              description="https://tryleap.ai"
+            />
+            <NavLink
               onClick={() => router.push('/konfig-dev/konfig-demo-docs')}
               label="Konfig"
               description="https://apidemo.konfigthis.com"
