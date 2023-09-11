@@ -1,13 +1,8 @@
-import {
-  ActionIcon,
-  useMantineColorScheme,
-  useMantineTheme,
-} from '@mantine/core'
+import { ActionIcon, useMantineColorScheme } from '@mantine/core'
 import { IconSun, IconMoonStars } from '@tabler/icons-react'
 
 export function ColorSchemeToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
-  const theme = useMantineTheme()
   return (
     <ActionIcon
       color={colorScheme === 'light' ? 'brand' : undefined}
