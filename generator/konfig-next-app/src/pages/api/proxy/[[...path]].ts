@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import { URL } from 'url'
 
 // CORS middleware
@@ -42,6 +42,8 @@ export default async function handler(
   if (extraPath) {
     url.pathname += '/' + extraPath
   }
+  // ensure no double slashes in url
+  url.pathname = url.pathname.replace(/\/\//g, '/')
 
   // Append any query parameters
   if (req.url) {
@@ -53,19 +55,29 @@ export default async function handler(
   delete req.headers['host']
 
   // remove other headers that should be generated when making request by axios
-  // delete req.headers["accept-encoding"];
-  // delete req.headers["content-length"];
-  // delete req.headers["transfer-encoding"];
-  // delete req.headers["content-type"];
+  // delete req.headers['accept-encoding']
+  // delete req.headers['content-length']
+  delete req.headers['transfer-encoding']
+  // delete req.headers['content-type']
+  // delete req.headers['user-agent']
+  // delete req.headers['sec-ch-ua']
+  // delete req.headers['sec-ch-ua-mobile']
+  // delete req.headers['sec-ch-ua-platform']
+  // delete req.headers['sec-ch-fetch-dest']
+  // delete req.headers['sec-ch-fetch-site']
+  // delete req.headers['sec-ch-fetch-mode']
+  // delete req.headers['referer']
 
   try {
-    const response = await axios({
+    const requestConfig: AxiosRequestConfig = {
       method: req.method as any,
       url: url.toString(),
       headers: req.headers,
       data: req.body,
       validateStatus: () => true, // ensure all responses are forwarded, not just successful ones
-    })
+    }
+
+    const response = await axios(requestConfig)
 
     // Forward status code
     res.status(response.status)
