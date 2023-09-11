@@ -913,6 +913,13 @@ public class DefaultGenerator implements Generator {
         if (openAPI.getInfo() != null)
             bundle.put("infoExtensions", openAPI.getInfo().getExtensions());
 
+        if (bundle.get("packageVersion") != null)
+            bundle.put("packageVersionWithoutDashes", ((String) bundle.get("packageVersion")).replaceAll("-", ""));
+        if (bundle.get("npmVersion") != null)
+            bundle.put("npmVersionWithoutDashes", ((String) bundle.get("npmVersion")).replaceAll("-", ""));
+        if (bundle.get("artifactVersion") != null)
+            bundle.put("artifactVersionWithoutDashes", ((String) bundle.get("artifactVersion")).replaceAll("-", ""));
+
         config.postProcessSupportingFileData(bundle);
 
         if (GlobalSettings.getProperty("debugSupportingFiles") != null) {
