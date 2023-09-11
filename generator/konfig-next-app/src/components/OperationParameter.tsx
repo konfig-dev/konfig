@@ -29,43 +29,54 @@ export function OperationParameter({
   prefix,
   owner,
   repo,
+  noLabel,
 }: {
   param: Parameter
   prefix?: string
   owner: string
   repo: string
+  noLabel?: boolean
 }) {
   const description = getDescription(param)
   return (
     <Stack>
-      <Flex justify="space-between">
-        <Box maw="50%" key={param.name}>
-          <Flex align="center" wrap="wrap">
-            <Code>{param.name}</Code>
-            <Text ml={rem(5)} fz="sm">
-              {schemaTypeLabel({ schema: param.schema })}
-            </Text>
-            {param.required && (
-              <Text ml={rem(5)} fz="xs" color="red">
-                {'required'}
+      {noLabel ? (
+        <ParameterInput
+          owner={owner}
+          repo={repo}
+          prefix={prefix}
+          parameter={param}
+        />
+      ) : (
+        <Flex justify="space-between">
+          <Box maw="50%" key={param.name}>
+            <Flex align="center" wrap="wrap">
+              <Code>{param.name}</Code>
+              <Text ml={rem(5)} fz="sm">
+                {schemaTypeLabel({ schema: param.schema })}
+              </Text>
+              {param.required && (
+                <Text ml={rem(5)} fz="xs" color="red">
+                  {'required'}
+                </Text>
+              )}
+            </Flex>
+            {description && (
+              <Text c="dimmed" fz="sm">
+                {description}
               </Text>
             )}
-          </Flex>
-          {description && (
-            <Text c="dimmed" fz="sm">
-              {description}
-            </Text>
-          )}
-        </Box>
-        <Box ta="right" w="40%">
-          <ParameterInput
-            owner={owner}
-            repo={repo}
-            prefix={prefix}
-            parameter={param}
-          />
-        </Box>
-      </Flex>
+          </Box>
+          <Box ta="right" w="40%">
+            <ParameterInput
+              owner={owner}
+              repo={repo}
+              prefix={prefix}
+              parameter={param}
+            />
+          </Box>
+        </Flex>
+      )}
       <OperationParameterArrayForm
         owner={owner}
         repo={repo}
