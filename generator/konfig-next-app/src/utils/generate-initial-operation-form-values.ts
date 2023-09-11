@@ -15,14 +15,15 @@ export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
 export const PARAMETER_FORM_NAME_PREFIX = `parameters` as const
 export const SECURITY_FORM_NAME_PREFIX = `security` as const
 export const SECURITY_FORM_VALUE_SUFFIX = 'value' as const
-export const SECURITY_TYPE_PROPERTY = 'type'
-export const API_KEY_IN_PROPERTY = 'in'
-export const API_KEY_NAME_PROPERTY = 'key'
-export const OAUTH2_CLIENT_ID_PROPERTY = 'clientId'
-export const OAUTH2_CLIENT_SECRET_PROPERTY = 'clientSecret'
-export const API_KEY_VALUE_PROPERTY = 'value'
-export const CLIENT_STATE_VALUE_PROPERTY = 'value'
-export const CLIENT_STATE_NAME_PROPERTY = 'name'
+export const SECURITY_TYPE_PROPERTY = 'type' as const
+export const API_KEY_IN_PROPERTY = 'in' as const
+export const API_KEY_NAME_PROPERTY = 'key' as const
+export const OAUTH2_CLIENT_ID_PROPERTY = 'clientId' as const
+export const OAUTH2_CLIENT_SECRET_PROPERTY = 'clientSecret' as const
+export const API_KEY_VALUE_PROPERTY = 'value' as const
+export const CLIENT_STATE_VALUE_PROPERTY = 'value' as const
+export const CLIENT_STATE_NAME_PROPERTY = 'name' as const
+export const BEARER_VALUE_PROPERTY = 'value' as const
 
 export type FormInputValues = {
   [parameter: string]:
@@ -47,6 +48,10 @@ export type FormDataType = {
         [API_KEY_IN_PROPERTY]: string
         [API_KEY_NAME_PROPERTY]: string
         [API_KEY_VALUE_PROPERTY]: string
+      }
+    | {
+        [SECURITY_TYPE_PROPERTY]: 'bearer'
+        [BEARER_VALUE_PROPERTY]: string
       }
     | {
         [SECURITY_TYPE_PROPERTY]: 'clientState'
@@ -197,6 +202,24 @@ function generateFormInputValues({
               },
               [OAUTH2_CLIENT_ID_PROPERTY]: (value) => {
                 return isNotEmpty(`OAuth Client ID is required`)(value)
+              },
+            },
+          },
+        }
+        validate = deepmerge(validation, validate)
+      } else if (
+        securityScheme.type === 'http' &&
+        securityScheme.scheme === 'bearer'
+      ) {
+        initialValues.security[name] = {
+          [SECURITY_TYPE_PROPERTY]: 'bearer',
+          [BEARER_VALUE_PROPERTY]: '',
+        }
+        const validation: FormValues['validate'] = {
+          [SECURITY_FORM_NAME_PREFIX]: {
+            [name]: {
+              [BEARER_VALUE_PROPERTY]: (value) => {
+                return isNotEmpty(`Token is required`)(value)
               },
             },
           },

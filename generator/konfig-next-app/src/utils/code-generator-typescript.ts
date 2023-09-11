@@ -49,6 +49,9 @@ ${this.nonEmptySecurity
       return ` "oauthClientId": "${value.clientId}",
       "oauthClientSecret": "${value.clientSecret}",`
     }
+    if (value.type === 'bearer') {
+      return ` "accessToken": "${value.value}",`
+    }
     const securityValue = value.type === 'apiKey' ? value.value : value.value
     const securityKey = value.type === 'apiKey' ? value.key : value.name
     return `  ${securityKey}: '${securityValue}',`

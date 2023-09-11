@@ -1,4 +1,5 @@
 import {
+  BEARER_VALUE_PROPERTY,
   CLIENT_STATE_VALUE_PROPERTY,
   OAUTH2_CLIENT_ID_PROPERTY,
   OAUTH2_CLIENT_SECRET_PROPERTY,
@@ -7,6 +8,7 @@ import {
 } from '@/utils/generate-initial-operation-form-values'
 import { useFormContext } from '@/utils/operation-form-context'
 import { PasswordInput } from '@mantine/core'
+import { IconLock } from '@tabler/icons-react'
 import type { SecurityScheme } from 'konfig-lib'
 
 export function OperationSecuritySchemeForm({
@@ -17,6 +19,19 @@ export function OperationSecuritySchemeForm({
   scheme: SecurityScheme
 }) {
   const form = useFormContext()
+  if (scheme.type === 'http' && scheme.scheme === 'bearer') {
+    return (
+      <PasswordInput
+        withAsterisk
+        label={getInputPlaceholder({ scheme })}
+        placeholder={getInputPlaceholder({ scheme })}
+        icon={<IconLock size="0.8rem" />}
+        {...form.getInputProps(
+          `${SECURITY_FORM_NAME_PREFIX}.${name}.${BEARER_VALUE_PROPERTY}`
+        )}
+      />
+    )
+  }
   if (
     scheme.type === 'oauth2' &&
     'flows' in scheme &&
@@ -82,6 +97,10 @@ export function getInputPlaceholder({ scheme }: { scheme: SecurityScheme }) {
     return 'Authorization'
   }
   if (scheme.type === 'http') {
+    if (scheme.scheme === 'bearer') {
+      return 'Token'
+    }
+
     return 'Authorization'
   }
   if (scheme.type === 'openIdConnect') {
