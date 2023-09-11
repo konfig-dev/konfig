@@ -17,7 +17,7 @@ import {
 } from '@/utils/generate-initial-operation-form-values'
 import { useFormContext } from '@/utils/operation-form-context'
 import { IconCalendar } from '@tabler/icons-react'
-import { DatePickerInput } from '@mantine/dates'
+import { DatePickerInput, DateTimePicker } from '@mantine/dates'
 import { parseDateString } from '@/utils/parse-date-string'
 import {
   ParameterFromBodyParameterInput,
@@ -184,6 +184,30 @@ export function ParameterInput({
           if (date instanceof Date) {
             // converts date to YYYY-MM-DD format
             onChange(date.toISOString().split('T')[0])
+          }
+        }}
+        {...rest}
+      />
+    )
+  }
+  if (
+    parameter.schema.type === 'string' &&
+    parameter.schema.format === 'date-time'
+  ) {
+    const { value, onChange, ...rest } = inputProps
+    return (
+      <DateTimePicker
+        icon={<IconCalendar size="1.1rem" stroke={1.5} />}
+        radius="xs"
+        clearable
+        value={parseDateString(value)}
+        onChange={(date) => {
+          if (date === null) {
+            onChange('')
+            return
+          }
+          if (date instanceof Date) {
+            onChange(date.toISOString())
           }
         }}
         {...rest}
