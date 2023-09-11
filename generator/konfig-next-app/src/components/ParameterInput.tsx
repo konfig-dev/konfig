@@ -1,13 +1,15 @@
 import {
   Button,
+  FileInput,
   Input,
   NumberInput,
   SegmentedControl,
   Select,
   TextInput,
+  rem,
   useMantineTheme,
 } from '@mantine/core'
-import { IconPlus } from '@tabler/icons-react'
+import { IconPlus, IconUpload } from '@tabler/icons-react'
 import { Parameter } from './OperationParameter'
 import {
   PARAMETER_FORM_NAME_PREFIX,
@@ -39,6 +41,25 @@ export function ParameterInput({
   const inputProps = form.getInputProps(formInputName)
   const { colorScheme, colors } = useMantineTheme()
   if (parameter.schema.type === 'object') return null
+  if (
+    parameter.schema.type === 'string' &&
+    parameter.schema.format === 'binary'
+  ) {
+    const { onChange, ...rest } = inputProps
+    return (
+      <FileInput
+        onChange={(file) => {
+          if (file === null) onChange(new File([], ''))
+          else onChange(file)
+        }}
+        {...rest}
+        radius="xs"
+        clearable
+        placeholder="File"
+        icon={<IconUpload size={rem(14)} />}
+      />
+    )
+  }
   if (parameter.schema.type === 'array') {
     return (
       <Input.Wrapper {...inputProps}>
