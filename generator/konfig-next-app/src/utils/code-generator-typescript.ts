@@ -73,7 +73,9 @@ ${this.nonEmptySecurity
   .join('\n')}
   ${
     this.mode === 'production'
-      ? ''
+      ? this.isUsingCustomBasePath
+        ? `basePath: "${this.basePath}",`
+        : ''
       : `basePath: "/api/proxy", baseOptions: {headers: {"x-proxy-target": "${this.basePath}"}}`
   }
 }`

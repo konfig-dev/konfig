@@ -13,6 +13,7 @@ import {
 
 export type CodeGeneratorConstructorArgs = {
   basePath: string
+  servers: string[]
   formData: FormDataType
   parameters: Parameter[]
   clientName: string
@@ -67,6 +68,11 @@ export abstract class CodeGenerator {
   basePath: string
 
   /**
+   * The servers of the API
+   */
+  servers: string[]
+
+  /**
    * Whether or not the request body is required
    */
   requestBodyRequired: boolean
@@ -81,8 +87,10 @@ export abstract class CodeGenerator {
     basePath,
     requestBodyRequired,
     mode = 'production',
+    servers,
   }: CodeGeneratorConstructorArgs) {
     this.basePath = basePath
+    this.servers = servers
     this._formData = formData
     this._parameters = parameters
     this.mode = mode
@@ -102,6 +110,10 @@ export abstract class CodeGenerator {
 
   async snippet(): Promise<string> {
     return await this.format(this.gen())
+  }
+
+  get isUsingCustomBasePath(): boolean {
+    return this.basePath !== this.servers[0]
   }
 
   get clientNameLowercase(): string {

@@ -55,6 +55,7 @@ export function OperationReferenceMain({
   basePath,
   owner,
   repo,
+  servers,
 }: Pick<
   StaticProps,
   | 'pathParameters'
@@ -67,6 +68,7 @@ export function OperationReferenceMain({
   | 'requestBodyRequired'
   | 'responses'
   | 'securitySchemes'
+  | 'servers'
   | 'operation'
   | 'konfigYaml'
 > & { basePath: string }) {
@@ -158,6 +160,7 @@ export function OperationReferenceMain({
     parameters: parameters,
     formData: form.values,
     clientName: typecriptConfig.clientName,
+    servers,
     packageName: typecriptConfig.npmName,
     operationId: operation.operation.operationId,
     tag: tag,

@@ -368,6 +368,7 @@ const Operation = ({
       >
         <OperationReferenceMain
           owner={owner}
+          servers={servers}
           repo={repo}
           konfigYaml={konfigYaml}
           pathParameters={pathParameters}
