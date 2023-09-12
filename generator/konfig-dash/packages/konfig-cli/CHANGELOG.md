@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.10.5
+
+### Patch Changes
+
+- [#170](https://github.com/konfig-dev/konfig/pull/170) [`74ac81fc`](https://github.com/konfig-dev/konfig/commit/74ac81fc389e2fc1aac36e7871ab55982fb71148) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add --ci flag to fix
+
 ## 1.10.4
 
 ### Patch Changes
