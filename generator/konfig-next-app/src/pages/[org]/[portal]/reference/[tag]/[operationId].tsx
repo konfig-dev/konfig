@@ -55,7 +55,7 @@ export type StaticProps = Omit<GithubResources, 'spec'> & {
   spec: Spec['spec']
   operationId: string
   operation: OperationObject
-  basePath: string
+  servers: string[]
   title: string
   owner: string
   demos: string[] // demo ids
@@ -238,8 +238,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   //   securitySchemes = null
   // }
 
-  const basePath = spec.spec.servers?.[0].url
-  if (basePath === undefined) throw Error('No servers found in spec')
+  const servers = spec.spec.servers?.map((server) => server.url)
+  if (servers === undefined) throw Error('No servers found in spec')
+  if (servers.length === 0) throw Error('No servers found in spec')
 
   // return a 404 if "portal" property is not configured
   if (props.konfigYaml.portal === undefined)
@@ -254,7 +255,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       operationId,
       operation,
       spec: spec.spec,
-      basePath,
+      servers,
       requestBody,
       pathParameters,
       queryParameters,
@@ -288,7 +289,7 @@ const Operation = ({
   requestBodyRequired,
   securityRequirements,
   securitySchemes,
-  basePath,
+  servers: initialServers,
   operation,
   owner,
   repo,
@@ -296,6 +297,9 @@ const Operation = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
+
+  const [basePath, setBasePath] = useState<string | null>(initialServers[0])
+  const [servers, setServers] = useState(initialServers)
 
   const [opened, setOpened] = useState(false)
   const theme = useMantineTheme()
@@ -341,9 +345,15 @@ const Operation = ({
             }}
           >
             <ReferenceNavbar
+              servers={servers}
+              setServers={setServers}
+              owner={owner}
+              repo={repo}
               basePath={basePath}
+              setBasePath={setBasePath}
               setOpened={setOpened}
               navbarData={navbarData}
+              originalServers={initialServers}
             />
           </Navbar>
         }
@@ -369,7 +379,7 @@ const Operation = ({
           responses={responses}
           securitySchemes={securitySchemes}
           operation={operation}
-          basePath={basePath}
+          basePath={basePath ?? servers[0]}
         />
       </AppShell>
     </MantineProvider>

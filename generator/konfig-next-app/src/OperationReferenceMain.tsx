@@ -66,11 +66,10 @@ export function OperationReferenceMain({
   | 'requestBodyProperties'
   | 'requestBodyRequired'
   | 'responses'
-  | 'basePath'
   | 'securitySchemes'
   | 'operation'
   | 'konfigYaml'
->) {
+> & { basePath: string }) {
   const parameters = [
     ...pathParameters,
     ...queryParameters,
