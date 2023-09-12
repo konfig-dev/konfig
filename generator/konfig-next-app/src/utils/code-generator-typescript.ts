@@ -54,7 +54,11 @@ ${this.nonEmptySecurity
         this.mode === 'sandbox'
           ? value.clientSecret
           : value.clientSecret.replace(/./g, 'X')
-      return ` "oauthClientId": "${value.clientId}",
+      const clientId =
+        this.mode === 'sandbox'
+          ? value.clientId
+          : value.clientId.replace(/./g, 'X')
+      return ` "oauthClientId": "${clientId}",
       "oauthClientSecret": "${clientSecret}",`
     }
     if (value.type === 'bearer') {
@@ -72,16 +76,16 @@ ${this.nonEmptySecurity
   })
   .join('\n')}
   ${
+    this.oauthTokenUrl !== null && this.isUsingCustomOAuthTokenUrl
+      ? `oauthTokenUrl: "${this.oauthTokenUrl}",`
+      : ''
+  }
+  ${
     this.mode === 'production'
       ? this.isUsingCustomBasePath
         ? `basePath: "${this.basePath}",`
         : ''
       : `basePath: "/api/proxy", baseOptions: {headers: {"x-proxy-target": "${this.basePath}"}}`
-  }
-  ${
-    this.oauthTokenUrl !== null && this.isUsingCustomOAuthTokenUrl
-      ? `oauthTokenUrl: "${this.oauthTokenUrl}",`
-      : ''
   }
 }`
   }
