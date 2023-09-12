@@ -36,6 +36,7 @@ export async function fixOas({
   progress,
   alwaysYes,
   auto,
+  ci,
   konfigYaml,
   skipMissingResponseDescription,
   skipFixListUsageSecurity,
@@ -45,6 +46,7 @@ export async function fixOas({
   progress: Progress
   alwaysYes: boolean
   auto: boolean
+  ci: boolean
   skipMissingResponseDescription?: boolean
   skipFixListUsageSecurity?: boolean
 }) {
@@ -138,6 +140,7 @@ export async function fixOas({
       spec,
       progress,
       alwaysYes,
+      ci,
     })
 
   // Empty response body

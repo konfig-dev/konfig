@@ -24,13 +24,15 @@ interface FixOptions {
   skipMissingResponseDescriptionFix?: boolean
   skipListUsageSecurity?: boolean
   alwaysYes?: boolean
+  ci?: boolean
 }
 
 export async function executeFixCommand(options: FixOptions): Promise<void> {
   const flags = {
     ...options,
     auto: options.auto ?? true,
-    alwaysYes: options.alwaysYes ?? true,
+    alwaysYes: !!(options.alwaysYes == null || options.alwaysYes || options.ci), // ci mode should always confirm with yes
+    ci: options.ci ?? false,
   }
 
   if (flags.spec === undefined) {
@@ -104,6 +106,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     konfigYaml: parsedKonfigYaml,
     alwaysYes: flags.alwaysYes,
     auto: flags.auto,
+    ci: flags.ci,
     skipMissingResponseDescription: flags.skipMissingResponseDescriptionFix,
     skipFixListUsageSecurity: flags.skipListUsageSecurity,
   })

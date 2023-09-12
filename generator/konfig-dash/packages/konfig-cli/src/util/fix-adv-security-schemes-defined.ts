@@ -17,15 +17,18 @@ import {
 import { inquirerConfirm } from './inquirer-confirm'
 import { logOperationDetails } from './log-operation-details'
 import boxen from 'boxen'
+import { inquirerPromptCI } from './inquirer-prompt-ci'
 
 export async function fixAdvSecuritySchemesDefined({
   spec,
   progress,
   alwaysYes,
+  ci,
 }: {
   spec: Spec
   progress: Progress
   alwaysYes: boolean
+  ci: boolean
 }): Promise<number> {
   let numberOfParametersRemovedForSecurityScheme = 0
 
@@ -110,24 +113,27 @@ export async function fixAdvSecuritySchemesDefined({
       continue;
     }
 
-      const { securityName, isSecurity } = await inquirer.prompt<{
+      const { securityName, isSecurity } = await inquirerPromptCI<{
         securityName: string
         isSecurity: boolean
-      }>([
-        {
-          type: 'confirm',
-          name: 'isSecurity',
-          message: `Is parameter(name: ${parameter.name}, in: ${parameter.in}) a security requirement?`,
-        },
-        {
-          type: 'input',
-          name: 'securityName',
-          message: `Enter a name for security scheme name for parameter(name: ${parameter.name}, in: ${parameter.in}): `,
-          when({ isSecurity }) {
-            return isSecurity
+      }>(
+        ci,
+        { securityName: '', isSecurity: false }, 
+        [
+          {
+            type: 'confirm',
+            name: 'isSecurity',
+            message: `Is parameter(name: ${parameter.name}, in: ${parameter.in}) a security requirement?`,
           },
-        },
-      ])
+          {
+            type: 'input',
+            name: 'securityName',
+            message: `Enter a name for security scheme name for parameter(name: ${parameter.name}, in: ${parameter.in}): `,
+            when({ isSecurity }) {
+              return isSecurity
+            },
+          },
+        ])
       if (!isSecurity) {
         progress.saveSecuritySchemeParameter({
           name: parameter.name,

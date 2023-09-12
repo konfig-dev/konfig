@@ -56,6 +56,11 @@ export default class Fix extends Command {
       default: true,
       description: 'Always confirm with "Yes"("Y") when asked',
     }),
+    ci: Flags.boolean({
+      name: 'ci',
+      default: false,
+      description: 'Run in CI mode: answers default for all prompts if applicable',
+    }),
   }
 
   public async run(): Promise<void> {
