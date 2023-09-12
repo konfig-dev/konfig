@@ -35,16 +35,23 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     ci: options.ci ?? false,
   }
 
+  const { parsedKonfigYaml } = parseKonfigYaml({
+    configDir: flags.konfigDir ?? process.cwd(),
+  })
+
+   // We only want to run fix in CI if the konfig.yaml has a specInputPath
+   if (flags.ci && parsedKonfigYaml.specInputPath === undefined) {
+    console.log(`No specInputPath found in konfig.yaml, skipping fix`)
+    return
+   }
+
   if (flags.spec === undefined) {
-    flags.spec = getSpecPath({ konfigDir: flags.konfigDir })
-    flags.specInputPath =
-      getSpecInputPath({ konfigDir: flags.konfigDir }) ?? flags.spec
+    flags.spec = parsedKonfigYaml.specPath
+    flags.specInputPath = parsedKonfigYaml.specInputPath ?? flags.spec
   }
-  if (flags.spec === undefined) {
-    throw Error(
-      `Either specify path to OAS with -s flag or assign "specPath" field in "konfig.yaml"`
-    )
-  }
+
+  if (flags.spec === undefined)
+    throw Error(`Either specify path to OAS with -s flag or assign "specPath" field in "konfig.yaml"`)
 
   if (flags.specInputPath === undefined) throw Error(`This shouldn't happen`)
 
@@ -54,9 +61,6 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
       : specPath
   }
 
-  const { parsedKonfigYaml } = parseKonfigYaml({
-    configDir: flags.konfigDir ?? process.cwd(),
-  })
   const specInputPath = prependKonfigDir({ specPath: flags.specInputPath })
   const specOutputPath = prependKonfigDir({ specPath: flags.spec })
   const rawSpec = fs.readFileSync(specInputPath, 'utf-8')
