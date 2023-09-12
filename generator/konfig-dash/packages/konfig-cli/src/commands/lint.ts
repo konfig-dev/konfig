@@ -22,11 +22,12 @@ export default class Lint extends Command {
     })
     const { parsedKonfigYaml } = parseKonfigYaml({ configDir: process.cwd() })
     // Support passing nothing and inferring spec path from konfig.yaml
-    const specPath = argv.length === 0 ? parsedKonfigYaml.specPath : argv[0]
-    if (!fs.existsSync(specPath)) throw new Error(`File not found: ${specPath}`)
+    if (argv.length === 0)
+      argv.push(parsedKonfigYaml.specPath)
+    if (!fs.existsSync(argv[0])) throw new Error(`File not found: ${argv[0]}`)
 
     // First run fix if konfig.yaml has specInputPath and we're linting the specPath
-    if (parsedKonfigYaml.specInputPath !== undefined && specPath === parsedKonfigYaml.specPath) {
+    if (parsedKonfigYaml.specInputPath !== undefined && argv[0] === parsedKonfigYaml.specPath) {
       await executeFixCommand({
         spec: parsedKonfigYaml.specPath,
         specInputPath: parsedKonfigYaml.specInputPath,
@@ -34,7 +35,7 @@ export default class Lint extends Command {
     }
 
     try {
-      execa.sync(pathToPrism, ['lint', '-F', 'warn', specPath], {
+      execa.sync(pathToPrism, ['lint', '-F', 'warn', ...argv], {
         stdio: 'inherit',
       })
     } catch {
