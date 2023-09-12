@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.10.3
+
+### Patch Changes
+
+- [#167](https://github.com/konfig-dev/konfig/pull/167) [`ca17fe4b`](https://github.com/konfig-dev/konfig/commit/ca17fe4be85776204d745709201333a8be140cb7) Thanks [@eddiechayes](https://github.com/eddiechayes)! - konfig lint runs fix
+
 ## 1.10.2
 
 ### Patch Changes
