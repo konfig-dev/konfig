@@ -193,7 +193,7 @@ export const transformSpec = async ({
   // }
 
   if (fixConfig !== undefined) {
-    fixCustomModifications({ fixConfig, spec: spec.spec })
+    await fixCustomModifications({ fixConfig, spec })
   }
 
   // use recurseObject function to iterate through all objects with the

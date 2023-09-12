@@ -221,9 +221,10 @@ export async function fixOas({
   )
 
   // Make fixConfig modification from konfig.yaml
-  const numberOfCustomModifications = fixCustomModifications({
+  const numberOfCustomModifications = await fixCustomModifications({
     fixConfig: konfigYaml?.fixConfig,
-    spec: spec.spec,
+    spec,
+    isCLI: true,
   })
 
   // Monkey patch here!

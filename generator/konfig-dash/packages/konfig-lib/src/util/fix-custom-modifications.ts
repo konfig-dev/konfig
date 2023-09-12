@@ -1,15 +1,27 @@
 import { JSONPath } from 'jsonpath-plus'
 import { KonfigYamlType } from '../KonfigYaml'
-import { Spec } from '../parseSpec'
+import { Spec, parseSpec } from '../parseSpec'
 import { recurseObject } from '../recurseObject'
+import * as fs from 'fs-extra'
+import { fixInheritMetadataFromSpec } from './fix-inherit-metadata-from-spec'
 
-export function fixCustomModifications({
+export async function fixCustomModifications({
   fixConfig,
-  spec,
+  spec: { spec, $ref, specDereferenced },
+  isCLI,
 }: {
   fixConfig?: KonfigYamlType['fixConfig']
-  spec: Spec['spec']
-}): number {
+  spec: Spec
+
+  /**
+   * Dylan: I added functionality to this function that reads from file system
+   * which doesn't make sense when executing this function from the API side. So
+   * I added this flag to only enable the functionality when executing from the
+   * CLI. In particular the functionality was reading from a file path that
+   * holds an OAS to inherit metadata from.
+   */
+  isCLI?: boolean
+}): Promise<number> {
   let updates = 0
   if (fixConfig?.modify) {
     for (const path in fixConfig.modify) {
@@ -19,6 +31,19 @@ export function fixCustomModifications({
         updates++
       }
     }
+  }
+
+  if (isCLI && fixConfig?.inheritMetadataSpecPath) {
+    if (!fs.existsSync(fixConfig.inheritMetadataSpecPath))
+      throw Error(
+        'Could not find file at path: ' + fixConfig.inheritMetadataSpecPath
+      )
+    const rawSpec = fs.readFileSync(fixConfig.inheritMetadataSpecPath, 'utf8')
+    const specToInheritMetadataFrom = await parseSpec(rawSpec)
+    fixInheritMetadataFromSpec({
+      source: specToInheritMetadataFrom,
+      target: { spec, $ref, specDereferenced },
+    })
   }
 
   // Apply updates to all properties that match the property name and type

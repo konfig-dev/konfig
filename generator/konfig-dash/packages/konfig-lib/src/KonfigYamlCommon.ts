@@ -7,6 +7,12 @@ const propertyName = z.string().min(1)
 const typeName = z.string().min(1)
 
 export const fixConfig = z.object({
+  inheritMetadataSpecPath: z
+    .string()
+    .optional()
+    .describe(
+      'Path to OAS to inherit metadata such as examples, descriptions, summaries, and tags. This is useful if you have multiple OpenAPI Specifications. One that includes extra metadata (usually hand-written) and one that is used to generate SDKs (usually generated from code).'
+    ),
   updateProperty: z
     .record(propertyName, z.record(typeName, z.record(z.string(), jsonSchema)))
     .optional(),
