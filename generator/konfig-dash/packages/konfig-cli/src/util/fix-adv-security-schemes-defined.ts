@@ -116,24 +116,26 @@ export async function fixAdvSecuritySchemesDefined({
       const { securityName, isSecurity } = await inquirerPromptCI<{
         securityName: string
         isSecurity: boolean
-      }>(
-        ci,
-        { securityName: '', isSecurity: false }, 
-        [
-          {
-            type: 'confirm',
-            name: 'isSecurity',
-            message: `Is parameter(name: ${parameter.name}, in: ${parameter.in}) a security requirement?`,
-          },
-          {
-            type: 'input',
-            name: 'securityName',
-            message: `Enter a name for security scheme name for parameter(name: ${parameter.name}, in: ${parameter.in}): `,
-            when({ isSecurity }) {
-              return isSecurity
-            },
-          },
-        ])
+      }>({
+          ci,
+          ciDefault: { securityName: '', isSecurity: false },
+          questions: 
+            [
+              {
+                type: 'confirm',
+                name: 'isSecurity',
+                message: `Is parameter(name: ${parameter.name}, in: ${parameter.in}) a security requirement?`,
+              },
+              {
+                type: 'input',
+                name: 'securityName',
+                message: `Enter a name for security scheme name for parameter(name: ${parameter.name}, in: ${parameter.in}): `,
+                when({ isSecurity }) {
+                  return isSecurity
+                },
+              },
+            ]
+        })
       if (!isSecurity) {
         progress.saveSecuritySchemeParameter({
           name: parameter.name,
