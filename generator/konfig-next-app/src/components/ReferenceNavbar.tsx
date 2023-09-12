@@ -59,6 +59,11 @@ export function ReferenceNavbar({
   originalServers,
   owner,
   repo,
+  oauthTokenUrl,
+  setOauthTokenUrl,
+  oauthTokenUrls,
+  setOauthTokenUrls,
+  originalOauthTokenUrl,
 }: {
   navbarData: NavbarDataItem[]
   setOpened: Dispatch<SetStateAction<boolean>>
@@ -69,6 +74,11 @@ export function ReferenceNavbar({
   originalServers: string[]
   owner: string
   repo: string
+  oauthTokenUrl: string | null
+  setOauthTokenUrl: Dispatch<SetStateAction<string | null>>
+  oauthTokenUrls: string[]
+  setOauthTokenUrls: Dispatch<SetStateAction<string[]>>
+  originalOauthTokenUrl: string | null
 }) {
   const { classes } = useStyles()
   const links = navbarData.map((item) => (
@@ -78,10 +88,17 @@ export function ReferenceNavbar({
   const form = useForm({
     initialValues: {
       url: basePath ?? servers[0],
+      oauthTokenUrl: oauthTokenUrl ?? '',
     },
 
     validate: {
       url: (value) =>
+        /^(https?:\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
+          value
+        )
+          ? null
+          : 'Invalid URL',
+      oauthTokenUrl: (value) =>
         /^(https?:\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
           value
         )
@@ -126,6 +143,48 @@ export function ReferenceNavbar({
 
   SelectItem.displayName = 'SelectItem'
 
+  const SelectOAuthItem = forwardRef<HTMLDivElement, ItemProps>(
+    ({ value, ...others }: ItemProps, ref) => {
+      const { classes } = useStyles()
+      const isOriginalOauthTokenUrl = originalOauthTokenUrl === value
+      return (
+        <Group spacing={2} noWrap>
+          <div className={classes.selectItem} ref={ref} {...others}>
+            <Text size="xs">{value}</Text>
+          </div>
+          {!isOriginalOauthTokenUrl && (
+            <CloseButton
+              radius="xs"
+              onClick={() => {
+                setOauthTokenUrls((current) =>
+                  current.filter((item) => item !== value)
+                )
+                localStorage.setItem(
+                  `${owner}-${repo}-oauthTokenUrls`,
+                  JSON.stringify(
+                    oauthTokenUrls.filter((item) => item !== value)
+                  )
+                )
+                if (oauthTokenUrl === value) {
+                  if (originalOauthTokenUrl !== null) {
+                    setOauthTokenUrl(originalOauthTokenUrl)
+                    localStorage.setItem(
+                      `${owner}-${repo}-oauthTokenUrl`,
+                      originalOauthTokenUrl
+                    )
+                  }
+                }
+              }}
+              size="sm"
+            />
+          )}
+        </Group>
+      )
+    }
+  )
+
+  SelectOAuthItem.displayName = 'SelectOAuthItem'
+
   useEffect(() => {
     setTimeout(() => {
       const savedBasePath = localStorage.getItem(`${owner}-${repo}-basepath`)
@@ -135,6 +194,18 @@ export function ReferenceNavbar({
       const savedServers = localStorage.getItem(`${owner}-${repo}-servers`)
       if (savedServers) {
         setServers(JSON.parse(savedServers))
+      }
+      const savedOauthTokenUrl = localStorage.getItem(
+        `${owner}-${repo}-oauthTokenUrl`
+      )
+      if (savedOauthTokenUrl) {
+        setOauthTokenUrl(savedOauthTokenUrl)
+      }
+      const savedOauthTokenUrls = localStorage.getItem(
+        `${owner}-${repo}-oauthTokenUrls`
+      )
+      if (savedOauthTokenUrls) {
+        setOauthTokenUrls(JSON.parse(savedOauthTokenUrls))
       }
     }, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -146,7 +217,7 @@ export function ReferenceNavbar({
         <Select
           size="xs"
           icon={<IconLink size="1rem" />}
-          placeholder="Pick one"
+          label="Base path"
           value={basePath}
           error={form.getInputProps('url').error}
           data={servers}
@@ -186,6 +257,52 @@ export function ReferenceNavbar({
             return query
           }}
         />
+
+        {oauthTokenUrl && (
+          <Select
+            size="xs"
+            icon={<IconLink size="1rem" />}
+            label="OAuth Token URL"
+            value={oauthTokenUrl}
+            error={form.getInputProps('oauthTokenUrl').error}
+            data={oauthTokenUrls}
+            itemComponent={SelectOAuthItem}
+            radius="xl"
+            hoverOnSearchChange
+            nothingFound="Nothing found"
+            searchable
+            creatable
+            onChange={(value) => {
+              if (value !== null) {
+                setOauthTokenUrl(value)
+                localStorage.setItem(`${owner}-${repo}-oauthTokenUrl`, value)
+                notifications.show({
+                  message: (
+                    <Text>
+                      OAuth Token URL set to <Code color="brand">{value}</Code>
+                    </Text>
+                  ),
+                  color: 'brand',
+                  id: value,
+                })
+              }
+            }}
+            onSearchChange={(query) => {
+              form.setFieldValue('oauthTokenUrl', query)
+            }}
+            getCreateLabel={(query) => `+ Use ${query}`}
+            onCreate={(query) => {
+              const { hasError } = form.validateField('oauthTokenUrl')
+              if (hasError) return
+              setOauthTokenUrls((current) => [...current, query])
+              localStorage.setItem(
+                `${owner}-${repo}-oauthTokenUrls`,
+                JSON.stringify([...oauthTokenUrls, query])
+              )
+              return query
+            }}
+          />
+        )}
       </Navbar.Section>
 
       <Navbar.Section py="md" grow>

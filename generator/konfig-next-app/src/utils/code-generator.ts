@@ -21,6 +21,8 @@ export type CodeGeneratorConstructorArgs = {
   tag: string
   operationId: string
   requestBodyRequired: boolean
+  originalOauthTokenUrl: string | null
+  oauthTokenUrl: string | null
 
   /**
    *  Sandbox is for executing the code in a sandboxed environment while
@@ -68,6 +70,16 @@ export abstract class CodeGenerator {
   basePath: string
 
   /**
+   * The OAuth token URL
+   */
+  oauthTokenUrl: string | null
+
+  /**
+   * The original OAuth token URL
+   */
+  originalOauthTokenUrl: string | null
+
+  /**
    * The servers of the API
    */
   servers: string[]
@@ -88,8 +100,12 @@ export abstract class CodeGenerator {
     requestBodyRequired,
     mode = 'production',
     servers,
+    oauthTokenUrl,
+    originalOauthTokenUrl,
   }: CodeGeneratorConstructorArgs) {
     this.basePath = basePath
+    this.oauthTokenUrl = oauthTokenUrl
+    this.originalOauthTokenUrl = originalOauthTokenUrl
     this.servers = servers
     this._formData = formData
     this._parameters = parameters
@@ -114,6 +130,10 @@ export abstract class CodeGenerator {
 
   get isUsingCustomBasePath(): boolean {
     return this.basePath !== this.servers[0]
+  }
+
+  get isUsingCustomOAuthTokenUrl(): boolean {
+    return this.originalOauthTokenUrl !== this.oauthTokenUrl
   }
 
   get clientNameLowercase(): string {

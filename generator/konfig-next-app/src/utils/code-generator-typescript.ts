@@ -78,6 +78,11 @@ ${this.nonEmptySecurity
         : ''
       : `basePath: "/api/proxy", baseOptions: {headers: {"x-proxy-target": "${this.basePath}"}}`
   }
+  ${
+    this.oauthTokenUrl !== null && this.isUsingCustomOAuthTokenUrl
+      ? `oauthTokenUrl: "${this.oauthTokenUrl}",`
+      : ''
+  }
 }`
   }
 

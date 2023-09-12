@@ -54,8 +54,10 @@ export function OperationReferenceMain({
   konfigYaml,
   basePath,
   owner,
+  oauthTokenUrl,
   repo,
   servers,
+  originalOauthTokenUrl,
 }: Pick<
   StaticProps,
   | 'pathParameters'
@@ -70,8 +72,9 @@ export function OperationReferenceMain({
   | 'securitySchemes'
   | 'servers'
   | 'operation'
+  | 'oauthTokenUrl'
   | 'konfigYaml'
-> & { basePath: string }) {
+> & { basePath: string; originalOauthTokenUrl: string | null }) {
   const parameters = [
     ...pathParameters,
     ...queryParameters,
@@ -165,6 +168,8 @@ export function OperationReferenceMain({
     operationId: operation.operation.operationId,
     tag: tag,
     basePath,
+    oauthTokenUrl,
+    originalOauthTokenUrl,
     requestBodyRequired:
       (operation.operation.requestBody as RequestBodyObject)?.required ?? false,
   }
