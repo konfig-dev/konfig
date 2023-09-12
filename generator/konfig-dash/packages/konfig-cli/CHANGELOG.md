@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.10.4
+
+### Patch Changes
+
+- [`b36cb8fb`](https://github.com/konfig-dev/konfig/commit/b36cb8fb84cff89631264b0942d60b8edeaac1a2) Thanks [@dphuang2](https://github.com/dphuang2)! - remove non-alphanumeric characters except for spaces from fix operation id rule
+
 ## 1.10.3
 
 ### Patch Changes
