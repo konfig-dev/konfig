@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.10.6
+
+### Patch Changes
+
+- [#172](https://github.com/konfig-dev/konfig/pull/172) [`85d358e9`](https://github.com/konfig-dev/konfig/commit/85d358e96d94f60abbddcb8d5e4ae07101e4c625) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix doesnt run in ci mode if there is no specInputPath
+
 ## 1.10.5
 
 ### Patch Changes
