@@ -222,7 +222,7 @@ export function ReferenceNavbar({
           error={form.getInputProps('url').error}
           data={servers}
           itemComponent={SelectItem}
-          radius="xl"
+          radius="xs"
           hoverOnSearchChange
           nothingFound="Nothing found"
           searchable
@@ -267,7 +267,7 @@ export function ReferenceNavbar({
             error={form.getInputProps('oauthTokenUrl').error}
             data={oauthTokenUrls}
             itemComponent={SelectOAuthItem}
-            radius="xl"
+            radius="xs"
             hoverOnSearchChange
             nothingFound="Nothing found"
             searchable
