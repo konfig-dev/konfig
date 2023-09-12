@@ -31,6 +31,10 @@ export type CodeGeneratorConstructorArgs = {
   mode?: 'sandbox' | 'production'
 }
 
+export type NonEmptyParameters = [
+  { name: string; parameter: Parameter },
+  FormInputValues[string],
+][]
 export abstract class CodeGenerator {
   mode: CodeGeneratorConstructorArgs['mode']
 
@@ -143,7 +147,7 @@ export abstract class CodeGenerator {
   /**
    * Returns the setup values that are non-empty and exist as part of passed parameters
    */
-  get nonEmptyParameters(): [string, FormInputValues[string]][] {
+  get nonEmptyParameters(): NonEmptyParameters {
     const parameters = Object.entries(
       this._formData[PARAMETER_FORM_NAME_PREFIX]
     )
@@ -154,12 +158,26 @@ export abstract class CodeGenerator {
       })
       .filter(([_name, value]) => this.isNonEmpty(value))
       .map(([name, value]) => {
-        return [name, this.recursivelyRemoveEmptyValues(value)]
+        return [
+          { name, parameter: this.parameterStrict(name) },
+          this.recursivelyRemoveEmptyValues(value),
+        ]
       })
   }
 
+  parameterStrict(name: string) {
+    const parameter = this.parameter(name)
+    if (parameter === undefined) throw Error("Parameter doesn't exist")
+    return parameter
+  }
+
+  parameter(name: string) {
+    const parameter = this._parameters.find((p) => p.name === name)
+    return parameter
+  }
+
   isInThisOperation(name: string): boolean {
-    return this._parameters.find((p) => p.name === name) !== undefined
+    return this.parameter(name) !== undefined
   }
 
   /**

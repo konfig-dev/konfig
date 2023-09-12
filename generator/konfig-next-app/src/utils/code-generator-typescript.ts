@@ -90,13 +90,20 @@ ${this.nonEmptySecurity
 }`
   }
 
-  object(entries: [string, JSONValue][]) {
+  innerObject(entries: [string, JSONValue][], preserveCasing = false): string {
     const parameters = entries
       .map(([name, value]) => {
-        return `  ${this.argName(name)}: ${this.argValue(value)},`
+        return `  ${this.argName(name, preserveCasing)}: ${this.argValue(
+          value
+        )},`
       })
       .join('\n')
-    return `{${parameters}}`
+    return parameters
+  }
+
+  object(entries: [string, JSONValue][], preserveCasing = false) {
+    const innerObject = this.innerObject(entries, preserveCasing)
+    return `{${innerObject}}`
   }
 
   argValue(value: JSONValue, index?: number): string {
@@ -116,12 +123,24 @@ ${this.nonEmptySecurity
       if (filtered.length === 0) {
         return '{}'
       }
-      return this.object(filtered)
+      return this.object(filtered, true)
     }
     return JSON.stringify(value, undefined, 2)
   }
 
-  argName(name: string): string {
+  /**
+   * Returns the name of the argument to be used in the SDK method call based on the name of the parameter.
+   * If preserveCasing is true, the name will be returned with all non-alphanumeric characters removed.
+   * If preserveCasing is false, the name will be returned in camelCase.
+   * @param name The name of the parameter
+   * @param preserveCasing Whether or not to preserve the casing of the parameter name
+   * @returns The name of the argument to be used in the SDK method call
+   */
+  argName(name: string, preserveCasing = false): string {
+    if (preserveCasing) {
+      // remove all non-alphanumeric characters from name and return
+      return name.replace(/[^a-zA-Z0-9]/g, '')
+    }
     return camelCase(name)
   }
 
@@ -132,7 +151,51 @@ ${this.nonEmptySecurity
       }
       return ''
     }
-    return this.object(this.nonEmptyParameters)
+    console.log(this.nonEmptyParameters)
+    const nonBodyParameters = this.nonEmptyParameters
+      .filter(([{ parameter }]) => {
+        return parameter.in !== 'body'
+      })
+      .map(([{ name }, value]) => {
+        return [name, value] as [string, JSONValue]
+      })
+    const bodyParameters = this.nonEmptyParameters
+      .filter(([{ parameter }]) => {
+        return parameter.in === 'body'
+      })
+      .map(([{ name }, value]) => {
+        return [name, value] as [string, JSONValue]
+      })
+    return `{${this.innerObject(nonBodyParameters)}${this.innerObject(
+      bodyParameters,
+      true
+    )}}`
+    return this.object(
+      this.nonEmptyParameters.map(([{ name }, vaue]) => {
+        return [name, vaue]
+      })
+    )
+    // return `{${this.innerObject(
+    //   this.nonEmptyParameters
+    //     .filter(([{ parameter }]) => {
+    //       return parameter.in === 'body'
+    //     })
+    //     .map(([{ name }, value]) => {
+    //       return [name, value]
+    //     })
+    // )}
+    // ${
+    //   (this.innerObject(
+    //     this.nonEmptyParameters
+    //       .filter(([{ parameter }]) => {
+    //         return parameter.in !== 'body'
+    //       })
+    //       .map(([{ name }, value]) => {
+    //         return [name, value]
+    //       })
+    //   ),
+    //   true)
+    // }}`
   }
 
   get namespace() {
