@@ -156,7 +156,9 @@ export abstract class CodeGenerator {
       .filter(([name]) => {
         return this.isInThisOperation(name)
       })
-      .filter(([_name, value]) => this.isNonEmpty(value))
+      .filter(([_name, value]) => {
+        return this.isNonEmpty(value)
+      })
       .map(([name, value]) => {
         return [
           { name, parameter: this.parameterStrict(name) },
@@ -218,6 +220,7 @@ export abstract class CodeGenerator {
   isNonEmpty(parameter: FormInputValues[string]): boolean {
     if (parameter === undefined) return false
     if (!Array.isArray(parameter)) {
+      if (parameter instanceof File) return true
       if (typeof parameter === 'object') {
         return (
           Object.values(parameter).filter((p) => this.isNonEmpty(p)).length > 0
