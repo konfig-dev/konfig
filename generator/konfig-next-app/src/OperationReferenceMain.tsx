@@ -21,6 +21,7 @@ import { httpResponseCodeMeaning } from './utils/http-response-code-meaning'
 import {
   FORM_VALUES_LOCAL_STORAGE_KEY,
   generateInitialFormValues,
+  generateInitialFormValuesWithStorage,
 } from './utils/generate-initial-operation-form-values'
 import { StaticProps } from './pages/[org]/[portal]/reference/[tag]/[operationId]'
 import {
@@ -40,6 +41,7 @@ import { tryTableOutput } from './utils/try-table-output'
 import { IconAlertCircle, IconTerminal } from '@tabler/icons-react'
 import { deepmerge } from './utils/deepmerge'
 import { notifications } from '@mantine/notifications'
+import localforage from 'localforage'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -102,10 +104,7 @@ export function OperationReferenceMain({
     parameters: parameters,
     securitySchemes,
     clientState,
-    owner,
-    repo,
     hideSecurity,
-    doNotRestoreFromStorage: true,
   })
 
   const form = useForm(formValues)
@@ -119,8 +118,8 @@ export function OperationReferenceMain({
    * timeout of 0.
    */
   useEffect(() => {
-    setTimeout(() => {
-      const { initialValues } = generateInitialFormValues({
+    setTimeout(async () => {
+      const { initialValues } = await generateInitialFormValuesWithStorage({
         parameters: parameters,
         securitySchemes,
         clientState,
@@ -128,6 +127,7 @@ export function OperationReferenceMain({
         repo,
         hideSecurity,
       })
+      console.log(initialValues)
       if (initialValues) {
         form.setValues(initialValues)
       }
@@ -226,9 +226,9 @@ export function OperationReferenceMain({
             }
           } finally {
             if (typeof window !== 'undefined') {
-              window.localStorage.setItem(
+              await localforage.setItem(
                 FORM_VALUES_LOCAL_STORAGE_KEY({ owner, repo }),
-                JSON.stringify(values)
+                values
               )
             }
             setRequestInProgress(false)

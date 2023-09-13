@@ -4,6 +4,7 @@ import { StaticProps } from '@/pages/[org]/[portal]/reference/[tag]/[operationId
 import { getInputPlaceholder } from '@/components/OperationSecuritySchemeForm'
 import { deepmerge } from './deepmerge'
 import { isNotEmpty } from './is-not-empty'
+import localforage from 'localforage'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   owner,
@@ -71,23 +72,28 @@ type GenerateInitialFormValuesInput = {
   securitySchemes: StaticProps['securitySchemes']
   clientState: string[]
   hideSecurity: { name: string }[]
-  doNotRestoreFromStorage?: boolean
   owner: string
   repo: string
 }
 
 export function generateInitialFormValues(
-  input: GenerateInitialFormValuesInput
+  input: Omit<GenerateInitialFormValuesInput, 'owner' | 'repo'>
 ): FormValues {
+  return generateFormInputValues(input)
+}
+
+export async function generateInitialFormValuesWithStorage(
+  input: GenerateInitialFormValuesInput
+): Promise<FormValues> {
   let { initialValues, validate } = generateFormInputValues(input)
-  const { doNotRestoreFromStorage, owner, repo } = input
-  if (typeof window !== 'undefined' && doNotRestoreFromStorage !== true) {
-    const storedValue = window.localStorage.getItem(
+  const { owner, repo } = input
+  if (typeof window !== 'undefined') {
+    const storedValue = await localforage.getItem(
       FORM_VALUES_LOCAL_STORAGE_KEY({ owner, repo })
     )
     if (storedValue) {
       try {
-        initialValues = deepmerge(initialValues, JSON.parse(storedValue))
+        initialValues = deepmerge(initialValues, storedValue)
       } catch (e) {
         console.log('Failed to parse stored value')
       }

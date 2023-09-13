@@ -110,9 +110,6 @@ export function ParameterInput({
                 securitySchemes: {},
                 hideSecurity: [],
                 clientState: [],
-                doNotRestoreFromStorage: true,
-                owner,
-                repo,
               })
               const initialValues = formValues.initialValues
               if (initialValues === undefined) return
