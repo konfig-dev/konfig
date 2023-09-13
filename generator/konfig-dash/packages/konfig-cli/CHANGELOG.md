@@ -1,5 +1,18 @@
 # konfig-cli
 
+## 1.11.0
+
+### Minor Changes
+
+- [#174](https://github.com/konfig-dev/konfig/pull/174) [`3756851e`](https://github.com/konfig-dev/konfig/commit/3756851e22a6adf25ad9612e71118a46ffc8af1d) Thanks [@dphuang2](https://github.com/dphuang2)! - fixInheritMetadataFromSpec
+
+### Patch Changes
+
+- Updated dependencies [[`3756851e`](https://github.com/konfig-dev/konfig/commit/3756851e22a6adf25ad9612e71118a46ffc8af1d)]:
+  - konfig-lib@1.7.0
+  - konfig-openapi-spec@1.0.140
+  - konfig-postman-to-openapi@3.0.118
+
 ## 1.10.6
 
 ### Patch Changes
