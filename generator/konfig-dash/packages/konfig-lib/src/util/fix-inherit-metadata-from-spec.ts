@@ -179,5 +179,26 @@ export function fixInheritMetadataFromSpec({
     }
   }
 
+  if (source.spec.components?.schemas) {
+    for (const schema in source.spec.components.schemas) {
+      const sourceSchemaUnresolved = source.spec.components.schemas[schema]
+      const targetSchemaUnresolved = target.spec.components?.schemas?.[schema]
+
+      if (sourceSchemaUnresolved === undefined) continue
+      if (targetSchemaUnresolved === undefined) continue
+
+      const targetSchema = resolveRef({
+        refOrObject: targetSchemaUnresolved,
+        $ref: target.$ref,
+      })
+      const sourceSchema = resolveRef({
+        refOrObject: sourceSchemaUnresolved,
+        $ref: source.$ref,
+      })
+
+      targetSchema.description = sourceSchema.description
+    }
+  }
+
   return target.spec
 }
