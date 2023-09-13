@@ -236,7 +236,12 @@ export function fixInheritMetadataFromSpec({
           targetOperationObject.responses[responseCode]
 
         if (sourceResponseObjectUnresolved === undefined) continue
-        if (targetResponseObjectUnresolved === undefined) continue
+        if (targetResponseObjectUnresolved === undefined) {
+          // add response object to target
+          targetOperationObject.responses[responseCode] =
+            sourceResponseObjectUnresolved
+          continue
+        }
 
         const sourceResponseObject = resolveRef({
           refOrObject: sourceResponseObjectUnresolved,
