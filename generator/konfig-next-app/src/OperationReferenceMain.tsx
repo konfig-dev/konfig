@@ -194,10 +194,14 @@ export function OperationReferenceMain({
         onSubmit={form.onSubmit(async (values) => {
           setRequestInProgress(true)
           try {
+            // IMPORTANT: files is used by the code generator so its fine that this is not used
+            const files = CodeGeneratorTypeScript.setupFiles(values)
+
             const snippet = await new CodeGeneratorTypeScript({
               mode: 'sandbox',
               ...codegenArgs,
             }).snippet()
+
             const wrapped = `(async () => {
             ${snippet}
             })()`

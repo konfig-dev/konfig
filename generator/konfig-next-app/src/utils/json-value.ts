@@ -1,8 +1,8 @@
 export type JSONPrimitive = string | number | boolean | null
-export type JSONValue = JSONPrimitive | JSONObject | JSONArray
+export type SdkArg = JSONPrimitive | JSONObject | JSONArray | File
 
 export interface JSONObject {
-  [key: string]: JSONValue
+  [key: string]: SdkArg
 }
 
-export interface JSONArray extends Array<JSONValue> {}
+export interface JSONArray extends Array<SdkArg> {}

@@ -3,9 +3,34 @@ import prettier from 'prettier/standalone'
 import typescriptParser from 'prettier/plugins/typescript'
 import estree from 'prettier/plugins/estree'
 import camelCase from 'camelcase'
-import { JSONValue } from './json-value'
+import { SdkArg } from './json-value'
+import { fingerprintFile } from './fingerprint-file'
+import { FormDataType } from './generate-initial-operation-form-values'
 
 export class CodeGeneratorTypeScript extends CodeGenerator {
+  static setupFiles(values: FormDataType): Record<string, File> {
+    const files: Record<string, File> = {}
+    // recursively iterate through all values in values.parameters and add files to
+    // the files record by fingerprinting the file with "fingerprintFile" function
+    // and placing the fingerprint in the files record
+    const addFiles = (parameters: unknown) => {
+      if (parameters instanceof File) {
+        files[fingerprintFile(parameters)] = parameters
+        return
+      }
+      if (Array.isArray(parameters)) {
+        for (const parameter of parameters) {
+          addFiles(parameter)
+        }
+      } else if (typeof parameters === 'object' && parameters !== null) {
+        for (const [key, value] of Object.entries(parameters)) {
+          addFiles(value)
+        }
+      }
+    }
+    addFiles(values.parameters)
+    return files
+  }
   protected async format(code: string): Promise<string> {
     return await prettier.format(code, {
       printWidth: 50,
@@ -89,7 +114,7 @@ ${this.nonEmptySecurity
 }`
   }
 
-  innerObject(entries: [string, JSONValue][], preserveCasing = false): string {
+  innerObject(entries: [string, SdkArg][], preserveCasing = false): string {
     const parameters = entries
       .map(([name, value]) => {
         return `  ${this.argName(name, preserveCasing)}: ${this.argValue(
@@ -100,16 +125,19 @@ ${this.nonEmptySecurity
     return parameters
   }
 
-  object(entries: [string, JSONValue][], preserveCasing = false) {
+  object(entries: [string, SdkArg][], preserveCasing = false) {
     const innerObject = this.innerObject(entries, preserveCasing)
     return `{${innerObject}}`
   }
 
-  argValue(value: JSONValue, index?: number): string {
+  argValue(value: SdkArg, index?: number): string {
     if (Array.isArray(value)) {
       return `[${value.map((v, index) => this.argValue(v, index)).join(', ')}]`
     }
     if (value instanceof File) {
+      if (this.mode === 'sandbox') {
+        return `files["${fingerprintFile(value)}"]`
+      }
       if (value.name !== '') {
         return `fs.readFileSync("${value.name}")`
       }
@@ -155,14 +183,14 @@ ${this.nonEmptySecurity
         return parameter.in !== 'body'
       })
       .map(([{ name }, value]) => {
-        return [name, value] as [string, JSONValue]
+        return [name, value] as [string, SdkArg]
       })
     const bodyParameters = this.nonEmptyParameters
       .filter(([{ parameter }]) => {
         return parameter.in === 'body'
       })
       .map(([{ name }, value]) => {
-        return [name, value] as [string, JSONValue]
+        return [name, value] as [string, SdkArg]
       })
     return `{${this.innerObject(nonBodyParameters)}${this.innerObject(
       bodyParameters,
