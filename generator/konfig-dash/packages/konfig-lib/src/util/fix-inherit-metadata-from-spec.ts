@@ -1,6 +1,7 @@
 import { httpMethods } from '../http-methods'
 import { Spec } from '../parseSpec'
 import { resolveRef } from '../resolveRef'
+import { pairSourceAndTargetStrings } from './pair-source-and-target-strings'
 
 /**
  * This function is used to merge specific properties from one OpenAPI
@@ -81,52 +82,43 @@ export function fixInheritMetadataFromSpec({
   if (source.spec.paths === undefined) return target.spec
   if (target.spec.paths === undefined) return target.spec
 
-  for (const sourcePath in source.spec.paths) {
-    // find matching path in target. If path is substring if path in targe then it is a match. Use regular for loop and break after match is found
-    for (const targetPath in target.spec.paths) {
-      if (targetPath.includes(sourcePath)) {
-        // found match
+  const sourcePaths = Object.keys(source.spec.paths)
+  const targetPaths = Object.keys(target.spec.paths)
 
-        const targetPathObject = target.spec.paths[targetPath]
-        const sourcePathObject = source.spec.paths[sourcePath]
+  const pairs = pairSourceAndTargetStrings(sourcePaths, targetPaths)
 
-        if (targetPathObject === undefined) break
-        if (sourcePathObject === undefined) break
+  for (const [sourcePath, targetPath] of Object.entries(pairs)) {
+    const targetPathObject = target.spec.paths[targetPath]
+    const sourcePathObject = source.spec.paths[sourcePath]
 
-        for (const method of httpMethods) {
-          const targetOperationObject = targetPathObject[method]
-          const sourceOperationObject = sourcePathObject[method]
+    if (targetPathObject === undefined) break
+    if (sourcePathObject === undefined) break
 
-          if (targetOperationObject === undefined) continue
-          if (sourceOperationObject === undefined) continue
+    for (const method of httpMethods) {
+      const targetOperationObject = targetPathObject[method]
+      const sourceOperationObject = sourcePathObject[method]
 
-          // operation
-          targetOperationObject.tags = sourceOperationObject.tags
-          targetOperationObject.summary = sourceOperationObject.summary
-          targetOperationObject.description = sourceOperationObject.description
+      if (targetOperationObject === undefined) continue
+      if (sourceOperationObject === undefined) continue
 
-          // parameters
-          if (
-            sourceOperationObject.parameters !== undefined &&
-            targetOperationObject.parameters !== undefined
-          ) {
-            for (const sourceParameter of sourceOperationObject.parameters) {
-              const targetParameter = targetOperationObject.parameters.find(
-                (targetParameter) => {
-                  const t = resolveRef({
-                    refOrObject: targetParameter,
-                    $ref: target.$ref,
-                  })
-                  const s = resolveRef({
-                    refOrObject: sourceParameter,
-                    $ref: source.$ref,
-                  })
-                  return t.name === s.name
-                }
-              )
+      // operation
+      targetOperationObject.tags = sourceOperationObject.tags
 
-              if (targetParameter === undefined) continue
+      // handle case where summary is not defined
+      if (sourceOperationObject.summary !== undefined)
+        targetOperationObject.summary = sourceOperationObject.summary
+      else targetOperationObject.summary = sourceOperationObject.operationId
 
+      targetOperationObject.description = sourceOperationObject.description
+
+      // parameters
+      if (
+        sourceOperationObject.parameters !== undefined &&
+        targetOperationObject.parameters !== undefined
+      ) {
+        for (const sourceParameter of sourceOperationObject.parameters) {
+          const targetParameter = targetOperationObject.parameters.find(
+            (targetParameter) => {
               const t = resolveRef({
                 refOrObject: targetParameter,
                 $ref: target.$ref,
@@ -135,46 +127,140 @@ export function fixInheritMetadataFromSpec({
                 refOrObject: sourceParameter,
                 $ref: source.$ref,
               })
-              t.description = s.description
+              return t.name === s.name
+            }
+          )
+
+          if (targetParameter === undefined) continue
+
+          const t = resolveRef({
+            refOrObject: targetParameter,
+            $ref: target.$ref,
+          })
+          const s = resolveRef({
+            refOrObject: sourceParameter,
+            $ref: source.$ref,
+          })
+          t.description = s.description
+        }
+      }
+
+      // request body
+      if (
+        sourceOperationObject.requestBody !== undefined &&
+        targetOperationObject.requestBody !== undefined
+      ) {
+        const sourceRequestBodyObjectUnresolved =
+          sourceOperationObject.requestBody
+        const targetRequestBodyObjectUnresolved =
+          targetOperationObject.requestBody
+
+        if (sourceRequestBodyObjectUnresolved === undefined) continue
+        if (targetRequestBodyObjectUnresolved === undefined) continue
+
+        const sourceRequestBodyObject = resolveRef({
+          refOrObject: sourceRequestBodyObjectUnresolved,
+          $ref: source.$ref,
+        })
+        const targetRequestBodyObject = resolveRef({
+          refOrObject: targetRequestBodyObjectUnresolved,
+
+          $ref: target.$ref,
+        })
+
+        targetRequestBodyObject.description =
+          sourceRequestBodyObject.description
+
+        if (sourceRequestBodyObject.content === undefined) continue
+        if (targetRequestBodyObject.content === undefined) continue
+
+        for (const mediaType in sourceRequestBodyObject.content) {
+          const sourceMediaTypeObjectUnresolved =
+            sourceRequestBodyObject.content[mediaType]
+          const targetMediaTypeObjectUnresolved =
+            targetRequestBodyObject.content[mediaType]
+
+          if (sourceMediaTypeObjectUnresolved === undefined) continue
+          if (targetMediaTypeObjectUnresolved === undefined) continue
+
+          const sourceMediaTypeObject = resolveRef({
+            refOrObject: sourceMediaTypeObjectUnresolved,
+            $ref: source.$ref,
+          })
+          const targetMediaTypeObject = resolveRef({
+            refOrObject: targetMediaTypeObjectUnresolved,
+            $ref: target.$ref,
+          })
+
+          if (sourceMediaTypeObject.schema === undefined) continue
+          if (targetMediaTypeObject.schema === undefined) continue
+
+          const sourceSchemaObjectUnresolved = sourceMediaTypeObject.schema
+          const targetSchemaObjectUnresolved = targetMediaTypeObject.schema
+
+          if (sourceSchemaObjectUnresolved === undefined) continue
+          if (targetSchemaObjectUnresolved === undefined) continue
+
+          const sourceSchemaObject = resolveRef({
+            refOrObject: sourceSchemaObjectUnresolved,
+            $ref: source.$ref,
+          })
+          const targetSchemaObject = resolveRef({
+            refOrObject: targetSchemaObjectUnresolved,
+            $ref: target.$ref,
+          })
+
+          // if sourceSchemaObject is allOf schema and one of the
+          // schemas has an example then attach example to schema in
+          // targetSchemaObject
+          if (sourceSchemaObject.allOf !== undefined) {
+            for (const innerSchemaUnresolved of sourceSchemaObject.allOf) {
+              const innerSchema = resolveRef({
+                refOrObject: innerSchemaUnresolved,
+                $ref: source.$ref,
+              })
+
+              if (innerSchema.example !== undefined) {
+                targetSchemaObject.example = innerSchema.example
+              }
             }
           }
-
-          // response object
-          for (const responseCode in sourceOperationObject.responses) {
-            const sourceResponseObjectUnresolved =
-              sourceOperationObject.responses[responseCode]
-            const targetResponseObjectUnresolved =
-              targetOperationObject.responses[responseCode]
-
-            if (sourceResponseObjectUnresolved === undefined) continue
-            if (targetResponseObjectUnresolved === undefined) continue
-
-            const sourceResponseObject = resolveRef({
-              refOrObject: sourceResponseObjectUnresolved,
-              $ref: source.$ref,
-            })
-            const targetResponseObject = resolveRef({
-              refOrObject: targetResponseObjectUnresolved,
-              $ref: target.$ref,
-            })
-
-            targetResponseObject.description = sourceResponseObject.description
-
-            // if (targetResponseObject.content === undefined) continue
-
-            // for (const mediaType in sourceResponseObject.content) {
-            //   const sourceMediaTypeObject =
-            //     sourceResponseObject.content[mediaType]
-            //   const targetMediaTypeObject =
-            //     targetResponseObject.content[mediaType]
-
-            //   if (sourceMediaTypeObject === undefined) continue
-            //   if (targetMediaTypeObject === undefined) continue
-
-            // }
-          }
         }
-        break
+      }
+
+      // response object
+      for (const responseCode in sourceOperationObject.responses) {
+        const sourceResponseObjectUnresolved =
+          sourceOperationObject.responses[responseCode]
+        const targetResponseObjectUnresolved =
+          targetOperationObject.responses[responseCode]
+
+        if (sourceResponseObjectUnresolved === undefined) continue
+        if (targetResponseObjectUnresolved === undefined) continue
+
+        const sourceResponseObject = resolveRef({
+          refOrObject: sourceResponseObjectUnresolved,
+          $ref: source.$ref,
+        })
+        const targetResponseObject = resolveRef({
+          refOrObject: targetResponseObjectUnresolved,
+          $ref: target.$ref,
+        })
+
+        targetResponseObject.description = sourceResponseObject.description
+
+        // if (targetResponseObject.content === undefined) continue
+
+        // for (const mediaType in sourceResponseObject.content) {
+        //   const sourceMediaTypeObject =
+        //     sourceResponseObject.content[mediaType]
+        //   const targetMediaTypeObject =
+        //     targetResponseObject.content[mediaType]
+
+        //   if (sourceMediaTypeObject === undefined) continue
+        //   if (targetMediaTypeObject === undefined) continue
+
+        // }
       }
     }
   }
@@ -197,6 +283,30 @@ export function fixInheritMetadataFromSpec({
       })
 
       targetSchema.description = sourceSchema.description
+      targetSchema.example = sourceSchema.example
+
+      if (sourceSchema.type === 'object') {
+        if (sourceSchema.properties === undefined) continue
+        for (const sourceProperty in sourceSchema.properties) {
+          const sourcePropertySchemaUnresolved =
+            sourceSchema.properties[sourceProperty]
+          const targetPropertySchemaUnresolved =
+            targetSchema.properties?.[sourceProperty]
+          if (targetPropertySchemaUnresolved === undefined) continue
+          if (sourcePropertySchemaUnresolved === undefined) continue
+
+          const targetPropertySchema = resolveRef({
+            refOrObject: targetPropertySchemaUnresolved,
+            $ref: target.$ref,
+          })
+          const sourcePropertySchema = resolveRef({
+            refOrObject: sourcePropertySchemaUnresolved,
+            $ref: source.$ref,
+          })
+          targetPropertySchema.description = sourcePropertySchema.description
+          targetPropertySchema.example = sourcePropertySchema.example
+        }
+      }
     }
   }
 
