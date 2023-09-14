@@ -29,6 +29,8 @@ import { DemoPre } from './DemoPre'
 import Slugger from 'github-slugger'
 import { formatTimeAgo } from '@/utils/format-time-ago'
 import { DemoNote } from './DemoNote'
+import { DemoWarn } from './DemoWarn'
+import { DemoDivider } from './DemoDivider'
 
 export class DemoState {
   id: string
@@ -143,6 +145,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
             input: DemoInput,
             button: DemoButton,
             code: DemoCode,
+            hr: DemoDivider,
             h1: DemoTitle,
             h2: DemoTitle,
             h3: DemoTitle,
@@ -153,6 +156,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
             ...{
               info: DemoInfo,
               note: DemoNote,
+              warn: DemoWarn,
               date: DemoDateInput,
               number: DemoNumberInput,
               enum: DemoEnum,
