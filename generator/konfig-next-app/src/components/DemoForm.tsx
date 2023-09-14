@@ -157,6 +157,8 @@ export class CellState {
     this.setRunning(true)
     this.setShow(false)
 
+    if (this.demoState.portal === undefined) return
+
     const response =
       sandbox !== undefined
         ? await api.executeSandboxCode.query({
