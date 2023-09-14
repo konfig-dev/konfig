@@ -44,12 +44,14 @@ export function HeaderTab({
   label,
   external,
   disabled,
+  icon,
 }: {
   active: boolean
   link: string
   label: string
   external?: boolean
   disabled?: boolean
+  icon?: React.ReactNode
 }) {
   const { classes, cx } = useStyles()
   const router = useRouter()
@@ -78,14 +80,10 @@ export function HeaderTab({
         [classes.tabDisabled]: disabled,
       })}
     >
-      {external ? (
-        <Group spacing={5}>
-          <IconExternalLink size="1rem" />
-          <span>{label}</span>
-        </Group>
-      ) : (
-        label
-      )}
+      <Group noWrap spacing={5}>
+        {icon}
+        <span style={{ whiteSpace: 'nowrap' }}>{label}</span>
+      </Group>
     </Anchor>
   )
 }

@@ -12,8 +12,11 @@ import {
   Box,
   Divider,
   rem,
+  ActionIcon,
+  Group,
+  SegmentedControl,
 } from '@mantine/core'
-import { IconBug, IconChevronRight } from '@tabler/icons-react'
+import { IconBug, IconChevronRight, IconRefresh } from '@tabler/icons-react'
 import { observer } from 'mobx-react'
 import { useState, createContext, Fragment } from 'react'
 import DemoMarkdown, { DemoState } from './DemoMarkdown'
@@ -190,7 +193,6 @@ export const DemoPortal = observer(
           asideOffsetBreakpoint="lg"
           navbar={
             <Navbar
-              p="md"
               hiddenBreakpoint="sm"
               hidden={!opened}
               width={{ sm: 225, lg: 325 }}
@@ -200,7 +202,61 @@ export const DemoPortal = observer(
                   'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
               }}
             >
-              <Navbar.Section>
+              <Navbar.Section
+                p="md"
+                style={{
+                  borderBottom: `${rem(1)} solid ${
+                    theme.colorScheme === 'dark'
+                      ? theme.colors.dark[4]
+                      : theme.colors.gray[3]
+                  }`,
+                }}
+              >
+                <Group h="100%">
+                  <SegmentedControl
+                    size="xs"
+                    color="brand"
+                    value={state.showCode ? 'show-code' : 'hide-code'}
+                    styles={{
+                      label: {
+                        fontSize: `${rem(11)} !important`,
+                      },
+                    }}
+                    data={[
+                      { label: 'Hide Code', value: 'hide-code' },
+                      { label: 'Show Code', value: 'show-code' },
+                    ]}
+                    onChange={(value) => {
+                      state.setShowCode(value === 'show-code')
+                    }}
+                  />
+                  {/* {!sandbox && (
+              <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                <Button
+                  component="a"
+                  target="_blank"
+                  size="xs"
+                  leftIcon={<IconBrandGithub size="1rem" />}
+                  href={`https://github.com/${state.organizationId}/${state.portalId}/tree/${state.mainBranch}/demos`}
+                  color="gray"
+                  variant="default"
+                >
+                  Source
+                </Button>
+              </MediaQuery>
+            )} */}
+                  {refreshSandbox && (
+                    <ActionIcon
+                      onClick={refreshSandbox}
+                      color="green"
+                      variant="filled"
+                    >
+                      <IconRefresh size="1rem" />
+                    </ActionIcon>
+                  )}
+                </Group>
+              </Navbar.Section>
+              <Navbar.Section pt="md" grow>
                 <Stack spacing="xs">
                   {state.demos.map(({ name }, i) => {
                     const isCurrentlySelected = state.currentDemoIndex === i

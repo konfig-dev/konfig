@@ -33,17 +33,7 @@ export function ReferenceHeader({
         setOpened={setOpened}
         title={title}
       />
-      <Box
-        px="md"
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          height: '45%',
-        }}
-      >
-        <HeaderTabs demos={demos} currentTab={TABS.reference} />
-        <Group h="100%"></Group>
-      </Box>
+      <HeaderTabs demos={demos} currentTab={TABS.reference} />
     </Header>
   )
 }
