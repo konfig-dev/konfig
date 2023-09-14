@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import ReactMarkdown from 'react-markdown'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
+import remarkGfm from 'remark-gfm'
 import {
   Anchor,
   Stack,
@@ -124,7 +125,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
     <DemoStateContext.Provider value={state}>
       <Stack ref={demoDiv} spacing="xs">
         <ReactMarkdown
-          remarkPlugins={[remarkDirective, remarkDirectiveRehype]}
+          remarkPlugins={[remarkGfm, remarkDirective, remarkDirectiveRehype]}
           components={{
             a({ children, node, siblingCount, ...props }) {
               return (
