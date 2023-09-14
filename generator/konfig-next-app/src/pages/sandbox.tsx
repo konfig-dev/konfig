@@ -163,6 +163,7 @@ const DemoPortalWrapper = observer(() => {
       }}
     >
       <DemoPortal
+        hasDocumentation={false}
         refreshSandbox={async () => {
           const files = await rescursivelyReadAllFiles({ showPicker: false })
           if (files === undefined) return
