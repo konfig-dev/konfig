@@ -216,7 +216,6 @@ export function ReferenceNavbar({
         <Select
           size="xs"
           icon={<IconLink size="1rem" />}
-          label="Base path"
           value={basePath}
           error={form.getInputProps('url').error}
           data={servers}
