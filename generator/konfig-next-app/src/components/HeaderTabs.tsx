@@ -3,6 +3,7 @@ import { HeaderTab } from './HeaderTab'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { IconBook, IconBox, IconCode, IconTerminal } from '@tabler/icons-react'
+import { useBasePath } from '@/utils/use-base-path'
 
 export const TABS = {
   documentation: 'Documentation',
@@ -99,14 +100,6 @@ function useGithubUrl(): string | null {
   }, [router])
 
   return githubUrl
-}
-
-function useBasePath() {
-  const router = useRouter()
-  const parts = router.asPath.split('/')
-
-  // Keeping the first two sections and appending /reference
-  return `/${parts[1]}/${parts[2]}`
 }
 
 function useReferencePath() {
