@@ -90,45 +90,46 @@ export const demos = demo.array().optional()
 export type Demo = z.infer<typeof demo>
 export type Demos = z.infer<typeof demos>
 
+export const documentation = z.object({
+  sidebar: z
+    .object({
+      sections: z
+        .object({
+          label: z.string(),
+          links: z
+            .union([
+              z.object({
+                type: z.literal('link').default('link'),
+                label: z.string(),
+                id: z.string(),
+                path: z.string(),
+              }),
+              z.object({
+                type: z.literal('group').default('group'),
+                links: z
+                  .object({
+                    label: z.string(),
+                    id: z.string(),
+                    path: z.string(),
+                  })
+                  .array(),
+              }),
+            ])
+            .array(),
+        })
+        .array(),
+    })
+    .describe(
+      'Configuration of sidebar to navigate the documentation. Supports sections, links, and grouped links.'
+    ),
+})
+
 export const portal = z
   .object({
     primaryColor,
     socials: socialObjectSchema.optional(),
     title: z.string().describe("Title to be used in Konfig's API Portal"),
-    documentation: z
-      .object({
-        sidebar: z
-          .object({
-            sections: z
-              .object({
-                label: z.string(),
-                links: z
-                  .union([
-                    z.object({
-                      type: z.literal('link').default('link'),
-                      label: z.string(),
-                      id: z.string(),
-                      path: z.string(),
-                    }),
-                    z.object({
-                      type: z.literal('group').default('group'),
-                      links: z
-                        .object({
-                          label: z.string(),
-                          id: z.string(),
-                          path: z.string(),
-                        })
-                        .array(),
-                    }),
-                  ])
-                  .array(),
-              })
-              .array(),
-          })
-          .describe(
-            'Configuration of sidebar to navigate the documentation. Supports sections, links, and grouped links.'
-          ),
-      })
+    documentation: documentation
       .optional()
       .describe(
         "Markdown-based Documentation to be uploaded to Konfig's API Portal"
@@ -238,3 +239,4 @@ export const KonfigYamlCommon = z
 
 export type KonfigYamlCommonType = z.infer<typeof KonfigYamlCommon>
 export type FixConfig = z.infer<typeof fixConfig>
+export type DocumentationConfig = z.infer<typeof documentation>

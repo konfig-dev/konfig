@@ -1,5 +1,6 @@
 import DemoMarkdown, { DemoState } from '@/components/DemoMarkdown'
 import DemoTableOfContents from '@/components/DemoTableOfContents'
+import { DocNavLink } from '@/components/DocNavLink'
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
 import { findDocumentInConfiguration } from '@/utils/find-document-in-configuration'
@@ -16,8 +17,11 @@ import {
   MantineProvider,
   AppShell,
   Navbar,
+  Stack,
+  Box,
+  Title,
 } from '@mantine/core'
-import { KonfigYamlType } from 'konfig-lib'
+import { DocumentationConfig, KonfigYamlType } from 'konfig-lib'
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -36,6 +40,7 @@ export type StaticProps = {
   konfigYaml: KonfigYamlType
   demos: string[] // demo ids
   docId: string
+  docConfig: DocumentationConfig
   docTitle: string
   title: string
   markdown: string
@@ -110,6 +115,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       markdown,
       docTitle,
       docId: documentId,
+      docConfig: documentationConfig,
       demos:
         demos.result === 'error'
           ? []
@@ -124,6 +130,7 @@ const DocumentationPage = ({
   markdown,
   docTitle,
   docId,
+  docConfig,
   demos,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
@@ -166,13 +173,38 @@ const DocumentationPage = ({
             hiddenBreakpoint="lg"
             hidden={!opened}
             width={{ lg: NAVBAR_WIDTH }}
+            py="md"
             sx={{
               overflowY: 'scroll',
               height:
                 'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
             }}
           >
-            test
+            {docConfig.sidebar.sections.map((section, i) => {
+              return (
+                <Box key={`${section.label}-${i}`}>
+                  <Title px="md" order={5}>
+                    {section.label}
+                  </Title>
+                  <Stack>
+                    {section.links.map((link) => {
+                      if (link.type === 'link') {
+                        return (
+                          <DocNavLink
+                            key={link.id}
+                            id={link.id}
+                            label={link.label}
+                            docId={docId}
+                            setOpened={setOpened}
+                          />
+                        )
+                      }
+                      throw Error(`Not implemented link type ${link.type}`)
+                    })}
+                  </Stack>
+                </Box>
+              )
+            })}
           </Navbar>
         }
         header={

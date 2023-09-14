@@ -1,11 +1,11 @@
-import { KonfigYamlType } from 'konfig-lib'
+import { DocumentationConfig } from 'konfig-lib'
 
 export function findDocumentInConfiguration({
   docId,
   docConfig,
 }: {
   docId: string
-  docConfig: NonNullable<NonNullable<KonfigYamlType['portal']>['documentation']>
+  docConfig: DocumentationConfig
 }) {
   const sections = docConfig.sidebar.sections
   for (const section of sections) {
