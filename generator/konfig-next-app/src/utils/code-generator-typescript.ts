@@ -69,7 +69,7 @@ ${this.mode === 'production' ? `console.log(response.data)` : ''}
 
   get setupArgs(): string {
     return Object.keys(this.nonEmptySecurity).length === 0
-      ? ''
+      ? `{${this.proxySetupArgs}}`
       : `{
 ${this.nonEmptySecurity
   .map(([_name, value]) => {
@@ -104,14 +104,16 @@ ${this.nonEmptySecurity
             ? `oauthTokenUrl: "${this.oauthTokenUrl}",`
             : ''
         }
-  ${
-    this.mode === 'production'
+  ${this.proxySetupArgs}
+}`
+  }
+
+  get proxySetupArgs(): string {
+    return this.mode === 'production'
       ? this.isUsingCustomBasePath
         ? `basePath: "${this.basePath}",`
         : ''
       : `basePath: "/api/proxy", baseOptions: {headers: {"x-proxy-target": "${this.basePath}"}}`
-  }
-}`
   }
 
   innerObject(entries: [string, SdkArg][], preserveCasing = false): string {
