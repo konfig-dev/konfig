@@ -1,4 +1,5 @@
 import DemoMarkdown, { DemoState } from '@/components/DemoMarkdown'
+import DemoTableOfContents from '@/components/DemoTableOfContents'
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
 import { findDocumentInConfiguration } from '@/utils/find-document-in-configuration'
@@ -159,6 +160,7 @@ const DocumentationPage = ({
         }}
         navbarOffsetBreakpoint="lg"
         asideOffsetBreakpoint="lg"
+        aside={<DemoTableOfContents demoDiv={state.demoDiv} />}
         navbar={
           <Navbar
             hiddenBreakpoint="lg"
