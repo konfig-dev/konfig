@@ -112,6 +112,7 @@ export class PortalState {
           sessions: activeSessions.map((demo) => {
             if (demo.sessionId === null)
               throw Error('Demo sessions must be active')
+            if (demo.portal === undefined) throw Error("Demo's portal missing")
             return {
               sessionId: demo.sessionId,
               organizationId: demo.portal.organizationId,
@@ -311,8 +312,10 @@ export const DemoPortal = observer(
               i === 0 ? undefined : state.demos[i - 1]
             const nextDemoState: DemoState | undefined =
               i === state.demos.length - 1 ? undefined : state.demos[i + 1]
+
             const previous: Sibling | undefined =
-              previousDemoState === undefined
+              previousDemoState === undefined ||
+              previousDemoState.portal === undefined
                 ? undefined
                 : {
                     title: previousDemoState.name,
@@ -321,7 +324,7 @@ export const DemoPortal = observer(
                     demoIndex: i - 1,
                   }
             const next: Sibling | undefined =
-              nextDemoState === undefined
+              nextDemoState === undefined || nextDemoState.portal === undefined
                 ? undefined
                 : {
                     title: nextDemoState.name,

@@ -30,6 +30,111 @@
               "type": "string",
               "description": "Title to be used in Konfig's API Portal"
             },
+            "documentation": {
+              "type": "object",
+              "properties": {
+                "sidebar": {
+                  "type": "object",
+                  "properties": {
+                    "sections": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "links": {
+                            "type": "array",
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "const": "link",
+                                      "default": "link"
+                                    },
+                                    "label": {
+                                      "type": "string"
+                                    },
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "path": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "label",
+                                    "id",
+                                    "path"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "const": "group",
+                                      "default": "group"
+                                    },
+                                    "links": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "label": {
+                                            "type": "string"
+                                          },
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "path": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "label",
+                                          "id",
+                                          "path"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "links"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "links"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "sections"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Configuration of sidebar to navigate the documentation. Supports sections, links, and grouped links."
+                }
+              },
+              "required": [
+                "sidebar"
+              ],
+              "additionalProperties": false,
+              "description": "Markdown-based Documentation to be uploaded to Konfig's API Portal"
+            },
             "demos": {
               "type": "array",
               "items": {

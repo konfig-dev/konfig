@@ -35,7 +35,7 @@ export class DemoState {
   cells: CellState[] = []
   markdown: string = ''
   uuid = uuid()
-  portal: PortalState
+  portal?: PortalState
   savedData: Record<string, string[] | undefined> = {}
   slugger: Slugger = new Slugger()
   headerIdToHtmlElement: Record<string, HTMLHeadingElement> = {}
@@ -45,7 +45,7 @@ export class DemoState {
   constructor(parameters: {
     markdown: string
     name: string
-    portal: PortalState
+    portal?: PortalState
     id: string
     showCode?: boolean
   }) {
@@ -83,7 +83,7 @@ export class DemoState {
 
   async init() {
     // Only initialize sessions in browser
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && this.portal !== undefined) {
       const {
         session_id,
         lastSuccessfulExecution: { when },
