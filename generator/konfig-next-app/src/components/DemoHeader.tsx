@@ -22,11 +22,13 @@ export const DemoHeader = observer(
     state,
     sandbox,
     demos,
+    hasDocumentation,
   }: {
     opened: boolean
     setOpened: Dispatch<SetStateAction<boolean>>
     state: PortalState
     sandbox?: boolean
+    hasDocumentation: boolean
     demos: string[]
   }) => {
     const theme = useMantineTheme()
@@ -47,7 +49,12 @@ export const DemoHeader = observer(
           setOpened={setOpened}
           title={state.portalTitle ? state.portalTitle : state.portalName}
         />
-        <HeaderTabs demos={demos} currentTab={TABS.demos} isSandbox={sandbox} />
+        <HeaderTabs
+          hasDocumentation={hasDocumentation}
+          demos={demos}
+          currentTab={TABS.demos}
+          isSandbox={sandbox}
+        />
       </Header>
     )
   }

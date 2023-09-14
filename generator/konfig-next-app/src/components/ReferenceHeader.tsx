@@ -9,8 +9,10 @@ export function ReferenceHeader({
   setOpened,
   demos,
   title,
+  hasDocumentation,
 }: {
   opened: boolean
+  hasDocumentation: boolean
   setOpened: Dispatch<SetStateAction<boolean>>
   demos: string[]
   title: string
@@ -33,7 +35,11 @@ export function ReferenceHeader({
         setOpened={setOpened}
         title={title}
       />
-      <HeaderTabs demos={demos} currentTab={TABS.reference} />
+      <HeaderTabs
+        hasDocumentation={hasDocumentation}
+        demos={demos}
+        currentTab={TABS.reference}
+      />
     </Header>
   )
 }

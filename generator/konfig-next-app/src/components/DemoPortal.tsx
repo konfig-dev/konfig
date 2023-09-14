@@ -147,10 +147,12 @@ export const DemoPortal = observer(
     state,
     sandbox,
     refreshSandbox,
+    hasDocumentation,
   }: {
     state: PortalState
     sandbox?: boolean
     refreshSandbox?: () => void
+    hasDocumentation: boolean
   }) => {
     const theme = useMantineTheme()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()
@@ -294,6 +296,7 @@ export const DemoPortal = observer(
           aside={<DemoTableOfContents demoDiv={state.currentDemo.demoDiv} />}
           header={
             <DemoHeader
+              hasDocumentation={hasDocumentation}
               demos={state.demos.map((demo) => demo.id)}
               opened={opened}
               setOpened={setOpened}

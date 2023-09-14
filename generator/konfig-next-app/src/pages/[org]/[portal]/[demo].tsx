@@ -60,6 +60,7 @@ const DemoPage = observer(
     socials,
     portalTitle,
     primaryColor,
+    hasDocumentation,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const state = useMemo(
       () =>
@@ -89,7 +90,7 @@ const DemoPage = observer(
           primaryColor: 'brand',
         }}
       >
-        <DemoPortal state={state} />
+        <DemoPortal hasDocumentation={hasDocumentation} state={state} />
       </MantineProvider>
     )
   }

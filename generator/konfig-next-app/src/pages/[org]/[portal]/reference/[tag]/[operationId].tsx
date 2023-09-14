@@ -59,6 +59,7 @@ export type StaticProps = Omit<GithubResources, 'spec'> & {
   title: string
   owner: string
   demos: string[] // demo ids
+  hasDocumentation: boolean
   repo: string
   oauthTokenUrl: string | null
   pathParameters: Parameter[]
@@ -281,6 +282,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       headerParameters,
       oauthTokenUrl,
       cookieParameters,
+      hasDocumentation: props.konfigYaml.portal?.documentation !== undefined,
       requestBodyProperties,
       demos:
         demos.result === 'error'
@@ -310,6 +312,7 @@ const Operation = ({
   servers: initialServers,
   operation,
   owner,
+  hasDocumentation,
   repo,
   oauthTokenUrl: originalOauthTokenUrl,
   responses,
@@ -387,6 +390,7 @@ const Operation = ({
         }
         header={
           <ReferenceHeader
+            hasDocumentation={hasDocumentation}
             opened={opened}
             setOpened={setOpened}
             title={title}

@@ -17,10 +17,12 @@ export function HeaderTabs({
   currentTab,
   isSandbox,
   demos,
+  hasDocumentation,
 }: {
   currentTab: Tab
   isSandbox?: boolean
   demos: string[]
+  hasDocumentation?: boolean
 }) {
   const docsPath = useDocsPath()
   const referencePath = useReferencePath()
@@ -43,13 +45,15 @@ export function HeaderTabs({
       noWrap
       spacing={0}
     >
-      <HeaderTab
-        disabled={isSandbox}
-        label={TABS.documentation}
-        active={currentTab === TABS.documentation}
-        icon={<IconBook size="1rem" />}
-        link={docsPath}
-      />
+      {hasDocumentation && (
+        <HeaderTab
+          disabled={isSandbox}
+          label={TABS.documentation}
+          active={currentTab === TABS.documentation}
+          icon={<IconBook size="1rem" />}
+          link={docsPath}
+        />
+      )}
       <HeaderTab
         disabled={isSandbox}
         label={TABS.reference}

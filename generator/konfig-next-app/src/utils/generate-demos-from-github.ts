@@ -30,6 +30,7 @@ export type FetchResult = {
   demos: Demo[]
   socials?: SocialObject
   mainBranch: string
+  hasDocumentation: boolean
 }
 
 export type GenerationResult =
@@ -78,6 +79,7 @@ export async function generateDemosDataFromGithub({
        */
       portalTitle: string | null
       primaryColor: string | null
+      hasDocumentation: boolean
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -105,6 +107,7 @@ export async function generateDemosDataFromGithub({
     demo,
     portalTitle: fetchResult.portalTitle ?? null,
     primaryColor: fetchResult.primaryColor ?? null,
+    hasDocumentation: fetchResult.hasDocumentation,
   }
 }
 
@@ -159,6 +162,7 @@ async function _fetch({
     organization,
     portal,
     demos,
+    hasDocumentation: konfigYaml.content.portal.documentation !== undefined,
     portalTitle: konfigYaml.content.portal.title,
     primaryColor: konfigYaml.content.portal.primaryColor,
     mainBranch: repository.data.default_branch,
