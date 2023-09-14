@@ -28,6 +28,7 @@ import { v4 as uuid } from 'uuid'
 import { DemoPre } from './DemoPre'
 import Slugger from 'github-slugger'
 import { formatTimeAgo } from '@/utils/format-time-ago'
+import { DemoNote } from './DemoNote'
 
 export class DemoState {
   id: string
@@ -151,6 +152,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
             // Make TypeScript happy by moving this into its own object
             ...{
               info: DemoInfo,
+              note: DemoNote,
               date: DemoDateInput,
               number: DemoNumberInput,
               enum: DemoEnum,
