@@ -1,7 +1,10 @@
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
+import { findDocumentInConfiguration } from '@/utils/find-document-in-configuration'
+import { findFirstDocumentInConfiguration } from '@/utils/find-first-document-in-configuration'
 import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
+import { githubGetFileContent } from '@/utils/github-get-file-content'
 import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { createOctokitInstance } from '@/utils/octokit'
 import {
@@ -30,11 +33,11 @@ export type StaticProps = {
   konfigYaml: KonfigYamlType
   demos: string[] // demo ids
   title: string
+  markdown: string
 }
 export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   const owner = ctx.params?.org
   const repo = ctx.params?.portal
-
   if (owner === undefined || repo === undefined)
     throw Error('Missing owner/repo parameters')
 
@@ -51,6 +54,39 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   // TODO: handle multiple konfig.yaml
   const konfigYaml = konfigYamls?.[0]
 
+  const documentationConfig = konfigYaml?.content.portal?.documentation
+  if (documentationConfig === undefined)
+    throw Error("Couldn't find documentation configuration")
+
+  // if no document is specified, redirect to first document
+  if (ctx.params?.document === undefined) {
+    const doc = findFirstDocumentInConfiguration({
+      docConfig: documentationConfig,
+    })
+    return {
+      redirect: {
+        destination: `/${owner}/${repo}/docs/${doc.id}`,
+        permanent: false,
+      },
+    }
+  }
+
+  const document = ctx.params?.document ?? []
+  if (!Array.isArray(document)) throw Error("Couldn't parse document parameter")
+  const documentId = document.join('/')
+
+  const doc = findDocumentInConfiguration({
+    docId: documentId,
+    docConfig: documentationConfig,
+  })
+
+  const markdown = await githubGetFileContent({
+    octokit,
+    owner,
+    repo,
+    path: doc.path,
+  })
+
   const demos = await generateDemosDataFromGithub({
     orgId: owner,
     portalId: repo,
@@ -64,6 +100,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     props: {
       title: konfigYaml.content.portal?.title,
       konfigYaml: konfigYaml.content,
+      markdown,
       demos:
         demos.result === 'error'
           ? []
@@ -75,13 +112,14 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
 const DocumentationPage = ({
   konfigYaml,
   title,
+  markdown,
   demos,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
 
   const [opened, setOpened] = useState(false)
-  const theme = useMantineTheme()
+
   return (
     <MantineProvider
       theme={{

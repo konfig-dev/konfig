@@ -112,11 +112,13 @@ export const portal = z
                     }),
                     z.object({
                       type: z.literal('group').default('group'),
-                      links: z.object({
-                        label: z.string(),
-                        id: z.string(),
-                        path: z.string(),
-                      }),
+                      links: z
+                        .object({
+                          label: z.string(),
+                          id: z.string(),
+                          path: z.string(),
+                        })
+                        .array(),
                     }),
                   ])
                   .array(),
