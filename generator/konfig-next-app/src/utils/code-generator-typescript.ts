@@ -165,8 +165,9 @@ ${this.nonEmptySecurity
    */
   argName(name: string, preserveCasing = false): string {
     if (preserveCasing) {
-      // remove all non-alphanumeric characters from name and return
-      return name.replace(/[^a-zA-Z0-9]/g, '')
+      // remove all non-alphanumeric characters except for underscores from name
+      // and return
+      return name.replace(/[^a-zA-Z0-9_]/g, '')
     }
     return camelCase(name)
   }
