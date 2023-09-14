@@ -295,7 +295,6 @@ export const DemoPortal = observer(
           header={
             <DemoHeader
               demos={state.demos.map((demo) => demo.id)}
-              refreshSandbox={refreshSandbox}
               opened={opened}
               setOpened={setOpened}
               state={state}
