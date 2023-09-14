@@ -1,7 +1,9 @@
+import DemoMarkdown, { DemoState } from '@/components/DemoMarkdown'
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
 import { findDocumentInConfiguration } from '@/utils/find-document-in-configuration'
 import { findFirstDocumentInConfiguration } from '@/utils/find-first-document-in-configuration'
+import { findFirstHeadingText } from '@/utils/find-first-heading-text'
 import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
 import { githubGetFileContent } from '@/utils/github-get-file-content'
@@ -32,6 +34,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export type StaticProps = {
   konfigYaml: KonfigYamlType
   demos: string[] // demo ids
+  docId: string
+  docTitle: string
   title: string
   markdown: string
 }
@@ -96,11 +100,15 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     throw Error("Couldn't find portal configuration")
 
   if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
+
+  const docTitle = findFirstHeadingText({ markdown })
   return {
     props: {
       title: konfigYaml.content.portal?.title,
       konfigYaml: konfigYaml.content,
       markdown,
+      docTitle,
+      docId: documentId,
       demos:
         demos.result === 'error'
           ? []
@@ -113,12 +121,22 @@ const DocumentationPage = ({
   konfigYaml,
   title,
   markdown,
+  docTitle,
+  docId,
   demos,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
 
   const [opened, setOpened] = useState(false)
+
+  const [state] = useState(() => {
+    return new DemoState({
+      markdown,
+      name: docTitle,
+      id: docId.replace('/', '-'),
+    })
+  })
 
   return (
     <MantineProvider
@@ -164,7 +182,7 @@ const DocumentationPage = ({
           />
         }
       >
-        test
+        <DemoMarkdown state={state} />
       </AppShell>
     </MantineProvider>
   )
