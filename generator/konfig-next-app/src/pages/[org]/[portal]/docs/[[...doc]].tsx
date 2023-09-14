@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     throw Error("Couldn't find documentation configuration")
 
   // if no document is specified, redirect to first document
-  if (ctx.params?.document === undefined) {
+  if (ctx.params?.doc === undefined) {
     const doc = findFirstDocumentInConfiguration({
       docConfig: documentationConfig,
     })
@@ -71,9 +71,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     }
   }
 
-  const document = ctx.params?.document ?? []
-  if (!Array.isArray(document)) throw Error("Couldn't parse document parameter")
-  const documentId = document.join('/')
+  const docParam = ctx.params?.doc ?? []
+  if (!Array.isArray(docParam)) throw Error("Couldn't parse document parameter")
+  const documentId = docParam.join('/')
 
   const doc = findDocumentInConfiguration({
     docId: documentId,
