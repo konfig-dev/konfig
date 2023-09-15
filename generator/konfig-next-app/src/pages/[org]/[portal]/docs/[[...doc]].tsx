@@ -11,6 +11,7 @@ import { generateShadePalette } from '@/utils/generate-shade-palette'
 import { githubGetFileContent } from '@/utils/github-get-file-content'
 import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { createOctokitInstance } from '@/utils/octokit'
+import { transformInternalLinks } from '@/utils/transform-internal-links'
 import {
   useMantineTheme,
   useMantineColorScheme,
@@ -21,13 +22,19 @@ import {
   Box,
   Title,
 } from '@mantine/core'
-import { DocumentationConfig, KonfigYamlType } from 'konfig-lib'
+import {
+  DocumentationConfig,
+  KonfigYamlType,
+  getOperations,
+  parseSpec,
+} from 'konfig-lib'
 import { observer } from 'mobx-react'
 import {
   GetStaticPaths,
   GetStaticProps,
   InferGetServerSidePropsType,
 } from 'next'
+import path from 'path'
 import { useState } from 'react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -65,6 +72,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   // TODO: handle multiple konfig.yaml
   const konfigYaml = konfigYamls?.[0]
 
+  if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
+
   const documentationConfig = konfigYaml?.content.portal?.documentation
   if (documentationConfig === undefined)
     throw Error("Couldn't find documentation configuration")
@@ -91,11 +100,33 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     docConfig: documentationConfig,
   })
 
-  const markdown = await githubGetFileContent({
+  const originalMarkdown = await githubGetFileContent({
     octokit,
     owner,
     repo,
     path: doc.path,
+  })
+
+  const specPath = konfigYaml.content.specPath
+
+  // time the next three lines
+  const openapi = await githubGetFileContent({
+    owner,
+    repo,
+    octokit,
+    path: path.join(path.dirname(konfigYaml.info.path), specPath),
+  })
+
+  const spec = await parseSpec(openapi)
+  const operations = getOperations({ spec: spec.spec }).map(
+    (op) => op.operation
+  )
+
+  const markdown = transformInternalLinks({
+    markdown: originalMarkdown,
+    owner,
+    repo,
+    operations,
   })
 
   const demos = await generateDemosDataFromGithub({
@@ -105,8 +136,6 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
 
   if (konfigYaml?.content.portal === undefined)
     throw Error("Couldn't find portal configuration")
-
-  if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
 
   const docTitle = findFirstHeadingText({ markdown })
   return {
