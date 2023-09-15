@@ -3,6 +3,7 @@ import parse from 'remark-parse'
 import stringify from 'remark-stringify'
 import gfm from 'remark-gfm'
 import { Node } from 'unist'
+import directive from 'remark-directive'
 import { visit } from 'unist-util-visit'
 import { Operation } from 'konfig-lib'
 
@@ -21,6 +22,7 @@ export function transformInternalLinks({
   const processor = unified()
     .use(parse)
     .use(gfm) // Add remark-gfm to support GitHub Flavored Markdown
+    .use(directive)
     .use(transformLinks({ owner, repo, operations }))
     .use(stringify)
 

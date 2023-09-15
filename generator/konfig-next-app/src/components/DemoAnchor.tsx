@@ -21,11 +21,7 @@ const _DemoAnchor: Components['a'] = ({
     )
   if (href?.includes('/demo/')) {
     return (
-      <Link
-        href={href ?? '#'}
-        style={{ color: colors.brand[7], textDecoration: 'none' }}
-        {...props}
-      >
+      <Link href={href ?? '#'} {...props}>
         <Button
           leftIcon={<IconTerminal size={rem(12)} />}
           variant="light"
@@ -40,11 +36,7 @@ const _DemoAnchor: Components['a'] = ({
 
   if (href?.includes('/reference/')) {
     return (
-      <Link
-        href={href ?? '#'}
-        style={{ color: colors.brand[7], textDecoration: 'none' }}
-        {...props}
-      >
+      <Link href={href ?? '#'} {...props}>
         <Button
           leftIcon={<IconCode size={rem(12)} />}
           variant="light"

@@ -89,6 +89,8 @@ export class PortalState {
           portal: this,
           id,
           showCode: showCode ?? undefined,
+          owner: organizationId,
+          repo: portalId,
         })
     )
 

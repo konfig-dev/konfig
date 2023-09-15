@@ -32,6 +32,7 @@ import { DemoNote } from './DemoNote'
 import { DemoWarn } from './DemoWarn'
 import { DemoDivider } from './DemoDivider'
 import { DemoAnchor } from './DemoAnchor'
+import { DemoApi } from './DemoApi'
 
 export class DemoState {
   id: string
@@ -47,6 +48,8 @@ export class DemoState {
   demoDiv: HTMLDivElement | null = null
   lastSuccessfulExecution: Date | null = null
   showCode = false
+  owner: string
+  repo: string
 
   constructor(parameters: {
     markdown: string
@@ -54,9 +57,13 @@ export class DemoState {
     portal?: PortalState
     id: string
     showCode?: boolean
+    owner: string
+    repo: string
   }) {
     makeAutoObservable(this)
     this.showCode = parameters.showCode ?? false
+    this.owner = parameters.owner
+    this.repo = parameters.repo
     if (parameters && parameters.markdown !== undefined) {
       this.markdown = parameters.markdown
     }
@@ -155,6 +162,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
               note: DemoNote,
               warn: DemoWarn,
               date: DemoDateInput,
+              api: DemoApi,
               number: DemoNumberInput,
               enum: DemoEnum,
             },

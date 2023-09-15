@@ -25,6 +25,7 @@ import {
 import {
   DocumentationConfig,
   KonfigYamlType,
+  OperationObject,
   getOperations,
   parseSpec,
 } from 'konfig-lib'
@@ -35,7 +36,7 @@ import {
   InferGetServerSidePropsType,
 } from 'next'
 import path from 'path'
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -51,6 +52,9 @@ export type StaticProps = {
   docConfig: DocumentationConfig
   docTitle: string
   title: string
+  owner: string
+  repo: string
+  operations: OperationObject[]
   markdown: string
 }
 export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
@@ -118,15 +122,13 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   })
 
   const spec = await parseSpec(openapi)
-  const operations = getOperations({ spec: spec.spec }).map(
-    (op) => op.operation
-  )
+  const operations = getOperations({ spec: spec.spec })
 
   const markdown = transformInternalLinks({
     markdown: originalMarkdown,
     owner,
     repo,
-    operations,
+    operations: operations.map((op) => op.operation),
   })
 
   const demos = await generateDemosDataFromGithub({
@@ -138,6 +140,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     throw Error("Couldn't find portal configuration")
 
   const docTitle = findFirstHeadingText({ markdown })
+  console.log(markdown)
   return {
     props: {
       title: konfigYaml.content.portal?.title,
@@ -146,6 +149,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       docTitle,
       docId: documentId,
       docConfig: documentationConfig,
+      owner,
+      repo,
+      operations,
       demos:
         demos.result === 'error'
           ? []
@@ -153,6 +159,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     },
   }
 }
+
+export const OperationsContext = createContext<OperationObject[]>([])
 
 const DocumentationPage = observer(
   ({
@@ -162,6 +170,9 @@ const DocumentationPage = observer(
     docTitle,
     docId,
     docConfig,
+    operations,
+    owner,
+    repo,
     demos,
   }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const { colors } = useMantineTheme()
@@ -175,6 +186,8 @@ const DocumentationPage = observer(
         name: docTitle,
         id: docId.replace('/', '-'),
         showCode: true,
+        owner,
+        repo,
       })
     })
 
@@ -248,7 +261,9 @@ const DocumentationPage = observer(
             />
           }
         >
-          <DemoMarkdown state={state} />
+          <OperationsContext.Provider value={operations}>
+            <DemoMarkdown state={state} />
+          </OperationsContext.Provider>
         </AppShell>
       </MantineProvider>
     )
