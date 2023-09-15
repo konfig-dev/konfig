@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.8.0
+
+### Minor Changes
+
+- [#177](https://github.com/konfig-dev/konfig/pull/177) [`28f0b957`](https://github.com/konfig-dev/konfig/commit/28f0b957d4108d1eec8c129da718a56bd594672c) Thanks [@dphuang2](https://github.com/dphuang2)! - add documentation configuration to konfig.yaml
+
 ## 1.7.0
 
 ### Minor Changes
