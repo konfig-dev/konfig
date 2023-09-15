@@ -185,7 +185,7 @@ const DocumentationPage = observer(
               {docConfig.sidebar.sections.map((section, i) => {
                 return (
                   <Box key={`${section.label}-${i}`}>
-                    <Title px="md" order={5}>
+                    <Title pb="xs" px="md" order={5}>
                       {section.label}
                     </Title>
                     <Stack>
