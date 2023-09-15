@@ -1,5 +1,14 @@
 # konfig-openapi-spec
 
+## 1.0.142
+
+### Patch Changes
+
+- [#188](https://github.com/konfig-dev/konfig/pull/188) [`fab62fdf`](https://github.com/konfig-dev/konfig/commit/fab62fdf7f5b0ca3369f7f326dc9a8a4d56b77ed) Thanks [@dphuang2](https://github.com/dphuang2)! - modify doc config to reuse linkSchema
+
+- Updated dependencies [[`fab62fdf`](https://github.com/konfig-dev/konfig/commit/fab62fdf7f5b0ca3369f7f326dc9a8a4d56b77ed)]:
+  - konfig-lib@1.8.1
+
 ## 1.0.141
 
 ### Patch Changes
