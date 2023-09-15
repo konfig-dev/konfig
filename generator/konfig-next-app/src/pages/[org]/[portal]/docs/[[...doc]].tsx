@@ -145,6 +145,7 @@ const DocumentationPage = observer(
         markdown,
         name: docTitle,
         id: docId.replace('/', '-'),
+        showCode: true,
       })
     })
 

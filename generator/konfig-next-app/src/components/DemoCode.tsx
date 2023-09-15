@@ -80,7 +80,9 @@ const _DemoCode: Components['code'] = ({
         code,
       })
     }
-    const mounted = demoState?.portal?.showCode ?? false
+    const mounted = demoState?.showCode
+      ? true
+      : demoState?.portal?.showCode ?? false
     return (
       <Transition
         mounted={mounted}

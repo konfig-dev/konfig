@@ -46,6 +46,7 @@ export class DemoState {
   headerIdToHtmlElement: Record<string, HTMLHeadingElement> = {}
   demoDiv: HTMLDivElement | null = null
   lastSuccessfulExecution: Date | null = null
+  showCode = false
 
   constructor(parameters: {
     markdown: string
@@ -55,6 +56,7 @@ export class DemoState {
     showCode?: boolean
   }) {
     makeAutoObservable(this)
+    this.showCode = parameters.showCode ?? false
     if (parameters && parameters.markdown !== undefined) {
       this.markdown = parameters.markdown
     }
