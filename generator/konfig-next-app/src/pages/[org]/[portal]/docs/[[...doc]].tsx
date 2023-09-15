@@ -140,7 +140,6 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     throw Error("Couldn't find portal configuration")
 
   const docTitle = findFirstHeadingText({ markdown })
-  console.log(markdown)
   return {
     props: {
       title: konfigYaml.content.portal?.title,
