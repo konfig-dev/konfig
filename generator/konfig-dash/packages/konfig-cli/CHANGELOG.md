@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.11.1
+
+### Patch Changes
+
+- [#179](https://github.com/konfig-dev/konfig/pull/179) [`dde3354e`](https://github.com/konfig-dev/konfig/commit/dde3354eb3acba72f3d66aa7cd84e51e12b8794f) Thanks [@eddiechayes](https://github.com/eddiechayes)! - ci flag for fix fills in empty body response schema
+
 ## 1.11.0
 
 ### Minor Changes
