@@ -44,7 +44,11 @@ const _DemoAnchor: Components['a'] = ({
   return (
     <Link
       href={href ?? '#'}
-      style={{ color: colors.brand[7], textDecoration: 'none' }}
+      style={{
+        color: colors.brand[7],
+        textDecoration: 'none',
+        wordWrap: 'break-word',
+      }}
       {...props}
     >
       {children}
