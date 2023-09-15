@@ -1,5 +1,5 @@
 import DemoMarkdown, { DemoState } from '@/components/DemoMarkdown'
-import DemoTableOfContents from '@/components/DemoTableOfContents'
+import { DemoTableOfContents } from '@/components/DemoTableOfContents'
 import { DocNavLink } from '@/components/DocNavLink'
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
@@ -22,6 +22,7 @@ import {
   Title,
 } from '@mantine/core'
 import { DocumentationConfig, KonfigYamlType } from 'konfig-lib'
+import { observer } from 'mobx-react'
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -124,102 +125,104 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   }
 }
 
-const DocumentationPage = ({
-  konfigYaml,
-  title,
-  markdown,
-  docTitle,
-  docId,
-  docConfig,
-  demos,
-}: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  const { colors } = useMantineTheme()
-  const { colorScheme } = useMantineColorScheme()
+const DocumentationPage = observer(
+  ({
+    konfigYaml,
+    title,
+    markdown,
+    docTitle,
+    docId,
+    docConfig,
+    demos,
+  }: InferGetServerSidePropsType<typeof getStaticProps>) => {
+    const { colors } = useMantineTheme()
+    const { colorScheme } = useMantineColorScheme()
 
-  const [opened, setOpened] = useState(false)
+    const [opened, setOpened] = useState(false)
 
-  const [state] = useState(() => {
-    return new DemoState({
-      markdown,
-      name: docTitle,
-      id: docId.replace('/', '-'),
+    const [state] = useState(() => {
+      return new DemoState({
+        markdown,
+        name: docTitle,
+        id: docId.replace('/', '-'),
+      })
     })
-  })
 
-  return (
-    <MantineProvider
-      theme={{
-        colorScheme,
-        colors: {
-          brand:
-            konfigYaml.portal?.primaryColor !== undefined
-              ? generateShadePalette(konfigYaml.portal?.primaryColor)
-              : colors.blue,
-        },
-        primaryColor: 'brand',
-      }}
-    >
-      <AppShell
-        styles={{
-          main: {
-            background: colorScheme === 'dark' ? colors.dark[8] : undefined,
+    return (
+      <MantineProvider
+        theme={{
+          colorScheme,
+          colors: {
+            brand:
+              konfigYaml.portal?.primaryColor !== undefined
+                ? generateShadePalette(konfigYaml.portal?.primaryColor)
+                : colors.blue,
           },
+          primaryColor: 'brand',
         }}
-        navbarOffsetBreakpoint="lg"
-        asideOffsetBreakpoint="lg"
-        aside={<DemoTableOfContents demoDiv={state.demoDiv} />}
-        navbar={
-          <Navbar
-            hiddenBreakpoint="lg"
-            hidden={!opened}
-            width={{ lg: NAVBAR_WIDTH }}
-            py="md"
-            sx={{
-              overflowY: 'scroll',
-              height:
-                'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
-            }}
-          >
-            {docConfig.sidebar.sections.map((section, i) => {
-              return (
-                <Box key={`${section.label}-${i}`}>
-                  <Title px="md" order={5}>
-                    {section.label}
-                  </Title>
-                  <Stack>
-                    {section.links.map((link) => {
-                      if (link.type === 'link') {
-                        return (
-                          <DocNavLink
-                            key={link.id}
-                            id={link.id}
-                            label={link.label}
-                            docId={docId}
-                            setOpened={setOpened}
-                          />
-                        )
-                      }
-                      throw Error(`Not implemented link type ${link.type}`)
-                    })}
-                  </Stack>
-                </Box>
-              )
-            })}
-          </Navbar>
-        }
-        header={
-          <DocumentationHeader
-            opened={opened}
-            setOpened={setOpened}
-            title={title}
-            demos={demos}
-          />
-        }
       >
-        <DemoMarkdown state={state} />
-      </AppShell>
-    </MantineProvider>
-  )
-}
+        <AppShell
+          styles={{
+            main: {
+              background: colorScheme === 'dark' ? colors.dark[8] : undefined,
+            },
+          }}
+          navbarOffsetBreakpoint="lg"
+          asideOffsetBreakpoint="lg"
+          aside={<DemoTableOfContents demoDiv={state.demoDiv} />}
+          navbar={
+            <Navbar
+              hiddenBreakpoint="lg"
+              hidden={!opened}
+              width={{ lg: NAVBAR_WIDTH }}
+              py="md"
+              sx={{
+                overflowY: 'scroll',
+                height:
+                  'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
+              }}
+            >
+              {docConfig.sidebar.sections.map((section, i) => {
+                return (
+                  <Box key={`${section.label}-${i}`}>
+                    <Title px="md" order={5}>
+                      {section.label}
+                    </Title>
+                    <Stack>
+                      {section.links.map((link) => {
+                        if (link.type === 'link') {
+                          return (
+                            <DocNavLink
+                              key={link.id}
+                              id={link.id}
+                              label={link.label}
+                              docId={docId}
+                              setOpened={setOpened}
+                            />
+                          )
+                        }
+                        throw Error(`Not implemented link type ${link.type}`)
+                      })}
+                    </Stack>
+                  </Box>
+                )
+              })}
+            </Navbar>
+          }
+          header={
+            <DocumentationHeader
+              opened={opened}
+              setOpened={setOpened}
+              title={title}
+              demos={demos}
+            />
+          }
+        >
+          <DemoMarkdown state={state} />
+        </AppShell>
+      </MantineProvider>
+    )
+  }
+)
 
 export default DocumentationPage

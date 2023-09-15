@@ -12,6 +12,7 @@ import {
 } from '@mantine/core'
 import { IconList } from '@tabler/icons-react'
 import { TITLE_OFFSET_PX } from './DemoTitle'
+import { observer } from 'mobx-react'
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -122,95 +123,101 @@ function getHeadingOrder(headingElement: HTMLHeadingElement): number {
   return isNaN(order) ? 0 : order
 }
 
-export default function DemoTableOfContents({ demoDiv }: TableOfContentsProps) {
-  const headings: HTMLHeadingElement[] =
-    demoDiv !== null ? getHeadingElementsFromDiv(demoDiv) : []
+export const DemoTableOfContents = observer(
+  ({ demoDiv }: TableOfContentsProps) => {
+    const headings: HTMLHeadingElement[] =
+      demoDiv !== null ? getHeadingElementsFromDiv(demoDiv) : []
 
-  const theme = useMantineTheme()
-  const { classes, cx } = useStyles()
-  const [active, setActive] = useState(0)
+    const theme = useMantineTheme()
+    const { classes, cx } = useStyles()
+    const [active, setActive] = useState(0)
 
-  const filteredHeadings = headings.filter(
-    (heading) => getHeadingOrder(heading) > 1
-  )
-
-  const handleScroll = useMemo(
-    () => () => {
-      setActive(
-        getActiveElement(filteredHeadings.map((d) => d.getBoundingClientRect()))
-      )
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [filteredHeadings, demoDiv]
-  )
-
-  // trigger active element computation when component mounts
-  // this ensures table of contents is highlighting the right section when you navigate to something with a slug like:
-  // https://demo.konfigthis.com/konfig-dev/konfig-demo-docs/demo#demo:create-user
-  useEffect(() => handleScroll(), [handleScroll])
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [handleScroll])
-
-  // if (filteredHeadings.length === 0) {
-  //   return null
-  // }
-
-  const items = filteredHeadings.map((heading, index) => {
-    return (
-      <Text<'a'>
-        key={heading.id}
-        component="a"
-        size="sm"
-        className={cx(classes.link, { [classes.linkActive]: active === index })}
-        href={`#${heading.id}`}
-        sx={{
-          paddingLeft: `calc(${getHeadingOrder(heading) - 1} * ${
-            theme.spacing.lg
-          })`,
-        }}
-      >
-        {heading.innerText}
-      </Text>
+    const filteredHeadings = headings.filter(
+      (heading) => getHeadingOrder(heading) > 1
     )
-  })
 
-  // if (headings.length === 0) return null
+    const handleScroll = useMemo(
+      () => () => {
+        setActive(
+          getActiveElement(
+            filteredHeadings.map((d) => d.getBoundingClientRect())
+          )
+        )
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [filteredHeadings, demoDiv]
+    )
 
-  return (
-    <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
-      <Aside
-        style={{
-          backgroundColor:
-            theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
-          border: 'none',
-        }}
-        p="sm"
-        hiddenBreakpoint="lg"
-        width={{ base: 300 }}
-      >
-        <nav className={cx(classes.wrapper)}>
-          <div className={classes.inner}>
-            <div>
-              {items.length !== 0 && (
-                <div className={classes.header}>
-                  <IconList size={20} stroke={1.5} />
-                  <Text className={classes.title}>Table of contents</Text>
-                </div>
-              )}
-              <ScrollArea.Autosize
-                mah={`calc(100vh - ${rem(140)})`}
-                type="scroll"
-                offsetScrollbars
-              >
-                <div className={classes.items}>{items}</div>
-              </ScrollArea.Autosize>
+    // trigger active element computation when component mounts
+    // this ensures table of contents is highlighting the right section when you navigate to something with a slug like:
+    // https://demo.konfigthis.com/konfig-dev/konfig-demo-docs/demo#demo:create-user
+    useEffect(() => handleScroll(), [handleScroll])
+
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    }, [handleScroll])
+
+    // if (filteredHeadings.length === 0) {
+    //   return null
+    // }
+
+    const items = filteredHeadings.map((heading, index) => {
+      return (
+        <Text<'a'>
+          key={heading.id}
+          component="a"
+          size="sm"
+          className={cx(classes.link, {
+            [classes.linkActive]: active === index,
+          })}
+          href={`#${heading.id}`}
+          sx={{
+            paddingLeft: `calc(${getHeadingOrder(heading) - 1} * ${
+              theme.spacing.lg
+            })`,
+          }}
+        >
+          {heading.innerText}
+        </Text>
+      )
+    })
+
+    // if (headings.length === 0) return null
+
+    return (
+      <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
+        <Aside
+          style={{
+            backgroundColor:
+              theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+            border: 'none',
+          }}
+          p="sm"
+          hiddenBreakpoint="lg"
+          width={{ base: 300 }}
+        >
+          <nav className={cx(classes.wrapper)}>
+            <div className={classes.inner}>
+              <div>
+                {items.length !== 0 && (
+                  <div className={classes.header}>
+                    <IconList size={20} stroke={1.5} />
+                    <Text className={classes.title}>Table of contents</Text>
+                  </div>
+                )}
+                <ScrollArea.Autosize
+                  mah={`calc(100vh - ${rem(140)})`}
+                  type="scroll"
+                  offsetScrollbars
+                >
+                  <div className={classes.items}>{items}</div>
+                </ScrollArea.Autosize>
+              </div>
             </div>
-          </div>
-        </nav>
-      </Aside>
-    </MediaQuery>
-  )
-}
+          </nav>
+        </Aside>
+      </MediaQuery>
+    )
+  }
+)
