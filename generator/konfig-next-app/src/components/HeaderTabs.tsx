@@ -66,7 +66,7 @@ export function HeaderTabs({
         <HeaderTab
           label={TABS.demos}
           active={currentTab === TABS.demos}
-          link={`${basePath}/${demos[0]}`}
+          link={`${basePath}/demo`}
           icon={<IconTerminal size="1rem" />}
           disabled={isSandbox}
         />

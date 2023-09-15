@@ -63,6 +63,8 @@ function transformLinks({
             }
           }
         } else if (node.url.startsWith(DEMO_PREFIX)) {
+          const demoId = node.url.slice(DEMO_PREFIX.length)
+          node.url = `/${owner}/${repo}/demo/${demoId}`
         }
       }
     })
