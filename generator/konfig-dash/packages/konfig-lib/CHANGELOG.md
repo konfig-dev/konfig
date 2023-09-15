@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.9.0
+
+### Minor Changes
+
+- [#190](https://github.com/konfig-dev/konfig/pull/190) [`5d046896`](https://github.com/konfig-dev/konfig/commit/5d04689669cced6f4462e7b24a8b7462ad00798c) Thanks [@dphuang2](https://github.com/dphuang2)! - label is optional for markdown documentation
+
 ## 1.8.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 ### [3.0.1](https://github.com/joolfe/postman-to-openapi/compare/3.0.0...3.0.1) (2023-01-21)
 
+## 3.0.121
+
+### Patch Changes
+
+- Updated dependencies [[`5d046896`](https://github.com/konfig-dev/konfig/commit/5d04689669cced6f4462e7b24a8b7462ad00798c)]:
+  - konfig-lib@1.9.0
+
 ## 3.0.120
 
 ### Patch Changes
