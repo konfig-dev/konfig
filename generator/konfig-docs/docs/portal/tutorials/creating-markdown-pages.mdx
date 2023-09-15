@@ -1,0 +1,149 @@
+# Creating Markdown Pages
+
+This is a collection of tutorials for creating markdown pages in Konfig.
+
+## Creating a Page
+
+To add a page, simply create a new markdown file in your repository. For
+example, `docs/new-page.md`.
+
+
+<CH.Scrollycoding>
+
+Then edit your `konfig.yaml` file's `documentation.sidebar.sections` to include
+the new page.
+
+```yaml konfig.yaml
+portal:
+  title: Acme
+  primaryColor: '#9fc1be'
+  socials:
+    website: https://acme.com
+  documentation:
+    sidebar:
+      sections:
+        - label: Guides
+          links:
+            - label: Existing Page
+              id: existing-page
+              path: docs/existing-page.md
+```
+
+---
+
+Add to the list of pages under your desired section.
+
+```yaml konfig.yaml focus=14:16
+portal:
+  title: Acme
+  primaryColor: '#9fc1be'
+  socials:
+    website: https://acme.com
+  documentation:
+    sidebar:
+      sections:
+        - label: Guides
+          links:
+            - label: Existing Page
+              id: existing-page
+              path: docs/existing-page.md
+            - label: New Page
+              id: new-page
+              path: docs/new-page.md
+```
+
+</CH.Scrollycoding>
+
+Commit both `new-page.md` and the updated `konfig.yaml` to your repository and
+the documentation portal will automatically update.
+
+## Creating a Section
+
+
+<CH.Scrollycoding>
+
+To add a section, simply add a new section to your `konfig.yaml` file's
+`documentation.sidebar.sections` list.
+
+```yaml konfig.yaml
+portal:
+  title: Acme
+  primaryColor: '#9fc1be'
+  socials:
+    website: https://acme.com
+  documentation:
+    sidebar:
+      sections:
+        - label: Guides
+          links:
+            - label: Existing Page
+              id: existing-page
+              path: docs/existing-page.md
+```
+
+---
+
+Here is an example adding a "New Section" to the sidebar.
+
+```yaml konfig.yaml focus=14:18
+portal:
+  title: Acme
+  primaryColor: '#9fc1be'
+  socials:
+    website: https://acme.com
+  documentation:
+    sidebar:
+      sections:
+        - label: Guides
+          links:
+            - label: Existing Page
+              id: existing-page
+              path: docs/existing-page.md
+        - label: New Section
+          links:
+            - label: New Page
+              id: new-page
+              path: docs/new-page.md
+```
+</CH.Scrollycoding>
+
+## Writing Markdown
+
+Konfig supports writing documentation in markdown. All the standard markdown
+features are supported. For more information on markdown, see [this
+guide](https://www.markdownguide.org/basic-syntax/).
+
+### Extensions
+
+Konfig supports a few extensions to markdown to make it easier to write better documentation.
+
+#### API Endpoint Directive
+
+Konfig easily allows you to link to API endpoints.
+
+To do this, use the `:api[OPERATION_ID]` directive. For example if I have an
+operation with an `operationId` of `Authentication_login` I can reference it
+like so:
+
+```markdown doc.md
+:api[Authentication_login]
+```
+
+#### Code Tabs
+
+Konfig supports code tabs. To use them, simply use the `code` directive and add snippets in adjacent code blocks.
+
+````markdown doc.md
+:::code
+
+```python
+print("Hello, World!")
+```
+
+```typescript
+console.log("Hello, World!");
+```
+
+:::
+````
+

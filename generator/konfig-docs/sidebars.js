@@ -20,65 +20,105 @@ const sidebars = {
       id: "intro",
     },
     {
-      label: "Getting Started",
+      label: "SDKs",
       type: "category",
+      collapsible: false,
       items: [
-        "getting-started/openapi-specification",
-        "getting-started/postman-collections",
+        {
+          label: "Getting Started",
+          type: "category",
+          items: [
+            "getting-started/openapi-specification",
+            "getting-started/postman-collections",
+          ],
+        },
+        {
+          type: "category",
+          label: "Tutorials",
+          link: {
+            type: "generated-index",
+          },
+          items: [
+            "tutorials/setup-linting",
+            "tutorials/setup-breaking-change-detection",
+            "tutorials/fix-openapi-spec",
+            "tutorials/automate-sdk-updates",
+            "tutorials/publish-sdks",
+            "tutorials/naming-operation-ids",
+          ],
+        },
+        {
+          type: "category",
+          label: "Custom SDKs",
+          link: {
+            type: "doc",
+            id: "custom-sdks",
+          },
+          items: [
+            "custom-sdks/implementing-pagination",
+            "custom-sdks/example-customized-sdks",
+            "custom-sdks/flows",
+          ],
+        },
+        {
+          type: "category",
+          label: "Reference",
+          link: {
+            type: "generated-index",
+          },
+          items: ["reference/language-and-oas-support", "reference/faq"],
+        },
+        {
+          type: "doc",
+          id: "lint-rules",
+        },
+        {
+          type: "category",
+          label: "konfig.yaml",
+          link: {
+            type: "doc",
+            id: "konfig-yaml",
+          },
+          items: [{ type: "doc", id: "konfig-yaml/schema", label: "Schema" }],
+        },
+        {
+          type: "doc",
+          id: "example-sdks",
+        },
       ],
     },
     {
+      label: "Documentation",
       type: "category",
-      label: "Tutorials",
-      link: {
-        type: "generated-index",
-      },
+      collapsible: false,
       items: [
-        "tutorials/setup-linting",
-        "tutorials/setup-breaking-change-detection",
-        "tutorials/fix-openapi-spec",
-        "tutorials/automate-sdk-updates",
-        "tutorials/publish-sdks",
-        "tutorials/naming-operation-ids",
+        {
+          type: "doc",
+          label: "API Reference",
+          id: "portal/api-reference",
+        },
+        {
+          type: "doc",
+          label: "Markdown Pages",
+          id: "portal/markdown-pages",
+        },
+        {
+          type: "doc",
+          label: "Interactive Demos",
+          id: "portal/interactive-demos",
+        },
+        {
+          type: "category",
+          label: "Tutorials",
+          items: [
+            {
+              type: "doc",
+              label: "Creating Markdown Pages",
+              id: "portal/tutorials/creating-markdown-pages",
+            },
+          ],
+        },
       ],
-    },
-    {
-      type: "category",
-      label: "Custom SDKs",
-      link: {
-        type: "doc",
-        id: "custom-sdks",
-      },
-      items: [
-        "custom-sdks/implementing-pagination",
-        "custom-sdks/example-customized-sdks",
-        "custom-sdks/flows",
-      ],
-    },
-    {
-      type: "category",
-      label: "Reference",
-      link: {
-        type: "generated-index",
-      },
-      items: ["reference/language-and-oas-support", "reference/faq"],
-    },
-    {
-      type: "doc",
-      id: "lint-rules",
-    },
-    {
-      type: "category",
-      label: "konfig.yaml",
-      link: {
-        type: "doc",
-        id: "konfig-yaml",
-      },
-      items: [{ type: "doc", id: "konfig-yaml/schema", label: "Schema" }],
-    },
-    {
-      type: "doc",
-      id: "example-sdks",
     },
   ],
 
