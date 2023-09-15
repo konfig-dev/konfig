@@ -31,6 +31,7 @@ import { formatTimeAgo } from '@/utils/format-time-ago'
 import { DemoNote } from './DemoNote'
 import { DemoWarn } from './DemoWarn'
 import { DemoDivider } from './DemoDivider'
+import { DemoAnchor } from './DemoAnchor'
 
 export class DemoState {
   id: string
@@ -130,13 +131,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkDirective, remarkDirectiveRehype]}
           components={{
-            a({ children, node, siblingCount, ...props }) {
-              return (
-                <Anchor color={colors.brand[7]} {...props}>
-                  {children}
-                </Anchor>
-              )
-            },
+            a: DemoAnchor,
             p({ node, children, siblingCount, ...props }) {
               return <Text {...props}>{children}</Text>
             },
