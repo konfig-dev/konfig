@@ -90,6 +90,15 @@ export const demos = demo.array().optional()
 export type Demo = z.infer<typeof demo>
 export type Demos = z.infer<typeof demos>
 
+export const linkSchema = z.object({
+  type: z.literal('link').default('link'),
+  label: z.string(),
+  id: z.string(),
+  path: z.string(),
+})
+
+export type Link = z.infer<typeof linkSchema>
+
 export const documentation = z.object({
   sidebar: z
     .object({
@@ -98,21 +107,10 @@ export const documentation = z.object({
           label: z.string(),
           links: z
             .union([
-              z.object({
-                type: z.literal('link').default('link'),
-                label: z.string(),
-                id: z.string(),
-                path: z.string(),
-              }),
+              linkSchema,
               z.object({
                 type: z.literal('group').default('group'),
-                links: z
-                  .object({
-                    label: z.string(),
-                    id: z.string(),
-                    path: z.string(),
-                  })
-                  .array(),
+                links: linkSchema.array(),
               }),
             ])
             .array(),

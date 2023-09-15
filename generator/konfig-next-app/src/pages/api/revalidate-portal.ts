@@ -3,6 +3,9 @@ import { z } from 'zod'
 import { githubGetReferenceResources } from '@/utils/github-get-reference-resources'
 import { clearGithubApiCache } from '@/utils/github-api-redis-cache'
 import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
+import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
+import { createOctokitInstance } from '@/utils/octokit'
+import { collectAllDocuments } from '@/utils/collect-all-documents'
 
 const requestBodySchema = z.object({
   owner: z.string(),
@@ -36,6 +39,21 @@ export default async function handler(
     for (const demo of demos.portal.demos) {
       const path = `/${owner}/${repo}/${demo.id}`
       toRevalidate.push(path)
+    }
+  }
+
+  const octokit = await createOctokitInstance({ owner, repo })
+  const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
+  if (konfigYamls !== null) {
+    for (const konfigYaml of konfigYamls) {
+      if (konfigYaml.content.portal?.documentation !== undefined) {
+        const links = collectAllDocuments({
+          docConfig: konfigYaml.content.portal.documentation,
+        })
+        for (const link of links) {
+          toRevalidate.push(`/${owner}/${repo}/docs/${link.id}`)
+        }
+      }
     }
   }
 

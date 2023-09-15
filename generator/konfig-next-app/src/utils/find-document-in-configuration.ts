@@ -1,4 +1,5 @@
 import { DocumentationConfig } from 'konfig-lib'
+import { collectAllDocuments } from './collect-all-documents'
 
 export function findDocumentInConfiguration({
   docId,
@@ -7,17 +8,9 @@ export function findDocumentInConfiguration({
   docId: string
   docConfig: DocumentationConfig
 }) {
-  const sections = docConfig.sidebar.sections
-  for (const section of sections) {
-    for (const link of section.links) {
-      if (link.type === 'link' && link.id === docId) {
-        return link
-      } else if (link.type === 'group') {
-        for (const innerLink of link.links) {
-          if (innerLink.id === docId) return innerLink
-        }
-      }
-    }
+  const links = collectAllDocuments({ docConfig })
+  for (const link of links) {
+    if (link.id === docId) return link
   }
   throw Error('Could not find document in configuration')
 }

@@ -1,20 +1,13 @@
 import { DocumentationConfig } from 'konfig-lib'
+import { collectAllDocuments } from './collect-all-documents'
 
 export function findFirstDocumentInConfiguration({
   docConfig,
 }: {
   docConfig: DocumentationConfig
 }) {
-  const sections = docConfig.sidebar.sections
-  for (const section of sections) {
-    for (const link of section.links) {
-      if (link.type === 'link') return link
-      else if (link.type === 'group') {
-        for (const innerLink of link.links) {
-          return innerLink
-        }
-      }
-    }
-  }
-  throw Error('Could not find document in configuration')
+  const links = collectAllDocuments({ docConfig })
+  if (links.length === 0)
+    throw Error('Could not find document in configuration')
+  return links[0]
 }
