@@ -12,5 +12,5 @@ export function findDocumentInConfiguration({
   for (const link of links) {
     if (link.id === docId) return link
   }
-  throw Error('Could not find document in configuration')
+  throw Error('Could not find document in configuration for id: ' + docId)
 }

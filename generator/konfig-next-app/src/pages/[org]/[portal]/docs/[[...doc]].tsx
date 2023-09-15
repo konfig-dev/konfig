@@ -5,6 +5,7 @@ import { DocEditThisPage } from '@/components/DocEditThisPage'
 import { DocNavLink } from '@/components/DocNavLink'
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
+import { collectAllDocuments } from '@/utils/collect-all-documents'
 import { findDocumentInConfiguration } from '@/utils/find-document-in-configuration'
 import { findFirstDocumentInConfiguration } from '@/utils/find-first-document-in-configuration'
 import { findFirstHeadingText } from '@/utils/find-first-heading-text'
@@ -40,8 +41,9 @@ import {
   GetStaticProps,
   InferGetServerSidePropsType,
 } from 'next'
+import { useRouter } from 'next/router'
 import path from 'path'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -63,6 +65,7 @@ export type StaticProps = {
   operations: OperationObject[]
   markdown: string
   defaultBranch: string
+  idToLabel: Record<string, string | undefined>
 }
 export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   const owner = ctx.params?.org
@@ -155,6 +158,21 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     throw Error("Couldn't find portal configuration")
 
   const docTitle = findFirstHeadingText({ markdown })
+
+  // get all docs with collectAllDocumentation and generate a map of id to label from first heading text
+  const docs = collectAllDocuments({ docConfig: documentationConfig })
+  const idToLabel: Record<string, string | undefined> = {}
+  for (const { id, path } of docs) {
+    const content = await githubGetFileContent({
+      octokit,
+      owner,
+      repo,
+      path,
+    })
+    const docTitle = findFirstHeadingText({ markdown: content })
+    idToLabel[id] = docTitle
+  }
+
   return {
     props: {
       title: konfigYaml.content.portal?.title,
@@ -168,6 +186,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       repo,
       operations,
       defaultBranch,
+      idToLabel,
       demos:
         demos.result === 'error'
           ? []
@@ -189,6 +208,7 @@ const DocumentationPage = observer(
     operations,
     owner,
     defaultBranch,
+    idToLabel,
     docPath,
     repo,
     demos,
@@ -198,7 +218,7 @@ const DocumentationPage = observer(
 
     const [opened, setOpened] = useState(false)
 
-    const [state] = useState(() => {
+    const [state, setState] = useState(() => {
       return new DemoState({
         markdown,
         name: docTitle,
@@ -208,6 +228,22 @@ const DocumentationPage = observer(
         repo,
       })
     })
+
+    const router = useRouter()
+
+    useEffect(() => {
+      setState(
+        new DemoState({
+          markdown,
+          name: docTitle,
+          id: docId.replace('/', '-'),
+          showCode: true,
+          owner,
+          repo,
+        })
+      )
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.asPath])
 
     return (
       <MantineProvider
@@ -249,14 +285,19 @@ const DocumentationPage = observer(
                     <Title pb="xs" px="md" order={5}>
                       {section.label}
                     </Title>
-                    <Stack>
+                    <Stack spacing={rem(3)}>
                       {section.links.map((link) => {
                         if (link.type === 'link') {
+                          const label = idToLabel[link.id]
+                          if (label === undefined)
+                            throw Error(
+                              `Couldn't find label for link with ID: ${link.id}`
+                            )
                           return (
                             <DocNavLink
                               key={link.id}
                               id={link.id}
-                              label={link.label}
+                              label={link.label ?? label}
                               docId={docId}
                               setOpened={setOpened}
                             />

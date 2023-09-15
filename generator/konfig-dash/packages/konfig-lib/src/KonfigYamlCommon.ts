@@ -92,7 +92,7 @@ export type Demos = z.infer<typeof demos>
 
 export const linkSchema = z.object({
   type: z.literal('link').default('link'),
-  label: z.string(),
+  label: z.string().optional(),
   id: z.string(),
   path: z.string(),
 })
