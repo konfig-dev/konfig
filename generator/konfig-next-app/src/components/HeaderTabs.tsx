@@ -42,7 +42,7 @@ export function HeaderTabs({
         alignItems: 'flex-end',
         overflowX: 'scroll',
       }}
-      pl="sm"
+      px="sm"
       noWrap
       spacing={0}
     >
