@@ -1,6 +1,5 @@
 import { CliUx } from '@oclif/core'
 import boxen from 'boxen'
-import * as inquirer from 'inquirer'
 import deepEquals from 'deep-equal'
 import {
   generateAndMergeSchemaObjects,
@@ -19,15 +18,18 @@ import { getOasVersion } from 'konfig-lib/dist/util/get-oas-version'
 import { Progress } from './fix-progress'
 import { inquirerConfirm } from './inquirer-confirm'
 import { logOperationDetails } from './log-operation-details'
+import { inquirerPromptCI } from './inquirer-prompt-ci'
 
 export async function fixEmptyResponseBodySchema({
   spec,
   progress,
   alwaysYes,
+  ci,
 }: {
   spec: Spec
   progress: Progress
   alwaysYes: boolean
+  ci: boolean
 }): Promise<number> {
   let numberOfEmptyResponseBodySchemasFixed = 0
   const version = getOasVersion({ spec: spec.spec })
@@ -107,6 +109,7 @@ export async function fixEmptyResponseBodySchema({
           progress,
           path,
           alwaysYes,
+          ci,
           operation: { operation, path, method },
           mediaObject,
           spec,
@@ -131,6 +134,7 @@ async function getExample({
   progress,
   path,
   alwaysYes,
+  ci,
   operation,
   mediaObject,
   spec,
@@ -139,6 +143,7 @@ async function getExample({
   progress: Progress
   path: string
   alwaysYes: boolean
+  ci: boolean
   operation: OperationObject
   mediaObject: MediaObject
   spec: Spec
@@ -172,7 +177,7 @@ async function getExample({
       return savedExample
     }
   }
-  const json = await getOrRequestExampleJson({ mediaObject, spec, operation })
+  const json = await getOrRequestExampleJson({ mediaObject, spec, operation, ci })
 
   progress.saveExample({ path, method, json })
   return json
@@ -182,10 +187,12 @@ async function getOrRequestExampleJson({
   mediaObject,
   spec,
   operation,
+  ci
 }: {
   mediaObject: MediaObject
   spec: Spec
   operation: OperationObject
+  ci: boolean
 }): Promise<Json> {
   const example = await getExampleJsonFromMediaObject({ mediaObject, spec })
   if (example !== undefined) return example
@@ -201,21 +208,24 @@ async function getOrRequestExampleJson({
       }
     )
   )
-  const { rawJson } = await inquirer.prompt<{ rawJson: string }>([
-    {
-      type: 'editor',
-      name: 'rawJson',
-      message: `Missing response body schema detected for "${operation.method.toUpperCase()} ${
-        operation.path
-      }", provide example JSON here`,
-      validate(input: string) {
-        if (!isJsonString(input)) {
-          CliUx.ux.warn('\nProvided invalid JSON string, try again.\n')
-          return false
-        }
-        return true
+  const { rawJson } = await inquirerPromptCI<{ rawJson: string }>({
+    ci,
+    ciDefault: { rawJson: '{}' },
+    questions: [
+      {
+        type: 'editor',
+        name: 'rawJson',
+        message: `Missing response body schema detected for "${operation.method.toUpperCase()} ${
+          operation.path
+        }", provide example JSON here`,
+        validate(input: string) {
+          if (!isJsonString(input)) {
+            CliUx.ux.warn('\nProvided invalid JSON string, try again.\n')
+            return false
+          }
+          return true
+        },
       },
-    },
-  ])
+    ]})
   return jsonSchema.parse(JSON.parse(rawJson))
 }

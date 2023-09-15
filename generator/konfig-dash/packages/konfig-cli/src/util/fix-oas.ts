@@ -151,6 +151,7 @@ export async function fixOas({
       spec,
       progress,
       alwaysYes,
+      ci,
     })
 
   // Dylan: this auto-fix was commented because there is a case where you want a
