@@ -16,6 +16,7 @@ import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { githubGetRepository } from '@/utils/github-get-repository'
 import { createOctokitInstance } from '@/utils/octokit'
 import { transformInternalLinks } from '@/utils/transform-internal-links'
+import { transformImageLinks } from '@/utils/transform-image-links'
 import {
   useMantineTheme,
   useMantineColorScheme,
@@ -142,11 +143,17 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   const spec = await parseSpec(openapi)
   const operations = getOperations({ spec: spec.spec })
 
-  const markdown = transformInternalLinks({
-    markdown: originalMarkdown,
+  const markdown = transformImageLinks({
+    markdown: transformInternalLinks({
+      markdown: originalMarkdown,
+      owner,
+      repo,
+      operations: operations.map((op) => op.operation),
+    }),
     owner,
     repo,
-    operations: operations.map((op) => op.operation),
+    docPath: doc.path,
+    defaultBranch,
   })
 
   const demos = await generateDemosDataFromGithub({
