@@ -1,19 +1,25 @@
 import { observer } from 'mobx-react'
 import { Components } from 'react-markdown'
-import { Anchor, useMantineTheme } from '@mantine/core'
+import { useMantineTheme } from '@mantine/core'
+import Link from 'next/link'
 
 const _DemoAnchor: Components['a'] = ({
   node,
   className,
   children,
   siblingCount,
+  href,
   ...props
 }) => {
   const { colors } = useMantineTheme()
   return (
-    <Anchor color={colors.brand[7]} {...props}>
+    <Link
+      href={href ?? '#'}
+      style={{ color: colors.brand[7], textDecoration: 'none' }}
+      {...props}
+    >
       {children}
-    </Anchor>
+    </Link>
   )
 }
 
