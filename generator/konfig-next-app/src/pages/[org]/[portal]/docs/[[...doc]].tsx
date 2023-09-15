@@ -1,5 +1,7 @@
 import DemoMarkdown, { DemoState } from '@/components/DemoMarkdown'
+import { DemoSocials } from '@/components/DemoSocials'
 import { DemoTableOfContents } from '@/components/DemoTableOfContents'
+import { DocEditThisPage } from '@/components/DocEditThisPage'
 import { DocNavLink } from '@/components/DocNavLink'
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
@@ -10,6 +12,7 @@ import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
 import { githubGetFileContent } from '@/utils/github-get-file-content'
 import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
+import { githubGetRepository } from '@/utils/github-get-repository'
 import { createOctokitInstance } from '@/utils/octokit'
 import { transformInternalLinks } from '@/utils/transform-internal-links'
 import {
@@ -21,6 +24,8 @@ import {
   Stack,
   Box,
   Title,
+  rem,
+  Divider,
 } from '@mantine/core'
 import {
   DocumentationConfig,
@@ -49,6 +54,7 @@ export type StaticProps = {
   konfigYaml: KonfigYamlType
   demos: string[] // demo ids
   docId: string
+  docPath: string
   docConfig: DocumentationConfig
   docTitle: string
   title: string
@@ -56,6 +62,7 @@ export type StaticProps = {
   repo: string
   operations: OperationObject[]
   markdown: string
+  defaultBranch: string
 }
 export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
   const owner = ctx.params?.org
@@ -67,6 +74,14 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
     throw Error('Got unexpected array type for parameters')
 
   const octokit = await createOctokitInstance({ owner, repo })
+
+  // get default branch of repo
+  const { data: repoData } = await githubGetRepository({
+    owner,
+    repo,
+    octokit,
+  })
+  const defaultBranch = repoData.default_branch
 
   // time the next two lines
   const start = Date.now()
@@ -147,10 +162,12 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (ctx) => {
       markdown,
       docTitle,
       docId: documentId,
+      docPath: doc.path,
       docConfig: documentationConfig,
       owner,
       repo,
       operations,
+      defaultBranch,
       demos:
         demos.result === 'error'
           ? []
@@ -171,6 +188,8 @@ const DocumentationPage = observer(
     docConfig,
     operations,
     owner,
+    defaultBranch,
+    docPath,
     repo,
     demos,
   }: InferGetServerSidePropsType<typeof getStaticProps>) => {
@@ -262,6 +281,18 @@ const DocumentationPage = observer(
         >
           <OperationsContext.Provider value={operations}>
             <DemoMarkdown state={state} />
+            <Box my={rem(40)}>
+              <DocEditThisPage
+                owner={owner}
+                repo={repo}
+                path={docPath}
+                defaultBranch={defaultBranch}
+              />
+            </Box>
+            <Divider mt={rem(60)} />
+            <Box my={rem(20)}>
+              <DemoSocials socials={konfigYaml.portal?.socials} />
+            </Box>
           </OperationsContext.Provider>
         </AppShell>
       </MantineProvider>

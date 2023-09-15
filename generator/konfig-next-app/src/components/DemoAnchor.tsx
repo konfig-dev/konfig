@@ -24,7 +24,7 @@ const _DemoAnchor: Components['a'] = ({
       <Link href={href ?? '#'} {...props}>
         <Button
           leftIcon={<IconTerminal size={rem(12)} />}
-          variant="light"
+          variant="default"
           compact
           size="sm"
         >
@@ -39,7 +39,7 @@ const _DemoAnchor: Components['a'] = ({
       <Link href={href ?? '#'} {...props}>
         <Button
           leftIcon={<IconCode size={rem(12)} />}
-          variant="light"
+          variant="default"
           compact
           size="sm"
         >
