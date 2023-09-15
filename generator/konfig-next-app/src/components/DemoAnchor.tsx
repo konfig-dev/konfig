@@ -3,6 +3,7 @@ import { Components } from 'react-markdown'
 import { useMantineTheme, Text, Button, rem } from '@mantine/core'
 import Link from 'next/link'
 import { IconCode, IconTerminal } from '@tabler/icons-react'
+import { DemoInlineLinkButton } from './DemoInlineLinkButton'
 
 const _DemoAnchor: Components['a'] = ({
   node,
@@ -21,31 +22,23 @@ const _DemoAnchor: Components['a'] = ({
     )
   if (href?.includes('/demo/')) {
     return (
-      <Link href={href ?? '#'} {...props}>
-        <Button
-          leftIcon={<IconTerminal size={rem(12)} />}
-          variant="default"
-          compact
-          size="sm"
-        >
-          {children}
-        </Button>
-      </Link>
+      <DemoInlineLinkButton
+        label={children}
+        leftIcon={<IconTerminal size={rem(12)} />}
+        href={href ?? '#'}
+        {...props}
+      />
     )
   }
 
   if (href?.includes('/reference/')) {
     return (
-      <Link href={href ?? '#'} {...props}>
-        <Button
-          leftIcon={<IconCode size={rem(12)} />}
-          variant="default"
-          compact
-          size="sm"
-        >
-          {children}
-        </Button>
-      </Link>
+      <DemoInlineLinkButton
+        label={children}
+        leftIcon={<IconCode size={rem(12)} />}
+        href={href ?? '#'}
+        {...props}
+      />
     )
   }
   return (

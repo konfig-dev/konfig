@@ -3,9 +3,9 @@ import { useContext } from 'react'
 import { Components } from 'react-markdown'
 import { DemoStateContext } from './DemoMarkdown'
 import { OperationsContext } from '@/pages/[org]/[portal]/docs/[[...doc]]'
-import { Button, Text } from '@mantine/core'
+import { Text } from '@mantine/core'
 import { HttpMethodBadge } from './HttpMethodBadge'
-import Link from 'next/link'
+import { DemoInlineLinkButton } from './DemoInlineLinkButton'
 
 const _DemoApi: Components['a'] = ({
   node,
@@ -39,20 +39,12 @@ const _DemoApi: Components['a'] = ({
   if (demoState === null) return null
   if (tag === undefined) return null
   return (
-    <Link
+    <DemoInlineLinkButton
+      rightIcon={<HttpMethodBadge size="xs" httpMethod={operation.method} />}
+      label={label}
       href={`/${demoState.owner}/${demoState.repo}/reference/${tag}/${id}`}
       {...props}
-    >
-      <Button
-        rightIcon={<HttpMethodBadge size="xs" httpMethod={operation.method} />}
-        color="gray"
-        size="sm"
-        variant="default"
-        compact
-      >
-        {label}
-      </Button>
-    </Link>
+    />
   )
 }
 
