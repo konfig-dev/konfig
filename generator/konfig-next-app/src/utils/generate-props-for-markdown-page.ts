@@ -33,16 +33,19 @@ export type MarkdownPageProps = {
   markdown: string
   defaultBranch: string
   idToLabel: Record<string, string | undefined>
+  omitOwnerAndRepo: boolean
 }
 
 export async function generatePropsForMarkdownPage({
   owner,
   repo,
   docUrlParam,
+  omitOwnerAndRepo,
 }: {
   owner: string
   repo: string
   docUrlParam: string | string[] | undefined
+  omitOwnerAndRepo?: boolean
 }): Promise<GetStaticPropsResult<MarkdownPageProps>> {
   const octokit = await createOctokitInstance({ owner, repo })
 
@@ -75,7 +78,9 @@ export async function generatePropsForMarkdownPage({
     })
     return {
       redirect: {
-        destination: `/${owner}/${repo}/docs/${doc.id}`,
+        destination: omitOwnerAndRepo
+          ? `/docs/${doc.id}`
+          : `/${owner}/${repo}/docs/${doc.id}`,
         permanent: false,
       },
     }
@@ -156,6 +161,7 @@ export async function generatePropsForMarkdownPage({
       docId: documentId,
       docPath: doc.path,
       docConfig: documentationConfig,
+      omitOwnerAndRepo: omitOwnerAndRepo ?? false,
       owner,
       repo,
       operations,

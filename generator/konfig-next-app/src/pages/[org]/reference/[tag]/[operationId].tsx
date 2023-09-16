@@ -4,7 +4,7 @@ import {
 } from '@/utils/generate-props-for-reference-page'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Operation from '../../[portal]/reference/[tag]/[operationId]'
-import { domainToRepoMappings } from '@/utils/domain-to-repo-mappings'
+import { generateOwnerAndRepoFromDomain } from '@/utils/generate-owner-and-repo-from-domain'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -25,15 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ReferencePageProps> = async (
   ctx
 ) => {
-  const domain = ctx.params?.org
-  if (domain === undefined) throw Error('Missing domain parameter')
-  if (Array.isArray(domain))
-    throw Error('Got unexpected array type for parameters')
-  const mapping = domainToRepoMappings[domain]
-  if (mapping === undefined)
-    throw Error(`No mapping found for domain: ${domain}`)
-
-  const { owner, repo } = mapping
+  const { owner, repo } = generateOwnerAndRepoFromDomain(ctx.params?.org)
   const tag = ctx.params?.tag
   const operationId = ctx.params?.operationId
 

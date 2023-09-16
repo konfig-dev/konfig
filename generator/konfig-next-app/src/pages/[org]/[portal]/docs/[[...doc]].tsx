@@ -73,6 +73,7 @@ const DocumentationPage = observer(
     idToLabel,
     docPath,
     repo,
+    omitOwnerAndRepo,
     demos,
   }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const { colors } = useMantineTheme()
@@ -158,6 +159,7 @@ const DocumentationPage = observer(
                               )
                             return (
                               <DocNavLink
+                                omitOwnerAndRepo={omitOwnerAndRepo}
                                 key={link.id}
                                 id={link.id}
                                 label={link.label ?? label}

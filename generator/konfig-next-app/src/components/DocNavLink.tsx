@@ -8,14 +8,16 @@ export function DocNavLink({
   label,
   docId,
   setOpened,
+  omitOwnerAndRepo,
 }: {
   id: string
   label: string
   docId: string
   setOpened: Dispatch<SetStateAction<boolean>>
+  omitOwnerAndRepo: boolean
 }) {
   const { colorScheme } = useMantineColorScheme()
-  const basePath = useBasePath()
+  const basePath = useBasePath({ omitOwnerAndRepo })
   return (
     <NavLink<typeof Link>
       active={id === docId}
