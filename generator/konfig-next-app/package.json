@@ -5,7 +5,7 @@
   "scripts": {
     "redis": "docker run -p 6379:6379 -i redis/redis-stack-server:latest",
     "dev:next": "next dev",
-    "dev:server": "nodemon",
+    "dev:server": "node server.js",
     "dev:prce": "cd ../konfig-python-remote-code-executor && ./dev.sh",
     "dev": "concurrently \"yarn:redis\" \"yarn:dev:server\" \"yarn:dev:prce\"",
     "build": "cd ../konfig-dash && yarn; yarn build && cd ../konfig-next-app && next build",
@@ -79,7 +79,6 @@
     "@types/js-yaml": "^4.0.5",
     "@types/uuid": "^9.0.2",
     "concurrently": "^8.2.1",
-    "nodemon": "^3.0.1",
     "prettier": "^3.0.2"
   }
 }
