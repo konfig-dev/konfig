@@ -26,9 +26,15 @@ function computeCacheKey({
   return `${namespace}:${key}`
 }
 
+const GITHUB_API_CACHE_NAMESPACE = 'github-api-cache'
+
 export async function clearGithubApiCache() {
   const client = await githubApiRedisCache()
-  await client.flushAll()
+  const keysToDelete = await client.sMembers(GITHUB_API_CACHE_NAMESPACE)
+  for (let key of keysToDelete) {
+    await client.del(key)
+  }
+  await client.del(GITHUB_API_CACHE_NAMESPACE)
 }
 
 export async function setGithubApiCache({
@@ -45,6 +51,7 @@ export async function setGithubApiCache({
   // time in seconds how long it took to cache
   const start = Date.now()
   const cached = await client.set(cacheKey, value)
+  await client.sAdd(GITHUB_API_CACHE_NAMESPACE, cacheKey)
   console.log(`Redis cache set ${cacheKey} in ${Date.now() - start}ms`)
   return cached
 }
