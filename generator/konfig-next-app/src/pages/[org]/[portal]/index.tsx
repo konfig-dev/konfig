@@ -23,9 +23,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       notFound: true,
     }
   }
+  console.log(orgId, portalId)
   return {
     redirect: {
-      destination: `/${orgId}/${portalId}/reference`,
+      destination: `/reference`,
       permanent: false,
     },
   }

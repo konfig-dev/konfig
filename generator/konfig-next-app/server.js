@@ -1,6 +1,6 @@
 const express = require('express')
 const next = require('next')
-const mappings = require('./src/utils/domain-to-repo-mappings')
+const { domainToRepoMappings } = require('./src/utils/domain-to-repo-mappings')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -13,9 +13,17 @@ app.prepare().then(() => {
   server.use((req, res, next) => {
     const domain = req.headers.host
 
-    if (!req.url.includes('_next') && !req.url.includes('favicon')) {
-      if (mappings[domain]) {
-        req.url = '/' + mappings[domain] + req.url
+    const repo = domainToRepoMappings[domain]
+    if (repo !== undefined) {
+      if (
+        !req.url.includes('_next') &&
+        !req.url.includes('favicon') &&
+        !req.url.includes(repo)
+      ) {
+        console.log('req.url', req.url)
+        const newUrl = `/${repo}${req.url}`
+        console.log('newUrl', newUrl)
+        req.url = newUrl
       }
     }
 

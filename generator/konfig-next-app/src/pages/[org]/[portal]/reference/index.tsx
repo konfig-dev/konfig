@@ -26,7 +26,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const props = await githubGetReferenceResources({ owner, repo })
   return {
     redirect: {
-      destination: props.navbarData[0].links[0].link,
+      destination: props.navbarData[0].links[0].link.replace(
+        `/${owner}/${repo}`,
+        ''
+      ),
       permanent: false,
     },
   }
