@@ -10,12 +10,14 @@ export function ReferenceHeader({
   demos,
   title,
   hasDocumentation,
+  omitOwnerAndRepo,
 }: {
   opened: boolean
   hasDocumentation: boolean
   setOpened: Dispatch<SetStateAction<boolean>>
   demos: string[]
   title: string
+  omitOwnerAndRepo?: boolean
 }) {
   const theme = useMantineTheme()
   return (
@@ -39,6 +41,7 @@ export function ReferenceHeader({
         hasDocumentation={hasDocumentation}
         demos={demos}
         currentTab={TABS.reference}
+        omitOwnerAndRepo={omitOwnerAndRepo}
       />
     </Header>
   )

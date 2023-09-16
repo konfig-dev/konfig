@@ -19,15 +19,17 @@ export function HeaderTabs({
   isSandbox,
   demos,
   hasDocumentation,
+  omitOwnerAndRepo,
 }: {
   currentTab: Tab
   isSandbox?: boolean
   demos: string[]
   hasDocumentation?: boolean
+  omitOwnerAndRepo?: boolean
 }) {
-  const docsPath = useDocsPath()
-  const referencePath = useReferencePath()
-  const basePath = useBasePath()
+  const docsPath = useDocsPath({ omitOwnerAndRepo })
+  const referencePath = useReferencePath({ omitOwnerAndRepo })
+  const basePath = useBasePath({ omitOwnerAndRepo })
   const githubUrl = useGithubUrl()
   const theme = useMantineTheme()
   return (
@@ -102,12 +104,16 @@ function useGithubUrl(): string | null {
   return githubUrl
 }
 
-function useReferencePath() {
-  const basePath = useBasePath()
+function useReferencePath({
+  omitOwnerAndRepo,
+}: {
+  omitOwnerAndRepo?: boolean
+}) {
+  const basePath = useBasePath({ omitOwnerAndRepo })
   return `${basePath}/reference`
 }
 
-function useDocsPath() {
-  const basePath = useBasePath()
+function useDocsPath({ omitOwnerAndRepo }: { omitOwnerAndRepo?: boolean }) {
+  const basePath = useBasePath({ omitOwnerAndRepo })
   return `${basePath}/docs`
 }

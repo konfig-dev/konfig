@@ -37,6 +37,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   responses: Record<string, ResponseObject>
   securityRequirements: Record<string, string[]> | null
   securitySchemes: Record<string, SecurityScheme> | null
+  omitOwnerAndRepo?: boolean
 }
 
 export async function generatePropsForReferencePage({
@@ -246,6 +247,7 @@ export async function generatePropsForReferencePage({
       headerParameters,
       oauthTokenUrl,
       cookieParameters,
+      omitOwnerAndRepo: omitOwnerAndRepo ?? false,
       hasDocumentation: props.konfigYaml.portal?.documentation !== undefined,
       requestBodyProperties,
       demos:
