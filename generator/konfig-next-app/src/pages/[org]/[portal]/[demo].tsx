@@ -9,6 +9,7 @@ import {
 } from '@/utils/generate-demos-from-github'
 import { MantineProvider, useMantineTheme } from '@mantine/core'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
+import { generatePropsForDemoPage } from '@/utils/generate-props-for-demo-page'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -38,17 +39,11 @@ export const getStaticProps: GetStaticProps<GenerationSuccess> = async (
     }
   }
 
-  const props = await generateDemosDataFromGithub({
-    orgId: ctx.params.org,
-    portalId: ctx.params.portal,
+  return generatePropsForDemoPage({
+    org: ctx.params.org,
+    repo: ctx.params.portal,
     demoId: ctx.params.demo,
   })
-
-  if (props.result === 'error') return { notFound: true }
-
-  return {
-    props,
-  }
 }
 
 const DemoPage = observer(
