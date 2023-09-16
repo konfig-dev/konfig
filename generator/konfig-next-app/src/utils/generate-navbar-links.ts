@@ -11,11 +11,13 @@ export function generateNavbarLinks({
   owner,
   repo,
   konfigYaml,
+  omitOwnerAndRepo,
 }: {
   spec: Spec['spec']
   owner: string
   repo: string
   konfigYaml: KonfigYamlType
+  omitOwnerAndRepo?: boolean
 }): NavbarDataItem[] {
   const navbarLinks: NavbarDataItem[] = []
   let tags = spec.tags
@@ -55,12 +57,16 @@ export function generateNavbarLinks({
         if (pathItem === undefined) return
         const operation = pathItem[method as HttpMethods]
         if (operation?.tags?.includes(tag.name)) {
+          const suffix = `reference/${operation.tags}/${operation.operationId}`
+          const link = omitOwnerAndRepo
+            ? `/${suffix}`
+            : `/${owner}/${repo}/${suffix}`
           navbarLink.links.push({
             label: operation.summary ?? path,
             metadata: {
               operationId: operation.operationId,
             },
-            link: `/${owner}/${repo}/reference/${operation.tags}/${operation.operationId}`,
+            link,
             httpMethod: method as HttpMethods,
           })
         }

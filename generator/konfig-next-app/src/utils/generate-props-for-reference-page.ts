@@ -44,13 +44,19 @@ export async function generatePropsForReferencePage({
   tag,
   repo,
   operationId,
+  omitOwnerAndRepo,
 }: {
   owner: string
   tag: string
   repo: string
   operationId: string
+  omitOwnerAndRepo?: boolean
 }): Promise<GetStaticPropsResult<ReferencePageProps>> {
-  const { spec, ...props } = await githubGetReferenceResources({ owner, repo })
+  const { spec, ...props } = await githubGetReferenceResources({
+    owner,
+    repo,
+    omitOwnerAndRepo,
+  })
 
   const demos = await generateDemosDataFromGithub({
     orgId: owner,

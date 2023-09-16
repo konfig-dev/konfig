@@ -13,9 +13,11 @@ export type GithubResources = UnwrapPromise<
 export async function githubGetReferenceResources({
   owner,
   repo,
+  omitOwnerAndRepo,
 }: {
   owner: string
   repo: string
+  omitOwnerAndRepo?: boolean
 }) {
   const octokit = await createOctokitInstance({ owner, repo })
 
@@ -47,6 +49,7 @@ export async function githubGetReferenceResources({
     owner,
     repo,
     konfigYaml: konfigYaml.content,
+    omitOwnerAndRepo,
   })
   console.log(`generation of navbarLinks took ${Date.now() - start2}ms`)
   return {
