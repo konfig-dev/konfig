@@ -25,10 +25,13 @@ export async function middleware(request: NextRequest) {
   if (host === null) return NextResponse.next()
 
   if (domainToRepoMappings[host] === undefined) {
+    console.log("Couldn't find repo for host", host)
     return NextResponse.next()
   }
 
   const url = request.nextUrl
   const path = url.pathname
-  return NextResponse.rewrite(new URL(`/${host}${path}`, request.url))
+  const rewrittenUrl = new URL(`/${host}${path}`, request.url)
+  console.log('rewriting to', rewrittenUrl.href)
+  return NextResponse.rewrite(rewrittenUrl)
 }
