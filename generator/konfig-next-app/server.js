@@ -1,5 +1,6 @@
-import express from 'express'
-import next from 'next'
+const express = require('express')
+const next = require('next')
+const mappings = require('./src/utils/domain-to-repo-mappings')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -10,18 +11,15 @@ app.prepare().then(() => {
 
   // Custom route based on domain
   server.use((req, res, next) => {
-    const host = req.headers.host
+    const domain = req.headers.host
 
-    console.log(host)
-
-    if (host === 'domain1.com') {
-      req.url = '/path-for-domain1' + req.url
-    } else if (host === 'domain2.com') {
-      req.url = '/path-for-domain2' + req.url
+    if (!req.url.includes('_next') && !req.url.includes('favicon')) {
+      if (mappings[domain]) {
+        req.url = '/' + mappings[domain] + req.url
+      }
     }
-    // ... add more domains as needed
 
-    return handle(req, res)
+    next()
   })
 
   server.all('*', (req, res) => {
