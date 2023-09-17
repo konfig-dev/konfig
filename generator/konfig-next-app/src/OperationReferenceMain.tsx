@@ -23,7 +23,6 @@ import {
   generateInitialFormValues,
   generateInitialFormValuesWithStorage,
 } from './utils/generate-initial-operation-form-values'
-import { StaticProps } from './pages/[org]/[portal]/reference/[tag]/[operationId]'
 import {
   OperationClientStateForm,
   OperationSecuritySchemeForm,
@@ -42,6 +41,7 @@ import { IconAlertCircle, IconTerminal } from '@tabler/icons-react'
 import { deepmerge } from './utils/deepmerge'
 import { notifications } from '@mantine/notifications'
 import localforage from 'localforage'
+import { ReferencePageProps } from './utils/generate-props-for-reference-page'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -61,7 +61,7 @@ export function OperationReferenceMain({
   servers,
   originalOauthTokenUrl,
 }: Pick<
-  StaticProps,
+  ReferencePageProps,
   | 'pathParameters'
   | 'queryParameters'
   | 'headerParameters'
