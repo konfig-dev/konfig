@@ -6,6 +6,7 @@ import { generateDemosDataFromGithub } from '@/utils/generate-demos-from-github'
 import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { createOctokitInstance } from '@/utils/octokit'
 import { collectAllDocuments } from '@/utils/collect-all-documents'
+import { findDomainsForOwnerAndRepo } from '@/utils/find-domains-for-owner-and-repo'
 
 const requestBodySchema = z.object({
   owner: z.string(),
@@ -17,16 +18,37 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { owner, repo } = requestBodySchema.parse(req.body)
+  const domains = findDomainsForOwnerAndRepo({ owner, repo })
 
   await clearGithubApiCache()
 
-  const toRevalidate = [`/${owner}/${repo}/reference`]
+  const toRevalidate = [
+    `/${owner}/${repo}/reference`,
+    `/${owner}/${repo}/docs`,
+    `/${owner}/${repo}/demo`,
+    `/${owner}/${repo}`,
+    ...domains.flatMap((domain) => [
+      `/${domain}/reference`,
+      `/${domain}/docs`,
+      `/${domain}/demo`,
+      `/${domain}`,
+    ]),
+  ]
 
   // revalidate reference page
   const { navbarData } = await githubGetReferenceResources({ owner, repo })
   navbarData.forEach(({ links }) => {
     links.forEach(({ link }) => {
       toRevalidate.push(link)
+    })
+  })
+  const { navbarData: navbarDataWithoutOwnerAndRepo } =
+    await githubGetReferenceResources({ owner, repo, omitOwnerAndRepo: true })
+  navbarDataWithoutOwnerAndRepo.forEach(({ links }) => {
+    links.forEach(({ link }) => {
+      for (const domain of domains) {
+        toRevalidate.push(`/${domain}${link}`)
+      }
     })
   })
 
@@ -37,8 +59,15 @@ export default async function handler(
 
   if (demos.result !== 'error') {
     for (const demo of demos.portal.demos) {
-      const path = `/${owner}/${repo}/${demo.id}`
-      toRevalidate.push(path)
+      const oldDemoPath = `/${owner}/${repo}/${demo.id}`
+      const newDemoPath = `/${owner}/${repo}/demo/${demo.id}`
+      toRevalidate.push(oldDemoPath)
+      toRevalidate.push(newDemoPath)
+
+      for (const domain of domains) {
+        const newDomainPath = `/${domain}/demo/${demo.id}`
+        toRevalidate.push(newDomainPath)
+      }
     }
   }
 
@@ -52,6 +81,9 @@ export default async function handler(
         })
         for (const link of links) {
           toRevalidate.push(`/${owner}/${repo}/docs/${link.id}`)
+          for (const domain of domains) {
+            toRevalidate.push(`/${domain}/docs/${link.id}`)
+          }
         }
       }
     }
