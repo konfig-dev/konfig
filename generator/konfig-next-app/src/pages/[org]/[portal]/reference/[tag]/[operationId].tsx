@@ -152,6 +152,8 @@ const Operation = ({
         }
         header={
           <ReferenceHeader
+            owner={owner}
+            repo={repo}
             hasDocumentation={hasDocumentation}
             opened={opened}
             setOpened={setOpened}

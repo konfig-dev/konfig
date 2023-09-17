@@ -24,6 +24,6 @@ export async function generatePropsForDemoPage({
   if (props.result === 'error') return { notFound: true }
 
   return {
-    props: { ...props, omitOwnerAndRepo },
+    props: { ...props, omitOwnerAndRepo, owner: org, repo: repo },
   }
 }

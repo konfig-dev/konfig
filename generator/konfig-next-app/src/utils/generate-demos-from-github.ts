@@ -58,7 +58,7 @@ type UnpackedReturnType = UnwrapPromise<ReturnTypeOfGenerateDemosDataFromGithub>
 export type GenerationSuccess = Extract<
   UnpackedReturnType,
   { result: 'success' }
-> & { omitOwnerAndRepo: boolean }
+> & { omitOwnerAndRepo: boolean; owner: string; repo: string }
 
 export async function generateDemosDataFromGithub({
   orgId,

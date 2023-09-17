@@ -58,6 +58,8 @@ const DemoPage = observer(
     primaryColor,
     omitOwnerAndRepo,
     hasDocumentation,
+    owner,
+    repo,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const state = useMemo(
       () =>
@@ -100,6 +102,8 @@ const DemoPage = observer(
           omitOwnerAndRepo={omitOwnerAndRepo}
           hasDocumentation={hasDocumentation}
           state={state}
+          owner={owner}
+          repo={repo}
         />
       </MantineProvider>
     )

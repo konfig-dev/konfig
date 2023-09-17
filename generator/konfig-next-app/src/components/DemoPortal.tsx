@@ -161,12 +161,16 @@ export const DemoPortal = observer(
     refreshSandbox,
     hasDocumentation,
     omitOwnerAndRepo,
+    owner,
+    repo,
   }: {
     state: PortalState
     sandbox?: boolean
     refreshSandbox?: () => void
     hasDocumentation: boolean
     omitOwnerAndRepo: boolean
+    owner: string
+    repo: string
   }) => {
     const theme = useMantineTheme()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()
@@ -315,6 +319,8 @@ export const DemoPortal = observer(
           aside={<DemoTableOfContents demoDiv={state.currentDemo.demoDiv} />}
           header={
             <DemoHeader
+              owner={owner}
+              repo={repo}
               omitOwnerAndRepo={omitOwnerAndRepo}
               hasDocumentation={hasDocumentation}
               demos={state.demos.map((demo) => demo.id)}

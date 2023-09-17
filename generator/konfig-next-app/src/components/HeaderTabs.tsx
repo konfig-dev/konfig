@@ -20,17 +20,21 @@ export function HeaderTabs({
   demos,
   hasDocumentation,
   omitOwnerAndRepo,
+  owner,
+  repo,
 }: {
   currentTab: Tab
   isSandbox?: boolean
   demos: string[]
   hasDocumentation?: boolean
+  owner: string
+  repo: string
   omitOwnerAndRepo?: boolean
 }) {
   const docsPath = useDocsPath({ omitOwnerAndRepo })
   const referencePath = useReferencePath({ omitOwnerAndRepo })
   const basePath = useBasePath({ omitOwnerAndRepo })
-  const githubUrl = useGithubUrl()
+  const githubUrl = useGithubUrl({ owner, repo })
   const theme = useMantineTheme()
   return (
     <Group
@@ -85,23 +89,14 @@ export function HeaderTabs({
   )
 }
 
-function useGithubUrl(): string | null {
-  const router = useRouter()
-  const [githubUrl, setGithubUrl] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (router.isReady) {
-      const subpaths = router.asPath.split('/').filter((p) => p !== '')
-
-      if (subpaths.length >= 2) {
-        setGithubUrl(
-          `https://github.com/${subpaths[0]}/${subpaths[1]}#${subpaths[1]}`
-        )
-      }
-    }
-  }, [router])
-
-  return githubUrl
+function useGithubUrl({
+  owner,
+  repo,
+}: {
+  owner: string
+  repo: string
+}): string {
+  return `https://github.com/${owner}/${repo}#${repo}`
 }
 
 function useReferencePath({

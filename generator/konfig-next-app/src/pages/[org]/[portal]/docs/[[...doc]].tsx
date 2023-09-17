@@ -182,6 +182,8 @@ const DocumentationPage = observer(
           }
           header={
             <DocumentationHeader
+              owner={owner}
+              repo={repo}
               omitOwnerAndRepo={omitOwnerAndRepo}
               opened={opened}
               setOpened={setOpened}
