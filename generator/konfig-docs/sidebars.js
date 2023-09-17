@@ -116,6 +116,11 @@ const sidebars = {
               label: "Creating Markdown Pages",
               id: "portal/tutorials/creating-markdown-pages",
             },
+            {
+              type: "doc",
+              label: "Configuring a Custom Domain",
+              id: "portal/tutorials/configuring-a-custom-domain",
+            },
           ],
         },
       ],
