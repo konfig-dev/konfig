@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps<MarkdownPageProps> = async (
     owner,
     repo,
     docUrlParam: ctx.params?.doc,
+    omitOwnerAndRepo: false,
   })
 }
 
@@ -89,6 +90,7 @@ const DocumentationPage = observer(
         showCode: true,
         owner,
         repo,
+        omitOwnerAndRepo,
       })
     })
 
@@ -103,6 +105,7 @@ const DocumentationPage = observer(
           showCode: true,
           owner,
           repo,
+          omitOwnerAndRepo,
         })
       )
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -179,6 +182,7 @@ const DocumentationPage = observer(
           }
           header={
             <DocumentationHeader
+              omitOwnerAndRepo={omitOwnerAndRepo}
               opened={opened}
               setOpened={setOpened}
               title={title}

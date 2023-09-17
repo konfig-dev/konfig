@@ -40,6 +40,7 @@ export const getStaticProps: GetStaticProps<GenerationSuccess> = async (
   }
 
   return generatePropsForDemoPage({
+    omitOwnerAndRepo: false,
     org: ctx.params.org,
     repo: ctx.params.portal,
     demoId: ctx.params.demo,
@@ -55,6 +56,7 @@ const DemoPage = observer(
     socials,
     portalTitle,
     primaryColor,
+    omitOwnerAndRepo,
     hasDocumentation,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const state = useMemo(
@@ -67,8 +69,17 @@ const DemoPage = observer(
           mainBranch,
           socials,
           portalTitle,
+          omitOwnerAndRepo,
         }),
-      [demo.id, mainBranch, organization.id, portal, socials, portalTitle]
+      [
+        demo.id,
+        mainBranch,
+        organization.id,
+        portal,
+        socials,
+        portalTitle,
+        omitOwnerAndRepo,
+      ]
     )
     const { colorScheme, colors } = useMantineTheme()
 

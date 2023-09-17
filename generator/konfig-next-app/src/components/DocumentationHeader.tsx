@@ -9,11 +9,13 @@ export function DocumentationHeader({
   setOpened,
   demos,
   title,
+  omitOwnerAndRepo,
 }: {
   opened: boolean
   setOpened: Dispatch<SetStateAction<boolean>>
   demos: string[]
   title: string
+  omitOwnerAndRepo?: boolean
 }) {
   const theme = useMantineTheme()
   return (
@@ -37,6 +39,7 @@ export function DocumentationHeader({
         hasDocumentation={true}
         demos={demos}
         currentTab={TABS.documentation}
+        omitOwnerAndRepo={omitOwnerAndRepo}
       />
     </Header>
   )

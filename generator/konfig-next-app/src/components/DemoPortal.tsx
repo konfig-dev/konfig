@@ -63,6 +63,7 @@ export class PortalState {
     socials,
     mainBranch,
     portalTitle,
+    omitOwnerAndRepo,
   }: {
     demos: DemosInput
     portalName: string
@@ -73,6 +74,7 @@ export class PortalState {
     socials?: SocialObject
     mainBranch?: string
     portalTitle: string | null
+    omitOwnerAndRepo: boolean
   }) {
     makeAutoObservable(this)
     this.socials = socials
@@ -91,6 +93,7 @@ export class PortalState {
           showCode: showCode ?? undefined,
           owner: organizationId,
           repo: portalId,
+          omitOwnerAndRepo,
         })
     )
 

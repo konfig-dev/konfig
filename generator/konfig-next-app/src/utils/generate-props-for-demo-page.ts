@@ -8,10 +8,12 @@ export async function generatePropsForDemoPage({
   org,
   repo,
   demoId,
+  omitOwnerAndRepo,
 }: {
   org: string
   repo: string
   demoId: string
+  omitOwnerAndRepo: boolean
 }): Promise<GetStaticPropsResult<GenerationSuccess>> {
   const props = await generateDemosDataFromGithub({
     orgId: org,
@@ -22,6 +24,6 @@ export async function generatePropsForDemoPage({
   if (props.result === 'error') return { notFound: true }
 
   return {
-    props,
+    props: { ...props, omitOwnerAndRepo },
   }
 }

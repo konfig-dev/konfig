@@ -7,26 +7,18 @@ import directive from 'remark-directive'
 import { visit } from 'unist-util-visit'
 import { Operation } from 'konfig-lib'
 
-export function transformInternalLinks({
-  markdown,
-  owner,
-  repo,
-  operations,
-}: {
-  markdown: string
-  owner: string
-  repo: string
-  operations: Operation[]
-}): string {
+export function transformInternalLinks(
+  input: TransformLinksInput & { markdown: string }
+): string {
   // Use Unified to parse, transform, and stringify the markdown
   const processor = unified()
     .use(parse)
     .use(gfm) // Add remark-gfm to support GitHub Flavored Markdown
     .use(directive)
-    .use(transformLinks({ owner, repo, operations }))
+    .use(transformLinks(input))
     .use(stringify)
 
-  const result = processor.processSync(markdown).toString()
+  const result = processor.processSync(input.markdown).toString()
   return result
 }
 
@@ -40,15 +32,19 @@ interface LinkNode extends Node {
 const API_PREFIX = 'api:'
 const DEMO_PREFIX = 'demo:'
 
+type TransformLinksInput = {
+  owner: string
+  repo: string
+  operations: Operation[]
+  omitOwnerAndRepo: boolean
+}
+
 function transformLinks({
   owner,
   repo,
   operations,
-}: {
-  owner: string
-  repo: string
-  operations: Operation[]
-}): () => (tree: Node) => void {
+  omitOwnerAndRepo,
+}: TransformLinksInput): () => (tree: Node) => void {
   return () => (tree) => {
     visit(tree, 'link', (node: LinkNode) => {
       if (isLinkNode(node)) {
@@ -59,14 +55,17 @@ function transformLinks({
           })
           if (operation !== undefined) {
             const tag = operation.tags?.[0]
+            const suffix = `/reference/${tag}/${operationId}`
             if (tag !== undefined) {
-              node.url = `/${owner}/${repo}/reference/${tag}/${operationId}`
-              return
+              node.url = omitOwnerAndRepo
+                ? suffix
+                : `/${owner}/${repo}${suffix}`
             }
           }
         } else if (node.url.startsWith(DEMO_PREFIX)) {
           const demoId = node.url.slice(DEMO_PREFIX.length)
-          node.url = `/${owner}/${repo}/demo/${demoId}`
+          const suffix = `/demo/${demoId}`
+          node.url = omitOwnerAndRepo ? suffix : `/${owner}/${repo}${suffix}`
         }
       }
     })

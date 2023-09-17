@@ -45,7 +45,7 @@ export async function generatePropsForMarkdownPage({
   owner: string
   repo: string
   docUrlParam: string | string[] | undefined
-  omitOwnerAndRepo?: boolean
+  omitOwnerAndRepo: boolean
 }): Promise<GetStaticPropsResult<MarkdownPageProps>> {
   const octokit = await createOctokitInstance({ owner, repo })
 
@@ -121,6 +121,7 @@ export async function generatePropsForMarkdownPage({
       owner,
       repo,
       operations: operations.map((op) => op.operation),
+      omitOwnerAndRepo,
     }),
     owner,
     repo,

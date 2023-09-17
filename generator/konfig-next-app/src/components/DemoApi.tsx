@@ -38,11 +38,16 @@ const _DemoApi: Components['a'] = ({
   if (id === undefined) return null
   if (demoState === null) return null
   if (tag === undefined) return null
+  const suffix = `/reference/${tag}/${id}`
   return (
     <DemoInlineLinkButton
       rightIcon={<HttpMethodBadge size="xs" httpMethod={operation.method} />}
       label={label}
-      href={`/${demoState.owner}/${demoState.repo}/reference/${tag}/${id}`}
+      href={
+        demoState.omitOwnerAndRepo
+          ? suffix
+          : `/${demoState.owner}/${demoState.repo}${suffix}`
+      }
       {...props}
     />
   )
