@@ -5,6 +5,8 @@ import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { createOctokitInstance } from './octokit'
 import { parseSpec } from 'konfig-lib/dist/parseSpec'
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function'
+import { githubGetRepository } from './github-get-repository'
+import { generateFaviconLink } from './generate-favicon-link'
 
 export type GithubResources = UnwrapPromise<
   ReturnType<typeof githubGetReferenceResources>
@@ -31,6 +33,21 @@ export async function githubGetReferenceResources({
 
   if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
 
+  // get default branch of repo
+  const { data: repoData } = await githubGetRepository({
+    owner,
+    repo,
+    octokit,
+  })
+
+  const faviconLink = generateFaviconLink({
+    konfigYaml: konfigYaml.content,
+    defaultBranch: repoData.default_branch,
+    konfigYamlPath: konfigYaml.info.path,
+    owner,
+    repo,
+  })
+
   const specPath = konfigYaml.content.specPath
 
   // time the next three lines
@@ -54,6 +71,7 @@ export async function githubGetReferenceResources({
   console.log(`generation of navbarLinks took ${Date.now() - start2}ms`)
   return {
     navbarData,
+    faviconLink,
     spec,
     konfigYaml: konfigYaml.content,
   }

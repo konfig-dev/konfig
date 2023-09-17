@@ -60,6 +60,7 @@ const DemoPage = observer(
     hasDocumentation,
     owner,
     repo,
+    faviconLink,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const state = useMemo(
       () =>
@@ -98,6 +99,13 @@ const DemoPage = observer(
           primaryColor: 'brand',
         }}
       >
+        <Head>
+          {faviconLink ? (
+            <link rel="icon" href={faviconLink} />
+          ) : (
+            <link rel="icon" href="/favicon.png" />
+          )}
+        </Head>
         <DemoPortal
           omitOwnerAndRepo={omitOwnerAndRepo}
           hasDocumentation={hasDocumentation}

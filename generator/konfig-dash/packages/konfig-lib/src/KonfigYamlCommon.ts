@@ -125,6 +125,10 @@ export const documentation = z.object({
 export const portal = z
   .object({
     primaryColor,
+    favicon: z
+      .string()
+      .optional()
+      .describe("Relative path to favicon image used for Konfig's API Portal"),
     socials: socialObjectSchema.optional(),
     title: z.string().describe("Title to be used in Konfig's API Portal"),
     documentation: documentation

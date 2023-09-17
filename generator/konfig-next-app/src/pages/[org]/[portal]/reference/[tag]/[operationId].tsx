@@ -73,6 +73,7 @@ const Operation = ({
   servers: initialServers,
   operation,
   owner,
+  faviconLink,
   hasDocumentation,
   repo,
   oauthTokenUrl: originalOauthTokenUrl,
@@ -109,6 +110,11 @@ const Operation = ({
           {operation.operation.summary ??
             `${operation.method} ${operation.path}`}
         </title>
+        {faviconLink ? (
+          <link rel="icon" href={faviconLink} />
+        ) : (
+          <link rel="icon" href="/favicon.png" />
+        )}
       </Head>
       <Script
         src={`https://unpkg.com/${konfigYaml.generators.typescript?.npmName}@${konfigYaml.generators.typescript?.version}/dist/browser.js`}

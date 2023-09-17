@@ -77,6 +77,7 @@ const DocumentationPage = observer(
     repo,
     omitOwnerAndRepo,
     demos,
+    faviconLink,
   }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const { colors } = useMantineTheme()
     const { colorScheme } = useMantineColorScheme()
@@ -116,6 +117,11 @@ const DocumentationPage = observer(
       <>
         <Head>
           <title>{docTitle}</title>
+          {faviconLink ? (
+            <link rel="icon" href={faviconLink} />
+          ) : (
+            <link rel="icon" href="/favicon.png" />
+          )}
         </Head>
         <MantineProvider
           theme={{
