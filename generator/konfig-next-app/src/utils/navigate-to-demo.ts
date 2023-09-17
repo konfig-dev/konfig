@@ -9,6 +9,7 @@ export function navigateToDemo({
   portal,
   router,
   sandbox,
+  omitOwnerAndRepo,
 }: {
   demoIndex: number
   organizationId: string
@@ -16,17 +17,18 @@ export function navigateToDemo({
   router: NextRouter
   portal: PortalState
   sandbox: boolean | undefined
+  omitOwnerAndRepo: boolean
 }) {
   portal.setCurrentDemoIndex(demoIndex)
   if (!sandbox) {
-    router.replace(
-      `/${organizationId}/${portal.id}/demo/${demoId}`,
-      undefined,
-      {
-        shallow: true,
-        scroll: true,
-      }
-    )
+    const suffix = `/demo/${demoId}`
+    const newUrl = omitOwnerAndRepo
+      ? suffix
+      : `/${organizationId}/${portal.id}${suffix}`
+    router.replace(newUrl, undefined, {
+      shallow: true,
+      scroll: true,
+    })
   } else {
     // NOTE: this triggers a re-render so when we
     // navigate through demos the page actually changes

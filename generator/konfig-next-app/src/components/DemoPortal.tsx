@@ -52,6 +52,7 @@ export class PortalState {
   currentDemo: DemoState
   mainBranch?: string
   socials?: SocialObject
+  omitOwnerAndRepo: boolean
 
   constructor({
     demos,
@@ -77,6 +78,7 @@ export class PortalState {
     omitOwnerAndRepo: boolean
   }) {
     makeAutoObservable(this)
+    this.omitOwnerAndRepo = omitOwnerAndRepo
     this.socials = socials
     this.portalTitle = portalTitle
     this.id = id
@@ -154,11 +156,13 @@ export const DemoPortal = observer(
     sandbox,
     refreshSandbox,
     hasDocumentation,
+    omitOwnerAndRepo,
   }: {
     state: PortalState
     sandbox?: boolean
     refreshSandbox?: () => void
     hasDocumentation: boolean
+    omitOwnerAndRepo: boolean
   }) => {
     const theme = useMantineTheme()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()
@@ -274,6 +278,7 @@ export const DemoPortal = observer(
                         onClick={() => {
                           setOpened(false)
                           navigateToDemo({
+                            omitOwnerAndRepo,
                             demoId: state.demos[i].id,
                             demoIndex: i,
                             organizationId: state.organizationId,
@@ -302,6 +307,7 @@ export const DemoPortal = observer(
           aside={<DemoTableOfContents demoDiv={state.currentDemo.demoDiv} />}
           header={
             <DemoHeader
+              omitOwnerAndRepo={omitOwnerAndRepo}
               hasDocumentation={hasDocumentation}
               demos={state.demos.map((demo) => demo.id)}
               opened={opened}
@@ -354,6 +360,7 @@ export const DemoPortal = observer(
                     <DemoEditThisPage portalState={state} />
                   </Box>
                   <DemoSiblings
+                    omitOwnerAndRepo={omitOwnerAndRepo}
                     portal={state}
                     previous={previous}
                     next={next}

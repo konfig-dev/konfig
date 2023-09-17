@@ -23,6 +23,7 @@ export const DemoHeader = observer(
     sandbox,
     demos,
     hasDocumentation,
+    omitOwnerAndRepo,
   }: {
     opened: boolean
     setOpened: Dispatch<SetStateAction<boolean>>
@@ -30,6 +31,7 @@ export const DemoHeader = observer(
     sandbox?: boolean
     hasDocumentation: boolean
     demos: string[]
+    omitOwnerAndRepo: boolean
   }) => {
     const theme = useMantineTheme()
     return (
@@ -54,6 +56,7 @@ export const DemoHeader = observer(
           demos={demos}
           currentTab={TABS.demos}
           isSandbox={sandbox}
+          omitOwnerAndRepo={omitOwnerAndRepo}
         />
       </Header>
     )

@@ -96,7 +96,11 @@ const DemoPage = observer(
           primaryColor: 'brand',
         }}
       >
-        <DemoPortal hasDocumentation={hasDocumentation} state={state} />
+        <DemoPortal
+          omitOwnerAndRepo={omitOwnerAndRepo}
+          hasDocumentation={hasDocumentation}
+          state={state}
+        />
       </MantineProvider>
     )
   }
