@@ -52,7 +52,8 @@ export class PortalState {
   currentDemo: DemoState
   mainBranch?: string
   socials?: SocialObject
-  omitOwnerAndRepo: boolean
+
+  dummyState = false
 
   constructor({
     demos,
@@ -78,7 +79,6 @@ export class PortalState {
     omitOwnerAndRepo: boolean
   }) {
     makeAutoObservable(this)
-    this.omitOwnerAndRepo = omitOwnerAndRepo
     this.socials = socials
     this.portalTitle = portalTitle
     this.id = id
@@ -138,6 +138,10 @@ export class PortalState {
     }
   }
 
+  forceRender() {
+    this.dummyState = !this.dummyState
+  }
+
   setShowCode(value: boolean) {
     this.showCode = value
   }
@@ -168,6 +172,10 @@ export const DemoPortal = observer(
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()
     const [opened, setOpened] = useState(false)
     const router = useRouter()
+
+    // This is a hack to force a re-render when the demo state changes
+    // We need to access dummyState to tell MobX to track it
+    state.dummyState
 
     return (
       <SandboxContext.Provider value={!!sandbox}>

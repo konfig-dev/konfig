@@ -1,6 +1,7 @@
 import { PortalState } from '@/components/DemoPortal'
 import { useWindowScroll } from '@mantine/hooks'
 import { NextRouter } from 'next/router'
+import { useState } from 'react'
 
 export function navigateToDemo({
   demoId,
@@ -20,15 +21,26 @@ export function navigateToDemo({
   omitOwnerAndRepo: boolean
 }) {
   portal.setCurrentDemoIndex(demoIndex)
+
   if (!sandbox) {
     const suffix = `/demo/${demoId}`
     const newUrl = omitOwnerAndRepo
       ? suffix
       : `/${organizationId}/${portal.id}${suffix}`
-    router.replace(newUrl, undefined, {
-      shallow: true,
-      scroll: true,
-    })
+
+    if (omitOwnerAndRepo) {
+      // NOTE: this hack triggers a re-render so when we
+      // navigate through demos the page actually changes
+      history.replaceState({}, '', newUrl)
+      portal.forceRender()
+      // force scroll to top using native DOM APIs
+      window.scrollTo(0, 0)
+    } else {
+      router.replace(newUrl, undefined, {
+        shallow: true,
+        scroll: true,
+      })
+    }
   } else {
     // NOTE: this triggers a re-render so when we
     // navigate through demos the page actually changes
