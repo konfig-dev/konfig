@@ -31,6 +31,7 @@ import {
   MarkdownPageProps,
   generatePropsForMarkdownPage,
 } from '@/utils/generate-props-for-markdown-page'
+import Head from 'next/head'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -112,103 +113,110 @@ const DocumentationPage = observer(
     }, [router.asPath])
 
     return (
-      <MantineProvider
-        theme={{
-          colorScheme,
-          colors: {
-            brand:
-              konfigYaml.portal?.primaryColor !== undefined
-                ? generateShadePalette(konfigYaml.portal?.primaryColor)
-                : colors.blue,
-          },
-          primaryColor: 'brand',
-        }}
-      >
-        <AppShell
-          styles={{
-            main: {
-              background: colorScheme === 'dark' ? colors.dark[8] : undefined,
+      <>
+        <Head>
+          <title>{docTitle}</title>
+        </Head>
+        <MantineProvider
+          theme={{
+            colorScheme,
+            colors: {
+              brand:
+                konfigYaml.portal?.primaryColor !== undefined
+                  ? generateShadePalette(konfigYaml.portal?.primaryColor)
+                  : colors.blue,
             },
+            primaryColor: 'brand',
           }}
-          navbarOffsetBreakpoint="lg"
-          asideOffsetBreakpoint="lg"
-          aside={<DemoTableOfContents demoDiv={state.demoDiv} />}
-          navbar={
-            <Navbar
-              hiddenBreakpoint="lg"
-              hidden={!opened}
-              width={{ lg: NAVBAR_WIDTH }}
-              py="md"
-              sx={{
-                overflowY: 'scroll',
-                height:
-                  'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
-              }}
-            >
-              <Stack>
-                {docConfig.sidebar.sections.map((section, i) => {
-                  return (
-                    <Box key={`${section.label}-${i}`}>
-                      <Title pb="xs" px="md" order={5}>
-                        {section.label}
-                      </Title>
-                      <Stack spacing={rem(3)}>
-                        {section.links.map((link) => {
-                          if (link.type === 'link') {
-                            const label = idToLabel[link.id]
-                            if (label === undefined)
-                              throw Error(
-                                `Couldn't find label for link with ID: ${link.id}`
-                              )
-                            return (
-                              <DocNavLink
-                                omitOwnerAndRepo={omitOwnerAndRepo}
-                                key={link.id}
-                                id={link.id}
-                                label={link.label ?? label}
-                                docId={docId}
-                                setOpened={setOpened}
-                              />
-                            )
-                          }
-                          throw Error(`Not implemented link type ${link.type}`)
-                        })}
-                      </Stack>
-                    </Box>
-                  )
-                })}
-              </Stack>
-            </Navbar>
-          }
-          header={
-            <DocumentationHeader
-              owner={owner}
-              repo={repo}
-              omitOwnerAndRepo={omitOwnerAndRepo}
-              opened={opened}
-              setOpened={setOpened}
-              title={title}
-              demos={demos}
-            />
-          }
         >
-          <OperationsContext.Provider value={operations}>
-            <DemoMarkdown state={state} />
-            <Box my={rem(40)}>
-              <DocEditThisPage
+          <AppShell
+            styles={{
+              main: {
+                background: colorScheme === 'dark' ? colors.dark[8] : undefined,
+              },
+            }}
+            navbarOffsetBreakpoint="lg"
+            asideOffsetBreakpoint="lg"
+            aside={<DemoTableOfContents demoDiv={state.demoDiv} />}
+            navbar={
+              <Navbar
+                hiddenBreakpoint="lg"
+                hidden={!opened}
+                width={{ lg: NAVBAR_WIDTH }}
+                py="md"
+                sx={{
+                  overflowY: 'scroll',
+                  height:
+                    'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
+                }}
+              >
+                <Stack>
+                  {docConfig.sidebar.sections.map((section, i) => {
+                    return (
+                      <Box key={`${section.label}-${i}`}>
+                        <Title pb="xs" px="md" order={5}>
+                          {section.label}
+                        </Title>
+                        <Stack spacing={rem(3)}>
+                          {section.links.map((link) => {
+                            if (link.type === 'link') {
+                              const label = idToLabel[link.id]
+                              if (label === undefined)
+                                throw Error(
+                                  `Couldn't find label for link with ID: ${link.id}`
+                                )
+                              return (
+                                <DocNavLink
+                                  omitOwnerAndRepo={omitOwnerAndRepo}
+                                  key={link.id}
+                                  id={link.id}
+                                  label={link.label ?? label}
+                                  docId={docId}
+                                  setOpened={setOpened}
+                                />
+                              )
+                            }
+                            throw Error(
+                              `Not implemented link type ${link.type}`
+                            )
+                          })}
+                        </Stack>
+                      </Box>
+                    )
+                  })}
+                </Stack>
+              </Navbar>
+            }
+            header={
+              <DocumentationHeader
                 owner={owner}
                 repo={repo}
-                path={docPath}
-                defaultBranch={defaultBranch}
+                omitOwnerAndRepo={omitOwnerAndRepo}
+                opened={opened}
+                setOpened={setOpened}
+                title={title}
+                demos={demos}
               />
-            </Box>
-            <Divider mt={rem(60)} />
-            <Box my={rem(20)}>
-              <DemoSocials socials={konfigYaml.portal?.socials} />
-            </Box>
-          </OperationsContext.Provider>
-        </AppShell>
-      </MantineProvider>
+            }
+          >
+            <OperationsContext.Provider value={operations}>
+              <DemoMarkdown state={state} />
+              <Box my={rem(40)}>
+                <DocEditThisPage
+                  owner={owner}
+                  repo={repo}
+                  path={docPath}
+                  defaultBranch={defaultBranch}
+                />
+              </Box>
+              <Divider mt={rem(60)} />
+              <Box my={rem(20)}>
+                <DemoSocials socials={konfigYaml.portal?.socials} />
+              </Box>
+            </OperationsContext.Provider>
+          </AppShell>
+        </MantineProvider>
+      </>
     )
   }
 )
