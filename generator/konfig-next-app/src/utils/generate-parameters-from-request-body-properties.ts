@@ -1,10 +1,10 @@
-import { StaticProps } from '@/pages/[org]/[portal]/reference/[tag]/[operationId]'
 import { generateParameterFromBodyParameter } from './generate-parameter-from-body-property'
+import { ReferencePageProps } from './generate-props-for-reference-page'
 
 export function generateParametersFromRequestBodyProperties({
   requestBodyProperties,
   requestBodyRequired,
-}: Pick<StaticProps, 'requestBodyProperties' | 'requestBodyRequired'>) {
+}: Pick<ReferencePageProps, 'requestBodyProperties' | 'requestBodyRequired'>) {
   return Object.entries(requestBodyProperties ?? {}).map(
     ([propertyName, property]) =>
       generateParameterFromBodyParameter({

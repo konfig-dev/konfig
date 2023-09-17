@@ -140,6 +140,7 @@ class SandboxState {
       demoId: state.demos[0].id,
       socials: this.socials,
       portalTitle: 'Sandbox',
+      omitOwnerAndRepo: true,
     })
     return portalState
   }
@@ -163,6 +164,9 @@ const DemoPortalWrapper = observer(() => {
       }}
     >
       <DemoPortal
+        owner="sandbox"
+        repo="sandbox"
+        omitOwnerAndRepo={true}
         hasDocumentation={false}
         refreshSandbox={async () => {
           const files = await rescursivelyReadAllFiles({ showPicker: false })

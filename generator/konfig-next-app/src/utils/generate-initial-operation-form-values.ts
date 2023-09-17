@@ -1,10 +1,10 @@
 import { Parameter } from '@/components/OperationParameter'
 import type { UseFormInput } from '@mantine/form/lib/types'
-import { StaticProps } from '@/pages/[org]/[portal]/reference/[tag]/[operationId]'
 import { getInputPlaceholder } from '@/components/OperationSecuritySchemeForm'
 import { deepmerge } from './deepmerge'
 import { isNotEmpty } from './is-not-empty'
 import localforage from 'localforage'
+import { ReferencePageProps } from './generate-props-for-reference-page'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   owner,
@@ -69,7 +69,7 @@ type FormValues = UseFormInput<
 
 type GenerateInitialFormValuesInput = {
   parameters: Parameter[]
-  securitySchemes: StaticProps['securitySchemes']
+  securitySchemes: ReferencePageProps['securitySchemes']
   clientState: string[]
   hideSecurity: { name: string }[]
   owner: string
