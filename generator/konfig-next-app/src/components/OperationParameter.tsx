@@ -1,9 +1,5 @@
 import { Box, Code, Flex, Group, Stack, Text, rem } from '@mantine/core'
-import type {
-  OperationParameter,
-  ParameterObject,
-  SchemaObject,
-} from 'konfig-lib'
+import type { ParameterObject, SchemaObject } from 'konfig-lib'
 import { ParameterInput } from './ParameterInput'
 import { schemaTypeLabel } from '@/utils/schema-type-label'
 import dynamic from 'next/dynamic'
