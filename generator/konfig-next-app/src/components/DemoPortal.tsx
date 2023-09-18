@@ -163,6 +163,7 @@ export const DemoPortal = observer(
     omitOwnerAndRepo,
     owner,
     repo,
+    logo,
   }: {
     state: PortalState
     sandbox?: boolean
@@ -171,6 +172,7 @@ export const DemoPortal = observer(
     omitOwnerAndRepo: boolean
     owner: string
     repo: string
+    logo: string | null
   }) => {
     const theme = useMantineTheme()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()
@@ -328,6 +330,7 @@ export const DemoPortal = observer(
               setOpened={setOpened}
               state={state}
               sandbox={sandbox}
+              logo={logo}
             />
           }
         >

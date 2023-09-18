@@ -38,6 +38,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   securityRequirements: Record<string, string[]> | null
   securitySchemes: Record<string, SecurityScheme> | null
   omitOwnerAndRepo?: boolean
+  logo: string | null
 }
 
 export async function generatePropsForReferencePage({

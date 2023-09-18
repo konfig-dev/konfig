@@ -79,6 +79,7 @@ const Operation = ({
   oauthTokenUrl: originalOauthTokenUrl,
   omitOwnerAndRepo,
   responses,
+  logo,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
@@ -165,6 +166,7 @@ const Operation = ({
             setOpened={setOpened}
             title={title}
             demos={demos}
+            logo={logo}
             omitOwnerAndRepo={omitOwnerAndRepo}
           />
         }

@@ -7,6 +7,7 @@ import { githubGetRepository } from './github-get-repository'
 import type { KonfigYamlType, SocialObject } from 'konfig-lib'
 import { Octokit } from '@octokit/rest'
 import { generateFaviconLink } from './generate-favicon-link'
+import { generateLogoLink } from './generate-logo-link'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -33,6 +34,7 @@ export type FetchResult = {
   mainBranch: string
   hasDocumentation: boolean
   faviconLink: string | null
+  logo: string | null
 }
 
 export type GenerationResult =
@@ -83,6 +85,7 @@ export async function generateDemosDataFromGithub({
       primaryColor: string | null
       hasDocumentation: boolean
       faviconLink: string | null
+      logo: string | null
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -112,6 +115,7 @@ export async function generateDemosDataFromGithub({
     faviconLink: fetchResult.faviconLink,
     primaryColor: fetchResult.primaryColor ?? null,
     hasDocumentation: fetchResult.hasDocumentation,
+    logo: fetchResult.logo ?? null,
   }
 }
 
@@ -149,6 +153,13 @@ async function _fetch({
     owner,
     repo,
   })
+  const logoLink = generateLogoLink({
+    konfigYaml: konfigYaml.content,
+    defaultBranch: repository.data.default_branch,
+    konfigYamlPath: konfigYaml.info.path,
+    owner,
+    repo,
+  })
 
   const demos =
     (await getDemos({
@@ -178,6 +189,7 @@ async function _fetch({
     portalTitle: konfigYaml.content.portal.title,
     primaryColor: konfigYaml.content.portal.primaryColor,
     mainBranch: repository.data.default_branch,
+    logo: logoLink,
     faviconLink,
     ...(konfigYaml.content.portal.socials
       ? { socials: konfigYaml.content.portal.socials }

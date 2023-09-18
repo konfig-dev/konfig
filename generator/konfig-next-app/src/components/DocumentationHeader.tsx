@@ -12,6 +12,7 @@ export function DocumentationHeader({
   omitOwnerAndRepo,
   owner,
   repo,
+  logo,
 }: {
   opened: boolean
   setOpened: Dispatch<SetStateAction<boolean>>
@@ -20,6 +21,7 @@ export function DocumentationHeader({
   omitOwnerAndRepo?: boolean
   owner: string
   repo: string
+  logo: string | null
 }) {
   const theme = useMantineTheme()
   return (
@@ -38,6 +40,7 @@ export function DocumentationHeader({
         opened={opened}
         setOpened={setOpened}
         title={title}
+        logo={logo}
       />
       <HeaderTabs
         owner={owner}

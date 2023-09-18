@@ -26,6 +26,7 @@ export const DemoHeader = observer(
     omitOwnerAndRepo,
     owner,
     repo,
+    logo,
   }: {
     opened: boolean
     setOpened: Dispatch<SetStateAction<boolean>>
@@ -36,6 +37,7 @@ export const DemoHeader = observer(
     omitOwnerAndRepo: boolean
     owner: string
     repo: string
+    logo: string | null
   }) => {
     const theme = useMantineTheme()
     return (
@@ -50,6 +52,7 @@ export const DemoHeader = observer(
         height={TITLE_OFFSET_PX}
       >
         <LayoutHeader
+          logo={logo}
           breakpoint="sm"
           opened={opened}
           setOpened={setOpened}

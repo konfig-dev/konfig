@@ -13,6 +13,7 @@ export function ReferenceHeader({
   omitOwnerAndRepo,
   owner,
   repo,
+  logo,
 }: {
   opened: boolean
   hasDocumentation: boolean
@@ -22,6 +23,7 @@ export function ReferenceHeader({
   omitOwnerAndRepo?: boolean
   owner: string
   repo: string
+  logo: string | null
 }) {
   const theme = useMantineTheme()
   return (
@@ -40,6 +42,7 @@ export function ReferenceHeader({
         opened={opened}
         setOpened={setOpened}
         title={title}
+        logo={logo}
       />
       <HeaderTabs
         owner={owner}

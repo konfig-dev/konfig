@@ -7,6 +7,7 @@ import { parseSpec } from 'konfig-lib/dist/parseSpec'
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function'
 import { githubGetRepository } from './github-get-repository'
 import { generateFaviconLink } from './generate-favicon-link'
+import { generateLogoLink } from './generate-logo-link'
 
 export type GithubResources = UnwrapPromise<
   ReturnType<typeof githubGetReferenceResources>
@@ -47,6 +48,13 @@ export async function githubGetReferenceResources({
     owner,
     repo,
   })
+  const logoLink = generateLogoLink({
+    konfigYaml: konfigYaml.content,
+    defaultBranch: repoData.default_branch,
+    konfigYamlPath: konfigYaml.info.path,
+    owner,
+    repo,
+  })
 
   const specPath = konfigYaml.content.specPath
 
@@ -72,6 +80,7 @@ export async function githubGetReferenceResources({
   return {
     navbarData,
     faviconLink,
+    logo: logoLink,
     spec,
     konfigYaml: konfigYaml.content,
   }
