@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.10.0
+
+### Minor Changes
+
+- [#198](https://github.com/konfig-dev/konfig/pull/198) [`2b90fa13`](https://github.com/konfig-dev/konfig/commit/2b90fa132bceb427272d9835686977a51eda01f1) Thanks [@dphuang2](https://github.com/dphuang2)! - add favicon/logo configuration for portal
+
 ## 1.9.0
 
 ### Minor Changes
