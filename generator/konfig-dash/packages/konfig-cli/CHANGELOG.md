@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.11.6
+
+### Patch Changes
+
+- [#201](https://github.com/konfig-dev/konfig/pull/201) [`56165df0`](https://github.com/konfig-dev/konfig/commit/56165df0566b797b8b2c63ae58ee5e4ee8715c41) Thanks [@eddiechayes](https://github.com/eddiechayes)! - added --tolerateRepublish flag to publish
+
 ## 1.11.5
 
 ### Patch Changes
