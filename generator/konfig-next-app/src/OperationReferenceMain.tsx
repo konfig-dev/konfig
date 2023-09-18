@@ -42,6 +42,7 @@ import { deepmerge } from './utils/deepmerge'
 import { notifications } from '@mantine/notifications'
 import localforage from 'localforage'
 import { ReferencePageProps } from './utils/generate-props-for-reference-page'
+import { SocialFooter } from './components/SocialFooter'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -326,6 +327,11 @@ export function OperationReferenceMain({
                 </Stack>
               </Box>
             )}
+            <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+              <Box>
+                <SocialFooter konfigYaml={konfigYaml} />
+              </Box>
+            </MediaQuery>
           </Stack>
           <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
             <Divider my="sm" />
@@ -388,6 +394,11 @@ export function OperationReferenceMain({
                   />
                 </Paper>
               )}
+              <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+                <Box>
+                  <SocialFooter konfigYaml={konfigYaml} />
+                </Box>
+              </MediaQuery>
             </Stack>
           </Box>
         </Flex>

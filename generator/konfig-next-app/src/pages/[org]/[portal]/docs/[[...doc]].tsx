@@ -32,6 +32,7 @@ import {
   generatePropsForMarkdownPage,
 } from '@/utils/generate-props-for-markdown-page'
 import Head from 'next/head'
+import { SocialFooter } from '@/components/SocialFooter'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -217,10 +218,7 @@ const DocumentationPage = observer(
                   defaultBranch={defaultBranch}
                 />
               </Box>
-              <Divider mt={rem(60)} />
-              <Box my={rem(20)}>
-                <DemoSocials socials={konfigYaml.portal?.socials} />
-              </Box>
+              <SocialFooter konfigYaml={konfigYaml} />
             </OperationsContext.Provider>
           </AppShell>
         </MantineProvider>
