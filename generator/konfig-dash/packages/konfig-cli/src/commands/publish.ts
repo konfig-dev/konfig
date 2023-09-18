@@ -343,7 +343,7 @@ export default class Publish extends Command {
               const shellResult = shell.exec(command, {
                 cwd: cwd !== undefined ? cwd : outputDirectory,
               })
-              logCommandResult({ shellResult, command })
+              handleCommandResult({ shellResult, command })
               if (shellResult.code !== 0) return // Don't execute remaining commands
             } else {
               await command()
@@ -357,7 +357,7 @@ export default class Publish extends Command {
         "File already exists", // pypi
       ]
 
-      const logCommandResult = async ({
+      const handleCommandResult = async ({
         shellResult,
         command,
       }: {
