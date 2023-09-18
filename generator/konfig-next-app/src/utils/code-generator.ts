@@ -107,6 +107,25 @@ export abstract class CodeGenerator {
     oauthTokenUrl,
     originalOauthTokenUrl,
   }: CodeGeneratorConstructorArgs) {
+    console.debug(
+      JSON.stringify(
+        {
+          formData,
+          parameters,
+          clientName,
+          packageName,
+          tag,
+          operationId,
+          basePath,
+          requestBodyRequired,
+          servers,
+          oauthTokenUrl,
+          originalOauthTokenUrl,
+        },
+        null,
+        2
+      )
+    )
     this.basePath = basePath
     this.oauthTokenUrl = oauthTokenUrl
     this.originalOauthTokenUrl = originalOauthTokenUrl
@@ -127,6 +146,15 @@ export abstract class CodeGenerator {
    * Single entrypoint for generating code.
    */
   protected abstract gen(): string
+
+  /**
+   * Masks a value by replacing each character with an "X"
+   * @param value - The value to mask
+   * @returns The masked value
+   */
+  mask(value: string) {
+    return value.replace(/./g, 'X')
+  }
 
   async snippet(): Promise<string> {
     return await this.format(this.gen())

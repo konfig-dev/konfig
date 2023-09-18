@@ -2,18 +2,30 @@ import { CodeGeneratorPython } from './code-generator-python'
 
 test('simple example', async () => {
   const code = await new CodeGeneratorPython({
-    packageName: 'konfig-next-app',
-    clientName: 'KonfigNextApp',
-    tag: 'tag',
     formData: {
       parameters: {},
-      security: {},
+      security: {
+        PartnerClientId: {
+          type: 'apiKey',
+          in: 'query',
+          key: 'clientId',
+          value: 'SDK',
+        },
+        consumerKey: {
+          type: 'clientState',
+          name: 'consumerKey',
+          value: 'SDK',
+        },
+      },
     },
     parameters: [],
-    operationId: 'operationId',
-    basePath: 'basePath',
+    clientName: 'SnapTrade',
+    packageName: 'snaptrade_client',
+    tag: 'API Status',
+    operationId: 'ApiStatus_check',
+    basePath: 'https://api.snaptrade.com/api/v1',
     requestBodyRequired: false,
-    servers: [],
+    servers: ['https://api.snaptrade.com/api/v1'],
     oauthTokenUrl: null,
     originalOauthTokenUrl: null,
   }).snippet()
