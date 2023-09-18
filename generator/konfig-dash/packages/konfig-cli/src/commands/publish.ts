@@ -280,6 +280,10 @@ export default class Publish extends Command {
       char: 's',
       description: 'Skip pushing git tag',
     }),
+    tolerateRepublish: Flags.boolean({
+      name: 'tolerateRepublish',
+      description: 'Do not fail if package version already exists in package manager. Note that published version will not be overridden. Used in CI',
+    }),
   }
 
   public async run(): Promise<void> {
@@ -339,18 +343,35 @@ export default class Publish extends Command {
               const shellResult = shell.exec(command, {
                 cwd: cwd !== undefined ? cwd : outputDirectory,
               })
-              if (shellResult.code !== 0) {
-                CliUx.ux.error(
-                  `Message: "${shellResult.stderr.trim()}"\nCommand "${command}" failed with exit code ${
-                    shellResult.code
-                  }"`
-                )
-              }
+              logCommandResult({ shellResult, command })
+              if (shellResult.code !== 0) return // Don't execute remaining commands
             } else {
               await command()
             }
           }
         }
+      }
+
+      const republishErrorMessages = [
+        "You cannot publish over the previously published version", // npm
+        "File already exists", // pypi
+      ]
+
+      const logCommandResult = async ({
+        shellResult,
+        command,
+      }: {
+        shellResult: shell.ShellString
+        command: string
+      }) => {
+        if (shellResult.code === 0)
+          CliUx.ux.log(`Command "${command}" succeeded`)
+        else if (shellResult.code === 1 && flags.tolerateRepublish
+                && (republishErrorMessages.some(message => shellResult.stderr.includes(message))
+                  || republishErrorMessages.some(message => shellResult.stdout.includes(message))))
+          CliUx.ux.warn(`Failed to publish ${generatorName} ${generatorConfig.version} because it already exists in package manager. Due to --tolerateRepublish flag, no error will be raised.`)
+        else
+          CliUx.ux.error(`Message: "${shellResult.stderr.trim()}"\nCommand "${command}" failed with exit code ${shellResult.code}"`)
       }
 
       if (generatorName === 'go' && 'packageName' in generatorConfig) {
