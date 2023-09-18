@@ -3,6 +3,7 @@ import { CodeGeneratorTypeScript } from '@/utils/code-generator-typescript'
 import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
 import { useEffect, useState } from 'react'
 import { DefaultProps, Tabs, useMantineTheme } from '@mantine/core'
+import { CodeGeneratorPython } from '@/utils/code-generator-python'
 
 function TsIcon(props: React.ComponentProps<'svg'>) {
   return (
@@ -30,14 +31,26 @@ function PythonIcon(props: React.ComponentProps<'svg'>) {
     </svg>
   )
 }
+
+type Languages = 'ts' | 'py'
 export function OperationFormGeneratedCode(args: CodeGeneratorConstructorArgs) {
   const [data, setData] = useState('Loading...') // Initial state
 
+  const [activeTab, setActiveTab] = useState<Languages | null>('ts')
+
   useEffect(() => {
-    new CodeGeneratorTypeScript(args).snippet().then((result) => {
-      setData(result)
-    })
-  }, [args])
+    if (activeTab === 'ts') {
+      new CodeGeneratorTypeScript(args).snippet().then((result) => {
+        setData(result)
+      })
+    } else if (activeTab === 'py') {
+      new CodeGeneratorPython(args).snippet().then((result) => {
+        setData(result)
+      })
+    } else {
+      throw Error('Unxpected language' + activeTab)
+    }
+  }, [args, activeTab])
   const { colorScheme } = useMantineTheme()
   const darkBorder = '0.0625rem solid #373A40'
   const lightBorder = '0.0625rem solid #dee2e6'
@@ -54,7 +67,7 @@ export function OperationFormGeneratedCode(args: CodeGeneratorConstructorArgs) {
     },
   }
   return (
-    <Tabs variant="outline" defaultValue="ts">
+    <Tabs variant="outline" onTabChange={setActiveTab as any} value={activeTab}>
       <Tabs.List>
         <Tabs.Tab value="ts" icon={<TsIcon width="1rem" height="1rem" />}>
           TypeScript
