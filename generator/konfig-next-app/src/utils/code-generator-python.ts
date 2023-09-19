@@ -60,7 +60,19 @@ from ${this.packageName} import ${this.clientName}`
 
   get args(): string {
     if (this._parameters.length === 0) return ''
-    return ''
+    const args: string[] = []
+    for (const [parameter, value] of this.nonEmptyParameters) {
+      args.push(
+        `${this.snake_case(parameter.name)}=${JSON.stringify(
+          value,
+          undefined,
+          2
+        )}`
+      )
+    }
+    return `
+    ${args.join(',\n    ')}
+`
   }
 
   get namespace(): string {

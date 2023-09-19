@@ -5,6 +5,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testPathIgnorePatterns: ['./next/', './node_modules/'],
+  setupFiles: ['<rootDir>/src/test/mock-file.js'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': [
       'ts-jest',
