@@ -109,7 +109,7 @@ export abstract class CodeGenerator {
     oauthTokenUrl,
     originalOauthTokenUrl,
   }: CodeGeneratorConstructorArgs) {
-    console.log(
+    console.debug(
       JSON.stringify(
         {
           formData,
