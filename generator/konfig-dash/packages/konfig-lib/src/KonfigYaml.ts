@@ -5,6 +5,11 @@ import { KonfigYamlFiles } from './KonfigYamlFiles'
 import { testConfig } from './TestConfig'
 import path from 'path'
 
+/**
+ * Don't use this anymore, its not as flexible as clientStateWithExamples
+ * because the item type is just a string. Eventually lets try to delete this
+ * property if we can
+ */
 const clientState = z
   .string()
   .array()
@@ -14,7 +19,16 @@ const clientState = z
   )
 
 export const clientStateWithExamples = z
-  .object({ name: z.string(), example: z.string() })
+  .object({
+    name: z.string(),
+    example: z.string().optional(),
+    required: z
+      .boolean()
+      .optional()
+      .describe(
+        "Configures SDKs to validate that this client state is non-empty. (e.g. not empty string '' or null)"
+      ),
+  })
   .array()
   .optional()
   .describe(
