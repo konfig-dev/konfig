@@ -86,10 +86,9 @@ from ${this.packageName} import ${this.clientName}`
     if (typeof obj === 'object' && obj !== null) {
       const entries = Object.entries(obj).map(
         ([key, value]) =>
-          `${nextIndent}${JSON.stringify(key)}: ${this.toPythonLiteralString(
-            value,
-            indentLevel + 1
-          )}`
+          `${nextIndent}${JSON.stringify(
+            this.snake_case(key)
+          )}: ${this.toPythonLiteralString(value, indentLevel + 1)}`
       )
       return `{\n${entries.join(',\n')}\n${currentIndent}}`
     }
@@ -102,7 +101,8 @@ from ${this.packageName} import ${this.clientName}`
     for (const [parameter, value] of this.nonEmptyParameters) {
       args.push(
         `${this.snake_case(parameter.name)}=${this.toPythonLiteralString(
-          value
+          value,
+          1
         )}`
       )
     }

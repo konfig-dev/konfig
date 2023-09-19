@@ -210,3 +210,170 @@ it('example with boolean', async () => {
   }).snippet()
   expect(code).toMatchSnapshot()
 })
+
+it('example with inner object', async () => {
+  const code = await new CodeGeneratorPython({
+    formData: {
+      parameters: {
+        accountId: 'fda321',
+        userId: '321',
+        userSecret: '321',
+        underlying_symbol_id: '321',
+        legs: [
+          {
+            action: 'SELL_TO_CLOSE',
+            option_symbol_id: 'fda',
+            quantity: 321,
+          },
+          {
+            action: 'BUY_TO_OPEN',
+            option_symbol_id: 'fda',
+            quantity: 1,
+          },
+        ],
+        strategy_type: 'CUSTOM',
+        optionStrategyId: '',
+        order_type: '',
+        time_in_force: 'Day',
+        price: 321,
+        symbol: '',
+        ticker: '',
+        symbolId: '',
+        substring: '',
+        currencyPair: '',
+        brokerage: '',
+        first_trade_id: '',
+        second_trade_id: '',
+        tradeId: '',
+        account_id: '321',
+        action: '',
+        stop: 321,
+        units: '',
+        universal_symbol_id: '',
+        brokerage_order_id: '',
+        symbols: '',
+        use_ticker: '',
+        startDate: '',
+        endDate: '',
+        accounts: '',
+        detailed: '',
+        frequency: '',
+        brokerageAuthorizations: '',
+        type: '',
+        broker: 'fda',
+        immediateRedirect: true,
+        customRedirect: 'f',
+        reconnect: 'fda',
+        connectionType: 'trade',
+      },
+      security: {
+        PartnerClientId: {
+          type: 'apiKey',
+          in: 'query',
+          key: 'clientId',
+          value: 'SDK',
+        },
+        consumerKey: {
+          type: 'clientState',
+          name: 'consumerKey',
+          value: 'SDK',
+        },
+      },
+    },
+    parameters: [
+      {
+        in: 'path',
+        name: 'accountId',
+        required: true,
+        description: 'The ID of the account get positions.',
+        schema: {
+          type: 'string',
+          format: 'uuid',
+        },
+      },
+      {
+        in: 'query',
+        required: true,
+        name: 'userId',
+        schema: {
+          description: 'SnapTrade User ID',
+          type: 'string',
+          example: 'John.doe@snaptrade.com',
+        },
+      },
+      {
+        in: 'query',
+        required: true,
+        name: 'userSecret',
+        schema: {
+          description:
+            'SnapTrade User Secret (generated when registering user)',
+          type: 'string',
+          example: 'USERSECRET123',
+        },
+      },
+      {
+        name: 'underlying_symbol_id',
+        in: 'body',
+        schema: {
+          type: 'string',
+          format: 'uuid',
+          example: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+        },
+        required: true,
+      },
+      {
+        name: 'legs',
+        in: 'body',
+        schema: {
+          type: 'array',
+          items: {
+            description: 'Option Leg',
+            type: 'object',
+            properties: {
+              action: {
+                type: 'string',
+                enum: [
+                  'BUY_TO_OPEN',
+                  'BUY_TO_CLOSE',
+                  'SELL_TO_OPEN',
+                  'SELL_TO_CLOSE',
+                ],
+              },
+              option_symbol_id: {
+                type: 'string',
+                description:
+                  'Obtained from calling options chain endpoint (option_id)',
+                example: 'SPY220819P00200000',
+              },
+              quantity: {
+                type: 'number',
+                example: 1,
+              },
+            },
+          },
+        },
+        required: true,
+      },
+      {
+        name: 'strategy_type',
+        in: 'body',
+        schema: {
+          type: 'string',
+          enum: ['CUSTOM'],
+        },
+        required: true,
+      },
+    ],
+    clientName: 'SnapTrade',
+    packageName: 'snaptrade_client',
+    tag: 'Options',
+    operationId: 'Options_getOptionStrategy',
+    basePath: 'https://api.snaptrade.com/api/v1',
+    requestBodyRequired: true,
+    servers: ['https://api.snaptrade.com/api/v1'],
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+  }).snippet()
+  expect(code).toMatchSnapshot()
+})

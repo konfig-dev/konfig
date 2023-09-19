@@ -18,6 +18,37 @@ response = snaptrade.authentication.login_snap_trade_user(
 pprint(response.body)"
 `;
 
+exports[`example with inner object 1`] = `
+"from pprint import pprint
+from snaptrade_client import SnapTrade
+
+snaptrade = SnapTrade(
+    client_id="XXX",
+    consumer_key="XXX"
+)
+
+response = snaptrade.options.get_option_strategy(
+    account_id="fda321",
+    user_id="321",
+    user_secret="321",
+    underlying_symbol_id="321",
+    legs=[
+        {
+            "action": "SELL_TO_CLOSE",
+            "option_symbol_id": "fda",
+            "quantity": 321
+        },
+        {
+            "action": "BUY_TO_OPEN",
+            "option_symbol_id": "fda",
+            "quantity": 1
+        }
+    ],
+    strategy_type="CUSTOM"
+)
+pprint(response.body)"
+`;
+
 exports[`simple example 1`] = `
 "from pprint import pprint
 from snaptrade_client import SnapTrade
