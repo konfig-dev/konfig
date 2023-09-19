@@ -5,6 +5,7 @@ import { deepmerge } from './deepmerge'
 import { isNotEmpty } from './is-not-empty'
 import localforage from 'localforage'
 import { ReferencePageProps } from './generate-props-for-reference-page'
+import { isUUID } from './is-uuid'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   owner,
@@ -153,16 +154,24 @@ function generateFormInputValues({
       }
       validate = deepmerge(validation, validate)
     } else {
-      if (parameter.required) {
-        const validation: FormValues['validate'] = {
-          parameters: {
-            [parameter.name]: (value) => {
-              return isNotEmpty(`${parameter.name} is required`)(value)
-            },
+      const validation: FormValues['validate'] = {
+        parameters: {
+          [parameter.name]: (value) => {
+            if (parameter.required) {
+              const checkRequired = isNotEmpty(`${parameter.name} is required`)(
+                value
+              )
+              if (checkRequired) return checkRequired
+            }
+            if (parameter.schema.format === 'uuid') {
+              if (typeof value === 'string' && !isUUID(value))
+                return `${parameter.name} is not a valid UUID`
+            }
+            return false
           },
-        }
-        validate = deepmerge(validation, validate)
+        },
       }
+      validate = deepmerge(validation, validate)
       initialValues.parameters[parameter.name] = ''
     }
   }
