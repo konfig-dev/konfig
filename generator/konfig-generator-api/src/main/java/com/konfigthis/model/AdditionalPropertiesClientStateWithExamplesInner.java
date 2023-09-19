@@ -29,6 +29,9 @@ public class AdditionalPropertiesClientStateWithExamplesInner {
   @JsonProperty("example")
   private String example;
 
+  @JsonProperty("required")
+  private Boolean required;
+
   public AdditionalPropertiesClientStateWithExamplesInner name(String name) {
     this.name = name;
     return this;
@@ -67,6 +70,25 @@ public class AdditionalPropertiesClientStateWithExamplesInner {
     this.example = example;
   }
 
+  public AdditionalPropertiesClientStateWithExamplesInner required(Boolean required) {
+    this.required = required;
+    return this;
+  }
+
+  /**
+   * Get required
+   * @return required
+  */
+  
+  @Schema(name = "required", required = false)
+  public Boolean getRequired() {
+    return required;
+  }
+
+  public void setRequired(Boolean required) {
+    this.required = required;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -77,12 +99,13 @@ public class AdditionalPropertiesClientStateWithExamplesInner {
     }
     AdditionalPropertiesClientStateWithExamplesInner additionalPropertiesClientStateWithExamplesInner = (AdditionalPropertiesClientStateWithExamplesInner) o;
     return Objects.equals(this.name, additionalPropertiesClientStateWithExamplesInner.name) &&
-        Objects.equals(this.example, additionalPropertiesClientStateWithExamplesInner.example);
+        Objects.equals(this.example, additionalPropertiesClientStateWithExamplesInner.example) &&
+        Objects.equals(this.required, additionalPropertiesClientStateWithExamplesInner.required);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, example);
+    return Objects.hash(name, example, required);
   }
 
   @Override
@@ -91,6 +114,7 @@ public class AdditionalPropertiesClientStateWithExamplesInner {
     sb.append("class AdditionalPropertiesClientStateWithExamplesInner {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    example: ").append(toIndentedString(example)).append("\n");
+    sb.append("    required: ").append(toIndentedString(required)).append("\n");
     sb.append("}");
     return sb.toString();
   }
