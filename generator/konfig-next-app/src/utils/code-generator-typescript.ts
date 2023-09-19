@@ -132,6 +132,18 @@ ${this.nonEmptySecurity
     return `{${innerObject}}`
   }
 
+  get packageName(): string {
+    return this.languageConfigurations.typescript.packageName
+  }
+
+  get clientName(): string {
+    return this.languageConfigurations.typescript.clientName
+  }
+
+  get clientNameLowercase(): string {
+    return this.clientName.toLowerCase()
+  }
+
   argValue(value: SdkArg, index?: number): string {
     if (Array.isArray(value)) {
       return `[${value.map((v, index) => this.argValue(v, index)).join(', ')}]`

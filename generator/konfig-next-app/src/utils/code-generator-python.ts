@@ -65,6 +65,18 @@ from ${this.packageName} import ${this.clientName}`
     return value
   }
 
+  get clientName(): string {
+    return this.languageConfigurations.python?.clientName ?? 'MISSING'
+  }
+
+  get clientNameLowercase(): string {
+    return this.clientName.toLowerCase()
+  }
+
+  get packageName(): string {
+    return this.languageConfigurations.python?.packageName ?? 'MISSING'
+  }
+
   toPythonLiteralString(obj: unknown, indentLevel: number = 0): string {
     const indent = '    ' // 4 spaces
     const currentIndent = indent.repeat(indentLevel)

@@ -94,6 +94,8 @@ export function OperationReferenceMain({
     throw new Error('TypeScript generator not configured')
   }
 
+  const pythonConfig = konfigYaml.generators.python
+
   const clientState = useMemo(
     () => typecriptConfig.clientState ?? [],
     [typecriptConfig]
@@ -163,9 +165,19 @@ export function OperationReferenceMain({
   const codegenArgs: CodeGeneratorConstructorArgs = {
     parameters: parameters,
     formData: form.values,
-    clientName: typecriptConfig.clientName,
+    languageConfigurations: {
+      typescript: {
+        clientName: typecriptConfig.clientName,
+        packageName: typecriptConfig.npmName,
+      },
+      ...(pythonConfig && {
+        python: {
+          clientName: pythonConfig.clientName,
+          packageName: pythonConfig.packageName,
+        },
+      }),
+    },
     servers,
-    packageName: typecriptConfig.npmName,
     operationId: operation.operation.operationId,
     tag: tag,
     basePath,
@@ -174,6 +186,8 @@ export function OperationReferenceMain({
     requestBodyRequired:
       (operation.operation.requestBody as RequestBodyObject)?.required ?? false,
   }
+
+  console.log(codegenArgs)
 
   const [requestInProgress, setRequestInProgress] = useState(false)
 
