@@ -63,6 +63,9 @@ module {{moduleName}}
 {{#clientState}}
     def_delegators :@config, :{{.}}, :{{.}}= # client state from konfig.yaml
 {{/clientState}}
+{{#clientStateWithExamples}}
+    def_delegators :@config, :{{name}}, :{{name}}= # client state from konfig.yaml
+{{/clientStateWithExamples}}
 
     # Customize default settings for the SDK using block.
     #   {{moduleName}}.configure do |config|

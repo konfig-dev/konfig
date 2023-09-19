@@ -36,6 +36,20 @@ module {{moduleName}}
     attr_accessor :{{.}}
 
 {{/clientState}}
+{{#clientStateWithExamples}}
+    # client state configured through konfig.yaml
+    attr_accessor :{{name}}
+{{#required}}
+
+    def {{name}}=(value)
+      if value.nil? || value.empty?
+        raise ArgumentError, "Invalid value for {{name}}, must be non-empty string"
+      end
+      @{{name}} = value
+    end
+{{/required}}
+
+{{/clientStateWithExamples}}
     # Defines API keys used with API Key authentications.
     #
     # @return [Hash] key: parameter name, value: parameter value (API key)
