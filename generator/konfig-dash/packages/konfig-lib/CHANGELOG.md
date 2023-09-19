@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.11.0
+
+### Minor Changes
+
+- [#204](https://github.com/konfig-dev/konfig/pull/204) [`32c2e0f4`](https://github.com/konfig-dev/konfig/commit/32c2e0f40c90b1a6caab0d2f3c6a0c098de0608a) Thanks [@dphuang2](https://github.com/dphuang2)! - added required property to client state
+
 ## 1.10.0
 
 ### Minor Changes
