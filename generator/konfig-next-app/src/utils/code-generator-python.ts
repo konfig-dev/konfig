@@ -58,15 +58,51 @@ from ${this.packageName} import ${this.clientName}`
 `
   }
 
+  pythonBooleanStringify(key: string, value: any): any {
+    if (typeof value === 'boolean') {
+      return value ? 'True' : 'False'
+    }
+    return value
+  }
+
+  toPythonLiteralString(obj: unknown, indentLevel: number = 0): string {
+    const indent = '    ' // 4 spaces
+    const currentIndent = indent.repeat(indentLevel)
+    const nextIndent = indent.repeat(indentLevel + 1)
+
+    if (typeof obj === 'boolean') {
+      return obj ? 'True' : 'False'
+    }
+    if (typeof obj === 'number' || typeof obj === 'string') {
+      return JSON.stringify(obj)
+    }
+    if (Array.isArray(obj)) {
+      const items = obj.map(
+        (item) =>
+          `${nextIndent}${this.toPythonLiteralString(item, indentLevel + 1)}`
+      )
+      return `[\n${items.join(',\n')}\n${currentIndent}]`
+    }
+    if (typeof obj === 'object' && obj !== null) {
+      const entries = Object.entries(obj).map(
+        ([key, value]) =>
+          `${nextIndent}${JSON.stringify(key)}: ${this.toPythonLiteralString(
+            value,
+            indentLevel + 1
+          )}`
+      )
+      return `{\n${entries.join(',\n')}\n${currentIndent}}`
+    }
+    return 'None'
+  }
+
   get args(): string {
     if (this._parameters.length === 0) return ''
     const args: string[] = []
     for (const [parameter, value] of this.nonEmptyParameters) {
       args.push(
-        `${this.snake_case(parameter.name)}=${JSON.stringify(
-          value,
-          undefined,
-          2
+        `${this.snake_case(parameter.name)}=${this.toPythonLiteralString(
+          value
         )}`
       )
     }

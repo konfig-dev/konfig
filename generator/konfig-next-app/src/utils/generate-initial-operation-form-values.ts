@@ -30,6 +30,7 @@ export type FormInputValues = {
   [parameter: string]:
     | string
     | number
+    | boolean
     | FormInputValues
     | string[]
     | number[]
