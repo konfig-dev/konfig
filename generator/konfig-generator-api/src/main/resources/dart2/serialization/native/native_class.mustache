@@ -211,9 +211,9 @@ class {{{classname}}} {
             {{/isMap}}
             {{^isMap}}
               {{#isNumber}}
-        {{{name}}}: json[r'{{{baseName}}}'] == null
+        {{{name}}}: {{^required}}json[r'{{{baseName}}}'] == null
             ? {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}
-            : {{{datatypeWithEnum}}}.parse(json[r'{{{baseName}}}'].toString()),
+            :{{/required}} {{{datatypeWithEnum}}}.parse(json[r'{{{baseName}}}'].toString()),
               {{/isNumber}}
               {{^isNumber}}
                 {{^isEnum}}
