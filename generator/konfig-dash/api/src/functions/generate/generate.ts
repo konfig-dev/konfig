@@ -737,6 +737,7 @@ async function queueDartGeneration({
         pubAuthorEmail: body.infoContactEmail ?? 'engineering@konfigthis.com',
         pubHomepage: body.infoContactUrl ?? 'https://konfigthis.com',
         pubVersion: generatorConfig.version,
+        clientName: generatorConfig.clientName,
         pubName: generatorConfig.pubName,
         pubLibrary: generatorConfig.pubName,
         pubRepository: generatorConfig.git

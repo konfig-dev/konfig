@@ -217,6 +217,11 @@ export const swiftConfig = z.object({
 
 export const dartConfig = z.object({
   language: z.literal('dart').default('dart'),
+  clientName: z
+    .string()
+    .describe(
+      `The top-level client's name. (e.g. 'Acme' in "final acme = Acme();")`
+    ),
   pubName: z
     .string()
     .regex(/^[a-z][a-z\_]*$/)
