@@ -220,12 +220,10 @@ export const dartConfig = z.object({
   pubName: z
     .string()
     .regex(/^[a-z][a-z\_]*$/)
-    .optional()
     .describe(`"a" in import 'package:a/b.dart';`),
   pubLibrary: z
     .string()
     .regex(/^[a-z][a-z\_]*$/)
-    .optional()
     .describe(`"b" in import 'package:a/b.dart';`),
 })
 
