@@ -187,6 +187,13 @@ export function getPublishedPackageUrl({
         url: `https://cocoapods.org/pods/${config.projectName}`,
         packageManagerName: 'CocoaPods',
       }
+    case 'dart':
+      config = konfigYaml.generators.dart
+      if (config === undefined) throw Error('Config undefined')
+      return {
+        url: `https://pub.dev/packages/${config.pubName}/versions/${config.version}`,
+        packageManagerName: 'pub.dev',
+      }
     case 'ruby':
       config = konfigYaml.generators.ruby
       if (config === undefined) throw Error('Config undefined')
@@ -234,6 +241,8 @@ export function generatorNameAsDisplayName({
 }) {
   const generatorName = generatorConfig.language
   switch (generatorName) {
+    case 'dart':
+      return 'Dart'
     case 'csharp':
       return 'C#'
     case 'objc':
