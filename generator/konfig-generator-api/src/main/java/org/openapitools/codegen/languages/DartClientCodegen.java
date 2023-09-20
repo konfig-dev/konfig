@@ -66,7 +66,7 @@ public class DartClientCodegen extends AbstractDartCodegen {
         supportingFiles.add(new SupportingFile("api_client.mustache", libPath, "api_client.dart"));
         supportingFiles.add(new SupportingFile("api_exception.mustache", libPath, "api_exception.dart"));
         supportingFiles.add(new SupportingFile("api_helper.mustache", libPath, "api_helper.dart"));
-        supportingFiles.add(new SupportingFile("apilib.mustache", libPath, "api.dart"));
+        supportingFiles.add(new SupportingFile("apilib.mustache", libPath, this.pubName + ".dart"));
         supportingFiles.add(new SupportingFile("simple_test.mustache", "test", "simple_test.dart"));
 
         final String authFolder = libPath + "auth";
