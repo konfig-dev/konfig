@@ -221,10 +221,6 @@ export const dartConfig = z.object({
     .string()
     .regex(/^[a-z][a-z\_]*$/)
     .describe(`"a" in import 'package:a/b.dart';`),
-  pubLibrary: z
-    .string()
-    .regex(/^[a-z][a-z\_]*$/)
-    .describe(`"b" in import 'package:a/b.dart';`),
 })
 
 export const phpConfig = z.object({
