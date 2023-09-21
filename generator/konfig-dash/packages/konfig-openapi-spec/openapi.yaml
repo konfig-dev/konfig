@@ -259,6 +259,7 @@ components:
                     https://maven.apache.org/guides/mini/guide-naming-conventions.html)'
                 removeKonfigBranding:
                   type: boolean
+                  description: Don't add Konfig branding to generated SDK
                 gitlab:
                   type: object
                   properties:
@@ -551,6 +552,7 @@ components:
                   description: acme-python-sdk
                 removeKonfigBranding:
                   type: boolean
+                  description: Don't add Konfig branding to generated SDK
                 pypiApiTokenEnvironmentVariable:
                   type: string
                 gitlabRepositoryId:
@@ -773,6 +775,7 @@ components:
                     - response
                 removeKonfigBranding:
                   type: boolean
+                  description: Don't add Konfig branding to generated SDK
                 useSecurityKeyParamNameAsPropertyName:
                   type: boolean
                   description: Whether to use the security requirement's key as the property name.
@@ -952,19 +955,24 @@ components:
                   enum:
                     - dart
                   default: dart
+                removeKonfigBranding:
+                  type: boolean
+                  description: Don't add Konfig branding to generated SDK
+                clientName:
+                  type: string
+                  description: The top-level client's name. (e.g. 'Acme' in "final acme =
+                    Acme();")
                 pubName:
                   type: string
                   pattern: ^[a-z][a-z\_]*$
                   description: "\"a\" in import 'package:a/b.dart';"
-                pubLibrary:
-                  type: string
-                  pattern: ^[a-z][a-z\_]*$
-                  description: "\"b\" in import 'package:a/b.dart';"
               required:
                 - version
                 - git
                 - outputDirectory
                 - language
+                - clientName
+                - pubName
               additionalProperties: false
             csharp:
               type: object
@@ -1772,6 +1780,7 @@ components:
                       https://maven.apache.org/guides/mini/guide-naming-conventions.html)'
                   removeKonfigBranding:
                     type: boolean
+                    description: Don't add Konfig branding to generated SDK
                   gitlab:
                     type: object
                     properties:
@@ -2192,6 +2201,7 @@ components:
                     description: acme-python-sdk
                   removeKonfigBranding:
                     type: boolean
+                    description: Don't add Konfig branding to generated SDK
                   pypiApiTokenEnvironmentVariable:
                     type: string
                   gitlabRepositoryId:
@@ -2420,6 +2430,7 @@ components:
                       - response
                   removeKonfigBranding:
                     type: boolean
+                    description: Don't add Konfig branding to generated SDK
                   useSecurityKeyParamNameAsPropertyName:
                     type: boolean
                     description: Whether to use the security requirement's key as the property name.
@@ -2893,20 +2904,25 @@ components:
                     enum:
                       - dart
                     default: dart
+                  removeKonfigBranding:
+                    type: boolean
+                    description: Don't add Konfig branding to generated SDK
+                  clientName:
+                    type: string
+                    description: The top-level client's name. (e.g. 'Acme' in "final acme =
+                      Acme();")
                   pubName:
                     type: string
                     pattern: ^[a-z][a-z\_]*$
                     description: "\"a\" in import 'package:a/b.dart';"
-                  pubLibrary:
-                    type: string
-                    pattern: ^[a-z][a-z\_]*$
-                    description: "\"b\" in import 'package:a/b.dart';"
                 required:
                   - generator
                   - version
                   - git
                   - outputDirectory
                   - language
+                  - clientName
+                  - pubName
                 additionalProperties: false
               - type: object
                 properties:
@@ -5222,7 +5238,7 @@ components:
                   - 3
                 example: 0
                 description: >
-                  
+
                   /**
                    * Something not allowed by the rules of a language or other means.
                    */
