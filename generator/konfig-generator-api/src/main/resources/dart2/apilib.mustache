@@ -15,6 +15,7 @@ part 'api_exception.dart';
 part 'auth/authentication.dart';
 part 'auth/api_key_auth.dart';
 part 'auth/oauth.dart';
+part 'auth/wrapper.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
@@ -32,10 +33,30 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
 
 ApiClient defaultApiClient = ApiClient();
 
+/**
+ * Top-level client that provides access to the API classes. Instantiates its own ApiClient class and *Api classes.
+ */
 class {{clientName}} {
-  {{#apiInfo}}{{#apis}}final {{classname}} {{classNameCamelCase}};
+  late ApiClient apiClient;
+  {{#apiInfo}}{{#apis}}late {{classname}} {{classNameCamelCase}};
   {{/apis}}{{/apiInfo}}
-  {{clientName}}()
-      {{#apiInfo}}{{#apis}}: {{classNameCamelCase}} = {{classname}}()
-      {{/apis}}{{/apiInfo}};
+  // accepts a base path, creates an ApiClient instance and instantiates *Api classes
+  {{clientName}}({
+    String? basePath,
+    {{#authMethods}}required String {{keyParamNamePascalCase}},
+    {{/authMethods}}
+  }) {
+    List<Authentication> authentications = [];
+    {{#authMethods}}
+    {{#isApiKey}}
+    authentications.add(ApiKeyAuth("{{apiKeyIn}}", "{{keyParamName}}", {{keyParamNamePascalCase}}));
+    {{/isApiKey}}
+    {{/authMethods}}
+    Wrapper wrapper = Wrapper(authentications);
+    apiClient = ApiClient(
+        basePath: basePath ?? "{{{basePath}}}",
+        authentication: wrapper);
+    {{#apiInfo}}{{#apis}}{{classNameCamelCase}} = {{classname}}(apiClient);
+    {{/apis}}{{/apiInfo}}
+  }
 }

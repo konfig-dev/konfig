@@ -6,7 +6,9 @@ import 'package:test/test.dart';
 
 /// tests for {{{classname}}}
 void main() {
-  // final instance = {{{classname}}}();
+  final {{clientNameLowercase}} = {{{clientName}}}(
+  basePath: "http://127.0.0.1:4010",
+  {{> api_doc_example_setup_params}});
 
   group('tests for {{{classname}}}', () {
     {{#operation}}
@@ -20,7 +22,9 @@ void main() {
     {{/notes}}
     //{{#returnType}}Future<{{{.}}}> {{/returnType}}{{^returnType}}Future {{/returnType}}{{{operationId}}}({{#allParams}}{{#required}}{{{dataType}}} {{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{ {{#allParams}}{{^required}}{{{dataType}}} {{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}} }{{/hasOptionalParams}}) async
     test('test {{{operationId}}}', () async {
-      // TODO
+        {{> api_doc_example_execute_params}}
+        {{> api_doc_example_execute}}
+        expect(result, isNotNull);
     });
 
     {{/operation}}
