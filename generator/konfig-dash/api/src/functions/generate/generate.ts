@@ -738,6 +738,7 @@ async function queueDartGeneration({
         pubHomepage: body.infoContactUrl ?? 'https://konfigthis.com',
         pubVersion: generatorConfig.version,
         clientName: generatorConfig.clientName,
+        removeKonfigBranding: generatorConfig.removeKonfigBranding,
         pubName: generatorConfig.pubName,
         pubLibrary: generatorConfig.pubName,
         pubRepository: generatorConfig.git
