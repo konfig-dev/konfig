@@ -5469,6 +5469,7 @@ public class DefaultCodegen implements CodegenConfig {
                 cs.keyParamNameSnakeCaseUppercase = cs.keyParamNameSnakeCase.toUpperCase();
                 cs.isKeyInHeader = securityScheme.getIn() == SecurityScheme.In.HEADER;
                 cs.isKeyInQuery = securityScheme.getIn() == SecurityScheme.In.QUERY;
+                cs.apiKeyIn = securityScheme.getIn().toString();
                 cs.isKeyInCookie = securityScheme.getIn() == SecurityScheme.In.COOKIE; // it assumes a validation step
                 // prior to generation.
                 // (cookie-auth supported from
