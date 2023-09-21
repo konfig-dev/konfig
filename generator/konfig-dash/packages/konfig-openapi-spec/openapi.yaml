@@ -863,6 +863,109 @@ components:
                 - clientName
                 - npmName
               additionalProperties: false
+            dart:
+              type: object
+              properties:
+                files:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      source:
+                        type: string
+                      destinationFilename:
+                        type: string
+                    required:
+                      - source
+                      - destinationFilename
+                version:
+                  type: string
+                git:
+                  type: object
+                  properties: *a1
+                outputDirectory:
+                  type: string
+                readmeSnippet:
+                  type: string
+                readmeSupportingDescriptionSnippet:
+                  type: string
+                readmeDescriptionSnippet:
+                  type: string
+                copyFiles:
+                  type: array
+                  items:
+                    anyOf:
+                      - type: object
+                        properties:
+                          from:
+                            type: string
+                            description: Relative path from directory that contains konfig.yaml to file that
+                              you want to copy
+                          to:
+                            type: string
+                            description: Relative path from directory that contains konfig.yaml to
+                              destination you want to copy to
+                        required:
+                          - from
+                          - to
+                      - type: object
+                        properties:
+                          konfigIgnore:
+                            type: string
+                            description: Relative path to a .konfigignore file. If specified, we parse the
+                              .konfigignore file and copy all files that it
+                              matches to the current directory.
+                        required:
+                          - konfigIgnore
+                  description: Configure copying a set of files from a source to a destination.
+                    This is useful if you have custom implementations that you
+                    would like duplicated across multiple SDK repos.
+                apiDocumentationAuthenticationPartial:
+                  type: string
+                  description: Filepath to file containing override for the section in generated
+                    documentation for setting up authentication in the SDK.
+                disabled:
+                  type: boolean
+                defaultTimeout:
+                  type: number
+                  default: 0
+                userAgent:
+                  type: string
+                  default: Konfig
+                test:
+                  type: object
+                  properties:
+                    script:
+                      type: array
+                      items:
+                        type: string
+                      description: Series of commands that are sequentially executed to test the SDK
+                    requiredEnvironmentVariables:
+                      type: array
+                      items:
+                        type: string
+                  required:
+                    - script
+                  description: Configuration of "konfig test"
+                language:
+                  type: string
+                  enum:
+                    - dart
+                  default: dart
+                pubName:
+                  type: string
+                  pattern: ^[a-z][a-z\_]*$
+                  description: "\"a\" in import 'package:a/b.dart';"
+                pubLibrary:
+                  type: string
+                  pattern: ^[a-z][a-z\_]*$
+                  description: "\"b\" in import 'package:a/b.dart';"
+              required:
+                - version
+                - git
+                - outputDirectory
+                - language
+              additionalProperties: false
             csharp:
               type: object
               properties:
@@ -2697,6 +2800,113 @@ components:
                   - language
                   - packageName
                   - invokerPackage
+                additionalProperties: false
+              - type: object
+                properties:
+                  generator:
+                    type: string
+                    enum:
+                      - dart
+                  files:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        source:
+                          type: string
+                        destinationFilename:
+                          type: string
+                      required:
+                        - source
+                        - destinationFilename
+                  version:
+                    type: string
+                  git:
+                    type: object
+                    properties: *a1
+                  outputDirectory:
+                    type: string
+                  readmeSnippet:
+                    type: string
+                  readmeSupportingDescriptionSnippet:
+                    type: string
+                  readmeDescriptionSnippet:
+                    type: string
+                  copyFiles:
+                    type: array
+                    items:
+                      anyOf:
+                        - type: object
+                          properties:
+                            from:
+                              type: string
+                              description: Relative path from directory that contains konfig.yaml to file that
+                                you want to copy
+                            to:
+                              type: string
+                              description: Relative path from directory that contains konfig.yaml to
+                                destination you want to copy to
+                          required:
+                            - from
+                            - to
+                        - type: object
+                          properties:
+                            konfigIgnore:
+                              type: string
+                              description: Relative path to a .konfigignore file. If specified, we parse the
+                                .konfigignore file and copy all files that it
+                                matches to the current directory.
+                          required:
+                            - konfigIgnore
+                    description: Configure copying a set of files from a source to a destination.
+                      This is useful if you have custom implementations that you
+                      would like duplicated across multiple SDK repos.
+                  apiDocumentationAuthenticationPartial:
+                    type: string
+                    description: Filepath to file containing override for the section in generated
+                      documentation for setting up authentication in the SDK.
+                  disabled:
+                    type: boolean
+                  defaultTimeout:
+                    type: number
+                    default: 0
+                  userAgent:
+                    type: string
+                    default: Konfig
+                  test:
+                    type: object
+                    properties:
+                      script:
+                        type: array
+                        items:
+                          type: string
+                        description: Series of commands that are sequentially executed to test the SDK
+                      requiredEnvironmentVariables:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - script
+                    description: Configuration of "konfig test"
+                  language:
+                    type: string
+                    enum:
+                      - dart
+                    default: dart
+                  pubName:
+                    type: string
+                    pattern: ^[a-z][a-z\_]*$
+                    description: "\"a\" in import 'package:a/b.dart';"
+                  pubLibrary:
+                    type: string
+                    pattern: ^[a-z][a-z\_]*$
+                    description: "\"b\" in import 'package:a/b.dart';"
+                required:
+                  - generator
+                  - version
+                  - git
+                  - outputDirectory
+                  - language
                 additionalProperties: false
               - type: object
                 properties:

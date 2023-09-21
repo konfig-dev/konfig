@@ -1,5 +1,16 @@
 # konfig-openapi-spec
 
+## 1.3.0
+
+### Minor Changes
+
+- [`97752b65`](https://github.com/konfig-dev/konfig/commit/97752b650be5f5089d8ade979516f9ddc008cd33) Thanks [@dphuang2](https://github.com/dphuang2)! - add initial configurations for dart
+
+### Patch Changes
+
+- Updated dependencies [[`97752b65`](https://github.com/konfig-dev/konfig/commit/97752b650be5f5089d8ade979516f9ddc008cd33)]:
+  - konfig-lib@1.12.0
+
 ## 1.2.0
 
 ### Minor Changes
