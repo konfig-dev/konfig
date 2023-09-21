@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.11.8
+
+### Patch Changes
+
+- [#207](https://github.com/konfig-dev/konfig/pull/207) [`1080d4b2`](https://github.com/konfig-dev/konfig/commit/1080d4b2161ee5b80fd05673816603fbfb833f85) Thanks [@eddiechayes](https://github.com/eddiechayes)! - create konfig list-sdk-submodules
+
 ## 1.11.7
 
 ### Patch Changes
