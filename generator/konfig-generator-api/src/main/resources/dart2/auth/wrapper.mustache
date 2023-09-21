@@ -1,0 +1,15 @@
+{{>header}}
+{{> part_of}}
+class Wrapper implements Authentication {
+  final List<Authentication> authentications;
+
+  Wrapper(this.authentications);
+
+  @override
+  Future<void> applyToParams(
+      List<QueryParam> queryParams, Map<String, String> headerParams) async {
+    for (var auth in authentications) {
+      await auth.applyToParams(queryParams, headerParams);
+    }
+  }
+}
