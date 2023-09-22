@@ -542,5 +542,6 @@ export type CSharpConfigType = z.infer<typeof csharp>
 export type KonfigGeneratorCommon = z.infer<typeof konfigGeneratorConfigCommon>
 export type PythonConfigType = z.infer<typeof pythonConfig>
 export type RubyConfigType = z.infer<typeof rubyConfig>
+export type DartConfigType = z.infer<typeof dart>
 export type GeneratorCommonGitType = z.infer<typeof generatorCommonGitRequired>
 export type ParameterStateConfig = z.infer<typeof parameterStateConfig>

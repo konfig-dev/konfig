@@ -45,6 +45,7 @@ import prettier from 'prettier'
 import replaceAsync from 'string-replace-async'
 import { removeTrailingSlash } from '../util/remove-trailing-slash'
 import { generateStatisticsFileForSdks } from '../util/generate-statistics-file-for-sdks'
+import { generateChangelog } from '../util/generate-changelog'
 
 function getOutputDir(
   outputFlag: string | undefined,
@@ -1485,7 +1486,9 @@ const KONFIG_IGNORE_FILE_NAME = '.konfigignore'
 const DO_NOT_DELETE_THESE_FILES = new Set([
   '.git',
   KONFIG_IGNORE_FILE_NAME,
+  'CHANGELOG.md', // for all SDKs
   'yarn.lock', // for TypeScript SDK
+  'pubspec.lock', // for Dart SDK
 ])
 
 const safelyDeleteFiles = async (
@@ -1744,6 +1747,24 @@ async function copyDartOutput({
       outputDirectory,
       generatorConfig: dart,
     })
+    fs.writeFileSync(path.join(outputDirectory, 'LICENSE'), generateLicense())
+
+    // read CHANGELOG.md into variable if it exists
+    const existingChangelogMarkdownPath = path.join(
+      dart.outputDirectory,
+      'CHANGELOG.md'
+    )
+    const existingChangelogMarkdown: string | undefined = fs.existsSync(
+      existingChangelogMarkdownPath
+    )
+      ? fs.readFileSync(existingChangelogMarkdownPath, 'utf-8')
+      : undefined
+    const changelog = generateChangelog({
+      existingChangelogMarkdown,
+      config: dart,
+    })
+    fs.writeFileSync(path.join(outputDirectory, 'CHANGELOG.md'), changelog)
+
     CliUx.ux.action.stop()
   }
 }
