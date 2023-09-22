@@ -12,6 +12,7 @@ import kill from 'konfig-kill-port'
 import path from 'path'
 import { parseKonfigYaml } from './parse-konfig-yaml'
 import { parseFilterFlag } from './parseFilterFlag'
+import { findNodeModulesBinPath } from './find-node-modules-bin-path'
 
 const validateRequiredEnvironmentVariables = (
   config: RequiredEnvironmentVariablesConfig
@@ -28,9 +29,11 @@ const validateRequiredEnvironmentVariables = (
 export async function executeTestCommand({
   filterInput,
   sequence,
+  cliRoot,
 }: {
   filterInput?: string
   sequence: boolean
+  cliRoot: string
 }) {
   const filter = parseFilterFlag(filterInput)
   const configDir = process.cwd()
@@ -52,7 +55,11 @@ export async function executeTestCommand({
   // spawn process that run "konfig mock -d {specPath}" from konfig.yaml
   CliUx.ux.log('💻 Starting mock server')
   // TODO: ENG-1099 Use a function call here instead of CLI
-  execa.command(`konfig mock -d ${common.specPath}`, {
+  const pathToPrism = await findNodeModulesBinPath({
+    name: 'prism',
+    cwd: cliRoot,
+  })
+  execa.command(`${pathToPrism} mock -d ${common.specPath}`, {
     cwd: configDir,
     stdio: 'inherit',
     shell: true,

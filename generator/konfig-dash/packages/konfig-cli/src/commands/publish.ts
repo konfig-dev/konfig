@@ -282,7 +282,8 @@ export default class Publish extends Command {
     }),
     tolerateRepublish: Flags.boolean({
       name: 'tolerateRepublish',
-      description: 'Do not fail if package version already exists in package manager. Note that published version will not be overridden. Used in CI',
+      description:
+        'Do not fail if package version already exists in package manager. Note that published version will not be overridden. Used in CI',
     }),
   }
 
@@ -312,6 +313,7 @@ export default class Publish extends Command {
       await executeTestCommand({
         filterInput: filter !== null ? flags.generator : undefined,
         sequence: true,
+        cliRoot: this.config.root,
       })
 
     for (const [generatorName, generatorConfig] of [
@@ -353,8 +355,8 @@ export default class Publish extends Command {
       }
 
       const republishErrorMessages = [
-        "You cannot publish over the previously published version", // npm
-        "File already exists", // pypi
+        'You cannot publish over the previously published version', // npm
+        'File already exists', // pypi
       ]
 
       const handleCommandResult = async ({
@@ -366,12 +368,25 @@ export default class Publish extends Command {
       }) => {
         if (shellResult.code === 0)
           CliUx.ux.log(`Command "${command}" succeeded`)
-        else if (shellResult.code === 1 && flags.tolerateRepublish
-                && (republishErrorMessages.some(message => shellResult.stderr.includes(message))
-                  || republishErrorMessages.some(message => shellResult.stdout.includes(message))))
-          CliUx.ux.warn(`Failed to publish ${generatorName} ${generatorConfig.version} because it already exists in package manager. Due to --tolerateRepublish flag, no error will be raised.`)
+        else if (
+          shellResult.code === 1 &&
+          flags.tolerateRepublish &&
+          (republishErrorMessages.some((message) =>
+            shellResult.stderr.includes(message)
+          ) ||
+            republishErrorMessages.some((message) =>
+              shellResult.stdout.includes(message)
+            ))
+        )
+          CliUx.ux.warn(
+            `Failed to publish ${generatorName} ${generatorConfig.version} because it already exists in package manager. Due to --tolerateRepublish flag, no error will be raised.`
+          )
         else
-          CliUx.ux.error(`Message: "${shellResult.stderr.trim()}"\nCommand "${command}" failed with exit code ${shellResult.code}"`)
+          CliUx.ux.error(
+            `Message: "${shellResult.stderr.trim()}"\nCommand "${command}" failed with exit code ${
+              shellResult.code
+            }"`
+          )
       }
 
       if (generatorName === 'go' && 'packageName' in generatorConfig) {

@@ -20,6 +20,10 @@ export default class Test extends Command {
 
   public async run(): Promise<void> {
     const { flags } = await this.parse(Test)
-    executeTestCommand({ filterInput: flags.filter, sequence: flags.sequence })
+    executeTestCommand({
+      filterInput: flags.filter,
+      sequence: flags.sequence,
+      cliRoot: this.config.root,
+    })
   }
 }
