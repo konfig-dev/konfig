@@ -83,6 +83,11 @@ public class DartClientCodegen extends AbstractDartCodegen {
 
     }
 
+    @Override
+    public String sanitizeTag(String tag) {
+        return new TypeScriptAxiosClientCodegen().sanitizeTag(tag);
+    }
+
     private void setSerializationLibrary() {
         final String serialization_library = getLibrary();
         LOGGER.info("Using serialization library {}", serialization_library);
