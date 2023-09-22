@@ -28,6 +28,7 @@ import equals from 'deep-equal'
 import camelcase from './util/camelcase'
 import { HttpMethods } from './forEachOperation'
 import { transformInnerSchemas } from './util/transform-inner-schemas'
+import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -577,23 +578,11 @@ export const transformSpec = async ({
     })
 
     // convert all "oneOf" schemas to {} to denote any since java generator does not support polymorphism
-    recurseObject(spec.spec, ({ value: schema }) => {
-      if (
-        typeof schema === 'object' &&
-        !Array.isArray(schema) &&
-        schema != null
-      ) {
-        for (const key in schema) {
-          if (
-            typeof schema[key] === 'object' &&
-            schema[key] !== null &&
-            'oneOf' in schema[key]
-          ) {
-            schema[key] = {}
-          }
-        }
-      }
-    })
+    convertOneOfSchemasToAny({ spec: spec.spec })
+  }
+
+  if (generator === 'dart') {
+    convertOneOfSchemasToAny({ spec: spec.spec })
   }
 
   // remove invalid escape sequence "\*" for Python from any descriptions in a schema component in the spec
