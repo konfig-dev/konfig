@@ -562,7 +562,8 @@
                   "description": "Example: \"acme-java-sdk\" (see https://maven.apache.org/guides/mini/guide-naming-conventions.html)"
                 },
                 "removeKonfigBranding": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "Don't add Konfig branding to generated SDK"
                 },
                 "gitlab": {
                   "type": "object",
@@ -827,7 +828,7 @@
                   "description": "acme-python-sdk"
                 },
                 "removeKonfigBranding": {
-                  "type": "boolean"
+                  "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
                 },
                 "pypiApiTokenEnvironmentVariable": {
                   "type": "string"
@@ -1015,7 +1016,7 @@
                   "additionalProperties": false
                 },
                 "removeKonfigBranding": {
-                  "type": "boolean"
+                  "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
                 },
                 "useSecurityKeyParamNameAsPropertyName": {
                   "type": "boolean",
@@ -1528,21 +1529,25 @@
                   "const": "dart",
                   "default": "dart"
                 },
+                "removeKonfigBranding": {
+                  "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
+                },
+                "clientName": {
+                  "type": "string",
+                  "description": "The top-level client's name. (e.g. 'Acme' in \"final acme = Acme();\")"
+                },
                 "pubName": {
                   "type": "string",
                   "pattern": "^[a-z][a-z\\_]*$",
                   "description": "\"a\" in import 'package:a/b.dart';"
-                },
-                "pubLibrary": {
-                  "type": "string",
-                  "pattern": "^[a-z][a-z\\_]*$",
-                  "description": "\"b\" in import 'package:a/b.dart';"
                 }
               },
               "required": [
                 "version",
                 "outputDirectory",
-                "git"
+                "git",
+                "clientName",
+                "pubName"
               ],
               "additionalProperties": false
             }
@@ -1852,7 +1857,7 @@
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/projectName"
                   },
                   "removeKonfigBranding": {
-                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/removeKonfigBranding"
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
                   },
                   "pypiApiTokenEnvironmentVariable": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/pypiApiTokenEnvironmentVariable"
@@ -1982,7 +1987,7 @@
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/pagination"
                   },
                   "removeKonfigBranding": {
-                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/removeKonfigBranding"
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
                   },
                   "useSecurityKeyParamNameAsPropertyName": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/useSecurityKeyParamNameAsPropertyName"
@@ -2228,18 +2233,23 @@
                   "language": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/dart/properties/language"
                   },
+                  "removeKonfigBranding": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
+                  },
+                  "clientName": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/dart/properties/clientName"
+                  },
                   "pubName": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/dart/properties/pubName"
-                  },
-                  "pubLibrary": {
-                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/dart/properties/pubLibrary"
                   }
                 },
                 "required": [
                   "generator",
                   "version",
                   "outputDirectory",
-                  "git"
+                  "git",
+                  "clientName",
+                  "pubName"
                 ],
                 "additionalProperties": false
               },
