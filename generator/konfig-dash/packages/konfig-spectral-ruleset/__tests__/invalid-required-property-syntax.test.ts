@@ -128,7 +128,7 @@ testRule('invalid-required-property-syntax', [
     errors: [
       {
         message:
-          'Detected "required" property item string with more than 3 words. This is most likely due to invalid list syntax in YAML.',
+          'Detected more than 3 words in required property item: "firstName lastName email test". This possibly due to invalid YAML list syntax.',
         path: [
           'paths',
           '/users',
@@ -144,7 +144,7 @@ testRule('invalid-required-property-syntax', [
       },
       {
         message:
-          'Detected "required" property item string with more than 3 words. This is most likely due to invalid list syntax in YAML.',
+          'Detected more than 3 words in required property item: "id firstName lastName email". This possibly due to invalid YAML list syntax.',
         path: [
           'paths',
           '/users',
@@ -161,7 +161,7 @@ testRule('invalid-required-property-syntax', [
       },
       {
         message:
-          'Detected "required" property item string with more than 3 words. This is most likely due to invalid list syntax in YAML.',
+          'Detected more than 3 words in required property item: "id firstName lastName email". This possibly due to invalid YAML list syntax.',
         path: [
           'paths',
           '/users/{userId}',
@@ -176,7 +176,7 @@ testRule('invalid-required-property-syntax', [
       },
       {
         message:
-          'Detected "required" property item string with more than 3 words. This is most likely due to invalid list syntax in YAML.',
+          'Detected more than 3 words in required property item: "id firstName lastName email". This possibly due to invalid YAML list syntax.',
         path: [
           'paths',
           '/users/{userId}',

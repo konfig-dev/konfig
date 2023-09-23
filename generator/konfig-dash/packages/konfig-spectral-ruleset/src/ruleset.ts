@@ -39,6 +39,7 @@ import { booleanQueryParameter } from './functions/booleanQueryParameter'
 import { noParameterNamedRequestBody } from './functions/noParameterNamedRequestBody'
 import { missingDataTimeFormat } from './functions/missingDateTimeFormat'
 import { missingDateFormat } from './functions/missingDateFormat '
+import { invalidRequiredPropertySyntax } from './functions/invalidRequiredPropertySyntax'
 
 export default {
   extends: oas,
@@ -161,32 +162,11 @@ export default {
       severity: DiagnosticSeverity.Hint,
     },
     'invalid-required-property-syntax': {
-      message: `Detected "required" property item string with more than 3 words. This is most likely due to invalid list syntax in YAML.`,
-      given: rulesetJsonPaths.AllSchemaObjects,
+      message: `{{error}}`,
+      given: rulesetJsonPaths.AllSchemaObjects.map((path) => `${path}..`),
       then: [
         {
-          function: schema,
-          functionOptions: {
-            schema: {
-              type: 'object',
-              properties: {
-                type: {
-                  type: 'string',
-                  const: 'object',
-                },
-                required: {
-                  type: 'array',
-                  items: {
-                    type: 'string',
-                    minLength: 1, // At least one character in the string
-                    pattern: '^(?:\\S+\\s+)?(?:\\S+\\s+)?\\S+$', // Checks for strings with less than 3 words (words separated by spaces)
-                  },
-                  minItems: 1, // At least one item in the array
-                },
-              },
-              required: ['type', 'required'],
-            },
-          },
+          function: invalidRequiredPropertySyntax,
         },
       ],
       severity: DiagnosticSeverity.Warning,
