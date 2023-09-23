@@ -1,5 +1,16 @@
 # konfig-spectral-ruleset
 
+## 1.2.0
+
+### Minor Changes
+
+- [#211](https://github.com/konfig-dev/konfig/pull/211) [`95538406`](https://github.com/konfig-dev/konfig/commit/95538406638712c2b32a323a74742a21da1d5bf0) Thanks [@dphuang2](https://github.com/dphuang2)! - invalid-required-property-syntax lint rule
+
+### Patch Changes
+
+- Updated dependencies [[`95538406`](https://github.com/konfig-dev/konfig/commit/95538406638712c2b32a323a74742a21da1d5bf0)]:
+  - konfig-lib@1.14.0
+
 ## 1.1.153
 
 ### Patch Changes

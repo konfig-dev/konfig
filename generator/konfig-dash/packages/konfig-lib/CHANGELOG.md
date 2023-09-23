@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.14.0
+
+### Minor Changes
+
+- [#211](https://github.com/konfig-dev/konfig/pull/211) [`95538406`](https://github.com/konfig-dev/konfig/commit/95538406638712c2b32a323a74742a21da1d5bf0) Thanks [@dphuang2](https://github.com/dphuang2)! - invalid-required-property-syntax lint rule
+
 ## 1.13.0
 
 ### Minor Changes
