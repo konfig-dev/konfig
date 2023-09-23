@@ -16,7 +16,11 @@ export const rulesetJsonPaths = {
   ResponsesObjectsKeys: ['#ResponsesObjects.*~'],
   ResponseContentObject: ['#ResponsesObjects.*.content.*'],
   ResponseSchemaObject: ['#ResponseContentObject.schema'],
-  AllSchemaObjects: ['#RequestSchemaObject', '#ResponseSchemaObject'],
+  AllSchemaObjects: [
+    '#RequestSchemaObject',
+    '#ResponseSchemaObject',
+    '#ParameterSchemaObject',
+  ],
 }
 
 export const givenPaths = {
