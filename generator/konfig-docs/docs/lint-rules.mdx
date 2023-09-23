@@ -19,6 +19,44 @@ This is reference documentation for Konfig's linting rules for [Konfig's OAS Lin
 | Information         | Something to inform about but not a problem                                 |
 | Hint                | Something to hint to a better way of doing it, like proposing a refactoring |
 
+## invalid-required-property-syntax
+
+Severity: Warning
+
+#### Example
+
+```
+Detected more than 3 words in required property item: "id firstName lastName email". This possibly due to invalid YAML list syntax.
+```
+
+#### Explanation
+
+If you accidentally forget to include "-" characters at the beginning of each
+line in YAML, you will instead produce a single string with spaces. This is most
+likely not intended and will cause unexpected output in the generated SDKs.
+
+##### Incorrect
+
+```yaml
+required:
+  - id
+    firstName
+    lastName
+    email
+```
+
+#### Correct
+
+```yaml
+required:
+  - id
+  - firstName
+  - lastName
+  - email
+```
+
+---
+
 ## invalid-server-urls-oas3
 
 Severity: Error
