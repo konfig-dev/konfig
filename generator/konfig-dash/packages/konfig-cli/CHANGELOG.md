@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.13.0
+
+### Minor Changes
+
+- [#216](https://github.com/konfig-dev/konfig/pull/216) [`0a49bd66`](https://github.com/konfig-dev/konfig/commit/0a49bd664623f0dd23c262276a3c8467cbc1cfc3) Thanks [@dphuang2](https://github.com/dphuang2)! - fix handling of specRemotePath being a yaml file
+
 ## 1.12.1
 
 ### Patch Changes
