@@ -6,7 +6,6 @@ export const invalidRequiredPropertySyntax: RulesetFunction<SchemaObject> = (
   context
 ) => {
   const result: IFunctionResult[] = []
-  console.log(input)
   if (input === null) return []
   if (input.type !== 'object') return []
   if (input.required === undefined) return []
