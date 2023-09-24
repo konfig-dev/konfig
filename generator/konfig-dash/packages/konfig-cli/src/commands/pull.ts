@@ -3,6 +3,7 @@ import { parseKonfigYaml } from '../util/parse-konfig-yaml'
 import axios from 'axios'
 import * as fs from 'fs-extra'
 import { oasYamlDump } from '../util/oas-yaml-dump'
+import yaml from 'js-yaml'
 
 export default class Pull extends Command {
   static description = 'describe the command here'
@@ -32,16 +33,23 @@ export default class Pull extends Command {
     const spec = response.data
 
     this.debug(spec)
+    this.debug('typeof spec: ', typeof spec)
+
+    // if spec is a string, then it is probably a yaml string
+    // in that case, we need to parse the yaml string into an object
+    const parsedSpec = typeof spec === 'string' ? yaml.load(spec) : spec
 
     const outputPath = parsedKonfigYaml.specInputPath
       ? parsedKonfigYaml.specInputPath
       : parsedKonfigYaml.specPath
 
-    const isJson = parsedKonfigYaml.specRemotePath.endsWith('json')
+    const isOutputJson = parsedKonfigYaml.specRemotePath.endsWith('json')
     CliUx.ux.action.start(`Writing spec to ${outputPath}`)
     fs.writeFileSync(
       outputPath,
-      isJson ? JSON.stringify(spec, undefined, 2) : oasYamlDump(spec)
+      isOutputJson
+        ? JSON.stringify(parsedSpec, undefined, 2)
+        : oasYamlDump(parsedSpec)
     )
     CliUx.ux.action.stop()
   }
