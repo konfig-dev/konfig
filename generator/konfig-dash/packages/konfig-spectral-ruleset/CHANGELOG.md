@@ -1,5 +1,11 @@
 # konfig-spectral-ruleset
 
+## 1.2.1
+
+### Patch Changes
+
+- [#213](https://github.com/konfig-dev/konfig/pull/213) [`f1fd3c67`](https://github.com/konfig-dev/konfig/commit/f1fd3c67ffb0e18ee4974123518362952d5df38e) Thanks [@dphuang2](https://github.com/dphuang2)! - remove console log statement
+
 ## 1.2.0
 
 ### Minor Changes
