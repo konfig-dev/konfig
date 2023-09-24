@@ -361,9 +361,7 @@ export default class Init extends Command {
       if (lang === 'python') {
         generators.python = {
           version: '1.0.0',
-          packageName: `${answers.sdkName
-            .toLowerCase()
-            .replaceAll('-', '_')}_client`,
+          packageName: `${answers.sdkName.toLowerCase().replaceAll('-', '_')}`,
           projectName: `${answers.sdkName.toLowerCase()}-python-sdk`,
           outputDirectory: 'python',
           clientName: camelcase(answers.sdkName, { pascalCase: true }),
