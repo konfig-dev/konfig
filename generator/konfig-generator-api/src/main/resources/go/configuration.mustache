@@ -208,6 +208,43 @@ func NewConfiguration() *Configuration {
 	return cfg
 }
 
+/*
+Configures an API key on Configuration. Ensures multiple calls does not
+delete other keys
+
+1. Get the existing map of API keys from the context.
+2. If there's no existing map, create a new map.
+3. Update the "[API key]"" in the map.
+4. Store the updated map back in the context.
+*/
+func (c *Configuration) AddAPIKey(key string, apiKey APIKey) {
+	apiKeys := c.Context.Value(ContextAPIKeys)
+	if apiKeys == nil {
+		apiKeys = make(map[string]APIKey)
+	}
+	apiKeys.(map[string]APIKey)[key] = apiKey
+	c.Context = context.WithValue(c.Context, ContextAPIKeys, apiKeys)
+}
+
+func (c *Configuration) SetHost(host string) {
+	if strings.HasPrefix(host, "https://") {
+		c.Scheme = "https"
+		host = strings.TrimPrefix(host, "https://")
+	} else if strings.HasPrefix(host, "http://") {
+		c.Scheme = "http"
+		host = strings.TrimPrefix(host, "http://")
+	} else {
+		c.Scheme = ""  // or set a default scheme if desired
+	}
+	c.Host = host
+}
+
+{{#apiKeyMethods}}
+func (c *Configuration) Set{{nameInCamelCase}}({{nameInPascalCase}} string) {
+	c.AddAPIKey("{{keyParamName}}", APIKey{Key: {{nameInPascalCase}}})
+}
+
+{{/apiKeyMethods}}
 // Setup OAuth Client Credentials Flow for all requests
 func (c *Configuration) SetOAuthClientCredentials(clientId string, clientSecret string) {
        config := &clientcredentials.Config{

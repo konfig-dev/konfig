@@ -5569,6 +5569,7 @@ public class DefaultCodegen implements CodegenConfig {
         final CodegenSecurity cs = CodegenModelFactory.newInstance(CodegenModelType.SECURITY);
         cs.name = key;
         cs.nameInCamelCase = camelize(key);
+        cs.nameInPascalCase = camelize(key, CamelizeOption.LOWERCASE_FIRST_LETTER);
         cs.type = securityScheme.getType().toString();
         cs.isCode = cs.isPassword = cs.isApplication = cs.isImplicit = false;
         cs.isHttpSignature = false;

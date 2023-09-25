@@ -39,6 +39,10 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
     public String paramNameCamelCase() {
         return StringUtils.camelize(paramName, CamelizeOption.LOWERCASE_FIRST_LETTER);
     }
+
+    public String paramNameCamelCaseUpper() {
+        return StringUtils.camelize(paramName, CamelizeOption.UPPERCASE_FIRST_CHAR);
+    }
     public String paramNameSnakeCase() {
         return StringUtils.underscore(paramName);
     }
