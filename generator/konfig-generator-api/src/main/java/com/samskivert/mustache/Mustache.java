@@ -782,7 +782,7 @@ public class Mustache {
         }
 
         @Override public void execute (Template tmpl, Template.Context ctx, Writer out) {
-            write(out, _text, ctx.indent);
+            write(out, _text);
         }
         @Override public void decompile (Delims delims, StringBuilder into) {
             into.append(_text);
@@ -860,15 +860,51 @@ public class Mustache {
             // )
             // ```
 
-            // set indentation for inner template
+            // compute indentation for inner template
             String buffer = ((StringWriter) out).getBuffer().toString();
             int lastNewline = buffer.lastIndexOf('\n');
             int offset = (lastNewline == -1) ? buffer.length() : buffer.length() - lastNewline - 1;
 
+            // create a new string writer for the inner partial
+            StringWriter innerOut = new StringWriter();
+
             // we must take care to preserve our context rather than creating a new one, which
             // would happen if we just called execute() with ctx.data. This is important for partials since
             // they are often used to modularize templates and the context naturally expected in partials.
-            getTemplate().executeSegs(ctx.withIndent(offset), out);
+            getTemplate().executeSegs(ctx.withIndent(offset), innerOut);
+
+            // prepend indentation to innerOut and write to out
+            String innerOutString = innerOut.toString();
+
+            // count number of trailing newlines in innerOutString
+            int trailingNewlines = 0;
+            for (int i = innerOutString.length() - 1; i >= 0; i--) {
+                if (innerOutString.charAt(i) == '\n') {
+                    trailingNewlines++;
+                } else {
+                    break;
+                }
+            }
+
+            String[] innerOutLines = innerOutString.split("\n");
+            StringWriter outStringWriter = (StringWriter) out;
+            for (int i = 0; i < innerOutLines.length; i++) {
+                String innerOutLine = innerOutLines[i];
+                if (i == 0) {
+                    outStringWriter.write(innerOutLine);
+                } else {
+                    outStringWriter.write("\n");
+                    for (int j = 0; j < offset; j++) {
+                        outStringWriter.write(" ");
+                    }
+                    outStringWriter.write(innerOutLine);
+                }
+            }
+
+            // re-append trailing new lines to outStringWriter
+            for (int i = 0; i < trailingNewlines; i++) {
+                outStringWriter.write("\n");
+            }
 
             Template.Segment[] innerSegs = getTemplate()._segs;
 
@@ -950,7 +986,7 @@ public class Mustache {
                     "No key, method or field with name '" + _name + "' on line " + _line;
                 throw new MustacheException.Context(msg, _name, _line);
             }
-            write(out, _escaper.escape(_formatter.format(value)), ctx.indent);
+            write(out, _escaper.escape(_formatter.format(value)));
         }
         @Override public void decompile (Delims delims, StringBuilder into) {
             delims.addTag(' ', _name, into);

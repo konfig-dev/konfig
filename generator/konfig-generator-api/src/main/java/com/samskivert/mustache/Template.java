@@ -375,11 +375,11 @@ public class Template {
         }
 
         public Context nest (Object data) {
-            return new Context(data, this, index, onFirst, onLast);
+            return new Context(data, this, index, onFirst, onLast, indent);
         }
 
         public Context nest (Object data, int index, boolean onFirst, boolean onLast) {
-            return new Context(data, this, index, onFirst, onLast);
+            return new Context(data, this, index, onFirst, onLast, indent);
         }
 
         /**
@@ -400,29 +400,9 @@ public class Template {
 
         abstract void visit (Mustache.Visitor visitor);
 
-        protected static void write (Writer out, String data, int indent) {
+        protected static void write (Writer out, String data) {
             try {
-                // if new line was added to out,
-                // prepend indent * " " right after the new line.
-                // do this by iterating over all characters of data
-                // and writing them one by one to out.
-                // when a new line that isn't followed by another newline is detected,
-                // prepend the indent
-                if (data.contains("\n")) {
-                    int i = 0;
-                    while (i < data.length()) {
-                        char c = data.charAt(i);
-                        out.write(c);
-                        if (c == '\n' && i + 1 < data.length() && data.charAt(i + 1) != '\n') {
-                            for (int j = 0; j < indent; j++) {
-                                out.write(' ');
-                            }
-                        }
-                        i++;
-                    }
-                } else {
-                    out.write(data);
-                }
+                out.write(data);
             } catch (IOException ioe) {
                 throw new MustacheException(ioe);
             }
