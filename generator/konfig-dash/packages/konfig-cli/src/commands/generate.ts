@@ -16,6 +16,7 @@ import {
   parseSpec,
   getOperations,
   KonfigYamlAdditionalGeneratorConfig,
+  GeneratorGitConfig,
 } from 'konfig-lib'
 import globby from 'globby'
 import { Konfig } from 'konfig-typescript-sdk'
@@ -1607,6 +1608,44 @@ function constructTypeScriptGenerationRequest({
   return requestTypescript
 }
 
+async function handleSubmodule({
+  outputDirectory,
+  configDir,
+  git,
+}: {
+  outputDirectory: string
+  configDir: string
+  git: GeneratorGitConfig
+}) {
+  const topLevelGitRepo = simpleGit()
+  if (fs.existsSync(outputDirectory)) {
+    const phpGitRepo = simpleGit(outputDirectory)
+    // replace backslashes with forward slashes to remain platform-agnostic
+    const fullPath = path.join(configDir, outputDirectory).replace(/\\/g, '/')
+    const isRepo = fullPath === (await phpGitRepo.revparse(['--show-toplevel']))
+    if (!isRepo) {
+      // delete the directory as its probably not important
+      fs.rmSync(outputDirectory, { recursive: true, force: true })
+
+      CliUx.ux.action.start(`Adding git submodule at ${outputDirectory}`)
+      await topLevelGitRepo.submoduleAdd(
+        `https://${git.host}/${git.userId}/${git.repoId}.git`,
+        outputDirectory
+      )
+      await topLevelGitRepo.commit('Initialized git submodule for PHP SDK')
+      CliUx.ux.action.stop()
+    }
+  } else {
+    CliUx.ux.action.start(`Adding git submodule at ${outputDirectory}`)
+    await topLevelGitRepo.submoduleAdd(
+      `https://${git.host}/${git.userId}/${git.repoId}.git`,
+      outputDirectory
+    )
+    await topLevelGitRepo.commit('Initialized git submodule for PHP SDK')
+    CliUx.ux.action.stop()
+  }
+}
+
 async function copyPhpOutput({
   flags,
   php,
@@ -1623,34 +1662,7 @@ async function copyPhpOutput({
   if (php === undefined) return
   const outputDirectory = flags.copyPHPOutputDir ?? php.outputDirectory
   if (outputDirectory && !flags.doNotCopy) {
-    const topLevelGitRepo = simpleGit()
-    if (fs.existsSync(outputDirectory)) {
-      const phpGitRepo = simpleGit(outputDirectory)
-      // replace backslashes with forward slashes to remain platform-agnostic
-      const fullPath = path.join(configDir, outputDirectory).replace(/\\/g, '/')
-      const isRepo =
-        fullPath === (await phpGitRepo.revparse(['--show-toplevel']))
-      if (!isRepo) {
-        // delete the directory as its probably not important
-        fs.rmSync(outputDirectory, { recursive: true, force: true })
-
-        CliUx.ux.action.start(`Adding git submodule at ${outputDirectory}`)
-        await topLevelGitRepo.submoduleAdd(
-          `https://github.com/${php.git.userId}/${php.git.repoId}.git`,
-          outputDirectory
-        )
-        await topLevelGitRepo.commit('Initialized git submodule for PHP SDK')
-        CliUx.ux.action.stop()
-      }
-    } else {
-      CliUx.ux.action.start(`Adding git submodule at ${outputDirectory}`)
-      await topLevelGitRepo.submoduleAdd(
-        `https://github.com/${php.git.userId}/${php.git.repoId}.git`,
-        outputDirectory
-      )
-      await topLevelGitRepo.commit('Initialized git submodule for PHP SDK')
-      CliUx.ux.action.stop()
-    }
+    handleSubmodule({ outputDirectory, configDir, git: php.git })
     CliUx.ux.action.start(
       `Deleting contents of existing directory "${outputDirectory}"`
     )
