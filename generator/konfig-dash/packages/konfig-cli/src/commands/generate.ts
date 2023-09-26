@@ -273,17 +273,12 @@ export default class Deploy extends Command {
       this.debug('before creating language configs')
       const goGeneratorConfig = getConfig('go')
       if (goGeneratorConfig && !goGeneratorConfig.disabled) {
-        const { files, ...restOfConfig } = goGeneratorConfig
-        const requestJava: GenerateRequestBodyInputType['generators']['go'] = {
-          files: createTemplateFilesObject(files, 'kotlin', configDir),
-          ...handleReadmeSnippet({ config: restOfConfig }),
-          ...handleReadmeSupportingDescriptionSnippet({ config: restOfConfig }),
-          ...handleapiDocumentationAuthenticationPartialSnippet({
-            config: restOfConfig,
-          }),
-        }
-        initializeFlowsDirectory('go')
-        requestGenerators.go = requestJava
+        const requestGo = constructGoGenerationRequest({
+          configDir,
+          goGeneratorConfig,
+          initializeFlowsDirectory,
+        })
+        requestGenerators.go = requestGo
       }
 
       const objcGeneratorConfig = getConfig('objc')
@@ -495,6 +490,15 @@ export default class Deploy extends Command {
               ...constructPhpGenerationRequest({
                 configDir,
                 phpGeneratorConfig: config,
+                initializeFlowsDirectory,
+              }),
+            }
+          } else if (config.generator === 'go') {
+            generateRequestBodyAdditionalGenerators[configName] = {
+              generator: 'go',
+              ...constructGoGenerationRequest({
+                configDir,
+                goGeneratorConfig: config,
                 initializeFlowsDirectory,
               }),
             }
@@ -869,6 +873,14 @@ export default class Deploy extends Command {
                   copyToOutputDirectory,
                   configDir,
                 })
+              } else if (config.generator === 'go') {
+                await copyGoOutput({
+                  flags,
+                  go: config,
+                  sdkDirName: name,
+                  copyToOutputDirectory,
+                  configDir,
+                })
               } else {
                 CliUx.ux.action.start(
                   `Deleting contents of existing directory "${config.outputDirectory}"`
@@ -941,28 +953,12 @@ export default class Deploy extends Command {
           }
 
           if (body.generators.go) {
-            const outputDirectory =
-              flags.copyGoOutputDir ?? body.generators.go.outputDirectory
-            if (outputDirectory && !flags.doNotCopy) {
-              CliUx.ux.action.start(
-                `Deleting contents of existing directory "${outputDirectory}"`
-              )
-              await safelyDeleteFiles(outputDirectory)
-              CliUx.ux.action.stop()
-
-              // Copy content of generated SDK to existing directory
-              CliUx.ux.action.start(`Copying Go SDK to "${outputDirectory}"`)
-              await copyToOutputDirectory({
-                generator: 'go',
-                outputDirectory,
-                generatorConfig: body.generators.go,
-              })
-              fs.writeFileSync(
-                path.join(outputDirectory, 'LICENSE'),
-                generateLicense()
-              )
-              CliUx.ux.action.stop()
-            }
+            await copyGoOutput({
+              flags,
+              go: body.generators.go,
+              copyToOutputDirectory,
+              configDir,
+            })
           }
 
           if (body.generators.php) {
@@ -1508,6 +1504,29 @@ const safelyDeleteFiles = async (
   return { directoryExists: true }
 }
 
+function constructGoGenerationRequest({
+  configDir,
+  goGeneratorConfig,
+  initializeFlowsDirectory,
+}: {
+  configDir: string
+  goGeneratorConfig: NonNullable<KonfigYamlType['generators']['go']>
+  initializeFlowsDirectory: (generatorName: KonfigYamlGeneratorNames) => void
+}) {
+  const { files, ...restOfConfig } = goGeneratorConfig
+
+  const requestGo: GenerateRequestBodyType['generators']['go'] = {
+    files: createTemplateFilesObject(files, 'go', configDir),
+    ...handleReadmeSnippet({ config: restOfConfig }),
+    ...handleReadmeSupportingDescriptionSnippet({ config: restOfConfig }),
+    ...handleapiDocumentationAuthenticationPartialSnippet({
+      config: restOfConfig,
+    }),
+  }
+  initializeFlowsDirectory('go')
+  return requestGo
+}
+
 function constructPhpGenerationRequest({
   configDir,
   phpGeneratorConfig,
@@ -1612,19 +1631,26 @@ async function handleSubmodule({
   outputDirectory,
   configDir,
   git,
+  generator,
 }: {
   outputDirectory: string
   configDir: string
   git: GeneratorGitConfig
+  generator: KonfigYamlGeneratorNames
 }) {
   const topLevelGitRepo = simpleGit()
   if (fs.existsSync(outputDirectory)) {
-    const phpGitRepo = simpleGit(outputDirectory)
-    // replace backslashes with forward slashes to remain platform-agnostic
-    const fullPath = path.join(configDir, outputDirectory).replace(/\\/g, '/')
-    const isRepo = fullPath === (await phpGitRepo.revparse(['--show-toplevel']))
-    if (!isRepo) {
-      // delete the directory as its probably not important
+    const submodule = simpleGit(outputDirectory)
+    // check if "submodule" is its own repo (e.g. a submodule)
+    // do this by checking its remote url and comparing it with topLevelGitRepo
+    // if they are the same, then it is not a submodule
+    const submoduleRemoteUrl = await submodule.listRemote(['--get-url'])
+    const topLevelGitRepoRemoteUrl = await topLevelGitRepo.listRemote([
+      '--get-url',
+    ])
+    const isSubmodule = submoduleRemoteUrl !== topLevelGitRepoRemoteUrl
+    if (!isSubmodule) {
+      // delete the directory as its probably not important...right?
       fs.rmSync(outputDirectory, { recursive: true, force: true })
 
       CliUx.ux.action.start(`Adding git submodule at ${outputDirectory}`)
@@ -1632,7 +1658,9 @@ async function handleSubmodule({
         `https://${git.host}/${git.userId}/${git.repoId}.git`,
         outputDirectory
       )
-      await topLevelGitRepo.commit('Initialized git submodule for PHP SDK')
+      await topLevelGitRepo.commit(
+        `Initialized git submodule for ${generator} SDK`
+      )
       CliUx.ux.action.stop()
     }
   } else {
@@ -1641,7 +1669,69 @@ async function handleSubmodule({
       `https://${git.host}/${git.userId}/${git.repoId}.git`,
       outputDirectory
     )
-    await topLevelGitRepo.commit('Initialized git submodule for PHP SDK')
+    await topLevelGitRepo.commit(
+      `Initialized git submodule for ${generator} SDK`
+    )
+    CliUx.ux.action.stop()
+  }
+}
+
+/**
+ * Determine if the SDK is pointing to what should be a submodule by comparing
+ * the remote origin url with the URL from git configuration.
+ */
+async function isSubmodule({
+  git,
+  configDir,
+}: {
+  git: GeneratorGitConfig
+  configDir: string
+}): Promise<boolean> {
+  const topLevelGitRepo = simpleGit(configDir)
+  const remoteOriginUrl = await topLevelGitRepo.listRemote(['--get-url'])
+  const gitConfigUrl = `https://${git.host}/${git.userId}/${git.repoId}.git`
+  const isSameRemoteUrl = remoteOriginUrl === gitConfigUrl
+  return !isSameRemoteUrl
+}
+
+async function copyGoOutput({
+  flags,
+  go,
+  copyToOutputDirectory,
+  sdkDirName,
+  configDir,
+}: {
+  flags: { copyGoOutputDir?: string; doNotCopy?: boolean }
+  go: GenerateRequestBodyInputType['generators']['go']
+  sdkDirName?: string
+  copyToOutputDirectory: (input: CopyFilesInput) => Promise<void>
+  configDir: string
+}) {
+  if (go === undefined) return
+  const outputDirectory = flags.copyGoOutputDir ?? go.outputDirectory
+  if (outputDirectory && !flags.doNotCopy) {
+    if (await isSubmodule({ git: go.git, configDir })) {
+      await handleSubmodule({
+        outputDirectory: go.outputDirectory,
+        configDir,
+        git: go.git,
+        generator: 'go',
+      })
+    }
+
+    CliUx.ux.action.start(
+      `Deleting contents of existing directory "${outputDirectory}"`
+    )
+    await safelyDeleteFiles(outputDirectory)
+    CliUx.ux.action.stop()
+
+    // Copy content of generated SDK to existing directory
+    CliUx.ux.action.start(`Copying Go SDK to "${outputDirectory}"`)
+    await copyToOutputDirectory({
+      generator: sdkDirName ? sdkDirName : 'go',
+      outputDirectory,
+      generatorConfig: go,
+    })
     CliUx.ux.action.stop()
   }
 }
@@ -1662,7 +1752,12 @@ async function copyPhpOutput({
   if (php === undefined) return
   const outputDirectory = flags.copyPHPOutputDir ?? php.outputDirectory
   if (outputDirectory && !flags.doNotCopy) {
-    handleSubmodule({ outputDirectory, configDir, git: php.git })
+    await handleSubmodule({
+      outputDirectory,
+      configDir,
+      git: php.git,
+      generator: 'php',
+    })
     CliUx.ux.action.start(
       `Deleting contents of existing directory "${outputDirectory}"`
     )

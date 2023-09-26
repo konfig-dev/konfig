@@ -545,3 +545,4 @@ export type RubyConfigType = z.infer<typeof rubyConfig>
 export type DartConfigType = z.infer<typeof dart>
 export type GeneratorCommonGitType = z.infer<typeof generatorCommonGitRequired>
 export type ParameterStateConfig = z.infer<typeof parameterStateConfig>
+export type GeneratorGitConfig = z.input<typeof generatorGitConfig>

@@ -207,6 +207,14 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
           php: generatorConfig,
           outputDirectoryName: name,
         })
+      } else if (generatorConfig.generator === 'go') {
+        await queueGoGeneration({
+          body,
+          queue,
+          transformSpecForGenerator,
+          go: generatorConfig,
+          outputDirectoryName: name,
+        })
       } else {
         throw Error(
           `${generatorConfig.generator} not implemented under additional generators`
@@ -262,36 +270,12 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
   }
 
   if (body.generators.go) {
-    const generatorConfig = body.generators.go
-    const requestBody: JavaGenerateApiRequestBodyType = {
-      spec: {
-        src: await transformSpecForGenerator({ generator: 'go' }),
-      },
-      config: {
-        additionalProperties: {
-          omitInfoDescription: body.omitInfoDescription,
-          tagPriority: body.tagPriority,
-          readmeOperation: body.readmeOperation,
-          packageVersion: generatorConfig.version,
-          readmeSnippet: generatorConfig.readmeSnippet,
-          readmeSupportingDescriptionSnippet:
-            generatorConfig.readmeSupportingDescriptionSnippet,
-          readmeDescriptionSnippet: generatorConfig.readmeDescriptionSnippet,
-          apiDocumentationAuthenticationPartial:
-            generatorConfig.apiDocumentationAuthenticationPartial,
-          defaultTimeout: generatorConfig.defaultTimeout,
-          userAgent: generatorConfig.userAgent,
-        },
-        packageName: generatorConfig.packageName,
-        generatorName: 'go',
-        gitHost: generatorConfig.git?.host,
-        gitUserId: generatorConfig.git?.userId,
-        gitRepoId: generatorConfig.git?.repoId,
-        removeOperationIdPrefix: true,
-        files: generatorConfig.files,
-      },
-    }
-    queue(requestBody)
+    queueGoGeneration({
+      body,
+      go: body.generators.go,
+      queue,
+      transformSpecForGenerator,
+    })
   }
 
   if (body.generators.kotlin) {
@@ -642,6 +626,57 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
       }
     }
   }
+}
+
+async function queueGoGeneration({
+  body,
+  go,
+  queue,
+  outputDirectoryName,
+  transformSpecForGenerator,
+}: {
+  body: GenerateRequestBodyType
+  go: GenerateRequestBodyType['generators']['go']
+  queue: (requestBody: JavaGenerateApiRequestBodyType) => void
+  outputDirectoryName?: string
+  transformSpecForGenerator: ({
+    generator,
+  }: {
+    generator: KonfigYamlGeneratorNames
+  }) => ReturnType<typeof transformSpec>
+}) {
+  if (go === undefined) return
+  const generatorConfig = go
+  const requestBody: JavaGenerateApiRequestBodyType = {
+    spec: {
+      src: await transformSpecForGenerator({ generator: 'go' }),
+    },
+    config: {
+      outputDirectoryName,
+      additionalProperties: {
+        omitInfoDescription: body.omitInfoDescription,
+        tagPriority: body.tagPriority,
+        readmeOperation: body.readmeOperation,
+        packageVersion: generatorConfig.version,
+        readmeSnippet: generatorConfig.readmeSnippet,
+        readmeSupportingDescriptionSnippet:
+          generatorConfig.readmeSupportingDescriptionSnippet,
+        readmeDescriptionSnippet: generatorConfig.readmeDescriptionSnippet,
+        apiDocumentationAuthenticationPartial:
+          generatorConfig.apiDocumentationAuthenticationPartial,
+        defaultTimeout: generatorConfig.defaultTimeout,
+        userAgent: generatorConfig.userAgent,
+      },
+      packageName: generatorConfig.packageName,
+      generatorName: 'go',
+      gitHost: generatorConfig.git?.host,
+      gitUserId: generatorConfig.git?.userId,
+      gitRepoId: generatorConfig.git?.repoId,
+      removeOperationIdPrefix: true,
+      files: generatorConfig.files,
+    },
+  }
+  queue(requestBody)
 }
 
 async function queuePhpGeneration({
