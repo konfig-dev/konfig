@@ -36,12 +36,7 @@ export function generateReadme({
         'generator' in config
           ? (config as KonfigYamlAdditionalGeneratorConfig).generator
           : generatorName
-      const sourceUrl =
-        generatorName === 'go'
-          ? `https://${config.git.host}/${config.git.userId}/${
-              config.git.repoId.split('/')[0]
-            }/tree/${defaultBranch}/${config.outputDirectory}`
-          : `https://${config.git.host}/${config.git.userId}/${config.git.repoId}`
+      const sourceUrl = `https://${config.git.host}/${config.git.userId}/${config.git.repoId}`
       return {
         language: generatorNameAsDisplayName({
           generatorConfig: config,
@@ -114,8 +109,10 @@ export function getPublishedPackageUrl({
       config = konfigYaml.generators.go
       if (config === undefined) throw Error('Config undefined')
       return {
-        url: `https://pkg.go.dev/github.com/${config.git.userId}/${config.git.repoId}`,
-        packageManagerName: 'Go Packages',
+        url: `https://pkg.go.dev/github.com/${config.git.userId}/${
+          config.git.repoId.split('/')[0]
+        }/${config.outputDirectory}`,
+        packageManagerName: 'pkg.go.dev',
       }
     case 'java':
       config = konfigYaml.generators.java

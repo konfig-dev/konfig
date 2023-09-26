@@ -22,15 +22,48 @@ function generateGitTagCommands({
   version,
   generator,
   skipTag,
+  outputDirectory,
 }: {
   version: string
   generator: KonfigYamlGeneratorNames
   skipTag?: boolean
+  outputDirectory?: string
 }): [string, string] | [] {
   if (skipTag) return []
-  // PHP does not allow for suffix with any random string in versioning
-  const tag = generator === 'php' ? `v${version}` : `v${version}-${generator}`
+
+  const tag = computeTag({ version, generator, outputDirectory })
+
   return [`git tag ${tag}`, `git push origin ${tag}`]
+}
+
+function computeTag({
+  version,
+  generator,
+  outputDirectory,
+}: {
+  version: string
+  generator: KonfigYamlGeneratorNames
+  outputDirectory?: string
+}) {
+  // PHP does not allow for suffix with any random string in versioning also PHP
+  // is in a submodule so the suffix is unnecessary since it's already in a
+  // separate repo
+  if (generator === 'php') {
+    return `v${version}`
+  }
+  // https://go.dev/ref/mod#vcs-version
+  // "If a module is defined in a subdirectory within the repository, that is,
+  // the module subdirectory portion of the module path is not empty, then each
+  // tag name must be prefixed with the module subdirectory, followed by a
+  // slash. For example, the module golang.org/x/tools/gopls is defined in the
+  // gopls subdirectory of the repository with root path golang.org/x/tools. The
+  // version v0.4.0 of that module must have the tag named gopls/v0.4.0 in that
+  // repository."
+  if (generator === 'go') {
+    return `${outputDirectory}/v${version}`
+  }
+
+  return `v${version}-generator`
 }
 
 const publishScripts = {
@@ -77,8 +110,14 @@ const publishScripts = {
     // git tag has to be present for pod trunk to work
     return [...gitTagCommands, `pod trunk push ${projectName}.podspec`]
   },
-  go: ({ version }: { version: string }) => {
-    return generateGitTagCommands({ version, generator: 'go' })
+  go: ({
+    version,
+    outputDirectory,
+  }: {
+    version: string
+    outputDirectory: string
+  }) => {
+    return generateGitTagCommands({ version, generator: 'go', outputDirectory })
   },
   npm: ({
     version,
@@ -391,7 +430,10 @@ export default class Publish extends Command {
 
       if (generatorName === 'go' && 'packageName' in generatorConfig) {
         await executePublishScript({
-          script: publishScripts['go']({ version: generatorConfig.version }),
+          script: publishScripts['go']({
+            version: generatorConfig.version,
+            outputDirectory: generatorConfig.outputDirectory,
+          }),
         })
       }
 
