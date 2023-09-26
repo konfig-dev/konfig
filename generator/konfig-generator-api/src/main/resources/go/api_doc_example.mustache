@@ -1,0 +1,27 @@
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+{{#vendorExtensions.x-go-import}}
+    {{{vendorExtensions.x-go-import}}}
+{{/vendorExtensions.x-go-import}}
+    {{goImportAlias}} "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
+)
+
+func main() {
+    configuration := {{goImportAlias}}.NewConfiguration()
+    {{> api_doc_example_setup_client}}
+
+    {{> api_doc_example_execute}}
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    {{#returnType}}
+    // response from `{{operationId}}`: {{{.}}}
+    fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v\n", resp)
+    {{/returnType}}
+}

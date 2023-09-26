@@ -25,21 +25,13 @@ func Test_{{packageName}}_{{classname}}Service(t *testing.T) {
 
     configuration := {{goImportAlias}}.NewConfiguration()
     configuration.SetHost("http://127.0.0.1:4010")
-    {{#authMethods}}
-    {{#isApiKey}}
-    configuration.Set{{nameInCamelCase}}("{{keyParamNameSnakeCaseUppercase}}")
-    {{/isApiKey}}
-    {{/authMethods}}
-    client := {{goImportAlias}}.NewAPIClient(configuration)
+    {{> api_doc_example_setup_client}}
 
 {{#operations}}
 {{#operation}}
     t.Run("Test {{classname}}Service {{{nickname}}}", func(t *testing.T) {
 
-        request := client.{{classname}}.{{operationId}}()
-        {{> api_doc_example_params}}
-
-        resp, httpRes, err := request.Execute()
+        {{> api_doc_example_execute}}
 
         require.Nil(t, err)
         require.NotNil(t, resp)
@@ -49,15 +41,4 @@ func Test_{{packageName}}_{{classname}}Service(t *testing.T) {
 
 {{/operation}}
 {{/operations}}
-}
-
-func emptyFile(t *testing.T) *os.File {
-	tempFile, err := os.CreateTemp("", "empty-file")
-	if err != nil {
-		t.Fatal(err) // Fail the test if we can't create the temporary file
-	}
-	t.Cleanup(func() {
-		os.Remove(tempFile.Name()) // Clean up the file after the test
-	})
-	return tempFile
 }

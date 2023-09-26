@@ -383,7 +383,7 @@ public class Mustache {
         return new Template(trim(accum.finish(), true), compiler);
     }
 
-    private Mustache() {} // no instantiateski
+    private Mustache () {} // no instantiateski
 
     protected static Template.Segment[] trim (Template.Segment[] segs, boolean top) {
         // now that we have all of our segments, we make a pass through them to trim whitespace
@@ -782,7 +782,7 @@ public class Mustache {
         }
 
         @Override public void execute (Template tmpl, Template.Context ctx, Writer out) {
-            write(out, _text);
+            write(out, _text, ctx.indent);
         }
         @Override public void decompile (Delims delims, StringBuilder into) {
             into.append(_text);
@@ -832,70 +832,43 @@ public class Mustache {
             _name = name;
         }
         @Override public void execute (Template tmpl, Template.Context ctx, Writer out) {
-            // we must take care to preserve our context rather than creating a new one, which
-            // would happen if we just called execute() with ctx.data
 
-            // compute the number of characters past the last new line that have been written so far
+            // item_partial:
+            // ```mustache
+            // {{name}} = (
+            //   {{value}}
+            // )
+            // ```
+            // list_partial:
+            // ```mustache
+            // {{#list}}
+            // {{item_partial}}
+            // {{/list}}
+            // ```
+            // main:
+            // ```mustache
+            //      (
+            //   {{>list_partial}}
+            // )
+            // ```
+            // output:
+            // ```output
+            //      (
+            //   name = (
+            //     value
+            //   )
+            // )
+            // ```
+
+            // set indentation for inner template
             String buffer = ((StringWriter) out).getBuffer().toString();
             int lastNewline = buffer.lastIndexOf('\n');
             int offset = (lastNewline == -1) ? buffer.length() : buffer.length() - lastNewline - 1;
 
-            // also compute the number of newlines that have been written so far so we
-            // only modify indentation for written first lines from the included template
-            int numNewlines = 0;
-            for (int i = 0; i < buffer.length(); i++) {
-                if (buffer.charAt(i) == '\n') {
-                    numNewlines++;
-                }
-            }
-
-            getTemplate().executeSegs(ctx, out);
-
-            String newBuffer = ((StringWriter) out).getBuffer().toString();
-
-            // now we need to modify the indentation of the included template
-            // we do this by splitting the buffer into lines and then re-indenting
-            // each line based on the indentation of the first line. To do this we
-            // use offset and numNewlines to find the first line of the included template
-            // and then use offset to indent the rest of the lines. Make sure to append any newlines
-            // from the end of the included template
-            String[] lines = newBuffer.split("\n");
-            if (lines.length > 1) {
-                // create indentation string of whitespace using offset
-                String indent = "";
-                for (int i = 0; i < offset; i++) {
-                    indent += " ";
-                }
-                for (int i = numNewlines + 1; i < lines.length; i++) {
-                    lines[i] = indent + lines[i];
-                }
-                // now we need to re-write the buffer
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < lines.length; i++) {
-                    sb.append(lines[i]);
-                    if (i < lines.length - 1) {
-                        sb.append("\n");
-                    }
-                }
-                buffer = sb.toString();
-                ((StringWriter) out).getBuffer().setLength(0);
-                ((StringWriter) out).write(buffer);
-
-                // append any newlines from the end of the included template
-                // 1. count number of ending newlines in newBuffer
-                // 2. append that many newlines to out
-                int numEndingNewlines = 0;
-                for (int i = newBuffer.length() - 1; i >= 0; i--) {
-                    if (newBuffer.charAt(i) == '\n') {
-                        numEndingNewlines++;
-                    } else {
-                        break;
-                    }
-                }
-                for (int i = 0; i < numEndingNewlines; i++) {
-                    ((StringWriter) out).write("\n");
-                }
-            }
+            // we must take care to preserve our context rather than creating a new one, which
+            // would happen if we just called execute() with ctx.data. This is important for partials since
+            // they are often used to modularize templates and the context naturally expected in partials.
+            getTemplate().executeSegs(ctx.withIndent(offset), out);
 
             Template.Segment[] innerSegs = getTemplate()._segs;
 
@@ -977,7 +950,7 @@ public class Mustache {
                     "No key, method or field with name '" + _name + "' on line " + _line;
                 throw new MustacheException.Context(msg, _name, _line);
             }
-            write(out, _escaper.escape(_formatter.format(value)));
+            write(out, _escaper.escape(_formatter.format(value)), ctx.indent);
         }
         @Override public void decompile (Delims delims, StringBuilder into) {
             delims.addTag(' ', _name, into);
