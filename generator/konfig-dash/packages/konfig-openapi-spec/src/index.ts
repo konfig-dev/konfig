@@ -67,6 +67,37 @@ export const PushRequestBody = registry.register(
   })
 )
 
+const PR_CREATE_REQUEST_BODY_NAME = 'PushRequestBody'
+export const PrCreateRequestBody = registry.register(
+  PR_CREATE_REQUEST_BODY_NAME,
+  z.object({
+    owner: z.string().openapi({
+      description: 'The account owner of the repository',
+      example: 'konfig-dev',
+    }),
+    repo: z.string().openapi({
+      description: 'The name of the repository',
+      example: 'acme-sdks',
+    }),
+    base: z.string().openapi({
+      description: 'The name of the branch you want to merge into',
+      example: 'main',
+    }),
+    head: z.string().openapi({
+      description: 'The name of the branch you want to merge from',
+      example: 'new-openapi-spec-123',
+    }),
+    title: z.string().openapi({
+      description: 'The title of the PR',
+      example: 'Renegerate SDKs',
+    }),
+    body: z.string().openapi({
+      description: 'The body of the PR',
+      example: 'Regenerate SDKs',
+    }),
+  })
+)
+
 const JsonPath = z.union([z.number(), z.string()]).array()
 
 const DiagnosticSeverityEnum = z.nativeEnum(DiagnosticSeverity).openapi({
@@ -140,6 +171,14 @@ export const PushResponseBody = registry.register(
       status: z.literal('no-diff'),
     }),
   ])
+)
+
+export const PrCreateResponseBody = registry.register(
+  'PrCreateResponseBody',
+  z.object({
+    status: z.literal('created-pr').or(z.literal('pr-already-exists')),
+    link: z.string(),
+  })
 )
 
 export const formatPythonBodySchema = z
@@ -275,3 +314,5 @@ export type SpectralDiagnosisType = z.infer<typeof SpectralDiagnostic>
 export type LintResponseBodyType = z.infer<typeof LintResponseBody>
 export type PushResponseBodyType = z.infer<typeof PushResponseBody>
 export type PushRequestBodyType = z.infer<typeof PushRequestBody>
+export type PrCreateRequestBodyType = z.infer<typeof PrCreateRequestBody>
+export type PrCreateResponseBodyType = z.infer<typeof PrCreateResponseBody>

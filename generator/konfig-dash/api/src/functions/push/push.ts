@@ -3,7 +3,7 @@ import { logger } from 'src/lib/logger'
 import { App } from 'octokit'
 import * as path from 'path'
 
-import { KonfigYaml, KONFIG_YAML_NAME } from 'konfig-lib'
+import { findRepository, KonfigYaml, KONFIG_YAML_NAME } from 'konfig-lib'
 import {
   PushRequestBody,
   PushResponseBody,
@@ -14,7 +14,6 @@ import {
   CORS_HEADERS_ORIGIN,
 } from 'src/lib/cors-headers'
 import { parse } from 'yaml'
-import { PushRequestBodyType } from 'konfig-openapi-spec'
 
 const LABEL_NAME = 'automated oas update'
 
@@ -55,7 +54,8 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   })
 
   const repo = await findRepository({
-    gitHub: requestBodyParseResult.data.gitHub,
+    repo: requestBodyParseResult.data.gitHub.repo,
+    owner: requestBodyParseResult.data.gitHub.owner,
     eachRepository,
   })
 
@@ -258,20 +258,4 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     },
     body: JSON.stringify(PushResponseBody.parse(response)),
   }
-}
-
-async function findRepository({
-  gitHub,
-  eachRepository,
-}: {
-  gitHub: PushRequestBodyType['gitHub']
-  eachRepository: App['eachRepository']
-}) {
-  for await (const { octokit, repository } of eachRepository.iterator()) {
-    if (!repository.owner.login) continue
-    if (repository.owner.login !== gitHub.owner) continue
-    if (repository.name !== gitHub.repo) continue
-    return { ...gitHub, octokit, repository }
-  }
-  return null
 }
