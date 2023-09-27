@@ -55,7 +55,7 @@ export default class PrCreate extends Command {
     const body: PrCreateRequestBodyType = {
       owner: flags.owner,
       repo: flags.repo,
-      base: flags.base,
+      base: flags.base || '',
       head: flags.head,
       title: flags.title || `Merge commit(s) from ${flags.head}`,
       body: flags.body || `PR created by Konfig '/prCreate' endpoint`,
