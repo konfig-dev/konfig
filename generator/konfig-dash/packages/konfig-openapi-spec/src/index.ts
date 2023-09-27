@@ -67,7 +67,7 @@ export const PushRequestBody = registry.register(
   })
 )
 
-const PR_CREATE_REQUEST_BODY_NAME = 'PushRequestBody'
+const PR_CREATE_REQUEST_BODY_NAME = 'PrCreateRequestBody'
 export const PrCreateRequestBody = registry.register(
   PR_CREATE_REQUEST_BODY_NAME,
   z.object({
@@ -94,6 +94,29 @@ export const PrCreateRequestBody = registry.register(
     body: z.string().openapi({
       description: 'The body of the PR',
       example: 'Regenerate SDKs',
+    }),
+  })
+)
+
+const PR_MERGE_REQUEST_BODY_NAME = 'PrMergeRequestBody'
+export const PrMergeRequestBody = registry.register(
+  PR_MERGE_REQUEST_BODY_NAME,
+  z.object({
+    owner: z.string().openapi({
+      description: 'The account owner of the repository',
+      example: 'konfig-dev',
+    }),
+    repo: z.string().openapi({
+      description: 'The name of the repository',
+      example: 'acme-sdks',
+    }),
+    base: z.string().openapi({
+      description: 'The base branch of the PR you want to merge',
+      example: 'main',
+    }),
+    head: z.string().openapi({
+      description: 'The head branch of the PR you want to merge',
+      example: 'new-openapi-spec-123',
     }),
   })
 )
@@ -179,6 +202,19 @@ export const PrCreateResponseBody = registry.register(
     status: z.literal('created-pr').or(z.literal('pr-already-exists')),
     link: z.string(),
   })
+)
+
+export const PrMergeResponseBody = registry.register(
+  'PrMergeResponseBody',
+  z.union([
+    z.object({
+      status: z.literal('merged-pr'),
+      link: z.string(),
+    }),
+    z.object({
+      status: z.literal('no-pr-found'),
+    }),
+  ])
 )
 
 export const formatPythonBodySchema = z
@@ -311,6 +347,35 @@ registry.registerPath({
 
 registry.registerPath({
   method: 'post',
+  path: '/prMerge',
+  description:
+    'Merge an open pull request for a specified repository with the specified base and head branches',
+  summary: 'Merge a pull request',
+  operationId: 'GitHub_merge',
+  tags: ['GitHub'],
+  requestBody: {
+    content: {
+      'application/json': {
+        schema: {
+          $ref: `#/components/schemas/${PR_MERGE_REQUEST_BODY_NAME}`,
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      description: 'Status',
+      content: {
+        'application/json': {
+          schema: PrMergeResponseBody,
+        },
+      },
+    },
+  },
+})
+
+registry.registerPath({
+  method: 'post',
   path: '/lint',
   description:
     'Lint your OpenAPI Specification to ensure generation of high quality SDKs with Konfig',
@@ -345,3 +410,5 @@ export type PushResponseBodyType = z.infer<typeof PushResponseBody>
 export type PushRequestBodyType = z.infer<typeof PushRequestBody>
 export type PrCreateRequestBodyType = z.infer<typeof PrCreateRequestBody>
 export type PrCreateResponseBodyType = z.infer<typeof PrCreateResponseBody>
+export type PrMergeRequestBodyType = z.infer<typeof PrMergeRequestBody>
+export type PrMergeResponseBodyType = z.infer<typeof PrMergeResponseBody>

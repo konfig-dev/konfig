@@ -5,27 +5,27 @@ import { App } from 'octokit'
 import { findRepository } from 'konfig-lib'
 import { CORS_HEADERS_ORIGIN } from 'src/lib/cors-headers'
 import {
-  PrCreateResponseBodyType,
-  PrCreateResponseBody,
-  PrCreateRequestBody,
+  PrMergeResponseBodyType,
+  PrMergeResponseBody,
+  PrMergeRequestBody,
 } from 'konfig-openapi-spec'
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   if (event.body === null) {
     logger.error(
-      'Invalid request to /prCreate. Expected request body to be non-empty.'
+      'Invalid request to /prMerge. Expected request body to be non-empty.'
     )
     return {
       statusCode: 400,
     }
   }
 
-  const requestBodyParseResult = PrCreateRequestBody.safeParse(
+  const requestBodyParseResult = PrMergeRequestBody.safeParse(
     JSON.parse(event.body)
   )
   if (requestBodyParseResult.success === false) {
     logger.error(requestBodyParseResult.error)
-    logger.error('Invalid request to /prCreate')
+    logger.error('Invalid request to /prMerge')
     throw Error('invalid request body')
   }
 
@@ -53,7 +53,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   const base =
     requestBodyParseResult.data.base || repo.repository.default_branch
 
-  // Check if PR already exists
+  // Get PR
   const prs = await repo.octokit.rest.pulls.list({
     owner: repo.owner,
     repo: repo.repo,
@@ -61,11 +61,10 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     base: base,
   })
 
-  // If pr already exists, return 200 with link to existing PR
-  if (prs.data.length > 0) {
-    const response: PrCreateResponseBodyType = {
-      status: 'pr-already-exists',
-      link: prs.data[0].html_url,
+  // If pr doesn't exist, return "no-pr-found" status
+  if (prs.data.length === 0) {
+    const response: PrMergeResponseBodyType = {
+      status: 'no-pr-found',
     }
 
     return {
@@ -74,36 +73,29 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
         ...CORS_HEADERS_ORIGIN,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(PrCreateResponseBody.parse(response)),
+      body: JSON.stringify(PrMergeResponseBody.parse(response)),
     }
   }
 
-  // If pr does not exist, create it and return 200 with link to new PR
-  try {
-    const pr = await repo.octokit.rest.pulls.create({
-      owner: repo.owner,
-      repo: repo.repo,
-      head: requestBodyParseResult.data.head,
-      base: base,
-      title: requestBodyParseResult.data.title,
-      body: requestBodyParseResult.data.body,
-    })
+  // If pr exists, merge it and return "merged-pr" status
+  await repo.octokit.rest.pulls.merge({
+    owner: repo.owner,
+    repo: repo.repo,
+    pull_number: prs.data[0].number,
+    merge_method: 'squash',
+  })
 
-    const response: PrCreateResponseBodyType = {
-      status: 'created-pr',
-      link: pr.data.html_url,
-    }
+  const response: PrMergeResponseBodyType = {
+    status: 'merged-pr',
+    link: prs.data[0].html_url,
+  }
 
-    return {
-      statusCode: 200,
-      headers: {
-        ...CORS_HEADERS_ORIGIN,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(PrCreateResponseBody.parse(response)),
-    }
-  } catch (error) {
-    logger.error(error)
-    throw Error(`Failed to create PR in ${repoFullName}`)
+  return {
+    statusCode: 200,
+    headers: {
+      ...CORS_HEADERS_ORIGIN,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(PrMergeResponseBody.parse(response)),
   }
 }
