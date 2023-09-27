@@ -19,8 +19,13 @@ part 'auth/wrapper.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
-{{#apiInfo}}{{#apis}}part 'api/{{{classFilename}}}.dart';
-{{/apis}}{{/apiInfo}}
+{{#apiInfo}}
+{{#apis}}
+part 'api/{{{classFilename}}}.dart';
+part 'api/{{{classFilename}}}_generated.dart';
+
+{{/apis}}
+{{/apiInfo}}
 {{#models}}{{#model}}part 'model/{{{classFilename}}}.dart';
 {{/model}}{{/models}}
 

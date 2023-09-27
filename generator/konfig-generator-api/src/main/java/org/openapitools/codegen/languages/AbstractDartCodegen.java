@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.openapitools.codegen.utils.CamelizeOption.LOWERCASE_FIRST_LETTER;
@@ -99,7 +98,8 @@ public abstract class AbstractDartCodegen extends DefaultCodegen {
 
         outputFolder = "generated-code/dart";
         modelTemplateFiles.put("model.mustache", ".dart");
-        apiTemplateFiles.put("api.mustache", ".dart");
+        apiTemplateFiles.put("api.mustache", "_generated.dart");
+        apiTemplateFiles.put("api_custom.mustache", ".dart");
         embeddedTemplateDir = templateDir = "dart2";
         apiPackage = "api";
         modelPackage = "model";
