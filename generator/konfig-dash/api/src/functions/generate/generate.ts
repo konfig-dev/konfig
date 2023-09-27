@@ -270,7 +270,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
   }
 
   if (body.generators.go) {
-    queueGoGeneration({
+    await queueGoGeneration({
       body,
       go: body.generators.go,
       queue,
