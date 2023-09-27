@@ -1162,7 +1162,7 @@ export default class Deploy extends Command {
           }
 
           CliUx.ux.action.start('Generating top-level README.md')
-          const readme = generateReadme({ konfigYaml: parsedKonfigYaml })
+          const readme = await generateReadme({ konfigYaml: parsedKonfigYaml })
           fs.writeFileSync(path.join(configDir, 'README.md'), readme)
           CliUx.ux.action.stop()
 
