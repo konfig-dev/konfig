@@ -14,13 +14,6 @@ import {
 } from 'konfig-openapi-spec'
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
-  if (event.httpMethod === 'OPTIONS') {
-    // TODO Eddie: is this right for this API?
-    return {
-      statusCode: 200,
-      headers: { ...CORS_HEADERS_METHOD_HEADERS, ...CORS_HEADERS_ORIGIN },
-    }
-  }
   if (event.body === null) {
     logger.error(
       'Invalid request to /prCreate. Expected request body to be non-empty.'
@@ -60,12 +53,15 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   if (repo === null)
     throw Error(`Could not find repository under ${repoFullName}`)
 
+  const base =
+    requestBodyParseResult.data.base || repo.repository.default_branch
+
   // Check if PR already exists
   const prs = await repo.octokit.rest.pulls.list({
     owner: repo.owner,
     repo: repo.repo,
     head: `${repo.owner}:${requestBodyParseResult.data.head}`,
-    base: requestBodyParseResult.data.base,
+    base: base,
   })
 
   // If pr already exists, return 200 with link to existing PR
@@ -91,7 +87,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
       owner: repo.owner,
       repo: repo.repo,
       head: requestBodyParseResult.data.head,
-      base: requestBodyParseResult.data.base,
+      base: base,
       title: requestBodyParseResult.data.title,
       body: requestBodyParseResult.data.body,
     })

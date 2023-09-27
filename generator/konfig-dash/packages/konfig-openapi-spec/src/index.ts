@@ -282,6 +282,35 @@ registry.registerPath({
 
 registry.registerPath({
   method: 'post',
+  path: '/prCreate',
+  description:
+    'Create a pull request for a specified repository with the specified base and head branches',
+  summary: 'Create a pull request',
+  operationId: 'GitHub_create',
+  tags: ['GitHub'],
+  requestBody: {
+    content: {
+      'application/json': {
+        schema: {
+          $ref: `#/components/schemas/${PR_CREATE_REQUEST_BODY_NAME}`,
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      description: 'Status',
+      content: {
+        'application/json': {
+          schema: PrCreateResponseBody,
+        },
+      },
+    },
+  },
+})
+
+registry.registerPath({
+  method: 'post',
   path: '/lint',
   description:
     'Lint your OpenAPI Specification to ensure generation of high quality SDKs with Konfig',

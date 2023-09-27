@@ -27,8 +27,6 @@ export default class PrCreate extends Command {
       name: 'base',
       char: 'b',
       description: 'Name of the branch you want to merge into',
-      required: true,
-      // TODO Eddie: I could make this optional and default to the default branch if not provided?
     }),
     head: Flags.string({
       name: 'head',
@@ -59,11 +57,14 @@ export default class PrCreate extends Command {
       repo: flags.repo,
       base: flags.base,
       head: flags.head,
-      title: flags.title || `${flags.base} <- ${flags.head}`,
+      title: flags.title || `Merge commit(s) from ${flags.head}`,
       body: flags.body || `PR created by Konfig '/prCreate' endpoint`,
     }
 
-    const suffix = `PR in ${flags.owner}/${flags.repo} from ${flags.head} to ${flags.base}`
+    const baseStr = flags.base
+      ? `${flags.base}`
+      : "the repository's default branch"
+    const suffix = `PR in ${flags.owner}/${flags.repo} from ${flags.head} to ${baseStr}`
 
     CliUx.ux.action.start(`Creating ${suffix}`)
     const result = await axios.post(url, body)
