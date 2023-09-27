@@ -17,21 +17,24 @@ import { isGitDirectoryClean } from '../util/is-git-directory-clean'
 import { isGitRemoteInSync } from '../util/is-git-remote-in-sync'
 import { executeTestCommand } from '../util/execute-test-command'
 import axios, { AxiosError } from 'axios'
+import { isSubmodule } from '../util/is-submodule'
 
 function generateGitTagCommands({
   version,
   generator,
   skipTag,
   outputDirectory,
+  isSubmodule,
 }: {
   version: string
   generator: KonfigYamlGeneratorNames
   skipTag?: boolean
+  isSubmodule?: boolean
   outputDirectory?: string
 }): [string, string] | [] {
   if (skipTag) return []
 
-  const tag = computeTag({ version, generator, outputDirectory })
+  const tag = computeTag({ version, generator, outputDirectory, isSubmodule })
 
   return [`git tag ${tag}`, `git push origin ${tag}`]
 }
@@ -40,15 +43,17 @@ function computeTag({
   version,
   generator,
   outputDirectory,
+  isSubmodule,
 }: {
   version: string
-  generator: KonfigYamlGeneratorNames
+  isSubmodule?: boolean
+  generator: string
   outputDirectory?: string
 }) {
   // PHP does not allow for suffix with any random string in versioning also PHP
   // is in a submodule so the suffix is unnecessary since it's already in a
   // separate repo
-  if (generator === 'php') {
+  if (generator === 'php' || isSubmodule) {
     return `v${version}`
   }
   // https://go.dev/ref/mod#vcs-version
@@ -63,7 +68,7 @@ function computeTag({
     return `${outputDirectory}/v${version}`
   }
 
-  return `v${version}-generator`
+  return `v${version}-${generator}`
 }
 
 const publishScripts = {
@@ -113,11 +118,18 @@ const publishScripts = {
   go: ({
     version,
     outputDirectory,
+    isSubmodule,
   }: {
     version: string
     outputDirectory: string
+    isSubmodule: boolean
   }) => {
-    return generateGitTagCommands({ version, generator: 'go', outputDirectory })
+    return generateGitTagCommands({
+      version,
+      generator: 'go',
+      outputDirectory,
+      isSubmodule,
+    })
   },
   npm: ({
     version,
@@ -428,12 +440,23 @@ export default class Publish extends Command {
           )
       }
 
-      if (generatorName === 'go' && 'packageName' in generatorConfig) {
+      if (
+        (generatorName === 'go' ||
+          ('generator' in generatorConfig &&
+            generatorConfig.generator === 'go')) &&
+        'packageName' in generatorConfig
+      ) {
+        const goIsInSubmodule = await isSubmodule({
+          git: generatorConfig.git,
+          configDir: process.cwd(),
+        })
         await executePublishScript({
           script: publishScripts['go']({
             version: generatorConfig.version,
             outputDirectory: generatorConfig.outputDirectory,
+            isSubmodule: goIsInSubmodule,
           }),
+          cwd: goIsInSubmodule ? generatorConfig.outputDirectory : undefined,
         })
       }
 

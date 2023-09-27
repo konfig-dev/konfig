@@ -47,6 +47,7 @@ import replaceAsync from 'string-replace-async'
 import { removeTrailingSlash } from '../util/remove-trailing-slash'
 import { generateStatisticsFileForSdks } from '../util/generate-statistics-file-for-sdks'
 import { generateChangelog } from '../util/generate-changelog'
+import { isSubmodule } from '../util/is-submodule'
 
 function getOutputDir(
   outputFlag: string | undefined,
@@ -1674,24 +1675,6 @@ async function handleSubmodule({
     )
     CliUx.ux.action.stop()
   }
-}
-
-/**
- * Determine if the SDK is pointing to what should be a submodule by comparing
- * the remote origin url with the URL from git configuration.
- */
-async function isSubmodule({
-  git,
-  configDir,
-}: {
-  git: GeneratorGitConfig
-  configDir: string
-}): Promise<boolean> {
-  const topLevelGitRepo = simpleGit(configDir)
-  const remoteOriginUrl = await topLevelGitRepo.listRemote(['--get-url'])
-  const gitConfigUrl = `https://${git.host}/${git.userId}/${git.repoId}.git`
-  const isSameRemoteUrl = remoteOriginUrl === gitConfigUrl
-  return !isSameRemoteUrl
 }
 
 async function copyGoOutput({
