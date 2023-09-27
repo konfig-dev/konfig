@@ -383,7 +383,7 @@ public class Mustache {
         return new Template(trim(accum.finish(), true), compiler);
     }
 
-    private Mustache () {} // no instantiateski
+    private Mustache() {} // no instantiateski
 
     protected static Template.Segment[] trim (Template.Segment[] segs, boolean top) {
         // now that we have all of our segments, we make a pass through them to trim whitespace
@@ -933,7 +933,7 @@ public class Mustache {
                 }
                 if (innerSegs[innerSegs.length-1] instanceof StringSegment) {
                     StringSegment lastStringSegment = (StringSegment) innerSegs[innerSegs.length - 1];
-                    if (lastStringSegment._text.endsWith("\n")) {
+                    if (lastStringSegment._text.endsWith("\n") && ((StringWriter) out).getBuffer().length() > 0) {
                         ((StringWriter) out).getBuffer().setLength(((StringWriter) out).getBuffer().length() - 1);
                     }
                 }
