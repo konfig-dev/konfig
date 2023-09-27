@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.14.0
+
+### Minor Changes
+
+- [#218](https://github.com/konfig-dev/konfig/pull/218) [`681c8fa5`](https://github.com/konfig-dev/konfig/commit/681c8fa5bd08d9d4a4ae74b11c63c68978ab89d6) Thanks [@dphuang2](https://github.com/dphuang2)! - fix go publishing/top-level README links
+
 ## 1.13.0
 
 ### Minor Changes
