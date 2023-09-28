@@ -19,7 +19,6 @@ package org.openapitools.codegen.languages;
 
 import com.google.common.collect.Iterables;
 import com.samskivert.mustache.Mustache;
-import com.samskivert.mustache.Template;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.apache.commons.lang3.StringUtils;
@@ -37,8 +36,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.Writer;
 import java.util.*;
 
 import static org.openapitools.codegen.utils.CamelizeOption.LOWERCASE_FIRST_LETTER;
@@ -151,7 +148,7 @@ public class GoClientCodegen extends AbstractGoCodegen {
      * Configures the type of generator.
      *
      * @return the CodegenType for this generator
-     * @see org.openapitools.codegen.CodegenType
+     * @see CodegenType
      */
     @Override
     public CodegenType getTag() {
@@ -379,7 +376,7 @@ public class GoClientCodegen extends AbstractGoCodegen {
         if (ModelUtils.isStringSchema(p)) {
             Object defaultObj = p.getDefault();
             if (defaultObj != null) {
-                if (defaultObj instanceof java.lang.String) {
+                if (defaultObj instanceof String) {
                     return "\"" + escapeText((String) defaultObj) + "\"";
                 }
                 return "\"" + escapeText(defaultObj.toString()) + "\"";
