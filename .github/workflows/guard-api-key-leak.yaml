@@ -16,9 +16,5 @@ jobs:
         # required to avoid `Usage Error: Environment variable not found (NPM_TOKEN)`
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: List directories sanity Check
-      run: find . -type d -print
-
     - name: Detect API key leaks
-      run: ./guard-api-key-leak.sh
-      working-directory: ./generator/konfig-dash/bash-scripts
+      run: ./generator/konfig-dash/bash-scripts/guard-api-key-leak.sh
