@@ -9,6 +9,9 @@ apiKeys=($(grep -oE '[A-Za-z0-9]{32}:' "$keyFile" | sed 's/://'))
 searchFolder="../../.." # entire repo
 foundKey=false
 
+pwd
+find ../../.. -name "api-keys.ts" -print
+
 for apiKey in "${apiKeys[@]}"; do
   files=$(grep -rl "$apiKey" "$searchFolder" --exclude "../../../generator/konfig-dash/api/src/lib/api-keys.ts")
   if [ -n "$files" ]; then
