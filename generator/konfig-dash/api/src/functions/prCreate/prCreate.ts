@@ -4,6 +4,7 @@ import { App } from 'octokit'
 
 import { findRepository } from 'konfig-lib'
 import { CORS_HEADERS_ORIGIN } from 'src/lib/cors-headers'
+import { validateApiKey, API_KEY_HEADER_NAME } from 'src/lib/api-keys'
 import {
   PrCreateResponseBodyType,
   PrCreateResponseBody,
@@ -34,6 +35,11 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   const privateKey = process.env.GITHUB_APP_PRIVATE_KEY
   if (privateKey === undefined)
     throw Error('Missing GITHUB_APP_PRIVATE_KEY Environment Variable')
+
+  validateApiKey({
+    key: event.headers[API_KEY_HEADER_NAME],
+    owner: requestBodyParseResult.data.owner,
+  })
 
   const { eachRepository } = new App({
     appId: 276014,

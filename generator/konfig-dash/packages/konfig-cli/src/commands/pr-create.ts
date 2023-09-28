@@ -48,6 +48,10 @@ export default class PrCreate extends Command {
   public async run(): Promise<void> {
     const { flags } = await this.parse(PrCreate)
 
+    const apiKey = process.env.KONFIG_API_KEY
+    if (apiKey === undefined)
+      throw Error('Missing KONFIG_API_KEY Environment Variable')
+
     const url = flags.dev
       ? 'http://localhost:8911/prCreate'
       : 'https://api.konfigthis.com/prCreate'
@@ -67,7 +71,9 @@ export default class PrCreate extends Command {
     const suffix = `PR in ${flags.owner}/${flags.repo} from ${flags.head} to ${baseStr}`
 
     CliUx.ux.action.start(`Creating ${suffix}`)
-    const result = await axios.post(url, body)
+    const result = await axios.post(url, body, {
+      headers: { 'x-konfig-api-key': apiKey },
+    })
     CliUx.ux.action.stop()
 
     if (result.status === 200) {
