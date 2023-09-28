@@ -1654,6 +1654,12 @@ async function handleSubmodule({
       // delete the directory as its probably not important...right?
       fs.rmSync(outputDirectory, { recursive: true, force: true })
 
+      // "git rm" outputDirectory + "git commit" (message: "Remove directory for submodule")
+      await topLevelGitRepo.raw(['rm', '-r', outputDirectory])
+      await topLevelGitRepo.commit(
+        `Remove directory for ${generator} SDK submodule`
+      )
+
       CliUx.ux.action.start(`Adding git submodule at ${outputDirectory}`)
       await topLevelGitRepo.submoduleAdd(
         `https://${git.host}/${git.userId}/${git.repoId}.git`,
