@@ -156,6 +156,72 @@ public class GoClientCodegen extends AbstractGoCodegen {
     }
 
     @Override
+    public boolean isEnablePostProcessFile() {
+        return true;
+    }
+
+    @Override
+    public void postProcessFile(File file, String fileType) {
+        super.postProcessFile(file, fileType);
+
+        // if "fileType" is "api-test":
+        //  detect if os.NewFile is used and add "os" to list of imports
+        if ("api-test".equals(fileType)) {
+            String fileString = null;
+            try {
+                fileString = org.apache.commons.io.FileUtils.readFileToString(file, "UTF-8");
+            } catch (Exception e) {
+                LOGGER.error("Could not read file: " + file.getAbsolutePath(), e);
+                return;
+            }
+            if (fileString.contains("os.NewFile")) {
+                // find list of imports by looking for "import (" and a sequence of lines until ")" and then parsing
+                // the line this is a hack but it works for most cases. Account for comments.
+                List<String> imports = new ArrayList<String>();
+                String[] lines = fileString.split("\n");
+                for (int i = 0; i < lines.length; i++) {
+                    String line = lines[i].trim();
+                    if (line.startsWith("import (")) {
+                        for (int j = i + 1; j < lines.length; j++) {
+                            String line2 = lines[j].trim();
+                            if (line2.startsWith(")")) {
+                                break;
+                            }
+                            if (line2.startsWith("//")) {
+                                continue;
+                            }
+                            imports.add(line2.trim());
+                        }
+                        break;
+                    }
+                }
+
+                // if "os" is not in imports, add it
+                if (!imports.contains("\"os\"")) {
+                    imports.add("\"os\"");
+                    // re-write the imports
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("import (\n");
+                    for (String imp : imports) {
+                        sb.append("    " + imp + "\n");
+                    }
+                    sb.append(")\n");
+                    String importString = sb.toString();
+                    // replace entire import block, account for new lines and only replace until the first ")" after
+                    // "import ("
+                    String regex = "(?s)import \\(.*?\\)";
+                    fileString = fileString.replaceFirst(regex, importString);
+                    try {
+                        org.apache.commons.io.FileUtils.writeStringToFile(file, fileString, "UTF-8");
+                    } catch (Exception e) {
+                        LOGGER.error("Could not write file: " + file.getAbsolutePath(), e);
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
     public String toGetter(String name) {
         return "Get" + getterAndSetterCapitalize(name);
     }
