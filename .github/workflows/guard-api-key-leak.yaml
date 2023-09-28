@@ -13,8 +13,9 @@ jobs:
       run: yarn && yarn build
       working-directory: ./generator/konfig-dash
       env:
+        # required to avoid `Usage Error: Environment variable not found (NPM_TOKEN)`
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Detect API key leaks
       run: ./guard-api-key-leak.sh
-      working-directory: ./generator/konfig-dash/bash_scripts
+      working-directory: ./generator/konfig-dash/bash-scripts
