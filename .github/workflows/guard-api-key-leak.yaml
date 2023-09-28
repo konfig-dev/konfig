@@ -1,5 +1,5 @@
 name: Guard API Key Leak
-on: [push, pull_request]
+on: push
 
 jobs:
   detect-key-leak:
@@ -9,6 +9,10 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
+    - name: yarn build
+      run: yarn build
+      working-directory: ./generator/konfig-dash
+
     - name: Detect API key leaks
       run: ./guard-api-key-leak.sh
-      working-directory: generator/konfig-dash/bash_scripts
+      working-directory: ./generator/konfig-dash/bash_scripts
