@@ -3904,6 +3904,7 @@ public class DefaultCodegen implements CodegenConfig {
 
         // unalias schema
         p = unaliasSchema(p);
+        Schema pDeref = ModelUtils.getReferencedSchema(openAPI, p);
 
         property.setSchemaIsFromAdditionalProperties(schemaIsFromAdditionalProperties);
         property.required = required;
@@ -4073,6 +4074,8 @@ public class DefaultCodegen implements CodegenConfig {
             updatePropertyForObject(property, p);
         } else if (ModelUtils.isAnyType(p)) {
             updatePropertyForAnyType(property, p);
+        } else if (ModelUtils.isTypeObjectSchema(pDeref)) {
+            updatePropertyForObject(property, pDeref);
         } else if (!ModelUtils.isNullType(p)) {
             // referenced model
             ;
