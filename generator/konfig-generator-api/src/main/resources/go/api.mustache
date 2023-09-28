@@ -24,15 +24,15 @@ type {{classname}} interface {
 	{{{unescapedNotes}}}
 	{{/notes}}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().{{#pathParams}}
-	@param {{paramName}}{{#description}} {{{.}}}{{/description}}{{/pathParams}}
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().{{#requiredParams}}
+	@param {{paramName}}{{#description}} {{{.}}}{{/description}}{{/requiredParams}}
 	@return {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request
 	{{#isDeprecated}}
 
 	Deprecated
 	{{/isDeprecated}}
 	*/
-	{{{nickname}}}(ctx context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request
+	{{{nickname}}}(ctx context.Context{{#requiredParams}}, {{paramName}} {{{dataType}}}{{/requiredParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request
 
 	// {{nickname}}Execute executes the request{{#returnType}}
 	//  @return {{{.}}}{{/returnType}}
@@ -55,12 +55,12 @@ type {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/stru
 	ApiService *{{classname}}Service
 {{/generateInterfaces}}
 {{#allParams}}
-	{{paramName}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}
+	{{paramName}} {{^required}}*{{/required}}{{{dataType}}}
 {{/allParams}}
 }
 
 {{#allParams}}
-{{^isPathParam}}
+{{^required}}
 {{#description}}
 // {{.}}
 {{/description}}
@@ -72,7 +72,7 @@ func (r *{{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/
 	return r
 }
 
-{{/isPathParam}}
+{{/required}}
 {{/allParams}}
 func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request) Execute() ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}*{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
 	return r.ApiService.{{nickname}}Execute(r)
@@ -85,21 +85,21 @@ func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/s
 {{{unescapedNotes}}}
 {{/notes}}
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().{{#pathParams}}
- @param {{paramName}}{{#description}} {{{.}}}{{/description}}{{/pathParams}}
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().{{#requiredParams}}
+ @param {{paramName}}{{#description}} {{{.}}}{{/description}}{{/requiredParams}}
  @return {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request
 {{#isDeprecated}}
 
 Deprecated
 {{/isDeprecated}}
 */
-func (a *{{{classname}}}Service) {{{nickname}}}({{#pathParams}}{{paramName}} {{{dataType}}}{{^-last}}, {{/-last}}{{/pathParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request {
+func (a *{{{classname}}}Service) {{{nickname}}}({{#requiredParams}}{{paramName}} {{{dataType}}}{{^-last}}, {{/-last}}{{/requiredParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request {
 	return {{#structPrefix}}{{&classname}}{{/structPrefix}}{{^structPrefix}}Api{{/structPrefix}}{{operationId}}Request{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
-		{{#pathParams}}
+		{{#requiredParams}}
 		{{paramName}}: {{paramName}},
-		{{/pathParams}}
+		{{/requiredParams}}
 	}
 }
 
@@ -130,62 +130,55 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	{{#allParams}}
-	{{#required}}
-	{{^isPathParam}}
-	if r.{{paramName}} == nil {
-		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} is required and must be specified")
-	}
-	{{/isPathParam}}
 	{{#minItems}}
-	if len({{^isPathParam}}*{{/isPathParam}}r.{{paramName}}) < {{minItems}} {
+	if len({{> api_request_param}}) < {{minItems}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have at least {{minItems}} elements")
 	}
 	{{/minItems}}
 	{{#maxItems}}
-	if len({{^isPathParam}}*{{/isPathParam}}r.{{paramName}}) > {{maxItems}} {
+	if len({{> api_request_param}}) > {{maxItems}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have less than {{maxItems}} elements")
 	}
 	{{/maxItems}}
 	{{#minLength}}
-	if strlen({{^isPathParam}}*{{/isPathParam}}r.{{paramName}}) < {{minLength}} {
+	if strlen({{> api_request_param}}) < {{minLength}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have at least {{minLength}} elements")
 	}
 	{{/minLength}}
 	{{#maxLength}}
-	if strlen({{^isPathParam}}*{{/isPathParam}}r.{{paramName}}) > {{maxLength}} {
+	if strlen({{> api_request_param}}) > {{maxLength}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have less than {{maxLength}} elements")
 	}
 	{{/maxLength}}
 	{{#minimum}}
 	{{#isString}}
-	{{paramName}}Txt, err := atoi({{^isPathParam}}*{{/isPathParam}}r.{{paramName}})
+	{{paramName}}Txt, err := atoi({{> api_request_param}})
 	if {{paramName}}Txt < {{minimum}} {
 	{{/isString}}
 	{{^isString}}
-	if {{^isPathParam}}*{{/isPathParam}}r.{{paramName}} < {{minimum}} {
+	if {{> api_request_param}} < {{minimum}} {
 	{{/isString}}
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must be greater than {{minimum}}")
 	}
 	{{/minimum}}
 	{{#maximum}}
 	{{#isString}}
-	{{paramName}}Txt, err := atoi({{^isPathParam}}*{{/isPathParam}}r.{{paramName}})
+	{{paramName}}Txt, err := atoi({{> api_request_param}})
 	if {{paramName}}Txt > {{maximum}} {
 	{{/isString}}
 	{{^isString}}
-	if {{^isPathParam}}*{{/isPathParam}}r.{{paramName}} > {{maximum}} {
+	if {{> api_request_param}} > {{maximum}} {
 	{{/isString}}
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must be less than {{maximum}}")
 	}
 	{{/maximum}}
-	{{/required}}
 	{{/allParams}}
 
 	{{#queryParams}}
 	{{#required}}
 	{{#isCollectionFormatMulti}}
 	{
-		t := *r.{{paramName}}
+		t := {{> api_request_param}}
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
@@ -197,13 +190,13 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	}
 	{{/isCollectionFormatMulti}}
 	{{^isCollectionFormatMulti}}
-	localVarQueryParams.Add("{{baseName}}", parameterToString(*r.{{paramName}}, "{{collectionFormat}}"))
+	localVarQueryParams.Add("{{baseName}}", parameterToString({{> api_request_param}}, "{{collectionFormat}}"))
 	{{/isCollectionFormatMulti}}
 	{{/required}}
 	{{^required}}
 	if r.{{paramName}} != nil {
 	{{#isCollectionFormatMulti}}
-		t := *r.{{paramName}}
+		t := {{> api_request_param}}
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
@@ -214,7 +207,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 		}
 	{{/isCollectionFormatMulti}}
 	{{^isCollectionFormatMulti}}
-		localVarQueryParams.Add("{{baseName}}", parameterToString(*r.{{paramName}}, "{{collectionFormat}}"))
+		localVarQueryParams.Add("{{baseName}}", parameterToString({{> api_request_param}}, "{{collectionFormat}}"))
 	{{/isCollectionFormatMulti}}
 	}
 	{{/required}}
@@ -242,11 +235,11 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	}
 {{#headerParams}}
 	{{#required}}
-	localVarHeaderParams["{{baseName}}"] = parameterToString(*r.{{paramName}}, "{{collectionFormat}}")
+	localVarHeaderParams["{{baseName}}"] = parameterToString({{> api_request_param}}, "{{collectionFormat}}")
 	{{/required}}
 	{{^required}}
 	if r.{{paramName}} != nil {
-		localVarHeaderParams["{{baseName}}"] = parameterToString(*r.{{paramName}}, "{{collectionFormat}}")
+		localVarHeaderParams["{{baseName}}"] = parameterToString({{> api_request_param}}, "{{collectionFormat}}")
 	}
 	{{/required}}
 {{/headerParams}}
@@ -259,12 +252,12 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	{{paramName}}LocalVarFormFileName = "{{baseName}}"
 
 {{#required}}
-	{{paramName}}LocalVarFile := *r.{{paramName}}
+	{{paramName}}LocalVarFile := {{> api_request_param}}
 {{/required}}
 {{^required}}
 	var {{paramName}}LocalVarFile {{dataType}}
 	if r.{{paramName}} != nil {
-		{{paramName}}LocalVarFile = *r.{{paramName}}
+		{{paramName}}LocalVarFile = {{> api_request_param}}
 	}
 {{/required}}
 	if {{paramName}}LocalVarFile != nil {
@@ -277,12 +270,12 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 {{/isFile}}
 {{^isFile}}
 {{#required}}
-	localVarFormParams.Add("{{baseName}}", parameterToString(*r.{{paramName}}, "{{collectionFormat}}"))
+	localVarFormParams.Add("{{baseName}}", parameterToString({{> api_request_param}}, "{{collectionFormat}}"))
 {{/required}}
 {{^required}}
 {{#isModel}}
 	if r.{{paramName}} != nil {
-		paramJson, err := parameterToJson(*r.{{paramName}})
+		paramJson, err := parameterToJson({{> api_request_param}})
 		if err != nil {
 			return {{#returnType}}localVarReturnValue, {{/returnType}}nil, err
 		}
@@ -291,7 +284,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 {{/isModel}}
 {{^isModel}}
 	if r.{{paramName}} != nil {
-		localVarFormParams.Add("{{baseName}}", parameterToString(*r.{{paramName}}, "{{collectionFormat}}"))
+		localVarFormParams.Add("{{baseName}}", parameterToString({{> api_request_param}}, "{{collectionFormat}}"))
 	}
 {{/isModel}}
 {{/required}}

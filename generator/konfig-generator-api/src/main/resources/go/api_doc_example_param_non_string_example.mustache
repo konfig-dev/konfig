@@ -1,1 +1,1 @@
-{{#isBinary}}os.NewFile(1234, "some_file"){{/isBinary}}{{^isBinary}}{{#isBodyParam}}{{paramName}}{{/isBodyParam}}{{^isBodyParam}}{{example}}{{/isBodyParam}}{{/isBinary}}
+{{#isBinary}}os.NewFile(1234, "some_file"){{/isBinary}}{{^isBinary}}{{#isModel}}{{#nameInCamelCase}}{{.}}{{/nameInCamelCase}}{{^nameInCamelCase}}{{paramName}}{{/nameInCamelCase}}{{/isModel}}{{^isModel}}{{{example}}}{{/isModel}}{{/isBinary}}

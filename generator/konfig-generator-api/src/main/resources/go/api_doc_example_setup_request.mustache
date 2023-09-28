@@ -1,2 +1,11 @@
-request := client.{{classname}}.{{operationId}}()
-{{> api_doc_example_params}}
+{{#allParams}}
+{{#isBodyParam}}
+{{> api_doc_example_setup_body_param}}
+{{/isBodyParam}}
+{{/allParams}}
+request := client.{{classname}}.{{operationId}}(
+    {{#requiredParams}}
+    {{> api_doc_example_param_example}},
+    {{/requiredParams}}
+)
+{{> api_doc_example_optional_params}}

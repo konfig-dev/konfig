@@ -1,0 +1,16 @@
+{{#hasVars}}
+{{#vars}}
+{{#isModel}}
+{{nameInCamelCase}} := *{{goImportAlias}}.New{{dataType}}{{^hasRequired}}(){{/hasRequired}}{{#hasRequired}}(
+{{#requiredVars}}
+    {{> api_doc_example_param_example}},
+{{/requiredVars}}
+){{/hasRequired}}
+{{#vars}}
+{{^required}}
+{{paramName}}.Set{{name}}({{> api_doc_example_param_example}})
+{{/required}}
+{{/vars}}
+{{/isModel}}
+{{/vars}}
+{{/hasVars}}
