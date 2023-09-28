@@ -12,6 +12,8 @@ jobs:
     - name: yarn build
       run: yarn build
       working-directory: ./generator/konfig-dash
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Detect API key leaks
       run: ./guard-api-key-leak.sh
