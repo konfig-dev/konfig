@@ -3,7 +3,8 @@ import { logger } from 'src/lib/logger'
 import { App } from 'octokit'
 
 import { findRepository } from 'konfig-lib'
-import { validateApiKey, API_KEY_HEADER_NAME } from 'src/lib/api-keys'
+import { validateApiKey } from 'src/lib/api-keys'
+import { API_KEY_HEADER_NAME } from 'konfig-lib'
 import { CORS_HEADERS_ORIGIN } from 'src/lib/cors-headers'
 import {
   PrMergeResponseBodyType,

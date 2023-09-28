@@ -12,7 +12,8 @@ for apiKey in "${apiKeys[@]}"; do
     --exclude=../../../generator/konfig-dash/.redwood/prebuild/api/src/lib/api-keys.js \
     --exclude=../../../generator/konfig-dash/api/dist/lib/api-keys.js.map \
     --exclude=../../../generator/konfig-dash/api/dist/lib/api-keys.js \
-    --exclude=../../../generator/konfig-dash/api/src/lib/api-keys.ts)
+    --exclude=../../../generator/konfig-dash/api/src/lib/api-keys.ts
+  )
   if [ -n "$files" ]; then
     foundKey=true
     echo "ERROR: Security risk detected. API key leaked in the following file(s):"

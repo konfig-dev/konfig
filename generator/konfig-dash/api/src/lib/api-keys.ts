@@ -1,4 +1,4 @@
-export const API_KEY_HEADER_NAME = 'x-konfig-api-key'
+import { API_KEY_HEADER_NAME } from 'konfig-lib'
 
 const apiKeys: Record<string, string> = {
   qXx6mYhoJgbj8brJe11NeBNsul375Nv3: 'humanloop',

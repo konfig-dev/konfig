@@ -4,6 +4,7 @@ import {
   PrCreateRequestBodyType,
   PrCreateResponseBody,
 } from 'konfig-openapi-spec'
+import { API_KEY_HEADER_NAME } from 'konfig-lib'
 
 export default class PrCreate extends Command {
   static description = 'Creates a github pull request'
@@ -72,7 +73,7 @@ export default class PrCreate extends Command {
 
     CliUx.ux.action.start(`Creating ${suffix}`)
     const result = await axios.post(url, body, {
-      headers: { 'x-konfig-api-key': apiKey },
+      headers: { [API_KEY_HEADER_NAME]: apiKey },
     })
     CliUx.ux.action.stop()
 
