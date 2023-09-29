@@ -19,9 +19,7 @@ package org.openapitools.codegen.languages;
 
 import com.google.common.collect.ImmutableMap;
 import com.samskivert.mustache.Mustache.Lambda;
-import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
-
 import io.swagger.v3.oas.models.media.ArraySchema;
 import io.swagger.v3.oas.models.media.Schema;
 import org.apache.commons.io.FilenameUtils;
@@ -31,7 +29,10 @@ import org.openapitools.codegen.model.ModelMap;
 import org.openapitools.codegen.model.ModelsMap;
 import org.openapitools.codegen.model.OperationMap;
 import org.openapitools.codegen.model.OperationsMap;
-import org.openapitools.codegen.templating.mustache.*;
+import org.openapitools.codegen.templating.mustache.CamelCaseLambda;
+import org.openapitools.codegen.templating.mustache.JoinWithCommaLambda;
+import org.openapitools.codegen.templating.mustache.OptionalParameterLambda;
+import org.openapitools.codegen.templating.mustache.RequiredParameterLambda;
 import org.openapitools.codegen.utils.ModelUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -405,7 +406,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         additionalProperties.put(CodegenConstants.INTERFACE_PREFIX, interfacePrefix);
 
         // add lambda for mustache templates
-        additionalProperties.put("lambdaCref", new Mustache.Lambda() {
+        additionalProperties.put("lambdaCref", new Lambda() {
             @Override
             public void execute(Template.Fragment fragment, Writer writer) throws IOException {
                 String content = fragment.execute();
@@ -1047,13 +1048,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
             }
         } else if (ModelUtils.isNumberSchema(p)) {
             if (p.getDefault() != null) {
-                if (ModelUtils.isFloatSchema(p)) { // float
-                    return p.getDefault().toString() + "F";
-                } else if (ModelUtils.isDoubleSchema(p)) { // double
-                    return p.getDefault().toString() + "D";
-                } else {    // decimal
-                    return p.getDefault().toString() + "M";
-                }
+                return p.getDefault().toString() + "D";
             }
         } else if (ModelUtils.isIntegerSchema(p)) {
             if (p.getDefault() != null) {

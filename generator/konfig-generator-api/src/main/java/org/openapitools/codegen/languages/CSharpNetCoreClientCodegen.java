@@ -152,7 +152,7 @@ public class CSharpNetCoreClientCodegen extends AbstractCSharpCodegen {
         typeMapping.put("float", "float");
         typeMapping.put("long", "long");
         typeMapping.put("double", "double");
-        typeMapping.put("number", "decimal");
+        typeMapping.put("number", "double");
         typeMapping.put("decimal", "decimal");
         typeMapping.put("DateTime", "DateTime");
         typeMapping.put("date", "DateTime");
