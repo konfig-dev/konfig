@@ -1,5 +1,15 @@
 # konfig-lib
 
+## 1.15.0
+
+### Minor Changes
+
+- [#226](https://github.com/konfig-dev/konfig/pull/226) [`3bfa15ce`](https://github.com/konfig-dev/konfig/commit/3bfa15ce74f365b7b248739c3d84d07458cfdbb3) Thanks [@dphuang2](https://github.com/dphuang2)! - add support for custom dependencies in TypeScript SDK
+
+### Patch Changes
+
+- [#222](https://github.com/konfig-dev/konfig/pull/222) [`d90d63ea`](https://github.com/konfig-dev/konfig/commit/d90d63ea5c472a42be5a0d3c649ad62c955b9a9c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add pr-create CLI command and /prCreate endpoint
+
 ## 1.14.0
 
 ### Minor Changes

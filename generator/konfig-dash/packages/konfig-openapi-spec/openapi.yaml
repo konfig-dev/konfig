@@ -744,6 +744,13 @@ components:
                   enum:
                     - typescript
                   default: typescript
+                dependencies:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: A map of dependencies to add to the generated package.json. This is
+                    useful for adding dependencies that are required for the SDK
+                    to work.
                 packageJsonScripts:
                   type: object
                   additionalProperties:
@@ -2399,6 +2406,13 @@ components:
                     enum:
                       - typescript
                     default: typescript
+                  dependencies:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    description: A map of dependencies to add to the generated package.json. This is
+                      useful for adding dependencies that are required for the
+                      SDK to work.
                   packageJsonScripts:
                     type: object
                     additionalProperties:
@@ -5181,6 +5195,64 @@ components:
       required:
         - spec
         - gitHub
+    PrCreateRequestBody:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: The account owner of the repository
+          example: konfig-dev
+        repo:
+          type: string
+          description: The name of the repository
+          example: acme-sdks
+        base:
+          type: string
+          description: The name of the branch you want to merge into
+          example: main
+        head:
+          type: string
+          description: The name of the branch you want to merge from
+          example: new-openapi-spec-123
+        title:
+          type: string
+          description: The title of the PR
+          example: Renegerate SDKs
+        body:
+          type: string
+          description: The body of the PR
+          example: Regenerate SDKs
+      required:
+        - owner
+        - repo
+        - base
+        - head
+        - title
+        - body
+    PrMergeRequestBody:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: The account owner of the repository
+          example: konfig-dev
+        repo:
+          type: string
+          description: The name of the repository
+          example: acme-sdks
+        base:
+          type: string
+          description: The base branch of the PR you want to merge
+          example: main
+        head:
+          type: string
+          description: The head branch of the PR you want to merge
+          example: new-openapi-spec-123
+      required:
+        - owner
+        - repo
+        - base
+        - head
     LintResponseBody:
       type: object
       properties:
@@ -5296,6 +5368,43 @@ components:
                 - no-diff
           required:
             - status
+    PrCreateResponseBody:
+      type: object
+      properties:
+        status:
+          anyOf:
+            - type: string
+              enum:
+                - created-pr
+            - type: string
+              enum:
+                - pr-already-exists
+        link:
+          type: string
+      required:
+        - status
+        - link
+    PrMergeResponseBody:
+      anyOf:
+        - type: object
+          properties:
+            status:
+              type: string
+              enum:
+                - merged-pr
+            link:
+              type: string
+          required:
+            - status
+            - link
+        - type: object
+          properties:
+            status:
+              type: string
+              enum:
+                - no-pr-found
+          required:
+            - status
     FormatPythonBody:
       type: string
       example: print ()
@@ -5363,6 +5472,46 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PushResponseBody"
+  /prCreate:
+    post:
+      description: Create a pull request for a specified repository with the specified
+        base and head branches
+      summary: Create a pull request
+      operationId: GitHub_create
+      tags:
+        - GitHub
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PrCreateRequestBody"
+      responses:
+        "200":
+          description: Status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrCreateResponseBody"
+  /prMerge:
+    post:
+      description: Merge an open pull request for a specified repository with the
+        specified base and head branches
+      summary: Merge a pull request
+      operationId: GitHub_merge
+      tags:
+        - GitHub
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PrMergeRequestBody"
+      responses:
+        "200":
+          description: Status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrMergeResponseBody"
   /lint:
     post:
       description: Lint your OpenAPI Specification to ensure generation of high

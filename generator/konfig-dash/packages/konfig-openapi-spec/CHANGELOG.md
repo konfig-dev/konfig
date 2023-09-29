@@ -1,5 +1,18 @@
 # konfig-openapi-spec
 
+## 1.3.3
+
+### Patch Changes
+
+- [#222](https://github.com/konfig-dev/konfig/pull/222) [`d90d63ea`](https://github.com/konfig-dev/konfig/commit/d90d63ea5c472a42be5a0d3c649ad62c955b9a9c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add pr-create CLI command and /prCreate endpoint
+
+- [#224](https://github.com/konfig-dev/konfig/pull/224) [`1d379bf1`](https://github.com/konfig-dev/konfig/commit/1d379bf1ef2ec82e1a83b29707533f194aa3c7c9) Thanks [@eddiechayes](https://github.com/eddiechayes)! - create pr-merge CLI command and /prMerge endpoint
+
+- [#225](https://github.com/konfig-dev/konfig/pull/225) [`fc8a924c`](https://github.com/konfig-dev/konfig/commit/fc8a924c31e9023f912453ded597936a11a65a04) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add api keys for /prCreate and /prMerge endpoints
+
+- Updated dependencies [[`3bfa15ce`](https://github.com/konfig-dev/konfig/commit/3bfa15ce74f365b7b248739c3d84d07458cfdbb3), [`d90d63ea`](https://github.com/konfig-dev/konfig/commit/d90d63ea5c472a42be5a0d3c649ad62c955b9a9c)]:
+  - konfig-lib@1.15.0
+
 ## 1.3.2
 
 ### Patch Changes
