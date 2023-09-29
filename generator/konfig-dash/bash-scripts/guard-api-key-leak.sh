@@ -9,11 +9,13 @@ apiKeys=($(grep -oE '[A-Za-z0-9]{32}:' "$keyFile" | sed 's/://'))
 searchFolder="../../.." # entire repo
 foundKey=false
 
-pwd
-find ../../.. -name "api-keys.ts" -print
+# Files that are allowed to contain the api key
+whitelist=(
+  "../../../generator/konfig-dash/api/src/lib/api-keys.ts"
+)
 
 for apiKey in "${apiKeys[@]}"; do
-  files=$(grep -rl "$apiKey" "$searchFolder" --exclude "../../../generator/konfig-dash/api/src/lib/api-keys.ts")
+  files=$(grep -rl "$apiKey" "$searchFolder" | grep -vE "${whitelist[@]}")
   if [ -n "$files" ]; then
     foundKey=true
     echo "ERROR: Security risk detected. API key leaked in the following file(s):"
