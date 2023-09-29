@@ -175,7 +175,7 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
     {{#vendorExtensions}}
     {{#formParams}}
             {{#isArray}}
-            if ({{> requestPropertyName}}) {
+        if ({{> requestPropertyName}}) {
             {{#isCollectionFormatMulti}}
                 const baseName = '{{baseName}}'
                 for (const element of {{> requestPropertyName}}) { {{#multipartFormData}}
@@ -191,16 +191,16 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
                     }
                 {{/isBinary}}
                 {{^isBinary}}
-                    localVarFormParams.set(baseName, element as any);
+            localVarFormParams.set(baseName, element as any);
                 {{/isBinary}}
                 {{/items}}
                 {{/multipartFormData}}{{^multipartFormData}}
-                    localVarFormParams.set('{{baseName}}', element as any);
+            localVarFormParams.set('{{baseName}}', element as any);
                 {{/multipartFormData}}
-                }
+}
             {{/isCollectionFormatMulti}}
             {{^isCollectionFormatMulti}}
-                localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}', {{> requestPropertyName}}.join(COLLECTION_FORMATS.{{collectionFormat}}));
+            localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}', {{> requestPropertyName}}.join(COLLECTION_FORMATS.{{collectionFormat}}));
             {{/isCollectionFormatMulti}}
             }{{/isArray}}
             {{^isArray}}
