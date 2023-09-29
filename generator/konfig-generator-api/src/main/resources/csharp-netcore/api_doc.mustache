@@ -13,9 +13,8 @@ All URIs are relative to *{{{basePath}}}*
 
 {{#operations}}
 {{#operation}}
-<a name="{{{operationIdLowerCase}}}"></a>
+
 # **{{{operationId}}}**
-> {{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
 
 {{{summary}}}{{#notes}}
 
@@ -35,7 +34,7 @@ try
     {{#summary}}
     // {{{.}}}
     {{/summary}}
-    {{#returnType}}ApiResponse<{{{.}}}> response = {{/returnType}}apiInstance.{{{operationId}}}WithHttpInfo({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
+    {{#returnType}}ApiResponse<{{{.}}}> response = {{/returnType}}apiInstance.{{{operationId}}}WithHttpInfo{{> api_doc_example_execute_pass_params}};{{#returnType}}
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);{{/returnType}}
@@ -61,15 +60,6 @@ catch (ApiException e)
 ### Return type
 
 {{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{returnType}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}void (empty response body){{/returnType}}
-
-### Authorization
-
-{{^authMethods}}No authorization required{{/authMethods}}{{#authMethods}}[{{{name}}}](../README.md#{{{name}}}){{^-last}}, {{/-last}}{{/authMethods}}
-
-### HTTP request headers
-
- - **Content-Type**: {{#consumes}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
- - **Accept**: {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}{{^produces}}Not defined{{/produces}}
 
 {{#responses.0}}
 

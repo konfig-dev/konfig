@@ -1,44 +1,39 @@
-
 {{#apiDocumentationAuthenticationPartial}}
 {{{apiDocumentationAuthenticationPartial}}}
-
 {{/apiDocumentationAuthenticationPartial}}
 {{^apiDocumentationAuthenticationPartial}}
-            {{clientName}} client = new {{clientName}}();
-            // Configure custom BasePath if desired
-            client.SetBasePath("{{{basePath}}}");
-            {{#clientStateSetterGetterPascalCase}}
-            client.{{setter}}("{{upperSnakeCase}}");
-            {{/clientStateSetterGetterPascalCase}}
-            {{#clientStateWithExamplesSetterGetterPascalCase}}
-            client.{{setter}}("{{example}}");
-            {{/clientStateWithExamplesSetterGetterPascalCase}}
-            {{#hasAuthMethods}}
-            {{#authMethods}}
-            {{#isBasicBasic}}
-            // Configure HTTP basic authorization: {{{name}}}
-            client.SetUsername("YOUR_USERNAME");
-            client.SetPassword("YOUR_PASSWORD");
-            {{/isBasicBasic}}
-            {{#isBasicBearer}}
-            // Configure Bearer token for authorization: {{{name}}}
-            client.SetAccessToken("YOUR_BEARER_TOKEN");
-            {{/isBasicBearer}}
-            {{#isApiKey}}
-            // Configure API key authorization: {{{name}}}
-            client.Set{{> api_key_name}}("YOUR_API_KEY");
-            {{/isApiKey}}
-            {{#isOAuth}}
-            {{#isApplication}}
-            // Configure OAuth2 credentials for "{{{flow}}}" OAuth flow
-            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
-            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            {{/isApplication}}
-            {{^isApplication}}
-            // Configure OAuth2 access token for authorization: {{{name}}}
-            client.SetAccessToken("YOUR_ACCESS_TOKEN");
-            {{/isApplication}}
-            {{/isOAuth}}
-            {{/authMethods}}
-            {{/hasAuthMethods}}
+{{#clientStateSetterGetterPascalCase}}
+client.{{setter}}("{{upperSnakeCase}}");
+{{/clientStateSetterGetterPascalCase}}
+{{#clientStateWithExamplesSetterGetterPascalCase}}
+client.{{setter}}("{{example}}");
+{{/clientStateWithExamplesSetterGetterPascalCase}}
+{{#hasAuthMethods}}
+{{#authMethods}}
+{{#isBasicBasic}}
+// Configure HTTP basic authorization
+client.SetUsername("YOUR_USERNAME");
+client.SetPassword("YOUR_PASSWORD");
+{{/isBasicBasic}}
+{{#isBasicBearer}}
+// Configure token for authorization
+client.SetAccessToken("YOUR_TOKEN");
+{{/isBasicBearer}}
+{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+client.Set{{> api_key_name}}("YOUR_API_KEY");
+{{/isApiKey}}
+{{#isOAuth}}
+{{#isApplication}}
+// Configure OAuth2 credentials for "{{{flow}}}" OAuth flow
+client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
+{{/isApplication}}
+{{^isApplication}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+client.SetAccessToken("YOUR_ACCESS_TOKEN");
+{{/isApplication}}
+{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}
 {{/apiDocumentationAuthenticationPartial}}

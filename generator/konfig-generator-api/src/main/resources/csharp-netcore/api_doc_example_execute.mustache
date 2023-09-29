@@ -1,0 +1,29 @@
+{{#allParams}}
+{{#isPrimitiveType}}
+var {{paramName}} = {{{example}}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+{{/isPrimitiveType}}
+{{^isPrimitiveType}}
+var {{paramName}} = new {{{dataType}}}(); // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+{{/isPrimitiveType}}
+{{/allParams}}
+
+try
+{
+    {{#summary}}
+    // {{{.}}}
+    {{/summary}}
+    {{#returnType}}{{{.}}} result = {{/returnType}}client.{{classNamePascalCase}}.{{{operationId}}}{{> api_doc_example_execute_pass_params}};{{#returnType}}
+    Console.WriteLine(result);{{/returnType}}
+}
+catch (ApiException e)
+{
+    Console.WriteLine("Exception when calling {{classname}}.{{operationId}}: " + e.Message);
+    Console.WriteLine("Status Code: "+ e.ErrorCode);
+    Console.WriteLine(e.StackTrace);
+}
+catch (ClientException e)
+{
+    Console.WriteLine(e.Response.StatusCode);
+    Console.WriteLine(e.Response.RawContent);
+    Console.WriteLine(e.InnerException);
+}

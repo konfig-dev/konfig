@@ -13,42 +13,9 @@ namespace Example
     {
         public static void Main()
         {
-{{> api_doc_auth_partial}}
-            {{#useHttpClient}}
-            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
-            HttpClient httpClient = new HttpClient();
-            HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new {{classname}}(httpClient, config, httpClientHandler);
-            {{/useHttpClient}}
-            {{#allParams}}
-            {{#isPrimitiveType}}
-            var {{paramName}} = {{{example}}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-            {{/isPrimitiveType}}
-            {{^isPrimitiveType}}
-            var {{paramName}} = new {{{dataType}}}(); // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-            {{/isPrimitiveType}}
-            {{/allParams}}
-
-            try
-            {
-                {{#summary}}
-                // {{{.}}}
-                {{/summary}}
-                {{#returnType}}{{{.}}} result = {{/returnType}}client.{{classNamePascalCase}}.{{{operationId}}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
-                Console.WriteLine(result);{{/returnType}}
-            }
-            catch (ApiException e)
-            {
-                Console.WriteLine("Exception when calling {{classname}}.{{operationId}}: " + e.Message);
-                Console.WriteLine("Status Code: "+ e.ErrorCode);
-                Console.WriteLine(e.StackTrace);
-            }
-            catch (ClientException e)
-            {
-                Console.WriteLine(e.Response.StatusCode);
-                Console.WriteLine(e.Response.RawContent);
-                Console.WriteLine(e.InnerException);
-            }
+            {{clientName}} client = new {{clientName}}();
+            {{> api_doc_auth_partial}}
+            {{> api_doc_example_execute}}
         }
     }
 }
