@@ -84,21 +84,23 @@ export default class SlackMsg extends Command {
       generatorConfigs.length > 1 ? 'have' : 'has'
     } been published :tada:`
 
-    const linksToSdks = generatorConfigs
-      .map(({ generatorName, generatorConfig }) => {
-        if (generatorConfig === undefined)
-          this.error('Error: generator config undefined')
-        const pkg = getPublishedPackageUrl({
-          generatorName,
-          generatorConfig,
-          konfigYaml: parsedKonfigYaml,
+    const linksToSdks = (
+      await Promise.all(
+        generatorConfigs.map(async ({ generatorName, generatorConfig }) => {
+          if (generatorConfig === undefined)
+            this.error('Error: generator config undefined')
+          const pkg = await getPublishedPackageUrl({
+            generatorName,
+            generatorConfig,
+            konfigYaml: parsedKonfigYaml,
+          })
+          const version: string = generatorConfig.version
+          return `- ${generatorNameAsDisplayName({
+            generatorConfig,
+          })} - ${version} (${pkg.packageManagerName}): ${pkg.url}`
         })
-        const version: string = generatorConfig.version
-        return `- ${generatorNameAsDisplayName({
-          generatorConfig,
-        })} - ${version} (${pkg.packageManagerName}): ${pkg.url}`
-      })
-      .join('\n')
+      )
+    ).join('\n')
     const msg = firstLine + '\n\n' + linksToSdks
     this.log(msg)
     this.log('\n------------------------------------\n')

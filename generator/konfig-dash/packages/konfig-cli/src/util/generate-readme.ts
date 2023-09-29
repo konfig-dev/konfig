@@ -8,6 +8,7 @@ import {
 import { getDefaultBranch } from './get-default-branch'
 import { getGitRepositoryName } from './get-git-repository-name'
 import { isSubmodule } from './is-submodule'
+import { UnwrapPromise } from './unwrap-promise'
 
 export async function generateReadme({
   konfigYaml,
@@ -25,7 +26,7 @@ export async function generateReadme({
     version: string
     documentationUrl: string
     sourceUrl: string
-    packageManagerUrl: ReturnType<typeof getPublishedPackageUrl>
+    packageManagerUrl: UnwrapPromise<ReturnType<typeof getPublishedPackageUrl>>
   }[] = await Promise.all(
     generatorConfigs
       .filter(
@@ -49,7 +50,7 @@ export async function generateReadme({
             generatorConfig: config,
           }),
           sourceUrl,
-          packageManagerUrl: getPublishedPackageUrl({
+          packageManagerUrl: await getPublishedPackageUrl({
             generatorName: generator,
             generatorConfig: config,
             konfigYaml,
@@ -100,14 +101,13 @@ export async function getDocumentationUrl({
     ? getDefaultBranch({ cwd: generatorConfig.outputDirectory })
     : getDefaultBranch({ cwd: process.cwd() })
   CliUx.ux.debug(`Default branch: ${defaultBranch}`)
-  const docUrl =
-    generator === 'php' || generatorConfig.git.host === 'gitlab.com'
-      ? `${sourceUrl}/blob/${defaultBranch}/README.md`
-      : `${sourceUrl}/README.md`
+  const docUrl = generatorIsInSubmodule
+    ? `${sourceUrl}/blob/${defaultBranch}/README.md`
+    : `${sourceUrl}/README.md`
   return docUrl
 }
 
-export function getPublishedPackageUrl({
+export async function getPublishedPackageUrl({
   generatorName,
   generatorConfig,
   konfigYaml,
@@ -117,7 +117,7 @@ export function getPublishedPackageUrl({
     | KonfigYamlAdditionalGeneratorConfig
     | KonfigYamlGeneratorConfig
   konfigYaml: KonfigYamlType
-}): { packageManagerName: string; url: string } {
+}): Promise<{ packageManagerName: string; url: string }> {
   let config
   switch (generatorName) {
     case 'csharp':
@@ -138,12 +138,17 @@ export function getPublishedPackageUrl({
       config = konfigYaml.generators.go
       if (config === undefined) throw Error('Config undefined')
 
-      // We have to use "generatorConfig" to support "additionalGenerators"
-      if (generatorConfig.git.host === 'gitlab.com')
+      if (
+        await isSubmodule({
+          git: generatorConfig.git,
+          configDir: process.cwd(),
+        })
+      ) {
         return {
           url: `https://${generatorConfig.git.host}/${generatorConfig.git.userId}/${generatorConfig.git.repoId}`,
-          packageManagerName: 'GitLab',
+          packageManagerName: generatorConfig.git.host,
         }
+      }
 
       return {
         url: `https://pkg.go.dev/github.com/${config.git.userId}/${
