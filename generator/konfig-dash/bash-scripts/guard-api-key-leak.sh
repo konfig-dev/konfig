@@ -11,23 +11,23 @@ foundKey=false
 
 # Files that are allowed to contain the api key
 whitelist=(
-  "../../../generator/konfig-dash/api/src/lib/api-keys.ts"
-  "../../../generator/konfig-dash/.redwood/prebuild/api/src/lib/api-keys.js"
   "../../../generator/konfig-dash/api/dist/lib/api-keys.js"
+  "../../../generator/konfig-dash/.redwood/prebuild/api/src/lib/api-keys.js"
+  "../../../generator/konfig-dash/api/src/lib/api-keys.ts"
   "../../../generator/konfig-dash/api/dist/lib/api-keys.js.map"
 )
 
 for apiKey in "${apiKeys[@]}"; do
-  files=$(grep -rl "$apiKey" "$searchFolder" | grep -vE "${whitelist[@]}")
+  files=$(grep -rl "$apiKey" "$searchFolder" | grep -vE "$(printf "%s\n" "${whitelist[@]}")")
   if [ -n "$files" ]; then
     foundKey=true
-    echo "ERROR: Security risk detected. API key leaked in the following file(s):"
+    echo "ERROR: Security risk detected. API key leaked in the following files:"
     echo "$files"
     echo
   fi
 done
 
-if [ "$foundKey" ]; then
+if [ "$foundKey" = true ]; then
   exit 1
 fi
 echo No api key leaks detected.
