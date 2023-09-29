@@ -10,6 +10,8 @@ import { v4 as uuid } from 'uuid'
 const Bucket = 'konfig-sdks'
 const s3Client = new S3Client({ region: 'us-west-1' })
 
+const key = 'qXx6mYhoJgbj8brJe11NeBNsul375Nv3'
+
 type ObjectKey = string
 export const uploadFile = async (Body: Buffer): Promise<ObjectKey> => {
   const Key = `${new Date().toISOString()}-${uuid()}.tar.gz`
