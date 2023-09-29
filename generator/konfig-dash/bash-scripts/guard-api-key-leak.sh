@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# get the api keys from api-keys.ts
 cd "$(dirname "$0")"
 
+# get the api keys from api-keys.ts
 keyFile="../api/src/lib/api-keys.ts"
 apiKeys=($(grep -oE '[A-Za-z0-9]{32}:' "$keyFile" | sed 's/://'))
 
