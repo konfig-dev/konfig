@@ -12,6 +12,9 @@ foundKey=false
 # Files that are allowed to contain the api key
 whitelist=(
   "../../../generator/konfig-dash/api/src/lib/api-keys.ts"
+  "../../../generator/konfig-dash/.redwood/prebuild/api/src/lib/api-keys.js"
+  "../../../generator/konfig-dash/api/dist/lib/api-keys.js"
+  "../../../generator/konfig-dash/api/dist/lib/api-keys.js.map"
 )
 
 for apiKey in "${apiKeys[@]}"; do
