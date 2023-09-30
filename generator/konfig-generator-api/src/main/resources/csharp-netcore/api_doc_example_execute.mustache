@@ -9,11 +9,16 @@ var {{paramName}} = {{{example}}};  // {{{description}}}{{^required}} (optional)
 {{#description}}
 // {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
 {{/description}}
+{{#isArray}}
+var {{paramName}} = new {{{dataType}}}();
+{{/isArray}}
+{{^isArray}}
 var {{paramName}} = new {{{dataType}}}(
 {{#vars}}
     {{nameInCamelCaseLowerFirst}}{{^-last}},{{/-last}}
 {{/vars}}
 );
+{{/isArray}}
 {{/isPrimitiveType}}
 {{/allParams}}
 
