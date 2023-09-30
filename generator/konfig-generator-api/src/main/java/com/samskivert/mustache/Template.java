@@ -161,7 +161,7 @@ public class Template {
         }
     }
 
-    protected Template(Segment[] segs, Mustache.Compiler compiler) {
+    protected Template (Segment[] segs, Mustache.Compiler compiler) {
         _segs = segs;
         _compiler = compiler;
         _fcache = compiler.collector.createFetcherCache();
@@ -237,38 +237,73 @@ public class Template {
      */
     static String generateDebugReport(Object data) {
         ArrayList<String> lines = new ArrayList<>();
-        generateDebugReport(data, lines, ".");
+        ArrayList<String> prefix = new ArrayList<>();
+        generateDebugReport(data, lines, prefix);
         return String.join("\n", lines);
     }
 
-    private static void generateDebugReport(Object data, ArrayList<String> lines, String prefix) {
-        if (data instanceof Map) {
+    private static void generateDebugReport(Object data, ArrayList<String> lines, ArrayList<String> prefix) {
+        // clone prefix and reassign prefix variable
+        String label = String.join(".", prefix);
+        if (data == null) {
+            lines.add(label + ": null");
+        } else if (data instanceof Map) {
             Map<?, ?> map = (Map<?, ?>) data;
             // iterate through map in sorted manner
             ArrayList<String> keys = new ArrayList<>(map.keySet().size());
             keys.addAll(map.keySet().stream().map(Object::toString).collect(Collectors.toList()));
             Collections.sort(keys);
             for (String key : keys) {
-                generateDebugReport(map.get(key), lines, prefix + key + ".");
+                ArrayList<String> clone = new ArrayList<>(prefix);
+                clone.add(key);
+                generateDebugReport(map.get(key), lines, clone);
             }
         } else if (data instanceof Iterable) {
             Iterable<?> iterable = (Iterable<?>) data;
             int index = 0;
             for (Object item : iterable) {
-                generateDebugReport(item, lines, prefix + "[" + index + "].");
+                ArrayList<String> clone = new ArrayList<>(prefix);
+                clone.add("[" + index + "]");
+                generateDebugReport(item, lines, clone);
                 index++;
             }
-        } else if(data.getClass().isArray()) {
+        } else if (data.getClass().isArray()) {
             Object[] array = (Object[]) data;
             int index = 0;
             for (Object item : array) {
-                generateDebugReport(item, lines, prefix + "[" + index + "].");
+                ArrayList<String> clone = new ArrayList<>(prefix);
+                clone.add("[" + index + "]");
+                generateDebugReport(item, lines, clone);
                 index++;
             }
+        } else if (isBoxedPrimitiveOrString(data)) {
+            lines.add(label + ": " + generateDebugString(data));
+        } else if (data.getClass().getFields().length > 0) {
+            // iterate over all fields and recurse
+            for (java.lang.reflect.Field field : data.getClass().getFields()) {
+                ArrayList<String> clone = new ArrayList<>(prefix);
+                clone.add(field.getName());
+                try {
+                    generateDebugReport(field.get(data), lines, clone);
+                } catch (IllegalAccessException e) {
+                    // ignore
+                }
+            }
         } else {
-            String label = prefix.substring(0, prefix.length() - 1);
             lines.add(label + ": " + generateDebugString(data));
         }
+    }
+
+    public static boolean isBoxedPrimitiveOrString(Object value) {
+        return (value instanceof Integer) ||
+                (value instanceof Long) ||
+                (value instanceof Double) ||
+                (value instanceof Float) ||
+                (value instanceof Short) ||
+                (value instanceof Byte) ||
+                (value instanceof Character) ||
+                (value instanceof Boolean) ||
+                (value instanceof String);
     }
 
     static String generateDebugString(Object data) {
