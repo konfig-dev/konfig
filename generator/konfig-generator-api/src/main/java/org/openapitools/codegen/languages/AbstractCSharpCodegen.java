@@ -1396,7 +1396,9 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
             if (example == null) {
                 example = p.paramName + "_example";
             }
-            example = "\"" + escapeText(example) + "\"";
+            // if its not quoted already
+            if (!example.startsWith("\"") && !example.endsWith("\""))
+                example = "\"" + escapeText(example) + "\"";
         } else if (p.isInteger || p.isShort) {
             if (example == null) {
                 example = "56";

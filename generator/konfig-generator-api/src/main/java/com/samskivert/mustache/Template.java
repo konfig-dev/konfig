@@ -7,9 +7,11 @@ package com.samskivert.mustache;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Represents a compiled template. Templates are executed with a <em>context</em> to generate
@@ -204,6 +206,82 @@ public class Template {
     }
 
     /**
+     * Generates a debug report for the supplied data by recursively iterating through data and producing a flattened
+     * list of path to values. For example:
+     * {
+     *   "foo": {
+     *     "bar": 1,
+     *     "baz": 2
+     *   },
+     *   "quux": [
+     *     {
+     *       "a": 3,
+     *       "b": 4
+     *     },
+     *     {
+     *       "a": 5,
+     *       "b": 6
+     *     }
+     *   ]
+     * }
+     * produces:
+     * foo.bar: 1
+     * foo.baz: 2
+     * quux[0].a: 3
+     * quux[0].b: 4
+     * quux[1].a: 5
+     * quux[1].b: 6
+     *
+     * @param data from the context
+     * @return a string containing the debug report
+     */
+    static String generateDebugReport(Object data) {
+        ArrayList<String> lines = new ArrayList<>();
+        generateDebugReport(data, lines, ".");
+        return String.join("\n", lines);
+    }
+
+    private static void generateDebugReport(Object data, ArrayList<String> lines, String prefix) {
+        if (data instanceof Map) {
+            Map<?, ?> map = (Map<?, ?>) data;
+            // iterate through map in sorted manner
+            ArrayList<String> keys = new ArrayList<>(map.keySet().size());
+            keys.addAll(map.keySet().stream().map(Object::toString).collect(Collectors.toList()));
+            Collections.sort(keys);
+            for (String key : keys) {
+                generateDebugReport(map.get(key), lines, prefix + key + ".");
+            }
+        } else if (data instanceof Iterable) {
+            Iterable<?> iterable = (Iterable<?>) data;
+            int index = 0;
+            for (Object item : iterable) {
+                generateDebugReport(item, lines, prefix + "[" + index + "].");
+                index++;
+            }
+        } else if(data.getClass().isArray()) {
+            Object[] array = (Object[]) data;
+            int index = 0;
+            for (Object item : array) {
+                generateDebugReport(item, lines, prefix + "[" + index + "].");
+                index++;
+            }
+        } else {
+            String label = prefix.substring(0, prefix.length() - 1);
+            lines.add(label + ": " + generateDebugString(data));
+        }
+    }
+
+    static String generateDebugString(Object data) {
+        if (data instanceof String) {
+            return "\"" + data + "\"";
+        }
+        if (data == null) {
+            return "null";
+        }
+        return data.toString();
+    }
+
+    /**
      * Called by executing segments to obtain the value of the specified variable in the supplied
      * context.
      *
@@ -222,6 +300,10 @@ public class Template {
             return ctx.onLast;
         } else if (name.equals(INDEX_NAME)) {
             return ctx.index;
+        }
+
+        if (name.equals(DEBUG_NAME)) {
+            return generateDebugReport(ctx.data);
         }
 
         if (name.startsWith(PARENT_NAME)) {
@@ -465,6 +547,8 @@ public class Template {
     }
 
     protected static final String DOT_NAME = ".";
+
+    protected static final String DEBUG_NAME = "?";
 
     protected static final String PARENT_NAME = "../";
     protected static final String THIS_NAME = "this";

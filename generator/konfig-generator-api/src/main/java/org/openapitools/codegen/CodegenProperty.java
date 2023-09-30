@@ -176,6 +176,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     public String discriminatorValue;
     public String nameInLowerCase; // property name in lower case
     public String nameInCamelCase; // property name in camel case
+    public String nameInCamelCaseLowerFirst; // property name in camel case with lowercase first character
     public String nameInSnakeCase; // property name in upper snake case
     // enum name based on the property name, usually use as a prefix (e.g. VAR_NAME) for enum name (e.g. VAR_NAME_VALUE1)
     public String enumName;
@@ -1055,6 +1056,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
         sb.append(", hasValidation=").append(hasValidation);
         sb.append(", isInherited=").append(isInherited);
         sb.append(", discriminatorValue='").append(discriminatorValue).append('\'');
+        sb.append(", nameInCamelCaseLowerFirst='").append(nameInCamelCaseLowerFirst).append('\'');
         sb.append(", nameInCamelCase='").append(nameInCamelCase).append('\'');
         sb.append(", nameInSnakeCase='").append(nameInSnakeCase).append('\'');
         sb.append(", enumName='").append(enumName).append('\'');

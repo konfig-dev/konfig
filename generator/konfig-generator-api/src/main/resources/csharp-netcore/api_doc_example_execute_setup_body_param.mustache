@@ -1,0 +1,17 @@
+{{#vars}}
+{{#isPrimitiveType}}
+{{#example}}
+{{#isEnum}}
+var {{nameInCamelCaseLowerFirst}} = {{{../../dataType}}}.{{{enumName}}}.{{{example}}};{{#description}} // {{{.}}}{{/description}}
+{{/isEnum}}
+{{^isEnum}}
+var {{nameInCamelCaseLowerFirst}} = {{{example}}};{{#description}} // {{{.}}}{{/description}}
+{{/isEnum}}
+{{/example}}
+{{^example}}
+{{#isString}}
+var {{nameInCamelCaseLowerFirst}} = "{{{nameInCamelCaseLowerFirst}}}_example";{{#description}} // {{{.}}}{{/description}}
+{{/isString}}
+{{/example}}
+{{/isPrimitiveType}}
+{{/vars}}

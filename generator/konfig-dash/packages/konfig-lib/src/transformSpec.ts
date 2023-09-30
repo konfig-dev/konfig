@@ -197,6 +197,19 @@ export const transformSpec = async ({
     await fixCustomModifications({ fixConfig, spec })
   }
 
+  // if a schema has the "default" property filled but the "example" property is empty
+  // then copy the "default" property to the "example" property
+  recurseObject(spec.spec, ({ value: schema }) => {
+    if (
+      schema !== null &&
+      schema !== undefined &&
+      schema['default'] !== undefined &&
+      schema['example'] === undefined
+    ) {
+      schema['example'] = schema['default']
+    }
+  })
+
   // use recurseObject function to iterate through all objects with the
   // "example" property and copy the property to another property on the same
   // object called "x-konfig-original-example"

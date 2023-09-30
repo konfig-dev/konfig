@@ -1,9 +1,19 @@
 {{#allParams}}
 {{#isPrimitiveType}}
-var {{paramName}} = {{{example}}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+var {{paramName}} = {{{example}}};  // {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
 {{/isPrimitiveType}}
 {{^isPrimitiveType}}
-var {{paramName}} = new {{{dataType}}}(); // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+{{#isBodyParam}}
+{{> api_doc_example_execute_setup_body_param}}
+{{/isBodyParam}}
+{{#description}}
+// {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+{{/description}}
+var {{paramName}} = new {{{dataType}}}(
+{{#vars}}
+    {{nameInCamelCaseLowerFirst}}{{^-last}},{{/-last}}
+{{/vars}}
+);
 {{/isPrimitiveType}}
 {{/allParams}}
 

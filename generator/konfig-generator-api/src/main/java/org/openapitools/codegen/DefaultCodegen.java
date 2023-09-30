@@ -3921,6 +3921,7 @@ public class DefaultCodegen implements CodegenConfig {
             property.openApiType = p.getType();
         }
         property.nameInCamelCase = camelize(property.name);
+        property.nameInCamelCaseLowerFirst = camelize(property.name, CamelizeOption.LOWERCASE_FIRST_LETTER);
         property.nameInSnakeCase = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, property.nameInCamelCase);
         property.description = escapeText(p.getDescription());
         property.unescapedDescription = p.getDescription();
@@ -4025,6 +4026,15 @@ public class DefaultCodegen implements CodegenConfig {
         if (property.isEnum) {
             property.datatypeWithEnum = toEnumName(property);
             property.enumName = toEnumName(property);
+
+            // if example string (unquoted) exists in _enum, set it to matching enum value
+            // with toEnumVarName
+            if (property.example != null) {
+                String exampleUnquoted = property.example.replace("\"", "");
+                if (property._enum.contains(exampleUnquoted)) {
+                    property.example = toEnumVarName(exampleUnquoted, property.datatypeWithEnum);
+                }
+            }
         } else {
             property.datatypeWithEnum = property.dataType;
         }
