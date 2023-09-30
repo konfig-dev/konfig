@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.16.0
+
+### Minor Changes
+
+- [#228](https://github.com/konfig-dev/konfig/pull/228) [`ab7e69b6`](https://github.com/konfig-dev/konfig/commit/ab7e69b68ea891c74c7fa2c042beb6cd644382ee) Thanks [@dphuang2](https://github.com/dphuang2)! - if schema includes default value and no example then populate the example with the default value
+
 ## 1.15.0
 
 ### Minor Changes
