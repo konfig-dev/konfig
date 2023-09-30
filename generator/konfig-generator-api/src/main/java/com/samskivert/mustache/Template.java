@@ -161,7 +161,7 @@ public class Template {
         }
     }
 
-    protected Template (Segment[] segs, Mustache.Compiler compiler) {
+    protected Template(Segment[] segs, Mustache.Compiler compiler) {
         _segs = segs;
         _compiler = compiler;
         _fcache = compiler.collector.createFetcherCache();
@@ -337,15 +337,11 @@ public class Template {
             return ctx.index;
         }
 
-        if (name.equals(DEBUG_NAME)) {
-            return generateDebugReport(ctx.data);
-        }
-
         if (name.startsWith(PARENT_NAME)) {
             // find the number of "../" strings are in the name and walk up that many parent
             // contexts. Do this by counting the number of "../" strings are at the beginning of name.
             int count = 0;
-            String curr  = name;
+            String curr = name;
             while (curr.startsWith(PARENT_NAME)) {
                 count++;
                 curr = curr.substring(PARENT_NAME.length());
@@ -362,10 +358,17 @@ public class Template {
             }
             // if we have a name left, resolve it in the context we found
             if (!curr.isEmpty()) {
+                if (curr.equals(DEBUG_NAME)) {
+                    return generateDebugReport(ctx.data);
+                }
                 return getValueIn(ctx.data, curr, line);
             } else {
                 return ctx.data;
             }
+        }
+
+        if (name.equals(DEBUG_NAME)) {
+            return generateDebugReport(ctx.data);
         }
 
         // if we're in standards mode, restrict ourselves to simple direct resolution (no compound
