@@ -168,8 +168,14 @@ export default class Deploy extends Command {
         mode: flags.dev ? 'dev' : flags.test ? 'test' : 'prod',
       }
 
-      const host = flags.apiUrl
-        ? removeTrailingSlash(flags.apiUrl.href)
+      const apiUrl =
+        flags.apiUrl ??
+        (process.env.KONFIG_API_URL !== undefined
+          ? new URL(process.env.KONFIG_API_URL)
+          : process.env.KONFIG_API_URL)
+
+      const host = apiUrl
+        ? removeTrailingSlash(apiUrl.href)
         : getApiUrl(homeParams)
 
       this.debug('before parseFilterFlag')
