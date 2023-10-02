@@ -48,6 +48,7 @@ import { removeTrailingSlash } from '../util/remove-trailing-slash'
 import { generateStatisticsFileForSdks } from '../util/generate-statistics-file-for-sdks'
 import { generateChangelog } from '../util/generate-changelog'
 import { isSubmodule } from '../util/is-submodule'
+import { getHostForGenerateApi } from '../util/get-host-for-generate-api'
 
 function getOutputDir(
   outputFlag: string | undefined,
@@ -168,9 +169,7 @@ export default class Deploy extends Command {
         mode: flags.dev ? 'dev' : flags.test ? 'test' : 'prod',
       }
 
-      const host = flags.apiUrl
-        ? removeTrailingSlash(flags.apiUrl.href)
-        : getApiUrl(homeParams)
+      const host = getHostForGenerateApi({ apiUrl: flags.apiUrl, homeParams })
 
       this.debug('before parseFilterFlag')
       const generatorFilter = parseFilterFlag(flags.generatorFilter)
