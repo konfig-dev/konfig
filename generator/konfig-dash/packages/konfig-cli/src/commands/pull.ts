@@ -1,4 +1,4 @@
-import { Command, CliUx } from '@oclif/core'
+import { Command, CliUx, Flags } from '@oclif/core'
 import { parseKonfigYaml } from '../util/parse-konfig-yaml'
 import axios from 'axios'
 import * as fs from 'fs-extra'
@@ -10,25 +10,28 @@ export default class Pull extends Command {
 
   static examples = ['<%= config.bin %> <%= command.id %>']
 
-  static flags = {}
+  static flags = {
+    target: Flags.string({
+      name: 'input',
+      char: 'i',
+      description: 'input URL to poll',
+    }),
+    output: Flags.string({
+      name: 'output',
+      char: 'o',
+      description: 'Path to output spec file',
+    }),
+  }
 
   static args = []
 
   public async run(): Promise<void> {
-    await this.parse(Pull)
+    const { flags } = await this.parse(Pull)
 
-    const { parsedKonfigYaml } = parseKonfigYaml({
-      configDir: process.cwd(),
-    })
+    const remote = getUrl({ urlOverride: flags.url })
 
-    if (parsedKonfigYaml.specRemotePath === undefined) {
-      throw new Error('specRemotePath is not defined in konfig.yaml')
-    }
-
-    CliUx.ux.action.start(
-      `Fetching spec from ${parsedKonfigYaml.specRemotePath}`
-    )
-    const response = await axios.get<object>(parsedKonfigYaml.specRemotePath)
+    CliUx.ux.action.start(`Fetching spec from ${remote}`)
+    const response = await axios.get<object>(remote)
     CliUx.ux.action.stop()
     const spec = response.data
 
@@ -39,11 +42,9 @@ export default class Pull extends Command {
     // in that case, we need to parse the yaml string into an object
     const parsedSpec = typeof spec === 'string' ? yaml.load(spec) : spec
 
-    const outputPath = parsedKonfigYaml.specInputPath
-      ? parsedKonfigYaml.specInputPath
-      : parsedKonfigYaml.specPath
+    const outputPath = getOutputPath({ pathOverride: flags.output })
 
-    const isOutputJson = parsedKonfigYaml.specRemotePath.endsWith('json')
+    const isOutputJson = outputPath.endsWith('json')
     CliUx.ux.action.start(`Writing spec to ${outputPath}`)
     fs.writeFileSync(
       outputPath,
@@ -53,4 +54,43 @@ export default class Pull extends Command {
     )
     CliUx.ux.action.stop()
   }
+}
+
+/**
+ * If urlOverride is provided, then return urlOverride
+ * Otherwise, return specRemotePath from konfig.yaml
+ */
+function getUrl({ urlOverride }: { urlOverride?: string }) {
+  if (urlOverride !== undefined) {
+    return urlOverride
+  }
+
+  const { parsedKonfigYaml } = parseKonfigYaml({
+    configDir: process.cwd(),
+  })
+
+  if (parsedKonfigYaml.specRemotePath === undefined) {
+    throw new Error('specRemotePath is not defined in konfig.yaml')
+  }
+
+  return parsedKonfigYaml.specRemotePath
+}
+
+/**
+ * If pathOverride is provided, then return pathOverride
+ * Otherwise, return path from konfig.yaml
+ */
+function getOutputPath({ pathOverride }: { pathOverride?: string }) {
+  if (pathOverride !== undefined) {
+    return pathOverride
+  }
+
+  const { parsedKonfigYaml } = parseKonfigYaml({
+    configDir: process.cwd(),
+  })
+
+  const outputPath = parsedKonfigYaml.specInputPath
+    ? parsedKonfigYaml.specInputPath
+    : parsedKonfigYaml.specPath
+  return outputPath
 }
