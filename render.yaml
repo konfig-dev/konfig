@@ -22,19 +22,17 @@ services:
   - name: humanloop-polling-v4
     type: cron
     schedule: "*/30 * * * *"
-    buildCommand: npm init -y
+    buildCommand: npm init -y; npm install konfig-cli
     env: node
-    rootDir: v4
-    repo: https://github.com/humanloop/humanloop-sdks
-    startCommand: npm install konfig-cli && ./node_modules/.bin/konfig pull && ./node_modules/.bin/konfig push -o humanloop -r humanloop-sdks -s openapi.json -x v4
+    repo: https://github.com/konfig-dev/konfig
+    startCommand: ./node_modules/.bin/konfig pull -i https://api.humanloop.com/v4/openapi.json -o openapi.json && ./node_modules/.bin/konfig push -o humanloop -r humanloop-sdks -s openapi.json -x v4
   - name: humanloop-polling-v4-alpha
     type: cron
     env: node
     schedule: "*/30 * * * *"
-    buildCommand: npm init -y
-    rootDir: v4-alpha
-    repo: https://github.com/humanloop/humanloop-sdks
-    startCommand: npm install konfig-cli && ./node_modules/.bin/konfig pull && ./node_modules/.bin/konfig push -o humanloop -r humanloop-sdks -s openapi.json -x v4-alpha
+    buildCommand: npm init -y; npm install konfig-cli
+    repo: https://github.com/konfig-dev/konfig
+    startCommand: ./node_modules/.bin/konfig pull -i https://neostaging.humanloop.ml/v4/openapi.json -o openapi.json && ./node_modules/.bin/konfig push -o humanloop -r humanloop-sdks -s openapi.json -x v4-alpha
 
   - name: konfigthis.com
     type: web
@@ -144,7 +142,7 @@ services:
     rootDir: generator/konfig-dash
     buildCommand: yarn && yarn build && yarn rw build api
     startCommand: yarn rw deploy render api --prisma=false --data-migrate=false
-    autoDeploy: false
+    autodeploy: false
     envVars:
       - fromGroup: npm
       - fromGroup: aws
@@ -180,7 +178,7 @@ services:
     env: docker
     rootDir: generator/konfig-generator-api
     repo: https://github.com/konfig-dev/konfig
-    autoDeploy: false
+    autodeploy: false
     envVars:
       - fromGroup: aws
       - key: PORT
