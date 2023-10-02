@@ -199,13 +199,26 @@ export const transformSpec = async ({
 
   // if a schema has the "default" property filled but the "example" property is empty
   // then copy the "default" property to the "example" property
-  recurseObject(spec.spec, ({ value: schema }) => {
+  recurseObject(spec.spec, ({ value: schema, path }) => {
+    // if path includes responses then skip
+    if (path.includes('responses')) return
+
+    // check if "schema" variable is a SchemaObject
+    // either it has a "type" property
+    // or allOf/oneOf/anyOf
+    if (schema === null) return
+    if (typeof schema !== 'object') return
     if (
-      schema !== null &&
-      schema !== undefined &&
-      schema['default'] !== undefined &&
-      schema['example'] === undefined
-    ) {
+      !(
+        'type' in schema ||
+        'allOf' in schema ||
+        'oneOf' in schema ||
+        'anyOf' in schema
+      )
+    )
+      return
+
+    if (schema['default'] !== undefined && schema['example'] === undefined) {
       schema['example'] = schema['default']
     }
   })
