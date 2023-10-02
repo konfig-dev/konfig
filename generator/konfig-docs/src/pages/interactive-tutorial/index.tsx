@@ -15,6 +15,7 @@ import {
   makeRequestTsRefactored,
   makeRequestTsRefactoredFixed,
 } from "./_vm";
+import stackblitzrc from "./_vm/stackblitzrc.json";
 import packageJson from "./_vm/package.json";
 import salesPackageJson from "./_vm/sales-demo-package.json";
 import tsconfigJson from "./_vm/tsconfig.json";
@@ -228,6 +229,7 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
               2
             ),
             "api.yaml": apiYaml,
+            ".stackblitzrc": JSON.stringify(stackblitzrc, undefined, 2),
             "yarn.lock": yarnLock,
             "make-request.ts": makeRequestTs,
             "tsconfig.json": JSON.stringify(tsconfigJson, undefined, 2),
