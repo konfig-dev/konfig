@@ -11,7 +11,7 @@ export default class Pull extends Command {
   static examples = ['<%= config.bin %> <%= command.id %>']
 
   static flags = {
-    target: Flags.string({
+    input: Flags.string({
       name: 'input',
       char: 'i',
       description: 'input URL to poll',
@@ -28,7 +28,7 @@ export default class Pull extends Command {
   public async run(): Promise<void> {
     const { flags } = await this.parse(Pull)
 
-    const remote = getUrl({ urlOverride: flags.url })
+    const remote = getUrl({ urlOverride: flags.input })
 
     CliUx.ux.action.start(`Fetching spec from ${remote}`)
     const response = await axios.get<object>(remote)
