@@ -1,5 +1,20 @@
 # konfig-cli
 
+## 1.15.0
+
+### Minor Changes
+
+- [#234](https://github.com/konfig-dev/konfig/pull/234) [`817c829e`](https://github.com/konfig-dev/konfig/commit/817c829e9668549b8f703342f1b7831bb8c67dfc) Thanks [@dphuang2](https://github.com/dphuang2)! - use KONFIG_API_URL for "konfig generate" if exists
+
+- [#233](https://github.com/konfig-dev/konfig/pull/233) [`0b14a865`](https://github.com/konfig-dev/konfig/commit/0b14a865ebbd235e3d5996c7c3da3896f54e589b) Thanks [@dphuang2](https://github.com/dphuang2)! - add -i and -o flag to pull
+
+### Patch Changes
+
+- Updated dependencies [[`6c28822e`](https://github.com/konfig-dev/konfig/commit/6c28822eb8ccfa53359d7ba105340ffa9409fcad)]:
+  - konfig-lib@1.17.0
+  - konfig-openapi-spec@1.3.5
+  - konfig-postman-to-openapi@3.0.129
+
 ## 1.14.2
 
 ### Patch Changes

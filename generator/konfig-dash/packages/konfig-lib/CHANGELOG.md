@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.17.0
+
+### Minor Changes
+
+- [#232](https://github.com/konfig-dev/konfig/pull/232) [`6c28822e`](https://github.com/konfig-dev/konfig/commit/6c28822eb8ccfa53359d7ba105340ffa9409fcad) Thanks [@dphuang2](https://github.com/dphuang2)! - fix "example" property being applied to the wrong places by transformSpec.ts
+
 ## 1.16.0
 
 ### Minor Changes
