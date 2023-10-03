@@ -1,5 +1,18 @@
 # konfig-cli
 
+## 1.16.0
+
+### Minor Changes
+
+- [#237](https://github.com/konfig-dev/konfig/pull/237) [`af4d803e`](https://github.com/konfig-dev/konfig/commit/af4d803e9ca765ffc52f4987d7169197c20f3ec2) Thanks [@dphuang2](https://github.com/dphuang2)! - fix bug in generating top-level README.md
+
+### Patch Changes
+
+- Updated dependencies [[`82553c73`](https://github.com/konfig-dev/konfig/commit/82553c73fc836af4c7ea220fbecf375d2fa4b14b)]:
+  - konfig-openapi-spec@1.4.0
+  - konfig-lib@1.18.0
+  - konfig-postman-to-openapi@3.0.130
+
 ## 1.15.0
 
 ### Minor Changes

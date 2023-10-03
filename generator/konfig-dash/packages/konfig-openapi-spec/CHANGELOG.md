@@ -1,5 +1,16 @@
 # konfig-openapi-spec
 
+## 1.4.0
+
+### Minor Changes
+
+- [#230](https://github.com/konfig-dev/konfig/pull/230) [`82553c73`](https://github.com/konfig-dev/konfig/commit/82553c73fc836af4c7ea220fbecf375d2fa4b14b) Thanks [@dphuang2](https://github.com/dphuang2)! - add label to link group in documentation configuration
+
+### Patch Changes
+
+- Updated dependencies [[`82553c73`](https://github.com/konfig-dev/konfig/commit/82553c73fc836af4c7ea220fbecf375d2fa4b14b)]:
+  - konfig-lib@1.18.0
+
 ## 1.3.5
 
 ### Patch Changes
