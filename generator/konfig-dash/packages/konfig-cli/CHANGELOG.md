@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.16.1
+
+### Patch Changes
+
+- [#240](https://github.com/konfig-dev/konfig/pull/240) [`f0d23f90`](https://github.com/konfig-dev/konfig/commit/f0d23f90c69805524859dbe4e37cbd9ebfae2519) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add `yarn` to end of konfig generate
+
 ## 1.16.0
 
 ### Minor Changes
