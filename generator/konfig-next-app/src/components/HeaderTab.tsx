@@ -77,7 +77,7 @@ export function HeaderTab({
     theme.colorScheme === 'dark'
       ? navLinkColor({ active, theme: { ...theme, colorScheme: 'dark' } })
       : active
-      ? theme.colors.gray[2]
+      ? theme.colors.gray[0]
       : theme.colors.gray[4]
 
   return (
