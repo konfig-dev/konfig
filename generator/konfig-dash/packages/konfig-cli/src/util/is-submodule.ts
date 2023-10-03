@@ -17,7 +17,7 @@ export async function isSubmodule({
     await topLevelGitRepo.listRemote(['--get-url'])
   ).trim()
   const repoName = git.repoId.split('/')[0]
-  const gitConfigUrl = `https://${git.host}/${git.userId}/${repoName}.git`
-  const isSameRemoteUrl = remoteOriginUrl === gitConfigUrl
+  const gitConfigUrl = `${git.host}/${git.userId}/${repoName}.git`
+  const isSameRemoteUrl = remoteOriginUrl.includes(gitConfigUrl)
   return !isSameRemoteUrl
 }
