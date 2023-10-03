@@ -45,6 +45,7 @@ import localforage from 'localforage'
 import { ReferencePageProps } from '../utils/generate-props-for-reference-page'
 import { SocialFooter } from './SocialFooter'
 import { Breadcrumbs } from './Breadcrumbs'
+import { OperationReferenceResponses } from './OperationReferenceResponses'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -301,57 +302,7 @@ export function OperationReferenceMain({
               requestBodyProperties={requestBodyProperties}
               requestBodyRequired={requestBodyRequired}
             />
-            {responses && (
-              <Box my="lg">
-                <Title order={4}>Responses</Title>
-                <Divider my="sm" />
-                <Stack>
-                  {Object.entries(responses).map(([responseCode, response]) => (
-                    <Box key={responseCode}>
-                      {/* 1. Render response code
-                          2. Render meaning of response code like "OK" for 200 and "Not Found" for 404 in same text box as (1)
-                          3. Render green "Success" badge next to 2xx codes and red "Error" badge next to 4xx and 5xx codes
-                          4. Render response description if it exists under the response code + badge
-                       */}
-
-                      <Flex gap="xs" align="center">
-                        <Title order={6}>
-                          {responseCode} {httpResponseCodeMeaning(responseCode)}
-                        </Title>
-                        {responseCode.startsWith('2') ? (
-                          <Badge
-                            variant={
-                              colorScheme === 'dark' ? 'light' : 'filled'
-                            }
-                            radius="xs"
-                            color="blue"
-                            size="xs"
-                          >
-                            Success
-                          </Badge>
-                        ) : (
-                          <Badge
-                            variant={
-                              colorScheme === 'dark' ? 'light' : 'filled'
-                            }
-                            radius="xs"
-                            color="red"
-                            size="xs"
-                          >
-                            Error
-                          </Badge>
-                        )}
-                      </Flex>
-                      {response.description && (
-                        <Text c="dimmed" fz="sm">
-                          {response.description}
-                        </Text>
-                      )}
-                    </Box>
-                  ))}
-                </Stack>
-              </Box>
-            )}
+            {responses && <OperationReferenceResponses responses={responses} />}
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
               <Box>
                 <SocialFooter konfigYaml={konfigYaml} />
@@ -406,7 +357,6 @@ export function OperationReferenceMain({
                   <Box p="sm">
                     {/* if status is not successful (e.g. 4xx or 5xx), the badge is red */}
                     <Badge
-                      variant={colorScheme === 'dark' ? 'light' : 'filled'}
                       color={result.status >= 300 ? 'red' : 'blue'}
                     >{`${result.status} ${result.statusText}`}</Badge>
                   </Box>

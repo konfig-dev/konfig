@@ -7,24 +7,9 @@ import {
 import type { HttpMethods } from 'konfig-lib'
 import { HttpMethodsEnum } from 'konfig-lib/dist/forEachOperation'
 
-export function HttpMethodBadge({
-  httpMethod,
-  size,
-}: {
-  httpMethod: HttpMethods
-  size?: MantineSize
-}) {
+export function HttpMethodBadge({ httpMethod }: { httpMethod: HttpMethods }) {
   const theme = useMantineTheme()
-  return (
-    <Badge
-      size={size}
-      variant={theme.colorScheme === 'light' ? 'filled' : 'light'}
-      color={httpMethodColor(httpMethod)}
-      radius="xs"
-    >
-      {httpMethod}
-    </Badge>
-  )
+  return <Badge color={httpMethodColor(httpMethod)}>{httpMethod}</Badge>
 }
 
 function httpMethodColor(method: HttpMethods): MantineColor {

@@ -114,9 +114,7 @@ export function LinksGroup({
           href={link.link}
           label={link.label}
           active={link.active}
-          rightSection={
-            <HttpMethodBadge size="xs" httpMethod={link.httpMethod} />
-          }
+          rightSection={<HttpMethodBadge httpMethod={link.httpMethod} />}
         />
       </Box>
     )

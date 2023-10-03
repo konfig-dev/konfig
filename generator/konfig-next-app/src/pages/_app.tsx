@@ -55,6 +55,18 @@ function App(props: AppProps) {
                   },
                 }),
               },
+              Badge: {
+                styles: (theme) => ({
+                  root: {
+                    borderRadius: theme.radius.xs,
+                  },
+                }),
+                defaultProps: (theme) => ({
+                  variant: theme.colorScheme === 'dark' ? 'light' : 'filled',
+                  size: 'xs',
+                }),
+                // <Badge radius="xs" color="blue" size="xs">
+              },
             },
           }}
           withGlobalStyles
