@@ -1,12 +1,9 @@
 import { useMantineColorScheme, Transition, Tabs, Code } from '@mantine/core'
 import { useState, useEffect, useCallback } from 'react'
-const ReactJson = dynamic(() => import('react-json-view'), {
-  ssr: false,
-})
 import { DemoTable } from './DemoTable'
 import { tryTableOutput } from '@/utils/try-table-output'
 import { tryJsonOutput } from '@/utils/try-json-output'
-import dynamic from 'next/dynamic'
+import { JsonViewer } from './JsonViewer'
 
 export function ExecuteOutput({
   jsonOutput,
@@ -118,18 +115,11 @@ export function ExecuteOutput({
                 onMouseEnter={() => setIsFocusedOnJson(true)}
                 onMouseLeave={() => setIsFocusedOnJson(false)}
               >
-                <ReactJson
+                <JsonViewer
                   collapsed={1}
                   displayObjectSize
                   displayDataTypes={false}
                   name={false}
-                  theme={colorScheme === 'dark' ? 'tomorrow' : undefined}
-                  style={{
-                    fontSize: '0.85rem',
-                    padding: '0.75rem',
-                    maxHeight: '500px',
-                    overflowY: 'scroll',
-                  }}
                   src={jsonOutput}
                 />
               </div>

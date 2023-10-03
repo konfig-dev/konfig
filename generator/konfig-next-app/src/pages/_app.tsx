@@ -10,6 +10,7 @@ import { trpc } from '../utils/trpc'
 import '@/styles/globals.css'
 import { Notifications } from '@mantine/notifications'
 import { Tuple, DefaultMantineColor } from '@mantine/core'
+import { getClickableStyles } from '@/utils/get-clickable-styles'
 
 type ExtendedCustomColors = 'brand' | DefaultMantineColor
 
@@ -57,12 +58,7 @@ function App(props: AppProps) {
               },
               Input: {
                 styles: (theme) => ({
-                  input: {
-                    backgroundColor:
-                      theme.colorScheme === 'dark'
-                        ? theme.colors.dark[6]
-                        : theme.colors.gray[0],
-                  },
+                  input: getClickableStyles(theme),
                 }),
               },
               Badge: {
