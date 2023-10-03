@@ -402,7 +402,13 @@ export const transformSpec = async ({
     inheritExamplesFromTopLevelExample({ schema, spec })
   })
 
-  // x-konfig-generated-schema (for generating example in generated documentation for free-form object schema)
+  // x-konfig-generated-schema (for generating example in generated
+  // documentation for free-form object schema)
+  // Why?
+  // We do this because a lot of code in Java is built to generate examples from
+  // a schema. So to generate examples for a free-form object (e.g. "type:
+  // object" with no properties), we have to generate a schema for the example
+  // and then reference that schema in the spec to reuse the same Java code.
   recurseObject(spec.spec, ({ value: schema, path }) => {
     // Found schema w/ example
     if (typeof schema !== 'object') return
