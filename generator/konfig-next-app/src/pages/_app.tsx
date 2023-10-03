@@ -24,7 +24,7 @@ function App(props: AppProps) {
 
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
-    defaultValue: 'light',
+    defaultValue: 'dark',
     getInitialValueInEffect: true,
   })
   const toggleColorScheme = (value?: ColorScheme) =>
@@ -52,6 +52,16 @@ function App(props: AppProps) {
                   label: {
                     fontSize: theme.fontSizes.sm,
                     fontWeight: 500,
+                  },
+                }),
+              },
+              Input: {
+                styles: (theme) => ({
+                  input: {
+                    backgroundColor:
+                      theme.colorScheme === 'dark'
+                        ? theme.colors.dark[6]
+                        : theme.colors.gray[0],
                   },
                 }),
               },
