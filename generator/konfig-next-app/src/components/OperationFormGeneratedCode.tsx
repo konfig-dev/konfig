@@ -63,6 +63,7 @@ export function OperationFormGeneratedCode(args: CodeGeneratorConstructorArgs) {
     styles: {
       code: {
         maxHeight: 400,
+        backgroundColor: 'unset !important',
       },
     },
   }
