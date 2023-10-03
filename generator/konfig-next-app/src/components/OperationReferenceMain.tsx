@@ -15,36 +15,36 @@ import {
   Alert,
   useMantineTheme,
 } from '@mantine/core'
-import { HttpMethodBadge } from './components/HttpMethodBadge'
-import { OperationForm } from './components/OperationForm'
-import { OperationFormGeneratedCode } from './components/OperationFormGeneratedCode'
-import { httpResponseCodeMeaning } from './utils/http-response-code-meaning'
+import { HttpMethodBadge } from './HttpMethodBadge'
+import { OperationForm } from './OperationForm'
+import { OperationFormGeneratedCode } from './OperationFormGeneratedCode'
+import { httpResponseCodeMeaning } from '../utils/http-response-code-meaning'
 import {
   FORM_VALUES_LOCAL_STORAGE_KEY,
   generateInitialFormValues,
   generateInitialFormValuesWithStorage,
-} from './utils/generate-initial-operation-form-values'
+} from '../utils/generate-initial-operation-form-values'
 import {
   OperationClientStateForm,
   OperationSecuritySchemeForm,
-} from './components/OperationSecuritySchemeForm'
+} from './OperationSecuritySchemeForm'
 import type { SecurityScheme, RequestBodyObject } from 'konfig-lib'
-import { generateParametersFromRequestBodyProperties } from './utils/generate-parameters-from-request-body-properties'
+import { generateParametersFromRequestBodyProperties } from '../utils/generate-parameters-from-request-body-properties'
 import { useEffect, useMemo, useState } from 'react'
-import { FormProvider, useForm } from './utils/operation-form-context'
+import { FormProvider, useForm } from '../utils/operation-form-context'
 import { useRouter } from 'next/router'
-import { CodeGeneratorConstructorArgs } from './utils/code-generator'
-import { CodeGeneratorTypeScript } from './utils/code-generator-typescript'
-import { ExecuteOutput } from './components/ExecuteOutput'
-import { tryJsonOutput } from './utils/try-json-output'
-import { tryTableOutput } from './utils/try-table-output'
+import { CodeGeneratorConstructorArgs } from '../utils/code-generator'
+import { CodeGeneratorTypeScript } from '../utils/code-generator-typescript'
+import { ExecuteOutput } from './ExecuteOutput'
+import { tryJsonOutput } from '../utils/try-json-output'
+import { tryTableOutput } from '../utils/try-table-output'
 import { IconAlertCircle, IconTerminal } from '@tabler/icons-react'
-import { deepmerge } from './utils/deepmerge'
+import { deepmerge } from '../utils/deepmerge'
 import { notifications } from '@mantine/notifications'
 import localforage from 'localforage'
-import { ReferencePageProps } from './utils/generate-props-for-reference-page'
-import { SocialFooter } from './components/SocialFooter'
-import { Breadcrumbs } from './components/Breadcrumbs'
+import { ReferencePageProps } from '../utils/generate-props-for-reference-page'
+import { SocialFooter } from './SocialFooter'
+import { Breadcrumbs } from './Breadcrumbs'
 
 export function OperationReferenceMain({
   pathParameters,
