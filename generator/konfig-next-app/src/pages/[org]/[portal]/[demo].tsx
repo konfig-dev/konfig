@@ -89,6 +89,7 @@ const DemoPage = observer(
 
     return (
       <MantineProvider
+        inherit
         theme={{
           colorScheme,
           colors: {

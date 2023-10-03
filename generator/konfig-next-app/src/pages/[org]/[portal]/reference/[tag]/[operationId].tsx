@@ -95,6 +95,7 @@ const Operation = ({
   const theme = useMantineTheme()
   return (
     <MantineProvider
+      inherit
       theme={{
         colorScheme,
         colors: {

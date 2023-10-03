@@ -46,6 +46,16 @@ function App(props: AppProps) {
         <MantineProvider
           theme={{
             colorScheme,
+            components: {
+              NavLink: {
+                styles: (theme) => ({
+                  label: {
+                    fontSize: theme.fontSizes.sm,
+                    fontWeight: 500,
+                  },
+                }),
+              },
+            },
           }}
           withGlobalStyles
           withNormalizeCSS

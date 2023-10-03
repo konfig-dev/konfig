@@ -147,6 +147,7 @@ const DocumentationPage = observer(
           )}
         </Head>
         <MantineProvider
+          inherit
           theme={{
             colorScheme,
             ...generateMantineThemeColors({

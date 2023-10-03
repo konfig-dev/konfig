@@ -157,6 +157,7 @@ const DemoPortalWrapper = observer(() => {
   if (state.portalState === null) return null
   return (
     <MantineProvider
+      inherit
       theme={{
         colorScheme,
         colors: { brand: generateShadePalette(state.brandColor) },
