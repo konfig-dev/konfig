@@ -2,6 +2,7 @@
 import { CliUx, Command, Flags } from '@oclif/core'
 import { getSessionToken } from '../util/get-session-token'
 import { executeFixCommand } from '../util/execute-fix-command'
+import execa from 'execa'
 import waiton from 'wait-on'
 import {
   GenerateRequestBodyInputType,
@@ -1975,6 +1976,13 @@ async function copyTypeScriptOutput({
       )
     }
 
+    CliUx.ux.action.stop()
+  }
+
+  // Update yarn.lock file if applicable
+  if (outputDirectory) {
+    CliUx.ux.action.start(`Updating yarn.lock file...`)
+    execa('yarn', { cwd: outputDirectory, stdio: 'inherit', shell: true })
     CliUx.ux.action.stop()
   }
 }
