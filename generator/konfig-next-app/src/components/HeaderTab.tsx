@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 const useStyles = createStyles((theme) => ({
   tab: {
     fontSize: rem(13),
-    padding: `${rem(10)} ${theme.spacing.sm}`,
+    padding: `${rem(7)} ${theme.spacing.sm}`,
     fontWeight: 700,
     borderBottom: `${rem(2)} solid transparent`,
     transition: 'border-color 100ms ease, color 100ms ease',
