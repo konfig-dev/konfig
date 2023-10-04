@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.19.0
+
+### Minor Changes
+
+- [#250](https://github.com/konfig-dev/konfig/pull/250) [`32dfd9a1`](https://github.com/konfig-dev/konfig/commit/32dfd9a15aaf9016624d173977bd43e3f0725d1d) Thanks [@dphuang2](https://github.com/dphuang2)! - make setSkipSerializationToTrueByDefault true by default
+
 ## 1.18.0
 
 ### Minor Changes

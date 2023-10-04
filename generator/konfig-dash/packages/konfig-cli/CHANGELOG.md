@@ -1,5 +1,20 @@
 # konfig-cli
 
+## 1.18.0
+
+### Minor Changes
+
+- [#250](https://github.com/konfig-dev/konfig/pull/250) [`32dfd9a1`](https://github.com/konfig-dev/konfig/commit/32dfd9a15aaf9016624d173977bd43e3f0725d1d) Thanks [@dphuang2](https://github.com/dphuang2)! - fix bug in empty response body schema fix rule
+
+### Patch Changes
+
+- [#251](https://github.com/konfig-dev/konfig/pull/251) [`551ebd48`](https://github.com/konfig-dev/konfig/commit/551ebd4878ffd97611daf75bed500e46e8a43521) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add new --tolerateRepublish error string
+
+- Updated dependencies [[`32dfd9a1`](https://github.com/konfig-dev/konfig/commit/32dfd9a15aaf9016624d173977bd43e3f0725d1d)]:
+  - konfig-lib@1.19.0
+  - konfig-openapi-spec@1.4.1
+  - konfig-postman-to-openapi@3.0.131
+
 ## 1.17.0
 
 ### Minor Changes
