@@ -407,6 +407,7 @@ export default class Publish extends Command {
 
       const republishErrorMessages = [
         'You cannot publish over the previously published version', // npm
+        'deprecations must be strings', // npm
         'File already exists', // pypi
       ]
 
