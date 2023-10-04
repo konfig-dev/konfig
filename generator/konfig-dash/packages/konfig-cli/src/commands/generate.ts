@@ -1957,13 +1957,18 @@ async function copyTypeScriptOutput({
       fs.writeFileSync(markdownPath, formattedMarkdown)
     }
 
-    // handle gitlab config
+    // write .npmrc file
+    let npmrcContents: string
     if (typescript.gitlab) {
-      const npmrc = `registry=https://${typescript.gitlab.domain}/api/v4/projects/${typescript.gitlab.projectId}/packages/npm/
+      npmrcContents = `registry=https://${typescript.gitlab.domain}/api/v4/projects/${typescript.gitlab.projectId}/packages/npm/
 
 //${typescript.gitlab.domain}/api/v4/projects/${typescript.gitlab.projectId}/packages/npm/:_authToken="\${NPM_TOKEN}"`
-      fs.writeFileSync(path.join(outputDirectory, '.npmrc'), npmrc)
+    } else {
+      npmrcContents = `//registry.npmjs.org/:_authToken=\${NPM_TOKEN}
+registry=https://registry.npmjs.org/
+always-auth=true`
     }
+    fs.writeFileSync(path.join(outputDirectory, '.npmrc'), npmrcContents)
 
     // add packageJsonScripts to generated package.json file if exists
     if (typescript.packageJsonScripts !== undefined) {
