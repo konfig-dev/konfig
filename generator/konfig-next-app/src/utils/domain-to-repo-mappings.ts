@@ -49,4 +49,8 @@ export const domainToRepoMappings: Record<
     owner: 'passiv',
     repo: 'snaptrade-sdks',
   },
+  'docs-v2.snaptrade.com': {
+    owner: 'passiv',
+    repo: 'snaptrade-sdks',
+  },
 }
