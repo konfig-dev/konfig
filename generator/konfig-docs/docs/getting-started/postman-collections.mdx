@@ -70,6 +70,14 @@ cd postman-sdks
 Every operation in your Collection should have more example responses saved
 before exporting for better SDKs.
 
+### Parameterize your request paths
+
+Hard-coded values for variables such as path parameters will not be correctly
+inferred as variables in the generated SDKs. For example, if you have a request
+path `/project/1234`, the SDKs will not know that `1234` is a variable.
+
+Instead of `/project/1234`, use `/project/:projectId`.
+
 ### Send Request
 
 Click `Send` to retrieve an example response. You can repeat these steps for
