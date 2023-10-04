@@ -198,7 +198,7 @@ export const pythonConfig = z.object({
     .boolean()
     .describe('Whether or not to raise an error if client state is provided')
     .optional(),
-  setSkipSerializationToTrueByDefault: z.boolean().optional(),
+  setSkipSerializationToTrueByDefault: z.boolean().default(true),
   apiKeyAlias: z.record(z.string(), z.string()).optional(),
   validateRequiredStringsAreNonEmpty: z.boolean().optional(),
   omitApiDocumentation: z.boolean().optional(),
