@@ -1,5 +1,15 @@
 # konfig-cli
 
+## 1.17.0
+
+### Minor Changes
+
+- [#242](https://github.com/konfig-dev/konfig/pull/242) [`6b4a9657`](https://github.com/konfig-dev/konfig/commit/6b4a965786b14c4d9f499fcdbf642f862d74ce6e) Thanks [@dphuang2](https://github.com/dphuang2)! - fix bug in "konfig fix" while fixing operation ids
+
+### Patch Changes
+
+- [#249](https://github.com/konfig-dev/konfig/pull/249) [`62a48c53`](https://github.com/konfig-dev/konfig/commit/62a48c5300f80d6759c3782307128eabc57ff4c6) Thanks [@eddiechayes](https://github.com/eddiechayes)! - write .npmrc after generate typescript
+
 ## 1.16.1
 
 ### Patch Changes
