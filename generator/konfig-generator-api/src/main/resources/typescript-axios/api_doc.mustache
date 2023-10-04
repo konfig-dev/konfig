@@ -29,29 +29,39 @@ Method | HTTP request | Description
 
 
 ### Parameters
-{{^hasParams}}This endpoint does not need any parameter.{{/hasParams}}{{#allParams}}{{#-last}}
+{{^hasParams}}
+
+This endpoint does not need any parameter.
+{{/hasParams}}
+{{#allParams}}
+{{#-last}}
+
 Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------{{/-last}}{{/allParams}}
-{{#allParams}}{{^defaultValue}} **{{> requestPropertyName}}** | {{^isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}{{#isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}| {{description}} |
-{{/defaultValue}}{{/allParams}}{{#allParams}}{{#defaultValue}} **{{> requestPropertyName}}** | {{^isPrimitiveType}}{{^isEnum}}**{{{dataType}}}**{{/isEnum}}{{/isPrimitiveType}}{{#isPrimitiveType}}{{^isEnum}}[**{{{dataType}}}**]{{/isEnum}}{{/isPrimitiveType}}{{#isEnum}}{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}{{/isEnum}} | {{{description}}} |{{^required}} (optional){{/required}} defaults to {{{.}}}
-{{/defaultValue}}{{/allParams}}
+------------- | ------------- | ------------- | -------------
+{{/-last}}
+{{/allParams}}
+{{#allParams}}
+{{^defaultValue}}
+**{{> requestPropertyName}}** | {{^isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}{{#isPrimitiveType}}**{{{dataType}}}**{{/isPrimitiveType}}| {{description}} |
+{{/defaultValue}}
+{{/allParams}}
+{{#allParams}}
+{{#defaultValue}}
+**{{> requestPropertyName}}** | {{^isPrimitiveType}}{{^isEnum}}**{{{dataType}}}**{{/isEnum}}{{/isPrimitiveType}}{{#isPrimitiveType}}{{^isEnum}}**{{{dataType}}}**{{/isEnum}}{{/isPrimitiveType}}{{#isEnum}}{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}{{/isEnum}} | {{{description}}} | {{^required}}(optional){{/required}}{{#required}}(required){{/required}}
+{{/defaultValue}}
+{{/allParams}}
 
 ### Return type
 
 {{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}void (empty response body){{/returnType}}
 
-### HTTP request headers
-
- - **Content-Type**: {{#consumes}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
- - **Accept**: {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}{{^produces}}Not defined{{/produces}}
-
 {{#responses.0}}
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
+| Status code | Description |
+|-------------|-------------|
 {{#responses}}
-**{{code}}** | {{message}} | {{#headers}} * {{baseName}} - {{description}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} |
+**{{code}}** | {{message}} |
 {{/responses}}
 {{/responses.0}}
 
