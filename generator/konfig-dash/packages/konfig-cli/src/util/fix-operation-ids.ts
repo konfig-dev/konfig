@@ -96,7 +96,7 @@ export async function fixOperationIds({
       )
     }
     if (operation.tags === undefined || operation.tags.length === 0) {
-      updateOperationTag({ spec, operation, progress, path, method })
+      await updateOperationTag({ spec, operation, progress, path, method })
     }
     numberOfUpdatedOperationIds++
     const { generateOperationId } = generatePrefix({ operation })
