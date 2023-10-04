@@ -124,6 +124,22 @@ const progressSchema = z.object({
     )
     .optional()
     .default({}),
+  examples_3: z
+    .record(
+      operationPathSchema,
+      z
+        .record(
+          operationMethodSchema,
+          z.record(
+            operationStatusCodeSchema,
+            z.record(mediaSchema, jsonSchema.optional())
+          )
+        )
+        .optional()
+        .default({})
+    )
+    .optional()
+    .default({}),
   description: descriptionSchema.optional(),
   requestSchemaNames: z
     .record(
@@ -407,8 +423,19 @@ export class Progress {
     this.save()
   }
 
-  getExample({ path, method }: { path: string; method: string }) {
-    const example = this.progress.examples_2[path]?.[method]
+  getExample({
+    path,
+    method,
+    responseCode,
+    mediaType,
+  }: {
+    path: string
+    method: string
+    responseCode: string
+    mediaType: string
+  }) {
+    const example =
+      this.progress.examples_3[path]?.[method]?.[responseCode]?.[mediaType]
     if (example === undefined) return
     return example
   }
@@ -417,14 +444,22 @@ export class Progress {
     path,
     json,
     method,
+    responseCode,
+    mediaType,
   }: {
     path: string
     method: string
+    responseCode: string
+    mediaType: string
     json: Json
   }) {
-    if (this.progress.examples_2[path] === undefined)
-      this.progress.examples_2[path] = {}
-    this.progress.examples_2[path][method] = json
+    if (this.progress.examples_3[path] === undefined)
+      this.progress.examples_3[path] = {}
+    if (this.progress.examples_3[path][method] === undefined)
+      this.progress.examples_3[path][method] = {}
+    if (this.progress.examples_3[path][method][responseCode] === undefined)
+      this.progress.examples_3[path][method][responseCode] = {}
+    this.progress.examples_3[path][method][responseCode][mediaType] = json
     this.save()
   }
 

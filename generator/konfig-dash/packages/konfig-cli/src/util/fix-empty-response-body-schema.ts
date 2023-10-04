@@ -105,6 +105,16 @@ export async function fixEmptyResponseBodySchema({
           continue
         }
 
+        if ('example' in mediaObject && mediaObject.example !== undefined) {
+          const example = jsonSchema.parse(mediaObject.example)
+          mediaObject.schema = generateSchemaObjectFromJson({
+            json: example,
+            version,
+          })
+          mediaObject.example = undefined
+          continue
+        }
+
         const json = await getExample({
           progress,
           path,
@@ -114,6 +124,8 @@ export async function fixEmptyResponseBodySchema({
           mediaObject,
           spec,
           method,
+          responseCode: statusCode,
+          mediaType: media,
         })
 
         mediaObject.schema = generateSchemaObjectFromJson({
@@ -139,6 +151,8 @@ async function getExample({
   mediaObject,
   spec,
   method,
+  responseCode,
+  mediaType,
 }: {
   progress: Progress
   path: string
@@ -148,9 +162,16 @@ async function getExample({
   mediaObject: MediaObject
   spec: Spec
   method: string
+  responseCode: string
+  mediaType: string
 }): Promise<Json> {
   logOperationDetails({ operation })
-  const savedExample = progress.getExample({ path, method })
+  const savedExample = progress.getExample({
+    path,
+    method,
+    responseCode,
+    mediaType,
+  })
 
   if (savedExample) {
     const example = await getExampleJsonFromMediaObject({ mediaObject, spec })
@@ -177,9 +198,14 @@ async function getExample({
       return savedExample
     }
   }
-  const json = await getOrRequestExampleJson({ mediaObject, spec, operation, ci })
+  const json = await getOrRequestExampleJson({
+    mediaObject,
+    spec,
+    operation,
+    ci,
+  })
 
-  progress.saveExample({ path, method, json })
+  progress.saveExample({ path, method, json, responseCode, mediaType })
   return json
 }
 
@@ -187,7 +213,7 @@ async function getOrRequestExampleJson({
   mediaObject,
   spec,
   operation,
-  ci
+  ci,
 }: {
   mediaObject: MediaObject
   spec: Spec
@@ -226,6 +252,7 @@ async function getOrRequestExampleJson({
           return true
         },
       },
-    ]})
+    ],
+  })
   return jsonSchema.parse(JSON.parse(rawJson))
 }
