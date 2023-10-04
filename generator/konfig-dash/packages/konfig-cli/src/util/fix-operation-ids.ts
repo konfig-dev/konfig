@@ -37,6 +37,7 @@ async function updateOperationTag({
   method: HttpMethods
   progress: Progress
 }) {
+  logOperationDetails({ operation: { operation, method, path } })
   const { tag } = await inquirer.prompt<{ tag: string }>([
     {
       type: 'list',
