@@ -2,8 +2,9 @@ import { Dispatch, SetStateAction } from 'react'
 import { PortalState } from './DemoPortal'
 import { observer } from 'mobx-react'
 import { LayoutHeader } from './LayoutHeader'
-import { HeaderTabs, TABS } from './HeaderTabs'
 import { HeaderWrapper } from './HeaderWrapper'
+import { TABS } from './HeaderButton'
+import { HeaderTabs } from './HeaderTabs'
 
 export const DemoHeader = observer(
   ({

@@ -1,18 +1,9 @@
-import { Group, useMantineTheme } from '@mantine/core'
+import { Box, Flex, Group, MediaQuery, Menu } from '@mantine/core'
 import { HeaderTab } from './HeaderTab'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { IconBook, IconBox, IconCode, IconTerminal } from '@tabler/icons-react'
 import { useBasePath } from '@/utils/use-base-path'
-
-export const TABS = {
-  documentation: 'Documentation',
-  reference: 'API Reference',
-  demos: 'Demos',
-  sdks: 'SDKs',
-} as const
-
-export type Tab = (typeof TABS)[keyof typeof TABS]
+import { HeaderButton, TABS, Tab } from './HeaderButton'
+import { IconMenu } from '@tabler/icons-react'
+import Link from 'next/link'
 
 export function HeaderTabs({
   currentTab,
@@ -35,53 +26,97 @@ export function HeaderTabs({
   const referencePath = useReferencePath({ omitOwnerAndRepo })
   const basePath = useBasePath({ omitOwnerAndRepo })
   const githubUrl = useGithubUrl({ owner, repo })
-  const theme = useMantineTheme()
+  const linkForTab = (tab: Tab) => {
+    switch (tab) {
+      case TABS.documentation:
+        return docsPath
+      case TABS.reference:
+        return referencePath
+      case TABS.demos:
+        return `${basePath}/demo`
+      case TABS.sdks:
+        return githubUrl ?? '#'
+    }
+  }
   return (
-    <Group
-      h="45%"
-      style={{
-        color: theme.white,
-        alignItems: 'flex-end',
-        overflowX: 'scroll',
-      }}
-      px="sm"
-      noWrap
-      spacing={0}
-    >
-      {hasDocumentation && (
-        <HeaderTab
-          disabled={isSandbox}
-          label={TABS.documentation}
-          active={currentTab === TABS.documentation}
-          icon={<IconBook size="1rem" />}
-          link={docsPath}
-        />
-      )}
-      <HeaderTab
-        disabled={isSandbox}
-        label={TABS.reference}
-        active={currentTab === TABS.reference}
-        icon={<IconCode size="1rem" />}
-        link={referencePath}
-      />
-      {demos.length > 0 && (
-        <HeaderTab
-          label={TABS.demos}
-          active={currentTab === TABS.demos}
-          link={`${basePath}/demo`}
-          icon={<IconTerminal size="1rem" />}
-          disabled={isSandbox}
-        />
-      )}
-      <HeaderTab
-        disabled={isSandbox}
-        external
-        icon={<IconBox size="1rem" />}
-        label={TABS.sdks}
-        active={currentTab === TABS.sdks}
-        link={githubUrl ?? '#'}
-      />
-    </Group>
+    <Box h="45%">
+      <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
+        <Box w="100%" h="100%">
+          <Menu withinPortal offset={0} width="target" radius={0}>
+            <Menu.Target>
+              <Flex
+                px="md"
+                style={{ cursor: 'pointer' }}
+                h="100%"
+                align="center"
+                justify="space-between"
+              >
+                <HeaderButton tab={currentTab} />
+                <IconMenu size="0.9rem" />
+              </Flex>
+            </Menu.Target>
+            <Menu.Dropdown>
+              {Object.values(TABS)
+                .filter((tab) => tab !== currentTab)
+                .map((tab) => {
+                  return (
+                    <Menu.Item key={tab}>
+                      <Link
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        target={tab === TABS.sdks ? '_blank' : undefined}
+                        href={linkForTab(tab)}
+                      >
+                        <HeaderButton noColor tab={tab} />
+                      </Link>
+                    </Menu.Item>
+                  )
+                })}
+            </Menu.Dropdown>
+          </Menu>
+        </Box>
+      </MediaQuery>
+      <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
+        <Group
+          h="100%"
+          style={{
+            alignItems: 'flex-end',
+          }}
+          px="sm"
+          noWrap
+          spacing={0}
+        >
+          {hasDocumentation && (
+            <HeaderTab
+              disabled={isSandbox}
+              label={TABS.documentation}
+              active={currentTab === TABS.documentation}
+              link={linkForTab(TABS.documentation)}
+            />
+          )}
+          <HeaderTab
+            disabled={isSandbox}
+            label={TABS.reference}
+            active={currentTab === TABS.reference}
+            link={linkForTab(TABS.reference)}
+          />
+          {demos.length > 0 && (
+            <HeaderTab
+              label={TABS.demos}
+              active={currentTab === TABS.demos}
+              link={linkForTab(TABS.demos)}
+              disabled={isSandbox}
+            />
+          )}
+          <HeaderTab
+            disabled={isSandbox}
+            external
+            label={TABS.sdks}
+            active={currentTab === TABS.sdks}
+            link={linkForTab(TABS.sdks)}
+          />
+        </Group>
+      </MediaQuery>
+    </Box>
   )
 }
 

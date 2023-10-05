@@ -1,20 +1,15 @@
 import { linkColor } from '@/utils/link-color'
-import { navLinkColor } from '@/utils/nav-link-color'
-import {
-  Anchor,
-  Group,
-  createStyles,
-  rem,
-  useMantineTheme,
-} from '@mantine/core'
-import { IconExternalLink } from '@tabler/icons-react'
+import { Anchor, createStyles, rem, useMantineTheme } from '@mantine/core'
 import { useRouter } from 'next/router'
+import { HeaderButton, Tab } from './HeaderButton'
 
 const useStyles = createStyles((theme) => ({
   tab: {
-    fontSize: rem(13),
-    padding: `${rem(7)} ${theme.spacing.sm}`,
-    fontWeight: 700,
+    paddingLeft: theme.spacing.sm,
+    paddingRight: theme.spacing.sm,
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
     borderBottom: `${rem(2)} solid transparent`,
     transition: 'border-color 100ms ease, color 100ms ease',
 
@@ -47,14 +42,12 @@ export function HeaderTab({
   label,
   external,
   disabled,
-  icon,
 }: {
   active: boolean
   link: string
-  label: string
+  label: Tab
   external?: boolean
   disabled?: boolean
-  icon?: React.ReactNode
 }) {
   const { classes, cx } = useStyles()
   const router = useRouter()
@@ -71,15 +64,6 @@ export function HeaderTab({
     router.push(link, undefined)
   }
 
-  const theme = useMantineTheme()
-
-  const labelColor =
-    theme.colorScheme === 'dark'
-      ? navLinkColor({ active, theme: { ...theme, colorScheme: 'dark' } })
-      : active
-      ? theme.colors.gray[0]
-      : theme.colors.gray[4]
-
   return (
     <Anchor<'a'>
       key={label}
@@ -87,16 +71,12 @@ export function HeaderTab({
       target="_blank"
       aria-disabled={disabled}
       onClick={handleClick}
-      color={labelColor}
       className={cx(classes.tab, {
         [classes.tabActive]: active,
         [classes.tabDisabled]: disabled,
       })}
     >
-      <Group noWrap spacing={5}>
-        {icon}
-        <span style={{ whiteSpace: 'nowrap' }}>{label}</span>
-      </Group>
+      <HeaderButton active={active} tab={label} />
     </Anchor>
   )
 }

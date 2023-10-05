@@ -1,8 +1,8 @@
-import { Header } from '@mantine/core'
-import { HeaderTabs, TABS } from './HeaderTabs'
 import { LayoutHeader } from './LayoutHeader'
 import { Dispatch, SetStateAction } from 'react'
 import { HeaderWrapper } from './HeaderWrapper'
+import { TABS } from './HeaderButton'
+import { HeaderTabs } from './HeaderTabs'
 
 export function ReferenceHeader({
   opened,

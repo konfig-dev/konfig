@@ -1,8 +1,9 @@
-import { HeaderTabs, TABS } from './HeaderTabs'
 import { LayoutHeader } from './LayoutHeader'
 import { Dispatch, SetStateAction } from 'react'
 import { HeaderWrapper } from './HeaderWrapper'
 import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
+import { HeaderTabs } from './HeaderTabs'
+import { TABS } from './HeaderButton'
 
 export function DocumentationHeader({
   opened,
