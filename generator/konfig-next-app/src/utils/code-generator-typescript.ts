@@ -93,7 +93,9 @@ ${this.nonEmptySecurity
       return ` "accessToken": "${bearer}",`
     }
     const securityValue = value.type === 'apiKey' ? value.value : value.value
-    const securityKey = value.type === 'apiKey' ? value.key : value.name
+    const securityKey = this.quoteIfNecessary(
+      value.type === 'apiKey' ? value.key : value.name
+    )
     // convert securityValue to string of same length with all values replace with char 'X'
     const securityValueMasked =
       this.mode === 'sandbox' ? securityValue : securityValue.replace(/./g, 'X')
@@ -106,6 +108,16 @@ ${this.nonEmptySecurity
         }
   ${this.proxySetupArgs}
 }`
+  }
+
+  /**
+   * TypeScript doesn't like dashes in property names, so we need to quote them if they exist.
+   */
+  quoteIfNecessary(value: string): string {
+    if (value.includes('-')) {
+      return `"${value}"`
+    }
+    return value
   }
 
   get proxySetupArgs(): string {
