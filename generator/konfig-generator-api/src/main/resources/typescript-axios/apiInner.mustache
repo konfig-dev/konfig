@@ -183,8 +183,9 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
                 {{#isBinary}}
                     if (element instanceof Uint8Array) {
                         // Node.js
-                        const { ext } = await fromBuffer(element)
-                        localVarFormParams.append(baseName, element as any, `${baseName}.${ext}`);
+                        const filetype = await fromBuffer(element)
+                        const filename = filetype === undefined ? baseName : `${baseName}.${filetype.ext}`
+                        localVarFormParams.append(baseName, element as any, filename);
                     } else if ("name" in element) {
                         // Browser
                         localVarFormParams.append(baseName, element as any, element.name);
@@ -215,7 +216,7 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
                     localVarFormParams.append('{{baseName}}', {{> requestPropertyName}} as any, {{> requestPropertyName}}.name);
                 }{{/isBinary}}{{^isBinary}}
                 localVarFormParams.append('{{baseName}}', {{> requestPropertyName}} as any);{{/isBinary}}{{/isPrimitiveType}}{{^isPrimitiveType}}
-                localVarFormParams.append('{{baseName}}', new Blob([JSON.stringify({{> requestPropertyName}})], { type: "application/json", }));{{/isPrimitiveType}}{{/multipartFormData}}
+                localVarFormParams.append('{{baseName}}', JSON.stringify({{> requestPropertyName}}), { type: "application/json", filename: "data.json" });{{/isPrimitiveType}}{{/multipartFormData}}
             }{{/isArray}}
     {{/formParams}}{{/vendorExtensions}}
     {{#vendorExtensions}}{{#hasFormParams}}{{^multipartFormData}}
