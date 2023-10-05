@@ -3,6 +3,10 @@ export const domainToRepoMappings: Record<
   { owner: string; repo: string } | undefined
 > = {
   // *.localhost:3000 domains
+  'groundx.localhost:3000': {
+    owner: 'groundxai',
+    repo: 'groundx-sdks',
+  },
   'splitit.localhost:3000': {
     owner: 'konfig-dev',
     repo: 'splitit-web-sdks',
@@ -36,6 +40,10 @@ export const domainToRepoMappings: Record<
   'snaptrade.onkonfig.com': {
     owner: 'passiv',
     repo: 'snaptrade-sdks',
+  },
+  'groundx.onkonfig.com': {
+    owner: 'groundxai',
+    repo: 'groundx-sdks',
   },
 
   // *.konfigthis.com
