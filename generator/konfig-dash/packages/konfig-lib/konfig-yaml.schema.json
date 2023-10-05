@@ -151,6 +151,31 @@
                 "additionalProperties": false
               }
             },
+            "hideOperations": {
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "not": {}
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "not": {}
+                        },
+                        {
+                          "type": "boolean",
+                          "const": true
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "description": "List of operations to hide in Konfig's API Portal. The first key is the path and the second is the HTTP method."
+            },
             "hideSecurity": {
               "type": "array",
               "items": {
