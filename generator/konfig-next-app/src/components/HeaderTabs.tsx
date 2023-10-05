@@ -45,7 +45,7 @@ export function HeaderTabs({
           <Menu withinPortal offset={0} width="target" radius={0}>
             <Menu.Target>
               <Flex
-                px="md"
+                px="lg"
                 style={{ cursor: 'pointer' }}
                 h="100%"
                 align="center"
