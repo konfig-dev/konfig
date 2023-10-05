@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.20.0
+
+### Minor Changes
+
+- [#254](https://github.com/konfig-dev/konfig/pull/254) [`d7ebabf8`](https://github.com/konfig-dev/konfig/commit/d7ebabf8f9f528eda5586ae994b9676ff5f711b8) Thanks [@dphuang2](https://github.com/dphuang2)! - support hideOperations for API portal
+
 ## 1.19.0
 
 ### Minor Changes
