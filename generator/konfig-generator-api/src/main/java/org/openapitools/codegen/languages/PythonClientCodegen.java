@@ -197,7 +197,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
                         "return", "def", "for", "lambda", "try", "self", "nonlocal", "None", "True",
                         "False", "async", "await",
                         // types
-                        "float", "int", "str", "bool", "none_type", "dict", "frozendict", "list", "tuple", "file_type"));
+                        "float", "int", "str", "bool", "none_type", "dict", "frozendict", "list", "tuple"));
 
         regexModifiers = new HashMap<Character, String>();
         regexModifiers.put('i', "IGNORECASE");
