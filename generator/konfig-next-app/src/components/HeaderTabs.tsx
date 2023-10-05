@@ -42,7 +42,7 @@ export function HeaderTabs({
     <Box h="45%">
       <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
         <Box w="100%" h="100%">
-          <Menu withinPortal offset={0} width="target" radius={0}>
+          <Menu withinPortal={true} offset={0} width="target" radius={0}>
             <Menu.Target>
               <Flex
                 px="lg"
@@ -55,23 +55,25 @@ export function HeaderTabs({
                 <IconMenu size="0.9rem" />
               </Flex>
             </Menu.Target>
-            <Menu.Dropdown>
-              {Object.values(TABS)
-                .filter((tab) => tab !== currentTab)
-                .map((tab) => {
-                  return (
-                    <Menu.Item key={tab}>
-                      <Link
-                        style={{ textDecoration: 'none', color: 'inherit' }}
-                        target={tab === TABS.sdks ? '_blank' : undefined}
-                        href={linkForTab(tab)}
-                      >
-                        <HeaderButton noColor tab={tab} />
-                      </Link>
-                    </Menu.Item>
-                  )
-                })}
-            </Menu.Dropdown>
+            <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
+              <Menu.Dropdown>
+                {Object.values(TABS)
+                  .filter((tab) => tab !== currentTab)
+                  .map((tab) => {
+                    return (
+                      <Menu.Item key={tab}>
+                        <Link
+                          style={{ textDecoration: 'none', color: 'inherit' }}
+                          target={tab === TABS.sdks ? '_blank' : undefined}
+                          href={linkForTab(tab)}
+                        >
+                          <HeaderButton noColor tab={tab} />
+                        </Link>
+                      </Menu.Item>
+                    )
+                  })}
+              </Menu.Dropdown>
+            </MediaQuery>
           </Menu>
         </Box>
       </MediaQuery>
