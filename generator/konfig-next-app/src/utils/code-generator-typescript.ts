@@ -94,7 +94,11 @@ ${this.nonEmptySecurity
     }
     const securityValue = value.type === 'apiKey' ? value.value : value.value
     const securityKey = this.quoteIfNecessary(
-      value.type === 'apiKey' ? value.key : value.name
+      value.type === 'apiKey'
+        ? this.hasMultipleApiKeys
+          ? value.key
+          : 'apiKey'
+        : value.name
     )
     // convert securityValue to string of same length with all values replace with char 'X'
     const securityValueMasked =

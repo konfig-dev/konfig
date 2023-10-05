@@ -9,6 +9,7 @@ import {
   OAUTH2_CLIENT_SECRET_PROPERTY,
   PARAMETER_FORM_NAME_PREFIX,
   SECURITY_FORM_NAME_PREFIX,
+  SECURITY_TYPE_PROPERTY,
 } from './generate-initial-operation-form-values'
 
 export type CodeGeneratorConstructorArgs = {
@@ -166,6 +167,14 @@ export abstract class CodeGenerator {
 
   get isUsingCustomOAuthTokenUrl(): boolean {
     return this.originalOauthTokenUrl !== this.oauthTokenUrl
+  }
+
+  get hasMultipleApiKeys(): boolean {
+    const hasMultipleApiKeys =
+      this.nonEmptySecurity.filter(
+        (value) => value[1][SECURITY_TYPE_PROPERTY] === 'apiKey'
+      ).length > 1
+    return hasMultipleApiKeys
   }
 
   /**

@@ -37,6 +37,7 @@ from ${this.packageName} import ${this.clientName}`
       .replace(/\s+/g, '_') // Replaces spaces with underscores
       .replace(/([a-z])([A-Z])/g, '$1_$2')
       .replace(/([A-Z])([A-Z][a-z])/g, '$1_$2')
+      .replace(/-/g, '_') // replace dashes with underscores
       .toLowerCase()
   }
 
@@ -47,9 +48,11 @@ from ${this.packageName} import ${this.clientName}`
         args.push(`${this.snake_case(name)}="${this.mask(security.value)}"`)
       } else if (security[SECURITY_TYPE_PROPERTY] === 'apiKey') {
         args.push(
-          `${this.snake_case(security[API_KEY_NAME_PROPERTY])}="${this.mask(
-            security.value
-          )}"`
+          `${
+            this.hasMultipleApiKeys
+              ? this.snake_case(security[API_KEY_NAME_PROPERTY])
+              : 'api_key'
+          }="${this.mask(security.value)}"`
         )
       }
     }
