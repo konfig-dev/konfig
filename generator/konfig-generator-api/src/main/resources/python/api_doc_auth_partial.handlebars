@@ -1,6 +1,3 @@
-    # Defining the host is optional and defaults to {{{basePath}}}
-    # See configuration.py for a list of all supported configuration parameters.
-    host = "{{{basePath}}}",
 {{#if apiDocumentationAuthenticationPartial}}
 {{{apiDocumentationAuthenticationPartial}}}
 {{else}}
@@ -19,13 +16,11 @@
 {{#if isBasic}}
 {{#if isBasicBasic}}
 
-    # Configure HTTP basic authorization: {{{name}}}
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'{{#if @last}}{{else}},{{/if}}
 {{/if}}
 {{#if isBasicBearer}}
 
-    # Configure Bearer authorization{{#if bearerFormat}} ({{{bearerFormat}}}){{/if}}: {{{name}}}
     access_token = 'YOUR_BEARER_TOKEN'{{#if @last}}{{else}},{{/if}}
 {{/if}}
 {{#if isHttpSignature}}
@@ -90,16 +85,10 @@
 {{/if}}
 {{#if isApiKey}}
 
-    # Configure API key authorization: {{{name}}}
     {{#if hasMultipleApiKeys}}{{{keyParamNameSnakeCase}}}{{else}}api_key{{/if}} = 'YOUR_API_KEY',
-{{/if}}
-{{#if hasApiKeyMethods}}
-    # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    # api_key_prefix = {'{{name}}': 'Bearer'},
 {{/if}}
 {{#if isOAuth}}
 
-    # Configure OAuth2 access token for authorization: {{{name}}}
     client_id = 'YOUR_CLIENT_ID',
     client_secret = 'YOUR_CLIENT_SECRET',{{#if @last}}{{else}},{{/if}}
 {{/if}}

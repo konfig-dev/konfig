@@ -74,14 +74,7 @@ Tag | Method | HTTP request | Description
 {{#with apiInfo}}{{#each apis}}{{#with operations}}{{#each operation}}*{{originalTag}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{upper httpMethod}}** {{path}} | {{#if useDescriptionInOperationTableDocumentation}}{{#if notes}}{{notes}}{{/if}}{{else}}{{#if summary}}{{summary}}{{/if}}{{/if}}
 {{/each}}{{/with}}{{/each}}{{/with}}
 {{/unless}}
-{{#unless omitModelDocumentation}}
-
-## Documentation For Models
-
-{{#each models}}{{#with model}} - [{{{classname}}}]({{modelDocPath}}{{{classname}}}.md)
-{{/with}}{{/each}}
-{{/unless}}
-{{!-- 
+{{!--
 ## Documentation For Authorization
 
 {{#unless authMethods}}
