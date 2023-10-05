@@ -142,6 +142,12 @@ export const portal = z
         "Markdown-based Documentation to be uploaded to Konfig's API Portal"
       ),
     demos,
+    hideOperations: z
+      .record(z.record(z.literal(true).optional()).optional())
+      .optional()
+      .describe(
+        "List of operations to hide in Konfig's API Portal. The first key is the path and the second is the HTTP method."
+      ),
     hideSecurity: z
       .object({
         name: z.string(),

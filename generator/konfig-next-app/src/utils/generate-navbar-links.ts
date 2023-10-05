@@ -61,6 +61,17 @@ export function generateNavbarLinks({
           const link = omitOwnerAndRepo
             ? `/${suffix}`
             : `/${owner}/${repo}/${suffix}`
+
+          // if path and method match up with operation in hideOperations then continue
+          const hideOperations = konfigYaml.portal?.hideOperations
+          if (hideOperations !== undefined) {
+            if (path in hideOperations) {
+              const methods = hideOperations[path]
+              if (methods === undefined) return
+              if (method in methods) return
+            }
+          }
+
           navbarLink.links.push({
             label: operation.summary ?? path,
             metadata: {
