@@ -60,6 +60,12 @@ export function HeaderTabs({
                 {Object.values(TABS)
                   .filter((tab) => tab !== currentTab)
                   .map((tab) => {
+                    if (tab === TABS.documentation && !hasDocumentation) {
+                      return null
+                    }
+                    if (tab === TABS.demos && demos.length === 0) {
+                      return null
+                    }
                     return (
                       <Menu.Item key={tab}>
                         <Link
