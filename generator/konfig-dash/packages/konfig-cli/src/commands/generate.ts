@@ -1984,6 +1984,17 @@ async function copyTypeScriptOutput({
       fs.writeFileSync(markdownPath, formattedMarkdown)
     }
 
+    // use markdown-toc to insert table of contents into markdown
+    const toc = require('markdown-toc')
+    const readmePath = path.join(outputDirectory, 'README.md')
+    const readme = fs.readFileSync(readmePath, 'utf-8')
+    const withToc = toc.insert(readme, {
+      filter: (str: string) => {
+        return !str.startsWith('[Author]')
+      },
+    })
+    fs.writeFileSync(readmePath, withToc)
+
     // write .npmrc file
     let npmrcContents: string
     if (typescript.gitlab) {
