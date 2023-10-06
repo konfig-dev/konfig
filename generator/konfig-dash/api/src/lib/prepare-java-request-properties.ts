@@ -33,5 +33,9 @@ export function prepareJavaRequestProperties({
     properties['gitDefaultBranch'] = git.defaultBranch
   }
 
+  if ('isGitSubmodule' in git) {
+    properties['isGitSubmodule'] = git.isGitSubmodule
+  }
+
   return properties
 }

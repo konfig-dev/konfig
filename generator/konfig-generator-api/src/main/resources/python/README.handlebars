@@ -1,8 +1,19 @@
+{{#if readmeHeader}}
+{{#with readmeHeader}}
+<div align="center">
+
+# {{{title}}}
+
+[![Visit {{{title}}}](./header.png)]({{{url}}})
+
+{{> readme_badges}}
+
+</div>
+{{/with}}
+{{else}}
 # {{{projectName}}}
 
-[![PyPI](https://img.shields.io/badge/PyPI-v{{{packageVersionWithoutDashes}}}-blue)](https://pypi.org/project/{{{projectName}}}/{{{packageVersion}}})
-{{#if infoUrl}}
-[![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)]({{{infoUrl}}})
+{{> readme_badges}}
 {{/if}}
 
 {{#unless omitInfoDescription}}

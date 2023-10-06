@@ -526,7 +526,11 @@ export default class Deploy extends Command {
           git: config.git,
           outputDirectory: config.outputDirectory,
         })
-        Object.assign(config.git, { defaultBranch })
+        const isGitSubmodule = await isSubmodule({
+          git: config.git,
+          configDir,
+        })
+        Object.assign(config.git, { defaultBranch, isGitSubmodule })
       }
 
       const body: GenerateRequestBodyInputType = {
