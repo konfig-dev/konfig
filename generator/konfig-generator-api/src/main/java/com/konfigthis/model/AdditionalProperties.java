@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.konfigthis.model.AdditionalPropertiesClientStateWithExamplesInner;
+import com.konfigthis.model.AdditionalPropertiesReadmeHeader;
 import com.konfigthis.model.AdditionalPropertiesReadmeOperation;
 import com.konfigthis.model.AdditionalPropertiesTopLevelOperationsInner;
 import java.math.BigDecimal;
@@ -37,8 +38,8 @@ public class AdditionalProperties {
   @Valid
   private Map<String, String> dependencies = null;
 
-  @JsonProperty("callToActionUrl")
-  private String callToActionUrl;
+  @JsonProperty("readmeHeader")
+  private AdditionalPropertiesReadmeHeader readmeHeader;
 
   @JsonProperty("gitRepoName")
   private String gitRepoName;
@@ -283,23 +284,23 @@ public class AdditionalProperties {
     this.dependencies = dependencies;
   }
 
-  public AdditionalProperties callToActionUrl(String callToActionUrl) {
-    this.callToActionUrl = callToActionUrl;
+  public AdditionalProperties readmeHeader(AdditionalPropertiesReadmeHeader readmeHeader) {
+    this.readmeHeader = readmeHeader;
     return this;
   }
 
   /**
-   * Get callToActionUrl
-   * @return callToActionUrl
+   * Get readmeHeader
+   * @return readmeHeader
   */
-  
-  @Schema(name = "callToActionUrl", required = false)
-  public String getCallToActionUrl() {
-    return callToActionUrl;
+  @Valid 
+  @Schema(name = "readmeHeader", required = false)
+  public AdditionalPropertiesReadmeHeader getReadmeHeader() {
+    return readmeHeader;
   }
 
-  public void setCallToActionUrl(String callToActionUrl) {
-    this.callToActionUrl = callToActionUrl;
+  public void setReadmeHeader(AdditionalPropertiesReadmeHeader readmeHeader) {
+    this.readmeHeader = readmeHeader;
   }
 
   public AdditionalProperties gitRepoName(String gitRepoName) {
@@ -1569,7 +1570,7 @@ public class AdditionalProperties {
     AdditionalProperties additionalProperties = (AdditionalProperties) o;
     return Objects.equals(this.objectPropertyNamingConvention, additionalProperties.objectPropertyNamingConvention) &&
         Objects.equals(this.dependencies, additionalProperties.dependencies) &&
-        Objects.equals(this.callToActionUrl, additionalProperties.callToActionUrl) &&
+        Objects.equals(this.readmeHeader, additionalProperties.readmeHeader) &&
         Objects.equals(this.gitRepoName, additionalProperties.gitRepoName) &&
         Objects.equals(this.clientName, additionalProperties.clientName) &&
         Objects.equals(this.pubName, additionalProperties.pubName) &&
@@ -1638,7 +1639,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, callToActionUrl, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1647,7 +1648,7 @@ public class AdditionalProperties {
     sb.append("class AdditionalProperties {\n");
     sb.append("    objectPropertyNamingConvention: ").append(toIndentedString(objectPropertyNamingConvention)).append("\n");
     sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
-    sb.append("    callToActionUrl: ").append(toIndentedString(callToActionUrl)).append("\n");
+    sb.append("    readmeHeader: ").append(toIndentedString(readmeHeader)).append("\n");
     sb.append("    gitRepoName: ").append(toIndentedString(gitRepoName)).append("\n");
     sb.append("    clientName: ").append(toIndentedString(clientName)).append("\n");
     sb.append("    pubName: ").append(toIndentedString(pubName)).append("\n");
