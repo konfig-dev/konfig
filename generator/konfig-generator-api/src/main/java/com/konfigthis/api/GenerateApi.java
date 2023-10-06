@@ -248,6 +248,27 @@ public interface GenerateApi {
     default Map<String, Object> transformAdditionalPropertiesToMap(AdditionalProperties additionalProperties,
                                                                    String packageName, String generator) {
         Map<String, Object> map = new HashMap<>();
+
+        // iterate over all properties of AdditionalProperites using reflection and put them in the map
+        // if the value is not null.
+        // This is done to avoid having to add each property manually to the map.
+
+        // 1) get fields
+        List<java.lang.reflect.Field> fields = Arrays.asList(additionalProperties.getClass().getDeclaredFields());
+
+        // 2) iterate over fields and put them in the map
+        fields.forEach(field -> {
+            try {
+                field.setAccessible(true);
+                Object value = field.get(additionalProperties);
+                if (value != null) {
+                    map.put(field.getName(), value);
+                }
+            } catch (IllegalArgumentException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
+
         if (generator.equals("ruby"))
             putIfPresent(map, "isFaraday", true);
         putIfPresent(map, "apiPackage", additionalProperties.getApiPackage());
