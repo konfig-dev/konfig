@@ -9,6 +9,7 @@ import { getDefaultBranch } from './get-default-branch'
 import { getGitRepositoryName } from './get-git-repository-name'
 import { isSubmodule } from './is-submodule'
 import { UnwrapPromise } from './unwrap-promise'
+import { getSdkDefaultBranch } from './get-sdk-default-branch'
 
 export async function generateReadme({
   konfigYaml,
@@ -97,13 +98,14 @@ export async function getDocumentationUrl({
     git: generatorConfig.git,
     configDir: process.cwd(),
   })
-  const defaultBranch = generatorIsInSubmodule
-    ? getDefaultBranch({ cwd: generatorConfig.outputDirectory })
-    : getDefaultBranch({ cwd: process.cwd() })
+  const defaultBranch = await getSdkDefaultBranch({
+    git: generatorConfig.git,
+    outputDirectory: generatorConfig.outputDirectory,
+  })
   CliUx.ux.debug(`Default branch: ${defaultBranch}`)
   const docUrl = generatorIsInSubmodule
     ? `${sourceUrl}/blob/${defaultBranch}/README.md`
-    : `${sourceUrl}/README.md`
+    : `${sourceUrl}/README.md` // convention for config is for repoId to include the subpath to SDK so just add /README.md
   return docUrl
 }
 

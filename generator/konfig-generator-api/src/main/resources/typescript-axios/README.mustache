@@ -1,9 +1,19 @@
+{{#readmeHeader}}
+<div align="center">
+
+# {{{title}}}
+
+[![Visit {{{title}}}](./header.png)]({{{url}}})
+
+{{> readme_badges}}
+
+</div>
+{{/readmeHeader}}
+{{^readmeHeader}}
 # {{npmName}}
 
-[![npm](https://img.shields.io/badge/npm-v{{npmVersionWithoutDashes}}-blue)](https://www.npmjs.com/package/{{npmName}}/v/{{npmVersion}})
-{{#infoUrl}}
-[![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)]({{{infoUrl}}})
-{{/infoUrl}}
+{{> readme_badges}}
+{{/readmeHeader}}
 
 {{^omitInfoDescription}}{{{appDescription}}}
 {{/omitInfoDescription}}
@@ -19,30 +29,10 @@ npm install {{npmName}} --save
 yarn add {{npmName}}
 ```
 
-**Important note: this library can be used in both the client-side or server-side, but using it
-in client-side browser code is not recommended as you would expose security credentials.**
-{{#readmeDescriptionSnippet}}{{{readmeDescriptionSnippet}}}{{/readmeDescriptionSnippet}}
-{{#includeFetchAdapter}}{{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
-### Usage in Next.js Edge Runtime
+{{#readmeDescriptionSnippet}}
+{{{readmeDescriptionSnippet}}}
 
-If you are using `{{npmName}}` in a Next.js Edge runtime make sure to set `useFetch: true` like so:
-
-```typescript
-import { {{{clientName}}} } from "{{{npmName}}}"
-
-export const config = {
-    runtime: "edge",
-};
-
-export default async function handler(req: Request): Promise<Response> {
-    const {{{clientNameLowercase}}} = new {{{clientName}}}({
-        useFetch: true, // useFetch must be "true" for {{{npmName}}} to work in Next.js edge runtime
-    })
-    return new Response(JSON.stringify({ message: "This is from {{{npmName}}}" }), { status: 200 })
-}
-```
-{{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}{{/includeFetchAdapter}}
-
+{{/readmeDescriptionSnippet}}
 ## Getting Started
 
 ```typescript

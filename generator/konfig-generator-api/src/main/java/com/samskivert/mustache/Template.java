@@ -7,10 +7,8 @@ package com.samskivert.mustache;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -238,13 +236,27 @@ public class Template {
     static String generateDebugReport(Object data) {
         ArrayList<String> lines = new ArrayList<>();
         ArrayList<String> prefix = new ArrayList<>();
-        generateDebugReport(data, lines, prefix);
+        generateDebugReport(data, lines, prefix, new IdentityHashMap<>());
         return String.join("\n", lines);
     }
 
-    private static void generateDebugReport(Object data, ArrayList<String> lines, ArrayList<String> prefix) {
+    private static boolean isSimpleType(Object obj) {
+        return obj == null || obj instanceof String || obj instanceof Number || obj instanceof Boolean || obj instanceof Character;
+    }
+
+    private static void generateDebugReport(Object data, ArrayList<String> lines, ArrayList<String> prefix, IdentityHashMap<Object, String> seen) {
         // clone prefix and reassign prefix variable
         String label = String.join(".", prefix);
+
+        if (isSimpleType(data)) {
+            // For simple types, just continue processing without adding to seen
+        } else if (seen.containsKey(data)) {
+            lines.add(label + ": @" + seen.get(data));
+            return;
+        } else {
+            seen.put(data, label);
+        }
+
         if (data == null) {
             lines.add(label + ": null");
         } else if (data instanceof Map) {
@@ -256,7 +268,7 @@ public class Template {
             for (String key : keys) {
                 ArrayList<String> clone = new ArrayList<>(prefix);
                 clone.add(key);
-                generateDebugReport(map.get(key), lines, clone);
+                generateDebugReport(map.get(key), lines, clone, seen);
             }
         } else if (data instanceof Iterable) {
             Iterable<?> iterable = (Iterable<?>) data;
@@ -264,7 +276,7 @@ public class Template {
             for (Object item : iterable) {
                 ArrayList<String> clone = new ArrayList<>(prefix);
                 clone.add("[" + index + "]");
-                generateDebugReport(item, lines, clone);
+                generateDebugReport(item, lines, clone, seen);
                 index++;
             }
         } else if (data.getClass().isArray()) {
@@ -273,10 +285,12 @@ public class Template {
             for (Object item : array) {
                 ArrayList<String> clone = new ArrayList<>(prefix);
                 clone.add("[" + index + "]");
-                generateDebugReport(item, lines, clone);
+                generateDebugReport(item, lines, clone, seen);
                 index++;
             }
         } else if (isBoxedPrimitiveOrString(data)) {
+            lines.add(label + ": " + generateDebugString(data));
+        } else if (data instanceof BigDecimal) {
             lines.add(label + ": " + generateDebugString(data));
         } else if (data.getClass().getFields().length > 0) {
             // iterate over all fields and recurse
@@ -284,7 +298,7 @@ public class Template {
                 ArrayList<String> clone = new ArrayList<>(prefix);
                 clone.add(field.getName());
                 try {
-                    generateDebugReport(field.get(data), lines, clone);
+                    generateDebugReport(field.get(data), lines, clone, seen);
                 } catch (IllegalAccessException e) {
                     // ignore
                 }

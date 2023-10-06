@@ -41,6 +41,9 @@ public class AdditionalProperties {
   @JsonProperty("readmeHeader")
   private AdditionalPropertiesReadmeHeader readmeHeader;
 
+  @JsonProperty("gitDefaultBranch")
+  private String gitDefaultBranch;
+
   @JsonProperty("gitRepoName")
   private String gitRepoName;
 
@@ -301,6 +304,25 @@ public class AdditionalProperties {
 
   public void setReadmeHeader(AdditionalPropertiesReadmeHeader readmeHeader) {
     this.readmeHeader = readmeHeader;
+  }
+
+  public AdditionalProperties gitDefaultBranch(String gitDefaultBranch) {
+    this.gitDefaultBranch = gitDefaultBranch;
+    return this;
+  }
+
+  /**
+   * Get gitDefaultBranch
+   * @return gitDefaultBranch
+  */
+  
+  @Schema(name = "gitDefaultBranch", required = false)
+  public String getGitDefaultBranch() {
+    return gitDefaultBranch;
+  }
+
+  public void setGitDefaultBranch(String gitDefaultBranch) {
+    this.gitDefaultBranch = gitDefaultBranch;
   }
 
   public AdditionalProperties gitRepoName(String gitRepoName) {
@@ -1571,6 +1593,7 @@ public class AdditionalProperties {
     return Objects.equals(this.objectPropertyNamingConvention, additionalProperties.objectPropertyNamingConvention) &&
         Objects.equals(this.dependencies, additionalProperties.dependencies) &&
         Objects.equals(this.readmeHeader, additionalProperties.readmeHeader) &&
+        Objects.equals(this.gitDefaultBranch, additionalProperties.gitDefaultBranch) &&
         Objects.equals(this.gitRepoName, additionalProperties.gitRepoName) &&
         Objects.equals(this.clientName, additionalProperties.clientName) &&
         Objects.equals(this.pubName, additionalProperties.pubName) &&
@@ -1639,7 +1662,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1649,6 +1672,7 @@ public class AdditionalProperties {
     sb.append("    objectPropertyNamingConvention: ").append(toIndentedString(objectPropertyNamingConvention)).append("\n");
     sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
     sb.append("    readmeHeader: ").append(toIndentedString(readmeHeader)).append("\n");
+    sb.append("    gitDefaultBranch: ").append(toIndentedString(gitDefaultBranch)).append("\n");
     sb.append("    gitRepoName: ").append(toIndentedString(gitRepoName)).append("\n");
     sb.append("    clientName: ").append(toIndentedString(clientName)).append("\n");
     sb.append("    pubName: ").append(toIndentedString(pubName)).append("\n");

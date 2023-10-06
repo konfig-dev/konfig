@@ -311,6 +311,7 @@ export const generatorGitConfig = z
     userId: z.string(),
     repoId: z.string(),
   })
+  .passthrough()
   .transform((gitConfig) => ({
     repoName: gitConfig.repoId.split('/')[0], // acme-sdks/tree/main/typescript -> acme-sdks
     ...gitConfig,

@@ -1,4 +1,4 @@
-import { GenerateRequestBodyType } from 'konfig-lib'
+import { GenerateRequestBodyType, GeneratorGitConfig } from 'konfig-lib'
 
 /**
  * Used in preparation to send a request to the Java generator API for all
@@ -15,8 +15,10 @@ import { GenerateRequestBodyType } from 'konfig-lib'
  */
 export function prepareJavaRequestProperties({
   body,
+  git,
 }: {
   body: GenerateRequestBodyType
+  git: GeneratorGitConfig
 }): Record<string, unknown> {
   const properties: Record<string, unknown> = {}
 
@@ -25,6 +27,10 @@ export function prepareJavaRequestProperties({
       title: body.readmeHeader.title,
       url: body.readmeHeader.url,
     }
+  }
+
+  if ('defaultBranch' in git) {
+    properties['gitDefaultBranch'] = git.defaultBranch
   }
 
   return properties
