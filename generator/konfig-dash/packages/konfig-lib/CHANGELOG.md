@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.21.0
+
+### Minor Changes
+
+- [#258](https://github.com/konfig-dev/konfig/pull/258) [`ba01dc5f`](https://github.com/konfig-dev/konfig/commit/ba01dc5f8354bb09dfcbe97917a6c00368128a4b) Thanks [@dphuang2](https://github.com/dphuang2)! - add readmeHeader configuration for more welcoming README pages
+
 ## 1.20.0
 
 ### Minor Changes
