@@ -161,7 +161,7 @@ export const portal = z
 
 export type Portal = z.infer<typeof portal>
 
-const readmeCallToAction = z
+export const readmeHeader = z
   .object({
     image: z.string().describe('Relative path from konfig.yaml to image'),
     title: z.string().describe('Title to be displayed in SDKs README.md'),
@@ -174,7 +174,7 @@ export const KonfigYamlCommon = z
   .object({
     primaryColor,
     portal,
-    readmeCallToAction,
+    readmeHeader,
     readmeOperation: z
       .object({
         operationId: z.string(),

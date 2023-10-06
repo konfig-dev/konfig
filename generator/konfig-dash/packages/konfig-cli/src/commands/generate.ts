@@ -838,6 +838,13 @@ export default class Deploy extends Command {
                 }
               }
             }
+
+            if (parsedKonfigYaml.readmeHeader) {
+              fs.copyFileSync(
+                path.join(configDir, parsedKonfigYaml.readmeHeader.image),
+                path.join(outputDirectory, 'header.png')
+              )
+            }
           }
 
           if (body.additionalGenerators) {
