@@ -179,7 +179,6 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
                 modelTemplateFiles.put("model.mustache", ".ts");
                 apiTemplateFiles.put("apiInner.mustache", "-generated.ts");
                 apiTemplateFiles.put("apiCustom.mustache", ".ts");
-                apiDocTemplateFiles.put("api_doc.mustache", ".md");
                 supportingFiles.add(new SupportingFile("modelIndex.mustache", tsModelPackage, "index.ts"));
             }
         }
@@ -424,7 +423,8 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
 
     @Override
     public String toModelFilename(String name) {
-        return super.toModelFilename(name).replaceAll("([a-z0-9])([A-Z])", "$1-$2").toLowerCase(Locale.ROOT);
+        String modelFilename = super.toModelFilename(name).replaceAll("([a-z0-9])([A-Z])", "$1-$2").toLowerCase(Locale.ROOT);
+        return modelFilename;
     }
 
     @Override

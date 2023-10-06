@@ -1992,6 +1992,7 @@ async function copyTypeScriptOutput({
       filter: (str: string) => {
         return !str.startsWith('[Author]')
       },
+      maxdepth: 3,
     })
     fs.writeFileSync(readmePath, withToc)
 

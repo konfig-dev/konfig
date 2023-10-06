@@ -34,6 +34,8 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
             isCollectionFormatMulti, isPrimitiveType, isModel, isExplode, isDeepObject, isAllowEmptyValue;
     public boolean isInnerEnum;
 
+    public String modelFilename;
+
     public Schema oasSchema;
 
     public String paramNameCamelCase() {

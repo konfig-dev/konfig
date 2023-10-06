@@ -4119,6 +4119,11 @@ public class DefaultCodegen implements CodegenConfig {
 
         LOGGER.debug("debugging from property return: {}", property);
         schemaCodegenPropertyCache.put(ns, property);
+
+        if (property.dataType != null && property.isModel) {
+            property.modelFilename = toModelFilename((property.dataType));
+        }
+
         return property;
     }
 
@@ -4732,10 +4737,18 @@ public class DefaultCodegen implements CodegenConfig {
                     optionalNonBodyParams.add(cp.copy());
                 }
             }
+
         }
 
         allParamsWithRequestBodyProperties.addAll(requiredParamsWithRequestBodyProperties);
         allParamsWithRequestBodyProperties.addAll(optionalParamsWithRequestBodyProperties);
+
+        // iterate over allParamsWithRequestBodyProperties to set modelFilename
+        for (CodegenParameter cp : allParamsWithRequestBodyProperties) {
+            if (cp.isModel && cp.dataType != null) {
+                cp.modelFilename = toModelFilename(cp.dataType);
+            }
+        }
 
         op.hasOneRequiredParamIncludingRequestBodyProperties = requiredParamsWithRequestBodyProperties.size() == 1;
 
@@ -7212,6 +7225,7 @@ public class DefaultCodegen implements CodegenConfig {
 
         if (Boolean.TRUE.equals(codegenProperty.isModel)) {
             codegenParameter.isModel = true;
+
         }
 
         codegenParameter.isFormParam = Boolean.TRUE;

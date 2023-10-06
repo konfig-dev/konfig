@@ -59,15 +59,52 @@ yarn add {{npmName}}
 {{/apiInfo}}
 {{/readmeSnippet}}
 ```
+
 {{^omitApiDocumentation}}
+## Reference
 
-## Documentation for API Endpoints
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}
+### `{{{clientNameLowercase}}}.{{> api_doc_example_method}}`
 
-All URIs are relative to *{{basePath}}*
+{{#notes}}
+{{{notes}}}
 
-Tag | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{originalTag}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{path}} | {{#useDescriptionInOperationTableDocumentation}}{{#notes}}{{notes}}{{/notes}}{{/useDescriptionInOperationTableDocumentation}}{{^useDescriptionInOperationTableDocumentation}}{{#summary}}{{summary}}{{/summary}}{{/useDescriptionInOperationTableDocumentation}}
+{{/notes}}
+{{^notes}}
+{{summary}}
+
+{{/notes}}
+#### 🛠️ Usage
+
+```typescript
+{{> api_doc_example_execute_call}}
+```
+
+{{#hasParams}}
+#### ⚙️ Parameters
+
+{{#allParamsWithRequestBodyProperties}}
+##### {{{paramName}}}: {{> api_doc_param_data_type}}
+
+{{#description}}
+{{{description}}}
+
+{{/description}}
+{{/allParamsWithRequestBodyProperties}}
+{{/hasParams}}
+{{#returnModel}}
+#### 🔄 Return
+[{{{name}}}](./models/{{{classFilename}}}.ts)
+
+{{/returnModel}}
+#### 🌐 Endpoint
+
+`{{path}}` `{{httpMethod}}`
+
+[🔙 Back to Table of Contents](#table-of-contents)
+
+---
+
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 {{/omitApiDocumentation}}
 {{^removeKonfigBranding}}

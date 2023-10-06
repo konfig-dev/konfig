@@ -17,6 +17,8 @@
 
 package org.openapitools.codegen;
 
+import org.openapitools.codegen.utils.StringUtils;
+
 import java.util.*;
 
 public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperties {
@@ -173,6 +175,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     public Map<String, Object> vendorExtensions = new HashMap<String, Object>();
     public boolean hasValidation; // true if pattern, maximum, etc are set (only used in the mustache template)
     public boolean isInherited;
+    public String modelFilename;
     public String discriminatorValue;
     public String nameInLowerCase; // property name in lower case
     public String nameInCamelCase; // property name in camel case
