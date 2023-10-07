@@ -155,6 +155,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     public boolean isArray;
     public boolean isMap;
     public boolean isEnum;
+    public boolean isEnumRef;
     public boolean isInnerEnum; // Enums declared inline will be located inside the generic model, changing how the enum is referenced in some cases.
     public boolean isReadOnly;
     public boolean isWriteOnly;

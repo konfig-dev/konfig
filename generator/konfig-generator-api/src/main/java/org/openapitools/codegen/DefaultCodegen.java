@@ -4012,7 +4012,11 @@ public class DefaultCodegen implements CodegenConfig {
             if (allowableValues.size() > 0) {
                 property.allowableValues = allowableValues;
             }
+            if (p != referencedSchema)
+                property.isEnumRef = true;
         }
+
+
 
         if (referencedSchema.getNullable() != null) {
             property.isNullable = referencedSchema.getNullable();
@@ -4085,7 +4089,7 @@ public class DefaultCodegen implements CodegenConfig {
         } else if (ModelUtils.isAnyType(p)) {
             updatePropertyForAnyType(property, p);
         } else if (ModelUtils.isTypeObjectSchema(pDeref)) {
-            updatePropertyForObject(property, pDeref);
+            updatePropertyForObject(property, p);
         } else if (!ModelUtils.isNullType(p)) {
             // referenced model
             ;
@@ -4110,7 +4114,7 @@ public class DefaultCodegen implements CodegenConfig {
             String type = getSchemaType(p);
             setNonArrayMapProperty(property, type);
             property.isModel = (ModelUtils.isComposedSchema(referencedSchema)
-                    || ModelUtils.isObjectSchema(referencedSchema)) && ModelUtils.isModel(referencedSchema);
+                    || ModelUtils.isModel(referencedSchema));
         }
 
         if (property.complexType != null) {

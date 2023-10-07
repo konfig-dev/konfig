@@ -1,4 +1,8 @@
 {{#vars}}
+{{#isEnumRef}}
+var {{nameInCamelCaseLowerFirst}} = {{{datatypeWithEnum}}}.{{> api_doc_example_enum_param}};{{#description}} // {{{.}}}{{/description}}
+{{/isEnumRef}}
+{{^isEnumRef}}
 {{#isPrimitiveType}}
 {{#example}}
 {{#isEnum}}
@@ -9,9 +13,26 @@ var {{nameInCamelCaseLowerFirst}} = {{{example}}};{{#description}} // {{{.}}}{{/
 {{/isEnum}}
 {{/example}}
 {{^example}}
+{{#isNumber}}
+var {{nameInCamelCaseLowerFirst}} = default({{{dataType}}});{{#description}} // {{{.}}}{{/description}}
+{{/isNumber}}
 {{#isString}}
+{{^isEnum}}
 var {{nameInCamelCaseLowerFirst}} = "{{{nameInCamelCaseLowerFirst}}}_example";{{#description}} // {{{.}}}{{/description}}
+{{/isEnum}}
+{{#isEnum}}
+var {{nameInCamelCaseLowerFirst}} = {{{../dataType}}}.{{{enumName}}}.{{> api_doc_example_enum_param}};{{#description}} // {{{.}}}{{/description}}
+{{/isEnum}}
 {{/isString}}
+{{#isAnyType}}
+var {{nameInCamelCaseLowerFirst}} = "{{{nameInCamelCaseLowerFirst}}}_example";{{#description}} // {{{.}}}{{/description}}
+{{/isAnyType}}
 {{/example}}
 {{/isPrimitiveType}}
+{{^isPrimitiveType}}
+{{#isArray}}
+var {{nameInCamelCaseLowerFirst}} = new {{{dataType}}}();{{#description}} // {{{.}}}{{/description}}
+{{/isArray}}
+{{/isPrimitiveType}}
+{{/isEnumRef}}
 {{/vars}}

@@ -126,6 +126,8 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         // NOTE: C# uses camel cased reserved words, while models are title cased. We don't want lowercase comparisons.
         reservedWords.addAll(
                 Arrays.asList(
+                        // "System." namespace
+                        "Action",
                         // set "client" as a reserved word to avoid conflicts with Org.OpenAPITools.Client
                         // this is a workaround and can be removed if c# api client is updated to use
                         // fully qualified name
