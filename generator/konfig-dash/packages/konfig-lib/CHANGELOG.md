@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.22.0
+
+### Minor Changes
+
+- [#260](https://github.com/konfig-dev/konfig/pull/260) [`93d5dcf9`](https://github.com/konfig-dev/konfig/commit/93d5dcf94d62ce83549ae7e6985e93713731fce0) Thanks [@dphuang2](https://github.com/dphuang2)! - strip format: uuid for C# SDK
+
 ## 1.21.0
 
 ### Minor Changes
