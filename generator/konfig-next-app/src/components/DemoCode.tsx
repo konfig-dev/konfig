@@ -31,8 +31,10 @@ const langDisplayName = {
   go: { name: 'Go' },
   java: { name: 'Java' },
   json: { name: 'JSON' },
+  javascript: { name: 'JavaScript' },
+  js: { name: 'JavaScript' },
 } as Record<
-  Language | 'ruby' | 'csharp' | 'php' | 'shell' | 'java',
+  Language | 'ruby' | 'csharp' | 'php' | 'shell' | 'java' | 'js',
   { name: string }
 >
 
