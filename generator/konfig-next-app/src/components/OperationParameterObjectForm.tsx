@@ -38,7 +38,7 @@ export function OperationParameterObjectForm({
     )
   }
   return (
-    <Paper mt={rem(-10)} radius="xs" p="xs" withBorder>
+    <Paper mt={rem(-10)} p="xs" withBorder>
       <Stack>{reactNodes}</Stack>
     </Paper>
   )

@@ -32,7 +32,7 @@ export function OperationParameterArrayForm({
       param.schema.items.format === 'binary'
     ) {
       return (
-        <Paper key={index} radius="xs" p="xs" withBorder>
+        <Paper key={index} p="xs" withBorder>
           <Stack spacing="xs">
             <Group position="apart">
               <Text color="dimmed" fw="bold" size="xs">
@@ -64,7 +64,7 @@ export function OperationParameterArrayForm({
       param.schema.items.type === 'integer'
     ) {
       return (
-        <Paper key={index} radius="xs" p="xs" withBorder>
+        <Paper key={index} p="xs" withBorder>
           <Stack spacing="xs">
             <Group position="apart">
               <Text color="dimmed" fw="bold" size="xs">
@@ -113,7 +113,7 @@ export function OperationParameterArrayForm({
         )
       }
       return (
-        <Paper key={index} radius="xs" p="xs" withBorder>
+        <Paper key={index} p="xs" withBorder>
           <Stack>
             <Group position="apart">
               <Text color="dimmed" fw="bold" size="xs">

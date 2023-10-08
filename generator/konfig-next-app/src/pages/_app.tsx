@@ -64,6 +64,13 @@ function App(props: AppProps) {
                   input: getClickableStyles(theme),
                 }),
               },
+              Paper: {
+                styles: (theme) => ({
+                  root: {
+                    borderRadius: theme.radius.sm,
+                  },
+                }),
+              },
               Badge: {
                 styles: (theme) => ({
                   root: {
