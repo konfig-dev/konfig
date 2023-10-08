@@ -113,8 +113,18 @@ const sidebars = {
           items: [
             {
               type: "doc",
+              label: "Styling Your Portal",
+              id: "portal/tutorials/styling-your-portal",
+            },
+            {
+              type: "doc",
               label: "Creating Markdown Pages",
               id: "portal/tutorials/creating-markdown-pages",
+            },
+            {
+              type: "doc",
+              label: "Configuring API Reference",
+              id: "portal/tutorials/configuring-api-reference",
             },
             {
               type: "doc",

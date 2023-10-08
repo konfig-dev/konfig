@@ -1,0 +1,48 @@
+# Configuring API Reference
+
+![Configuring API Reference](/img/configuring-api-reference.png)
+
+## How to hide operations
+
+To hide operations you can use `hideOperations` property in `portal` section of
+`konfig.yaml` file. The property is a map where keys are paths to operations and
+values are maps with HTTP methods as keys and boolean values. If the value is
+`true` then the operation will be hidden in the `API Reference` page.
+
+```yaml konfig.yaml focus=8:10
+portal:
+  title: Acme
+  primaryColor: '#9fc1be'
+  favicon: favicon.png
+  logo: portal-logo.png
+  socials:
+    website: https://acme.com
+  hideOperations:
+    /holdings:
+      get: true
+  hideSecurity:
+    - name: PartnerSignature
+    - name: PartnerTimestamp
+```
+
+## How to hide security requirements
+
+To hide security requirements you can use `hideSecurity` property in `portal`.
+The property is a list of security requirements names that should be hidden in
+the `API Reference` page.
+
+```yaml konfig.yaml focus=11:13
+portal:
+  title: Acme
+  primaryColor: '#9fc1be'
+  favicon: favicon.png
+  logo: portal-logo.png
+  socials:
+    website: https://acme.com
+  hideOperations:
+    /holdings:
+      get: true
+  hideSecurity:
+    - name: PartnerSignature
+    - name: PartnerTimestamp
+```
