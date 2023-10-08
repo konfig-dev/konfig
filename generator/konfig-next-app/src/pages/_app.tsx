@@ -52,9 +52,9 @@ function App(props: AppProps) {
                 styles: (theme) => ({
                   root: {
                     borderRadius: theme.radius.sm,
+                    fontSize: theme.fontSizes.sm,
                   },
                   label: {
-                    fontSize: theme.fontSizes.sm,
                     fontWeight: 500,
                   },
                 }),
