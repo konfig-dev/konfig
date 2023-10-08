@@ -302,7 +302,7 @@ export function ReferenceNavbar({
         )}
       </Navbar.Section>
 
-      <Navbar.Section px="sm" py="xl" grow>
+      <Navbar.Section px="md" py="xl" grow>
         {links}
       </Navbar.Section>
     </>

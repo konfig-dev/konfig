@@ -4,7 +4,6 @@ import { DocEditThisPage } from '@/components/DocEditThisPage'
 import { DocNavLink } from '@/components/DocNavLink'
 import { DocumentationHeader } from '@/components/DocumentationHeader'
 import { NAVBAR_WIDTH } from '@/components/ReferenceNavbar'
-import { generateShadePalette } from '@/utils/generate-shade-palette'
 import {
   useMantineTheme,
   useMantineColorScheme,
@@ -13,10 +12,7 @@ import {
   Navbar,
   Stack,
   Box,
-  Title,
   rem,
-  Divider,
-  Flex,
   Text,
   createStyles,
 } from '@mantine/core'
@@ -172,22 +168,21 @@ const DocumentationPage = observer(
                 hidden={!opened}
                 width={{ [navbarOffsetBreakpoint]: NAVBAR_WIDTH }}
                 py="xl"
-                px="sm"
+                px="md"
                 sx={{
                   overflowY: 'scroll',
                   height:
                     'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
                 }}
               >
-                <Stack>
+                <Stack spacing="xl">
                   {docConfig.sidebar.sections.map((section, i) => {
                     return (
                       <Box key={`${section.label}-${i}`}>
                         <Text
-                          pb={2}
-                          px="md"
+                          px="sm"
                           weight="bold"
-                          fz="xs"
+                          fz="0.7rem"
                           style={{ textTransform: 'uppercase' }}
                           color="dimmed"
                         >

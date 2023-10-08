@@ -50,6 +50,9 @@ function App(props: AppProps) {
             components: {
               NavLink: {
                 styles: (theme) => ({
+                  root: {
+                    borderRadius: theme.radius.sm,
+                  },
                   label: {
                     fontSize: theme.fontSizes.sm,
                     fontWeight: 500,

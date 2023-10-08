@@ -24,16 +24,10 @@ export function DocNavLink({
   return (
     <NavLink<typeof Link>
       active={active}
-      px="md"
       onClick={() => setOpened(false)}
       key={id}
-      py={8}
       styles={{
-        root: {
-          borderRadius: theme.radius.sm,
-        },
         label: {
-          fontSize: theme.fontSizes.sm,
           color: navLinkColor({ active, theme }),
         },
       }}

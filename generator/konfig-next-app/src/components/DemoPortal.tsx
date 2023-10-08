@@ -289,7 +289,7 @@ export const DemoPortal = observer(
                   )}
                 </Group>
               </Navbar.Section>
-              <Navbar.Section px="sm" py="xl" grow>
+              <Navbar.Section px="md" py="xl" grow>
                 <Stack spacing={0}>
                   {state.demos.map(({ name }, i) => {
                     const isCurrentlySelected = state.currentDemoIndex === i
@@ -308,21 +308,14 @@ export const DemoPortal = observer(
                             sandbox,
                           })
                         }}
-                        p="xs"
-                        py={8}
                         styles={{
-                          root: {
-                            borderRadius: theme.radius.sm,
-                          },
                           label: {
                             color: navLinkColor({
                               active: isCurrentlySelected,
                               theme,
                             }),
-                            fontSize: theme.fontSizes.sm,
                           },
                         }}
-                        sx={(theme) => ({ borderRadius: theme.radius.sm })}
                         label={name}
                         active={isCurrentlySelected}
                       />
