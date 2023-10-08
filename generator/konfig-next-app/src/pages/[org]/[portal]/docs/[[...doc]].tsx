@@ -37,6 +37,7 @@ import { proseContainerWidthStyles } from '@/utils/prose-container-width-styles'
 import { FlexCenter } from '@/components/FlexCenter'
 import { asideOffsetBreakpoint } from '@/utils/aside-offset-breakpoint'
 import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
+import { linkColor } from '@/utils/link-color'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -96,7 +97,7 @@ const DocumentationPage = observer(
     faviconLink,
     logo,
   }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-    const { colors } = useMantineTheme()
+    const theme = useMantineTheme()
     const { colorScheme } = useMantineColorScheme()
 
     const [opened, setOpened] = useState(false)
@@ -148,7 +149,7 @@ const DocumentationPage = observer(
             colorScheme,
             ...generateMantineThemeColors({
               primaryColor: konfigYaml.portal?.primaryColor,
-              colors,
+              colors: theme.colors,
             }),
             primaryColor: 'brand',
           }}
@@ -156,7 +157,8 @@ const DocumentationPage = observer(
           <AppShell
             styles={{
               main: {
-                background: colorScheme === 'dark' ? colors.dark[8] : undefined,
+                background:
+                  colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
               },
             }}
             navbarOffsetBreakpoint={navbarOffsetBreakpoint}
@@ -184,7 +186,7 @@ const DocumentationPage = observer(
                           weight="bold"
                           fz="0.7rem"
                           style={{ textTransform: 'uppercase' }}
-                          color="dimmed"
+                          color={linkColor({ theme })}
                         >
                           {section.label}
                         </Text>
