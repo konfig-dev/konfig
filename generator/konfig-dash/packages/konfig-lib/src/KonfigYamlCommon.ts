@@ -305,6 +305,7 @@ export const KonfigYamlCommon = z
       )
       .optional(),
   })
+  .passthrough()
   .merge(requiredEnvironmentVariablesConfig)
 
 export type KonfigYamlCommonType = z.infer<typeof KonfigYamlCommon>
