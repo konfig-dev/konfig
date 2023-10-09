@@ -73,8 +73,32 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
 
             const localVarRequestOptions: AxiosRequestConfig = { method: '{{httpMethod}}', ...baseOptions, ...options};
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
-            const localVarQueryParameter = {} as any;{{#vendorExtensions}}{{#hasFormParams}}
-            const localVarFormParams = new {{^multipartFormData}}URLSearchParams(){{/multipartFormData}}{{#multipartFormData}}((configuration && configuration.formDataCtor) || FormData)(){{/multipartFormData}};{{/hasFormParams}}{{/vendorExtensions}}
+            const localVarQueryParameter = {} as any;
+            {{#vendorExtensions}}
+            {{#multipartFormData}}
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+            const addFormParam = async (name: string, data: any, isBinary: boolean, isPrimitiveType: boolean) => {
+                if (isBinary) {
+                    if (data instanceof Uint8Array) {
+                        // Node.js
+                        const filetype = await fromBuffer(data)
+                        const filename = filetype === undefined ? name : `${name}.${filetype.ext}`
+                        localVarFormParams.append(name, data as any, filename);
+                    } else if ("name" in data) {
+                        // Browser
+                        localVarFormParams.append(name, data as any, data.name);
+                    }
+                } else {
+                    if (isPrimitiveType) {
+                        localVarFormParams.append(name, data as any);
+                    } else {
+                        localVarFormParams.append(name, JSON.stringify(data), { type: "application/json", filename: "data.json" });
+                    }
+                }
+            }
+            if (!isBrowser()) Object.assign(localVarHeaderParameter, localVarFormParams.getHeaders());
+            {{/multipartFormData}}
+            {{/vendorExtensions}}
 
     {{#authMethods}}
             // authentication {{name}} required
@@ -178,27 +202,9 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
         if ({{> requestPropertyName}}) {
             {{#isCollectionFormatMulti}}
                 const baseName = '{{baseName}}'
-                for (const element of {{> requestPropertyName}}) { {{#multipartFormData}}
-                {{#items}}
-                {{#isBinary}}
-                    if (element instanceof Uint8Array) {
-                        // Node.js
-                        const filetype = await fromBuffer(element)
-                        const filename = filetype === undefined ? baseName : `${baseName}.${filetype.ext}`
-                        localVarFormParams.append(baseName, element as any, filename);
-                    } else if ("name" in element) {
-                        // Browser
-                        localVarFormParams.append(baseName, element as any, element.name);
-                    }
-                {{/isBinary}}
-                {{^isBinary}}
-            localVarFormParams.set(baseName, element as any);
-                {{/isBinary}}
-                {{/items}}
-                {{/multipartFormData}}{{^multipartFormData}}
-            localVarFormParams.set('{{baseName}}', element as any);
-                {{/multipartFormData}}
-}
+                for (const element of {{> requestPropertyName}}) {
+                    await addFormParam(baseName, element, {{isBinary}}, {{isPrimitiveType}})
+                }
             {{/isCollectionFormatMulti}}
             {{^isCollectionFormatMulti}}
             {{#items.isModel}}
@@ -210,23 +216,12 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             {{/isCollectionFormatMulti}}
             }{{/isArray}}
             {{^isArray}}
-            if ({{> requestPropertyName}} !== undefined) { {{^multipartFormData}}
-                localVarFormParams.set('{{baseName}}', {{> requestPropertyName}} as any);{{/multipartFormData}}{{#multipartFormData}}{{#isPrimitiveType}}{{#isBinary}}
-                if ({{> requestPropertyName}} instanceof Uint8Array) {
-                    // Node.js
-                    const { ext } = await fromBuffer({{> requestPropertyName}})
-                    localVarFormParams.append('{{baseName}}', {{> requestPropertyName}} as any, `{{baseName}}.${ext}`);
-                } else {
-                    // Browser
-                    localVarFormParams.append('{{baseName}}', {{> requestPropertyName}} as any, {{> requestPropertyName}}.name);
-                }{{/isBinary}}{{^isBinary}}
-                localVarFormParams.append('{{baseName}}', {{> requestPropertyName}} as any);{{/isBinary}}{{/isPrimitiveType}}{{^isPrimitiveType}}
-                localVarFormParams.append('{{baseName}}', JSON.stringify({{> requestPropertyName}}), { type: "application/json", filename: "data.json" });{{/isPrimitiveType}}{{/multipartFormData}}
+            if ({{> requestPropertyName}} !== undefined) {
+                await addFormParam('{{baseName}}', {{> requestPropertyName}}, {{isBinary}}, {{isPrimitiveType}})
             }{{/isArray}}
     {{/formParams}}{{/vendorExtensions}}
     {{#vendorExtensions}}{{#hasFormParams}}{{^multipartFormData}}
-            localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';{{/multipartFormData}}{{#multipartFormData}}
-            if (!isBrowser()) Object.assign(localVarHeaderParameter, localVarFormParams.getHeaders());{{/multipartFormData}}
+            localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';{{/multipartFormData}}
     {{/hasFormParams}}{{/vendorExtensions}}
     {{#bodyParam}}
             {{^consumes}}
@@ -236,12 +231,29 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             localVarHeaderParameter['Content-Type'] = '{{{mediaType}}}';
             {{/consumes.0}}
 
+            {{#../vendorExtensions.multipartFormData}}
+            {{#isArray}}
+            if ({{> requestPropertyName}}) {
+                {{#items}}
+                for (const element of {{> requestPropertyName}}) {
+                {{#vars}}
+                    await addFormParam('{{name}}', element.{{name}}, {{isBinary}}, {{isPrimitiveType}})
+                {{/vars}}
+                {{^isModel}}
+                    await addFormParam('{{name}}', element, {{isBinary}}, {{isPrimitiveType}})
+                {{/isModel}}
+                }
+                {{/items}}
+            }
+            {{/isArray}}
+            {{/../vendorExtensions.multipartFormData}}
+
     {{/bodyParam}}
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions,{{#hasFormParams}}{{#multipartFormData}} ...(localVarFormParams as any).getHeaders?.(),{{/multipartFormData}}{{/hasFormParams}} ...options.headers};
-    {{#hasFormParams}}
-            localVarRequestOptions.data = localVarFormParams{{#vendorExtensions}}{{^multipartFormData}}.toString(){{/multipartFormData}}{{/vendorExtensions}};
-    {{/hasFormParams}}
+    {{#vendorExtensions.multipartFormData}}
+            localVarRequestOptions.data = localVarFormParams;
+    {{/vendorExtensions.multipartFormData}}
     {{#bodyParam}}
             requestBeforeHook({
                 requestBody: {{> requestPropertyName}},
@@ -250,7 +262,9 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
                 path: localVarPath,
                 configuration
             });
+    {{^../vendorExtensions.multipartFormData}}
             localVarRequestOptions.data = serializeDataIfNeeded({{> requestPropertyName}}, localVarRequestOptions, configuration)
+    {{/../vendorExtensions.multipartFormData}}
     {{/bodyParam}}
     {{^bodyParam}}
             requestBeforeHook({
@@ -300,7 +314,7 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         {{#useSingleRequestParameter}}
-        async {{nickname}}({{#allParams.0}}requestParameters: {{classname}}{{operationIdCamelCase}}Request{{^onlyHasPrimitiveBodyParameter}}{{#defaultCanBeEmptyObject}} = {}{{/defaultCanBeEmptyObject}}{{/onlyHasPrimitiveBodyParameter}}, {{/allParams.0}}options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}>> {
+        async {{nickname}}({{> apiInner_requestParameters}}options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.{{nickname}}({{#allParams}}requestParameters{{#isBodyParam}}{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}.requestBody{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{/isBodyParam}}{{^isBodyParam}}.{{> requestPropertyName}}{{/isBodyParam}}, {{/allParams}}options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -344,7 +358,7 @@ export const {{classname}}Factory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         {{#useSingleRequestParameter}}
-        {{nickname}}({{#allParams.0}}requestParameters: {{classname}}{{operationIdCamelCase}}Request{{^onlyHasPrimitiveBodyParameter}}{{#defaultCanBeEmptyObject}} = {}{{/defaultCanBeEmptyObject}}{{/onlyHasPrimitiveBodyParameter}}, {{/allParams.0}}options?: AxiosRequestConfig): AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
+        {{nickname}}({{> apiInner_requestParameters}}options?: AxiosRequestConfig): AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
             return localVarFp.{{nickname}}({{#allParams.0}}requestParameters, {{/allParams.0}}options).then((request) => request(axios, basePath));
         },
         {{/useSingleRequestParameter}}
@@ -393,7 +407,7 @@ export interface {{classname}}Interface {
  * @export
  * @interface {{> singleRequestParameterName}}
  */
-export type {{> singleRequestParameterName}} = {{#onlyHasPrimitiveBodyParameter}}{{{dataType}}}{{/onlyHasPrimitiveBodyParameter}}{{^onlyHasPrimitiveBodyParameter}}{
+export type {{> singleRequestParameterName}} = {{#onlyHasPrimitiveBodyParameter}}{{{dataType}}}{{/onlyHasPrimitiveBodyParameter}}{{^onlyHasPrimitiveBodyParameter}}{{^isArray}}{
  {{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
     {{#allParams}}{{^isBodyParam}}
     /**
@@ -414,7 +428,7 @@ export type {{> singleRequestParameterName}} = {{#onlyHasPrimitiveBodyParameter}
     readonly {{#isBodyParam}}requestBody{{/isBodyParam}}{{^isBodyParam}}{{> requestPropertyName}}{{/isBodyParam}}{{^required}}?{{/required}}: {{{dataType}}}
     {{/allParams}}
 {{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
-}{{#bodyParam}}{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}} & {{{dataType}}}{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{/bodyParam}}{{/onlyHasPrimitiveBodyParameter}}
+}{{/isArray}}{{#bodyParam}}{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{^isArray}} & {{/isArray}}{{{dataType}}}{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{/bodyParam}}{{/onlyHasPrimitiveBodyParameter}}
 
 {{/allParams.0}}
 {{/operation}}
@@ -454,7 +468,7 @@ export class {{classname}}Generated extends BaseAPI {
      * @memberof {{classname}}Generated
      */
     {{#useSingleRequestParameter}}
-    public {{nickname}}({{#allParams.0}}requestParameters: {{classname}}{{operationIdCamelCase}}Request{{^onlyHasPrimitiveBodyParameter}}{{#defaultCanBeEmptyObject}} = {}{{/defaultCanBeEmptyObject}}{{/onlyHasPrimitiveBodyParameter}}, {{/allParams.0}}options?: AxiosRequestConfig) {
+    public {{nickname}}({{> apiInner_requestParameters}}options?: AxiosRequestConfig) {
         {{#vendorExtensions}}
         {{#x-konfig-pagination}}
         return paginate({

@@ -85,9 +85,25 @@ yarn add {{npmName}}
 ```
 
 {{#hasParams}}
+{{#bodyParam}}
+{{#isArray}}
+{{#items}}
+#### ⚙️ Parameter
+
+{{> api_doc_param_data_type}}
+
+{{#description}}
+{{{description}}}
+
+{{/description}}
+{{/items}}
+{{/isArray}}
+{{/bodyParam}}
+{{#allParamsWithRequestBodyProperties}}
+{{#-first}}
 #### ⚙️ Parameters
 
-{{#allParamsWithRequestBodyProperties}}
+{{/-first}}
 ##### {{{paramName}}}: {{> api_doc_param_data_type}}
 
 {{#description}}

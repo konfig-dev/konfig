@@ -75,6 +75,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -4089,7 +4090,11 @@ public class DefaultCodegen implements CodegenConfig {
         } else if (ModelUtils.isAnyType(p)) {
             updatePropertyForAnyType(property, p);
         } else if (ModelUtils.isTypeObjectSchema(pDeref)) {
-            updatePropertyForObject(property, p);
+            // I keep going back and forth between p / pDeref for second argument here
+            // we really need tests so I can make changes to fix customer bugs and be confident I didn't break
+            // something else. Or else we could be going in circles / making backward progress when fixing bugs for
+            // customers.
+            updatePropertyForObject(property, pDeref);
         } else if (!ModelUtils.isNullType(p)) {
             // referenced model
             ;
@@ -4601,6 +4606,7 @@ public class DefaultCodegen implements CodegenConfig {
         List<CodegenParameter> optionalNonBodyParams = new ArrayList<>();
         List<CodegenParameter> optionalParamsWithRequestBodyProperties = new ArrayList<>();
 
+
         CodegenParameter bodyParam = null;
         RequestBody requestBody = operation.getRequestBody();
         if (requestBody != null) {
@@ -4632,6 +4638,18 @@ public class DefaultCodegen implements CodegenConfig {
                     flattenedParamsFromRequestBodyProperties.add(cp);
                 }
 
+                requestBody = ModelUtils.getReferencedRequestBody(this.openAPI, requestBody);
+
+                // Still add body parameter to parameters
+                String bodyParameterName = "";
+                if (op.vendorExtensions != null && op.vendorExtensions.containsKey("x-codegen-request-body-name")) {
+                    bodyParameterName = (String) op.vendorExtensions.get("x-codegen-request-body-name");
+                }
+                bodyParam = fromRequestBody(requestBody, imports, bodyParameterName);
+                bodyParam.description = escapeText(requestBody.getDescription());
+                postProcessParameter(bodyParam);
+
+                bodyParams.add(bodyParam);
             } else {
                 // process body parameter
                 requestBody = ModelUtils.getReferencedRequestBody(this.openAPI, requestBody);
@@ -7470,7 +7488,8 @@ public class DefaultCodegen implements CodegenConfig {
         } else {
             final ArraySchema arraySchema = (ArraySchema) schema;
             Schema inner = getSchemaItems(arraySchema);
-            CodegenProperty codegenProperty = fromProperty("property", arraySchema, false);
+            CodegenProperty codegenProperty = fromProperty("item", arraySchema, false);
+
             if (codegenProperty == null) {
                 throw new RuntimeException("CodegenProperty cannot be null. arraySchema for debugging: " + arraySchema);
             }
@@ -7506,6 +7525,7 @@ public class DefaultCodegen implements CodegenConfig {
             } else {
                 codegenParameter.baseName = bodyParameterName;
             }
+
             codegenParameter.paramName = toArrayModelParamName(codegenParameter.baseName);
             codegenParameter.items = codegenProperty.items;
             codegenParameter.mostInnerItems = codegenProperty.mostInnerItems;
