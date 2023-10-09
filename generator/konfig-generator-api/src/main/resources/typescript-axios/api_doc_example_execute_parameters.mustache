@@ -1,4 +1,4 @@
-{{^hasParams}}(){{/hasParams}}{{#hasParams}}{{#onlyHasPrimitiveBodyParameter}}{{#bodyParam}}({{#isString}}"example_string"{{/isString}}{{/bodyParam}}){{/onlyHasPrimitiveBodyParameter}}{{^onlyHasPrimitiveBodyParameter}}({{#vendorExtensions.x-konfig-operation-can-have-single-parameter}}{{{singleParameterExample}}}{{/vendorExtensions.x-konfig-operation-can-have-single-parameter}}{{^vendorExtensions.x-konfig-operation-can-have-single-parameter}}{
+{{^hasParams}}(){{/hasParams}}{{#hasParams}}{{#onlyHasPrimitiveBodyParameter}}{{#bodyParam}}({{#isString}}"example_string"{{/isString}}{{/bodyParam}}){{/onlyHasPrimitiveBodyParameter}}{{^onlyHasPrimitiveBodyParameter}}({{#vendorExtensions.x-konfig-operation-can-have-single-parameter}}{{#bodyParam.isArray}}{{{bodyParam.example}}}{{/bodyParam.isArray}}{{^bodyParam.isArray}}{{{singleParameterExample}}}{{/bodyParam.isArray}}{{/vendorExtensions.x-konfig-operation-can-have-single-parameter}}{{^vendorExtensions.x-konfig-operation-can-have-single-parameter}}{
 {{#allParams}}
 {{^isBodyParam}}
     '{{{paramName}}}': {{{example}}},
