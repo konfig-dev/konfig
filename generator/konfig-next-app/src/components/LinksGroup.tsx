@@ -121,6 +121,7 @@ export function LinksGroup({
       <UnstyledButton
         onClick={() => setOpened((o) => !o)}
         className={classes.control}
+        lh={theme.lineHeight}
         style={{
           color: navLinkColor({ active: anyActiveLinks, theme }),
         }}
