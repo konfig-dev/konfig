@@ -4,6 +4,7 @@ import { githubGetFileContent } from './github-get-file-content'
 import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { createOctokitInstance } from './octokit'
 import { parseSpec } from 'konfig-lib/dist/parseSpec'
+import { orderOpenApiSpecification } from 'konfig-lib/dist/util/order-openapi-specification'
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function'
 import { githubGetRepository } from './github-get-repository'
 import { generateFaviconLink } from './generate-favicon-link'
@@ -68,6 +69,13 @@ export async function githubGetReferenceResources({
   })
 
   const spec = await parseSpec(openapi)
+
+  if (konfigYaml.content.order !== undefined) {
+    orderOpenApiSpecification({
+      spec: spec.spec,
+      order: konfigYaml.content.order,
+    })
+  }
 
   const navbarData = generateNavbarLinks({
     spec: spec.spec,

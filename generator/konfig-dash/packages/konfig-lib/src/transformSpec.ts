@@ -29,6 +29,7 @@ import camelcase from './util/camelcase'
 import { HttpMethods } from './forEachOperation'
 import { transformInnerSchemas } from './util/transform-inner-schemas'
 import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
+import { orderOpenApiSpecification } from './util/order-openapi-specification'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -60,12 +61,17 @@ export const transformSpec = async ({
   infoContactName,
   infoContactUrl,
   fixConfig,
+  order,
   doNotValidateGloballyRequiredSecurity,
   removeRequiredProperties,
 }: Options): Promise<string> => {
   const spec = await parseSpec(specString)
 
   if (!spec.spec.paths) throw Error('"path" is not an array')
+
+  if (order !== undefined) {
+    orderOpenApiSpecification({ spec: spec.spec, order })
+  }
 
   // recurse through entire spec and shorten any strings that are grater than
   // 65535 bytes by taking out middle sections of the string
