@@ -9,6 +9,8 @@ import { convertSwaggerToOAS3 } from './convertSwaggerToOAS3'
 
 export type SchemaObject = OpenAPIV3.SchemaObject | OpenAPIV3_1.SchemaObject
 
+export type PathsObject = OpenAPIV3.PathsObject | OpenAPIV3_1.PathsObject
+
 export type RequestBodyObject =
   | OpenAPIV3.RequestBodyObject
   | OpenAPIV3_1.RequestBodyObject

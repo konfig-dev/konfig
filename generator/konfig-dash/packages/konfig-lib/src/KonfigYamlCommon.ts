@@ -170,16 +170,63 @@ export const readmeHeader = z
   .optional()
   .describe('Call to action to be displayed in SDKs README.md')
 
+// Define an operation, which can be either an operationId or a combination of subpath and HTTP method
+const Operation = z.union([
+  z
+    .string()
+    .describe(
+      'This represents the operationId from the OpenAPI specification.'
+    ),
+  z
+    .object({
+      path: z.string().describe("This represents the operation's subpath."),
+      method: z
+        .string()
+        .describe("This represents the operation's HTTP method."),
+    })
+    .describe("This represents the operation's subpath and HTTP method."),
+])
+
+// Define a schema for a tag along with its associated operations
+const TagWithOperations = z
+  .object({
+    tag: z
+      .string()
+      .describe('This represents the tag name from the OpenAPI specification.'),
+    operations: z
+      .array(Operation)
+      .optional()
+      .describe(
+        'An ordered list of operations associated with the tag. Each operation can be an operationId or a combination of subpath and HTTP method.'
+      ),
+  })
+  .describe(
+    'A schema that represents a tag and its associated operations in a user-defined order.'
+  )
+
+// Define the main schema for the API order configuration
+const ApiOrderConfigurationSchema = z
+  .array(TagWithOperations)
+  .describe(
+    'An ordered list of tags, where each tag has its associated operations. This represents the user-defined order for displaying tags and operations in the API documentation.'
+  )
+
+export type ApiOrderConfiguration = z.infer<typeof ApiOrderConfigurationSchema>
+
 export const KonfigYamlCommon = z
   .object({
     primaryColor,
     portal,
+    order: ApiOrderConfigurationSchema.optional(),
     readmeHeader,
     readmeOperation: z
       .object({
         operationId: z.string(),
       })
-      .optional(),
+      .optional()
+      .describe(
+        `Operation to be displayed in "Getting Started" section of SDKs README.md`
+      ),
     portalTitle: z
       .string()
       .optional()
