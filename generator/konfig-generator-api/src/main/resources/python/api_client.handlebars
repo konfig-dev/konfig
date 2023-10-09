@@ -1798,8 +1798,8 @@ class RequestBody(StyleFormSerializer, JSONDetector):
     def __serialize_multipart_form_data(
         self, in_data: Schema
     ) -> typing.Dict[str, typing.Tuple[RequestField, ...]]:
-        if not isinstance(in_data, frozendict.frozendict):
-            raise ValueError(f'Unable to serialize {in_data} to multipart/form-data because it is not a dict of data')
+        if not isinstance(in_data, frozendict.frozendict) and not isinstance(in_data, list) and not isinstance(in_data, tuple):
+            raise ValueError(f'Unable to serialize {in_data} to multipart/form-data because it is not a dict of data or a list of data')
         """
         In a multipart/form-data request body, each schema property, or each element of a schema array property,
         takes a section in the payload with an internal header as defined by RFC7578. The serialization strategy
@@ -1814,24 +1814,33 @@ class RequestBody(StyleFormSerializer, JSONDetector):
         If the property is a type: string with a contentEncoding, the default Content-Type is application/octet-stream
         """
         fields: typing.List[RequestField] = []
-        for key, value in in_data.items():
-            if isinstance(value, tuple):
-                if value:
-                    # values use explode = True, so the code makes a RequestField for each item with name=key
-                    for item in value:
-                        request_field = self.__multipart_form_item(key=key, value=item)
+
+        def add_field(data):
+            for key, value in data.items():
+                if isinstance(value, tuple):
+                    if value:
+                        # values use explode = True, so the code makes a RequestField for each item with name=key
+                        for item in value:
+                            request_field = self.__multipart_form_item(key=key, value=item)
+                            fields.append(request_field)
+                    else:
+                        # send an empty array as json because exploding will not send it
+                        request_field = self.__multipart_json_item(key=key, value=value)
                         fields.append(request_field)
                 else:
-                    # send an empty array as json because exploding will not send it
-                    request_field = self.__multipart_json_item(key=key, value=value)
+                    request_field = self.__multipart_form_item(key=key, value=value)
                     fields.append(request_field)
-            else:
-                request_field = self.__multipart_form_item(key=key, value=value)
-                fields.append(request_field)
+
+        if isinstance(in_data, list) or isinstance(in_data, tuple):
+            for item in in_data:
+                add_field(item)
+        else:
+            add_field(in_data)
 
         # This is necessary to fill the "Content-Disposition" header needed for naming fields in multipart
         for field in fields:
             field.make_multipart(content_type=field.headers["Content-Type"])
+
         return dict(fields=tuple(fields))
 
     def __serialize_application_octet_stream(self, in_data: BinarySchema) -> typing.Dict[str, bytes]:
