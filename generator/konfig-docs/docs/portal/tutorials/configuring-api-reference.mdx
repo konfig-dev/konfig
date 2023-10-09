@@ -46,3 +46,49 @@ portal:
     - name: PartnerSignature
     - name: PartnerTimestamp
 ```
+
+## How to order operations in API Reference
+
+
+<Figure caption="List of Operations in Sidebar of API Portal's API Reference Page">
+![Order operations](/img/order-operations.png)
+</Figure>
+
+<CH.Section>
+
+To order the list of operations in your API Reference page, you can configure
+the [`order`](focus://1) property in your `konfig.yaml` file. Here are the
+important things to know about the `order` property:
+
+- The `order` property is a [list of objects with a "tag" property and an
+"operations" property](focus://2:12).
+- The ["tag" property is a string that refers to a tag in
+your OpenAPI specification](focus://2).
+- The ["operations" property is the order of operations
+that you want to appear under that tag](focus://3:5).
+- An operation can be specified by its
+["operationId"](focus://8) or by its ["path" and "method"](focus://11:12).
+
+<Admonition title="Unspecified Operations" type="info">
+Operations and tags that are not specified in the `order` property will appear
+at the end of the list in the order that they appear in your OpenAPI specification.
+</Admonition>
+
+```yaml konfig.yaml
+order:
+  - tag: user
+    operations:
+      - user_create
+      - user_login
+  - tag: store
+    operations:
+      - store_placeOrder
+  - tag: pet
+    operations:
+      - path: /pet
+        method: post
+portal:
+  title: Acme
+  primaryColor: "#1f334e"
+```
+</CH.Section>
