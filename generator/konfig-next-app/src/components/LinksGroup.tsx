@@ -45,7 +45,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   linkWrapper: {
-    paddingLeft: rem(20),
+    paddingLeft: rem(12),
   },
 
   chevron: {
