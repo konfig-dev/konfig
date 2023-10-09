@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.23.0
+
+### Minor Changes
+
+- [#263](https://github.com/konfig-dev/konfig/pull/263) [`99310fc1`](https://github.com/konfig-dev/konfig/commit/99310fc166af9212c69aea6a8447bd421f059575) Thanks [@dphuang2](https://github.com/dphuang2)! - add "order" property to konfig.yaml for ordering operations in API reference page
+
 ## 1.22.0
 
 ### Minor Changes
