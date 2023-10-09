@@ -1,4 +1,9 @@
-import { GenerateRequestBodyType, GeneratorGitConfig } from 'konfig-lib'
+import {
+  GenerateRequestBodyType,
+  GeneratorGitConfig,
+  KonfigYamlAdditionalGeneratorConfig,
+  KonfigYamlGeneratorConfig,
+} from 'konfig-lib'
 
 /**
  * Used in preparation to send a request to the Java generator API for all
@@ -16,9 +21,13 @@ import { GenerateRequestBodyType, GeneratorGitConfig } from 'konfig-lib'
 export function prepareJavaRequestProperties({
   body,
   git,
+  generatorConfig,
 }: {
   body: GenerateRequestBodyType
   git: GeneratorGitConfig
+  generatorConfig:
+    | KonfigYamlGeneratorConfig
+    | KonfigYamlAdditionalGeneratorConfig
 }): Record<string, unknown> {
   const properties: Record<string, unknown> = {}
 
@@ -27,6 +36,14 @@ export function prepareJavaRequestProperties({
       title: body.readmeHeader.title,
       url: body.readmeHeader.url,
     }
+  }
+
+  if ('repoName' in git) {
+    properties['gitRepoName'] = git.repoName
+  }
+
+  if ('outputDirectory' in generatorConfig) {
+    properties['outputDirectory'] = generatorConfig.outputDirectory
   }
 
   if ('defaultBranch' in git) {

@@ -245,7 +245,11 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
       },
       config: {
         additionalProperties: {
-          ...prepareJavaRequestProperties({ body, git }),
+          ...prepareJavaRequestProperties({
+            body,
+            git,
+            generatorConfig: body.generators.objc,
+          }),
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
           readmeOperation: body.readmeOperation,
@@ -288,7 +292,11 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
       },
       config: {
         additionalProperties: {
-          ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+          ...prepareJavaRequestProperties({
+            body,
+            git: generatorConfig.git,
+            generatorConfig,
+          }),
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
           readmeOperation: body.readmeOperation,
@@ -324,7 +332,11 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
       },
       config: {
         additionalProperties: {
-          ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+          ...prepareJavaRequestProperties({
+            body,
+            git: generatorConfig.git,
+            generatorConfig,
+          }),
           omitInfoDescription: body.omitInfoDescription,
           readmeSnippet: generatorConfig.readmeSnippet,
           readmeSupportingDescriptionSnippet:
@@ -375,7 +387,11 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
       },
       config: {
         additionalProperties: {
-          ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+          ...prepareJavaRequestProperties({
+            body,
+            git: generatorConfig.git,
+            generatorConfig,
+          }),
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
           readmeOperation: body.readmeOperation,
@@ -434,7 +450,11 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
 
       config: {
         additionalProperties: {
-          ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+          ...prepareJavaRequestProperties({
+            body,
+            git: generatorConfig.git,
+            generatorConfig,
+          }),
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
           readmeOperation: body.readmeOperation,
@@ -473,7 +493,11 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
 
       config: {
         additionalProperties: {
-          ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+          ...prepareJavaRequestProperties({
+            body,
+            git: generatorConfig.git,
+            generatorConfig,
+          }),
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
           readmeOperation: body.readmeOperation,
@@ -517,7 +541,11 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
 
       config: {
         additionalProperties: {
-          ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+          ...prepareJavaRequestProperties({
+            body,
+            git: generatorConfig.git,
+            generatorConfig,
+          }),
           useDescriptionInOperationTableDocumentation:
             generatorConfig.useDescriptionInOperationTableDocumentation,
           omitInfoDescription: body.omitInfoDescription,
@@ -662,7 +690,11 @@ async function queueGoGeneration({
     config: {
       outputDirectoryName,
       additionalProperties: {
-        ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+        ...prepareJavaRequestProperties({
+          body,
+          git: generatorConfig.git,
+          generatorConfig,
+        }),
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
         readmeOperation: body.readmeOperation,
@@ -714,7 +746,11 @@ async function queuePhpGeneration({
     config: {
       outputDirectoryName,
       additionalProperties: {
-        ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+        ...prepareJavaRequestProperties({
+          body,
+          git: generatorConfig.git,
+          generatorConfig,
+        }),
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
         readmeOperation: body.readmeOperation,
@@ -775,7 +811,11 @@ async function queueDartGeneration({
     config: {
       outputDirectoryName,
       additionalProperties: {
-        ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+        ...prepareJavaRequestProperties({
+          body,
+          git: generatorConfig.git,
+          generatorConfig,
+        }),
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
         readmeOperation: body.readmeOperation,
@@ -844,7 +884,11 @@ async function queueJavaGeneration({
     config: {
       outputDirectoryName,
       additionalProperties: {
-        ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+        ...prepareJavaRequestProperties({
+          body,
+          git: generatorConfig.git,
+          generatorConfig,
+        }),
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
         readmeOperation: body.readmeOperation,
@@ -927,7 +971,11 @@ async function queueTypeScriptGeneration({
     config: {
       outputDirectoryName, // this is so the directory name from additionalGenerators does not conflict with the one under generators
       additionalProperties: {
-        ...prepareJavaRequestProperties({ body, git: generatorConfig.git }),
+        ...prepareJavaRequestProperties({
+          body,
+          git: generatorConfig.git,
+          generatorConfig,
+        }),
         omitInfoDescription: body.omitInfoDescription,
         tagPriority: body.tagPriority,
         readmeOperation: body.readmeOperation,
