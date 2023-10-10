@@ -4773,6 +4773,9 @@ public class DefaultCodegen implements CodegenConfig {
             }
         }
 
+        if (bodyParam != null && bodyParam.dataType != null)
+            bodyParam.modelFilename = toModelFilename(bodyParam.dataType);
+
         op.hasOneRequiredParamIncludingRequestBodyProperties = requiredParamsWithRequestBodyProperties.size() == 1;
 
         // add imports to operation import tag
