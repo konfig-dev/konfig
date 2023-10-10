@@ -134,13 +134,16 @@ const publishScripts = {
   npm: ({
     version,
     gitlab,
+    skipTag,
   }: {
     version: string
     gitlab: TypeScriptConfigType['gitlab']
+    skipTag?: boolean
   }) => {
     const gitTagCommands = generateGitTagCommands({
       version,
       generator: 'typescript',
+      skipTag,
     })
     if (gitlab !== undefined && !process.env.GITLAB_TOKEN)
       throw Error(
@@ -470,6 +473,7 @@ export default class Publish extends Command {
           script: publishScripts['npm']({
             version: generatorConfig.version,
             gitlab: generatorConfig.gitlab,
+            skipTag: flags.skipTag,
           }),
         })
       }
