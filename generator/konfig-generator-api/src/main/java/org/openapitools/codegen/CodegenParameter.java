@@ -32,6 +32,7 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
     public boolean isFormParam, isQueryParam, isPathParam, isHeaderParam,
             isCookieParam, isBodyParam, isContainer,
             isCollectionFormatMulti, isPrimitiveType, isModel, isExplode, isDeepObject, isAllowEmptyValue;
+    public boolean isFromBodyParam;
     public boolean isInnerEnum;
 
     public String modelFilename;

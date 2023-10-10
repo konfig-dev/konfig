@@ -85,35 +85,44 @@ yarn add {{npmName}}
 ```
 
 {{#hasParams}}
-{{#bodyParam}}
-{{#isArray}}
-{{#items}}
-#### ⚙️ Parameter
-
-{{> api_doc_param_data_type}}[]
-
-{{#description}}
-{{{description}}}
-
-{{/description}}
-{{/items}}
-{{/isArray}}
-{{/bodyParam}}
 {{#allParamsWithRequestBodyProperties}}
 {{#-first}}
 #### ⚙️ Parameters
 
 {{/-first}}
+{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
 ##### {{{paramName}}}: {{> api_doc_param_data_type}}
 
-{{#description}}
-{{{description}}}
+{{> README_parameter_description}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{^isFromBodyParam}}
+##### {{{paramName}}}: {{> api_doc_param_data_type}}
 
-{{/description}}
+{{> README_parameter_description}}
+{{/isFromBodyParam}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
 {{/allParamsWithRequestBodyProperties}}
+{{#bodyParam}}
+{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+##### requestBody: {{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{#isArray}}
+#### ⚙️ Request Body
+
+{{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/isArray}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{/bodyParam}}
 {{/hasParams}}
 {{#returnModel}}
 #### 🔄 Return
+
 [{{{name}}}](./models/{{{classFilename}}}.ts)
 
 {{/returnModel}}
@@ -121,7 +130,7 @@ yarn add {{npmName}}
 
 `{{path}}` `{{httpMethod}}`
 
-[🔙 Back to Table of Contents](#table-of-contents)
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 

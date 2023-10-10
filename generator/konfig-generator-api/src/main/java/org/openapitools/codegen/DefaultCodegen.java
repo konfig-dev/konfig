@@ -4667,6 +4667,7 @@ public class DefaultCodegen implements CodegenConfig {
                 // (e.g. adding required properties to method parameters in Java SDK)
                 List<CodegenParameter> parametersFromBody = fromRequestBodyToFormParameters(requestBody, imports, false);
                 for (CodegenParameter cp : parametersFromBody) {
+                    cp.isFromBodyParam = true;
                     flattenedParamsFromRequestBodyProperties.add(cp);
                     if (cp.required) {
                         requiredParamsWithRequestBodyProperties.add(cp);
