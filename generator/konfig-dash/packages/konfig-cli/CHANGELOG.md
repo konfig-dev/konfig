@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.19.4
+
+### Patch Changes
+
+- [#269](https://github.com/konfig-dev/konfig/pull/269) [`9832b12d`](https://github.com/konfig-dev/konfig/commit/9832b12d03afe45140e5ef793fe456962ee987ad) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix skipTag for publish ts
+
 ## 1.19.3
 
 ### Patch Changes
