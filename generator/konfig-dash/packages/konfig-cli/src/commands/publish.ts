@@ -252,17 +252,20 @@ const publishScripts = {
     token,
     version,
     gitlabRepositoryId,
+    skipTag,
   }: {
     test?: boolean
     token?: string
     version: string
     gitlabRepositoryId?: string
+    skipTag?: boolean
   }) => {
     const repository = test ? '-r testpypi ' : ''
     const credentials = token !== undefined ? `-u __token__ -p ${token} ` : ''
     const gitTagCommands = generateGitTagCommands({
       version,
       generator: 'python',
+      skipTag,
     })
     const useGitlab = gitlabRepositoryId !== undefined
     const gitlabAuth = useGitlab
@@ -543,8 +546,10 @@ export default class Publish extends Command {
           generatorConfig.generator === 'python')
       ) {
         const pythonConfig = python.parse(generatorConfig)
+        const usesToken =
+          pythonConfig.pypiApiTokenEnvironmentVariable !== undefined
         const testPyPI = flags.test || pythonConfig.testPyPI
-        if (testPyPI) {
+        if (testPyPI && !usesToken) {
           if (!process.env.TEST_TWINE_USERNAME)
             CliUx.ux.error(
               'Set TEST_TWINE_USERNAME environment variable to publish to PyPI (see https://twine.readthedocs.io/en/stable/index.html#environment-variables)'
@@ -556,7 +561,7 @@ export default class Publish extends Command {
           // Override TWINE_USERNAME / PASWORD
           process.env.TWINE_USERNAME = process.env.TEST_TWINE_USERNAME
           process.env.TWINE_PASSWORD = process.env.TEST_TWINE_PASSWORD
-        } else {
+        } else if (!usesToken) {
           if (!process.env.TWINE_USERNAME)
             CliUx.ux.error(
               'Set TWINE_USERNAME environment variable to publish to PyPI (see https://twine.readthedocs.io/en/stable/index.html#environment-variables)'
@@ -566,14 +571,10 @@ export default class Publish extends Command {
               'Set TWINE_PASSWORD environment variable to publish to PyPI (see https://twine.readthedocs.io/en/stable/index.html#environment-variables)'
             )
         }
-        const token =
-          pythonConfig.pypiApiTokenEnvironmentVariable === undefined
-            ? undefined
-            : process.env[pythonConfig.pypiApiTokenEnvironmentVariable]
-        if (
-          pythonConfig.pypiApiTokenEnvironmentVariable !== undefined &&
-          token === undefined
-        )
+        const token = usesToken
+          ? process.env[pythonConfig.pypiApiTokenEnvironmentVariable as string]
+          : undefined
+        if (usesToken && token === undefined)
           throw Error(
             `Set ${pythonConfig.pypiApiTokenEnvironmentVariable} environment variable to publish to PyPI`
           )
@@ -594,6 +595,7 @@ export default class Publish extends Command {
             token,
             version: pythonConfig.version,
             gitlabRepositoryId: pythonConfig.gitlabRepositoryId,
+            skipTag: flags.skipTag,
           }),
         })
       }
