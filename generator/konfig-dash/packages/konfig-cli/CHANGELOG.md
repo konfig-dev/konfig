@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.19.3
+
+### Patch Changes
+
+- [#267](https://github.com/konfig-dev/konfig/pull/267) [`b3f2b48c`](https://github.com/konfig-dev/konfig/commit/b3f2b48c2ed5f4001f8e5476e6cac1d5356837d2) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix pypi publishing with token
+
 ## 1.19.2
 
 ### Patch Changes
