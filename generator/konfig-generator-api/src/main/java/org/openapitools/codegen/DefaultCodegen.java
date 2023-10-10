@@ -7191,6 +7191,7 @@ public class DefaultCodegen implements CodegenConfig {
             if (ModelUtils.isFreeFormObject(openAPI, ps)) {
                 codegenParameter.isFreeFormObject = true;
             }
+            codegenParameter.items = codegenProperty.items;
         } else if (ModelUtils.isNullType(ps)) {
             ;
         } else if (ModelUtils.isAnyType(ps)) {

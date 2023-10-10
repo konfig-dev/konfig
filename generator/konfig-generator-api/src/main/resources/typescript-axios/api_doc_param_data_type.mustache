@@ -1,6 +1,15 @@
 {{#isFreeFormObject}}
 `{{{dataType}}}`
 {{/isFreeFormObject}}
+{{#isMap}}
+{{^isFreeFormObject}}
+{{^isModel}}
+{{#items}}
+Record<string, {{> api_doc_param_data_type}}>
+{{/items}}
+{{/isModel}}
+{{/isFreeFormObject}}
+{{/isMap}}
 {{#isPrimitiveType}}
 `{{{dataType}}}`
 {{/isPrimitiveType}}
