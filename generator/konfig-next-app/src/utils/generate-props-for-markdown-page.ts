@@ -99,8 +99,14 @@ export async function generatePropsForMarkdownPage({
   })
 
   const documentationConfig = konfigYaml?.content.portal?.documentation
-  if (documentationConfig === undefined)
-    throw Error("Couldn't find documentation configuration")
+  if (documentationConfig === undefined) {
+    return {
+      redirect: {
+        destination: '/reference',
+        permanent: false,
+      },
+    }
+  }
 
   // if no document is specified, redirect to first document
   if (docUrlParam === undefined) {
