@@ -45,7 +45,104 @@ To setup polling please [setup a time](/schedule-demo) to talk and we will get y
 
 ## Versioning and Publishing
 
-Once an update is detected, Konfig will automatically generate a new version
-following strict semantic versioning based on the diff between your current and
-previous OpenAPI Spec. Upon merge of a PR, Konfig will automatically publish to
-[Package Managers](docs/reference/language-and-oas-support).
+Konfig offers reusable workflows, published in the `konfig-dev/automation` repository, that make it easy to automate
+the entire process from start to finish: simply make a change to your OpenAPI spec and new versions of your SDKs will
+be published within minutes. Currently, only python and typescript SDKs are supported.
+
+### How It Works
+
+The first step in the automation process is to make a pull request against your SDK repository with OpenAPI spec
+changes. This can be done manually, or through the automated [push/poll](#push-and-poll) processes described above.
+
+This triggers the first automation stage, where the new spec is fixed and linted. If Konfig's linter reports any errors
+with the new spec, the automation process stops and the issues are reported. Pushing fixes to the PR automatically
+retriggers the process.
+
+If the changes to the spec pass our linter, your SDKs will be regenerated and tested. Once again, any test failures
+will stop the process; pushing fixes retriggers the process, as before. On successful testing of your new SDKs,
+the pull request is automatically merged.
+
+This sets off the second automation stage, which shortly thereafter creates a version bump pull request in your SDK
+repository. When you are ready to release the new version of your SDKs, simply merge the PR, and your SDKs are
+published to their respective package managers! 🎉
+
+If you wish to accumulate additional changes before publishing, hold off on merging the PR and make additional
+OpenAPI spec changes (described above) or other custom changes (described below); the version bump PR is automatically
+updated to include these changes.
+
+To publish custom changes to an SDK, such as adding a custom wrapper method over a generated SDK method, run
+`konfig changeset` after making the changes. Push your changes along with the resulting `changeset` file, and a
+version bump pull request will be created/updated with your changes. From there, the process is the same as above.
+
+Konfig's automation seemlessly supports SDKs which live in their own git submodules. Having one or more
+SDKs in their own submodule repositories changes nothing about the process described above. In addition, having multiple
+SDK environments in the same repository is likewise supported seemlessly; for example, you can have two `konfig.yaml`
+files in the same repository, at `./staging/konfig.yaml` and `./prod/konfig.yaml` with no extra steps to the setup and
+no differences in your process.
+
+### Setting Up Automation for your SDKs
+
+To set up this automation pipeline for your SDKs, you will first need to add the following two github workflow files
+to your top-level SDK repository in `./.github/workflows`. These workflows call Konfig's reusable workflows in
+`konfig-dev/automation`. If different, replace `main` with the name of your production branch.
+
+```yaml .github/workflows/regenerate-sdks-on-oas-change.yaml
+# from ./assets/regenerate-sdks-on-oas-change.yaml
+```
+
+```yaml .github/workflows/release.yaml
+# from ./assets/release.yaml
+```
+
+Next, you will need to set some GitHub repository secrets to provide environment variables used during the testing
+and publishing process. To add a new repository secret, navigate to your GitHub SDK repository, then go to
+`Settings` > `Secrets and variables` > `Actions` > `New Repository Secret`. Add the following secrets:
+1. **KONFIG_API_KEY**
+    - Received from Konfig.
+    - Used to authenticate your identity in Konfig's backend.
+2. **TEST_ENV**
+    - Constructed from *all* of your environment variables used in testing your SDKs. Omit if no environment variables
+    are required for testing.
+    - Format in key=value pairs (no spaces) separated by newlines.
+    - Rest assured that our automation pipeline takes the necessary steps to ensure that no individual secret values are
+    leaked despite having multiple sensitive values in one repository secret.
+3. **NPM_TOKEN**
+    - Received from Konfig.
+    - Scoped token for publishing typescript SDKs to `npm`. Omit if you do not have a typescript SDK.
+4. **PYPI_TOKEN_1**
+    - Received from Konfig.
+    - Scoped token for publishing python SDKs to `PyPi`. Omit if you do not have a python SDK.
+    - `PyPi` only allows scoped tokens for a single package. In the case where you have multiple `konfig.yaml` files in
+    your SDK repository specifying different `PyPi` packages, you will need a token per package. Set any additional
+    tokens as repository secrets named PYPI_TOKEN_2, etc.
+
+Finally, if you have a python SDK, you will need to modify your `konfig.yaml` file like so: Set
+`generators.python.pypiApiTokenEnvironmentVariable` to the name of the token used to publish to `PyPi` for that
+package. This tells Konfig's publishing script to publish to `PyPi` using that token instead of a username/password.
+<CH.Section>
+
+[It should look something like this:](focus://10)
+
+```yaml konfig.yaml
+# from ./assets/konfig.yaml
+```
+
+</CH.Section>
+
+### Additional Setup For Submodules
+
+If one or more of your SDKs live in a git submodule, then you must set up a `Deploy Key` for each submodule repository
+to allow the workflow running in your top-level SDK repository to read and write from the submodule repositories.
+Perform the following steps for each submodule.
+
+1. Run `ssh-keygen -t rsa -b 4096 -C "git@github.com:owner/repo.git"` on your machine to generate a public and private
+key pair.
+    - Make sure to replace `owner` and `repo` with the org and repo name of your **sumbodule** repository.
+    - Make sure that you do **not** set a passcode on the key.
+2. Add the **public** key to your **submodule** repository as a `Deploy Key`
+    - From your submodule repository, go to `Settings` > `Deploy Keys` > `Add Deploy Key`.
+    - The title of the key does not matter (e.g. "Konfig Automation Deploy Key").
+    - You **must** check the "Allow write access" box.
+3. Add the **private** key to your **top-level** SDK repository as a repository secret.
+    - From your top-level repository, go to `Settings` > `Secrets and variables` > `Actions` > `New Repository Secret`
+    - Call the secret `SUBMODULE_DEPLOY_KEY_<LANGUAGE>` (e.g. `SUBMODULE_DEPLOY_KEY_TYPESCRIPT`)
