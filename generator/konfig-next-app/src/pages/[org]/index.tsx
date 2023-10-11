@@ -11,7 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     redirect: {
-      destination: `/reference`,
+      destination: `/docs`,
       permanent: false,
     },
   }
