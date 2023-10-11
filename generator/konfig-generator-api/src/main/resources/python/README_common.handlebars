@@ -65,70 +65,32 @@ asyncio.run(main())
 {{/if}}
 {{#unless omitApiDocumentation}}
 
-## Documentation for API Endpoints
+## Reference
+{{#with apiInfo}}
+{{#each apis}}
+{{#with operations}}
+{{#each operation}}
+### `{{clientNameLowercase}}.{{> api_doc_example_method}}`
 
-All URIs are relative to *{{basePath}}*
+{{#if notes}}
+{{{notes}}}
 
-Tag | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-{{#with apiInfo}}{{#each apis}}{{#with operations}}{{#each operation}}*{{originalTag}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{upper httpMethod}}** {{path}} | {{#if useDescriptionInOperationTableDocumentation}}{{#if notes}}{{notes}}{{/if}}{{else}}{{#if summary}}{{summary}}{{/if}}{{/if}}
-{{/each}}{{/with}}{{/each}}{{/with}}
+{{/if}}
+{{#unless notes}}
+{{{summary}}}
+
 {{/unless}}
-{{!--
-## Documentation For Authorization
+#### 🛠️ Usage
 
-{{#unless authMethods}}
- All endpoints do not require authorization.
-{{/unless}}
-{{#each authMethods}}
-{{#if @first}} Authentication schemes defined for the API:{{/if}}
-## {{{name}}}
-
-{{#if isApiKey}}
-- **Type**: API key
-- **API key parameter name**: {{{keyParamName}}}
-- **Location**: {{#if isKeyInQuery}}URL query string{{/if}}{{#if isKeyInHeader}}HTTP header{{/if}}
-{{/if}}
-{{#if isBasic}}
-{{#if isBasicBasic}}
-- **Type**: HTTP basic authentication
-{{/if}}
-{{#if isBasicBearer}}
-- **Type**: Bearer authentication{{#if bearerFormat}} ({{{bearerFormat}}}){{/if}}
-{{/if}}
-{{#if isHttpSignature}}
-- **Type**: HTTP signature authentication
-{{/if}}
-{{/if}}
-{{#if isOAuth}}
-- **Type**: OAuth
-- **Flow**: {{{flow}}}
-- **Authorization URL**: {{{authorizationUrl}}}
-- **Scopes**: {{#unless scopes}}N/A{{/unless}}
-{{#each scopes}} - **{{{scope}}}**: {{{description}}}
-{{/each}}
-{{/if}}
-
-{{/each}} --}}
-
-{{!-- ## Notes for Large OpenAPI documents
-If the OpenAPI document is large, imports in {{{packageName}}}.apis and {{{packageName}}}.models may fail with a
-RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
-
-Solution 1:
-Use specific imports for apis and models like:
-- `from {{{packageName}}}.{{apiPackage}}.default_api import DefaultApi`
-- `from {{{packageName}}}.{{modelPackage}}.pet import Pet`
-
-Solution 1:
-Before importing the package, adjust the maximum recursion limit as shown below:
+```python
+{{> api_doc_example_execute_call}}
 ```
-import sys
-sys.setrecursionlimit(1500)
-import {{{packageName}}}
-from {{{packageName}}}.apis import *
-from {{{packageName}}}.models import *
-``` --}}
+
+{{/each}}
+{{/with}}
+{{/each}}
+{{/with}}
+{{/unless}}
 
 {{#unless removeKonfigBranding}}
 ## Author

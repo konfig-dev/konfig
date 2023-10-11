@@ -1,0 +1,12 @@
+{{#if returnType}}{{operationId}}_response = {{#if async}}await {{/if}}{{/if}}{{lower clientName}}.{{> api_doc_example_method}}{{^hasParams}}(){{/hasParams}}{{#hasParams}}(
+{{#if bodyParam}}
+    {{#with bodyParam}}
+        {{#unless isObject}}
+    body={{{example}}},
+        {{/unless}}
+    {{/with}}
+{{/if}}
+{{#each allParamsWithRequestBodyProperties}}
+    {{paramName}}={{{example}}},
+{{/each}}
+){{/hasParams}}

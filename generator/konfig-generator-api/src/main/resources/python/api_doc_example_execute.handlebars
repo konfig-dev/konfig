@@ -2,18 +2,7 @@ try:
     {{#if summary}}
     # {{{summary}}}
     {{/if}}
-    {{#if returnType}}{{operationId}}_response = {{#if async}}await {{/if}}{{/if}}{{lower clientName}}.{{#if vendorExtensions.x-konfig-top-level-operation}}{{#if async}}a{{/if}}{{vendorExtensions.x-konfig-top-level-operation}}{{/if}}{{#unless vendorExtensions.x-konfig-top-level-operation}}{{> api_class_name}}.{{#if async}}a{{/if}}{{operationId}}{{/unless}}{{^hasParams}}(){{/hasParams}}{{#hasParams}}(
-    {{#if bodyParam}}
-        {{#with bodyParam}}
-            {{#unless isObject}}
-        body={{{example}}}, # {{#if required}}required{{else}}optional{{/if}}
-            {{/unless}}
-        {{/with}}
-    {{/if}}
-    {{#each allParamsWithRequestBodyProperties}}
-        {{paramName}}={{{example}}}, # {{#if required}}required{{else}}optional{{/if}}
-    {{/each}}
-    ){{/hasParams}}
+    {{> api_doc_example_execute_call}}
 {{#if returnModel}}
 {{#with returnModel}}
     pprint({{operationId}}_response.body)
