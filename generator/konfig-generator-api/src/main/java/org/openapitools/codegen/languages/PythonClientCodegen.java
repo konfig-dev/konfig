@@ -314,8 +314,10 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
 
         apiTemplateFiles.put("api." + templateExtension, ".py");
         modelTestTemplateFiles.put("model_test." + templateExtension, ".py");
-        modelDocTemplateFiles.put("model_doc." + templateExtension, ".md");
-        apiDocTemplateFiles.put("api_doc." + templateExtension, ".md");
+
+        // Commented these out as we now generate all docs in the top-level Python SDK's README.md
+        // modelDocTemplateFiles.put("model_doc." + templateExtension, ".md");
+        // apiDocTemplateFiles.put("api_doc." + templateExtension, ".md");
 
         if (StringUtils.isEmpty(System.getenv("PYTHON_POST_PROCESS_FILE"))) {
             LOGGER.info("Environment variable PYTHON_POST_PROCESS_FILE not defined so the Python code may not be properly formatted. To define it, try 'export PYTHON_POST_PROCESS_FILE=\"/usr/local/bin/yapf -i\"' (Linux/Mac)");
