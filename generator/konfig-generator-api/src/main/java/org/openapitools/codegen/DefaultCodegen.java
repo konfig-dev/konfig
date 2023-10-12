@@ -7291,6 +7291,11 @@ public class DefaultCodegen implements CodegenConfig {
             imports.add(codegenProperty.complexType);
         }
 
+        // compute modelFilename if dataType is not null
+        if (codegenParameter.dataType != null) {
+            codegenParameter.modelFilename = toModelFilename(codegenParameter.dataType);
+        }
+
         setParameterExampleValue(codegenParameter);
         // set nullable
         setParameterNullable(codegenParameter, codegenProperty);
