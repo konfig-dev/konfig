@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.21.0
+
+### Minor Changes
+
+- [#278](https://github.com/konfig-dev/konfig/pull/278) [`2de513ed`](https://github.com/konfig-dev/konfig/commit/2de513edf83ff99fc40980b6b8de5aacd1f92c87) Thanks [@dphuang2](https://github.com/dphuang2)! - refactor implementation for isGitSubmodule
+
 ## 1.20.0
 
 ### Minor Changes
