@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.20.0
+
+### Minor Changes
+
+- [#274](https://github.com/konfig-dev/konfig/pull/274) [`acd5d5e3`](https://github.com/konfig-dev/konfig/commit/acd5d5e3c319540df7047f9682611c4b237658b7) Thanks [@dphuang2](https://github.com/dphuang2)! - support using preferred editor for changeset message
+
+- [#274](https://github.com/konfig-dev/konfig/pull/274) [`acd5d5e3`](https://github.com/konfig-dev/konfig/commit/acd5d5e3c319540df7047f9682611c4b237658b7) Thanks [@dphuang2](https://github.com/dphuang2)! - generate table of contents for Python SDK README.md file
+
 ## 1.19.5
 
 ### Patch Changes
