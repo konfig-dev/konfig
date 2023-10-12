@@ -74,9 +74,17 @@ export default class Changeset extends Command {
       },
       {
         name: 'message',
-        message: 'Changeset message:',
+        message:
+          'Changeset message (submit empty line to open external editor):',
         type: 'input',
         when: () => !flags.message,
+      },
+      {
+        name: 'message',
+        message: 'Changeset message:',
+        type: 'editor',
+        askAnswered: true,
+        when: (values) => values.message === '' && !flags.message,
       },
     ])
 
