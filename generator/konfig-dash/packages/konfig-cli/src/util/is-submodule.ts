@@ -14,12 +14,19 @@ export async function isSubmodule({
 }): Promise<boolean> {
   try {
     const topLevelGitRepo = simpleGit(configDir)
-    const remoteOriginUrl = (
-      await topLevelGitRepo.listRemote(['--get-url'])
-    ).trim()
+    const remotes = await topLevelGitRepo.remote([])
+    // check if remotes is void and return false if true
+    if (!remotes) {
+      return false
+    }
+    const remote = remotes.split('\n')[0]
+    const url = await topLevelGitRepo.remote(['get-url', remote])
+    if (!url) {
+      return false
+    }
     const repoName = git.repoId.split('/')[0]
     const gitConfigUrl = `${git.host}/${git.userId}/${repoName}.git`
-    const isSameRemoteUrl = remoteOriginUrl.includes(gitConfigUrl)
+    const isSameRemoteUrl = url.includes(gitConfigUrl)
     return !isSameRemoteUrl
   } catch (e) {
     console.error(e)
