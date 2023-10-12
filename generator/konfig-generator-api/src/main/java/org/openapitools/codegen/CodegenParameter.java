@@ -172,125 +172,24 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
 
     public CodegenParameter copy() {
         CodegenParameter output = new CodegenParameter();
-        output.isFile = this.isFile;
-        output.isContainer = this.isContainer;
-        output.baseName = this.baseName;
-        output.paramName = this.paramName;
-        output.dataType = this.dataType;
-        output.datatypeWithEnum = this.datatypeWithEnum;
-        output.enumName = this.enumName;
-        output.dataFormat = this.dataFormat;
-        output.collectionFormat = this.collectionFormat;
-        output.isCollectionFormatMulti = this.isCollectionFormatMulti;
-        output.isPrimitiveType = this.isPrimitiveType;
-        output.isModel = this.isModel;
-        output.description = this.description;
-        output.unescapedDescription = this.unescapedDescription;
-        output.baseType = this.baseType;
-        output.isFormParam = this.isFormParam;
-        output.isQueryParam = this.isQueryParam;
-        output.isPathParam = this.isPathParam;
-        output.isHeaderParam = this.isHeaderParam;
-        output.isCookieParam = this.isCookieParam;
-        output.isBodyParam = this.isBodyParam;
-        output.required = this.required;
-        output.maximum = this.maximum;
-        output.exclusiveMaximum = this.exclusiveMaximum;
-        output.minimum = this.minimum;
-        output.exclusiveMinimum = this.exclusiveMinimum;
-        output.maxLength = this.maxLength;
-        output.minLength = this.minLength;
-        output.pattern = this.pattern;
-        output.maxItems = this.maxItems;
-        output.minItems = this.minItems;
-        output.uniqueItems = this.uniqueItems;
-        output.setUniqueItemsBoolean(this.uniqueItemsBoolean);
-        output.multipleOf = this.multipleOf;
-        output.jsonSchema = this.jsonSchema;
-        output.defaultValue = this.defaultValue;
-        output.enumDefaultValue = this.enumDefaultValue;
-        output.example = this.example;
-        output.isEnum = this.isEnum;
-        output.maxProperties = this.maxProperties;
-        output.minProperties = this.minProperties;
-        output.maximum = this.maximum;
-        output.minimum = this.minimum;
-        output.pattern = this.pattern;
-        output.additionalProperties = this.additionalProperties;
-        output.isNull = this.isNull;
-        output.setAdditionalPropertiesIsAnyType(this.getAdditionalPropertiesIsAnyType());
-        output.setHasVars(this.hasVars);
-        output.setHasRequired(this.hasRequired);
-        output.setHasDiscriminatorWithNonEmptyMapping(this.hasDiscriminatorWithNonEmptyMapping);
-        output.setHasMultipleTypes(this.hasMultipleTypes);
-        output.setSchemaIsFromAdditionalProperties(this.schemaIsFromAdditionalProperties);
 
-        if (this.content != null) {
-            output.setContent(this.content);
-        }
-        if (this.schema != null) {
-            output.setSchema(this.schema);
-        }
-        if (this.composedSchemas != null) {
-            output.setComposedSchemas(this.getComposedSchemas());
-        }
-        if (this._enum != null) {
-            output._enum = new ArrayList<String>(this._enum);
-        }
-        if (this.allowableValues != null) {
-            output.allowableValues = new HashMap<String, Object>(this.allowableValues);
-        }
-        if (this.items != null) {
-            output.items = this.items;
-        }
-        if (this.vars != null) {
-            output.vars = this.vars;
-        }
-        if (this.requiredVars != null) {
-            output.requiredVars = this.requiredVars;
-        }
-        if (this.mostInnerItems != null) {
-            output.mostInnerItems = this.mostInnerItems;
-        }
-        if (this.vendorExtensions != null) {
-            output.vendorExtensions = new HashMap<String, Object>(this.vendorExtensions);
-        }
-        if (this.requiredVarsMap != null) {
-            output.setRequiredVarsMap(this.requiredVarsMap);
-        }
-        if (this.ref != null) {
-            output.setRef(this.ref);
-        }
-        output.hasValidation = this.hasValidation;
-        output.isNullable = this.isNullable;
-        output.isDeprecated = this.isDeprecated;
-        output.isBinary = this.isBinary;
-        output.isByteArray = this.isByteArray;
-        output.isString = this.isString;
-        output.isNumeric = this.isNumeric;
-        output.isInteger = this.isInteger;
-        output.isShort = this.isShort;
-        output.isLong = this.isLong;
-        output.isUnboundedInteger = this.isUnboundedInteger;
-        output.isDouble = this.isDouble;
-        output.isDecimal = this.isDecimal;
-        output.isFloat = this.isFloat;
-        output.isNumber = this.isNumber;
-        output.isBoolean = this.isBoolean;
-        output.isDate = this.isDate;
-        output.isDateTime = this.isDateTime;
-        output.isUuid = this.isUuid;
-        output.isUri = this.isUri;
-        output.isEmail = this.isEmail;
-        output.isFreeFormObject = this.isFreeFormObject;
-        output.isAnyType = this.isAnyType;
-        output.isArray = this.isArray;
-        output.isMap = this.isMap;
-        output.isExplode = this.isExplode;
-        output.style = this.style;
-        output.isDeepObject = this.isDeepObject;
-        output.isAllowEmptyValue = this.isAllowEmptyValue;
-        output.contentType = this.contentType;
+        // use reflection to copy all properties from "this" to "output"
+
+        // 1) get fields
+        List<java.lang.reflect.Field> fields = Arrays.asList(this.getClass().getDeclaredFields());
+
+        // 2) iterate over fields and put them in the map
+        fields.forEach(field -> {
+            try {
+                field.setAccessible(true);
+                Object value = field.get(this);
+                if (value != null) {
+                    field.set(output, value);
+                }
+            } catch (IllegalArgumentException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
 
         return output;
     }
