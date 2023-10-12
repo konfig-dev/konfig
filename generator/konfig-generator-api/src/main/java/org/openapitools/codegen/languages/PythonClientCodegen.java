@@ -1851,6 +1851,16 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         return null;
     }
 
+    private String generateBinaryExample(String example) {
+        if (example == null)
+            example = "/path/to/file";
+        return binaryExample(example);
+    }
+
+    public String binaryExample(String example) {
+        return "open('" + example + "', 'rb')";
+    }
+
     /***
      * Recursively generates string examples for schemas
      *
@@ -2030,10 +2040,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
                     example = pythonDateTime(objExample);
                 }
             } else if (ModelUtils.isBinarySchema(schema)) {
-                if (example == null) {
-                    example = "/path/to/file";
-                }
-                example = "open('" + example + "', 'rb')";
+                example = generateBinaryExample(example);
                 return fullPrefix + example + closeChars;
             } else if (ModelUtils.isByteArraySchema(schema)) {
                 if (objExample == null) {

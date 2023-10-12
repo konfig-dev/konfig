@@ -86,6 +86,11 @@ public class PythonForTypeScriptAxiosClientCodegen extends PythonClientCodegen {
     }
 
     @Override
+    public String binaryExample(String example) {
+        return "fs.readFileSync(\"" + example + "\")";
+    }
+
+    @Override
     public String toParamName(String name) {
         return new TypeScriptAxiosClientCodegen().toParamName(name);
     }
