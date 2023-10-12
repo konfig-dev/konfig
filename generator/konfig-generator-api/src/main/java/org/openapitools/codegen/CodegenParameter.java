@@ -53,6 +53,9 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
     // If this schema is an object type schema
     public boolean isObject;
 
+    // If schema include anyOf/oneOf/allOf (e.g. is instanceof ComposedSchema)
+    public boolean isComposed;
+
     // If this is an anyOf/oneOf schema that includes an object type schema
     public boolean isComposedObject;
 
@@ -70,6 +73,9 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
 
     // When you need "HashMap" instead of "Map" in Java SDK
     public String dataTypeClass;
+
+    // When you need Dict instead of "typing.Dict" in Python SDK top-level README.md
+    public String dataTypeForDocs;
     public boolean isList;
     public boolean isHashMap;
     public boolean isNotListOrHashMap;

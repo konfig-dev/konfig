@@ -86,6 +86,54 @@ asyncio.run(main())
 {{> api_doc_example_execute_call}}
 ```
 
+{{#if hasParams}}
+{{#each allParamsWithRequestBodyProperties}}
+{{#if @first}}
+#### ⚙️ Parameters
+
+{{/if}}
+{{#if operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+##### {{paramName}}: {{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{else}}
+{{#unless isFromBodyParam}}
+##### {{paramName}}: {{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/unless}}
+{{/if}}
+{{/each}}
+{{#with bodyParam}}
+{{#unless operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+##### requestBody: {{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{else}}
+{{#if isArray}}
+#### ⚙️ Request Body
+
+{{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/if}}
+{{/unless}}
+{{/with}}
+{{/if}}
+{{#with returnModel}}
+#### 🔄 Return
+
+[{{{name}}}](./models/{{{classFilename}}}.ts)
+
+{{/with}}
+#### 🌐 Endpoint
+
+`{{path}}` `{{httpMethod}}`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 {{/each}}
 {{/with}}
 {{/each}}

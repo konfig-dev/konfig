@@ -1,0 +1,24 @@
+{{#if isPrimitiveType}}
+`{{dataTypeForDocs}}`
+{{else}}
+    {{#if isModel}}
+        {{#if hasVars}}
+[`{{dataType}}`](./{{packageName}}/type/{{modelFilename}}.py)
+[`{{dataTypeForDocs}}`](./{{packageName}}/type/{{modelFilename}}.py)
+        {{~else}}
+        {{#if isStrictlyObject}}
+[`{{dataTypeForDocs}}`](./{{packageName}}/type/{{modelFilename}}.py)
+        {{else}}
+`{{dataTypeForDocs}}`
+        {{~/if}}
+        {{/if}}
+    {{else}}
+    {{#if isArray}}
+        {{#with items}}
+List[{{> api_doc_param_data_type}}]
+        {{~/with}}
+        {{else}}
+[`{{dataTypeForDocs}}`](./{{packageName}}/type/{{modelFilename}}.py)
+        {{/if}}
+    {{/if}}
+{{/if}}

@@ -4129,7 +4129,7 @@ public class DefaultCodegen implements CodegenConfig {
         LOGGER.debug("debugging from property return: {}", property);
         schemaCodegenPropertyCache.put(ns, property);
 
-        if (property.dataType != null && property.isModel) {
+        if (property.dataType != null) {
             property.modelFilename = toModelFilename((property.dataType));
         }
 
@@ -7123,6 +7123,7 @@ public class DefaultCodegen implements CodegenConfig {
 
         codegenParameter.baseType = codegenProperty.baseType;
         codegenParameter.dataType = codegenProperty.dataType;
+        codegenParameter.dataTypeForDocs = codegenProperty.dataType.replace("typing.", "");
         codegenParameter.dataTypeLowerCase = codegenProperty.dataType.toLowerCase();
         codegenParameter.defaultValue = toDefaultParameterValue(propertySchema);
         codegenParameter.baseName = codegenProperty.baseName;
@@ -7133,6 +7134,9 @@ public class DefaultCodegen implements CodegenConfig {
         codegenParameter.isEnum = codegenProperty.isEnum;
         codegenParameter._enum = codegenProperty._enum;
         codegenParameter.allowableValues = codegenProperty.allowableValues;
+        codegenParameter.isComposed = ModelUtils.isComposedSchema(ps);
+        codegenParameter.isComposedObject = isComposedObject(ps);
+        codegenParameter.isStrictlyObject = isStrictlyObject(ps);
 
         if (ModelUtils.isFileSchema(ps) && !ModelUtils.isStringSchema(ps)) {
             // swagger v2 only, type file
@@ -7783,6 +7787,7 @@ public class DefaultCodegen implements CodegenConfig {
         // For instantiation in Java SDK
         codegenParameter.dataTypeClass = codegenParameter.dataType.replace("Map<", "HashMap<");
         codegenParameter.dataTypeClass = codegenParameter.dataTypeClass.replace("List<", "ArrayList<");
+        codegenParameter.dataTypeForDocs = codegenParameter.dataType.replace("typing.", "");
 
         codegenParameter.isHashMap = codegenParameter.dataTypeClass.startsWith("HashMap<");
         codegenParameter.isList = codegenParameter.dataType.startsWith("List<");
