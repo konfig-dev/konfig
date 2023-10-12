@@ -2,8 +2,26 @@ import { CodeGeneratorPython } from './code-generator-python'
 
 test('simple example', async () => {
   const code = await new CodeGeneratorPython({
+    securitySchemes: {
+      PartnerSignature: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Signature',
+      },
+      PartnerClientId: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'clientId',
+      },
+      PartnerTimestamp: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'timestamp',
+      },
+    },
     formData: {
       parameters: {},
+      requestBody: '',
       security: {
         PartnerClientId: {
           type: 'apiKey',
@@ -29,6 +47,7 @@ test('simple example', async () => {
         packageName: 'snaptrade_client',
       },
     },
+    requestBody: null,
     tag: 'API Status',
     operationId: 'ApiStatus_check',
     basePath: 'https://api.snaptrade.com/api/v1',
@@ -42,7 +61,25 @@ test('simple example', async () => {
 
 test('simple parameters example', async () => {
   const code = await new CodeGeneratorPython({
+    securitySchemes: {
+      PartnerSignature: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Signature',
+      },
+      PartnerClientId: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'clientId',
+      },
+      PartnerTimestamp: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'timestamp',
+      },
+    },
     formData: {
+      requestBody: '',
       parameters: {
         userId: '321',
       },
@@ -94,6 +131,7 @@ test('simple parameters example', async () => {
         packageName: 'snaptrade_client',
       },
     },
+    requestBody: null,
     tag: 'Authentication',
     operationId: 'Authentication_registerSnapTradeUser',
     basePath: 'https://api.snaptrade.com/api/v1',
@@ -107,7 +145,25 @@ test('simple parameters example', async () => {
 
 it('example with boolean', async () => {
   const code = await new CodeGeneratorPython({
+    securitySchemes: {
+      PartnerSignature: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Signature',
+      },
+      PartnerClientId: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'clientId',
+      },
+      PartnerTimestamp: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'timestamp',
+      },
+    },
     formData: {
+      requestBody: '',
       parameters: {
         userId: '321',
         userSecret: '321',
@@ -225,6 +281,7 @@ it('example with boolean', async () => {
       },
     },
     tag: 'Authentication',
+    requestBody: null,
     operationId: 'Authentication_loginSnapTradeUser',
     basePath: 'https://api.snaptrade.com/api/v1',
     requestBodyRequired: false,
@@ -238,6 +295,7 @@ it('example with boolean', async () => {
 it('example with inner object', async () => {
   const code = await new CodeGeneratorPython({
     formData: {
+      requestBody: '',
       parameters: {
         accountId: 'fda321',
         userId: '321',
@@ -399,7 +457,25 @@ it('example with inner object', async () => {
         packageName: 'snaptrade_client',
       },
     },
+    securitySchemes: {
+      PartnerSignature: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Signature',
+      },
+      PartnerClientId: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'clientId',
+      },
+      PartnerTimestamp: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'timestamp',
+      },
+    },
     tag: 'Options',
+    requestBody: null,
     operationId: 'Options_getOptionStrategy',
     basePath: 'https://api.snaptrade.com/api/v1',
     requestBodyRequired: true,
@@ -412,7 +488,25 @@ it('example with inner object', async () => {
 
 it('example with no setup', async () => {
   const code = await new CodeGeneratorPython({
+    securitySchemes: {
+      PartnerSignature: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Signature',
+      },
+      PartnerClientId: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'clientId',
+      },
+      PartnerTimestamp: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'timestamp',
+      },
+    },
     formData: {
+      requestBody: '',
       parameters: {},
       security: {},
     },
@@ -429,6 +523,7 @@ it('example with no setup', async () => {
     },
     tag: 'Options',
     operationId: 'Options_getOptionStrategy',
+    requestBody: null,
     basePath: 'https://api.snaptrade.com/api/v1',
     requestBodyRequired: true,
     servers: ['https://api.snaptrade.com/api/v1'],
@@ -440,7 +535,25 @@ it('example with no setup', async () => {
 
 it('example with no form data but > 1 parameters', async () => {
   const code = await new CodeGeneratorPython({
+    securitySchemes: {
+      PartnerSignature: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Signature',
+      },
+      PartnerClientId: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'clientId',
+      },
+      PartnerTimestamp: {
+        type: 'apiKey',
+        in: 'query',
+        name: 'timestamp',
+      },
+    },
     formData: {
+      requestBody: '',
       parameters: {},
       security: {},
     },
@@ -468,6 +581,7 @@ it('example with no form data but > 1 parameters', async () => {
     },
     tag: 'Options',
     operationId: 'Options_getOptionStrategy',
+    requestBody: null,
     basePath: 'https://api.snaptrade.com/api/v1',
     requestBodyRequired: true,
     servers: ['https://api.snaptrade.com/api/v1'],

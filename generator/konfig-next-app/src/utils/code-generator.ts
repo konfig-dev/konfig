@@ -11,17 +11,20 @@ import {
   SECURITY_FORM_NAME_PREFIX,
   SECURITY_TYPE_PROPERTY,
 } from './generate-initial-operation-form-values'
+import { ReferencePageProps } from './generate-props-for-reference-page'
 
 export type CodeGeneratorConstructorArgs = {
   basePath: string
   servers: string[]
   formData: FormDataType
+  requestBody: Parameter | null
   parameters: Parameter[]
   tag: string
   operationId: string
   requestBodyRequired: boolean
   originalOauthTokenUrl: string | null
   oauthTokenUrl: string | null
+  securitySchemes: ReferencePageProps['securitySchemes']
   languageConfigurations: {
     typescript: {
       clientName: string
@@ -97,19 +100,23 @@ export abstract class CodeGenerator {
    */
   languageConfigurations: CodeGeneratorConstructorArgs['languageConfigurations']
 
-  constructor({
-    formData,
-    parameters,
-    tag,
-    operationId,
-    languageConfigurations,
-    basePath,
-    requestBodyRequired,
-    mode = 'production',
-    servers,
-    oauthTokenUrl,
-    originalOauthTokenUrl,
-  }: CodeGeneratorConstructorArgs) {
+  configuration: CodeGeneratorConstructorArgs
+
+  constructor(args: CodeGeneratorConstructorArgs) {
+    this.configuration = args
+    const {
+      formData,
+      parameters,
+      tag,
+      operationId,
+      languageConfigurations,
+      basePath,
+      requestBodyRequired,
+      mode = 'production',
+      servers,
+      oauthTokenUrl,
+      originalOauthTokenUrl,
+    } = args
     console.debug(
       JSON.stringify(
         {
@@ -170,9 +177,10 @@ export abstract class CodeGenerator {
   }
 
   get hasMultipleApiKeys(): boolean {
+    if (this.configuration.securitySchemes === null) return false
     const hasMultipleApiKeys =
-      this.nonEmptySecurity.filter(
-        (value) => value[1][SECURITY_TYPE_PROPERTY] === 'apiKey'
+      Object.values(this.configuration.securitySchemes).filter(
+        (value) => value.type === 'apiKey'
       ).length > 1
     return hasMultipleApiKeys
   }
