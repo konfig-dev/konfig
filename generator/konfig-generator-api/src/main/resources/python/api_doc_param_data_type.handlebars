@@ -1,24 +1,51 @@
 {{#if isPrimitiveType}}
+1
 `{{dataTypeForDocs}}`
-{{else}}
+{{~else}}
     {{#if isModel}}
         {{#if hasVars}}
-[`{{dataType}}`](./{{packageName}}/type/{{modelFilename}}.py)
+2
 [`{{dataTypeForDocs}}`](./{{packageName}}/type/{{modelFilename}}.py)
         {{~else}}
-        {{#if isStrictlyObject}}
+            {{#if isStrictlyObject}}
+3
 [`{{dataTypeForDocs}}`](./{{packageName}}/type/{{modelFilename}}.py)
-        {{else}}
+            {{else}}
+                {{#if composedSchemas}}
+                    {{#with composedSchemas}}
+                    {{#if allOf}}
+4
+Union[{{#each allOf}}{{> api_doc_param_data_type}}{{#unless @last}}, {{/unless}}{{~/each}}]
+                    {{~/if}}
+                    {{#if anyOf}}
+5
+Union[{{#each anyOf}}{{> api_doc_param_data_type}}{{#unless @last}}, {{/unless}}{{/each}}]
+                    {{~/if}}
+                    {{#if oneOf}}
+6
+Union[{{#each oneOf}}{{> api_doc_param_data_type}}{{#unless @last}}, {{/unless}}{{/each}}]
+                    {{/if}}
+                    {{~/with}}
+                {{else}}
+7
 `{{dataTypeForDocs}}`
-        {{~/if}}
+                {{~/if}}
+            {{~/if}}
         {{/if}}
     {{else}}
-    {{#if isArray}}
-        {{#with items}}
+        {{#if isArray}}
+            {{#with items}}
+8
 List[{{> api_doc_param_data_type}}]
-        {{~/with}}
+            {{~/with}}
         {{else}}
+            {{#if isFreeFormObject}}
+9
+`{{dataTypeForDocs}}`
+            {{~else}}
+10
 [`{{dataTypeForDocs}}`](./{{packageName}}/type/{{modelFilename}}.py)
+            {{~/if}}
         {{/if}}
     {{/if}}
 {{/if}}

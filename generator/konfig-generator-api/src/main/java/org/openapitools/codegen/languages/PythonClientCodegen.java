@@ -2563,6 +2563,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
 
     @Override
     protected void updatePropertyForObject(CodegenProperty property, Schema p) {
+        property.isFreeFormObject = ModelUtils.isFreeFormObject(this.openAPI, p);
         addVarsRequiredVarsAdditionalProps(p, property);
     }
 

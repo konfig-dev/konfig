@@ -4024,6 +4024,7 @@ public class DefaultCodegen implements CodegenConfig {
         }
 
         property.dataType = getTypeDeclaration(p);
+        property.dataTypeForDocs = property.dataType.replace("typing.", "");
         property.dataFormat = p.getFormat();
         property.baseType = getSchemaType(p);
 
@@ -4126,12 +4127,12 @@ public class DefaultCodegen implements CodegenConfig {
             property.schemaName = property.complexType + "Schema";
         }
 
-        LOGGER.debug("debugging from property return: {}", property);
-        schemaCodegenPropertyCache.put(ns, property);
-
         if (property.dataType != null) {
             property.modelFilename = toModelFilename((property.dataType));
         }
+
+        LOGGER.debug("debugging from property return: {}", property);
+        schemaCodegenPropertyCache.put(ns, property);
 
         return property;
     }
@@ -5099,6 +5100,8 @@ public class DefaultCodegen implements CodegenConfig {
 
         // Compute lower-case of dataType which is specifically helpful when we want lowercase version of boxed Java type
         codegenParameter.dataTypeLowerCase = codegenParameter.dataType != null ? codegenParameter.dataType.toLowerCase(Locale.ROOT) : null;
+
+        codegenParameter.dataTypeForDocs = codegenParameter.dataType != null ? codegenParameter.dataType.replace("typing.", "") : null;
 
         // set the parameter example value
         // should be overridden by lang codegen

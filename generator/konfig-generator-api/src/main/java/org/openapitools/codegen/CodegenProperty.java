@@ -44,6 +44,9 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
      * may be represented as 'int', 'int32', 'Integer', etc, depending on the programming language.
      */
     public String dataType;
+
+    // When you need Dict instead of "typing.Dict" in Python SDK top-level README.md
+    public String dataTypeForDocs;
     public String datatypeWithEnum;
     public String dataFormat;
     /**
