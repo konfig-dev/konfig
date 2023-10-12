@@ -51,6 +51,7 @@ import { generateChangelog } from '../util/generate-changelog'
 import { isSubmodule } from '../util/is-submodule'
 import { getHostForGenerateApi } from '../util/get-host-for-generate-api'
 import { getSdkDefaultBranch } from '../util/get-sdk-default-branch'
+import { insertTableOfContents } from '../util/insert-table-of-contents'
 
 function getOutputDir(
   outputFlag: string | undefined,
@@ -1151,6 +1152,13 @@ export default class Deploy extends Command {
                 generateLicense()
               )
 
+              // insert TOC at beginning of README.md
+              CliUx.ux.action.start(
+                'Inserting table of contents into README.md'
+              )
+              insertTableOfContents({ outputDirectory })
+              CliUx.ux.action.stop()
+
               // find all files in outputdirectory that end with .md and use the "globby" package
               const markdownFiles = await globby([
                 // path.join uses platform-specific path separator but globby requires forward slash
@@ -1985,16 +1993,9 @@ async function copyTypeScriptOutput({
     }
 
     // use markdown-toc to insert table of contents into markdown
-    const toc = require('markdown-toc')
-    const readmePath = path.join(outputDirectory, 'README.md')
-    const readme = fs.readFileSync(readmePath, 'utf-8')
-    const withToc = toc.insert(readme, {
-      filter: (str: string) => {
-        return !str.startsWith('[Author]')
-      },
-      maxdepth: 3,
-    })
-    fs.writeFileSync(readmePath, withToc)
+    CliUx.ux.action.start('Inserting table of contents into README.md')
+    insertTableOfContents({ outputDirectory })
+    CliUx.ux.action.stop()
 
     // write .npmrc file
     let npmrcContents: string
