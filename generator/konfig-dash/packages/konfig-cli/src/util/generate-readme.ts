@@ -104,7 +104,7 @@ export async function getDocumentationUrl({
   })
   CliUx.ux.debug(`Default branch: ${defaultBranch}`)
   const docUrl = generatorIsInSubmodule
-    ? `${sourceUrl}/blob/${defaultBranch}/README.md`
+    ? `${sourceUrl}/blob/${defaultBranch ?? 'main'}/README.md` // use "main" if defaultBranch was not able to be computed
     : `${sourceUrl}/README.md` // convention for config is for repoId to include the subpath to SDK so just add /README.md
   return docUrl
 }
