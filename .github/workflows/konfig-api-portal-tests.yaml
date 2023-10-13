@@ -1,0 +1,31 @@
+name: konfig-api-portaltests
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  unit-tests:
+    strategy:
+      matrix:
+        os: ['ubuntu-latest']
+        node_version: [lts/*]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    defaults:
+      run:
+        working-directory: generator/konfig-next-app
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SUBMODULES_ACCESS_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: yarn
+          cache-dependency-path: generator/konfig-next-app/yarn.lock
+      - run: yarn install --network-timeout 600000
+      - run: yarn test
