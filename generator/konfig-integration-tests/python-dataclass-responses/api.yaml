@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Python Dataclass Responses API
+  description: A simple API based on python dataclass responses.
+  termsOfService: 'http://example.com/terms/'
+  contact:
+    name: API Support
+    url: 'http://example.com/support'
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  - url: 'https://python-dataclass-responses.konfigthis.com'
+    description: Live API server
+
+paths:
+  /simple-endpoint:
+    get:
+      summary: Fetches a JSON value based on input parameter
+      description: Provide an input parameter to receive a JSON value with properties.
+      parameters:
+        - name: inputParameter
+          in: query
+          description: The input parameter to process.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  propertyA:
+                    type: string
+                    description: Description of property A.
+                  propertyB:
+                    type: integer
+                    description: Description of property B.
+                  propertyC:
+                    type: boolean
+                    description: Description of property C.
+        '400':
+          description: Bad request. Parameter missing or malformed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
