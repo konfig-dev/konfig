@@ -15,9 +15,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    defaults:
-      run:
-        working-directory: generator/konfig-next-app
     steps:
       - uses: actions/checkout@v3
         with:
@@ -27,5 +24,16 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: yarn
           cache-dependency-path: generator/konfig-next-app/yarn.lock
+          working-directory: generator/konfig-dash
       - run: yarn install --network-timeout 600000
+        with:
+          working-directory: generator/konfig-dash
+      - run: yarn build
+        with:
+          working-directory: generator/konfig-dash
+      - run: yarn
+        with:
+          working-directory: generator/konfig-next-app
       - run: yarn test
+        with:
+          working-directory: generator/konfig-next-app
