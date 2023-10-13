@@ -69,6 +69,38 @@ response = snaptrade.options.get_option_strategy()
 pprint(response.body)"
 `;
 
+exports[`request body with blob values 1`] = `
+"from pprint import pprint
+from groundx import Groundx
+
+groundx = Groundx(
+    api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+)
+
+response = groundx.documents.upload_local([{
+    "blob": open("file_1.txt", "rb"),
+    "metadata": {
+        "bucket_id": 321,
+        "file_name": "321",
+        "file_type": "txt",
+        "metadata": "",
+        "callback_data": "321",
+        "callback_url": "3213"
+    }
+}, {
+    "blob": open("file_2.txt", "rb"),
+    "metadata": {
+        "bucket_id": 321,
+        "file_name": "321",
+        "file_type": "txt",
+        "metadata": "",
+        "callback_data": "",
+        "callback_url": ""
+    }
+}])
+pprint(response.body)"
+`;
+
 exports[`simple example 1`] = `
 "from pprint import pprint
 from snaptrade_client import SnapTrade

@@ -31,6 +31,7 @@ export const BEARER_VALUE_PROPERTY = 'value' as const
 export type FormInputValue =
   | string
   | number
+  | File
   | boolean
   | FormInputValues
   | string[]
