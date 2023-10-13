@@ -13,6 +13,7 @@ import { IconPlus, IconUpload } from '@tabler/icons-react'
 import { Parameter } from './OperationParameter'
 import {
   PARAMETER_FORM_NAME_PREFIX,
+  REQUEST_BODY_FORM_NAME_PREFIX,
   generateInitialFormValues,
 } from '@/utils/generate-initial-operation-form-values'
 import { useFormContext } from '@/utils/operation-form-context'
@@ -264,6 +265,9 @@ export function generateParameterInputName(
   parameter: Parameter,
   prefix?: string
 ) {
+  if (parameter.isRequestBody) {
+    return REQUEST_BODY_FORM_NAME_PREFIX
+  }
   return `${prefix !== undefined ? prefix : PARAMETER_FORM_NAME_PREFIX}.${
     parameter.name
   }`

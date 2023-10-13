@@ -112,6 +112,15 @@ from ${this.packageName} import ${this.clientName}`
   }
 
   get args(): string {
+    if (this.isArrayRequestBody) {
+      const arrayValue = this.requestBodyValue
+      if (Array.isArray(arrayValue)) {
+        return `[${arrayValue
+          .map((v) => this.toPythonLiteralString(v))
+          .join(', ')}]`
+      }
+      if (arrayValue === '') return ''
+    }
     const args: string[] = []
     for (const [parameter, value] of this.nonEmptyParameters) {
       args.push(

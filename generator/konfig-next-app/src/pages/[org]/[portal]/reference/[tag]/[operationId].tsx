@@ -69,6 +69,7 @@ const Operation = ({
   demos,
   requestBodyRequired,
   securityRequirements,
+  requestBodyParameter,
   securitySchemes,
   servers: initialServers,
   operation,
@@ -173,6 +174,7 @@ const Operation = ({
         }
       >
         <OperationReferenceMain
+          requestBodyParameter={requestBodyParameter}
           originalOauthTokenUrl={originalOauthTokenUrl}
           owner={owner}
           servers={servers}

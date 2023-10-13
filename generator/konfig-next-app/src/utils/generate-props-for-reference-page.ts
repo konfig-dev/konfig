@@ -28,6 +28,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   hasDocumentation: boolean
   repo: string
   oauthTokenUrl: string | null
+  requestBodyParameter: Parameter | null
   pathParameters: Parameter[]
   queryParameters: Parameter[]
   headerParameters: Parameter[]
@@ -125,6 +126,22 @@ export async function generatePropsForReferencePage({
       if (mediaTypeObject.schema?.properties) {
         allRequestBodyProperties[mediaType] = mediaTypeObject.schema
           .properties as Record<string, SchemaObject>
+      }
+    }
+  }
+
+  let requestBodyParameter: Parameter | null = null
+  if (requestBody?.content) {
+    for (const mediaType in requestBody.content) {
+      const mediaTypeObject = requestBody.content[mediaType]
+      if (mediaTypeObject.schema === undefined) continue
+      if ('$ref' in mediaTypeObject.schema)
+        throw Error('Spec should be dereferenced')
+      requestBodyParameter = {
+        name: '',
+        in: 'body',
+        schema: mediaTypeObject.schema,
+        isRequestBody: true,
       }
     }
   }
@@ -243,6 +260,7 @@ export async function generatePropsForReferencePage({
       servers,
       pathParameters,
       queryParameters,
+      requestBodyParameter,
       owner,
       repo,
       headerParameters,

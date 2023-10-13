@@ -18,9 +18,11 @@ export function OperationForm({
   cookieParameters,
   requestBodyProperties,
   requestBodyRequired,
+  requestBody,
   owner,
   repo,
 }: {
+  requestBody: Parameter | null
   pathParameters: Parameter[]
   queryParameters: Parameter[]
   headerParameters: Parameter[]
@@ -56,6 +58,19 @@ export function OperationForm({
         owner={owner}
         repo={repo}
       />
+
+      {
+        // if request body is an array type then render ParameterGroup with title "Request Body" and parameters as [requestBody]
+        // else do nothing
+        requestBody != null && requestBody.schema.type === 'array' && (
+          <ParameterGroup
+            title="Request Body"
+            parameters={[requestBody]}
+            owner={owner}
+            repo={repo}
+          />
+        )
+      }
       <ParameterGroup
         title="Request Body"
         parameters={generateParametersFromRequestBodyProperties({

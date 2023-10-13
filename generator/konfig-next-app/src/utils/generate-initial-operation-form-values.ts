@@ -15,6 +15,7 @@ export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   repo: string
 }) => `form-values-${owner}-${repo}`
 export const PARAMETER_FORM_NAME_PREFIX = `parameters` as const
+export const REQUEST_BODY_FORM_NAME_PREFIX = `requestBody` as const
 export const SECURITY_FORM_NAME_PREFIX = `security` as const
 export const SECURITY_FORM_VALUE_SUFFIX = 'value' as const
 export const SECURITY_TYPE_PROPERTY = 'type' as const
@@ -27,19 +28,21 @@ export const CLIENT_STATE_VALUE_PROPERTY = 'value' as const
 export const CLIENT_STATE_NAME_PROPERTY = 'name' as const
 export const BEARER_VALUE_PROPERTY = 'value' as const
 
+export type FormInputValue =
+  | string
+  | number
+  | boolean
+  | FormInputValues
+  | string[]
+  | number[]
+  | FormInputValues[]
 export type FormInputValues = {
-  [parameter: string]:
-    | string
-    | number
-    | boolean
-    | FormInputValues
-    | string[]
-    | number[]
-    | FormInputValues[]
+  [parameter: string]: FormInputValue
 }
 
 export type FormDataType = {
   [PARAMETER_FORM_NAME_PREFIX]: FormInputValues
+  [REQUEST_BODY_FORM_NAME_PREFIX]: FormInputValue
   [SECURITY_FORM_NAME_PREFIX]: Record<
     string,
     | {
@@ -119,6 +122,7 @@ function generateFormInputValues({
   let initialValues: FormValues['initialValues'] = {
     parameters: {},
     security: {},
+    requestBody: '',
   }
   let validate: FormValues['validate'] = {}
   for (const parameter of parameters) {

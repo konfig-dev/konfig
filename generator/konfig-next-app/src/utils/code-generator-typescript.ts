@@ -29,6 +29,7 @@ export class CodeGeneratorTypeScript extends CodeGenerator {
       }
     }
     addFiles(values.parameters)
+    addFiles(values.requestBody)
     return files
   }
   protected async format(code: string): Promise<string> {
@@ -203,6 +204,13 @@ ${this.nonEmptySecurity
   }
 
   get args(): string {
+    if (this.isArrayRequestBody) {
+      const arrayValue = this.requestBodyValue
+      if (Array.isArray(arrayValue)) {
+        return `[${arrayValue.map((v) => this.argValue(v)).join(', ')}]`
+      }
+      if (arrayValue === '') return ''
+    }
     if (this.nonEmptyParameters.length === 0) {
       if (this.requestBodyRequired) {
         return `{}`

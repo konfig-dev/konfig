@@ -4,12 +4,12 @@ import {
   BEARER_VALUE_PROPERTY,
   CLIENT_STATE_VALUE_PROPERTY,
   FormDataType,
+  FormInputValue,
   FormInputValues,
   OAUTH2_CLIENT_ID_PROPERTY,
   OAUTH2_CLIENT_SECRET_PROPERTY,
   PARAMETER_FORM_NAME_PREFIX,
   SECURITY_FORM_NAME_PREFIX,
-  SECURITY_TYPE_PROPERTY,
 } from './generate-initial-operation-form-values'
 import { ReferencePageProps } from './generate-props-for-reference-page'
 
@@ -117,24 +117,7 @@ export abstract class CodeGenerator {
       oauthTokenUrl,
       originalOauthTokenUrl,
     } = args
-    console.debug(
-      JSON.stringify(
-        {
-          formData,
-          parameters,
-          languageConfigurations,
-          tag,
-          operationId,
-          basePath,
-          requestBodyRequired,
-          servers,
-          oauthTokenUrl,
-          originalOauthTokenUrl,
-        },
-        null,
-        2
-      )
-    )
+    console.debug(JSON.stringify(args, null, 2))
     this.basePath = basePath
     this.oauthTokenUrl = oauthTokenUrl
     this.originalOauthTokenUrl = originalOauthTokenUrl
@@ -183,6 +166,14 @@ export abstract class CodeGenerator {
         (value) => value.type === 'apiKey'
       ).length > 1
     return hasMultipleApiKeys
+  }
+
+  get isArrayRequestBody(): boolean {
+    return this.configuration.requestBody?.schema?.type === 'array'
+  }
+
+  get requestBodyValue(): FormInputValue {
+    return this._formData['requestBody']
   }
 
   /**

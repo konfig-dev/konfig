@@ -64,12 +64,14 @@ export function OperationReferenceMain({
   repo,
   servers,
   originalOauthTokenUrl,
+  requestBodyParameter,
 }: Pick<
   ReferencePageProps,
   | 'pathParameters'
   | 'queryParameters'
   | 'headerParameters'
   | 'cookieParameters'
+  | 'requestBodyParameter'
   | 'owner'
   | 'repo'
   | 'requestBodyProperties'
@@ -169,6 +171,8 @@ export function OperationReferenceMain({
 
   const codegenArgs: CodeGeneratorConstructorArgs = {
     parameters: parameters,
+    requestBody: requestBodyParameter,
+    securitySchemes,
     formData: form.values,
     languageConfigurations: {
       typescript: {
@@ -217,6 +221,8 @@ export function OperationReferenceMain({
           setRequestInProgress(true)
           try {
             // IMPORTANT: files is used by the code generator so its fine that this is not used
+            // the IDE will complain that it is not used but it is used by the code generator
+            // see implementation of .setupFiles() and .snippet()
             const files = CodeGeneratorTypeScript.setupFiles(values)
 
             const snippet = await new CodeGeneratorTypeScript({
@@ -306,6 +312,7 @@ export function OperationReferenceMain({
               )}
             </Stack>
             <OperationForm
+              requestBody={requestBodyParameter}
               owner={owner}
               repo={repo}
               pathParameters={pathParameters}
