@@ -23,17 +23,13 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           cache: yarn
-          cache-dependency-path: generator/konfig-next-app/yarn.lock
+          cache-dependency-path: generator/konfig-dash/yarn.lock
           working-directory: generator/konfig-dash
       - run: yarn install --network-timeout 600000
-        with:
-          working-directory: generator/konfig-dash
+        working-directory: generator/konfig-dash
       - run: yarn build
-        with:
-          working-directory: generator/konfig-dash
+        working-directory: generator/konfig-dash
       - run: yarn
-        with:
-          working-directory: generator/konfig-next-app
+        working-directory: generator/konfig-next-app
       - run: yarn test
-        with:
-          working-directory: generator/konfig-next-app
+        working-directory: generator/konfig-next-app
