@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.22.0
+
+### Minor Changes
+
+- [#280](https://github.com/konfig-dev/konfig/pull/280) [`a62dbaf3`](https://github.com/konfig-dev/konfig/commit/a62dbaf3034e311733a10ea6e069733380fd19a2) Thanks [@dphuang2](https://github.com/dphuang2)! - fix but in getting git repository name for generating README
+
+- [#280](https://github.com/konfig-dev/konfig/pull/280) [`a62dbaf3`](https://github.com/konfig-dev/konfig/commit/a62dbaf3034e311733a10ea6e069733380fd19a2) Thanks [@dphuang2](https://github.com/dphuang2)! - default to "main" if defaultBranch cannot be computed
+
 ## 1.21.0
 
 ### Minor Changes
