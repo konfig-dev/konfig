@@ -6,14 +6,14 @@ import {
   MediaQuery,
   Title,
   rem,
-  useMantineColorScheme,
-  Image as MantineImage,
   useMantineTheme,
 } from '@mantine/core'
 import { ColorSchemeToggle } from './ColorSchemeToggle'
 import { observer } from 'mobx-react'
 import { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
+import { useBaseUrl } from '@/utils/use-base-url'
+import Link from 'next/link'
 
 export const LayoutHeader = observer(
   ({
@@ -30,6 +30,7 @@ export const LayoutHeader = observer(
     logo: string | null
   }) => {
     const theme = useMantineTheme()
+    const baseUrl = useBaseUrl()
     return (
       <Box
         h="55%"
@@ -59,15 +60,17 @@ export const LayoutHeader = observer(
             <div
               style={{ position: 'relative', height: rem(24), width: rem(140) }}
             >
-              <Image
-                style={{
-                  objectFit: 'contain',
-                }}
-                fill
-                alt="logo"
-                priority
-                src={logo}
-              />
+              <Link href={baseUrl}>
+                <Image
+                  style={{
+                    objectFit: 'contain',
+                  }}
+                  fill
+                  alt="logo"
+                  priority
+                  src={logo}
+                />
+              </Link>
             </div>
           ) : (
             <Title order={4}>{title}</Title>
