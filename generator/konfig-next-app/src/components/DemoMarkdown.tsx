@@ -35,6 +35,7 @@ import { DemoWarn } from './DemoWarn'
 import { DemoDivider } from './DemoDivider'
 import { DemoAnchor } from './DemoAnchor'
 import { DemoApi } from './DemoApi'
+import { DemoMarkdownTable } from './DemoMarkdownTable'
 
 export class DemoState {
   id: string
@@ -188,6 +189,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
                 </Text>
               )
             },
+            table: DemoMarkdownTable,
             pre: DemoPre,
             form: DemoForm,
             input: DemoInput,
