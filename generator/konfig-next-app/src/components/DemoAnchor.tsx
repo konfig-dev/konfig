@@ -1,10 +1,9 @@
 import { observer } from 'mobx-react'
 import { Components } from 'react-markdown'
-import { Text, rem, createStyles } from '@mantine/core'
+import { Text, createStyles } from '@mantine/core'
 import Link from 'next/link'
-import { IconCode, IconTerminal } from '@tabler/icons-react'
-import { DemoInlineLinkButton } from './DemoInlineLinkButton'
 import { linkColor } from '@/utils/link-color'
+import { useBaseUrl } from '@/utils/use-base-url'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -28,6 +27,9 @@ const _DemoAnchor: Components['a'] = ({
   ...props
 }) => {
   const { classes } = useStyles()
+  // compute _target to be _blank if the link is external
+  const baseUrl = useBaseUrl()
+  const target = href?.startsWith(baseUrl) ? undefined : '_blank'
   /**
    * This happens when we have a link that uses Konfig's custom syntax but is
    * not valid Konfig syntax. I forget exactly what case this happens in though
@@ -63,7 +65,12 @@ const _DemoAnchor: Components['a'] = ({
   // }
 
   return (
-    <Link href={href ?? '#'} className={classes.link} {...props}>
+    <Link
+      target={target}
+      href={href ?? '#'}
+      className={classes.link}
+      {...props}
+    >
       {children}
     </Link>
   )
