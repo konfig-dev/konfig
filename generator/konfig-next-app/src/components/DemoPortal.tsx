@@ -40,6 +40,7 @@ import { FlexCenter } from '@/components/FlexCenter'
 import { navLinkColor } from '@/utils/nav-link-color'
 import { asideOffsetBreakpoint } from '@/utils/aside-offset-breakpoint'
 import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
+import type { generateLogoLink } from '@/utils/generate-logo-link'
 
 type DemosInput = Demo[]
 
@@ -178,7 +179,7 @@ export const DemoPortal = observer(
     omitOwnerAndRepo: boolean
     owner: string
     repo: string
-    logo: string | null
+    logo: ReturnType<typeof generateLogoLink>
   }) => {
     const theme = useMantineTheme()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()

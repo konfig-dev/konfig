@@ -34,7 +34,7 @@ export type FetchResult = {
   mainBranch: string
   hasDocumentation: boolean
   faviconLink: string | null
-  logo: string | null
+  logo: ReturnType<typeof generateLogoLink>
 }
 
 export type GenerationResult =
@@ -85,7 +85,7 @@ export async function generateDemosDataFromGithub({
       primaryColor: string | null
       hasDocumentation: boolean
       faviconLink: string | null
-      logo: string | null
+      logo: ReturnType<typeof generateLogoLink>
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }

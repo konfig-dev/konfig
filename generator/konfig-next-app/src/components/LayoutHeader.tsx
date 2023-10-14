@@ -14,6 +14,7 @@ import { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
 import { useBaseUrl } from '@/utils/use-base-url'
 import Link from 'next/link'
+import type { generateLogoLink } from '@/utils/generate-logo-link'
 
 export const LayoutHeader = observer(
   ({
@@ -27,7 +28,7 @@ export const LayoutHeader = observer(
     opened: boolean
     setOpened: Dispatch<SetStateAction<boolean>>
     breakpoint: MantineNumberSize
-    logo: string | null
+    logo: ReturnType<typeof generateLogoLink>
   }) => {
     const theme = useMantineTheme()
     const baseUrl = useBaseUrl()
@@ -68,7 +69,13 @@ export const LayoutHeader = observer(
                   fill
                   alt="logo"
                   priority
-                  src={logo}
+                  src={
+                    typeof logo === 'string'
+                      ? logo
+                      : theme.colorScheme === 'dark'
+                      ? logo.dark
+                      : logo.light
+                  }
                 />
               </Link>
             </div>

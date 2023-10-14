@@ -16,6 +16,7 @@ import {
 import { NavbarDataItem } from '@/components/LinksGroup'
 import { generateDemosDataFromGithub } from './generate-demos-from-github'
 import { sortParametersByRequired } from './sort-parameters-by-required'
+import { generateLogoLink } from './generate-logo-link'
 
 export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   spec: Spec['spec']
@@ -39,7 +40,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   securityRequirements: Record<string, string[]> | null
   securitySchemes: Record<string, SecurityScheme> | null
   omitOwnerAndRepo?: boolean
-  logo: string | null
+  logo: ReturnType<typeof generateLogoLink>
 }
 
 export async function generatePropsForReferencePage({

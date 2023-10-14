@@ -4,6 +4,7 @@ import { HeaderWrapper } from './HeaderWrapper'
 import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
 import { HeaderTabs } from './HeaderTabs'
 import { TABS } from './HeaderButton'
+import type { generateLogoLink } from '@/utils/generate-logo-link'
 
 export function DocumentationHeader({
   opened,
@@ -22,7 +23,7 @@ export function DocumentationHeader({
   omitOwnerAndRepo?: boolean
   owner: string
   repo: string
-  logo: string | null
+  logo: ReturnType<typeof generateLogoLink>
 }) {
   return (
     <HeaderWrapper>

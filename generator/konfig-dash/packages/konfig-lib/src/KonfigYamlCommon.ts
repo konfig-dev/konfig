@@ -123,6 +123,13 @@ export const documentation = z.object({
     ),
 })
 
+const logoSchema = z
+  .object({
+    light: z.string(),
+    dark: z.string(),
+  })
+  .describe("Light and dark logos for Konfig's API Portal")
+
 export const portal = z
   .object({
     primaryColor,
@@ -132,8 +139,11 @@ export const portal = z
       .describe("Relative path to favicon image used for Konfig's API Portal"),
     logo: z
       .string()
+      .or(logoSchema)
       .optional()
-      .describe("Relative path to logo image used for Konfig's API Portal"),
+      .describe(
+        "Relative path to logo image used for Konfig's API Portal. If an object is provided, the light logo will be used for light mode and the dark logo will be used for dark mode."
+      ),
     socials: socialObjectSchema.optional(),
     title: z.string().describe("Title to be used in Konfig's API Portal"),
     documentation: documentation
@@ -310,4 +320,5 @@ export const KonfigYamlCommon = z
 
 export type KonfigYamlCommonType = z.infer<typeof KonfigYamlCommon>
 export type FixConfig = z.infer<typeof fixConfig>
+export type Logo = z.infer<typeof logoSchema>
 export type DocumentationConfig = z.infer<typeof documentation>

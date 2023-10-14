@@ -5,6 +5,7 @@ import { LayoutHeader } from './LayoutHeader'
 import { HeaderWrapper } from './HeaderWrapper'
 import { TABS } from './HeaderButton'
 import { HeaderTabs } from './HeaderTabs'
+import type { generateLogoLink } from '@/utils/generate-logo-link'
 
 export const DemoHeader = observer(
   ({
@@ -28,7 +29,7 @@ export const DemoHeader = observer(
     omitOwnerAndRepo: boolean
     owner: string
     repo: string
-    logo: string | null
+    logo: ReturnType<typeof generateLogoLink>
   }) => {
     return (
       <HeaderWrapper>

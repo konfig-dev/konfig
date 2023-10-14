@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { HeaderWrapper } from './HeaderWrapper'
 import { TABS } from './HeaderButton'
 import { HeaderTabs } from './HeaderTabs'
+import type { generateLogoLink } from '@/utils/generate-logo-link'
 
 export function ReferenceHeader({
   opened,
@@ -23,7 +24,7 @@ export function ReferenceHeader({
   omitOwnerAndRepo?: boolean
   owner: string
   repo: string
-  logo: string | null
+  logo: ReturnType<typeof generateLogoLink>
 }) {
   return (
     <HeaderWrapper>

@@ -3387,8 +3387,21 @@ components:
               type: string
               description: Relative path to favicon image used for Konfig's API Portal
             logo:
-              type: string
-              description: Relative path to logo image used for Konfig's API Portal
+              anyOf:
+                - type: string
+                - type: object
+                  properties:
+                    light:
+                      type: string
+                    dark:
+                      type: string
+                  required:
+                    - light
+                    - dark
+                  description: Light and dark logos for Konfig's API Portal
+              description: Relative path to logo image used for Konfig's API Portal. If an
+                object is provided, the light logo will be used for light mode
+                and the dark logo will be used for dark mode.
             socials:
               type: object
               properties:

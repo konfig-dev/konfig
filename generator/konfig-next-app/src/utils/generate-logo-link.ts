@@ -1,4 +1,4 @@
-import { KonfigYamlType } from 'konfig-lib'
+import { KonfigYamlType, Logo } from 'konfig-lib'
 import path from 'path'
 
 export function generateLogoLink({
@@ -13,14 +13,22 @@ export function generateLogoLink({
   konfigYamlPath: string
   owner: string
   repo: string
-}): string | null {
+}): string | Logo | null {
   const iconRelativePath = konfigYaml.portal?.logo
   if (iconRelativePath === undefined) {
     return null
   }
-  const url = `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${path.join(
-    path.dirname(konfigYamlPath),
-    iconRelativePath
-  )}`
-  return url
+  const logoUrl = (relativePath: string) => {
+    return `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${path.join(
+      path.dirname(konfigYamlPath),
+      relativePath
+    )}`
+  }
+  if (typeof iconRelativePath === 'string') {
+    return logoUrl(iconRelativePath)
+  }
+  return {
+    light: logoUrl(iconRelativePath.light),
+    dark: logoUrl(iconRelativePath.dark),
+  }
 }

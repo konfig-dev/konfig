@@ -48,7 +48,7 @@ export type MarkdownPageProps = {
 
   omitOwnerAndRepo: boolean
   faviconLink: string | null
-  logo: string | null
+  logo: ReturnType<typeof generateLogoLink>
 }
 
 export async function generatePropsForMarkdownPage({
