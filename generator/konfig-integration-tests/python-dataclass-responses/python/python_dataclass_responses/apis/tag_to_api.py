@@ -1,17 +1,17 @@
 import typing_extensions
 
 from python_dataclass_responses.apis.tags import TagValues
-from python_dataclass_responses.apis.tags.default_api import DefaultApi
+from python_dataclass_responses.apis.tags.test_api import TestApi
 
 TagToApi = typing_extensions.TypedDict(
     'TagToApi',
     {
-        TagValues.DEFAULT: DefaultApi,
+        TagValues.TEST: TestApi,
     }
 )
 
 tag_to_api = TagToApi(
     {
-        TagValues.DEFAULT: DefaultApi,
+        TagValues.TEST: TestApi,
     }
 )

@@ -16,7 +16,7 @@ from python_dataclass_responses.client_custom import ClientCustom
 from python_dataclass_responses.configuration import Configuration
 from python_dataclass_responses.api_client import ApiClient
 from python_dataclass_responses.type_util import copy_signature
-from python_dataclass_responses.apis.tags.default_api import DefaultApi
+from python_dataclass_responses.apis.tags.test_api import TestApi
 
 
 
@@ -29,4 +29,4 @@ class PythonDataclassResponses(ClientCustom):
         if (configuration is None):
             raise Exception("configuration is required")
         api_client = ApiClient(configuration)
-        self.default: DefaultApi = DefaultApi(api_client)
+        self.test: TestApi = TestApi(api_client)

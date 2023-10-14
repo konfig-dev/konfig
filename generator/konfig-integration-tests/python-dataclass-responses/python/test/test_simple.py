@@ -22,6 +22,8 @@ class TestSimple(unittest.TestCase):
 
     def test_client(self):
         pythondataclassresponses = PythonDataclassResponses(
+        
+            api_key = 'YOUR_API_KEY',
         )
         self.assertIsNotNone(pythondataclassresponses)
 

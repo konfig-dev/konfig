@@ -32,7 +32,13 @@ import frozendict  # noqa: F401
 
 from python_dataclass_responses import schemas  # noqa: F401
 
+from python_dataclass_responses.model.test_fetch400_response import TestFetch400Response as TestFetch400ResponseSchema
+from python_dataclass_responses.model.test_fetch500_response import TestFetch500Response as TestFetch500ResponseSchema
+from python_dataclass_responses.model.test_fetch_response import TestFetchResponse as TestFetchResponseSchema
 
+from python_dataclass_responses.type.test_fetch500_response import TestFetch500Response
+from python_dataclass_responses.type.test_fetch_response import TestFetchResponse
+from python_dataclass_responses.type.test_fetch400_response import TestFetch400Response
 
 from . import path
 
@@ -63,86 +69,20 @@ request_query_input_parameter = api_client.QueryParameter(
     required=True,
     explode=True,
 )
-
-
-class SchemaFor200ResponseBodyApplicationJson(
-    schemas.DictSchema
-):
-
-
-    class MetaOapg:
-        
-        class properties:
-            propertyA = schemas.StrSchema
-            propertyB = schemas.IntSchema
-            propertyC = schemas.BoolSchema
-            __annotations__ = {
-                "propertyA": propertyA,
-                "propertyB": propertyB,
-                "propertyC": propertyC,
-            }
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["propertyA"]) -> MetaOapg.properties.propertyA: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["propertyB"]) -> MetaOapg.properties.propertyB: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["propertyC"]) -> MetaOapg.properties.propertyC: ...
-    
-    @typing.overload
-    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
-    
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["propertyA", "propertyB", "propertyC", ], str]):
-        # dict_instance[name] accessor
-        return super().__getitem__(name)
-    
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["propertyA"]) -> typing.Union[MetaOapg.properties.propertyA, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["propertyB"]) -> typing.Union[MetaOapg.properties.propertyB, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["propertyC"]) -> typing.Union[MetaOapg.properties.propertyC, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
-    
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["propertyA", "propertyB", "propertyC", ], str]):
-        return super().get_item_oapg(name)
-    
-
-    def __new__(
-        cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
-        propertyA: typing.Union[MetaOapg.properties.propertyA, str, schemas.Unset] = schemas.unset,
-        propertyB: typing.Union[MetaOapg.properties.propertyB, decimal.Decimal, int, schemas.Unset] = schemas.unset,
-        propertyC: typing.Union[MetaOapg.properties.propertyC, bool, schemas.Unset] = schemas.unset,
-        _configuration: typing.Optional[schemas.Configuration] = None,
-        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-    ) -> 'SchemaFor200ResponseBodyApplicationJson':
-        return super().__new__(
-            cls,
-            *args,
-            propertyA=propertyA,
-            propertyB=propertyB,
-            propertyC=propertyC,
-            _configuration=_configuration,
-            **kwargs,
-        )
+_auth = [
+    'ApiKeyAuth',
+]
+SchemaFor200ResponseBodyApplicationJson = TestFetchResponseSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetchResponse
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetchResponse
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -153,66 +93,17 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
-
-
-class SchemaFor400ResponseBodyApplicationJson(
-    schemas.DictSchema
-):
-
-
-    class MetaOapg:
-        
-        class properties:
-            error = schemas.StrSchema
-            __annotations__ = {
-                "error": error,
-            }
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["error"]) -> MetaOapg.properties.error: ...
-    
-    @typing.overload
-    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
-    
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["error", ], str]):
-        # dict_instance[name] accessor
-        return super().__getitem__(name)
-    
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["error"]) -> typing.Union[MetaOapg.properties.error, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
-    
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["error", ], str]):
-        return super().get_item_oapg(name)
-    
-
-    def __new__(
-        cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
-        error: typing.Union[MetaOapg.properties.error, str, schemas.Unset] = schemas.unset,
-        _configuration: typing.Optional[schemas.Configuration] = None,
-        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-    ) -> 'SchemaFor400ResponseBodyApplicationJson':
-        return super().__new__(
-            cls,
-            *args,
-            error=error,
-            _configuration=_configuration,
-            **kwargs,
-        )
+SchemaFor400ResponseBodyApplicationJson = TestFetch400ResponseSchema
 
 
 @dataclass
 class ApiResponseFor400(api_client.ApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetch400Response
 
 
 @dataclass
 class ApiResponseFor400Async(api_client.AsyncApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetch400Response
 
 
 _response_for_400 = api_client.OpenApiResponse(
@@ -223,66 +114,17 @@ _response_for_400 = api_client.OpenApiResponse(
             schema=SchemaFor400ResponseBodyApplicationJson),
     },
 )
-
-
-class SchemaFor500ResponseBodyApplicationJson(
-    schemas.DictSchema
-):
-
-
-    class MetaOapg:
-        
-        class properties:
-            error = schemas.StrSchema
-            __annotations__ = {
-                "error": error,
-            }
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["error"]) -> MetaOapg.properties.error: ...
-    
-    @typing.overload
-    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
-    
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["error", ], str]):
-        # dict_instance[name] accessor
-        return super().__getitem__(name)
-    
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["error"]) -> typing.Union[MetaOapg.properties.error, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
-    
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["error", ], str]):
-        return super().get_item_oapg(name)
-    
-
-    def __new__(
-        cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
-        error: typing.Union[MetaOapg.properties.error, str, schemas.Unset] = schemas.unset,
-        _configuration: typing.Optional[schemas.Configuration] = None,
-        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-    ) -> 'SchemaFor500ResponseBodyApplicationJson':
-        return super().__new__(
-            cls,
-            *args,
-            error=error,
-            _configuration=_configuration,
-            **kwargs,
-        )
+SchemaFor500ResponseBodyApplicationJson = TestFetch500ResponseSchema
 
 
 @dataclass
 class ApiResponseFor500(api_client.ApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetch500Response
 
 
 @dataclass
 class ApiResponseFor500Async(api_client.AsyncApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetch500Response
 
 
 _response_for_500 = api_client.OpenApiResponse(
@@ -305,7 +147,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _endpoint_get_mapped_args(
+    def _fetch_mapped_args(
         self,
         input_parameter: str,
     ) -> api_client.MappedArgs:
@@ -316,7 +158,7 @@ class BaseApi(api_client.Api):
         args.query = _query_params
         return args
 
-    async def _aendpoint_get_oapg(
+    async def _afetch_oapg(
         self,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
@@ -360,6 +202,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            auth_settings=_auth,
             headers=_headers,
         )
     
@@ -367,6 +210,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             headers=_headers,
+            auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
         )
@@ -425,7 +269,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-    def _endpoint_get_oapg(
+    def _fetch_oapg(
         self,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
@@ -468,6 +312,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            auth_settings=_auth,
             headers=_headers,
         )
     
@@ -475,6 +320,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             headers=_headers,
+            auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
         )
@@ -503,10 +349,10 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class EndpointGet(BaseApi):
+class Fetch(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    async def aendpoint_get(
+    async def afetch(
         self,
         input_parameter: str,
     ) -> typing.Union[
@@ -514,24 +360,24 @@ class EndpointGet(BaseApi):
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._endpoint_get_mapped_args(
+        args = self._fetch_mapped_args(
             input_parameter=input_parameter,
         )
-        return await self._aendpoint_get_oapg(
+        return await self._afetch_oapg(
             query_params=args.query,
         )
     
-    def endpoint_get(
+    def fetch(
         self,
         input_parameter: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._endpoint_get_mapped_args(
+        args = self._fetch_mapped_args(
             input_parameter=input_parameter,
         )
-        return self._endpoint_get_oapg(
+        return self._fetch_oapg(
             query_params=args.query,
         )
 
@@ -546,10 +392,10 @@ class ApiForget(BaseApi):
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._endpoint_get_mapped_args(
+        args = self._fetch_mapped_args(
             input_parameter=input_parameter,
         )
-        return await self._aendpoint_get_oapg(
+        return await self._afetch_oapg(
             query_params=args.query,
         )
     
@@ -560,10 +406,10 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._endpoint_get_mapped_args(
+        args = self._fetch_mapped_args(
             input_parameter=input_parameter,
         )
-        return self._endpoint_get_oapg(
+        return self._fetch_oapg(
             query_params=args.query,
         )
 

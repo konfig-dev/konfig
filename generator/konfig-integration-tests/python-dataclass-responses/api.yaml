@@ -1,29 +1,33 @@
 openapi: 3.0.3
 info:
-  version: 1.0.0
   title: Python Dataclass Responses API
   description: A simple API based on python dataclass responses.
-  termsOfService: 'http://example.com/terms/'
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
   contact:
     name: API Support
-    url: 'http://example.com/support'
+    url: http://example.com/support
     email: support@example.com
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: 'https://python-dataclass-responses.konfigthis.com'
-    description: Live API server
-
+  - description: Live API server
+    url: https://python-dataclass-responses.konfigthis.com
+tags:
+  - name: Test
 paths:
   /simple-endpoint:
     get:
+      tags:
+        - Test
       summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
       description: Provide an input parameter to receive a JSON value with properties.
       parameters:
-        - name: inputParameter
+        - description: The input parameter to process.
+          name: inputParameter
           in: query
-          description: The input parameter to process.
           required: true
           schema:
             type: string
@@ -33,32 +37,47 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  propertyA:
-                    type: string
-                    description: Description of property A.
-                  propertyB:
-                    type: integer
-                    description: Description of property B.
-                  propertyC:
-                    type: boolean
-                    description: Description of property C.
+                $ref: '#/components/schemas/TestFetchResponse'
         '400':
           description: Bad request. Parameter missing or malformed.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
+                $ref: '#/components/schemas/TestFetch400Response'
         '500':
           description: Server error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
+                $ref: '#/components/schemas/TestFetch500Response'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchResponse:
+      type: object
+      properties:
+        propertyA:
+          description: Description of property A.
+          type: string
+        propertyB:
+          description: Description of property B.
+          type: integer
+        propertyC:
+          description: Description of property C.
+          type: boolean
+    TestFetch400Response:
+      type: object
+      properties:
+        error:
+          type: string
+    TestFetch500Response:
+      type: object
+      properties:
+        error:
+          type: string
+security:
+  - ApiKeyAuth: []

@@ -80,6 +80,26 @@ class Configuration(object):
       string values to replace variables in templated server configuration.
       The validation of enums is performed for variables with defined enum values before.
 
+    :Example:
+
+    API Key Authentication Example.
+    Given the following security scheme in the OpenAPI specification:
+      components:
+        securitySchemes:
+          cookieAuth:         # name for the security scheme
+            type: apiKey
+            in: cookie
+            name: JSESSIONID  # cookie name
+
+    You can programmatically set the cookie:
+
+conf = python_dataclass_responses.Configuration(
+    api_key={'cookieAuth': 'abc123'}
+    api_key_prefix={'cookieAuth': 'JSESSIONID'}
+)
+
+    The following cookie will be added to the HTTP request:
+       Cookie: JSESSIONID abc123
     """
 
     _default = None
@@ -88,6 +108,7 @@ class Configuration(object):
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  discard_unknown_keys=False,
+                 x_api_key=None,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
@@ -111,7 +132,16 @@ class Configuration(object):
         # Authentication Settings
         self.api_key = {}
         if api_key:
-            self.api_key = api_key
+            if (isinstance(api_key, str)):
+                self.api_key = {'ApiKeyAuth': api_key}
+            else:
+                self.api_key = api_key
+        else:
+            raise ClientConfigurationError('API Key "ApiKeyAuth" is required')
+        if x_api_key:
+            self.api_key['ApiKeyAuth'] = x_api_key
+        elif api_key is None:
+            raise ClientConfigurationError('API Key "ApiKeyAuth" is required')
         """dict to store API key(s)
         """
         self.api_key_prefix = {}
@@ -356,6 +386,15 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         auth = {}
+        if 'ApiKeyAuth' in self.api_key:
+            auth['ApiKeyAuth'] = {
+                'type': 'api_key',
+                'in': 'header',
+                'key': 'X-API-KEY',
+                'value': self.get_api_key_with_prefix(
+                    'ApiKeyAuth',
+                ),
+            }
         return auth
 
     def to_debug_report(self):
