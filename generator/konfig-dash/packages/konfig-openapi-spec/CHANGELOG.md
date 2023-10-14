@@ -1,5 +1,16 @@
 # konfig-openapi-spec
 
+## 1.6.0
+
+### Minor Changes
+
+- [#291](https://github.com/konfig-dev/konfig/pull/291) [`c90dc42f`](https://github.com/konfig-dev/konfig/commit/c90dc42f1c9e32df66a1390ce532ddecf90c0eb2) Thanks [@dphuang2](https://github.com/dphuang2)! - support light and dark mode in api portal
+
+### Patch Changes
+
+- Updated dependencies [[`c90dc42f`](https://github.com/konfig-dev/konfig/commit/c90dc42f1c9e32df66a1390ce532ddecf90c0eb2)]:
+  - konfig-lib@1.25.0
+
 ## 1.5.3
 
 ### Patch Changes
