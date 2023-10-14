@@ -17,19 +17,21 @@ const KONFIG_CLI_PATH = path.join(
   "../konfig-dash/packages/konfig-cli/bin/dev"
 );
 
-async function e2e({ sdkDir }: { sdkDir?: string }) {
-  if (!sdkDir) {
-    throw new Error("Path is required");
+export async function e2e() {
+  const currentTestName = expect.getState().currentTestName;
+  if (!currentTestName) {
+    throw new Error("Unable to get current test name");
   }
+  const sdkDir = path.join(__dirname, "sdks", currentTestName);
 
   // run "konfig generate -d" inside the path
-  execa.sync(KONFIG_CLI_PATH, ["generate", "-d"], {
+  await execa(KONFIG_CLI_PATH, ["generate", "-d"], {
     cwd: sdkDir,
     stdio: "inherit",
   });
 
   // run "konfig test" inside the path
-  execa.sync(KONFIG_CLI_PATH, ["test"], {
+  await execa(KONFIG_CLI_PATH, ["test", "-x"], {
     cwd: sdkDir,
     stdio: "inherit",
   });
@@ -64,7 +66,3 @@ async function e2e({ sdkDir }: { sdkDir?: string }) {
     ).toMatchSnapshot();
   }
 }
-
-test("python-dataclass-responses", async () => {
-  e2e({ sdkDir: expect.getState().currentTestName });
-});

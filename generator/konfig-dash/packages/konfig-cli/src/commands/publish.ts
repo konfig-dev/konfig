@@ -337,6 +337,11 @@ export default class Publish extends Command {
       char: 's',
       description: 'Skip pushing git tag',
     }),
+    noMockServer: Flags.boolean({
+      description: 'Disable mock server from running',
+      char: 'x',
+      default: false,
+    }),
     tolerateRepublish: Flags.boolean({
       name: 'tolerateRepublish',
       description:
@@ -371,6 +376,7 @@ export default class Publish extends Command {
         filterInput: filter !== null ? flags.generator : undefined,
         sequence: true,
         cliRoot: this.config.root,
+        noMockServer: flags.noMockServer,
       })
 
     for (const [generatorName, generatorConfig] of [

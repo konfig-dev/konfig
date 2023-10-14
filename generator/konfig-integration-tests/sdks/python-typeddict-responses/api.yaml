@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: Python TypedDict Responses API
+  description: A simple API based on python typeddict responses.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://python-typeddict-responses.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      parameters:
+        - description: The input parameter to process.
+          name: inputParameter
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+        '400':
+          description: Bad request. Parameter missing or malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetch400Response'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetch500Response'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchResponse:
+      type: object
+      properties:
+        propertyA:
+          description: Description of property A.
+          type: string
+        propertyB:
+          description: Description of property B.
+          type: integer
+        propertyC:
+          description: Description of property C.
+          type: boolean
+    TestFetch400Response:
+      type: object
+      properties:
+        error:
+          type: string
+    TestFetch500Response:
+      type: object
+      properties:
+        error:
+          type: string
+security:
+  - ApiKeyAuth: []

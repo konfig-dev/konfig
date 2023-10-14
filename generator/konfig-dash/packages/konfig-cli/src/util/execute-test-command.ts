@@ -30,10 +30,12 @@ export async function executeTestCommand({
   filterInput,
   sequence,
   cliRoot,
+  noMockServer,
 }: {
   filterInput?: string
   sequence: boolean
   cliRoot: string
+  noMockServer: boolean
 }) {
   const filter = parseFilterFlag(filterInput)
   const configDir = process.cwd()
@@ -42,51 +44,53 @@ export async function executeTestCommand({
   })
 
   // kill any existing process on 4010
-  const port = 4010
-  CliUx.ux.log(`Killing any process using port ${port}`)
-  try {
-    await kill(port)
-  } catch (e) {
-    if (e instanceof Error) {
-      if (e.message !== 'No process running on port') throw e
+  if (!noMockServer) {
+    const port = 4010
+    CliUx.ux.log(`Killing any process using port ${port}`)
+    try {
+      await kill(port)
+    } catch (e) {
+      if (e instanceof Error) {
+        if (e.message !== 'No process running on port') throw e
+      }
     }
+
+    // spawn process that run "konfig mock -d {specPath}" from konfig.yaml
+    CliUx.ux.log('💻 Starting mock server')
+    // TODO: ENG-1099 Use a function call here instead of CLI
+    const pathToPrism = await findNodeModulesBinPath({
+      name: 'prism',
+      cwd: cliRoot,
+    })
+    execa.command(`${pathToPrism} mock -d ${common.specPath}`, {
+      cwd: configDir,
+      stdio: 'inherit',
+      shell: true,
+    })
+
+    // if this process exits in any way, kill the mock server
+    const handleTermination = async () => {
+      CliUx.ux.log('🛑 Killing mock server')
+      await kill(port)
+      process.exit()
+    }
+
+    process.on('exit', handleTermination)
+    process.on('SIGINT', handleTermination)
+    process.on('SIGTERM', handleTermination)
+    process.on('SIGUSR1', handleTermination)
+    process.on('SIGUSR2', handleTermination)
+
+    await waiton({
+      resources: [`http://127.0.0.1:${port}`],
+      timeout: 60_000,
+      validateStatus: (status) => {
+        console.log(status)
+        return status === 405 || status === 404 || status === 200
+      },
+    })
+    CliUx.ux.log('✅ Started mock server')
   }
-
-  // spawn process that run "konfig mock -d {specPath}" from konfig.yaml
-  CliUx.ux.log('💻 Starting mock server')
-  // TODO: ENG-1099 Use a function call here instead of CLI
-  const pathToPrism = await findNodeModulesBinPath({
-    name: 'prism',
-    cwd: cliRoot,
-  })
-  execa.command(`${pathToPrism} mock -d ${common.specPath}`, {
-    cwd: configDir,
-    stdio: 'inherit',
-    shell: true,
-  })
-
-  // if this process exits in any way, kill the mock server
-  const handleTermination = async () => {
-    CliUx.ux.log('🛑 Killing mock server')
-    await kill(port)
-    process.exit()
-  }
-
-  process.on('exit', handleTermination)
-  process.on('SIGINT', handleTermination)
-  process.on('SIGTERM', handleTermination)
-  process.on('SIGUSR1', handleTermination)
-  process.on('SIGUSR2', handleTermination)
-
-  await waiton({
-    resources: [`http://127.0.0.1:${port}`],
-    timeout: 60_000,
-    validateStatus: (status) => {
-      console.log(status)
-      return status === 405 || status === 404 || status === 200
-    },
-  })
-  CliUx.ux.log('✅ Started mock server')
 
   validateRequiredEnvironmentVariables(common)
   const results: {

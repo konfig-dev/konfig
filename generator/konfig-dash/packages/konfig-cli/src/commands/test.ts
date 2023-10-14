@@ -16,14 +16,20 @@ export default class Test extends Command {
       char: 's',
       description: 'Run tests in sequence',
     }),
+    noMockServer: Flags.boolean({
+      description: 'Disable mock server from running',
+      char: 'x',
+      default: false,
+    }),
   }
 
   public async run(): Promise<void> {
     const { flags } = await this.parse(Test)
-    executeTestCommand({
+    await executeTestCommand({
       filterInput: flags.filter,
       sequence: flags.sequence,
       cliRoot: this.config.root,
+      noMockServer: flags.noMockServer,
     })
   }
 }
