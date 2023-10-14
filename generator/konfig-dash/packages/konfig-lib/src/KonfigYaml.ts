@@ -181,7 +181,6 @@ const useDescriptionInOperationTableDocumentation = z
   )
 
 export const pythonConfig = z.object({
-  version: z.string().default('1.0.0'),
   useDescriptionInOperationTableDocumentation,
   language: z.literal('python').default('python'),
   packageName: z.string().describe('acme_client'),
