@@ -165,6 +165,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
   useEffect(() => {
     state.setDemoDiv(demoDiv.current)
   }, [state])
+  const textColor = colorScheme === 'dark' ? colors.gray[5] : colors.gray[7]
   return (
     <DemoStateContext.Provider value={state}>
       <Box ref={demoDiv}>
@@ -177,9 +178,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
               return (
                 <Text
                   component="p"
-                  color={
-                    colorScheme === 'dark' ? colors.gray[5] : colors.gray[7]
-                  }
+                  color={textColor}
                   className={classes.text}
                   mt="md"
                   mb="xl"
@@ -187,6 +186,17 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
                 >
                   {children}
                 </Text>
+              )
+            },
+            li({ node, children, siblingCount, ...props }) {
+              return (
+                <li
+                  style={{
+                    color: textColor,
+                  }}
+                >
+                  {children}
+                </li>
               )
             },
             table: DemoMarkdownTable,

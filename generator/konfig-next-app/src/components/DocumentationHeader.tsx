@@ -26,7 +26,7 @@ export function DocumentationHeader({
   logo: ReturnType<typeof generateLogoLink>
 }) {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper hasLightAndDarkLogo={typeof logo !== 'string'}>
       <LayoutHeader
         breakpoint={navbarOffsetBreakpoint}
         opened={opened}
@@ -35,6 +35,7 @@ export function DocumentationHeader({
         logo={logo}
       />
       <HeaderTabs
+        hasLightAndDarkLogo={typeof logo !== 'string'}
         owner={owner}
         repo={repo}
         hasDocumentation={true}

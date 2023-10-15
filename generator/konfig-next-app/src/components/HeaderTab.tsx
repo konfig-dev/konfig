@@ -1,6 +1,11 @@
 import { Anchor, createStyles, rem, useMantineTheme } from '@mantine/core'
 import { useRouter } from 'next/router'
-import { HeaderButton, Tab, useColorStyles } from './HeaderButton'
+import {
+  HeaderButton,
+  Tab,
+  useColorStyles,
+  useLightDarkModeColorStyles,
+} from './HeaderButton'
 
 const useStyles = createStyles((theme) => ({
   tab: {
@@ -34,22 +39,33 @@ const useStyles = createStyles((theme) => ({
       theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 5 : 3],
   },
 }))
+
+const useTabActiveLightDarkStyles = createStyles((theme) => ({
+  tabActive: {
+    borderBottomColor:
+      theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 6 : 8],
+  },
+}))
 export function HeaderTab({
   active,
   link,
   label,
   external,
   disabled,
+  hasLightAndDarkLogo,
 }: {
   active: boolean
   link: string
   label: Tab
   external?: boolean
   disabled?: boolean
+  hasLightAndDarkLogo: boolean
 }) {
   const { classes, cx } = useStyles()
   const router = useRouter()
   const colorStyles = useColorStyles()
+  const hasLightDarkModeStyles = useLightDarkModeColorStyles()
+  const tabLightDarkModeStyles = useTabActiveLightDarkStyles()
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (disabled) {
@@ -71,12 +87,21 @@ export function HeaderTab({
       data-active={active}
       aria-disabled={disabled}
       onClick={handleClick}
-      className={cx(classes.tab, colorStyles.classes.color, {
-        [classes.tabActive]: active,
+      className={cx(classes.tab, {
+        [hasLightDarkModeStyles.classes.color]: hasLightAndDarkLogo,
+        [colorStyles.classes.color]: !hasLightAndDarkLogo,
+        [classes.tabActive]: active && !hasLightAndDarkLogo,
+        [tabLightDarkModeStyles.classes.tabActive]:
+          active && hasLightAndDarkLogo,
         [classes.tabDisabled]: disabled,
       })}
     >
-      <HeaderButton noColor active={active} tab={label} />
+      <HeaderButton
+        hasLightDarkMode={hasLightAndDarkLogo}
+        noColor
+        active={active}
+        tab={label}
+      />
     </Anchor>
   )
 }

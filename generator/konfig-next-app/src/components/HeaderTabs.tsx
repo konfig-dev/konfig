@@ -21,6 +21,7 @@ export function HeaderTabs({
   omitOwnerAndRepo,
   owner,
   repo,
+  hasLightAndDarkLogo,
 }: {
   currentTab: Tab
   isSandbox?: boolean
@@ -28,6 +29,7 @@ export function HeaderTabs({
   hasDocumentation?: boolean
   owner: string
   repo: string
+  hasLightAndDarkLogo: boolean
   omitOwnerAndRepo?: boolean
 }) {
   const docsPath = useDocsPath({ omitOwnerAndRepo })
@@ -72,7 +74,10 @@ export function HeaderTabs({
                 align="center"
                 justify="space-between"
               >
-                <HeaderButton tab={currentTab} />
+                <HeaderButton
+                  hasLightDarkMode={hasLightAndDarkLogo}
+                  tab={currentTab}
+                />
                 <IconMenu size="0.9rem" />
               </Flex>
             </Menu.Target>
@@ -94,7 +99,11 @@ export function HeaderTabs({
                           target={tab === TABS.sdks ? '_blank' : undefined}
                           href={linkForTab(tab)}
                         >
-                          <HeaderButton noColor tab={tab} />
+                          <HeaderButton
+                            hasLightDarkMode={hasLightAndDarkLogo}
+                            noColor
+                            tab={tab}
+                          />
                         </Link>
                       </Menu.Item>
                     )
@@ -116,6 +125,7 @@ export function HeaderTabs({
         >
           {hasDocumentation && (
             <HeaderTab
+              hasLightAndDarkLogo={hasLightAndDarkLogo}
               disabled={isSandbox}
               label={TABS.documentation}
               active={currentTab === TABS.documentation}
@@ -123,6 +133,7 @@ export function HeaderTabs({
             />
           )}
           <HeaderTab
+            hasLightAndDarkLogo={hasLightAndDarkLogo}
             disabled={isSandbox}
             label={TABS.reference}
             active={currentTab === TABS.reference}
@@ -130,6 +141,7 @@ export function HeaderTabs({
           />
           {demos.length > 0 && (
             <HeaderTab
+              hasLightAndDarkLogo={hasLightAndDarkLogo}
               label={TABS.demos}
               active={currentTab === TABS.demos}
               link={linkForTab(TABS.demos)}
@@ -137,6 +149,7 @@ export function HeaderTabs({
             />
           )}
           <HeaderTab
+            hasLightAndDarkLogo={hasLightAndDarkLogo}
             disabled={isSandbox}
             external
             label={TABS.sdks}

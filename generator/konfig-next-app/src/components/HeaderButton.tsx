@@ -41,17 +41,36 @@ export const useColorStyles = createStyles((theme) => ({
   },
 }))
 
+export const useLightDarkModeColorStyles = createStyles((theme) => ({
+  color: {
+    // transition color
+    transition: 'color 200ms ease',
+    '&[data-active="true"]': {
+      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    },
+    '&[data-active="false"]': {
+      color: inactiveColor(theme),
+    },
+    '&:hover': {
+      color: linkColor({ theme }),
+    },
+  },
+}))
+
 export function HeaderButton({
   tab,
+  hasLightDarkMode,
   active,
   noColor,
 }: {
   tab: Tab
+  hasLightDarkMode: boolean
   active?: boolean
   noColor?: boolean
 }) {
   const Icon = ICONS[tab]
   const { classes } = useColorStyles()
+  const { classes: lightDarkModeClasses, cx } = useLightDarkModeColorStyles()
   active = active === undefined ? true : active
   return (
     <Group
@@ -60,7 +79,14 @@ export function HeaderButton({
       data-active={noColor ? undefined : active || active === undefined}
       noWrap
       spacing={5}
-      className={noColor ? undefined : classes.color}
+      className={
+        noColor
+          ? undefined
+          : cx({
+              [classes.color]: !hasLightDarkMode,
+              [lightDarkModeClasses.color]: hasLightDarkMode,
+            })
+      }
     >
       <Icon size="1rem" />
       <span style={{ whiteSpace: 'nowrap' }}>{tab}</span>

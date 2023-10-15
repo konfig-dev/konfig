@@ -32,7 +32,7 @@ export const DemoHeader = observer(
     logo: ReturnType<typeof generateLogoLink>
   }) => {
     return (
-      <HeaderWrapper>
+      <HeaderWrapper hasLightAndDarkLogo={typeof logo !== 'string'}>
         <LayoutHeader
           logo={logo}
           breakpoint="sm"
@@ -41,6 +41,7 @@ export const DemoHeader = observer(
           title={state.portalTitle ? state.portalTitle : state.portalName}
         />
         <HeaderTabs
+          hasLightAndDarkLogo={typeof logo !== 'string'}
           hasDocumentation={hasDocumentation}
           demos={demos}
           owner={owner}

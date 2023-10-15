@@ -15,6 +15,7 @@ import Image from 'next/image'
 import { useBaseUrl } from '@/utils/use-base-url'
 import Link from 'next/link'
 import type { generateLogoLink } from '@/utils/generate-logo-link'
+import { useHeaderColor } from '@/utils/use-header-color'
 
 export const LayoutHeader = observer(
   ({
@@ -32,6 +33,8 @@ export const LayoutHeader = observer(
   }) => {
     const theme = useMantineTheme()
     const baseUrl = useBaseUrl()
+    const hasLightAndDarkLogo = typeof logo !== 'string'
+    const color = useHeaderColor({ hasLightAndDarkLogo })
     return (
       <Box
         h="55%"
@@ -53,14 +56,12 @@ export const LayoutHeader = observer(
               opened={opened}
               onClick={() => setOpened((o) => !o)}
               size="sm"
-              color={theme.white}
+              color={color}
             />
           </MediaQuery>
           {logo !== null ? (
             // <MantineImage height={24} mx="auto" src={logo} alt="Random image" />
-            <div
-              style={{ position: 'relative', height: rem(24), width: rem(140) }}
-            >
+            <div style={{ position: 'relative', height: 64, width: rem(140) }}>
               <Link href={baseUrl}>
                 <Image
                   style={{
@@ -84,7 +85,7 @@ export const LayoutHeader = observer(
           )}
         </Group>
         <Group>
-          <ColorSchemeToggle />
+          <ColorSchemeToggle hasLightAndDarkLogo={typeof logo !== 'string'} />
         </Group>
       </Box>
     )

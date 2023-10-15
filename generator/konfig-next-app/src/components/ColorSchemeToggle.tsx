@@ -1,19 +1,20 @@
-import {
-  ActionIcon,
-  useMantineColorScheme,
-  useMantineTheme,
-} from '@mantine/core'
+import { useHeaderColor } from '@/utils/use-header-color'
+import { ActionIcon, useMantineColorScheme } from '@mantine/core'
 import { IconSun, IconMoonStars } from '@tabler/icons-react'
 
-export function ColorSchemeToggle() {
+export function ColorSchemeToggle({
+  hasLightAndDarkLogo,
+}: {
+  hasLightAndDarkLogo: boolean
+}) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
-  const theme = useMantineTheme()
+  const color = useHeaderColor({ hasLightAndDarkLogo })
   return (
     <ActionIcon variant="sublte" onClick={() => toggleColorScheme()} size={25}>
       {colorScheme === 'dark' ? (
-        <IconSun color={theme.white} size="1rem" />
+        <IconSun color={color} size="1rem" />
       ) : (
-        <IconMoonStars color={theme.white} size="1rem" />
+        <IconMoonStars color={color} size="1rem" />
       )}
     </ActionIcon>
   )

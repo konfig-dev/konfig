@@ -27,7 +27,7 @@ export function ReferenceHeader({
   logo: ReturnType<typeof generateLogoLink>
 }) {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper hasLightAndDarkLogo={typeof logo !== 'string'}>
       <LayoutHeader
         breakpoint="lg"
         opened={opened}
@@ -36,6 +36,7 @@ export function ReferenceHeader({
         logo={logo}
       />
       <HeaderTabs
+        hasLightAndDarkLogo={typeof logo !== 'string'}
         owner={owner}
         repo={repo}
         hasDocumentation={hasDocumentation}
