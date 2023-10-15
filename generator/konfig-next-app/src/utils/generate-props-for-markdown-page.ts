@@ -20,6 +20,7 @@ import { transformImageLinks } from './transform-image-links'
 import { transformInternalLinks } from './transform-internal-links'
 import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
+import { computeSearchIndex } from './compute-search-index'
 
 export type MarkdownPageProps = {
   konfigYaml: KonfigYamlType
@@ -179,6 +180,7 @@ export async function generatePropsForMarkdownPage({
 
   // get all docs with collectAllDocumentation and generate a map of id to label from first heading text
   const docs = collectAllDocuments({ docConfig: documentationConfig })
+  const idToContent: Record<string, string | undefined> = {}
   const idToLabel: Record<string, string | undefined> = {}
   for (const { id, path } of docs) {
     const content = await githubGetFileContent({
@@ -187,9 +189,22 @@ export async function generatePropsForMarkdownPage({
       repo,
       path,
     })
+    idToContent[id] = content
     const docTitle = findFirstHeadingText({ markdown: content })
     idToLabel[id] = docTitle
   }
+
+  computeSearchIndex({
+    markdown: Object.entries(idToContent).map(([id, content]) => {
+      if (content === undefined)
+        throw Error(`Couldn't find content for id: ${id}`)
+      return {
+        id,
+        content,
+      }
+    }),
+    openapi: spec.spec,
+  })
 
   const idToBreadcrumbs: Record<string, string[] | undefined> = {}
   for (const { id } of docs) {
