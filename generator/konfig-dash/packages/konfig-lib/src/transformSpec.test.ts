@@ -51,6 +51,62 @@ describe('transformSpec', () => {
     expect(spec).toMatchSnapshot()
   })
 
+  describe('filterPaths', () => {
+    const spec: OpenAPIV3.Document = {
+      openapi: '3.0.0',
+      info: {
+        title: 'Test',
+        version: '1.0.0',
+      },
+      paths: {
+        '/filter-me': {
+          get: {
+            parameters: [],
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'string',
+                  },
+                },
+              },
+            },
+            responses: {},
+          },
+          post: {
+            parameters: [],
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'string',
+                  },
+                },
+              },
+            },
+            responses: {},
+          },
+        },
+      },
+    }
+    it('filter entire path', async () => {
+      const transformedSpec = await transformSpec({
+        specString: JSON.stringify(spec),
+        generator: 'typescript',
+        filterPaths: [{ path: '/filter-me' }],
+      })
+      expect(transformedSpec).toMatchSnapshot()
+    })
+    it('filter single method from path', async () => {
+      const transformedSpec = await transformSpec({
+        specString: JSON.stringify(spec),
+        generator: 'typescript',
+        filterPaths: [{ path: '/filter-me', method: 'get' }],
+      })
+      expect(transformedSpec).toMatchSnapshot()
+    })
+  })
+
   describe('x-konfig-operation-can-have-single-parameter', () => {
     it('object requestBody w/ naming conflict is false', async () => {
       const spec: OpenAPIV3.Document = {

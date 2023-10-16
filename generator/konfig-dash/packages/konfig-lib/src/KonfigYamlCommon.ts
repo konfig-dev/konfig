@@ -6,6 +6,16 @@ import chroma from 'chroma-js'
 const propertyName = z.string().min(1)
 const typeName = z.string().min(1)
 
+export const filterPaths = z
+  .object({
+    path: z.string(),
+    method: z.string().optional(),
+  })
+  .array()
+  .describe(
+    "Filter operations from OpenAPI spec by path and method. Filtered operations won't be generated in SDKs. Omitting method will filter all methods for the path."
+  )
+
 export const fixConfig = z.object({
   inheritMetadataSpecPath: z
     .string()
@@ -272,6 +282,7 @@ export const KonfigYamlCommon = z
       .describe(
         'Overrides the path of progress.yaml which is used in the "konfig fix" CLI command. This is helpful if you have a staging and production OpenAPI Specification and you want to host two different SDK repos for staging and production releases but want to share the same progress for "konfig fix".'
       ),
+    filterPaths: filterPaths.optional(),
     tagPriority: tagPrioritySchema.optional(),
     takeFirstTag: z
       .boolean()

@@ -48,6 +48,7 @@ export const transformSpec = async ({
   allObjectsHaveAdditionalProperties,
   filterModels,
   filterRequestBodies,
+  filterPaths,
   takeFirstTag,
   removeDefaultArrayValues,
   convertArrayDataTypesToAny,
@@ -798,6 +799,18 @@ export const transformSpec = async ({
       spec.spec.tags = spec.spec.tags.filter(
         (tag) => !filterTags.includes(tag.name)
       )
+  }
+
+  if (filterPaths !== undefined) {
+    if (spec.spec.paths) {
+      for (const filter of filterPaths) {
+        if (filter.method === undefined) {
+          delete spec.spec.paths[filter.path]
+        } else if (spec.spec.paths[filter.path]) {
+          delete (spec.spec.paths[filter.path] as any)[filter.method]
+        }
+      }
+    }
   }
 
   if (filterModels !== undefined) {
