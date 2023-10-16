@@ -3707,6 +3707,20 @@ components:
             production OpenAPI Specification and you want to host two different
             SDK repos for staging and production releases but want to share the
             same progress for "konfig fix".
+        filterPaths:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              method:
+                type: string
+            required:
+              - path
+          description: Filter operations from OpenAPI spec by path and method. Filtered
+            operations won't be generated in SDKs. Omitting method will filter
+            all methods for the path.
         tagPriority:
           type: array
           items:

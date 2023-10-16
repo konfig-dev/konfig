@@ -472,6 +472,25 @@
           "type": "string",
           "description": "Overrides the path of progress.yaml which is used in the \"konfig fix\" CLI command. This is helpful if you have a staging and production OpenAPI Specification and you want to host two different SDK repos for staging and production releases but want to share the same progress for \"konfig fix\"."
         },
+        "filterPaths": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Filter operations from OpenAPI spec by path and method. Filtered operations won't be generated in SDKs. Omitting method will filter all methods for the path."
+        },
         "tagPriority": {
           "type": "array",
           "items": {
