@@ -41,6 +41,7 @@ import swift from "../../../public/swift.png";
 import php from "../../../public/php.png";
 import favicon from "../../../public/favicon.png";
 import "reactflow/dist/style.css";
+import { useReactFlow } from "@/utils/use-react-flow";
 
 const desktopNodes: Node[] = [
   {
@@ -227,8 +228,10 @@ export const useSectionStyles = createStyles((theme) => ({
     color: "white",
     borderBottom: "4px solid hsl(214 36% 58% / 1)",
   },
-  text: {
+  textColor: {
     color: theme.colors.gray[3],
+  },
+  textSize: {
     fontSize: theme.fontSizes.lg,
   },
   textSection: {
@@ -240,7 +243,6 @@ export const useSectionStyles = createStyles((theme) => ({
     textDecoration: "none !important",
     borderBottom: `1px solid ${theme.colors.yellow[6]}`,
     wordWrap: "break-word",
-    lineHeight: 1,
     ":hover": {
       borderBottomWidth: "2px",
     },
@@ -248,37 +250,26 @@ export const useSectionStyles = createStyles((theme) => ({
 }));
 
 export function GetSdksWithZeroEffort() {
-  const matches = useMdMediaQuery();
-  const [nodes, setNodes] = useState(matches ? desktopNodes : mobileNodes);
   const { classes, cx } = useSectionStyles();
 
-  const fitViewOptions: FitViewOptions | undefined = useMemo(
-    () => (matches ? undefined : { padding: 0.2 }),
-    [matches]
-  );
+  const { setInst, fitViewOptions, nodes } = useReactFlow({
+    padding: 0.2,
+    desktopNodes,
+    mobileNodes,
+  });
 
-  useEffect(() => {
-    setNodes(matches ? desktopNodes : mobileNodes);
-  }, [matches]);
-
-  const [inst, setInst] = useState<ReactFlowInstance | null>(null);
-  const { width, height } = useViewportSize();
-  const [{ x, y }] = useWindowScroll();
-  useEffect(() => {
-    inst?.fitView(fitViewOptions);
-  }, [width, height, x, y, fitViewOptions, inst]);
   return (
     <Box
       className={cx(classes.section, classes.paddingBottom, classes.paddingTop)}
     >
       <Box className={classes.sectionInner}>
         <Flex gap="xl" direction={{ base: "column", sm: "row" }}>
-          <Box className={cx(classes.text, classes.textSection)}>
+          <Box className={cx(classes.textColor, classes.textSection)}>
             <Title className={classes.title}>
               Get SDKs with <span className={classes.titleHighlight}>zero</span>{" "}
               effort
             </Title>
-            <Stack spacing="xs">
+            <Stack className={classes.textSize} spacing="xs">
               {/* <Group my="xl">
                   <Image
                     src={oas}
@@ -305,8 +296,8 @@ export function GetSdksWithZeroEffort() {
                 >
                   Postman Collection
                 </Anchor>{" "}
-                and Konfig automatically generates and publishes SDKs with no
-                further work from you
+                and Konfig automatically generates and publishes SDKs in the
+                most popular languages with no further work from you
               </Text>
               <Text>
                 Any time you publish a change to your spec, Konfig{" "}
