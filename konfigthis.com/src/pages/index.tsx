@@ -7,6 +7,7 @@ import { HeaderSimple } from "@/components/HeaderSimple/HeaderSimple";
 import { HeroBullets } from "@/components/HeroBullets/HeroBullets";
 import { Quotes } from "@/components/Quotes/Quotes";
 import { TrustedBy } from "@/components/TrustedBy/TrustedBy";
+import { Box } from "@mantine/core";
 import Head from "next/head";
 
 export default function Home() {
@@ -25,10 +26,12 @@ export default function Home() {
       </Head>
       <main>
         <HeaderSimple />
-        <HeroBullets />
-        <TrustedBy />
+        <Box pb={100}>
+          <HeroBullets />
+          <TrustedBy />
+        </Box>
         <GetSdksWithZeroEffort />
-        <GetSdksInAnyLanguage />
+        {/* <GetSdksInAnyLanguage /> */}
         <EnsureHighQualitySdks />
         <Quotes />
         <Cta />

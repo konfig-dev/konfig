@@ -13,9 +13,12 @@ import {
   Stack,
   Paper,
   Anchor,
+  useMantineTheme,
+  createStyles,
+  Flex,
 } from "@mantine/core";
 import { useViewportSize, useWindowScroll } from "@mantine/hooks";
-import { IconRefresh } from "@tabler/icons-react";
+import { IconCode, IconRefresh } from "@tabler/icons-react";
 
 import Image from "@/components/image";
 import { useEffect, useMemo, useState } from "react";
@@ -186,9 +189,68 @@ const edges: Edge[] = [
   { id: "konfig-sdks", source: "konfig", target: "sdks", animated: true },
 ];
 
+export const useSectionStyles = createStyles((theme) => ({
+  section: {
+    background: theme.colors.dark[6],
+    color: theme.white,
+  },
+  sectionInner: {
+    paddingLeft: "1rem",
+    paddingRight: "1rem",
+    maxWidth: 1100,
+    margin: "auto",
+  },
+  diagram: {
+    maxWidth: "100%",
+    backgroundColor: theme.colors.gray[1],
+    width: 1500,
+    borderRadius: theme.radius.lg,
+    height: 300,
+    [theme.fn.smallerThan("sm")]: {
+      height: 500,
+    },
+  },
+  paddingTop: {
+    paddingTop: 400,
+  },
+  paddingBottom: {
+    paddingBottom: 400,
+  },
+  title: {
+    fontSize: 35,
+    fontWeight: "normal",
+    marginBottom: 50,
+    order: 1,
+  },
+  titleHighlight: {
+    fontWeight: "bolder",
+    color: "white",
+    borderBottom: "4px solid hsl(214 36% 58% / 1)",
+  },
+  text: {
+    color: theme.colors.gray[3],
+    fontSize: theme.fontSizes.lg,
+  },
+  textSection: {
+    marginBottom: 70,
+  },
+  link: {
+    color: theme.white,
+    fontWeight: 600,
+    textDecoration: "none !important",
+    borderBottom: `1px solid ${theme.colors.yellow[6]}`,
+    wordWrap: "break-word",
+    lineHeight: 1,
+    ":hover": {
+      borderBottomWidth: "2px",
+    },
+  },
+}));
+
 export function GetSdksWithZeroEffort() {
   const matches = useMdMediaQuery();
   const [nodes, setNodes] = useState(matches ? desktopNodes : mobileNodes);
+  const { classes, cx } = useSectionStyles();
 
   const fitViewOptions: FitViewOptions | undefined = useMemo(
     () => (matches ? undefined : { padding: 0.2 }),
@@ -206,29 +268,30 @@ export function GetSdksWithZeroEffort() {
     inst?.fitView(fitViewOptions);
   }, [width, height, x, y, fitViewOptions, inst]);
   return (
-    <Container my={rem(150)} size="lg">
-      <Grid>
-        <Col span={12} md={5}>
-          <Title mb={rem(10)} order={2}>
-            Get SDKs with zero effort
-          </Title>
-          <Stack>
-            <Box c="dimmed">
-              <Group>
-                <Image
-                  src={oas}
-                  width={40}
-                  height={40}
-                  alt="OpenAPI Specification"
-                />
-                <Image src={postman} width={35} height={35} alt="Postman" />
-              </Group>
-              <Text fz="lg" mt="sm" fw={500}>
-                OpenAPI Specification and Postman Support
-              </Text>
-              <Text c="dimmed" fz="sm">
+    <Box
+      className={cx(classes.section, classes.paddingBottom, classes.paddingTop)}
+    >
+      <Box className={classes.sectionInner}>
+        <Flex gap="xl" direction={{ base: "column", sm: "row" }}>
+          <Box className={cx(classes.text, classes.textSection)}>
+            <Title className={classes.title}>
+              Get SDKs with <span className={classes.titleHighlight}>zero</span>{" "}
+              effort
+            </Title>
+            <Stack spacing="xs">
+              {/* <Group my="xl">
+                  <Image
+                    src={oas}
+                    width={40}
+                    height={40}
+                    alt="OpenAPI Specification"
+                  />
+                  <Image src={postman} width={35} height={35} alt="Postman" />
+                </Group> */}
+              <Text>
                 Easily import an{" "}
                 <Anchor
+                  className={classes.link}
                   target="_blank"
                   href="https://konfigthis.com/docs/getting-started/openapi-specification"
                 >
@@ -236,6 +299,7 @@ export function GetSdksWithZeroEffort() {
                 </Anchor>{" "}
                 or{" "}
                 <Anchor
+                  className={classes.link}
                   target="_blank"
                   href="https://konfigthis.com/docs/getting-started/postman-collections"
                 >
@@ -244,50 +308,19 @@ export function GetSdksWithZeroEffort() {
                 and Konfig automatically generates and publishes SDKs with no
                 further work from you
               </Text>
-            </Box>
-            <Box c="dimmed">
-              <ThemeIcon
-                size={35}
-                radius="md"
-                variant="gradient"
-                gradient={{ deg: 133, from: "dark", to: "gray" }}
-              >
-                <IconRefresh size={rem(22)} stroke={1.5} />
-              </ThemeIcon>
-              <Text fz="lg" mt="sm" fw={500}>
-                Automated
-              </Text>
-              <Text c="dimmed" fz="sm">
-                Any time you publish a change to your spec, we{" "}
+              <Text>
+                Any time you publish a change to your spec, Konfig{" "}
                 <Anchor
+                  className={classes.link}
                   target="_blank"
                   href="https://konfigthis.com/docs/tutorials/automate-sdk-updates"
                 >
                   automatically update and republish all of your SDKs
                 </Anchor>
               </Text>
-            </Box>
-          </Stack>
-
-          <Button
-            component="a"
-            target="_blank"
-            href="https://konfigthis.com/schedule-demo"
-            color="dark"
-            size="lg"
-            radius="md"
-            mt="xl"
-          >
-            See how
-          </Button>
-        </Col>
-        <Col span={12} md={7}>
-          <Paper
-            radius="md"
-            withBorder
-            shadow="lg"
-            h={{ base: rem(500), md: "100%" }}
-          >
+            </Stack>
+          </Box>
+          <Box className={classes.diagram}>
             <ReactFlow
               fitView
               fitViewOptions={fitViewOptions}
@@ -304,10 +337,10 @@ export function GetSdksWithZeroEffort() {
               proOptions={{ hideAttribution: true }}
               nodes={nodes}
               edges={edges}
-            ></ReactFlow>
-          </Paper>
-        </Col>
-      </Grid>
-    </Container>
+            />
+          </Box>
+        </Flex>
+      </Box>
+    </Box>
   );
 }

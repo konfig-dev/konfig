@@ -49,12 +49,13 @@ const useStyles = createStyles((theme) => ({
   title: {
     textAlign: "center",
     fontWeight: 900,
-    fontSize: rem(50),
+    fontSize: 50,
     letterSpacing: -1,
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     marginBottom: theme.spacing.xl,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    maxWidth: 800,
+    lineHeight: 1,
+    maxWidth: "40rem",
     marginLeft: "auto",
     marginRight: "auto",
 
@@ -70,6 +71,9 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
     fontSize: rem(20),
     marginBottom: 40,
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "34rem",
 
     [theme.fn.smallerThan("xs")]: {
       textAlign: "left",
@@ -159,6 +163,7 @@ export function HeroBullets() {
                 target="_blank"
                 leftIcon={<IconExternalLink />}
                 size="lg"
+                variant="outline"
                 color="dark"
                 className={clsx(
                   classes.control,

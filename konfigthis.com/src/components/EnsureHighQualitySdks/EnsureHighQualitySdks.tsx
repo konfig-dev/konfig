@@ -1,27 +1,11 @@
 import { useMdMediaQuery } from "@/utils/use-md-media-query";
-import {
-  Text,
-  Col,
-  Container,
-  Grid,
-  Title,
-  rem,
-  Box,
-  Stack,
-  ThemeIcon,
-  Paper,
-  Group,
-  Anchor,
-} from "@mantine/core";
+import { Text, Title, Box, Stack, Group, Anchor, Flex } from "@mantine/core";
 import { useViewportSize, useWindowScroll } from "@mantine/hooks";
 import {
-  IconCertificate,
   IconPackageExport,
   IconShieldCheck,
   IconShieldCheckFilled,
-  IconTestPipe,
 } from "@tabler/icons-react";
-import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
 import ReactFlow, {
   Position,
@@ -30,6 +14,7 @@ import ReactFlow, {
   ReactFlowInstance,
   FitViewOptions,
 } from "reactflow";
+import { useSectionStyles } from "../GetSdksWithZeroEffort/GetSdksWithZeroEffort";
 
 const desktopNodes: Node[] = [
   {
@@ -137,6 +122,7 @@ const edges: Edge[] = [
 export function EnsureHighQualitySdks() {
   const matches = useMdMediaQuery();
   const [nodes, setNodes] = useState(matches ? desktopNodes : mobileNodes);
+  const { classes, cx } = useSectionStyles();
 
   useEffect(() => {
     setNodes(matches ? desktopNodes : mobileNodes);
@@ -152,61 +138,36 @@ export function EnsureHighQualitySdks() {
   useEffect(() => {
     inst?.fitView(fitViewOptions);
   }, [width, height, x, y, inst, fitViewOptions]);
+
   return (
-    <Container my={rem(150)} size="lg">
-      <Grid>
-        <Col span={12} md={5}>
-          <Title mb={rem(10)} order={2}>
-            Ensure high quality SDKs
-          </Title>
-          <Stack>
-            <Box c="dimmed">
-              <ThemeIcon
-                size={35}
-                radius="md"
-                variant="gradient"
-                gradient={{ deg: 133, from: "dark", to: "gray" }}
-              >
-                <IconCertificate size={rem(22)} stroke={1.5} />
-              </ThemeIcon>
-              <Text fz="lg" mt="sm" fw={500}>
-                Validation
-              </Text>
-              <Text c="dimmed" fz="sm">
+    <Box className={cx(classes.section, classes.paddingBottom)}>
+      <Box className={classes.sectionInner}>
+        <Flex gap="xl" direction={{ base: "column", sm: "row" }}>
+          <Box className={cx(classes.text, classes.textSection)}>
+            <Title className={classes.title}>
+              Ensure{" "}
+              <span className={classes.titleHighlight}>high quality</span> SDKs
+            </Title>
+            <Stack spacing="xs">
+              <Text>
                 {"Konfig's"}{" "}
-                <Anchor href="https://konfigthis.com/docs/lint-rules">
+                <Anchor
+                  className={classes.link}
+                  target="_blank"
+                  href="https://konfigthis.com/docs/lint-rules"
+                >
                   linter
                 </Anchor>{" "}
                 catches errors in your OpenAPI Specification before they can
                 reach your customers and cause confusion
               </Text>
-            </Box>
-            <Box c="dimmed">
-              <ThemeIcon
-                size={35}
-                radius="md"
-                variant="gradient"
-                gradient={{ deg: 133, from: "dark", to: "gray" }}
-              >
-                <IconTestPipe size={rem(22)} stroke={1.5} />
-              </ThemeIcon>
-              <Text fz="lg" mt="sm" fw={500}>
-                Testing
+              <Text>
+                Konfig runs tests for every SDK to ensure API updates
+                {" won't"} break the SDKs your customers are using
               </Text>
-              <Text c="dimmed" fz="sm">
-                Konfig writes test cases for every SDK to ensure any API update
-                {"won't"} break the SDKs your customers are using
-              </Text>
-            </Box>
-          </Stack>
-        </Col>
-        <Col span={12} md={7}>
-          <Paper
-            radius="md"
-            withBorder
-            shadow="lg"
-            h={{ base: rem(500), md: "100%" }}
-          >
+            </Stack>
+          </Box>
+          <Box className={classes.diagram}>
             <ReactFlow
               onInit={setInst}
               fitView
@@ -223,10 +184,10 @@ export function EnsureHighQualitySdks() {
               proOptions={{ hideAttribution: true }}
               nodes={nodes}
               edges={edges}
-            ></ReactFlow>
-          </Paper>
-        </Col>
-      </Grid>
-    </Container>
+            />
+          </Box>
+        </Flex>
+      </Box>
+    </Box>
   );
 }

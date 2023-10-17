@@ -20,11 +20,11 @@ export const TrustedBy = () => {
             TRUSTED BY
           </Title>
           <Group spacing={40} position="center">
-            <Image src={snaptrade} height={40} alt="SnapTrade" />
+            <Image src={snaptrade} height={35} alt="SnapTrade" />
             <Image src={humanloop} height={40} alt="Humanloop" />
             <Image src={splitit} height={40} alt="Splitit" />
-            <Image src={leap} height={35} alt="Leap" />
-            <Image src={groundx} height={35} alt="Groundx" />
+            <Image src={leap} height={31} alt="Leap" />
+            <Image src={groundx} height={32} alt="Groundx" />
           </Group>
         </Stack>
       </Center>
