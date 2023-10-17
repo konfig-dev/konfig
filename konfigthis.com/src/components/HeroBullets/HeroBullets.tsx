@@ -52,8 +52,11 @@ const useStyles = createStyles((theme) => ({
     fontSize: rem(50),
     letterSpacing: -1,
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    marginBottom: theme.spacing.xs,
+    marginBottom: theme.spacing.xl,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    maxWidth: 800,
+    marginLeft: "auto",
+    marginRight: "auto",
 
     [theme.fn.smallerThan("xs")]: {
       fontSize: rem(42),
@@ -66,6 +69,7 @@ const useStyles = createStyles((theme) => ({
   description: {
     textAlign: "center",
     fontSize: rem(20),
+    marginBottom: 40,
 
     [theme.fn.smallerThan("xs")]: {
       textAlign: "left",
@@ -76,6 +80,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.lg,
     display: "flex",
     justifyContent: "center",
+    gap: theme.spacing.xl,
 
     [theme.fn.smallerThan("xs")]: {
       flexDirection: "column",
@@ -112,54 +117,56 @@ export function HeroBullets() {
             >
               Generate{" "}
             </Text>
-            SDKs for your REST API
+            SDKs, Docs, and Demos for your REST API
           </Title>
 
           <Container p={0} size={700}>
             <Text size="lg" color="dimmed" className={classes.description}>
               Konfig makes it easy for you to onboard external developers.
-              Easily publish SDKs in all major languages so your customers can
-              quickly integrate your API.
+              Easily publish SDKs, Docs, and Demos in all major languages so
+              your customers can quickly integrate your API.
             </Text>
           </Container>
 
           <div className={classes.controls}>
-            <Button
-              className={classes.control}
-              size="lg"
-              target="_blank"
-              color="dark"
-              component="a"
-              href="https://konfigthis.com/schedule-demo"
-              leftIcon={<IconCalendarEvent />}
-            >
-              Book a demo
-            </Button>
+            <div className="relative group">
+              <div
+                className={clsx(
+                  classes.control,
+                  "absolute w-full -inset-0.5 bg-gradient-to-r from-purple-600 to-yellow-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
+                )}
+              ></div>
+              <Button
+                size="lg"
+                fullWidth
+                target="_blank"
+                component="a"
+                variant="default"
+                href="https://konfigthis.com/schedule-demo"
+                leftIcon={<IconCalendarEvent />}
+                className={clsx(
+                  classes.control,
+                  "relative leading-none divide-x"
+                )}
+              >
+                Book a demo
+              </Button>
+            </div>
             {isDesktop ? (
-              <div className="relative group">
-                <div
-                  className={clsx(
-                    classes.control,
-                    "absolute w-full -inset-0.5 bg-gradient-to-r from-purple-600 to-yellow-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
-                  )}
-                ></div>
-                <Button
-                  fullWidth
-                  component="a"
-                  href="https://konfigthis.com/interactive-tutorial"
-                  target="_blank"
-                  leftIcon={<IconExternalLink />}
-                  size="lg"
-                  variant="default"
-                  color="gray"
-                  className={clsx(
-                    classes.control,
-                    "relative leading-none divide-x"
-                  )}
-                >
-                  Interactive Tutorial
-                </Button>
-              </div>
+              <Button
+                component="a"
+                href="https://konfigthis.com/interactive-tutorial"
+                target="_blank"
+                leftIcon={<IconExternalLink />}
+                size="lg"
+                color="dark"
+                className={clsx(
+                  classes.control,
+                  "relative leading-none divide-x"
+                )}
+              >
+                Try Now
+              </Button>
             ) : (
               <Button.Group>
                 <Button
@@ -192,7 +199,7 @@ export function HeroBullets() {
             )}
           </div>
         </div>
-        <Box mt={rem(30)}>
+        <Box my={rem(30)}>
           <AspectRatio mx="auto" maw={600} ratio={16 / 9}>
             <iframe
               src="https://www.youtube.com/embed/_rbFV2RmAc4"

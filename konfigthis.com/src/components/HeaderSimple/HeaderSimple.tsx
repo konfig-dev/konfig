@@ -5,10 +5,12 @@ import {
   rem,
   Group,
   Anchor,
+  Button,
 } from "@mantine/core";
 import logo from "./logo.png";
 import Image from "@/components/image";
 import { useSubtleLinkStyles } from "@/utils/use-subtle-link-styles";
+import { IconCalendarEvent } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -91,6 +93,16 @@ export function HeaderSimple() {
           >
             Documentation
           </Anchor>
+          <Button
+            size="xs"
+            target="_blank"
+            color="dark"
+            component="a"
+            href="https://konfigthis.com/schedule-demo"
+            leftIcon={<IconCalendarEvent size="0.9rem" />}
+          >
+            Book a demo
+          </Button>
         </Group>
       </Container>
     </Header>
