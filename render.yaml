@@ -19,6 +19,13 @@ services:
     buildCommand: npm init -y; npm install konfig-cli
     repo: https://github.com/leap-ai/leap-sdks
     startCommand: ./node_modules/.bin/konfig pull && ./node_modules/.bin/konfig push -o leap-ai -r leap-sdks -s api.json
+  - name: leap-workflows-polling
+    type: cron
+    env: node
+    schedule: "*/30 * * * *"
+    buildCommand: npm init -y; npm install konfig-cli
+    repo: https://github.com/leap-ai/workflows-sdks
+    startCommand: ./node_modules/.bin/konfig pull && ./node_modules/.bin/konfig push -o leap-ai -r workflows-sdks -s api.json
   - name: humanloop-polling-v4
     type: cron
     schedule: "*/30 * * * *"
