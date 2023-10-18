@@ -51,7 +51,13 @@ const desktopNodes: Node[] = [
     data: {
       label: (
         <>
-          <Image src={oas} width={40} height={40} alt="OpenAPI Specification" />
+          <Image
+            className="m-auto"
+            src={oas}
+            width={40}
+            height={40}
+            alt="OpenAPI Specification"
+          />
           <Text c="dimmed">OpenAPI Specification</Text>
         </>
       ),
@@ -65,7 +71,13 @@ const desktopNodes: Node[] = [
     data: {
       label: (
         <>
-          <Image src={postman} width={35} height={35} alt="Postman" />
+          <Image
+            className="m-auto"
+            src={postman}
+            width={35}
+            height={35}
+            alt="Postman"
+          />
           <Text c="dimmed">Postman</Text>
         </>
       ),
@@ -81,7 +93,13 @@ const desktopNodes: Node[] = [
     data: {
       label: (
         <>
-          <Image src={favicon} width={40} height={40} alt="Konfig" />
+          <Image
+            className="m-auto"
+            src={favicon}
+            width={40}
+            height={40}
+            alt="Konfig"
+          />
           <Text c="dimmed">Konfig</Text>
         </>
       ),
