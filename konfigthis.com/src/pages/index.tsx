@@ -7,6 +7,7 @@ import { HeroBullets } from "@/components/HeroBullets/HeroBullets";
 import { Quotes } from "@/components/Quotes/Quotes";
 import { SdkFeatures } from "@/components/SdkFeatures";
 import { TrustedBy } from "@/components/TrustedBy/TrustedBy";
+import { UpdatingDocs } from "@/components/UpdatingDocs";
 import { Box } from "@mantine/core";
 import Head from "next/head";
 
@@ -34,6 +35,7 @@ export default function Home() {
         {/* <GetSdksInAnyLanguage /> */}
         <EnsureHighQualitySdks />
         <SdkFeatures />
+        <UpdatingDocs />
         <Quotes />
         <Cta />
         <FooterSimple

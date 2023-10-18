@@ -16,7 +16,6 @@ import {
   IconBook,
   IconCode,
   IconMouse,
-  IconPhoto,
   TablerIconsProps,
 } from "@tabler/icons-react";
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
@@ -27,7 +26,6 @@ export const useFeatureStyles = createStyles((theme) => ({
   content: { position: "relative", zIndex: 2 },
   feature: {
     borderRadius: theme.radius.lg,
-    width: 300,
     color: "white",
     padding: theme.spacing.xl,
     border: "1px solid",
@@ -40,24 +38,10 @@ export const useFeatureStyles = createStyles((theme) => ({
 
       // scale by 3%
       transform: "scale(1.01)",
-
-      // gradient background
-      background: theme.fn.linearGradient(
-        50,
-        theme.fn.darken("#1b354e", 0.4),
-        theme.fn.darken("#1b354e", 0.6)
-      ),
     },
   },
   title: {
-    ":after": {
-      content: '""',
-      display: "block",
-      backgroundColor: "blue",
-      width: 20,
-      height: 5,
-      marginTop: "sm",
-    },
+    borderBottom: `1.5px solid hsl(225 36% 60% / 1)`,
   },
   graphic: {
     position: "absolute",
@@ -93,8 +77,13 @@ export function SdkFeatures() {
               crafted SDKs
             </Title>
           </Box>
-          <Flex justify="space-between" gap="xl">
+          <Flex
+            className={"items-center flex-col md:flex-row"}
+            justify="space-between"
+            gap="xl"
+          >
             <Feature
+              gradientAngle={50}
               title="Documentation"
               description="All your SDKs come with branded and well-written READMEs that makes it easy for developers to get started."
               Icon={IconBook}
@@ -104,6 +93,7 @@ export function SdkFeatures() {
               }}
             />
             <Feature
+              gradientAngle={230}
               title="Ergonomic"
               description="We make sure your SDKs are easy to use and follow the best practices of the language they are written in."
               Icon={IconMouse}
@@ -113,6 +103,7 @@ export function SdkFeatures() {
               }}
             />
             <Feature
+              gradientAngle={160}
               title="Customization"
               description="We made it easy to add custom code to your SDKs so you can add features like streaming, request signing, or polling."
               Icon={IconCode}
@@ -133,19 +124,30 @@ function Feature({
   description,
   link,
   Icon,
+  gradientAngle,
 }: {
   title: string;
   description: string;
   link: { label: string; href: string };
   Icon: (props: TablerIconsProps) => JSX.Element;
+  gradientAngle: number;
 }) {
   const theme = useMantineTheme();
   const {
-    classes: { feature },
+    classes: { feature, title: titleClass },
     cx,
   } = useFeatureStyles();
   return (
     <UnstyledButton
+      sx={{
+        ":hover": {
+          background: theme.fn.linearGradient(
+            gradientAngle,
+            theme.fn.darken("#1b354e", 0.4),
+            theme.fn.darken("#1b354e", 0.6)
+          ),
+        },
+      }}
       target="_blank"
       href={link.href}
       component="a"
@@ -155,7 +157,7 @@ function Feature({
         <Icon />
       </ThemeIcon>
       <Title mb="sm" order={3}>
-        {title}
+        <span className={cx(titleClass, "pb-1")}>{title}</span>
       </Title>
       <Text c={theme.colors.gray[5]} fw={400} mb="xl">
         {description}
