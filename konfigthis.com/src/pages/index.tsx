@@ -31,10 +31,11 @@ export default function Home() {
           <HeroBullets />
           <TrustedBy />
         </Box>
-        <GetSdksWithZeroEffort />
-        {/* <GetSdksInAnyLanguage /> */}
-        <EnsureHighQualitySdks />
-        <SdkFeatures />
+        <Box sx={(theme) => ({ backgroundColor: theme.colors.dark[8] })}>
+          <GetSdksWithZeroEffort />
+          <EnsureHighQualitySdks />
+          <SdkFeatures />
+        </Box>
         <UpdatingDocs />
         <Quotes />
         <Cta />
