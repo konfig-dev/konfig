@@ -42,6 +42,7 @@ import php from "../../../public/php.png";
 import favicon from "../../../public/favicon.png";
 import "reactflow/dist/style.css";
 import { useReactFlow } from "@/utils/use-react-flow";
+import { useGraphicStyles } from "@/utils/use-graphic-styles";
 
 const desktopNodes: Node[] = [
   {
@@ -192,13 +193,14 @@ const edges: Edge[] = [
 
 export const useSectionStyles = createStyles((theme) => ({
   section: {
-    background: theme.colors.dark[6],
+    background: theme.colors.dark[8],
     color: theme.white,
   },
   sectionInner: {
     paddingLeft: "1rem",
     paddingRight: "1rem",
     maxWidth: 1100,
+    position: "relative",
     margin: "auto",
   },
   diagram: {
@@ -206,16 +208,17 @@ export const useSectionStyles = createStyles((theme) => ({
     backgroundColor: theme.colors.gray[1],
     width: 1500,
     borderRadius: theme.radius.lg,
+    boxShadow: theme.shadows.lg,
     height: 300,
     [theme.fn.smallerThan("sm")]: {
       height: 500,
     },
   },
   paddingTop: {
-    paddingTop: 400,
+    paddingTop: 300,
   },
   paddingBottom: {
-    paddingBottom: 400,
+    paddingBottom: 300,
   },
   title: {
     fontSize: 35,
@@ -235,7 +238,36 @@ export const useSectionStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.lg,
   },
   textSection: {
+    position: "relative",
     marginBottom: 70,
+  },
+  textLayer: {
+    position: "relative",
+    zIndex: 2,
+  },
+  content: {},
+  triangle: {
+    position: "absolute",
+    zIndex: 1,
+    width: 200,
+    height: 200,
+  },
+  triangle1: {
+    right: 0,
+    top: -50,
+  },
+  triangle2: {
+    right: 0,
+    bottom: -50,
+  },
+  triangleTopRight: {
+    clipPath: "polygon(100% 0%, 0% 0%, 100% 100%)",
+  },
+  triangleBottomRight: {
+    clipPath: "polygon(100% 0%, 100% 100%, 0% 100%)",
+  },
+  triangleBottomLeft: {
+    clipPath: "polygon(0% 100%, 0% 0%, 100% 100%)",
   },
   link: {
     color: theme.white,
@@ -257,20 +289,39 @@ export function GetSdksWithZeroEffort() {
     desktopNodes,
     mobileNodes,
   });
+  const {
+    classes: { texture },
+  } = useGraphicStyles();
 
   return (
     <Box
       className={cx(classes.section, classes.paddingBottom, classes.paddingTop)}
     >
       <Box className={classes.sectionInner}>
-        <Flex gap="xl" direction={{ base: "column", sm: "row" }}>
+        <Flex
+          className={classes.content}
+          gap="xl"
+          direction={{ base: "column", sm: "row" }}
+        >
           <Box className={cx(classes.textColor, classes.textSection)}>
-            <Title className={classes.title}>
-              Get SDKs with <span className={classes.titleHighlight}>zero</span>{" "}
-              effort
-            </Title>
-            <Stack className={classes.textSize} spacing="xs">
-              {/* <Group my="xl">
+            <div
+              className={cx(
+                classes.triangle,
+                classes.triangle1,
+                classes.triangleTopRight,
+                texture
+              )}
+            />
+            <Box className={classes.textLayer}>
+              <Title c="hsl(214 36% 58% / 1)" order={6}>
+                SDKs
+              </Title>
+              <Title className={classes.title}>
+                Get SDKs with{" "}
+                <span className={classes.titleHighlight}>zero</span> effort
+              </Title>
+              <Stack className={classes.textSize} spacing="xs">
+                {/* <Group my="xl">
                   <Image
                     src={oas}
                     width={40}
@@ -279,37 +330,38 @@ export function GetSdksWithZeroEffort() {
                   />
                   <Image src={postman} width={35} height={35} alt="Postman" />
                 </Group> */}
-              <Text>
-                Easily import an{" "}
-                <Anchor
-                  className={classes.link}
-                  target="_blank"
-                  href="https://konfigthis.com/docs/getting-started/openapi-specification"
-                >
-                  OpenAPI Specification
-                </Anchor>{" "}
-                or{" "}
-                <Anchor
-                  className={classes.link}
-                  target="_blank"
-                  href="https://konfigthis.com/docs/getting-started/postman-collections"
-                >
-                  Postman Collection
-                </Anchor>{" "}
-                and Konfig automatically generates and publishes SDKs in the
-                most popular languages with no further work from you
-              </Text>
-              <Text>
-                Any time you publish a change to your spec, Konfig{" "}
-                <Anchor
-                  className={classes.link}
-                  target="_blank"
-                  href="https://konfigthis.com/docs/tutorials/automate-sdk-updates"
-                >
-                  automatically update and republish all of your SDKs
-                </Anchor>
-              </Text>
-            </Stack>
+                <Text>
+                  Easily import an{" "}
+                  <Anchor
+                    className={classes.link}
+                    target="_blank"
+                    href="https://konfigthis.com/docs/getting-started/openapi-specification"
+                  >
+                    OpenAPI Specification
+                  </Anchor>{" "}
+                  or{" "}
+                  <Anchor
+                    className={classes.link}
+                    target="_blank"
+                    href="https://konfigthis.com/docs/getting-started/postman-collections"
+                  >
+                    Postman Collection
+                  </Anchor>{" "}
+                  and Konfig automatically generates and publishes SDKs in the
+                  most popular languages with no further work from you
+                </Text>
+                <Text>
+                  Any time you publish a change to your spec, Konfig{" "}
+                  <Anchor
+                    className={classes.link}
+                    target="_blank"
+                    href="https://konfigthis.com/docs/tutorials/automate-sdk-updates"
+                  >
+                    automatically update and republish all of your SDKs
+                  </Anchor>
+                </Text>
+              </Stack>
+            </Box>
           </Box>
           <Box className={classes.diagram}>
             <ReactFlow

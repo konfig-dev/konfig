@@ -1,11 +1,11 @@
 import { Cta } from "@/components/Cta";
 import { EnsureHighQualitySdks } from "@/components/EnsureHighQualitySdks/EnsureHighQualitySdks";
 import { FooterSimple } from "@/components/FooterSimple/FooterSimple";
-import { GetSdksInAnyLanguage } from "@/components/GetSdksInAnyLanguage/GetSdksInAnyLanguage";
 import { GetSdksWithZeroEffort } from "@/components/GetSdksWithZeroEffort/GetSdksWithZeroEffort";
 import { HeaderSimple } from "@/components/HeaderSimple/HeaderSimple";
 import { HeroBullets } from "@/components/HeroBullets/HeroBullets";
 import { Quotes } from "@/components/Quotes/Quotes";
+import { SdkFeatures } from "@/components/SdkFeatures";
 import { TrustedBy } from "@/components/TrustedBy/TrustedBy";
 import { Box } from "@mantine/core";
 import Head from "next/head";
@@ -33,6 +33,7 @@ export default function Home() {
         <GetSdksWithZeroEffort />
         {/* <GetSdksInAnyLanguage /> */}
         <EnsureHighQualitySdks />
+        <SdkFeatures />
         <Quotes />
         <Cta />
         <FooterSimple

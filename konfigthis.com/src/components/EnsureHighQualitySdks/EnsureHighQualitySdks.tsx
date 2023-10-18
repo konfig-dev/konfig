@@ -7,6 +7,7 @@ import {
 import ReactFlow, { Position, Node, Edge } from "reactflow";
 import { useSectionStyles } from "../GetSdksWithZeroEffort/GetSdksWithZeroEffort";
 import { useReactFlow } from "@/utils/use-react-flow";
+import { useGraphicStyles } from "@/utils/use-graphic-styles";
 
 const desktopNodes: Node[] = [
   {
@@ -120,33 +121,52 @@ export function EnsureHighQualitySdks() {
     mobileNodes,
   });
 
+  const {
+    classes: { texture },
+  } = useGraphicStyles();
+
   return (
     <Box className={cx(classes.section, classes.paddingBottom)}>
       <Box className={classes.sectionInner}>
-        <Flex gap="xl" direction={{ base: "column", sm: "row" }}>
+        <Flex
+          className={classes.content}
+          gap="xl"
+          direction={{ base: "column", sm: "row" }}
+        >
           <Box className={cx(classes.textColor, classes.textSection)}>
-            <Title className={classes.title}>
-              Ensure{" "}
-              <span className={classes.titleHighlight}>high quality</span> SDKs
-            </Title>
-            <Stack className={classes.textSize} spacing="xs">
-              <Text>
-                {"Konfig's"}{" "}
-                <Anchor
-                  className={classes.link}
-                  target="_blank"
-                  href="https://konfigthis.com/docs/lint-rules"
-                >
-                  linter
-                </Anchor>{" "}
-                catches errors in your OpenAPI Specification before they can
-                reach your customers and cause confusion
-              </Text>
-              <Text>
-                Konfig writes test cases for every SDK to ensure API updates
-                {" won't"} break the SDKs your customers are using
-              </Text>
-            </Stack>
+            <div
+              className={cx(
+                classes.triangle,
+                classes.triangle2,
+                classes.triangleBottomRight,
+                texture
+              )}
+            />
+            <Box className={classes.textLayer}>
+              <Title className={classes.title}>
+                Ensure{" "}
+                <span className={classes.titleHighlight}>high quality</span>{" "}
+                SDKs
+              </Title>
+              <Stack className={classes.textSize} spacing="xs">
+                <Text>
+                  {"Konfig's"}{" "}
+                  <Anchor
+                    className={classes.link}
+                    target="_blank"
+                    href="https://konfigthis.com/docs/lint-rules"
+                  >
+                    linter
+                  </Anchor>{" "}
+                  catches errors in your OpenAPI Specification before they can
+                  reach your customers and cause confusion
+                </Text>
+                <Text>
+                  Konfig writes test cases for every SDK to ensure API updates
+                  {" won't"} break the SDKs your customers are using
+                </Text>
+              </Stack>
+            </Box>
           </Box>
           <Box className={classes.diagram}>
             <ReactFlow

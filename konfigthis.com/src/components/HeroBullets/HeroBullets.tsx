@@ -87,6 +87,7 @@ const useStyles = createStyles((theme) => ({
     gap: theme.spacing.xl,
 
     [theme.fn.smallerThan("xs")]: {
+      gap: 0,
       flexDirection: "column",
     },
   },
