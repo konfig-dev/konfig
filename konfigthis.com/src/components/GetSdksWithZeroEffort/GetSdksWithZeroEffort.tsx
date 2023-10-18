@@ -20,7 +20,7 @@ import {
 import { useViewportSize, useWindowScroll } from "@mantine/hooks";
 import { IconCode, IconRefresh } from "@tabler/icons-react";
 
-import Image from "@/components/image";
+import Image from "@/components/Image";
 import { useEffect, useMemo, useState } from "react";
 import ReactFlow, {
   Edge,

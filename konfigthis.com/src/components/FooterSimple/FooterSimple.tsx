@@ -10,7 +10,7 @@ import {
 } from "@mantine/core";
 import { IconBrandLinkedin } from "@tabler/icons-react";
 import logo from "./logo.png";
-import Image from "@/components/image";
+import Image from "@/components/Image";
 import { useEffect } from "react";
 import Script from "next/script";
 

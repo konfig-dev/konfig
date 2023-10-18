@@ -2,7 +2,8 @@ import { Title, Box, createStyles, Flex } from "@mantine/core";
 
 import "reactflow/dist/style.css";
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
-import Image from "next/image";
+import docs from "../../public/docs.png";
+import Image from "./Image";
 
 export const useSectionStyles = createStyles((theme) => ({
   title: {
@@ -83,7 +84,7 @@ export function UpdatingDocs() {
               </div>
             </Box>
           </Box>
-          {/* <Image alt="API Documentation" src={docs} /> */}
+          <Image alt="API Documentation" src={docs} />
         </Flex>
       </Box>
     </Box>

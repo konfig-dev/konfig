@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mantine/core";
 import logo from "./logo.png";
-import Image from "@/components/image";
+import Image from "@/components/Image";
 import { useSubtleLinkStyles } from "@/utils/use-subtle-link-styles";
 import { IconCalendarEvent } from "@tabler/icons-react";
 

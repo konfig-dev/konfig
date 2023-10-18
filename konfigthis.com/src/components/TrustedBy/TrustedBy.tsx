@@ -1,5 +1,5 @@
 import { Center, Container, Group, Stack, Title, rem } from "@mantine/core";
-import Image from "@/components/image";
+import Image from "@/components/Image";
 import snaptrade from "../../../public/snaptrade-g.png";
 import humanloop from "../../../public/humanloop-g.png";
 import splitit from "../../../public/splitit-g.png";
