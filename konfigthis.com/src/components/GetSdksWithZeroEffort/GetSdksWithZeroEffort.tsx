@@ -210,10 +210,6 @@ const edges: Edge[] = [
 ];
 
 export const useSectionStyles = createStyles((theme) => ({
-  section: {
-    background: theme.colors.dark[8],
-    color: theme.white,
-  },
   sectionInner: {
     paddingLeft: "1rem",
     paddingRight: "1rem",
@@ -312,9 +308,7 @@ export function GetSdksWithZeroEffort() {
   } = useGraphicStyles({})();
 
   return (
-    <Box
-      className={cx(classes.section, classes.paddingBottom, classes.paddingTop)}
-    >
+    <Box className={cx(classes.paddingBottom, classes.paddingTop)}>
       <Box className={classes.sectionInner}>
         <Flex
           className={classes.content}

@@ -126,7 +126,7 @@ export function EnsureHighQualitySdks() {
   } = useGraphicStyles({})();
 
   return (
-    <Box className={cx(classes.section, classes.paddingBottom)}>
+    <Box className={cx(classes.paddingBottom)}>
       <Box className={classes.sectionInner}>
         <Flex
           className={classes.content}

@@ -60,14 +60,12 @@ export function SdkFeatures() {
     classes: { texture },
   } = useGraphicStyles({})();
   return (
-    <Box
-      className={cx(classes.section, classes.paddingBottom, feature.section)}
-    >
+    <Box className={cx(classes.paddingBottom, feature.section)}>
       <Box className={cx(classes.sectionInner, feature.sectionInner)}>
         <div
           className={cx(feature.graphic, texture, classes.triangleBottomLeft)}
         />
-        <Box className={feature.content}>
+        <Box className={cx(feature.content, classes.textColor)}>
           <Box ta="left" mb={150}>
             <Title c="hsl(214 36% 58% / 1)" order={6}>
               SDK Features
