@@ -1,0 +1,211 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Leap Workflows API",
+    "description": "The Leap Workflows API allows developers to run workflows, fetch workflow runs, and provide other utility functions related to workflow runs. Please use the X-Api-Key for authenticated requests.",
+    "version": "1.0",
+    "contact": {
+      "name": "Leap Support",
+      "url": "https://tryleap.ai/",
+      "email": "help@tryleap.ai"
+    },
+    "termsOfService": "https://app.getterms.io/view/dlM8u/tos/en-us"
+  },
+  "servers": [
+    {
+      "description": "Base API Server",
+      "url": "https://api.workflows.tryleap.ai"
+    }
+  ],
+  "tags": [
+    {
+      "description": "Endpoints related to workflow run operations",
+      "name": "Workflow Runs"
+    }
+  ],
+  "paths": {
+    "/v1/runs": {
+      "post": {
+        "tags": [
+          "Workflow Runs"
+        ],
+        "summary": "Run a workflow",
+        "operationId": "run_workflow",
+        "security": [
+          {
+            "api_key": [
+            ]
+          }
+        ],
+        "description": "This endpoint lets the user run a specified workflow with the provided workflow definition.",
+        "parameters": [
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkflowRunPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The workflow has been successfully initiated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowRunEntity"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          }
+        }
+      }
+    },
+    "/v1/runs/{workflow_run_id}": {
+      "get": {
+        "tags": [
+          "Workflow Runs"
+        ],
+        "summary": "Get a workflow run",
+        "operationId": "WorkflowRuns_getWorkflowRun",
+        "security": [
+          {
+            "api_key": [
+            ]
+          }
+        ],
+        "description": "This endpoint retrieves the details of a specific workflow run using its `workflow_run_id`.",
+        "parameters": [
+          {
+            "description": "The ID of the workflow run to retrieve.",
+            "name": "workflow_run_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The workflow run details have been successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowRunEntity"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    },
+    "schemas": {
+      "WorkflowRunPostRequest": {
+        "type": "object",
+        "properties": {
+          "workflow_id": {
+            "description": "The UUID of the workflow to be run.",
+            "type": "string",
+            "format": "uuid",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "webhook_url": {
+            "description": "The URL to which the workflow results should be sent to on completion.",
+            "type": "string",
+            "example": "https://myapp.com/webhook"
+          },
+          "input": {
+            "description": "Variables that the workflow can use globally and their values.",
+            "type": "object",
+            "additionalProperties": true,
+            "example": {
+              "first_name": "Sam",
+              "last_name": "Altman"
+            }
+          }
+        },
+        "required": [
+          "workflow_id"
+        ]
+      },
+      "WorkflowRunEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "running",
+              "failed"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ended_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "workflow_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "string",
+            "format": "string"
+          },
+          "input": {
+            "type": "object"
+          },
+          "output": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "version_id",
+          "status",
+          "created_at",
+          "started_at",
+          "ended_at",
+          "workflow_id",
+          "error",
+          "input",
+          "output"
+        ]
+      }
+    }
+  }
+}

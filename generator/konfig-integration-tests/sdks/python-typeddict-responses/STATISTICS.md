@@ -2,5 +2,5 @@
 
 | SDK Name | Lines of Code |
 | -------- | ------------- |
-| python | 9327 |
-| **Total** | 9327 |
+| python | 9326 |
+| **Total** | 9326 |

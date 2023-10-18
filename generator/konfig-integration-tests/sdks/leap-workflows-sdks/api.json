@@ -1,0 +1,148 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/v1/runs": {
+      "post": {
+        "operationId": "run_workflow",
+        "summary": "Run a workflow",
+        "description": "This endpoint lets the user run a specified workflow with the provided workflow definition.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkflowRunPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The workflow has been successfully initiated.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WorkflowRunEntity" }
+              }
+            }
+          },
+          "401": { "description": "Unauthorized." }
+        },
+        "tags": ["Workflow Runs"],
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/v1/runs/{workflow_run_id}": {
+      "get": {
+        "operationId": "get_workflow_run",
+        "summary": "Get a workflow run",
+        "description": "This endpoint retrieves the details of a specific workflow run using its `workflow_run_id`.",
+        "parameters": [
+          {
+            "name": "workflow_run_id",
+            "required": true,
+            "in": "path",
+            "description": "The ID of the workflow run to retrieve.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The workflow run details have been successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WorkflowRunEntity" }
+              }
+            }
+          },
+          "401": { "description": "Unauthorized." }
+        },
+        "tags": ["Workflow Runs"],
+        "security": [{ "api_key": [] }]
+      }
+    }
+  },
+  "info": {
+    "title": "Leap Workflows API",
+    "description": "The Leap Workflows API allows developers to run workflows, fetch workflow runs, and provide other utility functions related to workflow runs. Please use the X-Api-Key for authenticated requests.",
+    "version": "1.0",
+    "contact": {
+      "name": "Leap Support",
+      "url": "https://tryleap.ai/",
+      "email": "help@tryleap.ai"
+    },
+    "termsOfService": "https://app.getterms.io/view/dlM8u/tos/en-us"
+  },
+  "tags": [
+    {
+      "name": "Workflow Runs",
+      "description": "Endpoints related to workflow run operations"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.workflows.tryleap.ai",
+      "description": "Base API Server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "api_key": { "type": "apiKey", "in": "header", "name": "X-Api-Key" }
+    },
+    "schemas": {
+      "WorkflowRunPostRequest": {
+        "type": "object",
+        "properties": {
+          "workflow_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The UUID of the workflow to be run.",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "webhook_url": {
+            "type": "string",
+            "description": "The URL to which the workflow results should be sent to on completion.",
+            "example": "https://myapp.com/webhook"
+          },
+          "input": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Variables that the workflow can use globally and their values.",
+            "example": { "first_name": "Sam", "last_name": "Altman" }
+          }
+        },
+        "required": ["workflow_id"]
+      },
+      "WorkflowRunEntity": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "version_id": { "type": "string", "format": "uuid" },
+          "status": {
+            "type": "string",
+            "enum": ["completed", "running", "failed"]
+          },
+          "created_at": { "type": "string", "format": "date-time" },
+          "started_at": { "type": "string", "format": "date-time" },
+          "ended_at": { "type": "string", "format": "date-time" },
+          "workflow_id": { "type": "string", "format": "uuid" },
+          "error": { "type": "string", "format": "string" },
+          "input": { "type": "object" },
+          "output": { "type": "object" }
+        },
+        "required": [
+          "id",
+          "version_id",
+          "status",
+          "created_at",
+          "started_at",
+          "ended_at",
+          "workflow_id",
+          "error",
+          "input",
+          "output"
+        ]
+      }
+    }
+  }
+}
