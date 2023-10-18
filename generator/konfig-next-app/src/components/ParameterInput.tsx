@@ -2,6 +2,7 @@ import {
   Button,
   FileInput,
   Input,
+  JsonInput,
   NumberInput,
   SegmentedControl,
   Select,
@@ -25,6 +26,7 @@ import {
   generateParameterFromBodyParameter,
 } from '@/utils/generate-parameter-from-body-property'
 import type { SchemaObject } from 'konfig-lib'
+import { useState } from 'react'
 
 export function ParameterInput({
   parameter,
@@ -41,7 +43,38 @@ export function ParameterInput({
   const formInputName = generateParameterInputName(parameter, prefix)
   const inputProps = form.getInputProps(formInputName)
   const { colorScheme, colors } = useMantineTheme()
-  if (parameter.schema.type === 'object') return null
+  const [jsonInputValue, setJsonInputValue] = useState('')
+  if (parameter.schema.type === 'object') {
+    if (
+      parameter.schema.properties !== undefined ||
+      parameter.schema.additionalProperties !== undefined
+    )
+      return null
+    console.log(parameter.schema)
+    const { onChange, value, ...rest } = inputProps
+    return (
+      <JsonInput
+        onChange={(value) => {
+          setJsonInputValue(value)
+          if (value === '') {
+            onChange('')
+          }
+          // set form value using onChange if "value" is a valid JSON string
+          try {
+            const parsed = JSON.parse(value)
+            onChange(parsed)
+          } catch (e) {}
+        }}
+        value={jsonInputValue}
+        {...rest}
+        placeholder={example(parameter.schema.example)}
+        validationError="Invalid JSON"
+        formatOnBlur
+        autosize
+        minRows={4}
+      />
+    )
+  }
   if (
     parameter.schema.type === 'string' &&
     parameter.schema.format === 'binary'
