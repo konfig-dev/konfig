@@ -25,7 +25,6 @@ export const useSectionStyles = createStyles((theme) => ({
     position: "relative",
     zIndex: 2,
   },
-  content: {},
   graphicLayer: {
     position: "absolute",
     zIndex: 1,
@@ -47,11 +46,7 @@ export function UpdatingDocs() {
   return (
     <Box className={cx("bg-gray-100 pb-[300px] pt-[300px]")}>
       <Box className="px-4 max-w-[1100px] relative m-auto">
-        <Flex
-          className={classes.content}
-          gap="xl"
-          direction={{ base: "column", sm: "row" }}
-        >
+        <div className={"flex flex-col lg:flex-row gap-0 lg:gap-12"}>
           <Box className={cx("text-gray-800", classes.textSection)}>
             <div
               className={cx(
@@ -84,8 +79,12 @@ export function UpdatingDocs() {
               </div>
             </Box>
           </Box>
-          <Image alt="API Documentation" src={docs} />
-        </Flex>
+          <Image
+            className="w-full lg:w-3/5 shadow-lg rounded-xl"
+            alt="API Documentation"
+            src={docs}
+          />
+        </div>
       </Box>
     </Box>
   );
