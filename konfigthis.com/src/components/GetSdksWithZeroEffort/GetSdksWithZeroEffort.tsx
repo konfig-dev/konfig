@@ -121,10 +121,10 @@ const mobileNodes: Node[] = [
     position: { x: -100, y: 0 },
     data: {
       label: (
-        <>
+        <div className="flex flex-col items-center">
           <Image src={oas} width={40} height={40} alt="OpenAPI Specification" />
           <Text c="dimmed">OpenAPI Specification</Text>
-        </>
+        </div>
       ),
     },
     sourcePosition: Position.Bottom,
@@ -135,10 +135,10 @@ const mobileNodes: Node[] = [
     position: { x: 100, y: 0 },
     data: {
       label: (
-        <>
+        <div className="flex flex-col items-center">
           <Image src={postman} width={35} height={35} alt="Postman" />
           <Text c="dimmed">Postman</Text>
-        </>
+        </div>
       ),
     },
     sourcePosition: Position.Bottom,
@@ -151,10 +151,10 @@ const mobileNodes: Node[] = [
     sourcePosition: Position.Bottom,
     data: {
       label: (
-        <>
+        <div className="flex flex-col items-center">
           <Image src={favicon} width={40} height={40} alt="Konfig" />
           <Text c="dimmed">Konfig</Text>
-        </>
+        </div>
       ),
     },
   },
@@ -291,7 +291,7 @@ export function GetSdksWithZeroEffort() {
   });
   const {
     classes: { texture },
-  } = useGraphicStyles();
+  } = useGraphicStyles({})();
 
   return (
     <Box

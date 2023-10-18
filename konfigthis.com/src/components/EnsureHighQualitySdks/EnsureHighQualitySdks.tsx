@@ -123,7 +123,7 @@ export function EnsureHighQualitySdks() {
 
   const {
     classes: { texture },
-  } = useGraphicStyles();
+  } = useGraphicStyles({})();
 
   return (
     <Box className={cx(classes.section, classes.paddingBottom)}>

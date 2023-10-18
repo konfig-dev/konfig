@@ -58,7 +58,7 @@ export function SdkFeatures() {
   const { classes: feature } = useFeatureStyles();
   const {
     classes: { texture },
-  } = useGraphicStyles();
+  } = useGraphicStyles({})();
   return (
     <Box
       className={cx(classes.section, classes.paddingBottom, feature.section)}

@@ -2,7 +2,7 @@
 import { useViewportSize, useWindowScroll } from "@mantine/hooks";
 import { useState, useEffect, useMemo } from "react";
 import { ReactFlowInstance, FitViewOptions, Node } from "reactflow";
-import { useMdMediaQuery } from "./use-md-media-query";
+import { useSmMediaQuery } from "./use-sm-media-query";
 
 export function useReactFlow({
   padding,
@@ -13,7 +13,7 @@ export function useReactFlow({
   desktopNodes: Node[];
   mobileNodes: Node[];
 }) {
-  const matches = useMdMediaQuery();
+  const matches = useSmMediaQuery();
   const [nodes, setNodes] = useState(matches ? desktopNodes : mobileNodes);
 
   useEffect(() => {
