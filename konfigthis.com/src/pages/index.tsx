@@ -31,7 +31,10 @@ export default function Home() {
           <HeroBullets />
           <TrustedBy />
         </Box>
-        <Box sx={(theme) => ({ backgroundColor: theme.colors.dark[8] })}>
+        <Box
+          className="px-16"
+          sx={(theme) => ({ backgroundColor: theme.colors.dark[8] })}
+        >
           <GetSdksWithZeroEffort />
           <EnsureHighQualitySdks />
           <SdkFeatures />

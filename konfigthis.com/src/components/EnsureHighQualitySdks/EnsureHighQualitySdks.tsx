@@ -126,7 +126,7 @@ export function EnsureHighQualitySdks() {
   } = useGraphicStyles({})();
 
   return (
-    <Box className={cx(classes.paddingBottom)}>
+    <Box>
       <Box className={classes.sectionInner}>
         <Flex
           className={classes.content}
@@ -162,11 +162,11 @@ export function EnsureHighQualitySdks() {
                     linter
                   </Anchor>{" "}
                   catches errors in your OpenAPI Specification before they can
-                  reach your customers and cause confusion
+                  reach your customers and cause confusion.
                 </Text>
                 <Text>
                   Konfig writes test cases for every SDK to ensure API updates
-                  {" won't"} break the SDKs your customers are using
+                  {" won't"} break the SDKs your customers are using.
                 </Text>
               </Stack>
             </Box>

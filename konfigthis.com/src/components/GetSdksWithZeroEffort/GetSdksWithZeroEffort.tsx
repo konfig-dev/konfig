@@ -211,8 +211,6 @@ const edges: Edge[] = [
 
 export const useSectionStyles = createStyles((theme) => ({
   sectionInner: {
-    paddingLeft: "1rem",
-    paddingRight: "1rem",
     maxWidth: 1100,
     position: "relative",
     margin: "auto",
@@ -360,7 +358,7 @@ export function GetSdksWithZeroEffort() {
                     Postman Collection
                   </Anchor>{" "}
                   and Konfig automatically generates and publishes SDKs in the
-                  most popular languages with no further work from you
+                  most popular languages with no further work from you.
                 </Text>
                 <Text>
                   Any time you publish a change to your spec, Konfig{" "}
@@ -371,6 +369,7 @@ export function GetSdksWithZeroEffort() {
                   >
                     automatically update and republish all of your SDKs
                   </Anchor>
+                  .
                 </Text>
               </Stack>
             </Box>

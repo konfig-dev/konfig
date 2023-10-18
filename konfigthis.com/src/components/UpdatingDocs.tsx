@@ -76,6 +76,7 @@ export function UpdatingDocs() {
                 >
                   automatically updates your docs
                 </a>
+                .
               </div>
             </Box>
           </Box>

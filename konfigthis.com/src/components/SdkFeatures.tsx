@@ -60,7 +60,14 @@ export function SdkFeatures() {
     classes: { texture },
   } = useGraphicStyles({})();
   return (
-    <Box className={cx(classes.paddingBottom, feature.section)}>
+    <Box
+      className={cx(
+        classes.paddingBottom,
+        classes.paddingTop,
+        feature.section,
+        "overflow-x-hidden"
+      )}
+    >
       <Box className={cx(classes.sectionInner, feature.sectionInner)}>
         <div
           className={cx(feature.graphic, texture, classes.triangleBottomLeft)}
@@ -160,8 +167,8 @@ function Feature({
       <Text c={theme.colors.gray[5]} fw={400} mb="xl">
         {description}
       </Text>
-      <Group>
-        <Text>{link.label}</Text>
+      <Group noWrap>
+        <Text className="whitespace-nowrap">{link.label}</Text>
         <IconArrowRight
           className="transition-all group-hover:ml-1"
           size="0.80rem"
