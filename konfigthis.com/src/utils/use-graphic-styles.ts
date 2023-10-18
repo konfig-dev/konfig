@@ -2,7 +2,7 @@ import { createStyles } from "@mantine/core";
 
 export const useGraphicStyles = ({ fg, bg }: { fg?: string; bg?: string }) => {
   fg = fg || "6d8fba80";
-  bg = bg || "#141517";
+  bg = bg || "rgb(0,0,0,0)";
   return createStyles((theme) => ({
     texture: {
       backgroundColor: bg,

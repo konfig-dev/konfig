@@ -8,10 +8,11 @@ import { Quotes } from "@/components/Quotes/Quotes";
 import { SdkFeatures } from "@/components/SdkFeatures";
 import { TrustedBy } from "@/components/TrustedBy/TrustedBy";
 import { UpdatingDocs } from "@/components/UpdatingDocs";
-import { Box } from "@mantine/core";
+import { Box, useMantineTheme } from "@mantine/core";
 import Head from "next/head";
 
 export default function Home() {
+  const theme = useMantineTheme();
   return (
     <>
       <Head>
@@ -32,14 +33,16 @@ export default function Home() {
           <TrustedBy />
         </Box>
         <Box
-          className="px-16"
+          className={`px-16 bg-gradient-to-br from-[rgb(8,17,25)] to-[rgb(9,7,48)]`}
           sx={(theme) => ({ backgroundColor: theme.colors.dark[8] })}
         >
           <GetSdksWithZeroEffort />
           <EnsureHighQualitySdks />
           <SdkFeatures />
         </Box>
-        <UpdatingDocs />
+        <div className="px-4 bg-gray-100">
+          <UpdatingDocs />
+        </div>
         <Quotes />
         <Cta />
         <FooterSimple

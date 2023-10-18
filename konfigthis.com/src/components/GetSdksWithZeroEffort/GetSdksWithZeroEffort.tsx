@@ -233,7 +233,7 @@ export const useSectionStyles = createStyles((theme) => ({
     paddingBottom: 300,
   },
   title: {
-    fontSize: 35,
+    fontSize: 36,
     fontWeight: "normal",
     marginBottom: 50,
     order: 1,

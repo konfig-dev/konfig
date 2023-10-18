@@ -6,12 +6,6 @@ import docs from "../../public/docs.png";
 import Image from "./Image";
 
 export const useSectionStyles = createStyles((theme) => ({
-  title: {
-    fontSize: 35,
-    fontWeight: "normal",
-    marginBottom: 50,
-    order: 1,
-  },
   titleHighlight: {
     fontWeight: "bolder",
     color: theme.black,
@@ -44,8 +38,8 @@ export function UpdatingDocs() {
   } = useGraphicStyles({ bg: "#f3f4f6" })();
 
   return (
-    <Box className={cx("bg-gray-100 pb-[300px] pt-[300px]")}>
-      <Box className="px-4 max-w-[1100px] relative m-auto">
+    <Box className={cx("pb-[300px] pt-[300px]")}>
+      <Box className="max-w-[1100px] relative m-auto">
         <div className={"flex flex-col lg:flex-row gap-0 lg:gap-12"}>
           <Box className={cx("text-gray-800", classes.textSection)}>
             <div
@@ -59,7 +53,7 @@ export function UpdatingDocs() {
               <Title className="text-blue-900" order={6}>
                 Documentation
               </Title>
-              <Title className={classes.title}>
+              <Title className="text-4xl order-1 mb-12 font-normal">
                 API Docs & References that{" "}
                 <span className="text-black font-bold border-b-4 border-solid border-blue-900">
                   auto-update

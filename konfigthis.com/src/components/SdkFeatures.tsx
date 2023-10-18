@@ -1,5 +1,4 @@
 import {
-  Anchor,
   Box,
   Flex,
   Group,
@@ -21,21 +20,13 @@ import {
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
 
 export const useFeatureStyles = createStyles((theme) => ({
-  section: {},
   sectionInner: { position: "relative" },
   content: { position: "relative", zIndex: 2 },
   feature: {
     borderRadius: theme.radius.lg,
     color: "white",
     padding: theme.spacing.xl,
-    border: "1px solid",
-    borderColor: theme.colors.dark[8],
-
-    // ease out transition
-    transition: "all 200ms ease-in-out",
     ":hover": {
-      borderColor: theme.colors.dark[6],
-
       // scale by 3%
       transform: "scale(1.01)",
     },
@@ -64,7 +55,6 @@ export function SdkFeatures() {
       className={cx(
         classes.paddingBottom,
         classes.paddingTop,
-        feature.section,
         "overflow-x-hidden"
       )}
     >
@@ -148,15 +138,18 @@ function Feature({
         ":hover": {
           background: theme.fn.linearGradient(
             gradientAngle,
-            theme.fn.darken("#1b354e", 0.4),
-            theme.fn.darken("#1b354e", 0.6)
+            theme.fn.darken("#1b354e", 0.0),
+            theme.fn.darken("#1b354e", 0.3)
           ),
         },
       }}
       target="_blank"
       href={link.href}
       component="a"
-      className={cx(feature, "group")}
+      className={cx(
+        feature,
+        "group transition-all ease-in-out border border-solid border-transparent hover:border-[#3f3f61]"
+      )}
     >
       <ThemeIcon size="xl" mb="xl" radius="xl" color="hsl(225 36% 40% / 1)">
         <Icon />
