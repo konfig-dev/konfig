@@ -143,6 +143,9 @@ export function EnsureHighQualitySdks() {
               )}
             />
             <Box className={classes.textLayer}>
+              <Title c="hsl(214 36% 58% / 1)" order={6}>
+                SDKs
+              </Title>
               <Title className={classes.title}>
                 Ensure{" "}
                 <span className={classes.titleHighlight}>high quality</span>{" "}

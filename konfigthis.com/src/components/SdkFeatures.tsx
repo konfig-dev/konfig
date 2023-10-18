@@ -23,6 +23,8 @@ export const useFeatureStyles = createStyles((theme) => ({
     width: 300,
     color: "white",
     padding: theme.spacing.xl,
+    border: "1px solid",
+    borderColor: "black",
   },
   title: {
     ":after": {
