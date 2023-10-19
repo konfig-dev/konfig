@@ -20,7 +20,7 @@ export function CustomFlowsDemo() {
           <Box className={cx(classes.textColor, classes.textSection)}>
             <div
               className={cx(
-                classes.graphicLayer,
+                classes.triangle,
                 classes.triangle1,
                 classes.triangleTopRight,
                 texture
