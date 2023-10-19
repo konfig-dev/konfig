@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        "konfig-blue-light": "hsl(214 36% 58% / 1)",
+        "video-bg": "#131316",
+      },
       animation: {
         tilt: "tilt 10s infinite linear",
       },

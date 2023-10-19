@@ -45,7 +45,7 @@ export function ProductSection({
   const { classes, cx } = useSectionStyles();
   const {
     classes: { texture },
-  } = useGraphicStyles({ bg: "#f3f4f6" })();
+  } = useGraphicStyles({})();
 
   return (
     <Box className={"my-[200px]"}>

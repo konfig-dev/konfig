@@ -1,34 +1,17 @@
-import { useMdMediaQuery } from "@/utils/use-md-media-query";
 import {
   Text,
-  Button,
-  Col,
-  Container,
-  Grid,
   Title,
   Group,
   Box,
-  ThemeIcon,
   rem,
   Stack,
-  Paper,
   Anchor,
-  useMantineTheme,
   createStyles,
   Flex,
 } from "@mantine/core";
-import { useViewportSize, useWindowScroll } from "@mantine/hooks";
-import { IconCode, IconRefresh } from "@tabler/icons-react";
 
 import Image from "@/components/Image";
-import { useEffect, useMemo, useState } from "react";
-import ReactFlow, {
-  Edge,
-  FitViewOptions,
-  Node,
-  Position,
-  ReactFlowInstance,
-} from "reactflow";
+import ReactFlow, { Edge, Node, Position } from "reactflow";
 import oas from "../../../public/oas.png";
 import postman from "../../../public/postman.webp";
 import typescript from "../../../public/typescript.png";
@@ -43,6 +26,7 @@ import favicon from "../../../public/favicon.png";
 import "reactflow/dist/style.css";
 import { useReactFlow } from "@/utils/use-react-flow";
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
+import { TitleHighlight } from "../TitleHighlight";
 
 const desktopNodes: Node[] = [
   {
@@ -321,8 +305,7 @@ export function GetSdksWithZeroEffort() {
                 SDKs
               </Title>
               <Title className={classes.title}>
-                Get <span className={classes.titleHighlight}>SDKs</span> with
-                zero effort
+                Get <TitleHighlight>SDKs</TitleHighlight> with zero effort
               </Title>
               <Stack className={classes.textSize} spacing="xs">
                 {/* <Group my="xl">

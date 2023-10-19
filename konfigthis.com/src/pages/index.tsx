@@ -41,7 +41,7 @@ export default function Home() {
           <EnsureHighQualitySdks />
           <SdkFeatures />
         </Box>
-        <div className="px-16 bg-gray-100 overflow-hidden">
+        <div className="px-16 bg-gradient-to-b from-[rgb(255,255,255)] to-[rgb(255,255,255)]  overflow-hidden">
           <UpdatingDocs />
           <GeneratedSdkSnippets />
         </div>

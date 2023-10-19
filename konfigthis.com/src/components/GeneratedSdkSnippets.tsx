@@ -1,7 +1,4 @@
-import docs from "../../public/docs.png";
-import Image from "./Image";
 import { ProductSection } from "./ProductSection";
-import { LightSectionAnchor } from "./LightSectionAnchor";
 import { LightSectionTitleHighlight } from "./LightSectionTitleHighlight";
 
 export function GeneratedSdkSnippets() {
@@ -25,10 +22,11 @@ export function GeneratedSdkSnippets() {
         </>
       )}
       Visual={() => (
-        <Image
-          className="w-full lg:w-3/5 shadow-lg rounded-xl"
-          alt="API Documentation"
-          src={docs}
+        <video
+          className="rounded-xl bg-video-bg shadow-lg w-full lg:w-1/2 p-2"
+          autoPlay
+          loop
+          src="/video/snippet.mov"
         />
       )}
     />
