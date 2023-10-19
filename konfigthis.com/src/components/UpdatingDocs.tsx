@@ -47,7 +47,7 @@ function Visual() {
         {
           ["!opacity-100 !translate-x-0 !blur-0"]: inView,
         },
-        "opacity-0 blur-md translate-x-[200%] transition duration-700 ease-in-out max-w-[60%]"
+        "opacity-0 blur-md translate-x-[200%] transition duration-700 ease-in-out sm:max-w-[60%]"
       )}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
