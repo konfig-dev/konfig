@@ -229,7 +229,7 @@ export const useSectionStyles = createStyles((theme) => ({
   },
   textSection: {
     position: "relative",
-    marginBottom: 70,
+    marginBottom: "64px",
   },
   textLayer: {
     position: "relative",
