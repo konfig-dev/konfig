@@ -4,26 +4,24 @@ import { ProductSection } from "./ProductSection";
 import { LightSectionAnchor } from "./LightSectionAnchor";
 import { LightSectionTitleHighlight } from "./LightSectionTitleHighlight";
 
-export function UpdatingDocs() {
+export function GeneratedSdkSnippets() {
   return (
     <ProductSection
+      noTopPadding
       parent="Documentation"
       Section={() => (
         <>
+          Dynamically Generated{" "}
           <LightSectionTitleHighlight>
-            API Docs & References
-          </LightSectionTitleHighlight>{" "}
-          that auto-update
+            SDK Code Snippets
+          </LightSectionTitleHighlight>
         </>
       )}
       Description={() => (
         <>
-          Ensure your docs and SDKs are always in sync with a single source of
-          truth. Any time you publish a change to your spec, Konfig{" "}
-          <LightSectionAnchor href="https://konfigthis.com/docs/tutorials/automate-sdk-updates">
-            automatically updates your docs
-          </LightSectionAnchor>
-          .
+          Quickly onboard in any language. Show customers the latest code they
+          need, directly in your documentation without having to manually update
+          code snippets.
         </>
       )}
       Visual={() => (

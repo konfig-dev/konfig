@@ -226,12 +226,6 @@ export const useSectionStyles = createStyles((theme) => ({
       height: 500,
     },
   },
-  paddingTop: {
-    paddingTop: 300,
-  },
-  paddingBottom: {
-    paddingBottom: 300,
-  },
   title: {
     fontSize: 36,
     fontWeight: "normal",
@@ -306,7 +300,7 @@ export function GetSdksWithZeroEffort() {
   } = useGraphicStyles({})();
 
   return (
-    <Box className={cx(classes.paddingBottom, classes.paddingTop)}>
+    <Box className={"my-[200px]"}>
       <Box className={classes.sectionInner}>
         <Flex
           className={classes.content}
@@ -327,8 +321,8 @@ export function GetSdksWithZeroEffort() {
                 SDKs
               </Title>
               <Title className={classes.title}>
-                Get SDKs with{" "}
-                <span className={classes.titleHighlight}>zero</span> effort
+                Get <span className={classes.titleHighlight}>SDKs</span> with
+                zero effort
               </Title>
               <Stack className={classes.textSize} spacing="xs">
                 {/* <Group my="xl">

@@ -1,6 +1,7 @@
 import { Cta } from "@/components/Cta";
 import { EnsureHighQualitySdks } from "@/components/EnsureHighQualitySdks/EnsureHighQualitySdks";
 import { FooterSimple } from "@/components/FooterSimple/FooterSimple";
+import { GeneratedSdkSnippets } from "@/components/GeneratedSdkSnippets";
 import { GetSdksWithZeroEffort } from "@/components/GetSdksWithZeroEffort/GetSdksWithZeroEffort";
 import { HeaderSimple } from "@/components/HeaderSimple/HeaderSimple";
 import { HeroBullets } from "@/components/HeroBullets/HeroBullets";
@@ -16,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Konfig | Generate SDKs for your REST API</title>
+        <title>Konfig | Generate SDKs, Docs, and Demos for your REST API</title>
         <meta
           name="description"
           content="Konfig makes it easy for you to onboard external developers.
@@ -33,15 +34,16 @@ export default function Home() {
           <TrustedBy />
         </Box>
         <Box
-          className={`px-16 bg-gradient-to-br from-[rgb(8,17,25)] to-[rgb(9,7,48)]`}
+          className={`px-16 bg-gradient-to-br from-[rgb(8,17,25)] to-[rgb(9,7,48)] overflow-hidden`}
           sx={(theme) => ({ backgroundColor: theme.colors.dark[8] })}
         >
           <GetSdksWithZeroEffort />
           <EnsureHighQualitySdks />
           <SdkFeatures />
         </Box>
-        <div className="px-4 bg-gray-100">
+        <div className="px-16 bg-gray-100 overflow-hidden">
           <UpdatingDocs />
+          <GeneratedSdkSnippets />
         </div>
         <Quotes />
         <Cta />

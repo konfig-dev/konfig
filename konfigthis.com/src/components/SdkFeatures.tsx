@@ -51,19 +51,13 @@ export function SdkFeatures() {
     classes: { texture },
   } = useGraphicStyles({})();
   return (
-    <Box
-      className={cx(
-        classes.paddingBottom,
-        classes.paddingTop,
-        "overflow-x-hidden"
-      )}
-    >
+    <Box className={"my-[200px]"}>
       <Box className={cx(classes.sectionInner, feature.sectionInner)}>
         <div
           className={cx(feature.graphic, texture, classes.triangleBottomLeft)}
         />
         <Box className={cx(feature.content, classes.textColor)}>
-          <Box ta="left" mb={150}>
+          <Box ta="left" mb={75}>
             <Title c="hsl(214 36% 58% / 1)" order={6}>
               SDK Features
             </Title>
@@ -80,10 +74,10 @@ export function SdkFeatures() {
             <Feature
               gradientAngle={50}
               title="Documentation"
-              description="All your SDKs come with branded and well-written READMEs that makes it easy for developers to get started."
+              description="All your SDKs come with branded and friendly README.md files that makes it easy for developers to get started."
               Icon={IconBook}
               link={{
-                label: "See example README",
+                label: "See example README.md",
                 href: "https://github.com/humanloop/humanloop-node#readme",
               }}
             />
