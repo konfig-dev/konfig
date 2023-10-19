@@ -7,6 +7,7 @@ import {
   rem,
   Title,
   Box,
+  clsx,
 } from "@mantine/core";
 import { IconBrandLinkedin } from "@tabler/icons-react";
 import logo from "./logo.png";
@@ -16,13 +17,8 @@ import Script from "next/script";
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    marginTop: rem(120),
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[0],
   },
 
   logo: {
@@ -166,7 +162,7 @@ export function FooterSimple({ data }: FooterLinksProps) {
   return (
     <>
       <Script src="https://substackapi.com/widget.js" async />
-      <footer className={classes.footer}>
+      <footer className={clsx(classes.footer, "pt-32")}>
         <Container className={classes.inner}>
           <div className={classes.logo}>
             <div style={{ marginBottom: rem(20) }}>

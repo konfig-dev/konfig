@@ -1,4 +1,6 @@
 import { Cta } from "@/components/Cta";
+import { CustomFlowsDemo } from "@/components/CustomFlowsDemo";
+import { DarkSectionWrapper } from "@/components/DarkSectionWrapper";
 import { EnsureHighQualitySdks } from "@/components/EnsureHighQualitySdks/EnsureHighQualitySdks";
 import { FooterSimple } from "@/components/FooterSimple/FooterSimple";
 import { GeneratedSdkSnippets } from "@/components/GeneratedSdkSnippets";
@@ -33,14 +35,11 @@ export default function Home() {
           <HeroBullets />
           <TrustedBy />
         </Box>
-        <Box
-          className={`px-4 bg-gradient-to-br from-[rgb(8,17,25)] to-[rgb(9,7,48)] overflow-hidden`}
-          sx={(theme) => ({ backgroundColor: theme.colors.dark[8] })}
-        >
+        <DarkSectionWrapper>
           <GetSdksWithZeroEffort />
           <EnsureHighQualitySdks />
           <SdkFeatures />
-        </Box>
+        </DarkSectionWrapper>
         <div
           //  className="px-16 bg-gradient-to-b from-[rgb(255,255,255)] to-[rgb(255,255,255)] overflow-hidden"
           className="px-4 bg-gray-50 overflow-hidden"
@@ -48,8 +47,13 @@ export default function Home() {
           <UpdatingDocs />
           <GeneratedSdkSnippets />
         </div>
-        <Quotes />
-        <Cta />
+        <DarkSectionWrapper direction="bl">
+          <CustomFlowsDemo />
+        </DarkSectionWrapper>
+        <div className="bg-gray-50 py-52">
+          <Quotes />
+          <Cta />
+        </div>
         <FooterSimple
           data={[
             {

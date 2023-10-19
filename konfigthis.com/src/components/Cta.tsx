@@ -5,6 +5,7 @@ import {
   Button,
   rem,
   Container,
+  clsx,
 } from "@mantine/core";
 import { IconCalendarEvent } from "@tabler/icons-react";
 
@@ -13,17 +14,6 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     padding: `calc(${theme.spacing.xl} * 2)`,
-    borderRadius: theme.radius.md,
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
-    border: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[3]
-    }`,
-
-    [theme.fn.smallerThan("sm")]: {
-      flexDirection: "column",
-      padding: theme.spacing.xl,
-    },
   },
 
   image: {
@@ -73,9 +63,16 @@ export function Cta() {
   const { classes } = useStyles();
   return (
     <Container>
-      <div className={classes.wrapper}>
+      <div
+        className={clsx(
+          classes.wrapper,
+          "bg-white rounded-xl border shadow-md"
+        )}
+      >
         <div className={classes.body}>
-          <Title className={classes.title}>Generate SDKs today</Title>
+          <Title className={classes.title}>
+            Generate SDKs, Docs, and Demos today
+          </Title>
           <Text fz="sm" c="dimmed">
             Impress your customers with an amazing onboarding experience
           </Text>

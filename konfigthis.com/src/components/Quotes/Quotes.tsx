@@ -9,17 +9,14 @@ import {
 
 export const Quotes = () => {
   return (
-    <Container my={rem(150)} size="lg">
+    <Container className="mb-52" size="lg">
       <div style={{ textAlign: "center" }}>
-        <Title order={2}>Loved by growing API teams</Title>
+        <Title order={1}>Loved by Growing API Teams</Title>
         <Text c="dimmed">{"Don't take our word for it"}</Text>
       </div>
-      <SimpleGrid
-        my={rem(50)}
-        cols={2}
-        breakpoints={[{ maxWidth: "48rem", cols: 1 }]}
-      >
+      <div className="mt-14 flex flex-col sm:flex-row gap-12">
         <Blockquote
+          className="border bg-white p-12 rounded-xl"
           color="dark"
           cite="- Peter Hayes, Co-Founder & CTO, Humanloop"
         >
@@ -30,6 +27,7 @@ export const Quotes = () => {
           our existing CI/CD.`}
         </Blockquote>
         <Blockquote
+          className="border bg-white p-12 rounded-xl"
           color="dark"
           cite="- Alex Sutherland, Back End Developer, SnapTrade"
         >
@@ -38,7 +36,7 @@ export const Quotes = () => {
           language syntax and spend hours compiling, debugging and reworking
           code. This process is so much easier and faster.`}
         </Blockquote>
-      </SimpleGrid>
+      </div>
     </Container>
   );
 };
