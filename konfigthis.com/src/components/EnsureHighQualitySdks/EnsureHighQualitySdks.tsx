@@ -1,4 +1,13 @@
-import { Text, Title, Box, Stack, Group, Anchor, Flex } from "@mantine/core";
+import {
+  Text,
+  Title,
+  Box,
+  Stack,
+  Group,
+  Anchor,
+  Flex,
+  clsx,
+} from "@mantine/core";
 import {
   IconPackageExport,
   IconShieldCheck,
@@ -8,6 +17,7 @@ import ReactFlow, { Position, Node, Edge } from "reactflow";
 import { useSectionStyles } from "../GetSdksWithZeroEffort/GetSdksWithZeroEffort";
 import { useReactFlow } from "@/utils/use-react-flow";
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
+import { SdkSectionFlex } from "../SdkSectionFlex";
 
 const desktopNodes: Node[] = [
   {
@@ -128,12 +138,8 @@ export function EnsureHighQualitySdks() {
   return (
     <Box>
       <Box className={classes.sectionInner}>
-        <Flex
-          className={classes.content}
-          gap="xl"
-          direction={{ base: "column", sm: "row" }}
-        >
-          <Box className={cx(classes.textColor, classes.textSection)}>
+        <SdkSectionFlex reverse>
+          <Box className={cx(classes.textColor, classes.textSection, "sm:ml-")}>
             <div
               className={cx(
                 classes.triangle,
@@ -151,26 +157,28 @@ export function EnsureHighQualitySdks() {
                 <span className={classes.titleHighlight}>high quality</span>{" "}
                 SDKs
               </Title>
-              <Stack className={classes.textSize} spacing="xs">
-                <Text>
-                  Before any errors reaches your customers,{" Konfig's "}
-                  <Anchor
-                    className={classes.link}
-                    target="_blank"
-                    href="https://konfigthis.com/docs/lint-rules"
-                  >
-                    linter
-                  </Anchor>{" "}
-                  identifies and rectifies them in your OpenAPI Specification.
-                </Text>
-                <Text>
-                  Konfig writes test cases for every SDK to ensure API updates
-                  {" won't"} break the SDKs your customers are using.
-                </Text>
-              </Stack>
+              <div className={classes.textSize}>
+                <ul className="list-disc list-inside sm:list-outside space-y-4">
+                  <li>
+                    Before any errors reaches your customers,{" Konfig's "}
+                    <Anchor
+                      className={classes.link}
+                      target="_blank"
+                      href="https://konfigthis.com/docs/lint-rules"
+                    >
+                      linter
+                    </Anchor>{" "}
+                    identifies and rectifies them in your OpenAPI Specification.
+                  </li>
+                  <li>
+                    Konfig writes test cases for every SDK to ensure API updates
+                    {" won't"} break the SDKs your customers are using.
+                  </li>
+                </ul>
+              </div>
             </Box>
           </Box>
-          <Box className={classes.diagram}>
+          <Box className={clsx(classes.diagram, "w-[1300px]")}>
             <ReactFlow
               onInit={setInst}
               fitView
@@ -189,7 +197,7 @@ export function EnsureHighQualitySdks() {
               edges={edges}
             />
           </Box>
-        </Flex>
+        </SdkSectionFlex>
       </Box>
     </Box>
   );

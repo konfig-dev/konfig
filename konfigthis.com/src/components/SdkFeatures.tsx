@@ -83,7 +83,7 @@ export function SdkFeatures() {
             />
             <Feature
               gradientAngle={230}
-              title="Ergonomic"
+              title="Ergonomics"
               description="Our SDKs are not just easy to use; they're crafted to adhere to the best practices of their respective programming languages."
               Icon={IconMouse}
               link={{

@@ -8,12 +8,14 @@ export function ProductSection({
   Description,
   Visual,
   graphicBottom,
+  reverse,
 }: {
   parent: string;
   Section: () => ReactElement;
   Description: () => ReactElement;
   Visual: () => ReactElement;
   graphicBottom?: boolean;
+  reverse?: boolean;
 }) {
   const {
     classes: { texture },
@@ -22,7 +24,12 @@ export function ProductSection({
   return (
     <Box className={"my-[200px]"}>
       <Box className="max-w-[1100px] relative m-auto">
-        <div className={"flex relative flex-col lg:flex-row gap-0 lg:gap-12"}>
+        <div
+          className={clsx("flex relative flex-col gap-0 lg:gap-20", {
+            ["lg:flex-row"]: !reverse,
+            ["lg:flex-row-reverse"]: reverse,
+          })}
+        >
           <Box className={"text-gray-800 mb-16 relative"}>
             <div
               className={clsx(
@@ -30,7 +37,7 @@ export function ProductSection({
                 "right-0 w-[200px] h-[200px] r-0 z-10 absolute",
                 {
                   ["top-[-50px]"]: !graphicBottom,
-                  ["bottom-[-25px]"]: graphicBottom,
+                  ["bottom-[-25px] lg:bottom-[25px]"]: graphicBottom,
                 }
               )}
             />

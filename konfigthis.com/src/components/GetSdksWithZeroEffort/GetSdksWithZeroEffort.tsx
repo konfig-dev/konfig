@@ -7,7 +7,7 @@ import {
   Stack,
   Anchor,
   createStyles,
-  Flex,
+  clsx,
 } from "@mantine/core";
 
 import Image from "@/components/Image";
@@ -27,6 +27,7 @@ import "reactflow/dist/style.css";
 import { useReactFlow } from "@/utils/use-react-flow";
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
 import { TitleHighlight } from "../TitleHighlight";
+import { SdkSectionFlex } from "../SdkSectionFlex";
 
 const desktopNodes: Node[] = [
   {
@@ -202,7 +203,6 @@ export const useSectionStyles = createStyles((theme) => ({
   diagram: {
     maxWidth: "100%",
     backgroundColor: theme.colors.gray[1],
-    width: 1500,
     borderRadius: theme.radius.lg,
     boxShadow: theme.shadows.lg,
     height: 300,
@@ -235,7 +235,6 @@ export const useSectionStyles = createStyles((theme) => ({
     position: "relative",
     zIndex: 2,
   },
-  content: {},
   triangle: {
     position: "absolute",
     zIndex: 1,
@@ -286,11 +285,7 @@ export function GetSdksWithZeroEffort() {
   return (
     <Box className={"my-[200px]"}>
       <Box className={classes.sectionInner}>
-        <Flex
-          className={classes.content}
-          gap="xl"
-          direction={{ base: "column", sm: "row" }}
-        >
+        <SdkSectionFlex>
           <Box className={cx(classes.textColor, classes.textSection)}>
             <div
               className={cx(
@@ -307,7 +302,7 @@ export function GetSdksWithZeroEffort() {
               <Title className={classes.title}>
                 Get <TitleHighlight>SDKs</TitleHighlight> with zero effort
               </Title>
-              <Stack className={classes.textSize} spacing="xs">
+              <div className={classes.textSize}>
                 {/* <Group my="xl">
                   <Image
                     src={oas}
@@ -317,41 +312,43 @@ export function GetSdksWithZeroEffort() {
                   />
                   <Image src={postman} width={35} height={35} alt="Postman" />
                 </Group> */}
-                <Text>
-                  Easily import an{" "}
-                  <Anchor
-                    className={classes.link}
-                    target="_blank"
-                    href="https://konfigthis.com/docs/getting-started/openapi-specification"
-                  >
-                    OpenAPI Specification
-                  </Anchor>{" "}
-                  or{" "}
-                  <Anchor
-                    className={classes.link}
-                    target="_blank"
-                    href="https://konfigthis.com/docs/getting-started/postman-collections"
-                  >
-                    Postman Collection
-                  </Anchor>{" "}
-                  and Konfig automatically generates and publishes SDKs in the
-                  most popular languages with no further work from you.
-                </Text>
-                <Text>
-                  Whenever you update your spec, Konfig{" "}
-                  <Anchor
-                    className={classes.link}
-                    target="_blank"
-                    href="https://konfigthis.com/docs/tutorials/automate-sdk-updates"
-                  >
-                    instantly republishes all your SDKs
-                  </Anchor>
-                  —keeping them current.
-                </Text>
-              </Stack>
+                <ul className="list-decimal list-inside sm:list-outside space-y-4">
+                  <li>
+                    Easily import an{" "}
+                    <Anchor
+                      className={classes.link}
+                      target="_blank"
+                      href="https://konfigthis.com/docs/getting-started/openapi-specification"
+                    >
+                      OpenAPI Specification
+                    </Anchor>{" "}
+                    or{" "}
+                    <Anchor
+                      className={classes.link}
+                      target="_blank"
+                      href="https://konfigthis.com/docs/getting-started/postman-collections"
+                    >
+                      Postman Collection
+                    </Anchor>{" "}
+                    and Konfig automatically generates and publishes SDKs in the
+                    most popular languages with no further work from you.
+                  </li>
+                  <li>
+                    Whenever you update your spec, Konfig{" "}
+                    <Anchor
+                      className={classes.link}
+                      target="_blank"
+                      href="https://konfigthis.com/docs/tutorials/automate-sdk-updates"
+                    >
+                      instantly republishes all your SDKs
+                    </Anchor>
+                    —keeping them current.
+                  </li>
+                </ul>
+              </div>
             </Box>
           </Box>
-          <Box className={classes.diagram}>
+          <Box className={clsx(classes.diagram, "w-[1500px]")}>
             <ReactFlow
               fitView
               fitViewOptions={fitViewOptions}
@@ -370,7 +367,7 @@ export function GetSdksWithZeroEffort() {
               edges={edges}
             />
           </Box>
-        </Flex>
+        </SdkSectionFlex>
       </Box>
     </Box>
   );

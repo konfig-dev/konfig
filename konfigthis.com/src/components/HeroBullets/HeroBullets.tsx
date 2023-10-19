@@ -205,8 +205,8 @@ export function HeroBullets() {
             )}
           </div>
         </div>
-        <Box my={rem(30)}>
-          <AspectRatio mx="auto" maw={600} ratio={16 / 9}>
+        <Box className="my-8">
+          <AspectRatio className="shadow-lg" mx="auto" maw={600} ratio={16 / 9}>
             <iframe
               src="https://www.youtube.com/embed/_rbFV2RmAc4"
               title="YouTube video player"

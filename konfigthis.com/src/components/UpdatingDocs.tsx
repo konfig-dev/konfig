@@ -2,7 +2,7 @@ import { ProductSection } from "./ProductSection";
 import { LightSectionAnchor } from "./LightSectionAnchor";
 import { LightSectionTitleHighlight } from "./LightSectionTitleHighlight";
 import { useWindowScroll } from "@mantine/hooks";
-import { clsx } from "@mantine/core";
+import { Mark, clsx } from "@mantine/core";
 import { useRef } from "react";
 
 export function UpdatingDocs() {
@@ -19,14 +19,19 @@ export function UpdatingDocs() {
         </>
       )}
       Description={() => (
-        <>
-          Maintain seamless consistency between your docs and SDKs, anchored by
-          a source of truth. Any time you publish a change to your spec, Konfig{" "}
-          <LightSectionAnchor href="https://konfigthis.com/docs/portal/tutorials/configuring-your-github-repository">
-            automatically updates your docs
-          </LightSectionAnchor>
-          .
-        </>
+        <ul className="list-disc list-inside sm:list-outside space-y-4">
+          <li>
+            Maintain <Mark>seamless consistency</Mark> between your docs and
+            SDKs, anchored by a source of truth.
+          </li>
+          <li>
+            Any time you publish a change to your spec, Konfig{" "}
+            <LightSectionAnchor href="https://konfigthis.com/docs/portal/tutorials/configuring-your-github-repository">
+              automatically updates your docs
+            </LightSectionAnchor>
+            .
+          </li>
+        </ul>
       )}
       Visual={Visual}
     />
@@ -42,7 +47,7 @@ function Visual() {
         {
           ["!opacity-100 !translate-x-0 !blur-0"]: inView,
         },
-        "opacity-0 blur-md translate-x-[200%] transition duration-700 ease-in-out"
+        "opacity-0 blur-md translate-x-[200%] transition duration-700 ease-in-out max-w-[60%]"
       )}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
