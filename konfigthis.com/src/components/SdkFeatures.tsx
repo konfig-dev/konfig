@@ -74,30 +74,30 @@ export function SdkFeatures() {
             <Feature
               gradientAngle={50}
               title="Documentation"
-              description="All your SDKs come with branded and friendly README.md files that makes it easy for developers to get started."
+              description="Every SDK you generate features a branded and user-friendly README.md, simplifying the onboarding process for developers."
               Icon={IconBook}
               link={{
-                label: "See example README.md",
+                label: "Explore a sample README.md",
                 href: "https://github.com/humanloop/humanloop-node#readme",
               }}
             />
             <Feature
               gradientAngle={230}
               title="Ergonomic"
-              description="We make sure your SDKs are easy to use and follow the best practices of the language they are written in."
+              description="Our SDKs are not just easy to use; they're crafted to adhere to the best practices of their respective programming languages."
               Icon={IconMouse}
               link={{
-                label: "See example code snippet",
+                label: "Dive into a code snippet example",
                 href: "https://github.com/passiv/snaptrade-sdks/tree/master/sdks/typescript#getting-started",
               }}
             />
             <Feature
               gradientAngle={160}
               title="Customization"
-              description="We made it easy to add custom code to your SDKs so you can add features like streaming, request signing, or polling."
+              description="With Konfig, integrating custom code into your SDKs is a breeze. Enhance your SDKs with features such as streaming, request signing, and polling with ease."
               Icon={IconCode}
               link={{
-                label: "Read the documentation",
+                label: "Discover more in our documentation",
                 href: "https://konfigthis.com/docs/custom-sdks",
               }}
             />

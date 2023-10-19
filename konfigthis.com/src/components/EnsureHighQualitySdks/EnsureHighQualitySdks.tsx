@@ -153,6 +153,7 @@ export function EnsureHighQualitySdks() {
               </Title>
               <Stack className={classes.textSize} spacing="xs">
                 <Text>
+                  Before any errors reaches your customers,
                   {"Konfig's"}{" "}
                   <Anchor
                     className={classes.link}
@@ -161,8 +162,7 @@ export function EnsureHighQualitySdks() {
                   >
                     linter
                   </Anchor>{" "}
-                  catches errors in your OpenAPI Specification before they can
-                  reach your customers and cause confusion.
+                  identifies and rectifies them in your OpenAPI Specification.
                 </Text>
                 <Text>
                   Konfig writes test cases for every SDK to ensure API updates

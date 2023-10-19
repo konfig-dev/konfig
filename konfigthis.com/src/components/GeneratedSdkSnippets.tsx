@@ -4,11 +4,11 @@ import { LightSectionTitleHighlight } from "./LightSectionTitleHighlight";
 export function GeneratedSdkSnippets() {
   return (
     <ProductSection
-      noTopPadding
+      graphicBottom
       parent="Documentation"
       Section={() => (
         <>
-          Dynamically Generated{" "}
+          User Generated{" "}
           <LightSectionTitleHighlight>
             SDK Code Snippets
           </LightSectionTitleHighlight>
@@ -16,17 +16,18 @@ export function GeneratedSdkSnippets() {
       )}
       Description={() => (
         <>
-          Quickly onboard in any language. Show customers the latest code they
-          need, directly in your documentation without having to manually update
-          code snippets.
+          Efficiently onboard customers in any language. Enable developers to
+          easily copy and paste the required code directly from your
+          documentation. No manual updates needed on your end.
         </>
       )}
       Visual={() => (
         <video
           className="rounded-xl bg-video-bg shadow-lg w-full lg:w-1/2 p-2"
           autoPlay
+          muted
           loop
-          src="/video/snippet.mov"
+          src="/video/snippet-quick.mov"
         />
       )}
     />

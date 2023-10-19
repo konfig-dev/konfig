@@ -34,13 +34,13 @@ export function ProductSection({
   Section,
   Description,
   Visual,
-  noTopPadding,
+  graphicBottom,
 }: {
   parent: string;
   Section: () => ReactElement;
   Description: () => ReactElement;
   Visual: () => ReactElement;
-  noTopPadding?: boolean;
+  graphicBottom?: boolean;
 }) {
   const { classes, cx } = useSectionStyles();
   const {
@@ -51,15 +51,19 @@ export function ProductSection({
     <Box className={"my-[200px]"}>
       <Box className="max-w-[1100px] relative m-auto">
         <div className={"flex flex-col lg:flex-row gap-0 lg:gap-12"}>
-          <Box className={cx("text-gray-800", classes.textSection)}>
+          <Box className={cx("text-gray-800 relative", classes.textSection)}>
             <div
               className={cx(
                 classes.graphicLayer,
                 texture,
-                "right-0 top-[-50px] w-200 h-200"
+                "right-0 w-200 h-200",
+                {
+                  ["top-[-50px]"]: !graphicBottom,
+                  ["bottom-[-25px]"]: graphicBottom,
+                }
               )}
             />
-            <Box className={classes.textLayer}>
+            <Box className={cx(classes.textLayer)}>
               <Title className="text-blue-900" order={6}>
                 {parent}
               </Title>

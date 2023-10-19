@@ -338,13 +338,13 @@ export function GetSdksWithZeroEffort() {
                   most popular languages with no further work from you.
                 </Text>
                 <Text>
-                  Any time you publish a change to your spec, Konfig{" "}
+                  Whenever you update your spec, Konfig{" "}
                   <Anchor
                     className={classes.link}
                     target="_blank"
                     href="https://konfigthis.com/docs/tutorials/automate-sdk-updates"
                   >
-                    automatically update and republish all of your SDKs
+                    instantly republishes all your SDKs—keeping them current
                   </Anchor>
                   .
                 </Text>
