@@ -10,11 +10,11 @@ import {
 export const Quotes = () => {
   return (
     <Container className="mb-52" size="lg">
-      <div style={{ textAlign: "center" }}>
+      <div>
         <Title order={1}>Loved by Growing API Teams</Title>
         <Text c="dimmed">{"Don't take our word for it"}</Text>
       </div>
-      <div className="mt-14 flex flex-col sm:flex-row gap-12">
+      <div className="pt-8 flex flex-col sm:flex-row gap-12">
         <Blockquote
           className="border bg-white p-12 rounded-xl"
           color="dark"
