@@ -4,12 +4,17 @@ import { PropsWithChildren } from "react";
 export function SdkSectionFlex({
   children,
   reverse,
-}: PropsWithChildren<{ reverse?: boolean }>) {
+  breakpoint,
+}: PropsWithChildren<{ reverse?: boolean; breakpoint?: "lg" }>) {
   return (
     <div
-      className={clsx("flex flex-col sm:flex-row gap-4 sm:gap-20", {
-        ["sm:flex-row"]: !reverse,
-        ["sm:flex-row-reverse"]: reverse,
+      className={clsx("flex flex-col gap-4 sm:gap-20", {
+        ["sm:gap-20"]: breakpoint !== "lg",
+        ["lg:gap-20"]: breakpoint === "lg",
+        ["lg:flex-row-reverse"]: breakpoint === "lg" && reverse,
+        ["lg:flex-row"]: breakpoint === "lg" && !reverse,
+        ["sm:flex-row"]: breakpoint !== "lg" && !reverse,
+        ["sm:flex-row-reverse"]: breakpoint !== "lg" && reverse,
       })}
     >
       {children}
