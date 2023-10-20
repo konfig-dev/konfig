@@ -109,7 +109,7 @@ export function HeroBullets() {
   const os = useOs();
   const isDesktop = os === "linux" || os === "windows" || os === "macos";
   return (
-    <div>
+    <div className="pt-16">
       <Container className={classes.wrapper} size={1400}>
         <div className={classes.inner}>
           <Title className={classes.title}>
@@ -122,13 +122,13 @@ export function HeroBullets() {
             >
               Effortlessly Generate{" "}
             </Text>
-            SDKs, Docs, Demos, and Tutorials for your REST API
+            SDKs, Docs, Demos & Tutorials for your REST API
           </Title>
 
           <Container p={0} size={700}>
             <Text size="lg" color="dimmed" className={classes.description}>
               With Konfig, onboarding external developers has never been easier.
-              Easily publish SDKs, Docs, Demos, and Tutorials in all major
+              Easily publish SDKs, Docs, Demos & Tutorials in all major
               languages so your customers can quickly integrate your API.
             </Text>
           </Container>
@@ -147,6 +147,7 @@ export function HeroBullets() {
                 target="_blank"
                 component="a"
                 variant="default"
+                radius="xl"
                 href="https://konfigthis.com/schedule-demo"
                 leftIcon={<IconCalendarEvent />}
                 className={clsx(
@@ -166,6 +167,7 @@ export function HeroBullets() {
                 size="lg"
                 variant="outline"
                 color="dark"
+                radius="xl"
                 className={clsx(
                   classes.control,
                   "relative leading-none divide-x"
@@ -177,6 +179,7 @@ export function HeroBullets() {
               <Button.Group>
                 <Button
                   fullWidth
+                  radius="xl"
                   component="a"
                   href="https://konfigthis.com/docs/getting-started/openapi-specification"
                   target="_blank"
@@ -190,6 +193,7 @@ export function HeroBullets() {
                 </Button>
                 <Button
                   fullWidth
+                  radius="xl"
                   component="a"
                   href="https://konfigthis.com/docs/getting-started/postman-collections"
                   target="_blank"
@@ -206,7 +210,12 @@ export function HeroBullets() {
           </div>
         </div>
         <Box className="my-8">
-          <AspectRatio className="shadow-lg" mx="auto" maw={600} ratio={16 / 9}>
+          <AspectRatio
+            className="rounded-xl overflow-hidden shadow-lg"
+            mx="auto"
+            maw={600}
+            ratio={16 / 9}
+          >
             <iframe
               src="https://www.youtube.com/embed/_rbFV2RmAc4"
               title="YouTube video player"

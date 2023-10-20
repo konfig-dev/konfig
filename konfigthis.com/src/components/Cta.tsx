@@ -62,7 +62,7 @@ const useStyles = createStyles((theme) => ({
 export function Cta() {
   const { classes } = useStyles();
   return (
-    <Container>
+    <Container className="px-4 sm:px-12">
       <div
         className={clsx(
           classes.wrapper,
@@ -71,7 +71,7 @@ export function Cta() {
       >
         <div className={classes.body}>
           <Title className={classes.title}>
-            Generate SDKs, Docs, Demos, and Tutorials today
+            Generate SDKs, Docs, Demos & Tutorials today
           </Title>
           <Text fz="sm" c="dimmed">
             Impress your customers with an amazing onboarding experience

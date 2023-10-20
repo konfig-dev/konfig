@@ -6,11 +6,15 @@ import {
   Group,
   Anchor,
   Button,
+  UnstyledButton,
+  Menu,
+  Burger,
 } from "@mantine/core";
-import logo from "./logo.png";
+import logo from "../../../public/portal-logo-light.png";
 import Image from "@/components/Image";
 import { useSubtleLinkStyles } from "@/utils/use-subtle-link-styles";
-import { IconCalendarEvent } from "@tabler/icons-react";
+import { IconCalendar, IconCalendarEvent } from "@tabler/icons-react";
+import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -67,37 +71,59 @@ const useStyles = createStyles((theme) => ({
 
 export function HeaderSimple() {
   const { classes } = useStyles();
-  const styles = useSubtleLinkStyles();
+  const [opened, setOpened] = useState(false);
 
   return (
-    <Header height={60}>
+    <div className="h-16 fixed w-full bg-white/95 backdrop-blur-md  z-50">
       <Container size="lg" className={classes.header}>
         <Image height={40} src={logo} placeholder="empty" alt="Konfig Logo" />
-        <Group spacing="xs">
-          <Anchor
+        <Menu
+          opened={opened}
+          onChange={setOpened}
+          position="bottom-end"
+          shadow="md"
+          width={200}
+        >
+          <Menu.Target>
+            <Burger className="sm:hidden" opened={opened} />
+          </Menu.Target>
+          <Menu.Dropdown>
+            <a target="_blank" href="https://konfigthis.com/schedule-demo">
+              <Menu.Item
+                className="font-bold"
+                icon={<IconCalendar size={16} />}
+              >
+                Book a Demo
+              </Menu.Item>
+            </a>
+            <a target="_blank" href="/docs">
+              <Menu.Item className="text-gray-700">Documentation</Menu.Item>
+            </a>
+            <a target="_blank" href="/blog">
+              <Menu.Item className=" text-gray-700">Blog</Menu.Item>
+            </a>
+          </Menu.Dropdown>
+        </Menu>
+        <Group className="hidden sm:flex" spacing="md">
+          <a
+            className="text-gray-600 hover:text-black"
             target="_blank"
-            component="a"
-            className={styles.classes.subtleLink}
-            unstyled
-            variant="subtle"
             href="/blog"
           >
             Blog
-          </Anchor>
-          <Anchor
-            className={styles.classes.subtleLink}
-            unstyled
+          </a>
+          <a
+            className="text-gray-600 hover:text-black"
             target="_blank"
-            component="a"
             href="/docs"
           >
             Documentation
-          </Anchor>
+          </a>
           <Button
-            size="xs"
-            target="_blank"
             color="dark"
             component="a"
+            radius="lg"
+            target="_blank"
             href="https://konfigthis.com/schedule-demo"
             leftIcon={<IconCalendarEvent size="0.9rem" />}
           >
@@ -105,6 +131,6 @@ export function HeaderSimple() {
           </Button>
         </Group>
       </Container>
-    </Header>
+    </div>
   );
 }

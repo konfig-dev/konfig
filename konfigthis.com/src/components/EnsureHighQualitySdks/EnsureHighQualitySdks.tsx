@@ -158,7 +158,7 @@ export function EnsureHighQualitySdks() {
                 SDKs
               </Title>
               <div className={classes.textSize}>
-                <ul className="list-disc list-insideist-outside space-y-2">
+                <ul className="list-disc list-inside space-y-2">
                   <li>
                     Before any errors reaches your customers,{" Konfig's "}
                     <Anchor
