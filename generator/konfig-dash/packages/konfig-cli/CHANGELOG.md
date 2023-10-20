@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.23.3
+
+### Patch Changes
+
+- [#305](https://github.com/konfig-dev/konfig/pull/305) [`2989b356`](https://github.com/konfig-dev/konfig/commit/2989b356fcae870d00027dea8354d1300b3a8adf) Thanks [@eddiechayes](https://github.com/eddiechayes)! - konfig fix removes trailing slashes on servers
+
 ## 1.23.2
 
 ### Patch Changes
