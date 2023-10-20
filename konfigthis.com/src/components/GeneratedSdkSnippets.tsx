@@ -17,7 +17,7 @@ export function GeneratedSdkSnippets() {
         </>
       )}
       Description={() => (
-        <ul className="list-disc list-inside sm:list-outside space-y-4">
+        <ul className="list-disc list-inside space-y-2">
           <li>
             <Mark>Efficiently onboard customers</Mark> in any language.
           </li>
@@ -30,7 +30,7 @@ export function GeneratedSdkSnippets() {
       )}
       Visual={() => (
         <video
-          className="rounded-xl bg-video-bg shadow-xl lg:w-3/5 p-2 lg:p-6"
+          className="rounded-xl bg-video-bg shadow-xl w-full lg:w-3/5 p-2 lg:p-6"
           playsInline
           autoPlay
           muted

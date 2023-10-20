@@ -16,9 +16,9 @@ export function CustomFlowsDemo() {
   return (
     <Box className={"my-[200px]"}>
       <Box className={classes.sectionInner}>
-        <SdkSectionFlex breakpoint="lg">
+        <div className="flex flex-col md:flex-row relative gap-0 md:gap-12">
           <Box
-            className={cx(classes.textColor, classes.textSection, "basis-2/3")}
+            className={cx(classes.textColor, classes.textSection, "basis-4/5")}
           >
             <div
               className={cx(
@@ -28,16 +28,16 @@ export function CustomFlowsDemo() {
                 "rounded-full"
               )}
             />
-            <Box className={classes.textLayer}>
+            <Box className={clsx(classes.textLayer, "w-11/12 md:w-full")}>
               <Title c="hsl(214 36% 58% / 1)" order={6}>
-                Demos
+                Demos & Tutorials
               </Title>
               <Title className={classes.title}>
                 <TitleHighlight>Interactive Demos & Tutorials</TitleHighlight>{" "}
                 with Markdown
               </Title>
               <div className={classes.textSize}>
-                <ul className="list-disc list-inside lg:list-outside space-y-4">
+                <ul className="list-disc list-inside space-y-2">
                   <li>
                     Simple Creation: Write, style, and embed code with{" "}
                     <a
@@ -61,9 +61,9 @@ export function CustomFlowsDemo() {
               </div>
             </Box>
           </Box>
-          <div className="p-2 lg:p-6 relative text-sm bg-[#002b36] rounded-xl shadow-xl">
+          <div className="p-2 md:p-6 w-full flex items-center relative text-sm bg-[#002b36] rounded-xl shadow-xl">
             <video
-              className="rounded-xl bg-video-bg shadow-xl"
+              className="rounded-xl w-full bg-video-bg shadow-xl"
               playsInline
               autoPlay
               muted
@@ -71,7 +71,7 @@ export function CustomFlowsDemo() {
               src="/video/demo-quick.webm"
             />
           </div>
-        </SdkSectionFlex>
+        </div>
       </Box>
     </Box>
   );

@@ -12,7 +12,7 @@ export function DarkSectionWrapper({
           ["bg-gradient-to-br"]: direction !== "bl",
           ["bg-gradient-to-bl"]: direction === "bl",
         },
-        `px-4 from-[rgb(8,17,25)] to-[rgb(9,7,48)] overflow-hidden`
+        `px-4 sm:px-12 from-[rgb(8,17,25)] to-[rgb(9,7,48)] overflow-hidden`
       )}
     >
       {children}

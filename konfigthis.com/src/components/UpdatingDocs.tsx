@@ -19,7 +19,7 @@ export function UpdatingDocs() {
         </>
       )}
       Description={() => (
-        <ul className="list-disc list-inside sm:list-outside space-y-4">
+        <ul className="list-disc list-inside space-y-2">
           <li>
             Maintain <Mark>seamless consistency</Mark> between your docs and
             SDKs, anchored by a source of truth.
@@ -47,7 +47,7 @@ function Visual() {
         {
           ["!opacity-100 !translate-x-0 !blur-0"]: inView,
         },
-        "opacity-0 blur-md translate-x-[200%] transition duration-700 ease-in-out sm:max-w-[60%]"
+        "opacity-0 blur-md translate-x-[200%] transition duration-700 ease-in-out lg:max-w-[60%]"
       )}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -61,7 +61,7 @@ function Visual() {
       <img
         ref={ref}
         className={clsx(
-          "object-cover absolute top-[20%] left-[2%] sm:top-[20%] sm:left-[15%] rounded-xl shadow-xl"
+          "object-cover absolute top-[20%] left-[2%] lg:top-[20%] lg:left-[15%] rounded-xl shadow-xl"
         )}
         alt="API Documentation"
         src="/docs-dark.webp"
@@ -74,7 +74,7 @@ function useIsInView({ ref }: { ref: React.RefObject<HTMLElement> }): boolean {
   useWindowScroll();
   if (typeof window === undefined) return false;
   if (!ref.current) return false;
-  const windowBottom = (window.innerHeight * 2) / 3;
+  const windowBottom = (window.innerHeight * 4) / 5;
   const { top, bottom } = ref.current.getBoundingClientRect();
   return top < windowBottom && bottom > 0;
 }

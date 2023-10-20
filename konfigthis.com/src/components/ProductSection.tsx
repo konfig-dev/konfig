@@ -41,7 +41,7 @@ export function ProductSection({
                 }
               )}
             />
-            <Box className="relative z-20">
+            <Box className="relative z-20 w-5/6 lg:w-full">
               <Title className="text-blue-900" order={6}>
                 {parent}
               </Title>

@@ -44,7 +44,7 @@ export default function Home() {
         </DarkSectionWrapper>
         <div
           //  className="px-16 bg-gradient-to-b from-[rgb(255,255,255)] to-[rgb(255,255,255)] overflow-hidden"
-          className="px-4 bg-gray-50 overflow-hidden"
+          className="px-4 sm:px-12 md:px-24 bg-gray-50 overflow-hidden"
         >
           <UpdatingDocs />
           <GeneratedSdkSnippets />

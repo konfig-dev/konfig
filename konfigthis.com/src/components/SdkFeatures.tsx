@@ -67,7 +67,7 @@ export function SdkFeatures() {
             </Title>
           </Box>
           <Flex
-            className={"items-center flex-col md:flex-row"}
+            className={"items-center flex-col xl:flex-row"}
             justify="space-between"
             gap="xl"
           >
@@ -142,7 +142,7 @@ function Feature({
       component="a"
       className={cx(
         feature,
-        "group transition-all ease-in-out border border-solid border-transparent hover:border-[#3f3f61]"
+        "w-full group transition-all ease-in-out border border-solid border-transparent hover:border-[#3f3f61]"
       )}
     >
       <ThemeIcon size="xl" mb="xl" radius="xl" color="hsl(225 36% 40% / 1)">
