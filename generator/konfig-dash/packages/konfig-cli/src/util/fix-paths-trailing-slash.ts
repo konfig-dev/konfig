@@ -7,12 +7,23 @@ export function fixTrailingSlashes({
 }): number {
   let numberOfTrailingSlashesFixed = 0
 
-  if (spec.paths === undefined) return 0
-  for (const path of Object.keys(spec.paths)) {
-    if (path === '/' || !path.endsWith('/')) continue
-    spec.paths[path.substring(0, path.length - 1)] = spec.paths[path]
-    delete spec.paths[path]
-    numberOfTrailingSlashesFixed++
+  // Paths
+  if (spec.paths !== undefined) {
+    for (const path of Object.keys(spec.paths)) {
+      if (path === '/' || !path.endsWith('/')) continue
+      spec.paths[path.substring(0, path.length - 1)] = spec.paths[path]
+      delete spec.paths[path]
+      numberOfTrailingSlashesFixed++
+    }
+  }
+
+  // Servers
+  if (spec.servers !== undefined) {
+    for (const server of spec.servers) {
+      if (!server.url.endsWith('/')) continue
+      server.url = server.url.substring(0, server.url.length - 1)
+      numberOfTrailingSlashesFixed++
+    }
   }
   return numberOfTrailingSlashesFixed
 }
