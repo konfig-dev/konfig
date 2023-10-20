@@ -4,9 +4,11 @@ import { PropsWithChildren } from "react";
 export function DarkSectionWrapper({
   children,
   direction,
-}: PropsWithChildren<{ direction?: "bl" }>) {
+  id,
+}: PropsWithChildren<{ direction?: "bl"; id?: string }>) {
   return (
     <div
+      id={id}
       className={clsx(
         {
           ["bg-gradient-to-br"]: direction !== "bl",

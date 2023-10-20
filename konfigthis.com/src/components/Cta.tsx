@@ -13,7 +13,6 @@ const useStyles = createStyles((theme) => ({
   wrapper: {
     display: "flex",
     alignItems: "center",
-    padding: `calc(${theme.spacing.xl} * 2)`,
   },
 
   image: {
@@ -66,7 +65,7 @@ export function Cta() {
       <div
         className={clsx(
           classes.wrapper,
-          "bg-white rounded-xl border shadow-md"
+          "bg-white rounded-xl border shadow-md p-4 sm:p-8 md:p-12"
         )}
       >
         <div className={classes.body}>

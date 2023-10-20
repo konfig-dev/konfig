@@ -7,15 +7,15 @@ import { GeneratedSdkSnippets } from "@/components/GeneratedSdkSnippets";
 import { GetSdksWithZeroEffort } from "@/components/GetSdksWithZeroEffort/GetSdksWithZeroEffort";
 import { HeaderSimple } from "@/components/HeaderSimple/HeaderSimple";
 import { HeroBullets } from "@/components/HeroBullets/HeroBullets";
+import { OurProducts } from "@/components/OurProducts";
 import { Quotes } from "@/components/Quotes/Quotes";
 import { SdkFeatures } from "@/components/SdkFeatures";
 import { TrustedBy } from "@/components/TrustedBy/TrustedBy";
 import { UpdatingDocs } from "@/components/UpdatingDocs";
-import { Box, useMantineTheme } from "@mantine/core";
+import { Box } from "@mantine/core";
 import Head from "next/head";
 
 export default function Home() {
-  const theme = useMantineTheme();
   return (
     <>
       <Head>
@@ -37,19 +37,21 @@ export default function Home() {
           <HeroBullets />
           <TrustedBy />
         </Box>
-        <DarkSectionWrapper>
+        <OurProducts />
+        <DarkSectionWrapper id="sdks">
           <GetSdksWithZeroEffort />
           <EnsureHighQualitySdks />
           <SdkFeatures />
         </DarkSectionWrapper>
         <div
+          id="docs"
           //  className="px-16 bg-gradient-to-b from-[rgb(255,255,255)] to-[rgb(255,255,255)] overflow-hidden"
           className="px-4 sm:px-12 md:px-24 bg-gray-50 overflow-hidden"
         >
           <UpdatingDocs />
           <GeneratedSdkSnippets />
         </div>
-        <DarkSectionWrapper direction="bl">
+        <DarkSectionWrapper id="demos" direction="bl">
           <CustomFlowsDemo />
         </DarkSectionWrapper>
         <div className="bg-gray-50 py-52">

@@ -16,7 +16,7 @@ export const Quotes = () => {
       </div>
       <div className="pt-8 flex flex-col lg:flex-row gap-12">
         <Blockquote
-          className="border bg-white p-12 rounded-xl"
+          className="border bg-white p-8 rounded-xl"
           color="dark"
           cite="- Peter Hayes, Co-Founder & CTO, Humanloop"
         >
@@ -27,7 +27,7 @@ export const Quotes = () => {
           our existing CI/CD.`}
         </Blockquote>
         <Blockquote
-          className="border bg-white p-12 rounded-xl"
+          className="border bg-white p-8 rounded-xl"
           color="dark"
           cite="- Alex Sutherland, Back End Developer, SnapTrade"
         >

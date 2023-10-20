@@ -3,7 +3,6 @@ import { Title, Box, Mark, clsx } from "@mantine/core";
 import "reactflow/dist/style.css";
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
 import { TitleHighlight } from "./TitleHighlight";
-import { SdkSectionFlex } from "./SdkSectionFlex";
 import { useSectionStyles } from "./GetSdksWithZeroEffort/GetSdksWithZeroEffort";
 
 export function CustomFlowsDemo() {
@@ -33,8 +32,8 @@ export function CustomFlowsDemo() {
                 Demos & Tutorials
               </Title>
               <Title className={classes.title}>
-                <TitleHighlight>Interactive Demos & Tutorials</TitleHighlight>{" "}
-                with Markdown
+                <TitleHighlight>Engaging Demos & Tutorials</TitleHighlight> with
+                Markdown
               </Title>
               <div className={classes.textSize}>
                 <ul className="list-disc list-inside space-y-2">
