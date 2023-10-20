@@ -71,7 +71,7 @@ export function Cta() {
       >
         <div className={classes.body}>
           <Title className={classes.title}>
-            Generate SDKs, Docs, and Demos today
+            Generate SDKs, Docs, Demos, and Tutorials today
           </Title>
           <Text fz="sm" c="dimmed">
             Impress your customers with an amazing onboarding experience

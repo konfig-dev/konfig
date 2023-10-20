@@ -55,7 +55,7 @@ const useStyles = createStyles((theme) => ({
     marginBottom: theme.spacing.xl,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1,
-    maxWidth: "45rem",
+    maxWidth: "41rem",
     marginLeft: "auto",
     marginRight: "auto",
 
@@ -73,7 +73,7 @@ const useStyles = createStyles((theme) => ({
     marginBottom: 40,
     marginLeft: "auto",
     marginRight: "auto",
-    maxWidth: "34rem",
+    maxWidth: "38rem",
 
     [theme.fn.smallerThan("xs")]: {
       textAlign: "left",
@@ -122,14 +122,14 @@ export function HeroBullets() {
             >
               Effortlessly Generate{" "}
             </Text>
-            SDKs, Docs, and Demos for your REST API
+            SDKs, Docs, Demos, and Tutorials for your REST API
           </Title>
 
           <Container p={0} size={700}>
             <Text size="lg" color="dimmed" className={classes.description}>
               With Konfig, onboarding external developers has never been easier.
-              Easily publish SDKs, Docs, and Demos in all major languages so
-              your customers can quickly integrate your API.
+              Easily publish SDKs, Docs, Demos, and Tutorials in all major
+              languages so your customers can quickly integrate your API.
             </Text>
           </Container>
 

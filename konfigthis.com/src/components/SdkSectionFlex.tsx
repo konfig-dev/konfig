@@ -8,7 +8,7 @@ export function SdkSectionFlex({
 }: PropsWithChildren<{ reverse?: boolean; breakpoint?: "lg" }>) {
   return (
     <div
-      className={clsx("flex flex-col gap-4 sm:gap-20", {
+      className={clsx("flex flex-col relative gap-4 sm:gap-20", {
         ["sm:gap-20"]: breakpoint !== "lg",
         ["lg:gap-20"]: breakpoint === "lg",
         ["lg:flex-row-reverse"]: breakpoint === "lg" && reverse,

@@ -19,11 +19,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Konfig | Generate SDKs, Docs, and Demos for your REST API</title>
+        <title>
+          Konfig | Generate SDKs, Docs, Demos, and Tutorials for your REST API
+        </title>
         <meta
           name="description"
           content="Konfig makes it easy for you to onboard external developers.
-          Easily publish SDKs in all major languages so your customers can
+          Easily generate SDKs, Docs, Demos, and Tutorials in all major languages so your customers can
           quickly integrate your API."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

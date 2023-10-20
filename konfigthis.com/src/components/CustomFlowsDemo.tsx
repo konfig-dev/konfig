@@ -1,39 +1,10 @@
-import { Title, Box } from "@mantine/core";
+import { Title, Box, Mark, clsx } from "@mantine/core";
 
 import "reactflow/dist/style.css";
 import { useGraphicStyles } from "@/utils/use-graphic-styles";
 import { TitleHighlight } from "./TitleHighlight";
 import { SdkSectionFlex } from "./SdkSectionFlex";
 import { useSectionStyles } from "./GetSdksWithZeroEffort/GetSdksWithZeroEffort";
-import { MarkdownRenderer } from "./MarkdownRenderer";
-
-const markdown = `# Getting Started
-
-This is an interactive tutorial the Pet Store API.
-
-## 1) Log user into the system
-
-::::form
-
-::input{name="KEY" label="API Key" placeholder="Your API Key"}
-::input{name=USERNAME label="Username" placeholder="Username"}
-::input{name=PASSWORD label="Password" placeholder="Password"}
-
-\`\`\`python
-from pprint import pprint
-from petstore import Petstore
-
-pestore = Petstore()
-
-response = pestore.user.login(
-    username="USERNAME",
-    password="PASSWORD"
-)
-pprint(response.body)
-\`\`\`
-
-::button[Login]
-::::`;
 
 export function CustomFlowsDemo() {
   const { classes, cx } = useSectionStyles();
@@ -46,7 +17,9 @@ export function CustomFlowsDemo() {
     <Box className={"my-[200px]"}>
       <Box className={classes.sectionInner}>
         <SdkSectionFlex breakpoint="lg">
-          <Box className={cx(classes.textColor, classes.textSection)}>
+          <Box
+            className={cx(classes.textColor, classes.textSection, "basis-2/3")}
+          >
             <div
               className={cx(
                 classes.triangle,
@@ -60,23 +33,43 @@ export function CustomFlowsDemo() {
                 Demos
               </Title>
               <Title className={classes.title}>
-                Build <TitleHighlight>Interactive Demos</TitleHighlight> using
-                Markdown
+                <TitleHighlight>Interactive Demos & Tutorials</TitleHighlight>{" "}
+                with Markdown
               </Title>
               <div className={classes.textSize}>
                 <ul className="list-disc list-inside lg:list-outside space-y-4">
                   <li>
-                    Write and style text, add forms, and embed code snippets
+                    Simple Creation: Write, style, and embed code with{" "}
+                    <a
+                      target="_blank"
+                      className="border-b text-white border-yellow-300 hover:border-b-2"
+                      href="https://github.com/passiv/snaptrade-sdks/blob/master/demos/registering-users.md"
+                    >
+                      familiar Markdown
+                    </a>
+                    .
                   </li>
                   <li>
-                    Run code and make live calls to your API from the browser
+                    Immediate Engagement: Allow users to run code in-browser,
+                    enhancing hands-on learning.
+                  </li>
+                  <li>
+                    Quick Onboarding: Speed up user adoption with interactive
+                    demos that teach as they engage.
                   </li>
                 </ul>
               </div>
             </Box>
           </Box>
-          <div className="p-4 relative text-sm bg-[#002b36] rounded-xl shadow-xl w-full lg:w-3/5">
-            <MarkdownRenderer>{markdown}</MarkdownRenderer>
+          <div className="p-2 lg:p-6 relative text-sm bg-[#002b36] rounded-xl shadow-xl">
+            <video
+              className="rounded-xl bg-video-bg shadow-xl"
+              playsInline
+              autoPlay
+              muted
+              loop
+              src="/video/demo-quick.webm"
+            />
           </div>
         </SdkSectionFlex>
       </Box>
