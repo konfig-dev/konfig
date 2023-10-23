@@ -62,20 +62,28 @@ function AuthorSection({ authors }) {
       <div key={key} className="p-4 mt-5 flex flex-row gap-5">
         <img className="rounded-full h-16" src={imageURL} alt={name} />
         <div>
-          <div className="flex flex-row gap-2 items-center mb-2">
-            <span className="font-semibold">{name}</span>
+          <div className="flex flex-row gap-2 mb-2 items-baseline">
+            <span className="font-bold">{name}</span>
             {github && (
-              <a className="text-xs" href={github} target="_blank">
+              <a
+                className="text-xs font-semibold"
+                href={github}
+                target="_blank"
+              >
                 GitHub
               </a>
             )}
             {linkedin && (
-              <a className="text-xs" href={linkedin} target="_blank">
+              <a
+                className="text-xs font-semibold"
+                href={linkedin}
+                target="_blank"
+              >
                 LinkedIn
               </a>
             )}
           </div>
-          <p className="text-sm">{bio}</p>
+          <p className="text-sm text-gray-500">{bio}</p>
         </div>
       </div>
     );
