@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 a[data-footnote-ref="true"] {
-  scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);
 }
 
 figure {
@@ -34,6 +34,53 @@ figure {
 
 :root {
   --ifm-font-size-base: 15px;
+  --ifm-navbar-height: 64px;
+  --ifm-font-size-base: 16px;
+  --ifm-menu-link-padding-vertical: 0.5rem;
+  --ifm-menu-color: var(--ifm-color-gray-600);
+  --ifm-link-hover-decoration: none;
+  --ifm-link-decoration: none;
+  --ifm-menu-color-background-active: var(
+    --ifm-color-primary-contrast-background
+  );
+}
+
+.alert {
+  --ifm-link-hover-decoration: none;
+  --ifm-link-decoration: none;
+}
+
+.markdown {
+  color: var(--ifm-color-gray-700);
+
+  --ifm-h1-vertical-rhythm-top: 5;
+  --ifm-h2-vertical-rhythm-top: 4;
+  --ifm-h3-vertical-rhythm-top: 3;
+  --ifm-heading-vertical-rhythm-top: 1.25;
+  --ifm-h1-vertical-rhythm-bottom: 1.25;
+  --ifm-heading-vertical-rhythm-bottom: 1;
+}
+
+.markdown a {
+  color: var(--ifm-color-emphasis-1000);
+  border-bottom: 1px solid var(--ifm-color-primary-light);
+}
+
+.markdown p {
+  margin-top: 1rem;
+}
+
+.markdown a:hover {
+  border-bottom-width: 2px;
+}
+
+.markdown h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--ifm-color-emphasis-1000);
 }
 
 :root {
@@ -184,4 +231,58 @@ summary {
 
 .highlighted-node .nodeLabel {
   color: black !important;
+}
+
+.theme-doc-sidebar-container {
+  border-right: none !important;
+  font-size: 0.875rem;
+}
+
+.menu__link {
+  line-height: 1.55;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  box-shadow: none !important;
+}
+
+.menu__link--sublist-caret:after {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1rem 1rem;
+}
+
+.menu__link:hover {
+  color: var(--ifm-color-emphasis-800);
+}
+
+.menu__link:hover {
+  color: var(--ifm-color-emphasis-800);
+}
+
+.menu__link--active:hover {
+  color: var(--ifm-menu-color-active);
+}
+
+.menu__caret:before {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1rem 1rem;
+}
+
+.navbar__link {
+  color: var(--ifm-color-gray-600);
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+}
+
+.menu__list-item:not(:first-child) {
+  margin-top: 0;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-color-emphasis-800);
+}
+
+.menu__list .menu__list {
+  margin-top: 0;
 }
