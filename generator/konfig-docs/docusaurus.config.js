@@ -169,6 +169,7 @@ async function createConfig() {
           blog: {
             beforeDefaultRemarkPlugins: beforeRemarkPluginsForBlogs,
             blogSidebarCount: "ALL",
+            blogSidebarTitle: "All posts",
             remarkPlugins: remarkPlugins,
             showReadingTime: true,
             blogDescription: "Generate SDKs for your REST API",
