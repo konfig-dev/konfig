@@ -256,7 +256,7 @@ export default function LiveDemo({ sales }: { sales?: boolean }) {
       title={sales ? "Sales Demo" : "Interactive Tutorial"}
       description="Generate SDKs for your REST API with Konfig"
     >
-      <div className="flex relative">
+      <div className="flex relative markdown">
         <div className={clsx(sales ? "w-0" : "w-2/5")}>
           <MDXContent>
             <Steps
