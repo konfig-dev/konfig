@@ -151,7 +151,6 @@ async function createConfig() {
         /** @type {import('@docusaurus/preset-classic').Options} */
         ({
           docs: {
-            breadcrumbs: false,
             beforeDefaultRemarkPlugins: beforeRemarkPlugins,
             remarkPlugins: remarkPlugins,
             routeBasePath: "/docs",
