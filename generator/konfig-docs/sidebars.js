@@ -88,7 +88,7 @@ const sidebars = {
       ],
     },
     {
-      label: "Documentation",
+      label: "Docs",
       type: "category",
       collapsible: false,
       items: [
