@@ -35,9 +35,7 @@ export default function BlogSidebarDesktop({ sidebar }) {
         <div className={clsx(styles.sidebarItemTitle, "margin-bottom--md")}>
           {sidebar.title}
         </div>
-        <ul
-          className={clsx(styles.sidebarItemList, "clean-list font-semibold")}
-        >
+        <ul className={clsx(styles.sidebarItemList, "clean-list")}>
           {sidebar.items.map((item) => (
             <li key={item.permalink} className={styles.sidebarItem}>
               <Link
