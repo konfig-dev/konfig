@@ -1,24 +1,20 @@
 import React from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
-import {
-  useSidebarBreadcrumbs,
-  useHomePageRoute,
-} from "@docusaurus/theme-common/internal";
+import { useSidebarBreadcrumbs } from "@docusaurus/theme-common/internal";
 import Link from "@docusaurus/Link";
 import { translate } from "@docusaurus/Translate";
-import HomeBreadcrumbItem from "@theme/DocBreadcrumbs/Items/Home";
 import styles from "./styles.module.css";
 // TODO move to design system folder
 function BreadcrumbsItemLink({ children, href, isLast }) {
   const className = "breadcrumbs__link";
-  if (isLast) {
-    return (
-      <span className={className} itemProp="name">
-        {children}
-      </span>
-    );
-  }
+  // if (isLast) {
+  //   return (
+  //     <span className={className} itemProp="name">
+  //       {children}
+  //     </span>
+  //   );
+  // }
   return href ? (
     <Link className={className} href={href} itemProp="item">
       <span itemProp="name">{children}</span>
@@ -42,7 +38,7 @@ function BreadcrumbsItem({ children, active, index, addMicrodata }) {
         itemType: "https://schema.org/ListItem",
       })}
       className={clsx("breadcrumbs__item", {
-        "breadcrumbs__item--active": active,
+        "breadcrumbs_8item--active": active,
       })}
     >
       {children}
@@ -51,16 +47,20 @@ function BreadcrumbsItem({ children, active, index, addMicrodata }) {
   );
 }
 export default function DocBreadcrumbs() {
-  const breadcrumbs = useSidebarBreadcrumbs();
-  const homePageRoute = useHomePageRoute();
-  if (!breadcrumbs) {
+  const allBreadcrumbs = useSidebarBreadcrumbs();
+  if (!allBreadcrumbs) {
     return null;
   }
+
+  // all but last
+  const breadcrumbs = allBreadcrumbs.slice(0, -1);
+
   return (
     <nav
       className={clsx(
         ThemeClassNames.docs.docBreadcrumbs,
-        styles.breadcrumbsContainer
+        styles.breadcrumbsContainer,
+        "!mb-0 !mt-2"
       )}
       aria-label={translate({
         id: "theme.docs.breadcrumbs.navAriaLabel",

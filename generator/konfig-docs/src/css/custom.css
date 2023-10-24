@@ -41,6 +41,7 @@ figure {
   --ifm-menu-color-background-active: var(
     --ifm-color-primary-contrast-background
   );
+  --ifm-breadcrumb-border-radius: 0.5rem;
 }
 
 .markdown {
@@ -311,4 +312,25 @@ summary {
 
 .avatar__subtitle {
   color: var(--ifm-color-gray-700);
+}
+
+.breadcrumbs {
+  margin-left: calc(
+    var(--ifm-breadcrumb-padding-horizontal) *
+      var(--ifm-breadcrumb-size-multiplier) * -1
+  );
+}
+
+.breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  font-weight: var(--ifm-font-weight-bold);
+  font-size: 0.875rem;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: none;
+}
+
+.breadcrumbs__link:any-link:hover {
+  background: var(--ifm-color-primary-contrast-background);
 }
