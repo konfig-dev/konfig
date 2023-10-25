@@ -17,7 +17,18 @@ require('prismjs/components/prism-php')
 require('prismjs/components/prism-shell-session')
 require('prismjs/components/prism-java')
 
-type Language = PrismProps['language']
+export type Language = PrismProps['language']
+
+export type LanguageExtended =
+  | Language
+  | 'ruby'
+  | 'csharp'
+  | 'php'
+  | 'shell'
+  | 'java'
+  | 'js'
+  | 'JSON'
+  | 'ts'
 
 const langDisplayName = {
   python: { name: 'Python' },
@@ -49,10 +60,7 @@ const langDisplayName = {
   javascript: { name: 'JavaScript' },
   js: { name: 'JavaScript' },
   bash: { name: 'Bash' },
-} as Record<
-  Language | 'ruby' | 'csharp' | 'php' | 'shell' | 'java' | 'js' | 'JSON',
-  { name: string }
->
+} as Record<LanguageExtended, { name: string }>
 
 export const extractLanguageFromClassName = (className?: string) =>
   /language-(\w+)/.exec(className || '')
