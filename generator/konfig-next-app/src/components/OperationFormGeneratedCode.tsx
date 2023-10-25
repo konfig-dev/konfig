@@ -69,14 +69,6 @@ export function OperationFormGeneratedCode(args: CodeGeneratorConstructorArgs) {
   }
   return (
     <Tabs variant="outline" onTabChange={setActiveTab as any} value={activeTab}>
-      <Tabs.List>
-        <Tabs.Tab value="ts" icon={<TsIcon width="1rem" height="1rem" />}>
-          TypeScript
-        </Tabs.Tab>
-        <Tabs.Tab value="py" icon={<PythonIcon width="1rem" height="1rem" />}>
-          Python
-        </Tabs.Tab>
-      </Tabs.List>
       <Tabs.Panel value="ts">
         <Prism {...styles} language="typescript">
           {data}

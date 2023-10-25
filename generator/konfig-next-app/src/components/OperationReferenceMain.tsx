@@ -38,7 +38,15 @@ import { CodeGeneratorTypeScript } from '../utils/code-generator-typescript'
 import { ExecuteOutput } from './ExecuteOutput'
 import { tryJsonOutput } from '../utils/try-json-output'
 import { tryTableOutput } from '../utils/try-table-output'
-import { IconAlertCircle, IconTerminal } from '@tabler/icons-react'
+import {
+  IconAlertCircle,
+  IconPlayerPlay,
+  IconPlayerPlayFilled,
+  IconPlayerRecord,
+  IconRepeat,
+  IconTerminal,
+  IconUpload,
+} from '@tabler/icons-react'
 import { deepmerge } from '../utils/deepmerge'
 import { notifications } from '@mantine/notifications'
 import localforage from 'localforage'
@@ -213,7 +221,8 @@ export function OperationReferenceMain({
   }
 
   const header = operation.operation.summary ?? operation.path
-
+  const RequestIcon =
+    result?.data !== undefined ? IconRepeat : IconPlayerPlayFilled
   return (
     <FormProvider form={form}>
       <form
@@ -373,9 +382,9 @@ export function OperationReferenceMain({
                 variant={colorScheme === 'dark' ? 'light' : 'filled'}
                 type="submit"
                 loading={requestInProgress}
-                leftIcon={<IconTerminal size="1rem" />}
+                rightIcon={<RequestIcon size="0.8rem" />}
               >
-                Request API
+                Send request
               </Button>
               {result?.data != null && (
                 <Paper shadow="sm" radius="xs" p={0} withBorder>
