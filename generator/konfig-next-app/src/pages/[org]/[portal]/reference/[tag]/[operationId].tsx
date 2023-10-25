@@ -94,7 +94,6 @@ const Operation = ({
   )
 
   const [opened, setOpened] = useState(false)
-  const theme = useMantineTheme()
   const navbarClasses = useNavbarStyles()
   return (
     <MantineProvider
