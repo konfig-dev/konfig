@@ -43,7 +43,7 @@ export function OperationRequest({
                     <button
                       className={clsx(
                         {
-                          ['border-brand-800 text-brand-800 dark:border-brand-600 dark:text-brand-600']:
+                          ['border-brand-800 text-brand-800 dark:border-brand-500 dark:text-brand-500']:
                             selected,
                           ['border-transparent hover:text-white']: !selected,
                         },
