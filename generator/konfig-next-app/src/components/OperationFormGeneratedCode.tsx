@@ -30,6 +30,7 @@ export function OperationFormGeneratedCode(
       code: {
         maxHeight: 300,
         backgroundColor: 'unset !important',
+        fontSize: 13,
       },
     },
   }
