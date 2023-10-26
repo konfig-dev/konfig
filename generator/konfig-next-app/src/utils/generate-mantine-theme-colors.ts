@@ -1,15 +1,11 @@
-import {
-  MantineTheme,
-  MantineThemeColors,
-  useMantineTheme,
-} from '@mantine/core'
+import { MantineTheme, MantineThemeColors } from '@mantine/core'
 import { generateShadePalette } from './generate-shade-palette'
 
 export function generateMantineThemeColors({
   primaryColor,
   colors,
 }: {
-  primaryColor?: string
+  primaryColor?: string | null
   colors: MantineTheme['colors']
 }): {
   colors: Partial<MantineThemeColors>
@@ -17,7 +13,7 @@ export function generateMantineThemeColors({
   return {
     colors: {
       brand:
-        primaryColor !== undefined
+        primaryColor !== undefined && primaryColor != null
           ? generateShadePalette(primaryColor)
           : colors.blue,
     },

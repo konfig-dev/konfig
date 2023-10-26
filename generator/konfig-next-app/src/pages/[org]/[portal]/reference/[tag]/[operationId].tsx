@@ -1,4 +1,3 @@
-import { generateShadePalette } from '@/utils/generate-shade-palette'
 import {
   AppShell,
   Navbar,
@@ -18,6 +17,7 @@ import {
   generatePropsForReferencePage,
 } from '@/utils/generate-props-for-reference-page'
 import { useNavbarStyles } from '@/utils/use-navbar-styles'
+import { generateMantineThemeColors } from '@/utils/generate-mantine-theme-colors'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -100,12 +100,10 @@ const Operation = ({
       inherit
       theme={{
         colorScheme,
-        colors: {
-          brand:
-            konfigYaml.portal?.primaryColor !== undefined
-              ? generateShadePalette(konfigYaml.portal?.primaryColor)
-              : colors.blue,
-        },
+        ...generateMantineThemeColors({
+          primaryColor: konfigYaml.portal?.primaryColor,
+          colors,
+        }),
         primaryColor: 'brand',
       }}
     >

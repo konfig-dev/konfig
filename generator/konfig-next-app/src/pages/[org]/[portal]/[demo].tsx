@@ -10,6 +10,7 @@ import {
 import { MantineProvider, useMantineTheme } from '@mantine/core'
 import { generateShadePalette } from '@/utils/generate-shade-palette'
 import { generatePropsForDemoPage } from '@/utils/generate-props-for-demo-page'
+import { generateMantineThemeColors } from '@/utils/generate-mantine-theme-colors'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -92,12 +93,10 @@ const DemoPage = observer(
         inherit
         theme={{
           colorScheme,
-          colors: {
-            brand:
-              primaryColor !== null
-                ? generateShadePalette(primaryColor)
-                : colors.blue,
-          },
+          ...generateMantineThemeColors({
+            primaryColor,
+            colors,
+          }),
           primaryColor: 'brand',
         }}
       >

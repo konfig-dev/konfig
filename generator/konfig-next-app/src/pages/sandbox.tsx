@@ -6,7 +6,6 @@ import { Demo, Organization, Portal } from '@/utils/demos'
 import { DemoPortal, PortalState } from '@/components/DemoPortal'
 import * as yaml from 'js-yaml'
 import { notifications } from '@mantine/notifications'
-import { generateShadePalette } from '@/utils/generate-shade-palette'
 import { type KonfigYamlType, type SocialObject } from 'konfig-lib'
 import { KonfigYaml } from 'konfig-lib/dist/KonfigYaml'
 import { KONFIG_YAML_NAME } from 'konfig-lib/dist/util/konfig-yaml-name'
@@ -15,6 +14,7 @@ import {
   DemoInput,
   generateDemosFromFilenameAndContent,
 } from '@/utils/generate-demos-from-file-name-and-content'
+import { generateMantineThemeColors } from '@/utils/generate-mantine-theme-colors'
 
 /**
  * This is here to force this page to be SSR only so Next.js doesn't try to make
@@ -160,7 +160,10 @@ const DemoPortalWrapper = observer(() => {
       inherit
       theme={{
         colorScheme,
-        colors: { brand: generateShadePalette(state.brandColor) },
+        ...generateMantineThemeColors({
+          primaryColor: state.brandColor,
+          colors,
+        }),
         primaryColor: 'brand',
       }}
     >
