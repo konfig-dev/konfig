@@ -15,7 +15,8 @@ export class CodeGeneratorHttpsnippet extends CodeGenerator {
     const harRequest = convertToHarRequest(
       this.nonEmptyParameters,
       this.nonEmptySecurity,
-      new URL(this.configuration.path, this.basePath).toString(),
+      // can't use URL because we don't want to encode { and } in path yet
+      `${this.basePath}${this.configuration.path}`,
       this.configuration.httpMethod.toUpperCase()
     )
     this.httpSnippet = new HTTPSnippet(harRequest)

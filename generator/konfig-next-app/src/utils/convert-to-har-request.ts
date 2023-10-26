@@ -8,6 +8,7 @@ import {
   OAUTH2_CLIENT_SECRET_PROPERTY,
   SECURITY_TYPE_PROPERTY,
 } from './generate-initial-operation-form-values'
+import { JSONObject } from './json-value'
 
 export function convertToHarRequest(
   params: NonEmptyParameters,
@@ -65,16 +66,42 @@ export function convertToHarRequest(
     }
   }
 
+  const requestBody: JSONObject = {}
+
   params.forEach(([{ name, parameter }, value]) => {
     if (parameter.isRequestBody) {
       har.postData = {
         mimeType: 'application/json',
         text: JSON.stringify(value),
       }
-    } else {
-      har.queryString.push({ name, value: String(value) }) // Simplified conversion, can be expanded based on your needs.
+    } else if (parameter.in === 'header') {
+      har.headers.push({ name, value: JSON.stringify(value) })
+    } else if (parameter.in === 'query') {
+      har.queryString.push({ name, value: JSON.stringify(value) })
+    } else if (parameter.in === 'cookie') {
+      har.cookies.push({ name, value: JSON.stringify(value) })
+    } else if (parameter.in === 'path') {
+      // turn value into json string and unquote it
+      const pathValue = JSON.stringify(value).replace(/^"(.*)"$/, '$1')
+      har.url = har.url.replace(`{${name}}`, pathValue)
+    } else if (parameter.in === 'body') {
+      // add to requestBody
+      requestBody[name] = value
     }
   })
+
+  // convert any non-filled path parameters that look like {parameter} into upper case versions of that string (e.g. {parameter} -> PARAMETER)
+  har.url = har.url.replace(/{([^}]+)}/g, (_, parameter) =>
+    parameter.toUpperCase()
+  )
+
+  // if request body is not empty then add it to postData
+  if (Object.keys(requestBody).length > 0) {
+    har.postData = {
+      mimeType: 'application/json',
+      text: JSON.stringify(requestBody, null, 2),
+    }
+  }
 
   return har
 }
