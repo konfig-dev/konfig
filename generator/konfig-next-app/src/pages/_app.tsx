@@ -97,7 +97,6 @@ function App(props: AppProps) {
             },
           }}
           withGlobalStyles
-          withNormalizeCSS
         >
           <Notifications />
           <Component {...pageProps} />

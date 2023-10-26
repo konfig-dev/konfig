@@ -7,22 +7,15 @@ import {
   Box,
   Divider,
   Badge,
-  Button,
   Text,
   useMantineColorScheme,
   Paper,
   MediaQuery,
   Alert,
   useMantineTheme,
-  clsx,
-  UnstyledButton,
 } from '@mantine/core'
 import { HttpMethodBadge } from './HttpMethodBadge'
 import { OperationForm } from './OperationForm'
-import {
-  OperationFormGeneratedCode,
-  useStyles,
-} from './OperationFormGeneratedCode'
 import {
   FORM_VALUES_LOCAL_STORAGE_KEY,
   generateInitialFormValues,
@@ -42,11 +35,7 @@ import { CodeGeneratorTypeScript } from '../utils/code-generator-typescript'
 import { ExecuteOutput } from './ExecuteOutput'
 import { tryJsonOutput } from '../utils/try-json-output'
 import { tryTableOutput } from '../utils/try-table-output'
-import {
-  IconAlertCircle,
-  IconPlayerPlayFilled,
-  IconRepeat,
-} from '@tabler/icons-react'
+import { IconAlertCircle } from '@tabler/icons-react'
 import { deepmerge } from '../utils/deepmerge'
 import { notifications } from '@mantine/notifications'
 import localforage from 'localforage'
@@ -55,7 +44,7 @@ import { SocialFooter } from './SocialFooter'
 import { Breadcrumbs } from './Breadcrumbs'
 import { OperationReferenceResponses } from './OperationReferenceResponses'
 import { Language } from './DemoCode'
-import { TsIcon } from './TsIcon'
+import { OperationRequest } from './OperationRequest'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -105,10 +94,6 @@ export function OperationReferenceMain({
   ]
 
   const theme = useMantineTheme()
-
-  const {
-    classes: { wrapper, codeBorderColor },
-  } = useStyles()
 
   const typecriptConfig = konfigYaml.generators.typescript
   if (!typecriptConfig) {
@@ -229,8 +214,6 @@ export function OperationReferenceMain({
   const [language, setLanguage] = useState<Language>('typescript')
 
   const header = operation.operation.summary ?? operation.path
-  const RequestIcon =
-    result?.data !== undefined ? IconRepeat : IconPlayerPlayFilled
   return (
     <FormProvider form={form}>
       <form
@@ -384,37 +367,10 @@ export function OperationReferenceMain({
                   })}
                 </>
               )}
-              <Box className={clsx(wrapper, codeBorderColor)}>
-                <Box py="xs">
-                  <Box p="xs">
-                    <Title order={6}>Language</Title>
-                    <Box mt="xs">
-                      <button className="rounded-md dark:bg-mantine-gray-900 bg-mantine-gray-100 border border-mantine-gray-400 dark:border-mantine-gray-800 py-2 flex items-center px-3 gap-2">
-                        <TsIcon className="w-5 h-5" />
-                        <Text className="text-sm text-mantine-gray-800 dark:text-mantine-gray-400">
-                          TypeScript
-                        </Text>
-                      </button>
-                    </Box>
-                  </Box>
-                  <Box p="xs">
-                    <Title order={6}>Installation</Title>
-                    <Box py="xs"></Box>
-                  </Box>
-                </Box>
-                <OperationFormGeneratedCode
-                  {...codegenArgs}
-                  language={language}
-                />
-              </Box>
-              <Button
-                variant={colorScheme === 'dark' ? 'light' : 'filled'}
-                type="submit"
-                loading={requestInProgress}
-                rightIcon={<RequestIcon size="0.8rem" />}
-              >
-                Send request
-              </Button>
+              <OperationRequest
+                codegenArgs={codegenArgs}
+                requestInProgress={requestInProgress}
+              />
               {result?.data != null && (
                 <Paper shadow="sm" radius="xs" p={0} withBorder>
                   <Box p="sm">
