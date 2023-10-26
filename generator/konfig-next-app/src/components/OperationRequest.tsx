@@ -32,10 +32,10 @@ export function OperationRequest({
     <div className="border rounded-xl border-mantine-gray-400 dark:border-mantine-gray-800">
       <Tab.Group>
         <div className="flex px-4 flex-wrap items-start gap-x-4">
-          <div className="mr-auto pt-3 text-black dark:text-white  text-xs font-semibold">
+          <div className="mr-auto pt-3 text-black dark:text-white text-sm font-semibold">
             Request
           </div>
-          <Tab.List className="-mb-px flex gap-4 text-xs font-medium">
+          <Tab.List className="-mb-px flex gap-4 text-sm font-medium">
             {languages.map(({ label }) => {
               return (
                 <Tab as={Fragment} key={label}>
