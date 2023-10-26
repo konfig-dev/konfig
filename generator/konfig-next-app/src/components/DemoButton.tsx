@@ -24,7 +24,6 @@ const _DemoButton: Components['button'] = ({
   }
   return (
     <>
-      <DemoOutput cell={cell} />
       <MantineButton
         loading={cell.running}
         color={
@@ -56,6 +55,7 @@ const _DemoButton: Components['button'] = ({
       >
         {children}
       </MantineButton>
+      <DemoOutput cell={cell} />
     </>
   )
 }
