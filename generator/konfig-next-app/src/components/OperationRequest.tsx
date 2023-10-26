@@ -35,7 +35,7 @@ export function OperationRequest({
           <div className="mr-auto pt-3 text-black dark:text-white text-sm font-semibold">
             Request
           </div>
-          <Tab.List className="-mb-px flex gap-4 text-sm font-medium">
+          <Tab.List className="-mb-px flex gap-4 text-xs font-medium">
             {languages.map(({ label }) => {
               return (
                 <Tab as={Fragment} key={label}>
@@ -47,7 +47,7 @@ export function OperationRequest({
                             selected,
                           ['border-transparent hover:text-white']: !selected,
                         },
-                        'border-b py-4 transition ui-not-focus-visible:outline-none'
+                        'border-b py-4 transition ui-not-focus-visible:outline-none ui-focus-visible:outline-brand-500 ui-focus-visible:dark:outline-brand-600'
                       )}
                     >
                       {label}
@@ -61,13 +61,16 @@ export function OperationRequest({
         <Tab.Panels className="border-t dark:border-t-mantine-gray-900">
           {languages.map(({ value }) => {
             return (
-              <Tab.Panel className="p-0 lg:p-2" key={value}>
+              <Tab.Panel
+                className="p-0 lg:p-2 outline-brand-500 dark:outline-brand-600"
+                key={value}
+              >
                 <OperationFormGeneratedCode {...codegenArgs} language={value} />
               </Tab.Panel>
             )
           })}
         </Tab.Panels>
-        <div className="border-t dark:border-t-mantine-gray-900 py-4">
+        <div className="border-t dark:border-t-mantine-gray-900 py-2">
           <Button
             variant={colorScheme === 'dark' ? 'light' : 'filled'}
             className="ml-auto block mx-4 rounded-md"
