@@ -43,7 +43,8 @@ export function OperationRequest({
                     <button
                       className={clsx(
                         {
-                          ['border-emerald-500 text-emerald-500']: selected,
+                          ['border-brand-800 text-brand-800 dark:border-brand-600 dark:text-brand-600']:
+                            selected,
                           ['border-transparent hover:text-white']: !selected,
                         },
                         'border-b py-4 transition ui-not-focus-visible:outline-none'
