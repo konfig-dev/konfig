@@ -103,9 +103,9 @@ function ParameterGroup({
   return (
     parameters.length > 0 && (
       <Box>
-        <Title mb="xl" order={6}>
+        <div className="text-xs text-mantine-gray-600 mb-6 font-semibold">
           {title}
-        </Title>
+        </div>
         <Stack spacing="xl">
           {parameters.map((param, i) => (
             <Box

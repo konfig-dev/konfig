@@ -27,6 +27,7 @@ export function OperationRequest({
   codegenArgs: CodeGeneratorConstructorArgs
   requestInProgress: boolean
 }) {
+  const { colorScheme } = useMantineTheme()
   return (
     <div className="border rounded-xl border-mantine-gray-400 dark:border-mantine-gray-800">
       <Tab.Group>
@@ -67,7 +68,7 @@ export function OperationRequest({
         </Tab.Panels>
         <div className="border-t dark:border-t-mantine-gray-900 py-4">
           <Button
-            variant="light"
+            variant={colorScheme === 'dark' ? 'light' : 'filled'}
             className="ml-auto block mx-4 rounded-md"
             type="submit"
             loading={requestInProgress}
