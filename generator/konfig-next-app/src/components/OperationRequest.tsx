@@ -45,7 +45,8 @@ export function OperationRequest({
                         {
                           ['border-brand-800 text-brand-800 dark:border-brand-500 dark:text-brand-500']:
                             selected,
-                          ['border-transparent hover:text-white']: !selected,
+                          ['border-transparent text-mantine-gray-600 hover:text-mantine-gray-800 dark:hover:text-mantine-gray-100']:
+                            !selected,
                         },
                         'border-b py-4 transition ui-not-focus-visible:outline-none ui-focus-visible:outline-brand-500 ui-focus-visible:dark:outline-brand-600'
                       )}
