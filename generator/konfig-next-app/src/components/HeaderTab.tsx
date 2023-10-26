@@ -87,6 +87,9 @@ export function HeaderTab({
       data-active={active}
       aria-disabled={disabled}
       onClick={handleClick}
+      style={{
+        marginBottom: hasLightAndDarkLogo ? -1 : undefined,
+      }}
       className={cx(classes.tab, {
         [hasLightDarkModeStyles.classes.color]: hasLightAndDarkLogo,
         [colorStyles.classes.color]: !hasLightAndDarkLogo,
