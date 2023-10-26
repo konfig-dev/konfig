@@ -45,15 +45,15 @@ export class CodeGeneratorTypeScript extends CodeGenerator {
 
 const ${this.clientNameLowercase} = new ${this.client}(${this.setupArgs})
 
-${this.mode === 'production' ? `const response =` : 'return'} await ${
+${this.mode === 'ui' ? `const response =` : 'return'} await ${
       this.clientNameLowercase
     }.${this.namespace}.${this.methodName}(${this.args})
-${this.mode === 'production' ? `console.log(response.data)` : ''}
+${this.mode === 'ui' ? `console.log(response.data)` : ''}
 `
   }
 
   get importStatement(): string {
-    if (this.mode === 'production') {
+    if (this.mode === 'ui') {
       if (this.args.includes('fs.readFileSync'))
         return `import { ${this.clientName} } from '${this.packageName}'\nimport fs from 'fs'`
       return `import { ${this.clientName} } from '${this.packageName}'`
@@ -62,7 +62,7 @@ ${this.mode === 'production' ? `console.log(response.data)` : ''}
   }
 
   get client(): string {
-    if (this.mode === 'production') {
+    if (this.mode === 'ui') {
       return `${this.clientName}`
     }
     return `client.${this.clientName}`
@@ -77,11 +77,11 @@ ${this.nonEmptySecurity
     if (value.type === 'oauth2-client-credentials') {
       // convert value.clientSecret to string of same length with all values replace with char 'X'
       const clientSecret =
-        this.mode === 'sandbox'
+        this.mode === 'execution'
           ? value.clientSecret
           : value.clientSecret.replace(/./g, 'X')
       const clientId =
-        this.mode === 'sandbox'
+        this.mode === 'execution'
           ? value.clientId
           : value.clientId.replace(/./g, 'X')
       return ` "oauthClientId": "${clientId}",
@@ -90,7 +90,7 @@ ${this.nonEmptySecurity
     if (value.type === 'bearer') {
       // convert value.value to string of same length with all values replace with char 'X'
       const bearer =
-        this.mode === 'sandbox' ? value.value : value.value.replace(/./g, 'X')
+        this.mode === 'execution' ? value.value : value.value.replace(/./g, 'X')
       return ` "accessToken": "${bearer}",`
     }
     const securityValue = value.type === 'apiKey' ? value.value : value.value
@@ -103,7 +103,9 @@ ${this.nonEmptySecurity
     )
     // convert securityValue to string of same length with all values replace with char 'X'
     const securityValueMasked =
-      this.mode === 'sandbox' ? securityValue : securityValue.replace(/./g, 'X')
+      this.mode === 'execution'
+        ? securityValue
+        : securityValue.replace(/./g, 'X')
     return `  ${securityKey}: '${securityValueMasked}',`
   })
   .join('\n')}${
@@ -126,7 +128,7 @@ ${this.nonEmptySecurity
   }
 
   get proxySetupArgs(): string {
-    return this.mode === 'production'
+    return this.mode === 'ui'
       ? this.isUsingCustomBasePath
         ? `basePath: "${this.basePath}",`
         : ''
@@ -166,7 +168,7 @@ ${this.nonEmptySecurity
       return `[${value.map((v, index) => this.argValue(v, index)).join(', ')}]`
     }
     if (value instanceof File) {
-      if (this.mode === 'sandbox') {
+      if (this.mode === 'execution') {
         return `files["${fingerprintFile(value)}"]`
       }
       if (value.name !== '') {

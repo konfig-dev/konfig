@@ -12,10 +12,9 @@ export class CodeGeneratorHttpsnippet extends CodeGenerator {
   options: Options
   constructor(args: CodeGeneratorConstructorArgs & Options) {
     super(args)
-    console.log(this.basePath)
-    console.log(this.configuration.path)
     const harRequest = convertToHarRequest(
       this.nonEmptyParameters,
+      this.nonEmptySecurity,
       new URL(this.configuration.path, this.basePath).toString(),
       this.configuration.httpMethod.toUpperCase()
     )

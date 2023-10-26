@@ -232,7 +232,7 @@ export function OperationReferenceMain({
             const files = CodeGeneratorTypeScript.setupFiles(values)
 
             const snippet = await new CodeGeneratorTypeScript({
-              mode: 'sandbox',
+              mode: 'execution',
               ...codegenArgs,
             }).snippet()
 

@@ -40,10 +40,11 @@ export type CodeGeneratorConstructorArgs = {
   }
 
   /**
-   *  Sandbox is for executing the code in a sandboxed environment while
-   *  production is meant to be copy-pasted into a project.
+   *  'execution' is for executing the code in the browser
+   *  'ui' is meant to be displayed to the user in the browser
+   *  'copy' is meant to be copied to the clipboard
    */
-  mode?: 'sandbox' | 'production'
+  mode?: 'execution' | 'ui' | 'copy'
 }
 
 export type NonEmptyParameters = [
@@ -115,7 +116,7 @@ export abstract class CodeGenerator {
       languageConfigurations,
       basePath,
       requestBodyRequired,
-      mode = 'production',
+      mode = 'ui',
       servers,
       oauthTokenUrl,
       originalOauthTokenUrl,
@@ -305,3 +306,5 @@ export abstract class CodeGenerator {
     )
   }
 }
+
+export type NonEmptySecurity = CodeGenerator['nonEmptySecurity']

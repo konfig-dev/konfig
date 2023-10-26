@@ -26,7 +26,14 @@ const OperationParameterArrayForm = dynamic(
 
 export type Parameter = Omit<ParameterObject, 'schema'> & {
   schema: SchemaObject
-} & { isRequestBody?: boolean }
+} & {
+  // if true, this parameter is the request body itself (e.g. raw string or
+  // array value)
+  //
+  // if false, this parameter is a property on an object type schema in the
+  // request body (e.g. "user" in { user: string })
+  isRequestBody?: boolean
+}
 
 export function OperationParameter({
   param,
