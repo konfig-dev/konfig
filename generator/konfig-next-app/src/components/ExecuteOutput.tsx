@@ -1,5 +1,5 @@
 import { useMantineColorScheme, Transition, Tabs, Code } from '@mantine/core'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback, useLayoutEffect } from 'react'
 import { DemoTable } from './DemoTable'
 import { tryTableOutput } from '@/utils/try-table-output'
 import { tryJsonOutput } from '@/utils/try-json-output'
@@ -54,7 +54,7 @@ export function ExecuteOutput({
     [isFocusedOnJson]
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Add an event listener when the component mounts
     document.addEventListener('copy', onCopy)
 
@@ -64,7 +64,7 @@ export function ExecuteOutput({
     }
   }, [isFocusedOnJson, onCopy])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (haveClickedTab) return
     const newTab =
       tableOutput !== null && !disableTable
