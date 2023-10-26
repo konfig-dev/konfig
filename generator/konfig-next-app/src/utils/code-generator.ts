@@ -12,11 +12,14 @@ import {
   SECURITY_FORM_NAME_PREFIX,
 } from './generate-initial-operation-form-values'
 import { ReferencePageProps } from './generate-props-for-reference-page'
+import { HttpMethods } from 'konfig-lib'
 
 export type CodeGeneratorConstructorArgs = {
   basePath: string
   servers: string[]
   formData: FormDataType
+  httpMethod: HttpMethods
+  path: string
   requestBody: Parameter | null
   parameters: Parameter[]
   tag: string

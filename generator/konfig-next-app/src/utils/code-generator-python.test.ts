@@ -1,9 +1,12 @@
+import { HttpMethodsEnum } from 'konfig-lib'
 import { CodeGeneratorConstructorArgs } from './code-generator'
 import { CodeGeneratorPython } from './code-generator-python'
 
 test('request body with blob values', async () => {
   const args: CodeGeneratorConstructorArgs = {
     parameters: [],
+    path: '',
+    httpMethod: HttpMethodsEnum.POST,
     requestBody: {
       name: '',
       in: 'body',
@@ -123,6 +126,8 @@ test('request body with blob values', async () => {
 
 test('simple example', async () => {
   const code = await new CodeGeneratorPython({
+    path: '',
+    httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
         type: 'apiKey',
@@ -182,6 +187,8 @@ test('simple example', async () => {
 
 test('simple parameters example', async () => {
   const code = await new CodeGeneratorPython({
+    path: '',
+    httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
         type: 'apiKey',
@@ -266,6 +273,8 @@ test('simple parameters example', async () => {
 
 it('example with boolean', async () => {
   const code = await new CodeGeneratorPython({
+    path: '',
+    httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
         type: 'apiKey',
@@ -415,6 +424,8 @@ it('example with boolean', async () => {
 
 it('example with inner object', async () => {
   const code = await new CodeGeneratorPython({
+    path: '',
+    httpMethod: HttpMethodsEnum.POST,
     formData: {
       requestBody: '',
       parameters: {
@@ -609,6 +620,8 @@ it('example with inner object', async () => {
 
 it('example with no setup', async () => {
   const code = await new CodeGeneratorPython({
+    path: '',
+    httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
         type: 'apiKey',
@@ -656,6 +669,8 @@ it('example with no setup', async () => {
 
 it('example with no form data but > 1 parameters', async () => {
   const code = await new CodeGeneratorPython({
+    path: '',
+    httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
         type: 'apiKey',

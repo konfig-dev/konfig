@@ -76,6 +76,8 @@ const Operation = ({
   operation,
   owner,
   faviconLink,
+  path,
+  httpMethod,
   hasDocumentation,
   repo,
   oauthTokenUrl: originalOauthTokenUrl,
@@ -174,6 +176,7 @@ const Operation = ({
         }
       >
         <OperationReferenceMain
+          path={path}
           requestBodyParameter={requestBodyParameter}
           originalOauthTokenUrl={originalOauthTokenUrl}
           owner={owner}
@@ -190,6 +193,7 @@ const Operation = ({
           responses={responses}
           securitySchemes={securitySchemes}
           operation={operation}
+          httpMethod={httpMethod}
           basePath={basePath ?? servers[0]}
         />
       </AppShell>

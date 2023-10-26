@@ -59,18 +59,22 @@ export function OperationReferenceMain({
   konfigYaml,
   basePath,
   owner,
+  path,
   oauthTokenUrl,
   repo,
   servers,
   originalOauthTokenUrl,
   requestBodyParameter,
+  httpMethod,
 }: Pick<
   ReferencePageProps,
   | 'pathParameters'
   | 'queryParameters'
+  | 'httpMethod'
   | 'headerParameters'
   | 'cookieParameters'
   | 'requestBodyParameter'
+  | 'path'
   | 'owner'
   | 'repo'
   | 'requestBodyProperties'
@@ -169,6 +173,8 @@ export function OperationReferenceMain({
     : []
 
   const codegenArgs: CodeGeneratorConstructorArgs = {
+    httpMethod,
+    path,
     parameters: parameters,
     requestBody: requestBodyParameter,
     securitySchemes,

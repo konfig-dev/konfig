@@ -2,9 +2,10 @@ import { Prism, PrismStylesNames } from '@mantine/prism'
 import { CodeGeneratorTypeScript } from '@/utils/code-generator-typescript'
 import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
 import { useEffect, useState } from 'react'
-import { DefaultProps, clsx, createStyles } from '@mantine/core'
+import { DefaultProps } from '@mantine/core'
 import { CodeGeneratorPython } from '@/utils/code-generator-python'
 import { Language } from './DemoCode'
+import { CodeGeneratorHttpsnippet } from '@/utils/code-generator-httpsnippet'
 
 export function OperationFormGeneratedCode(
   args: CodeGeneratorConstructorArgs & { language: Language }
@@ -20,6 +21,12 @@ export function OperationFormGeneratedCode(
       new CodeGeneratorPython(args).snippet().then((result) => {
         setData(result)
       })
+    } else if (args.language === 'bash') {
+      new CodeGeneratorHttpsnippet({ ...args, targetId: 'shell' })
+        .snippet()
+        .then((result) => {
+          setData(result)
+        })
     } else {
       throw Error(`Unxpected language: "${args.language}"`)
     }

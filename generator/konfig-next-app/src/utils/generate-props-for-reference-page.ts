@@ -7,6 +7,7 @@ import {
   SecurityScheme,
   RequestBodyObject,
   getOperations,
+  HttpMethods,
 } from 'konfig-lib'
 import { GetStaticPropsResult } from 'next'
 import {
@@ -28,6 +29,8 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   demos: string[] // demo ids
   hasDocumentation: boolean
   repo: string
+  httpMethod: HttpMethods
+  path: string
   oauthTokenUrl: string | null
   requestBodyParameter: Parameter | null
   pathParameters: Parameter[]
@@ -255,6 +258,8 @@ export async function generatePropsForReferencePage({
     props: {
       ...props,
       title: props.konfigYaml.portal.title,
+      httpMethod: operation.method,
+      path: operation.path,
       operationId,
       operation,
       spec: spec.spec,
