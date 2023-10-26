@@ -28,7 +28,7 @@ export function OperationFormGeneratedCode(
   const styles: DefaultProps<PrismStylesNames> = {
     styles: {
       code: {
-        maxHeight: 400,
+        maxHeight: 300,
         backgroundColor: 'unset !important',
       },
     },
