@@ -14,11 +14,7 @@ import {
   MediaQuery,
   Alert,
   useMantineTheme,
-  createStyles,
-  Select,
   clsx,
-  Card,
-  Image,
   UnstyledButton,
 } from '@mantine/core'
 import { HttpMethodBadge } from './HttpMethodBadge'
@@ -27,7 +23,6 @@ import {
   OperationFormGeneratedCode,
   useStyles,
 } from './OperationFormGeneratedCode'
-import { httpResponseCodeMeaning } from '../utils/http-response-code-meaning'
 import {
   FORM_VALUES_LOCAL_STORAGE_KEY,
   generateInitialFormValues,
@@ -49,12 +44,8 @@ import { tryJsonOutput } from '../utils/try-json-output'
 import { tryTableOutput } from '../utils/try-table-output'
 import {
   IconAlertCircle,
-  IconPlayerPlay,
   IconPlayerPlayFilled,
-  IconPlayerRecord,
   IconRepeat,
-  IconTerminal,
-  IconUpload,
 } from '@tabler/icons-react'
 import { deepmerge } from '../utils/deepmerge'
 import { notifications } from '@mantine/notifications'
