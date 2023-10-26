@@ -8,7 +8,7 @@ export default class _Document extends Document {
 
   render() {
     return (
-      <Html>
+      <Html className="dark">
         <Head />
         <body>
           <Main />
