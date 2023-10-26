@@ -337,36 +337,33 @@ export function OperationReferenceMain({
           <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
             <Divider my="xl" />
           </MediaQuery>
-          <Box px="sm" w={{ base: '100%', sm: '40%' }}>
-            <Stack
-              pos="sticky"
-              top="calc(var(--mantine-header-height, 0px) + 1rem)"
-              w="100%"
-              spacing="sm"
-            >
-              {authorization.length > 0 && (
-                <>
-                  <Title order={6}>Authorization</Title>
-                  {authorization
-                    .filter(([name]) => {
-                      return !hideSecurity
-                        .map(({ name }) => name)
-                        .includes(name)
-                    })
-                    .map(([name, scheme]) => {
-                      return (
-                        <OperationSecuritySchemeForm
-                          key={name}
-                          name={name}
-                          scheme={scheme}
-                        />
-                      )
-                    })}
-                  {clientState.map((name) => {
-                    return <OperationClientStateForm key={name} name={name} />
+          <Box
+            className="flex flex-col gap-6"
+            px="sm"
+            w={{ base: '100%', sm: '40%' }}
+          >
+            {authorization.length > 0 && (
+              <div className="space-y-2">
+                <Title order={6}>Authorization</Title>
+                {authorization
+                  .filter(([name]) => {
+                    return !hideSecurity.map(({ name }) => name).includes(name)
+                  })
+                  .map(([name, scheme]) => {
+                    return (
+                      <OperationSecuritySchemeForm
+                        key={name}
+                        name={name}
+                        scheme={scheme}
+                      />
+                    )
                   })}
-                </>
-              )}
+                {clientState.map((name) => {
+                  return <OperationClientStateForm key={name} name={name} />
+                })}
+              </div>
+            )}
+            <div className="sticky top-[calc(var(--mantine-header-height,0px)+1rem)] space-y-4">
               <OperationRequest
                 codegenArgs={codegenArgs}
                 requestInProgress={requestInProgress}
@@ -388,12 +385,12 @@ export function OperationReferenceMain({
                   />
                 </Paper>
               )}
-              <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-                <Box>
-                  <SocialFooter konfigYaml={konfigYaml} />
-                </Box>
-              </MediaQuery>
-            </Stack>
+            </div>
+            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+              <Box>
+                <SocialFooter konfigYaml={konfigYaml} />
+              </Box>
+            </MediaQuery>
           </Box>
         </Flex>
       </form>
