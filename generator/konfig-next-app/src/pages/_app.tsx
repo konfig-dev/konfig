@@ -11,6 +11,7 @@ import '@/styles/globals.css'
 import { Notifications } from '@mantine/notifications'
 import { Tuple, DefaultMantineColor } from '@mantine/core'
 import { getClickableStyles } from '@/utils/get-clickable-styles'
+import { useEffect } from 'react'
 
 type ExtendedCustomColors = 'brand' | DefaultMantineColor
 
@@ -28,8 +29,18 @@ function App(props: AppProps) {
     defaultValue: 'dark',
     getInitialValueInEffect: true,
   })
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
+  const toggleColorScheme = (value?: ColorScheme) => {
+    const newValue = value || (colorScheme === 'dark' ? 'light' : 'dark')
+    setColorScheme(newValue)
+  }
+
+  useEffect(() => {
+    if (colorScheme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [colorScheme])
 
   return (
     <>

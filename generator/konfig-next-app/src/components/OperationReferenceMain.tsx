@@ -389,20 +389,12 @@ export function OperationReferenceMain({
                   <Box p="xs">
                     <Title order={6}>Language</Title>
                     <Box mt="xs">
-                      <UnstyledButton
-                        sx={(theme) => ({
-                          borderRadius: theme.radius.sm,
-                          backgroundColor: theme.colors.gray[8],
-                        })}
-                        w={100}
-                        ta="center"
-                        py="md"
-                      >
-                        <TsIcon width="1rem" height="1rem" />
-                        <Text mt={4} fz="xs">
+                      <button className="rounded-md dark:bg-mantine-gray-900 bg-mantine-gray-100 border border-mantine-gray-400 dark:border-mantine-gray-800 py-2 flex items-center px-3 gap-2">
+                        <TsIcon className="w-5 h-5" />
+                        <Text className="text-sm text-mantine-gray-800 dark:text-mantine-gray-400">
                           TypeScript
                         </Text>
-                      </UnstyledButton>
+                      </button>
                     </Box>
                   </Box>
                   <Box p="xs">
