@@ -14,10 +14,19 @@ import {
   MediaQuery,
   Alert,
   useMantineTheme,
+  createStyles,
+  Select,
+  clsx,
+  Card,
+  Image,
+  UnstyledButton,
 } from '@mantine/core'
 import { HttpMethodBadge } from './HttpMethodBadge'
 import { OperationForm } from './OperationForm'
-import { OperationFormGeneratedCode } from './OperationFormGeneratedCode'
+import {
+  OperationFormGeneratedCode,
+  useStyles,
+} from './OperationFormGeneratedCode'
 import { httpResponseCodeMeaning } from '../utils/http-response-code-meaning'
 import {
   FORM_VALUES_LOCAL_STORAGE_KEY,
@@ -54,6 +63,8 @@ import { ReferencePageProps } from '../utils/generate-props-for-reference-page'
 import { SocialFooter } from './SocialFooter'
 import { Breadcrumbs } from './Breadcrumbs'
 import { OperationReferenceResponses } from './OperationReferenceResponses'
+import { Language } from './DemoCode'
+import { TsIcon } from './TsIcon'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -103,6 +114,10 @@ export function OperationReferenceMain({
   ]
 
   const theme = useMantineTheme()
+
+  const {
+    classes: { wrapper, codeBorderColor },
+  } = useStyles()
 
   const typecriptConfig = konfigYaml.generators.typescript
   if (!typecriptConfig) {
@@ -219,6 +234,8 @@ export function OperationReferenceMain({
       notifications.show({ message, color: 'red', id })
     }
   }
+
+  const [language, setLanguage] = useState<Language>('typescript')
 
   const header = operation.operation.summary ?? operation.path
   const RequestIcon =
@@ -355,8 +372,7 @@ export function OperationReferenceMain({
             >
               {authorization.length > 0 && (
                 <>
-                  <Title order={5}> Authorization </Title>
-
+                  <Title order={6}>Authorization</Title>
                   {authorization
                     .filter(([name]) => {
                       return !hideSecurity
@@ -377,7 +393,37 @@ export function OperationReferenceMain({
                   })}
                 </>
               )}
-              <OperationFormGeneratedCode {...codegenArgs} />
+              <Box className={clsx(wrapper, codeBorderColor)}>
+                <Box py="xs">
+                  <Box p="xs">
+                    <Title order={6}>Language</Title>
+                    <Box mt="xs">
+                      <UnstyledButton
+                        sx={(theme) => ({
+                          borderRadius: theme.radius.sm,
+                          backgroundColor: theme.colors.gray[8],
+                        })}
+                        w={100}
+                        ta="center"
+                        py="md"
+                      >
+                        <TsIcon width="1rem" height="1rem" />
+                        <Text mt={4} fz="xs">
+                          TypeScript
+                        </Text>
+                      </UnstyledButton>
+                    </Box>
+                  </Box>
+                  <Box p="xs">
+                    <Title order={6}>Installation</Title>
+                    <Box py="xs"></Box>
+                  </Box>
+                </Box>
+                <OperationFormGeneratedCode
+                  {...codegenArgs}
+                  language={language}
+                />
+              </Box>
               <Button
                 variant={colorScheme === 'dark' ? 'light' : 'filled'}
                 type="submit"
