@@ -31,11 +31,13 @@ export async function executeTestCommand({
   sequence,
   cliRoot,
   noMockServer,
+  mockServerPort = 4010,
 }: {
   filterInput?: string
   sequence: boolean
   cliRoot: string
   noMockServer: boolean
+  mockServerPort?: number
 }) {
   const filter = parseFilterFlag(filterInput)
   const configDir = process.cwd()
@@ -43,12 +45,11 @@ export async function executeTestCommand({
     configDir,
   })
 
-  // kill any existing process on 4010
+  // kill any existing process on mock server port
   if (!noMockServer) {
-    const port = 4010
-    CliUx.ux.log(`Killing any process using port ${port}`)
+    CliUx.ux.log(`Killing any process using port ${mockServerPort}`)
     try {
-      await kill(port)
+      await kill(mockServerPort)
     } catch (e) {
       if (e instanceof Error) {
         if (e.message !== 'No process running on port') throw e
@@ -56,22 +57,25 @@ export async function executeTestCommand({
     }
 
     // spawn process that run "konfig mock -d {specPath}" from konfig.yaml
-    CliUx.ux.log('💻 Starting mock server')
+    CliUx.ux.log(`💻 Starting mock server on port ${mockServerPort}`)
     // TODO: ENG-1099 Use a function call here instead of CLI
     const pathToPrism = await findNodeModulesBinPath({
       name: 'prism',
       cwd: cliRoot,
     })
-    execa.command(`${pathToPrism} mock -d ${common.specPath}`, {
-      cwd: configDir,
-      stdio: 'inherit',
-      shell: true,
-    })
+    execa.command(
+      `${pathToPrism} mock -d ${common.specPath} --port ${mockServerPort}`,
+      {
+        cwd: configDir,
+        stdio: 'inherit',
+        shell: true,
+      }
+    )
 
     // if this process exits in any way, kill the mock server
     const handleTermination = async () => {
       CliUx.ux.log('🛑 Killing mock server')
-      await kill(port)
+      await kill(mockServerPort)
       process.exit()
     }
 
@@ -82,7 +86,7 @@ export async function executeTestCommand({
     process.on('SIGUSR2', handleTermination)
 
     await waiton({
-      resources: [`http://127.0.0.1:${port}`],
+      resources: [`http://127.0.0.1:${mockServerPort}`],
       timeout: 60_000,
       validateStatus: (status) => {
         console.log(status)

@@ -21,6 +21,11 @@ export default class Test extends Command {
       char: 'x',
       default: false,
     }),
+    mockServerPort: Flags.integer({
+      description: 'Port to run mock server on',
+      char: 'p',
+      default: 4010,
+    }),
   }
 
   public async run(): Promise<void> {
@@ -30,6 +35,7 @@ export default class Test extends Command {
       sequence: flags.sequence,
       cliRoot: this.config.root,
       noMockServer: flags.noMockServer,
+      mockServerPort: flags.mockServerPort,
     })
   }
 }
