@@ -37,8 +37,10 @@ export function OperationFormGeneratedCode(
       code: {
         maxHeight: 300,
         backgroundColor: 'unset !important',
-        fontSize: 13,
       },
+    },
+    classNames: {
+      code: 'text-xs lg:text-sm',
     },
   }
 
