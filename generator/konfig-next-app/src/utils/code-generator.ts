@@ -186,7 +186,7 @@ export abstract class CodeGenerator {
    * is passed as a separate argument.
    */
   get requestBodyValue(): FormInputValue {
-    return this._formData['requestBody']
+    return this.recursivelyRemoveEmptyValues(this._formData['requestBody'])
   }
 
   /**
