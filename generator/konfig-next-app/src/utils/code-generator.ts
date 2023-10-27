@@ -275,6 +275,28 @@ export abstract class CodeGenerator {
     return filtered.length > 0
   }
 
+  get nonEmptySecurityMasked(): CodeGenerator['nonEmptySecurity'] {
+    return this.nonEmptySecurity.map(([name, security]) => {
+      if (security.type === 'apiKey') {
+        security[API_KEY_VALUE_PROPERTY] = this.mask(
+          security[API_KEY_VALUE_PROPERTY]
+        )
+      } else if (security.type === 'bearer') {
+        security[BEARER_VALUE_PROPERTY] = this.mask(
+          security[BEARER_VALUE_PROPERTY]
+        )
+      } else if (security.type === 'oauth2-client-credentials') {
+        security[OAUTH2_CLIENT_ID_PROPERTY] = this.mask(
+          security[OAUTH2_CLIENT_ID_PROPERTY]
+        )
+        security[OAUTH2_CLIENT_SECRET_PROPERTY] = this.mask(
+          security[OAUTH2_CLIENT_SECRET_PROPERTY]
+        )
+      }
+      return [name, security]
+    })
+  }
+
   /**
    * Returns the security schemes that are non-empty
    */

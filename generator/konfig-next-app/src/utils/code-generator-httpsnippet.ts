@@ -14,7 +14,7 @@ export class CodeGeneratorHttpsnippet extends CodeGenerator {
     super(args)
     const harRequest = convertToHarRequest(
       this.nonEmptyParameters,
-      this.nonEmptySecurity,
+      this.mode === 'ui' ? this.nonEmptySecurityMasked : this.nonEmptySecurity,
       // can't use URL because we don't want to encode { and } in path yet
       `${this.basePath}${this.configuration.path}`,
       this.configuration.httpMethod.toUpperCase()
