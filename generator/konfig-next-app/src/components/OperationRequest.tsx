@@ -29,7 +29,7 @@ export function OperationRequest({
 }) {
   const { colorScheme } = useMantineTheme()
   return (
-    <div className="border rounded-xl border-mantine-gray-400 dark:border-mantine-gray-800">
+    <div className="border rounded-md border-mantine-gray-400 dark:border-mantine-gray-800">
       <Tab.Group>
         <div className="flex px-4 flex-wrap items-start gap-x-4">
           <div className="mr-auto pt-3 text-black dark:text-white text-sm font-semibold">
