@@ -17,7 +17,7 @@ const KONFIG_CLI_PATH = path.join(
   "../konfig-dash/packages/konfig-cli/bin/dev"
 );
 
-export async function e2e() {
+export async function e2e(mockServerPort: number) {
   const currentTestName = expect.getState().currentTestName;
   if (!currentTestName) {
     throw new Error("Unable to get current test name");
@@ -31,7 +31,7 @@ export async function e2e() {
   });
 
   // run "konfig test" inside the path
-  await execa(KONFIG_CLI_PATH, ["test", "-x"], {
+  await execa(KONFIG_CLI_PATH, ["test", "-p", mockServerPort.toString()], {
     cwd: sdkDir,
     stdio: "inherit",
   });
