@@ -11,6 +11,10 @@ import {
 } from './generate-initial-operation-form-values'
 import { JSONObject } from './json-value'
 
+function generateBoundaryWithPrefix() {
+  return '----KonfigBoundary' + Math.random().toString(36).slice(2)
+}
+
 export function convertToHarRequest(
   params: NonEmptyParameters,
   securities: NonEmptySecurity,
@@ -69,12 +73,61 @@ export function convertToHarRequest(
     }
   }
 
-  const requestBody: JSONObject = {}
+  // if requestBodyValue is truthy and content type is multipart/form-data
+  // then populate har with multipart/form-data from requestBodyValue
+  if (
+    requestBodyValue !== null &&
+    contentType === 'multipart/form-data' &&
+    typeof requestBodyValue === 'object'
+  ) {
+    const formData = new FormData()
+    const addToFormData = (obj: FormInputValue) => {
+      Object.entries(obj).forEach(([name, value]) => {
+        if (value instanceof Blob) {
+          formData.append(name, value, value.name)
+        } else {
+          formData.append(name, JSON.stringify(value))
+        }
+      })
+    }
+    if (Array.isArray(requestBodyValue)) {
+      requestBodyValue.forEach(addToFormData)
+    } else {
+      addToFormData(requestBodyValue)
+    }
 
-  // add content type header
-  if (contentType !== null)
+    const boundary = generateBoundaryWithPrefix()
+
+    // add content type header
+    har.headers.push({
+      name: 'Content-Type',
+      value: `multipart/form-data; boundary=${boundary}`,
+    })
+
+    // add form data to postData
+    har.postData = {
+      mimeType: 'multipart/form-data',
+      params: [],
+    }
+
+    formData.forEach((value, name) => {
+      har.postData.params = har.postData.params || []
+      if (value instanceof Blob) {
+        har.postData.params.push({
+          name,
+          value: '',
+          fileName: value.name,
+          contentType: value.type,
+        })
+      } else {
+        har.postData.params.push({ name, value })
+      }
+    })
+  } else if (contentType !== null) {
     har.headers.push({ name: 'Content-Type', value: contentType })
+  }
 
+  const requestBody: JSONObject = {}
   params.forEach(([{ name, parameter }, value]) => {
     if (parameter.isRequestBody) {
       har.postData = {

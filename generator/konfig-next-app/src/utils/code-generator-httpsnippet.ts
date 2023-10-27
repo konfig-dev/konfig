@@ -32,7 +32,11 @@ export class CodeGeneratorHttpsnippet extends CodeGenerator {
     return code
   }
   protected gen(): string {
-    const output = this.httpSnippet.convert(this.options.targetId)
+    const output = this.httpSnippet.convert(
+      this.options.targetId,
+      this.options.clientId,
+      { binary: true }
+    )
     if (typeof output !== 'string') throw new Error('output is not string')
     return output
   }
