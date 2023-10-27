@@ -78,7 +78,7 @@ export function ParameterInput({
     return (
       <FileInput
         onChange={(file) => {
-          if (file === null) onChange(new File([], ''))
+          if (file === null) onChange('')
           else onChange(file)
         }}
         {...rest}
