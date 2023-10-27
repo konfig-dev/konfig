@@ -231,7 +231,9 @@ export abstract class CodeGenerator {
 
     if (Array.isArray(object)) {
       // remove all empty values from array and return
-      const filtered = (object as any).filter((p: any) => this.isNonEmpty(p))
+      const filtered = (object as any)
+        .filter((p: any) => this.isNonEmpty(p))
+        .map((p: any) => this.recursivelyRemoveEmptyValues(p))
       return filtered
     }
 

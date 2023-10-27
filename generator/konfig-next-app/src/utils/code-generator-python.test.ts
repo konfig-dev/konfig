@@ -2,6 +2,171 @@ import { HttpMethodsEnum } from 'konfig-lib'
 import { CodeGeneratorConstructorArgs } from './code-generator'
 import { CodeGeneratorPython } from './code-generator-python'
 
+test('nested objects does not have empty properties', async () => {
+  const args: CodeGeneratorConstructorArgs = {
+    httpMethod: HttpMethodsEnum.POST,
+    path: '/',
+    parameters: [
+      {
+        name: 'documents',
+        in: 'body',
+        schema: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['bucketId', 'sourceUrl'],
+            properties: {
+              bucketId: {
+                type: 'integer',
+                example: 1234,
+              },
+              sourceUrl: {
+                type: 'string',
+                example: 'https://my.source.url.com/file.txt',
+              },
+              callbackData: {
+                type: 'string',
+                example: 'my_callback_data',
+              },
+              callbackUrl: {
+                type: 'string',
+                example: 'https://my.callback.url.com',
+              },
+              metadata: {
+                type: 'object',
+                example: {
+                  key: 'value',
+                },
+              },
+              type: {
+                type: 'string',
+                enum: ['txt', 'docx', 'pptx', 'xlsx', 'pdf', 'png', 'jpg'],
+              },
+            },
+          },
+        },
+        required: true,
+      },
+    ],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        type: 'object',
+        required: ['documents'],
+        properties: {
+          documents: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['bucketId', 'sourceUrl'],
+              properties: {
+                bucketId: {
+                  type: 'integer',
+                  example: 1234,
+                },
+                sourceUrl: {
+                  type: 'string',
+                  example: 'https://my.source.url.com/file.txt',
+                },
+                callbackData: {
+                  type: 'string',
+                  example: 'my_callback_data',
+                },
+                callbackUrl: {
+                  type: 'string',
+                  example: 'https://my.callback.url.com',
+                },
+                metadata: {
+                  type: 'object',
+                  example: {
+                    key: 'value',
+                  },
+                },
+                type: {
+                  type: 'string',
+                  enum: ['txt', 'docx', 'pptx', 'xlsx', 'pdf', 'png', 'jpg'],
+                },
+              },
+            },
+          },
+        },
+      },
+      isRequestBody: true,
+    },
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-API-Key',
+      },
+    },
+    formData: {
+      parameters: {
+        documents: [
+          {
+            bucketId: 1,
+            sourceUrl: '',
+            callbackData: '',
+            callbackUrl: '',
+            metadata: '',
+            type: '',
+          },
+        ],
+        bucketId: '',
+        bucket: {
+          name: '',
+        },
+        documentId: '',
+        n: '',
+        nextToken: '',
+        id: '',
+        processId: '2fe69d3d-badf-43df-a665-0a49d00ba206',
+      },
+      security: {
+        ApiKeyAuth: {
+          type: 'apiKey',
+          in: 'header',
+          key: 'X-API-Key',
+          value: 'mykey',
+        },
+      },
+      requestBody: [
+        {
+          blob: {},
+          metadata: {
+            bucketId: 6124,
+            fileName: 'file.txt',
+            fileType: 'txt',
+            metadata: '',
+            callbackData: '',
+            callbackUrl: '',
+          },
+        },
+      ],
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Groundx',
+        packageName: 'groundx-typescript-sdk',
+      },
+      python: {
+        clientName: 'Groundx',
+        packageName: 'groundx',
+      },
+    },
+    servers: ['https://api.groundx.ai/api'],
+    operationId: 'Document_uploadRemote',
+    tag: 'Documents',
+    basePath: 'https://api.groundx.ai/api',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: false,
+  }
+  const code = await new CodeGeneratorPython(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 test('request body with blob values', async () => {
   const args: CodeGeneratorConstructorArgs = {
     parameters: [],
