@@ -30,6 +30,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   hasDocumentation: boolean
   repo: string
   httpMethod: HttpMethods
+  contentType: string | null
   path: string
   oauthTokenUrl: string | null
   requestBodyParameter: Parameter | null
@@ -135,12 +136,14 @@ export async function generatePropsForReferencePage({
   }
 
   let requestBodyParameter: Parameter | null = null
+  let contentType: string | null = null
   if (requestBody?.content) {
     for (const mediaType in requestBody.content) {
       const mediaTypeObject = requestBody.content[mediaType]
       if (mediaTypeObject.schema === undefined) continue
       if ('$ref' in mediaTypeObject.schema)
         throw Error('Spec should be dereferenced')
+      contentType = mediaType
       requestBodyParameter = {
         name: '',
         in: 'body',
@@ -258,6 +261,7 @@ export async function generatePropsForReferencePage({
     props: {
       ...props,
       title: props.konfigYaml.portal.title,
+      contentType,
       httpMethod: operation.method,
       path: operation.path,
       operationId,

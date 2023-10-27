@@ -25,6 +25,7 @@ export type CodeGeneratorConstructorArgs = {
   tag: string
   operationId: string
   requestBodyRequired: boolean
+  contentType: string | null
   originalOauthTokenUrl: string | null
   oauthTokenUrl: string | null
   securitySchemes: ReferencePageProps['securitySchemes']
@@ -176,6 +177,14 @@ export abstract class CodeGenerator {
     return this.configuration.requestBody?.schema?.type === 'array'
   }
 
+  /**
+   * This is different than parameter with "in" === "body".  In the case where
+   * the request body is a scalar object or array, then this value will be
+   * non-empty. The reason why this is a different case is because SDKs are
+   * ergonomic in that request bodies are flattened if possible. In the case of
+   * a scalar or array request body, the request body cannot be flattened so it
+   * is passed as a separate argument.
+   */
   get requestBodyValue(): FormInputValue {
     return this._formData['requestBody']
   }

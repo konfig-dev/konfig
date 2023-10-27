@@ -4,6 +4,7 @@ import {
   API_KEY_IN_PROPERTY,
   API_KEY_NAME_PROPERTY,
   API_KEY_VALUE_PROPERTY,
+  FormInputValue,
   OAUTH2_CLIENT_ID_PROPERTY,
   OAUTH2_CLIENT_SECRET_PROPERTY,
   SECURITY_TYPE_PROPERTY,
@@ -13,8 +14,10 @@ import { JSONObject } from './json-value'
 export function convertToHarRequest(
   params: NonEmptyParameters,
   securities: NonEmptySecurity,
+  requestBodyValue: FormInputValue,
   baseUrl: string,
-  method: string
+  method: string,
+  contentType: string | null
 ): HarRequest {
   const har: HarRequest = {
     method,
@@ -67,6 +70,10 @@ export function convertToHarRequest(
   }
 
   const requestBody: JSONObject = {}
+
+  // add content type header
+  if (contentType !== null)
+    har.headers.push({ name: 'Content-Type', value: contentType })
 
   params.forEach(([{ name, parameter }, value]) => {
     if (parameter.isRequestBody) {

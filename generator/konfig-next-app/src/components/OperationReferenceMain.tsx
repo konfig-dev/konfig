@@ -66,10 +66,12 @@ export function OperationReferenceMain({
   originalOauthTokenUrl,
   requestBodyParameter,
   httpMethod,
+  contentType,
 }: Pick<
   ReferencePageProps,
   | 'pathParameters'
   | 'queryParameters'
+  | 'contentType'
   | 'httpMethod'
   | 'headerParameters'
   | 'cookieParameters'
@@ -173,6 +175,7 @@ export function OperationReferenceMain({
     : []
 
   const codegenArgs: CodeGeneratorConstructorArgs = {
+    contentType,
     httpMethod,
     path,
     parameters: parameters,

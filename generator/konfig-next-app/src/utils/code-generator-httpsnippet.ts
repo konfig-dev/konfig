@@ -7,17 +7,22 @@ type Options = {
   targetId: TargetId
   clientId?: string | undefined
 }
+
+export type CodeGeneratorHttpSnippetConstructorArgs =
+  CodeGeneratorConstructorArgs & Options
 export class CodeGeneratorHttpsnippet extends CodeGenerator {
   httpSnippet: HTTPSnippet
   options: Options
-  constructor(args: CodeGeneratorConstructorArgs & Options) {
+  constructor(args: CodeGeneratorHttpSnippetConstructorArgs) {
     super(args)
     const harRequest = convertToHarRequest(
       this.nonEmptyParameters,
       this.mode === 'ui' ? this.nonEmptySecurityMasked : this.nonEmptySecurity,
+      this.requestBodyValue,
       // can't use URL because we don't want to encode { and } in path yet
       `${this.basePath}${this.configuration.path}`,
-      this.configuration.httpMethod.toUpperCase()
+      this.configuration.httpMethod.toUpperCase(),
+      this.configuration.contentType
     )
     this.httpSnippet = new HTTPSnippet(harRequest)
     this.options = args

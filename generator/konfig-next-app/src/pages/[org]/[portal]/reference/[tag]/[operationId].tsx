@@ -77,6 +77,7 @@ const Operation = ({
   owner,
   faviconLink,
   path,
+  contentType,
   httpMethod,
   hasDocumentation,
   repo,
@@ -179,6 +180,7 @@ const Operation = ({
           path={path}
           requestBodyParameter={requestBodyParameter}
           originalOauthTokenUrl={originalOauthTokenUrl}
+          contentType={contentType}
           owner={owner}
           servers={servers}
           repo={repo}

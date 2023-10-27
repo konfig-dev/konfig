@@ -5,6 +5,7 @@ import { CodeGeneratorPython } from './code-generator-python'
 test('deeply nested objects with file', async () => {
   const args: CodeGeneratorConstructorArgs = {
     httpMethod: HttpMethodsEnum.POST,
+    contentType: 'application/json',
     path: '/v1/ingest/documents/local',
     parameters: [],
     requestBody: {
@@ -115,6 +116,7 @@ test('deeply nested objects with file', async () => {
 
 test('nested objects does not have empty properties', async () => {
   const args: CodeGeneratorConstructorArgs = {
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     path: '/',
     parameters: [
@@ -282,6 +284,7 @@ test('request body with blob values', async () => {
   const args: CodeGeneratorConstructorArgs = {
     parameters: [],
     path: '',
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     requestBody: {
       name: '',
@@ -403,6 +406,7 @@ test('request body with blob values', async () => {
 test('simple example', async () => {
   const code = await new CodeGeneratorPython({
     path: '',
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
@@ -464,6 +468,7 @@ test('simple example', async () => {
 test('simple parameters example', async () => {
   const code = await new CodeGeneratorPython({
     path: '',
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
@@ -550,6 +555,7 @@ test('simple parameters example', async () => {
 it('example with boolean', async () => {
   const code = await new CodeGeneratorPython({
     path: '',
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
@@ -701,6 +707,7 @@ it('example with boolean', async () => {
 it('example with inner object', async () => {
   const code = await new CodeGeneratorPython({
     path: '',
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     formData: {
       requestBody: '',
@@ -897,6 +904,7 @@ it('example with inner object', async () => {
 it('example with no setup', async () => {
   const code = await new CodeGeneratorPython({
     path: '',
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
@@ -946,6 +954,7 @@ it('example with no setup', async () => {
 it('example with no form data but > 1 parameters', async () => {
   const code = await new CodeGeneratorPython({
     path: '',
+    contentType: 'application/json',
     httpMethod: HttpMethodsEnum.POST,
     securitySchemes: {
       PartnerSignature: {
