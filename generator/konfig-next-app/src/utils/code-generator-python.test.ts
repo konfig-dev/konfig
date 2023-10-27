@@ -2,6 +2,117 @@ import { HttpMethodsEnum } from 'konfig-lib'
 import { CodeGeneratorConstructorArgs } from './code-generator'
 import { CodeGeneratorPython } from './code-generator-python'
 
+test('deeply nested objects with file', async () => {
+  const args: CodeGeneratorConstructorArgs = {
+    httpMethod: HttpMethodsEnum.POST,
+    path: '/v1/ingest/documents/local',
+    parameters: [],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        type: 'array',
+        items: {
+          type: 'object',
+          required: ['blob', 'metadata'],
+          properties: {
+            blob: {
+              description: 'The actual file being uploaded.',
+              type: 'string',
+              format: 'binary',
+            },
+            metadata: {
+              type: 'object',
+              required: ['bucketId', 'fileName', 'fileType'],
+              properties: {
+                bucketId: {
+                  type: 'integer',
+                  example: 1234,
+                },
+                fileName: {
+                  type: 'string',
+                  example: 'my_file.txt',
+                },
+                fileType: {
+                  type: 'string',
+                  enum: ['txt', 'docx', 'pptx', 'xlsx', 'pdf', 'png', 'jpg'],
+                },
+                metadata: {
+                  type: 'object',
+                  example: {
+                    key: 'value',
+                  },
+                },
+                callbackData: {
+                  type: 'string',
+                  example: 'my_callback_data',
+                },
+                callbackUrl: {
+                  type: 'string',
+                  example: 'https://my.callback.url.com',
+                },
+              },
+            },
+          },
+        },
+      },
+      isRequestBody: true,
+    },
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-API-Key',
+      },
+    },
+    formData: {
+      parameters: {
+        documentId: '',
+      },
+      security: {
+        ApiKeyAuth: {
+          type: 'apiKey',
+          in: 'header',
+          key: 'X-API-Key',
+          value: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        },
+      },
+      requestBody: [
+        {
+          blob: new File([], 'file.txt'),
+          metadata: {
+            bucketId: 321,
+            fileName: '321',
+            fileType: 'docx',
+            metadata: '',
+            callbackData: '',
+            callbackUrl: '',
+          },
+        },
+      ],
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Groundx',
+        packageName: 'groundx-typescript-sdk',
+      },
+      python: {
+        clientName: 'Groundx',
+        packageName: 'groundx',
+      },
+    },
+    servers: ['https://api.groundx.ai/api'],
+    operationId: 'Document_uploadLocal',
+    tag: 'Documents',
+    basePath: 'https://api.groundx.ai/api',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: false,
+  }
+  const code = await new CodeGeneratorPython(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 test('nested objects does not have empty properties', async () => {
   const args: CodeGeneratorConstructorArgs = {
     httpMethod: HttpMethodsEnum.POST,

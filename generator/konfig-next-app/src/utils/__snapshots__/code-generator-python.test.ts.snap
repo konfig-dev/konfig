@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`deeply nested objects with file 1`] = `
+"from pprint import pprint
+from groundx import Groundx
+
+groundx = Groundx(
+    api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+)
+
+response = groundx.documents.upload_local([{
+    "blob": open("file.txt", "rb"),
+    "metadata": {
+        "bucket_id": 321,
+        "file_name": "321",
+        "file_type": "docx"
+    }
+}])
+pprint(response.body)"
+`;
+
 exports[`example with boolean 1`] = `
 "from pprint import pprint
 from snaptrade_client import SnapTrade
@@ -101,7 +120,6 @@ response = groundx.documents.upload_local([{
         "bucket_id": 321,
         "file_name": "321",
         "file_type": "txt",
-        "metadata": "",
         "callback_data": "321",
         "callback_url": "3213"
     }
@@ -110,10 +128,7 @@ response = groundx.documents.upload_local([{
     "metadata": {
         "bucket_id": 321,
         "file_name": "321",
-        "file_type": "txt",
-        "metadata": "",
-        "callback_data": "",
-        "callback_url": ""
+        "file_type": "txt"
     }
 }])
 pprint(response.body)"

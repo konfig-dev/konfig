@@ -237,6 +237,8 @@ export abstract class CodeGenerator {
       return filtered
     }
 
+    if (object instanceof File) return object
+
     const clone = { ...object }
     Object.entries(object).forEach(([key, value]) => {
       if (typeof value === 'object') {

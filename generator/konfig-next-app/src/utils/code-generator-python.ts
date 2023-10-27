@@ -119,7 +119,9 @@ from ${this.packageName} import ${this.clientName}`
 
   get args(): string {
     if (this.isArrayRequestBody) {
-      const arrayValue = this.requestBodyValue
+      const arrayValue = this.recursivelyRemoveEmptyValues(
+        this.requestBodyValue
+      )
       if (Array.isArray(arrayValue)) {
         return `[${arrayValue
           .map((v) => this.toPythonLiteralString(v))
