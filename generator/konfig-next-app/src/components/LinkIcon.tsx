@@ -1,5 +1,5 @@
 import { linkColor } from '@/utils/link-color'
-import { useMantineColorScheme, useMantineTheme } from '@mantine/core'
+import { useMantineTheme } from '@mantine/core'
 
 export function LinkIcon() {
   const theme = useMantineTheme()

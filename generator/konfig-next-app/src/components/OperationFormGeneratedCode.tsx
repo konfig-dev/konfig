@@ -6,6 +6,7 @@ import { DefaultProps } from '@mantine/core'
 import { CodeGeneratorPython } from '@/utils/code-generator-python'
 import { Language } from './DemoCode'
 import { CodeGeneratorHttpsnippet } from '@/utils/code-generator-httpsnippet'
+import { CopyButton } from './CopyButton'
 
 export function OperationFormGeneratedCode(
   args: CodeGeneratorConstructorArgs & { language: Language }
@@ -45,8 +46,11 @@ export function OperationFormGeneratedCode(
   }
 
   return (
-    <Prism withLineNumbers {...styles} language={args.language}>
-      {data}
-    </Prism>
+    <div className="relative group">
+      <Prism noCopy withLineNumbers {...styles} language={args.language}>
+        {data}
+      </Prism>
+      <CopyButton value="" />
+    </div>
   )
 }

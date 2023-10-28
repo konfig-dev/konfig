@@ -3,7 +3,10 @@ import chroma from 'chroma-js'
 const LIGHTNESS_MAP = [0.97, 0.94, 0.9, 0.85, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3]
 const SATURATION_MAP = [0.32, 0.16, 0.08, 0.04, 0, 0, 0.04, 0.08, 0.16, 0.32]
 
-export const generateShadePalette = (color: string): Tuple<string, 10> => {
+export const generateShadePalette = (
+  color: string,
+  rgb?: boolean
+): Tuple<string, 10> => {
   const colorChroma = chroma(color)
 
   const lightnessGoal = colorChroma.get('hsl.l')
@@ -24,5 +27,7 @@ export const generateShadePalette = (color: string): Tuple<string, 10> => {
         : color.desaturate(saturationDelta * -1)
     })
 
-  return colors.map((color) => color.hex()) as Tuple<string, 10>
+  return colors.map((color) =>
+    rgb ? color.rgb().join(' ') : color.hex()
+  ) as Tuple<string, 10>
 }
