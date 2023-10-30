@@ -404,6 +404,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
 
         if (!generateSourceCodeOnly) {
             supportingFiles.add(new SupportingFile("poetry.lock." + templateExtension, "", "poetry.lock"));
+            supportingFiles.add(new SupportingFile("settings.json." + templateExtension, "", ".vscode/settings.json"));
             supportingFiles.add(new SupportingFile("pyproject." + templateExtension, "", "pyproject.toml"));
 //            supportingFiles.add(new SupportingFile("tox." + templateExtension, "", "tox.ini"));
 //            supportingFiles.add(new SupportingFile("test-requirements." + templateExtension, "", "test-requirements.txt"));
@@ -441,6 +442,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         }
 
         supportingFiles.add(new SupportingFile("test_simple." + templateExtension, testFolder, "test_simple.py"));
+        supportingFiles.add(new SupportingFile("test_check_url." + templateExtension, testFolder, "test_simple.py"));
         supportingFiles.add(new SupportingFile("test_deprecation_warning." + templateExtension, testFolder, "test_deprecation_warning.py"));
         supportingFiles.add(new SupportingFile("exceptions." + templateExtension, packagePath(), "exceptions.py"));
 
