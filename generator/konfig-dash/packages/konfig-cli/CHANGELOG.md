@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.24.0
+
+### Minor Changes
+
+- [`8c03fa02`](https://github.com/konfig-dev/konfig/commit/8c03fa02c01f5ffc111b61ce3d501d5abfa16906) Thanks [@dphuang2](https://github.com/dphuang2)! - add option to force use Twine credentials for publishing to PyPI
+
 ## 1.23.5
 
 ### Patch Changes
