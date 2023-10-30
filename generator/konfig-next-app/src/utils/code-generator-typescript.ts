@@ -207,7 +207,7 @@ ${this.nonEmptySecurity()
       }
       if (arrayValue === '') return ''
     }
-    if (this.nonEmptyParameters.length === 0) {
+    if (this.nonEmptyParameters().length === 0) {
       if (this.requestBodyRequired) {
         return `{}`
       }
