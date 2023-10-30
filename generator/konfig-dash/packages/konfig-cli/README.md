@@ -16,7 +16,7 @@ $ npm install -g konfig-cli
 $ konfig COMMAND
 running command...
 $ konfig (--version)
-konfig-cli/1.23.3 linux-x64 node-v16.20.2
+konfig-cli/1.23.4 linux-x64 node-v16.20.2
 $ konfig --help [COMMAND]
 USAGE
   $ konfig COMMAND
@@ -78,7 +78,7 @@ EXAMPLES
   $ konfig bump
 ```
 
-_See code: [dist/commands/bump.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/bump.ts)_
+_See code: [dist/commands/bump.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/bump.ts)_
 
 ## `konfig changeset`
 
@@ -106,7 +106,7 @@ EXAMPLES
   $ konfig changeset -g python
 ```
 
-_See code: [dist/commands/changeset.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/changeset.ts)_
+_See code: [dist/commands/changeset.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/changeset.ts)_
 
 ## `konfig detect-breaking-change`
 
@@ -127,7 +127,7 @@ EXAMPLES
   $ konfig detect-breaking-change
 ```
 
-_See code: [dist/commands/detect-breaking-change.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/detect-breaking-change.ts)_
+_See code: [dist/commands/detect-breaking-change.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/detect-breaking-change.ts)_
 
 ## `konfig diff`
 
@@ -144,7 +144,7 @@ EXAMPLES
   $ konfig diff
 ```
 
-_See code: [dist/commands/diff.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/diff.ts)_
+_See code: [dist/commands/diff.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/diff.ts)_
 
 ## `konfig fix`
 
@@ -173,7 +173,7 @@ EXAMPLES
   $ konfig fix
 ```
 
-_See code: [dist/commands/fix.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/fix.ts)_
+_See code: [dist/commands/fix.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/fix.ts)_
 
 ## `konfig generate`
 
@@ -222,7 +222,7 @@ EXAMPLES
   $ konfig generate
 ```
 
-_See code: [dist/commands/generate.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/generate.ts)_
+_See code: [dist/commands/generate.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/generate.ts)_
 
 ## `konfig help [COMMAND]`
 
@@ -262,7 +262,7 @@ EXAMPLES
   $ konfig ignore
 ```
 
-_See code: [dist/commands/ignore.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/ignore.ts)_
+_See code: [dist/commands/ignore.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/ignore.ts)_
 
 ## `konfig init`
 
@@ -285,7 +285,7 @@ EXAMPLES
   $ konfig init
 ```
 
-_See code: [dist/commands/init.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/init.ts)_
+_See code: [dist/commands/init.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/init.ts)_
 
 ## `konfig lint`
 
@@ -302,7 +302,7 @@ EXAMPLES
   $ konfig lint
 ```
 
-_See code: [dist/commands/lint.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/lint.ts)_
+_See code: [dist/commands/lint.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/lint.ts)_
 
 ## `konfig lint-python`
 
@@ -330,7 +330,7 @@ EXAMPLES
   $ konfig lint-python -f -p test/simple_test.py
 ```
 
-_See code: [dist/commands/lint-python.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/lint-python.ts)_
+_See code: [dist/commands/lint-python.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/lint-python.ts)_
 
 ## `konfig list-sdk-submodules`
 
@@ -347,7 +347,7 @@ EXAMPLES
   $ konfig list-sdk-submodules
 ```
 
-_See code: [dist/commands/list-sdk-submodules.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/list-sdk-submodules.ts)_
+_See code: [dist/commands/list-sdk-submodules.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/list-sdk-submodules.ts)_
 
 ## `konfig login`
 
@@ -364,7 +364,7 @@ EXAMPLES
   $ konfig login
 ```
 
-_See code: [dist/commands/login.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/login.ts)_
+_See code: [dist/commands/login.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/login.ts)_
 
 ## `konfig logout`
 
@@ -381,7 +381,7 @@ EXAMPLES
   $ konfig logout
 ```
 
-_See code: [dist/commands/logout.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/logout.ts)_
+_See code: [dist/commands/logout.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/logout.ts)_
 
 ## `konfig mock`
 
@@ -398,7 +398,7 @@ EXAMPLES
   $ konfig mock
 ```
 
-_See code: [dist/commands/mock.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/mock.ts)_
+_See code: [dist/commands/mock.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/mock.ts)_
 
 ## `konfig p2o`
 
@@ -419,7 +419,7 @@ EXAMPLES
   $ konfig p2o
 ```
 
-_See code: [dist/commands/p2o.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/p2o.ts)_
+_See code: [dist/commands/p2o.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/p2o.ts)_
 
 ## `konfig pr-create`
 
@@ -444,7 +444,7 @@ EXAMPLES
   $ konfig pr-create
 ```
 
-_See code: [dist/commands/pr-create.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/pr-create.ts)_
+_See code: [dist/commands/pr-create.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/pr-create.ts)_
 
 ## `konfig pr-merge`
 
@@ -467,7 +467,7 @@ EXAMPLES
   $ konfig pr-merge
 ```
 
-_See code: [dist/commands/pr-merge.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/pr-merge.ts)_
+_See code: [dist/commands/pr-merge.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/pr-merge.ts)_
 
 ## `konfig publish`
 
@@ -497,7 +497,7 @@ EXAMPLES
   $ konfig publish
 ```
 
-_See code: [dist/commands/publish.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/publish.ts)_
+_See code: [dist/commands/publish.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/publish.ts)_
 
 ## `konfig published`
 
@@ -517,7 +517,7 @@ EXAMPLES
   $ konfig published
 ```
 
-_See code: [dist/commands/published.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/published.ts)_
+_See code: [dist/commands/published.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/published.ts)_
 
 ## `konfig pull`
 
@@ -538,7 +538,7 @@ EXAMPLES
   $ konfig pull
 ```
 
-_See code: [dist/commands/pull.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/pull.ts)_
+_See code: [dist/commands/pull.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/pull.ts)_
 
 ## `konfig push`
 
@@ -562,7 +562,7 @@ EXAMPLES
   $ konfig push
 ```
 
-_See code: [dist/commands/push.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/push.ts)_
+_See code: [dist/commands/push.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/push.ts)_
 
 ## `konfig revalidate-demos [FILE]`
 
@@ -584,7 +584,7 @@ EXAMPLES
   $ konfig revalidate-demos
 ```
 
-_See code: [dist/commands/revalidate-demos.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/revalidate-demos.ts)_
+_See code: [dist/commands/revalidate-demos.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/revalidate-demos.ts)_
 
 ## `konfig revalidate-portal [FILE]`
 
@@ -606,7 +606,7 @@ EXAMPLES
   $ konfig revalidate-portal
 ```
 
-_See code: [dist/commands/revalidate-portal.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/revalidate-portal.ts)_
+_See code: [dist/commands/revalidate-portal.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/revalidate-portal.ts)_
 
 ## `konfig slack-msg [FILE]`
 
@@ -627,7 +627,7 @@ EXAMPLES
   $ konfig slack-msg
 ```
 
-_See code: [dist/commands/slack-msg.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/slack-msg.ts)_
+_See code: [dist/commands/slack-msg.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/slack-msg.ts)_
 
 ## `konfig test`
 
@@ -635,12 +635,13 @@ Execute test script in every SDK directory
 
 ```
 USAGE
-  $ konfig test [-f <value>] [-s] [-x]
+  $ konfig test [-f <value>] [-s] [-x] [-p <value>]
 
 FLAGS
-  -f, --filter=<value>  Comma separated list of SDKs to test (e.g. "-f python,java,go,csharp,objc")
-  -s, --sequence        Run tests in sequence
-  -x, --noMockServer    Disable mock server from running
+  -f, --filter=<value>          Comma separated list of SDKs to test (e.g. "-f python,java,go,csharp,objc")
+  -p, --mockServerPort=<value>  [default: 4010] Port to run mock server on
+  -s, --sequence                Run tests in sequence
+  -x, --noMockServer            Disable mock server from running
 
 DESCRIPTION
   Execute test script in every SDK directory
@@ -649,7 +650,7 @@ EXAMPLES
   $ konfig test
 ```
 
-_See code: [dist/commands/test.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/test.ts)_
+_See code: [dist/commands/test.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/test.ts)_
 
 ## `konfig version`
 
@@ -666,5 +667,5 @@ EXAMPLES
   $ konfig version
 ```
 
-_See code: [dist/commands/version.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.3/dist/commands/version.ts)_
+_See code: [dist/commands/version.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.23.4/dist/commands/version.ts)_
 <!-- commandsstop -->
