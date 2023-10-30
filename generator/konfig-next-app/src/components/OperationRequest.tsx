@@ -73,25 +73,29 @@ export function OperationRequest({
                 return (
                   <Tab as={Fragment} key={label}>
                     {({ selected }) => (
-                      <div
-                        className={clsx({
-                          ['pr-4']: i === languages.length - 1,
-                        })}
+                      <button
+                        type="button"
+                        className={clsx(
+                          {
+                            ['border-brand-800 text-brand-800 dark:border-brand-500 dark:text-brand-500']:
+                              selected,
+                            ['border-transparent text-mantine-gray-600 hover:text-mantine-gray-800 dark:hover:text-mantine-gray-100']:
+                              !selected,
+                          },
+                          'border-b py-4 transition ui-not-focus-visible:outline-none ui-focus-visible:outline-brand-500 ui-focus-visible:dark:outline-brand-600 whitespace-nowrap'
+                        )}
                       >
-                        <button
+                        <div
                           className={clsx(
                             {
-                              ['border-brand-800 text-brand-800 dark:border-brand-500 dark:text-brand-500']:
-                                selected,
-                              ['border-transparent text-mantine-gray-600 hover:text-mantine-gray-800 dark:hover:text-mantine-gray-100']:
-                                !selected,
+                              ['pr-4']: i === languages.length - 1,
                             },
-                            'border-b py-4 transition ui-not-focus-visible:outline-none ui-focus-visible:outline-brand-500 ui-focus-visible:dark:outline-brand-600 whitespace-nowrap'
+                            'ui-not-focus-visible:outline-none'
                           )}
                         >
                           {label}
-                        </button>
-                      </div>
+                        </div>
+                      </button>
                     )}
                   </Tab>
                 )
