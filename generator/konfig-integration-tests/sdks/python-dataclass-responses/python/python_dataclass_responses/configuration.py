@@ -17,7 +17,7 @@ import sys
 import urllib3
 
 
-import validators
+import re
 from urllib.parse import urlparse
 from http import client as http_client
 from python_dataclass_responses.exceptions_base import ApiValueError
@@ -471,7 +471,10 @@ conf = python_dataclass_responses.Configuration(
         self._base_path = check_url(value)
         self.server_index = None
 
-def check_url(url: str):
+DOMAIN_REGEX = re.compile(
+    r'^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9](?::[0-9]{1,5})?$|^(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?::[0-9]{1,5})?$'
+)
+def check_url(url: str) -> str:
     parsed = urlparse(url)
     if parsed.query != '':
         raise InvalidHostConfigurationError(url, "query string is not allowed")
@@ -479,8 +482,10 @@ def check_url(url: str):
         raise InvalidHostConfigurationError(url, "fragment is not allowed")
     if parsed.scheme not in ["http", "https"]:
         raise InvalidHostConfigurationError(url, 'scheme must be "http" or "https"'.format(parsed.scheme))
-    if not validators.url(url):
-        raise InvalidHostConfigurationError(url, "invalid url")
+    if (parsed.netloc == ''):
+        raise InvalidHostConfigurationError(url, "host is not set")
+    if not DOMAIN_REGEX.match(parsed.netloc):
+        raise InvalidHostConfigurationError(url, "Invalid domain")
     if (url.endswith("/")):
         return url[:-1]
     return url
