@@ -442,7 +442,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         }
 
         supportingFiles.add(new SupportingFile("test_simple." + templateExtension, testFolder, "test_simple.py"));
-        supportingFiles.add(new SupportingFile("test_check_url." + templateExtension, testFolder, "test_simple.py"));
+        supportingFiles.add(new SupportingFile("test_check_url." + templateExtension, testFolder, "test_check_url.py"));
         supportingFiles.add(new SupportingFile("test_deprecation_warning." + templateExtension, testFolder, "test_deprecation_warning.py"));
         supportingFiles.add(new SupportingFile("exceptions." + templateExtension, packagePath(), "exceptions.py"));
 
