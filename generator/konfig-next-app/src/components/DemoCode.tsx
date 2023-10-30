@@ -27,6 +27,8 @@ export type LanguageExtended =
   | 'shell'
   | 'java'
   | 'js'
+  | 'kotlin'
+  | 'swift'
   | 'JSON'
   | 'ts'
 

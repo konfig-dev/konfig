@@ -10,88 +10,92 @@ import { CopyButton } from './CopyButton'
 import { Prism as ReactPrism } from 'prism-react-renderer'
 ;((typeof global !== 'undefined' ? global : window) as any).Prism = ReactPrism
 require('prismjs/components/prism-csharp')
+require('prismjs/components/prism-kotlin')
+require('prismjs/components/prism-objectivec')
+require('prismjs/components/prism-swift')
 require('prismjs/components/prism-ruby')
 require('prismjs/components/prism-php')
 require('prismjs/components/prism-shell-session')
 require('prismjs/components/prism-java')
 
+const languageMapping = {
+  typescript: {
+    codegen: CodeGeneratorTypeScript,
+    args: {},
+  },
+  python: {
+    codegen: CodeGeneratorPython,
+    args: {},
+  },
+  bash: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'shell' },
+  },
+  java: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'java', clientId: 'okhttp' },
+  },
+  csharp: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'csharp' },
+  },
+  ruby: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'ruby' },
+  },
+  php: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'php' },
+  },
+  go: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'go' },
+  },
+  kotlin: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'kotlin' },
+  },
+  objectivec: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'objc' },
+  },
+  swift: {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'swift' },
+  },
+} as const
+
+type GeneratedCodeLanguage = keyof typeof languageMapping
+
 export function OperationFormGeneratedCode(
-  args: CodeGeneratorConstructorArgs & { language: LanguageExtended }
+  args: CodeGeneratorConstructorArgs & { language: GeneratedCodeLanguage }
 ) {
   const [data, setData] = useState('Loading...')
   const [copyData, setCopyData] = useState('')
 
   useEffect(() => {
-    if (args.language === 'typescript') {
-      new CodeGeneratorTypeScript(args).snippet().then((result) => {
-        setData(result)
-      })
-      new CodeGeneratorTypeScript({ ...args, mode: 'copy' })
-        .snippet()
-        .then((result) => {
-          setCopyData(result)
-        })
-    } else if (args.language === 'python') {
-      new CodeGeneratorPython(args).snippet().then((result) => {
-        setData(result)
-      })
-      new CodeGeneratorPython({ ...args, mode: 'copy' })
-        .snippet()
-        .then((result) => {
-          setCopyData(result)
-        })
-    } else if (args.language === 'bash') {
-      new CodeGeneratorHttpsnippet({ ...args, targetId: 'shell' })
-        .snippet()
-        .then((result) => {
-          setData(result)
-        })
-      new CodeGeneratorHttpsnippet({ ...args, targetId: 'shell', mode: 'copy' })
-        .snippet()
-        .then((result) => {
-          setCopyData(result)
-        })
-    } else if (args.language === 'java') {
-      new CodeGeneratorHttpsnippet({
-        ...args,
-        targetId: 'java',
-        clientId: 'okhttp',
-      })
-        .snippet()
-        .then((result) => {
-          setData(result)
-        })
-      new CodeGeneratorHttpsnippet({
-        ...args,
-        targetId: 'java',
-        clientId: 'okhttp',
-        mode: 'copy',
-      })
-        .snippet()
-        .then((result) => {
-          setCopyData(result)
-        })
-    } else if (args.language === 'csharp') {
-      new CodeGeneratorHttpsnippet({
-        ...args,
-        targetId: 'csharp',
-      })
-        .snippet()
-        .then((result) => {
-          setData(result)
-        })
-      new CodeGeneratorHttpsnippet({
-        ...args,
-        targetId: 'csharp',
-        mode: 'copy',
-      })
-        .snippet()
-        .then((result) => {
-          setCopyData(result)
-        })
-    } else {
-      throw Error(`Unxpected language: "${args.language}"`)
+    // if args.language not in languageMapping, then this will throw an error
+    if (!languageMapping[args.language]) {
+      throw new Error(`Language ${args.language} not supported`)
     }
+
+    new languageMapping[args.language].codegen({
+      ...args,
+      ...languageMapping[args.language].args,
+    } as any)
+      .snippet()
+      .then((result) => {
+        setData(result)
+      })
+    new languageMapping[args.language].codegen({
+      ...args,
+      ...languageMapping[args.language].args,
+      mode: 'copy',
+    } as any)
+      .snippet()
+      .then((result) => {
+        setCopyData(result)
+      })
   }, [args, args.language])
 
   const styles: DefaultProps<PrismStylesNames> = {
