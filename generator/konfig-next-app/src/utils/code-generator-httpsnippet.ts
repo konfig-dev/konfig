@@ -42,6 +42,12 @@ export class CodeGeneratorHttpsnippet extends CodeGenerator {
       { binary: true }
     )
     if (typeof output !== 'string') throw new Error('output is not string')
+
+    // Add "using RestSharp;" to top of code with two lines of space
+    if (this.options.targetId === 'csharp') {
+      return `using RestSharp;\n\n${output}`
+    }
+
     return output
   }
 }

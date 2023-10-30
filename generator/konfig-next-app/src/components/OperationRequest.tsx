@@ -2,10 +2,10 @@ import { Button, clsx, useMantineTheme } from '@mantine/core'
 import { OperationFormGeneratedCode } from './OperationFormGeneratedCode'
 import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
 import { Tab } from '@headlessui/react'
-import { Language } from './DemoCode'
+import { LanguageExtended } from './DemoCode'
 import { Fragment } from 'react'
 
-const languages: { value: Language; label: string }[] = [
+const languages: { value: LanguageExtended; label: string }[] = [
   {
     value: 'typescript',
     label: 'TypeScript',
@@ -17,6 +17,14 @@ const languages: { value: Language; label: string }[] = [
   {
     value: 'bash',
     label: 'cURL',
+  },
+  {
+    value: 'java',
+    label: 'Java',
+  },
+  {
+    value: 'csharp',
+    label: 'C#',
   },
 ] as const
 
@@ -66,7 +74,10 @@ export function OperationRequest({
                 className="outline-brand-500 dark:outline-brand-600"
                 key={value}
               >
-                <OperationFormGeneratedCode {...codegenArgs} language={value} />
+                <OperationFormGeneratedCode
+                  {...codegenArgs}
+                  language={value as any}
+                />
               </Tab.Panel>
             )
           })}

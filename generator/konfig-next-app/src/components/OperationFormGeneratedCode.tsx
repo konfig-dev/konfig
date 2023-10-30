@@ -4,12 +4,19 @@ import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
 import { useEffect, useState } from 'react'
 import { DefaultProps } from '@mantine/core'
 import { CodeGeneratorPython } from '@/utils/code-generator-python'
-import { Language } from './DemoCode'
+import { LanguageExtended } from './DemoCode'
 import { CodeGeneratorHttpsnippet } from '@/utils/code-generator-httpsnippet'
 import { CopyButton } from './CopyButton'
+import { Prism as ReactPrism } from 'prism-react-renderer'
+;((typeof global !== 'undefined' ? global : window) as any).Prism = ReactPrism
+require('prismjs/components/prism-csharp')
+require('prismjs/components/prism-ruby')
+require('prismjs/components/prism-php')
+require('prismjs/components/prism-shell-session')
+require('prismjs/components/prism-java')
 
 export function OperationFormGeneratedCode(
-  args: CodeGeneratorConstructorArgs & { language: Language }
+  args: CodeGeneratorConstructorArgs & { language: LanguageExtended }
 ) {
   const [data, setData] = useState('Loading...')
   const [copyData, setCopyData] = useState('')
@@ -44,6 +51,44 @@ export function OperationFormGeneratedCode(
         .then((result) => {
           setCopyData(result)
         })
+    } else if (args.language === 'java') {
+      new CodeGeneratorHttpsnippet({
+        ...args,
+        targetId: 'java',
+        clientId: 'okhttp',
+      })
+        .snippet()
+        .then((result) => {
+          setData(result)
+        })
+      new CodeGeneratorHttpsnippet({
+        ...args,
+        targetId: 'java',
+        clientId: 'okhttp',
+        mode: 'copy',
+      })
+        .snippet()
+        .then((result) => {
+          setCopyData(result)
+        })
+    } else if (args.language === 'csharp') {
+      new CodeGeneratorHttpsnippet({
+        ...args,
+        targetId: 'csharp',
+      })
+        .snippet()
+        .then((result) => {
+          setData(result)
+        })
+      new CodeGeneratorHttpsnippet({
+        ...args,
+        targetId: 'csharp',
+        mode: 'copy',
+      })
+        .snippet()
+        .then((result) => {
+          setCopyData(result)
+        })
     } else {
       throw Error(`Unxpected language: "${args.language}"`)
     }
@@ -63,7 +108,7 @@ export function OperationFormGeneratedCode(
 
   return (
     <div className="relative group">
-      <Prism noCopy withLineNumbers {...styles} language={args.language}>
+      <Prism noCopy withLineNumbers {...styles} language={args.language as any}>
         {data}
       </Prism>
       <CopyButton value={copyData} />
