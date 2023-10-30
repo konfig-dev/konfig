@@ -106,7 +106,7 @@ export function OperationFormGeneratedCode(
       },
     },
     classNames: {
-      code: 'text-xs lg:text-sm',
+      code: 'text-sm',
     },
   }
 
