@@ -14,8 +14,6 @@ export function OperationFormGeneratedCode(
   const [data, setData] = useState('Loading...')
   const [copyData, setCopyData] = useState('')
 
-  console.log(args.formData)
-
   useEffect(() => {
     if (args.language === 'typescript') {
       new CodeGeneratorTypeScript(args).snippet().then((result) => {
