@@ -1,5 +1,17 @@
 # konfig-cli
 
+## 1.23.5
+
+### Patch Changes
+
+- [#314](https://github.com/konfig-dev/konfig/pull/314) [`6e163cc8`](https://github.com/konfig-dev/konfig/commit/6e163cc87d32aea6bb3e62ddd1b8e1c3e7b00690) Thanks [@eddiechayes](https://github.com/eddiechayes)! - Fix kill port in containers
+
+- Updated dependencies [[`6e163cc8`](https://github.com/konfig-dev/konfig/commit/6e163cc87d32aea6bb3e62ddd1b8e1c3e7b00690)]:
+  - konfig-kill-port@2.1.1
+  - konfig-lib@1.26.1
+  - konfig-openapi-spec@1.6.3
+  - konfig-postman-to-openapi@3.0.140
+
 ## 1.23.4
 
 ### Patch Changes
