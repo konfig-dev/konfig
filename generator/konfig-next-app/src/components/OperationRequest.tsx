@@ -67,8 +67,12 @@ export function OperationRequest({
           <div className="mr-auto pt-3 text-black dark:text-white text-sm font-semibold">
             Request
           </div>
-          <ScrollArea type="scroll" scrollbarSize={5} className="-mb-px">
-            <Tab.List className="flex gap-4 text-xs font-medium max-w-xs">
+          <ScrollArea
+            type="scroll"
+            scrollbarSize={5}
+            className="-mb-px max-w-xs"
+          >
+            <Tab.List className="flex gap-4 text-xs font-medium px-4">
               {languages.map(({ label }, i) => {
                 return (
                   <Tab as={Fragment} key={label}>
@@ -85,16 +89,7 @@ export function OperationRequest({
                           'border-b py-4 transition ui-not-focus-visible:outline-none ui-focus-visible:outline-brand-500 ui-focus-visible:dark:outline-brand-600 whitespace-nowrap'
                         )}
                       >
-                        <div
-                          className={clsx(
-                            {
-                              ['pr-4']: i === languages.length - 1,
-                            },
-                            'ui-not-focus-visible:outline-none'
-                          )}
-                        >
-                          {label}
-                        </div>
+                        {label}
                       </button>
                     )}
                   </Tab>
