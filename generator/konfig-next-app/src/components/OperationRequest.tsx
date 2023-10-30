@@ -69,11 +69,11 @@ export function OperationRequest({
           </div>
           <ScrollArea
             type="scroll"
-            scrollbarSize={5}
+            scrollbarSize={7}
             className="-mb-px max-w-xs"
           >
-            <Tab.List className="flex gap-4 text-xs font-medium px-4">
-              {languages.map(({ label }, i) => {
+            <Tab.List className="flex gap-4 text-xs font-medium pr-4">
+              {languages.map(({ label }) => {
                 return (
                   <Tab as={Fragment} key={label}>
                     {({ selected }) => (
