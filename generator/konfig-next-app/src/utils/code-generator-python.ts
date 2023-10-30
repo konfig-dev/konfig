@@ -43,13 +43,13 @@ from ${this.packageName} import ${this.clientName}`
 
   get setupArgs(): string {
     const args = []
-    for (const [name, security] of this.nonEmptySecurity) {
+    for (const [name, security] of this.nonEmptySecurity()) {
       if (security[SECURITY_TYPE_PROPERTY] === 'clientState') {
         args.push(`${this.snake_case(name)}="${this.mask(security.value)}"`)
       } else if (security[SECURITY_TYPE_PROPERTY] === 'apiKey') {
         args.push(
           `${
-            this.hasMultipleApiKeys
+            this.hasMultipleApiKeys()
               ? this.snake_case(security[API_KEY_NAME_PROPERTY])
               : 'api_key'
           }="${this.mask(security.value)}"`
@@ -118,9 +118,9 @@ from ${this.packageName} import ${this.clientName}`
   }
 
   get args(): string {
-    if (this.isArrayRequestBody) {
+    if (this.isArrayRequestBody()) {
       const arrayValue = this.recursivelyRemoveEmptyValues(
-        this.requestBodyValue
+        this.requestBodyValue()
       )
       if (Array.isArray(arrayValue)) {
         return `[${arrayValue
@@ -130,7 +130,7 @@ from ${this.packageName} import ${this.clientName}`
       if (arrayValue === '') return ''
     }
     const args: string[] = []
-    for (const [parameter, value] of this.nonEmptyParameters) {
+    for (const [parameter, value] of this.nonEmptyParameters()) {
       args.push(
         `${this.snake_case(parameter.name)}=${this.toPythonLiteralString(
           value,

@@ -220,8 +220,6 @@ export function OperationReferenceMain({
     }
   }
 
-  const [language, setLanguage] = useState<Language>('typescript')
-
   const header = operation.operation.summary ?? operation.path
   return (
     <FormProvider form={form}>

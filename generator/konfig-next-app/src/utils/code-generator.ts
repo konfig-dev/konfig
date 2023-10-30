@@ -1,4 +1,5 @@
 import { Parameter } from '@/components/OperationParameter'
+import clone from 'clone'
 import {
   API_KEY_VALUE_PROPERTY,
   BEARER_VALUE_PROPERTY,
@@ -149,6 +150,9 @@ export abstract class CodeGenerator {
    * @returns The masked value
    */
   mask(value: string) {
+    // Don't mask if in copy mode
+    if (this.isCopyMode()) return value
+
     return value.replace(/./g, 'X')
   }
 
@@ -156,15 +160,15 @@ export abstract class CodeGenerator {
     return await this.format(this.gen())
   }
 
-  get isUsingCustomBasePath(): boolean {
+  isUsingCustomBasePath(): boolean {
     return this.basePath !== this.servers[0]
   }
 
-  get isUsingCustomOAuthTokenUrl(): boolean {
+  isUsingCustomOAuthTokenUrl(): boolean {
     return this.originalOauthTokenUrl !== this.oauthTokenUrl
   }
 
-  get hasMultipleApiKeys(): boolean {
+  hasMultipleApiKeys(): boolean {
     if (this.configuration.securitySchemes === null) return false
     const hasMultipleApiKeys =
       Object.values(this.configuration.securitySchemes).filter(
@@ -173,7 +177,7 @@ export abstract class CodeGenerator {
     return hasMultipleApiKeys
   }
 
-  get isArrayRequestBody(): boolean {
+  isArrayRequestBody(): boolean {
     return this.configuration.requestBody?.schema?.type === 'array'
   }
 
@@ -185,14 +189,14 @@ export abstract class CodeGenerator {
    * a scalar or array request body, the request body cannot be flattened so it
    * is passed as a separate argument.
    */
-  get requestBodyValue(): FormInputValue {
+  requestBodyValue(): FormInputValue {
     return this.recursivelyRemoveEmptyValues(this._formData['requestBody'])
   }
 
   /**
    * Returns the setup values that are non-empty and exist as part of passed parameters
    */
-  get nonEmptyParameters(): NonEmptyParameters {
+  nonEmptyParameters(): NonEmptyParameters {
     const parameters = Object.entries(
       this._formData[PARAMETER_FORM_NAME_PREFIX]
     )
@@ -286,8 +290,8 @@ export abstract class CodeGenerator {
     return filtered.length > 0
   }
 
-  get nonEmptySecurityMasked(): CodeGenerator['nonEmptySecurity'] {
-    return this.nonEmptySecurity.map(([name, security]) => {
+  nonEmptySecurityMasked(): NonEmptySecurity {
+    return clone(this.nonEmptySecurity()).map(([name, security]) => {
       if (security.type === 'apiKey') {
         security[API_KEY_VALUE_PROPERTY] = this.mask(
           security[API_KEY_VALUE_PROPERTY]
@@ -308,10 +312,18 @@ export abstract class CodeGenerator {
     })
   }
 
+  isUiOrCopyMode(): boolean {
+    return this.mode === 'ui' || this.mode === 'copy'
+  }
+
+  isCopyMode(): boolean {
+    return this.mode === 'copy'
+  }
+
   /**
    * Returns the security schemes that are non-empty
    */
-  get nonEmptySecurity() {
+  nonEmptySecurity() {
     return Object.entries(this._formData[SECURITY_FORM_NAME_PREFIX]).filter(
       ([_name, security]) => {
         if (security.type === 'apiKey') {
@@ -342,4 +354,4 @@ export abstract class CodeGenerator {
   }
 }
 
-export type NonEmptySecurity = CodeGenerator['nonEmptySecurity']
+export type NonEmptySecurity = ReturnType<CodeGenerator['nonEmptySecurity']>

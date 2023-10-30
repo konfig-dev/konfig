@@ -45,15 +45,15 @@ export class CodeGeneratorTypeScript extends CodeGenerator {
 
 const ${this.clientNameLowercase} = new ${this.client}(${this.setupArgs})
 
-${this.mode === 'ui' ? `const response =` : 'return'} await ${
+${this.isUiOrCopyMode() ? `const response =` : 'return'} await ${
       this.clientNameLowercase
     }.${this.namespace}.${this.methodName}(${this.args})
-${this.mode === 'ui' ? `console.log(response.data)` : ''}
+${this.isUiOrCopyMode() ? `console.log(response.data)` : ''}
 `
   }
 
   get importStatement(): string {
-    if (this.mode === 'ui') {
+    if (this.isUiOrCopyMode()) {
       if (this.args.includes('fs.readFileSync'))
         return `import { ${this.clientName} } from '${this.packageName}'\nimport fs from 'fs'`
       return `import { ${this.clientName} } from '${this.packageName}'`
@@ -62,54 +62,48 @@ ${this.mode === 'ui' ? `console.log(response.data)` : ''}
   }
 
   get client(): string {
-    if (this.mode === 'ui') {
+    if (this.isUiOrCopyMode()) {
       return `${this.clientName}`
     }
     return `client.${this.clientName}`
   }
 
   get setupArgs(): string {
-    return Object.keys(this.nonEmptySecurity).length === 0
+    return Object.keys(this.nonEmptySecurity()).length === 0
       ? `{${this.proxySetupArgs}}`
       : `{
-${this.nonEmptySecurity
+${this.nonEmptySecurity()
   .map(([_name, value]) => {
     if (value.type === 'oauth2-client-credentials') {
-      // convert value.clientSecret to string of same length with all values replace with char 'X'
       const clientSecret =
         this.mode === 'execution'
           ? value.clientSecret
-          : value.clientSecret.replace(/./g, 'X')
+          : this.mask(value.clientSecret)
       const clientId =
-        this.mode === 'execution'
-          ? value.clientId
-          : value.clientId.replace(/./g, 'X')
+        this.mode === 'execution' ? value.clientId : this.mask(value.clientId)
       return ` "oauthClientId": "${clientId}",
       "oauthClientSecret": "${clientSecret}",`
     }
     if (value.type === 'bearer') {
-      // convert value.value to string of same length with all values replace with char 'X'
       const bearer =
-        this.mode === 'execution' ? value.value : value.value.replace(/./g, 'X')
+        this.mode === 'execution' ? value.value : this.mask(value.value)
       return ` "accessToken": "${bearer}",`
     }
     const securityValue = value.type === 'apiKey' ? value.value : value.value
     const securityKey = this.quoteIfNecessary(
       value.type === 'apiKey'
-        ? this.hasMultipleApiKeys
+        ? this.hasMultipleApiKeys()
           ? value.key
           : 'apiKey'
         : value.name
     )
     // convert securityValue to string of same length with all values replace with char 'X'
     const securityValueMasked =
-      this.mode === 'execution'
-        ? securityValue
-        : securityValue.replace(/./g, 'X')
+      this.mode === 'execution' ? securityValue : this.mask(securityValue)
     return `  ${securityKey}: '${securityValueMasked}',`
   })
   .join('\n')}${
-          this.oauthTokenUrl !== null && this.isUsingCustomOAuthTokenUrl
+          this.oauthTokenUrl !== null && this.isUsingCustomOAuthTokenUrl()
             ? `oauthTokenUrl: "${this.oauthTokenUrl}",`
             : ''
         }
@@ -128,8 +122,8 @@ ${this.nonEmptySecurity
   }
 
   get proxySetupArgs(): string {
-    return this.mode === 'ui'
-      ? this.isUsingCustomBasePath
+    return this.isUiOrCopyMode()
+      ? this.isUsingCustomBasePath()
         ? `basePath: "${this.basePath}",`
         : ''
       : `basePath: "/api/proxy", baseOptions: {headers: {"x-proxy-target": "${this.basePath}"}}`
@@ -206,8 +200,8 @@ ${this.nonEmptySecurity
   }
 
   get args(): string {
-    if (this.isArrayRequestBody) {
-      const arrayValue = this.requestBodyValue
+    if (this.isArrayRequestBody()) {
+      const arrayValue = this.requestBodyValue()
       if (Array.isArray(arrayValue)) {
         return `[${arrayValue.map((v) => this.argValue(v)).join(', ')}]`
       }
@@ -219,14 +213,14 @@ ${this.nonEmptySecurity
       }
       return ''
     }
-    const nonBodyParameters = this.nonEmptyParameters
+    const nonBodyParameters = this.nonEmptyParameters()
       .filter(([{ parameter }]) => {
         return parameter.in !== 'body'
       })
       .map(([{ name }, value]) => {
         return [name, value] as [string, SdkArg]
       })
-    const bodyParameters = this.nonEmptyParameters
+    const bodyParameters = this.nonEmptyParameters()
       .filter(([{ parameter }]) => {
         return parameter.in === 'body'
       })

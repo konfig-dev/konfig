@@ -30,7 +30,7 @@ export function CopyButton({ value }: { value: string }) {
             {
               ['bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 shadow dark:shadow-none dark:hover:bg-white/5']:
                 !copied,
-              ['dark:bg-brand-400/10 bg-brand-600/20 ring-1 ring-inset dark:ring-brand-400/20 ring-brand-600/40']:
+              ['bg-brand-600/20 ring-1 ring-inset dark:ring-brand-400/20 ring-brand-600/40']:
                 copied,
             }
           )}

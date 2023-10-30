@@ -15,10 +15,14 @@ export class CodeGeneratorHttpsnippet extends CodeGenerator {
   options: Options
   constructor(args: CodeGeneratorHttpSnippetConstructorArgs) {
     super(args)
+
+    const securities = this.isCopyMode()
+      ? this.nonEmptySecurity()
+      : this.nonEmptySecurityMasked()
     const harRequest = convertToHarRequest(
-      this.nonEmptyParameters,
-      this.mode === 'ui' ? this.nonEmptySecurityMasked : this.nonEmptySecurity,
-      this.requestBodyValue,
+      this.nonEmptyParameters(),
+      securities,
+      this.requestBodyValue(),
       // can't use URL because we don't want to encode { and } in path yet
       `${this.basePath}${this.configuration.path}`,
       this.configuration.httpMethod.toUpperCase(),

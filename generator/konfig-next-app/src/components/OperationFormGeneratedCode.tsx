@@ -11,22 +11,40 @@ import { CopyButton } from './CopyButton'
 export function OperationFormGeneratedCode(
   args: CodeGeneratorConstructorArgs & { language: Language }
 ) {
-  const [data, setData] = useState('Loading...') // Initial state
+  const [data, setData] = useState('Loading...')
+  const [copyData, setCopyData] = useState('')
+
+  console.log(args.formData)
 
   useEffect(() => {
     if (args.language === 'typescript') {
       new CodeGeneratorTypeScript(args).snippet().then((result) => {
         setData(result)
       })
+      new CodeGeneratorTypeScript({ ...args, mode: 'copy' })
+        .snippet()
+        .then((result) => {
+          setCopyData(result)
+        })
     } else if (args.language === 'python') {
       new CodeGeneratorPython(args).snippet().then((result) => {
         setData(result)
       })
+      new CodeGeneratorPython({ ...args, mode: 'copy' })
+        .snippet()
+        .then((result) => {
+          setCopyData(result)
+        })
     } else if (args.language === 'bash') {
       new CodeGeneratorHttpsnippet({ ...args, targetId: 'shell' })
         .snippet()
         .then((result) => {
           setData(result)
+        })
+      new CodeGeneratorHttpsnippet({ ...args, targetId: 'shell', mode: 'copy' })
+        .snippet()
+        .then((result) => {
+          setCopyData(result)
         })
     } else {
       throw Error(`Unxpected language: "${args.language}"`)
@@ -50,7 +68,7 @@ export function OperationFormGeneratedCode(
       <Prism noCopy withLineNumbers {...styles} language={args.language}>
         {data}
       </Prism>
-      <CopyButton value="" />
+      <CopyButton value={copyData} />
     </div>
   )
 }
