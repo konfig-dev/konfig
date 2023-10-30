@@ -83,6 +83,7 @@ const Operation = ({
   repo,
   oauthTokenUrl: originalOauthTokenUrl,
   omitOwnerAndRepo,
+  hideNonSdkSnippets,
   responses,
   logo,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -179,6 +180,7 @@ const Operation = ({
         <OperationReferenceMain
           path={path}
           requestBodyParameter={requestBodyParameter}
+          hideNonSdkSnippets={hideNonSdkSnippets}
           originalOauthTokenUrl={originalOauthTokenUrl}
           contentType={contentType}
           owner={owner}

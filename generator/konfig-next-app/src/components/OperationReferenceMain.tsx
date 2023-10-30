@@ -43,7 +43,6 @@ import { ReferencePageProps } from '../utils/generate-props-for-reference-page'
 import { SocialFooter } from './SocialFooter'
 import { Breadcrumbs } from './Breadcrumbs'
 import { OperationReferenceResponses } from './OperationReferenceResponses'
-import { Language } from './DemoCode'
 import { OperationRequest } from './OperationRequest'
 
 export function OperationReferenceMain({
@@ -67,11 +66,13 @@ export function OperationReferenceMain({
   requestBodyParameter,
   httpMethod,
   contentType,
+  hideNonSdkSnippets,
 }: Pick<
   ReferencePageProps,
   | 'pathParameters'
   | 'queryParameters'
   | 'contentType'
+  | 'hideNonSdkSnippets'
   | 'httpMethod'
   | 'headerParameters'
   | 'cookieParameters'
@@ -372,6 +373,7 @@ export function OperationReferenceMain({
             )}
             <div className="sticky top-[calc(var(--mantine-header-height,0px)+1rem)] space-y-4">
               <OperationRequest
+                hideNonSdkSnippets={hideNonSdkSnippets}
                 codegenArgs={codegenArgs}
                 requestInProgress={requestInProgress}
               />

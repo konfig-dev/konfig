@@ -155,6 +155,12 @@ export const portal = z
         "Relative path to logo image used for Konfig's API Portal. If an object is provided, the light logo will be used for light mode and the dark logo will be used for dark mode."
       ),
     socials: socialObjectSchema.optional(),
+    hideNonSdkSnippets: z
+      .boolean()
+      .optional()
+      .describe(
+        'Do not show non-SDK snippets in the API Reference page of the API Portal. This is useful if your API is not easily usable without an SDK or if you do not want developers to use your API without an SDK.'
+      ),
     title: z.string().describe("Title to be used in Konfig's API Portal"),
     documentation: documentation
       .optional()

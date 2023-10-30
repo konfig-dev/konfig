@@ -36,6 +36,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   requestBodyParameter: Parameter | null
   pathParameters: Parameter[]
   queryParameters: Parameter[]
+  hideNonSdkSnippets: boolean
   headerParameters: Parameter[]
   cookieParameters: Parameter[]
   requestBodyProperties: Record<string, SchemaObject> | null
@@ -262,6 +263,7 @@ export async function generatePropsForReferencePage({
       ...props,
       title: props.konfigYaml.portal.title,
       contentType,
+      hideNonSdkSnippets: props.konfigYaml.portal.hideNonSdkSnippets ?? false,
       httpMethod: operation.method,
       path: operation.path,
       operationId,

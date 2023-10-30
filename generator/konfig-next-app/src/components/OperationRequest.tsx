@@ -5,61 +5,69 @@ import { Tab } from '@headlessui/react'
 import { LanguageExtended } from './DemoCode'
 import { Fragment } from 'react'
 
-const languages: { value: LanguageExtended; label: string }[] = [
-  {
-    value: 'typescript',
-    label: 'TypeScript',
-  },
-  {
-    value: 'python',
-    label: 'Python',
-  },
-  {
-    value: 'bash',
-    label: 'cURL',
-  },
-  {
-    value: 'java',
-    label: 'Java',
-  },
-  {
-    value: 'csharp',
-    label: 'C#',
-  },
-  {
-    value: 'ruby',
-    label: 'Ruby',
-  },
-  {
-    value: 'php',
-    label: 'PHP',
-  },
-  {
-    value: 'go',
-    label: 'Go',
-  },
-  {
-    value: 'kotlin',
-    label: 'Kotlin',
-  },
-  {
-    value: 'objectivec',
-    label: 'Objective-C',
-  },
-  {
-    value: 'swift',
-    label: 'Swift',
-  },
-] as const
+const languages: { value: LanguageExtended; isSdk?: boolean; label: string }[] =
+  [
+    {
+      value: 'typescript',
+      label: 'TypeScript',
+      isSdk: true, // TODO this should be dynamic based on konfig.yam
+    },
+    {
+      value: 'python',
+      label: 'Python',
+      isSdk: true,
+    },
+    {
+      value: 'bash',
+      label: 'cURL',
+    },
+    {
+      value: 'java',
+      label: 'Java',
+    },
+    {
+      value: 'csharp',
+      label: 'C#',
+    },
+    {
+      value: 'ruby',
+      label: 'Ruby',
+    },
+    {
+      value: 'php',
+      label: 'PHP',
+    },
+    {
+      value: 'go',
+      label: 'Go',
+    },
+    {
+      value: 'kotlin',
+      label: 'Kotlin',
+    },
+    {
+      value: 'objectivec',
+      label: 'Objective-C',
+    },
+    {
+      value: 'swift',
+      label: 'Swift',
+    },
+  ] as const
 
 export function OperationRequest({
   codegenArgs,
   requestInProgress,
+  hideNonSdkSnippets,
 }: {
   codegenArgs: CodeGeneratorConstructorArgs
   requestInProgress: boolean
+  hideNonSdkSnippets: boolean
 }) {
   const { colorScheme } = useMantineTheme()
+  const languagesFiltered = languages.filter(({ value, isSdk }) => {
+    return !hideNonSdkSnippets || isSdk
+  })
   return (
     <div className="border rounded-md border-mantine-gray-400 dark:border-mantine-gray-800 overflow-hidden">
       <Tab.Group>
@@ -73,7 +81,7 @@ export function OperationRequest({
             className="-mb-px max-w-xs"
           >
             <Tab.List className="flex gap-4 text-xs font-medium pr-4">
-              {languages.map(({ label }) => {
+              {languagesFiltered.map(({ label }) => {
                 return (
                   <Tab as={Fragment} key={label}>
                     {({ selected }) => (
@@ -99,7 +107,7 @@ export function OperationRequest({
           </ScrollArea>
         </div>
         <Tab.Panels>
-          {languages.map(({ value }) => {
+          {languagesFiltered.map(({ value }) => {
             return (
               <Tab.Panel
                 className="outline-brand-500 dark:outline-brand-600"
