@@ -1,0 +1,50 @@
+VERSION 0.7
+FROM ../konfig-dash+build-konfig-dash
+WORKDIR /konfig-integration-tests
+
+konfig-test-dependencies:
+  ### NODE comes from base image
+  ### PYTHON
+  ENV PYTHONDONTWRITEBYTECODE=1 # Don't write .pyc files, which are not needed in a container
+  ENV PIP_DEFAULT_TIMEOUT=100
+  ENV POETRY_VERSION=1.5.1
+
+  RUN apt-get update
+  # lsof required for killing mock server after test
+  RUN apt-get install -y lsof python3 python3-pip
+  RUN pip3 install poetry==$POETRY_VERSION
+  # Clean up python installations
+  RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+integration-tests:
+  FROM +konfig-test-dependencies
+  COPY package.json yarn.lock .
+  RUN yarn
+  COPY tsconfig.json jest.config.ts util.ts .
+  COPY sdks sdks
+  COPY tests tests
+  ENTRYPOINT ["yarn", "test", "--no-cache"] # TODO: see if we can speed this up more
+  SAVE IMAGE konfig-integration-tests:latest
+
+test:
+  FROM earthly/dind:alpine
+  COPY compose/.env .
+  COPY compose/compose.yaml .
+  WITH DOCKER \
+        --compose compose.yaml \
+        --load konfig-python-formatter:latest=../konfig-python-formatter-server-blackd+run-python-formatter \
+        --load konfig-generator:latest=../konfig-generator-api+run-generator \
+        --load konfig-api:latest=../konfig-dash+run-konfig-api \
+        --load konfig-integration-tests:latest=+integration-tests
+    RUN --secret NPM_TOKEN docker run \
+        --network="konfig-network" \
+        -e "KONFIG_API_URL=http://konfig-api:8911" \
+        -e "NPM_TOKEN=${NPM_TOKEN}" \
+        konfig-integration-tests:latest
+  END
+
+build-all:
+  BUILD ../konfig-python-formatter-server-blackd+run-python-formatter
+  BUILD ../konfig-generator-api+run-generator
+  BUILD ../konfig-dash+run-konfig-api
+  BUILD +integration-tests

@@ -29,7 +29,9 @@ export async function isSubmodule({
     const isSameRemoteUrl = url.includes(gitConfigUrl)
     return !isSameRemoteUrl
   } catch (e) {
-    console.error(e)
+    console.error(
+      'Warning! Encountered error when trying to use git. If running in CI, this can be safely ignored.'
+    )
   }
   return false
 }

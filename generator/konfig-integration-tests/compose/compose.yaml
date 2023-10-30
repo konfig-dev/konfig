@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+  konfig-api:
+    image: konfig-api:latest
+    environment:
+      # prisma has trouble connecting to postgres from node:16 base image. Adding connect_timeout to url fixes it
+      # https://stackoverflow.com/questions/68476229/m1-related-prisma-cant-reach-database-server-at-database5432
+      DATABASE_URL: postgresql://konfig:konfig@konfig-db:5432/konfig?connect_timeout=300
+      SKIP_INSTALL_DEPS: "true"
+      NODE_VERSION: 16
+      GENERATOR_API_HOST_PORT: konfig-generator:8080
+      BLACKD_API_HOST_PORT: konfig-python-formatter:10000
+      NPM_TOKEN: ${NPM_TOKEN}
+      SESSION_SECRET: ${SESSION_SECRET}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    ports:
+      - "8911:8911"
+    depends_on:
+      - konfig-db
+
+  konfig-python-formatter:
+    image: konfig-python-formatter:latest
+    ports:
+      - "10000:10000"
+
+  konfig-generator:
+    image: konfig-generator:latest
+    environment:
+      PORT: 8080
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    ports:
+      - "8080:8080"
+
+  konfig-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: konfig
+      POSTGRES_PASSWORD: konfig
+    ports:
+      - "5432:5432"
+
+networks:
+  default:
+    name: konfig-network
+    attachable: true

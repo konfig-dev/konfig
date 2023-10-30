@@ -1,0 +1,35 @@
+VERSION 0.7
+FROM node:16-slim
+WORKDIR /konfig-dash
+
+build-konfig-dash:
+  RUN apt-get update
+  RUN apt-get install -y openssl # not present in node:16-slim but required by prisma
+  # Copy everything we need to run `yarn` without copying the source code so that dependencies are cached
+  COPY package.json yarn.lock .yarnrc.yml redwood.toml .
+  COPY .yarn .yarn
+  COPY api/package.json api/package.json
+  COPY web/package.json web/package.json
+  COPY packages/konfig-cli/package.json packages/konfig-cli/package.json
+  COPY packages/konfig-kill-port/package.json packages/konfig-kill-port/package.json
+  COPY packages/konfig-lib/package.json packages/konfig-lib/package.json
+  COPY packages/konfig-openapi-spec/package.json packages/konfig-openapi-spec/package.json
+  COPY packages/konfig-postman-to-openapi/package.json packages/konfig-postman-to-openapi/package.json
+  COPY packages/konfig-release-it/package.json packages/konfig-release-it/package.json
+  COPY packages/konfig-spectral-ruleset/package.json packages/konfig-spectral-ruleset/package.json
+  COPY packages/konfig-swagger2openapi/package.json packages/konfig-swagger2openapi/package.json
+  COPY packages/konfig-typescript-sdk/package.json packages/konfig-typescript-sdk/package.json
+  COPY packages/konfig-zod-to-openapi/package.json packages/konfig-zod-to-openapi/package.json
+  RUN --secret NPM_TOKEN yarn
+  # Now that dependencies are installed, copy the source code and build
+  COPY api api
+  COPY web web
+  COPY packages packages
+  COPY bash-scripts/build.sh bash-scripts/build.sh
+  RUN --secret NPM_TOKEN yarn build
+
+run-konfig-api:
+  FROM +build-konfig-dash
+  ENTRYPOINT ["yarn", "rw", "deploy", "render", "api"]
+  EXPOSE 8911
+  SAVE IMAGE konfig-api:latest

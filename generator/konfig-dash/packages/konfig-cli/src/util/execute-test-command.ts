@@ -74,9 +74,8 @@ export async function executeTestCommand({
 
     // if this process exits in any way, kill the mock server
     const handleTermination = async () => {
-      CliUx.ux.log('🛑 Killing mock server')
+      CliUx.ux.log('Exit hook - Ensuring mock server is not running.')
       await kill(mockServerPort)
-      process.exit()
     }
 
     process.on('exit', handleTermination)
@@ -197,7 +196,8 @@ export async function executeTestCommand({
   // If we made it here then we successfully ran all tests
   CliUx.ux.info('Successfully ran all tests!')
 
-  process.exit()
+  CliUx.ux.log('🛑 Killing mock server')
+  await kill(mockServerPort)
 }
 
 const defaultTestScripts: Record<

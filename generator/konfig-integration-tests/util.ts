@@ -59,10 +59,19 @@ export async function e2e(mockServerPort: number) {
   ];
   for (const generator of generators) {
     expect(
-      fs.readFileSync(
-        path.join(sdkDir, generator.outputDirectory, "README.md"),
-        "utf-8"
+      normalizeDocumentation(
+        fs.readFileSync(
+          path.join(sdkDir, generator.outputDirectory, "README.md"),
+          "utf-8"
+        )
       )
     ).toMatchSnapshot();
   }
+}
+
+// Removes the [GitHub last commit] line from the README
+function normalizeDocumentation(readme: string) {
+  // matches [GitHub last commit] to the end of the line
+  const pattern = /\[!\[GitHub last commit\].*$\n?/gm;
+  return readme.replace(pattern, "");
 }

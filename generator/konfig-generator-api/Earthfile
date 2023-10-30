@@ -1,0 +1,16 @@
+VERSION 0.7
+FROM maven:3.8.6-jdk-11-slim
+WORKDIR /konfig-generator-api
+
+build-generator:
+  COPY src src
+  COPY pom.xml .
+  RUN mvn -f pom.xml clean package
+  SAVE ARTIFACT target/openapi-generator-api-1.0.0.jar
+
+run-generator:
+  FROM openjdk:11-jre-slim
+  COPY +build-generator/openapi-generator-api-1.0.0.jar /usr/local/lib/openapi-generator-api.jar
+  EXPOSE 8080
+  ENTRYPOINT ["java","-jar","/usr/local/lib/openapi-generator-api.jar", "--add-opens=java.base/java.lang=ALL-UNNAMED", "--add-opens=java.base/java.util=ALL-UNNAMED"]
+  SAVE IMAGE konfig-generator:latest

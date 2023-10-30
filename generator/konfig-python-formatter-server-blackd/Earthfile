@@ -1,0 +1,15 @@
+VERSION 0.7
+FROM python:3.11-slim
+WORKDIR /konfig-python-formatter-server-blackd
+
+run-python-formatter:
+  COPY pyproject.toml .
+  COPY README.md . # Required because pyproject.toml references it
+  COPY main.py .
+  COPY python_formatter_server_blackd python_formatter_server_blackd
+  COPY build.sh .
+  RUN ./build.sh
+  COPY start-ci.sh .
+  EXPOSE 10000
+  ENTRYPOINT ["./start-ci.sh"]
+  SAVE IMAGE konfig-python-formatter:latest

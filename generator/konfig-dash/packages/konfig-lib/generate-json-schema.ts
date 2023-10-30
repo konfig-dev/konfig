@@ -14,5 +14,7 @@ const docOutputPath = path.join(
   'static',
   'konfig-yaml.schema.json'
 )
-fs.writeFileSync(outputPath, JSON.stringify(jsonSchema, undefined, 2))
-fs.writeFileSync(docOutputPath, JSON.stringify(jsonSchema, undefined, 2))
+if (fs.existsSync(outputPath))
+  fs.writeFileSync(outputPath, JSON.stringify(jsonSchema, undefined, 2))
+if (fs.existsSync(docOutputPath))
+  fs.writeFileSync(docOutputPath, JSON.stringify(jsonSchema, undefined, 2))
