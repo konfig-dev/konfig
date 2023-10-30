@@ -29,9 +29,9 @@ export function OperationRequest({
 }) {
   const { colorScheme } = useMantineTheme()
   return (
-    <div className="border rounded-md border-mantine-gray-400 dark:border-mantine-gray-800">
+    <div className="border rounded-md border-mantine-gray-400 dark:border-mantine-gray-800 overflow-hidden">
       <Tab.Group>
-        <div className="flex px-4 flex-wrap items-start gap-x-4">
+        <div className="flex px-4 flex-wrap items-start gap-x-4 bg-gray-50 dark:bg-mantine-gray-900 border-b dark:border-b-mantine-gray-800">
           <div className="mr-auto pt-3 text-black dark:text-white text-sm font-semibold">
             Request
           </div>
@@ -59,11 +59,11 @@ export function OperationRequest({
             })}
           </Tab.List>
         </div>
-        <Tab.Panels className="border-t dark:border-t-mantine-gray-900">
+        <Tab.Panels>
           {languages.map(({ value }) => {
             return (
               <Tab.Panel
-                className="p-0 lg:p-2 outline-brand-500 dark:outline-brand-600"
+                className="outline-brand-500 dark:outline-brand-600"
                 key={value}
               >
                 <OperationFormGeneratedCode {...codegenArgs} language={value} />
@@ -71,7 +71,7 @@ export function OperationRequest({
             )
           })}
         </Tab.Panels>
-        <div className="border-t dark:border-t-mantine-gray-900 py-2">
+        <div className="border-t dark:border-t-mantine-gray-800 py-2 bg-gray-50 dark:bg-mantine-gray-900">
           <Button
             variant={colorScheme === 'dark' ? 'light' : 'filled'}
             className="ml-auto block mx-4 rounded-md"
