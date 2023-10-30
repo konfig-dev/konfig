@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.23.4
+
+### Patch Changes
+
+- [#311](https://github.com/konfig-dev/konfig/pull/311) [`787daba1`](https://github.com/konfig-dev/konfig/commit/787daba138beef15a7a155356494e1953b7f9a0c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add mockServerPort arg to konfig test
+
+- Updated dependencies [[`ce10a4a1`](https://github.com/konfig-dev/konfig/commit/ce10a4a196734dacc2dee760e9f98501b755de01)]:
+  - konfig-lib@1.26.0
+  - konfig-openapi-spec@1.6.2
+  - konfig-postman-to-openapi@3.0.139
+
 ## 1.23.3
 
 ### Patch Changes

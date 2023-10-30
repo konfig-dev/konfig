@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.26.0
+
+### Minor Changes
+
+- [#310](https://github.com/konfig-dev/konfig/pull/310) [`ce10a4a1`](https://github.com/konfig-dev/konfig/commit/ce10a4a196734dacc2dee760e9f98501b755de01) Thanks [@dphuang2](https://github.com/dphuang2)! - add hideNonSdkSnippets configuration to API portal
+
 ## 1.25.1
 
 ### Patch Changes
