@@ -7,12 +7,12 @@ konfig-test-dependencies:
   ### PYTHON
   ENV PYTHONDONTWRITEBYTECODE=1 # Don't write .pyc files, which are not needed in a container
   ENV PIP_DEFAULT_TIMEOUT=100
-  ENV POETRY_VERSION=1.5.1
 
   RUN apt-get update
   # lsof required for killing mock server after test
   RUN apt-get install -y lsof python3 python3-pip
-  RUN pip3 install poetry==$POETRY_VERSION
+  RUN pip3 install --upgrade pip
+  RUN pip3 install poetry
   # Clean up python installations
   RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
