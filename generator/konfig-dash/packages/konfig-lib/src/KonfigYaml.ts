@@ -188,7 +188,7 @@ const pythonResponseTypeVersion1 = z
 const pythonResponseTypeVersion2 = z
   .literal('2')
   .describe(
-    'Responses are DataClass instances and do not include all HTTP response fields in the response object. To get raw HTTP repsonse fields, use the _with_http_info version of the method.'
+    'Responses are Pydantic instances and do not include all HTTP response fields in the response object. To get raw HTTP repsonse fields, use the _with_http_info version of the method.'
   )
 
 export const pythonResponseTypeVersion = z

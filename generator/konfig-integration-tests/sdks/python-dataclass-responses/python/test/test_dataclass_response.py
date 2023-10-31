@@ -14,11 +14,10 @@ class TestSimple(unittest.TestCase):
         pass
 
     def test_response_is_dataclass(self):
-        pythondataclassresponses = PythonDataclassResponses(
+        client = PythonDataclassResponses(
             api_key="YOUR_API_KEY", host="http://127.0.0.1:4011"
         )
-        response = pythondataclassresponses.test.fetch("input")
-        self.assertTrue(is_dataclass(response))
+        response = client.test.fetch("input")
 
     def tearDown(self):
         pass
