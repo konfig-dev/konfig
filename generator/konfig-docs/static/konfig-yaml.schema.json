@@ -55,6 +55,10 @@
               },
               "additionalProperties": false
             },
+            "hideNonSdkSnippets": {
+              "type": "boolean",
+              "description": "Do not show non-SDK snippets in the API Reference page of the API Portal. This is useful if your API is not easily usable without an SDK or if you do not want developers to use your API without an SDK."
+            },
             "title": {
               "type": "string",
               "description": "Title to be used in Konfig's API Portal"
@@ -471,6 +475,25 @@
         "progressYamlPath": {
           "type": "string",
           "description": "Overrides the path of progress.yaml which is used in the \"konfig fix\" CLI command. This is helpful if you have a staging and production OpenAPI Specification and you want to host two different SDK repos for staging and production releases but want to share the same progress for \"konfig fix\"."
+        },
+        "filterPaths": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Filter operations from OpenAPI spec by path and method. Filtered operations won't be generated in SDKs. Omitting method will filter all methods for the path."
         },
         "tagPriority": {
           "type": "array",
@@ -950,6 +973,15 @@
                 "projectName": {
                   "type": "string",
                   "description": "acme-python-sdk"
+                },
+                "responseTypeVersion": {
+                  "type": "string",
+                  "enum": [
+                    "1",
+                    "2"
+                  ],
+                  "default": "2",
+                  "description": "Choose which version of Konfig's implementation of responses for the Python SDK to use."
                 },
                 "removeKonfigBranding": {
                   "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
@@ -1987,6 +2019,9 @@
                   },
                   "projectName": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/projectName"
+                  },
+                  "responseTypeVersion": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/responseTypeVersion"
                   },
                   "removeKonfigBranding": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"

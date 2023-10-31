@@ -550,6 +550,22 @@ components:
                 projectName:
                   type: string
                   description: acme-python-sdk
+                responseTypeVersion:
+                  anyOf:
+                    - type: string
+                      enum:
+                        - "1"
+                      description: TypedDict and include all HTTP response fields in the response
+                        object.
+                    - type: string
+                      enum:
+                        - "2"
+                      description: DataClass and do not include all HTTP response fields in the
+                        response object. To get raw HTTP repsonse fields, use
+                        the _with_http_info version of the method.
+                  default: "2"
+                  description: Choose which version of Konfig's implementation of responses for
+                    the Python SDK to use.
                 removeKonfigBranding:
                   type: boolean
                   description: Don't add Konfig branding to generated SDK
@@ -650,6 +666,7 @@ components:
                 - language
                 - packageName
                 - projectName
+                - responseTypeVersion
                 - clientName
                 - setSkipSerializationToTrueByDefault
               additionalProperties: false
@@ -2208,6 +2225,22 @@ components:
                   projectName:
                     type: string
                     description: acme-python-sdk
+                  responseTypeVersion:
+                    anyOf:
+                      - type: string
+                        enum:
+                          - "1"
+                        description: TypedDict and include all HTTP response fields in the response
+                          object.
+                      - type: string
+                        enum:
+                          - "2"
+                        description: DataClass and do not include all HTTP response fields in the
+                          response object. To get raw HTTP repsonse fields, use
+                          the _with_http_info version of the method.
+                    default: "2"
+                    description: Choose which version of Konfig's implementation of responses for
+                      the Python SDK to use.
                   removeKonfigBranding:
                     type: boolean
                     description: Don't add Konfig branding to generated SDK
@@ -2311,6 +2344,7 @@ components:
                   - language
                   - packageName
                   - projectName
+                  - responseTypeVersion
                   - clientName
                   - setSkipSerializationToTrueByDefault
                 additionalProperties: false

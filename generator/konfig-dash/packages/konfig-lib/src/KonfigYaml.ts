@@ -180,11 +180,30 @@ const useDescriptionInOperationTableDocumentation = z
     "Whether or not to use the operation's description in the operation table documentation. By default the summary is used."
   )
 
+const pythonResponseTypeVersion1 = z
+  .literal('1')
+  .describe(
+    'Responses are raw dictionaries and use TypedDict. Responses also include all HTTP response fields in the response object.'
+  )
+const pythonResponseTypeVersion2 = z
+  .literal('2')
+  .describe(
+    'Responses are DataClass instances and do not include all HTTP response fields in the response object. To get raw HTTP repsonse fields, use the _with_http_info version of the method.'
+  )
+
+export const pythonResponseTypeVersion = z
+  .union([pythonResponseTypeVersion1, pythonResponseTypeVersion2])
+  .default('2')
+  .describe(
+    "Choose which version of Konfig's implementation of responses for the Python SDK to use."
+  )
+
 export const pythonConfig = z.object({
   useDescriptionInOperationTableDocumentation,
   language: z.literal('python').default('python'),
   packageName: z.string().describe('acme_client'),
   projectName: z.string().describe('acme-python-sdk'),
+  responseTypeVersion: pythonResponseTypeVersion,
   removeKonfigBranding,
   pypiApiTokenEnvironmentVariable: z.string().optional(),
   gitlabRepositoryId: z.string().optional(),
