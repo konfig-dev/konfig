@@ -550,6 +550,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
             generatorConfig.useDescriptionInOperationTableDocumentation,
           omitInfoDescription: body.omitInfoDescription,
           tagPriority: body.tagPriority,
+          pythonResponseTypeVersion: generatorConfig.responseTypeVersion,
           readmeOperation: body.readmeOperation,
           projectName: generatorConfig.projectName,
           disallowAdditionalPropertiesIfNotPresent: false,

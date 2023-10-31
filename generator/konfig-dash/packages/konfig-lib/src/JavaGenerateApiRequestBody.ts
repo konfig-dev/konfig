@@ -15,6 +15,7 @@ const additionalProperties = z
     artifactUrl: z.string().optional(),
     authorEmail: z.string().describe('engineering@acme.com').optional(),
     authorName: z.string().describe('acme.com').optional(),
+    pythonResponseTypeVersion: z.string().optional(),
     classPrefix: z.string().describe('A').optional(),
     disallowAdditionalPropertiesIfNotPresent: z.boolean().optional(),
     groupId: z.string().optional(),
