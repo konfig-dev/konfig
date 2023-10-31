@@ -1,0 +1,33 @@
+name: Konfig SDK Integration Tests
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, 'run-integration-tests')
+    env:
+      EARTHLY_SECRETS: ${{ secrets.EARTHLY_SECRETS }}
+      EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
+      EARTHLY_ORG: konfig-publisher
+
+    steps:
+      - name: Setup Earthly
+        uses: earthly/actions-setup@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version: "latest"
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Write .env file for earthly
+        run: |
+          echo "NPM_TOKEN=${{ secrets.NPM_TOKEN }}" >> ./compose/.env
+          echo "SESSION_SECRET=${{ secrets.SESSION_SECRET }}" >> ./compose/.env
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ./compose/.env
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ./compose/.env
+        working-directory: ./generator/konfig-integration-tests
+
+      - name: Build and run integration tests
+        run: earthly --ci --sat integration-tester -P +test
+        working-directory: ./generator/konfig-integration-tests
