@@ -40,6 +40,8 @@ from python_dataclass_responses.type.test_fetch500_response import TestFetch500R
 from python_dataclass_responses.type.test_fetch_response import TestFetchResponse
 from python_dataclass_responses.type.test_fetch400_response import TestFetch400Response
 
+from python_dataclass_responses.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
+
 from . import path
 
 # Query params
@@ -349,7 +351,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class Fetch(BaseApi):
+class RawFetch(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     async def afetch(
@@ -380,6 +382,37 @@ class Fetch(BaseApi):
         return self._fetch_oapg(
             query_params=args.query,
         )
+
+
+class Fetch(BaseApi):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.raw = RawFetch(*args, **kwargs)
+
+    async def afetch(
+            self,
+            input_parameter: str,
+            validate: bool = False,
+    ) -> TestFetchResponsePydantic:
+        raw_response = await self.raw.afetch(
+            input_parameter=input_parameter,
+        )
+        if validate:
+            return TestFetchResponsePydantic(**raw_response.body)
+        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+
+    def fetch(
+            self,
+            input_parameter: str,
+            validate: bool = False,
+    ) -> TestFetchResponsePydantic:
+        raw_response = self.raw.fetch(
+            input_parameter=input_parameter,
+        )
+        if validate:
+            return TestFetchResponsePydantic(**raw_response.body)
+        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+
 
 class ApiForget(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
