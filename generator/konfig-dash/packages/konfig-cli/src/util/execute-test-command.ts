@@ -222,10 +222,7 @@ const defaultTestScripts: Record<
       throw Error('Got unexpected config for Python SDK')
     return [
       'poetry install',
-      `poetry run pytest --cov=${config.packageName} -o cache_dir=${path.join(
-        config.outputDirectory,
-        '.pytest_cache'
-      )}`,
+      `poetry run pytest --cov=${config.packageName} -o cache_dir='.pytest_cache'`,
     ]
   },
   php: () => ['composer install', path.join('.', 'vendor', 'bin', 'phpunit')],
