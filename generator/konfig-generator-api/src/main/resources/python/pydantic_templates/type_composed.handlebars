@@ -1,0 +1,13 @@
+{{#if composedSchemas}}
+    {{#with composedSchemas}}
+    {{#if allOf}}
+{{classname}} = typing.Union[{{#each allOf}}{{dataType}}{{#unless @last}},{{/unless}}{{/each}}]
+    {{/if}}
+    {{#if anyOf}}
+{{classname}} = typing.Union[{{#each anyOf}}{{dataType}}{{#unless @last}},{{/unless}}{{/each}}]
+    {{/if}}
+    {{#if oneOf}}
+{{classname}} = typing.Union[{{#each oneOf}}{{dataType}}{{#unless @last}},{{/unless}}{{/each}}]
+    {{/if}}
+    {{/with}}
+{{/if}}

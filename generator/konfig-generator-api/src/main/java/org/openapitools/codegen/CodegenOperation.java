@@ -76,6 +76,7 @@ public class CodegenOperation {
     // type imports
     public Set<String> schemaImports = new HashSet<String>();
     public Set<String> typeImports = new HashSet<String>();
+    public Set<String> additionalModelImports = new HashSet<String>();
     public List<Map<String, String>> examples;
     public List<Map<String, String>> requestBodyExamples;
     public ExternalDocumentation externalDocs;

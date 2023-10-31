@@ -78,6 +78,8 @@ public interface CodegenConfig {
 
     String typeFileFolder();
 
+    String additionalModelFileFolder();
+
     String modelTestFileFolder();
 
     String modelDocFileFolder();
@@ -85,6 +87,8 @@ public interface CodegenConfig {
     String modelPackage();
 
     String typePackage();
+
+    String additionalModelPackage();
 
     String toApiName(String name);
 
@@ -160,6 +164,8 @@ public interface CodegenConfig {
 
     Map<String, String> typeTemplateFiles();
 
+    Map<String, String> additionalModelTemplateFiles();
+
     Map<String, String> apiTestTemplateFiles();
 
     Map<String, String> modelTestTemplateFiles();
@@ -223,6 +229,8 @@ public interface CodegenConfig {
     String modelFilename(String templateName, String modelName);
 
     String typeFilename(String templateName, String modelName);
+
+    String additionalModelFilename(String templateName, String modelName);
 
     String apiFilename(String templateName, String tag);
 

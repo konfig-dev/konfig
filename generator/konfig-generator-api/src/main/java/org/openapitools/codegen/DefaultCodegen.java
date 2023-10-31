@@ -181,6 +181,7 @@ public class DefaultCodegen implements CodegenConfig {
     protected Map<String, String> inlineSchemaNameDefault = new HashMap<>();
     protected String modelPackage = "", apiPackage = "", fileSuffix;
     protected String typePackage = "";
+    protected String additionalModelPackage = "";
     protected String modelNamePrefix = "", modelNameSuffix = "";
     protected String apiNamePrefix = "", apiNameSuffix = "Api";
     protected String testPackage = "";
@@ -194,6 +195,7 @@ public class DefaultCodegen implements CodegenConfig {
     protected Map<String, String> apiTemplateFiles = new HashMap<>();
     protected Map<String, String> modelTemplateFiles = new HashMap<>();
     protected Map<String, String> typeTemplateFiles = new HashMap<>();
+    protected Map<String, String> additionalModelTemplateFiles = new HashMap<>();
     protected Map<String, String> apiTestTemplateFiles = new HashMap<>();
     protected Map<String, String> modelTestTemplateFiles = new HashMap<>();
     protected Map<String, String> apiDocTemplateFiles = new HashMap<>();
@@ -1178,6 +1180,11 @@ public class DefaultCodegen implements CodegenConfig {
     }
 
     @Override
+    public String additionalModelPackage() {
+        return additionalModelPackage;
+    }
+
+    @Override
     public String apiPackage() {
         return apiPackage;
     }
@@ -1242,6 +1249,11 @@ public class DefaultCodegen implements CodegenConfig {
     }
 
     @Override
+    public Map<String, String> additionalModelTemplateFiles() {
+        return additionalModelTemplateFiles;
+    }
+
+    @Override
     public String apiFileFolder() {
         return outputFolder + File.separator + apiPackage().replace('.', File.separatorChar);
     }
@@ -1254,6 +1266,11 @@ public class DefaultCodegen implements CodegenConfig {
     @Override
     public String typeFileFolder() {
         return outputFolder + File.separator + typePackage().replace('.', File.separatorChar);
+    }
+
+    @Override
+    public String additionalModelFileFolder() {
+        return outputFolder + File.separator + additionalModelPackage().replace('.', File.separatorChar);
     }
 
     @Override
@@ -6170,6 +6187,12 @@ public class DefaultCodegen implements CodegenConfig {
     public String typeFilename(String templateName, String modelName) {
         String suffix = typeTemplateFiles().get(templateName);
         return typeFileFolder() + File.separator + toModelFilename(modelName) + suffix;
+    }
+
+    @Override
+    public String additionalModelFilename(String templateName, String modelName) {
+        String suffix = additionalModelTemplateFiles().get(templateName);
+        return additionalModelFileFolder() + File.separator + toModelFilename(modelName) + suffix;
     }
 
     /**

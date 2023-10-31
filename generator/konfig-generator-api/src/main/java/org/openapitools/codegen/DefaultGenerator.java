@@ -413,7 +413,20 @@ public class DefaultGenerator implements Generator {
             if (written != null) {
                 files.add(written);
                 if (config.isEnablePostProcessFile() && !dryRun) {
-                    config.postProcessFile(written, "model");
+                    config.postProcessFile(written, "type");
+                }
+            }
+        }
+    }
+
+    private void generateAdditionalModel(List<File> files, Map<String, Object> models, String modelName) throws IOException {
+        for (String templateName : config.additionalModelTemplateFiles().keySet()) {
+            String filename = config.additionalModelFilename(templateName, modelName);
+            File written = processTemplateToFile(models, templateName, filename, generateModels, CodegenConstants.MODELS);
+            if (written != null) {
+                files.add(written);
+                if (config.isEnablePostProcessFile() && !dryRun) {
+                    config.postProcessFile(written, "additionalModel");
                 }
             }
         }
@@ -570,6 +583,9 @@ public class DefaultGenerator implements Generator {
 
                 // to generate type files
                 generateType(files, models, modelName);
+
+                // to generate additional files for model (in Python, this is used for Pydantic models)
+                generateAdditionalModel(files, models, modelName);
 
                 // to generate model test files
                 generateModelTests(files, models, modelName);

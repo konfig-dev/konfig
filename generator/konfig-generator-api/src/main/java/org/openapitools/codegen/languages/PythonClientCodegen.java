@@ -172,6 +172,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
 
         modelPackage = "model";
         typePackage = "type";
+        additionalModelPackage = "pydantic";
         apiPackage = "apis";
         outputFolder = "generated-code" + File.separatorChar + "python";
 
@@ -311,6 +312,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         modelTemplateFiles.put("model_stub." + templateExtension, ".pyi");
 
         typeTemplateFiles.put("type." + templateExtension, ".py");
+        additionalModelTemplateFiles.put("pydantic." + templateExtension, ".py");
 
         apiTemplateFiles.put("api." + templateExtension, ".py");
         modelTestTemplateFiles.put("model_test." + templateExtension, ".py");
@@ -609,6 +611,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
             endpointMap.put("imports", co.imports);
             endpointMap.put("schemaImports", co.schemaImports);
             endpointMap.put("typeImports", co.typeImports);
+            endpointMap.put("pydanticImports", co.additionalModelImports);
             endpointMap.put("packageName", packageName);
             endpointMap.put("operations", operations);
             ((HashMap<String, Object>) operations.get("additionalProperties")).entrySet().forEach((entry) -> {
@@ -951,6 +954,10 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         return "from " + packagePath() + "." +  typePackage() + "." + toModelFilename(name) + " import " + toModelName(name);
     }
 
+    public String toPydanticImport(String name) {
+        return "from " + packagePath() + "." +  "pydantic" + "." + toModelFilename(name) + " import " + toModelName(name) + " as " + toModelName(name) + "Pydantic";
+    }
+
     @Override
     @SuppressWarnings("static-method")
     public OperationsMap postProcessOperationsWithModels(OperationsMap objs, List<ModelMap> allModels) {
@@ -974,6 +981,9 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
             }
             for (String modelName : modelNames) {
                 operation.typeImports.add(toTypeImport(modelName));
+            }
+            for (String modelName : modelNames) {
+                operation.additionalModelImports.add(toPydanticImport(modelName));
             }
         }
         generateEndpoints(objs);
@@ -1018,6 +1028,9 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
                 }
                 for (String importModelName : importModelNames) {
                     cm.typeImports.add(toTypeImport(importModelName));
+                }
+                for (String importModelName : importModelNames) {
+                    cm.additionalModelImports.add(toPydanticImport(importModelName));
                 }
             }
         }
@@ -2826,6 +2839,11 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
     @Override
     public String typeFileFolder() {
         return outputFolder + File.separatorChar + packagePath() + File.separatorChar +  typePackage();
+    }
+
+    @Override
+    public String additionalModelFileFolder() {
+        return outputFolder + File.separatorChar + packagePath() + File.separatorChar +  additionalModelPackage();
     }
 
     @Override
