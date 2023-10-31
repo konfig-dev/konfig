@@ -283,6 +283,8 @@ public interface GenerateApi {
         putIfPresent(map, "artifactId", additionalProperties.getArtifactId());
         putIfPresent(map, "artifactUrl", additionalProperties.getArtifactUrl());
         putIfPresent(map, "groupId", additionalProperties.getGroupId());
+        putIfPresent(map, "prstv1", additionalProperties.getPythonResponseTypeVersion().equals("1"));
+        putIfPresent(map, "prstv2", additionalProperties.getPythonResponseTypeVersion().equals("2"));
         putIfPresent(map, "pubName", additionalProperties.getPubName());
         putIfPresent(map, "pubLibrary", additionalProperties.getPubLibrary());
         putIfPresent(map, "pubDescription", additionalProperties.getPubDescription());
