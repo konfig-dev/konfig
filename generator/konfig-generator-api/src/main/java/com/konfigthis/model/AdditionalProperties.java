@@ -65,6 +65,9 @@ public class AdditionalProperties {
   @JsonProperty("pubAuthor")
   private String pubAuthor;
 
+  @JsonProperty("pythonResponseTypeVersion")
+  private String pythonResponseTypeVersion;
+
   @JsonProperty("pubAuthorEmail")
   private String pubAuthorEmail;
 
@@ -459,6 +462,25 @@ public class AdditionalProperties {
 
   public void setPubAuthor(String pubAuthor) {
     this.pubAuthor = pubAuthor;
+  }
+
+  public AdditionalProperties pythonResponseTypeVersion(String pythonResponseTypeVersion) {
+    this.pythonResponseTypeVersion = pythonResponseTypeVersion;
+    return this;
+  }
+
+  /**
+   * Get pythonResponseTypeVersion
+   * @return pythonResponseTypeVersion
+  */
+  
+  @Schema(name = "pythonResponseTypeVersion", required = false)
+  public String getPythonResponseTypeVersion() {
+    return pythonResponseTypeVersion;
+  }
+
+  public void setPythonResponseTypeVersion(String pythonResponseTypeVersion) {
+    this.pythonResponseTypeVersion = pythonResponseTypeVersion;
   }
 
   public AdditionalProperties pubAuthorEmail(String pubAuthorEmail) {
@@ -1623,6 +1645,7 @@ public class AdditionalProperties {
         Objects.equals(this.pubLibrary, additionalProperties.pubLibrary) &&
         Objects.equals(this.pubDescription, additionalProperties.pubDescription) &&
         Objects.equals(this.pubAuthor, additionalProperties.pubAuthor) &&
+        Objects.equals(this.pythonResponseTypeVersion, additionalProperties.pythonResponseTypeVersion) &&
         Objects.equals(this.pubAuthorEmail, additionalProperties.pubAuthorEmail) &&
         Objects.equals(this.pubHomepage, additionalProperties.pubHomepage) &&
         Objects.equals(this.pubPublishTo, additionalProperties.pubPublishTo) &&
@@ -1685,7 +1708,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1703,6 +1726,7 @@ public class AdditionalProperties {
     sb.append("    pubLibrary: ").append(toIndentedString(pubLibrary)).append("\n");
     sb.append("    pubDescription: ").append(toIndentedString(pubDescription)).append("\n");
     sb.append("    pubAuthor: ").append(toIndentedString(pubAuthor)).append("\n");
+    sb.append("    pythonResponseTypeVersion: ").append(toIndentedString(pythonResponseTypeVersion)).append("\n");
     sb.append("    pubAuthorEmail: ").append(toIndentedString(pubAuthorEmail)).append("\n");
     sb.append("    pubHomepage: ").append(toIndentedString(pubHomepage)).append("\n");
     sb.append("    pubPublishTo: ").append(toIndentedString(pubPublishTo)).append("\n");
