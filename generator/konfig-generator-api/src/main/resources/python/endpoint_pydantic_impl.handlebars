@@ -1,12 +1,11 @@
 {{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
 {{/if}}async def a{{operationId}}(
-{{> endpoint_args async=true isOverload=false skipDeserialization="null" contentType="null" interface=true omitReturnType=true validateArg=true}}
+{{> endpoint_args isOverload=false skipDeserialization="null" contentType="null" interface=true omitReturnType=true validateArg=true}}
     raw_response = await self.raw.a{{operationId}}(
         {{> endpoint_args_call_mapped_args}}
     )
-    if validate:
-        return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
-    return {{> endpoint_pydantic_impl_return_model}}.model_construct(**raw_response.body)
+    {{> endpoint_pydantic_impl_return}}
+
 
 {{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
 {{/if}}def {{operationId}}(
@@ -14,6 +13,4 @@
     raw_response = self.raw.{{operationId}}(
         {{> endpoint_args_call_mapped_args}}
     )
-    if validate:
-        return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
-    return {{> endpoint_pydantic_impl_return_model}}.model_construct(**raw_response.body)
+    {{> endpoint_pydantic_impl_return}}

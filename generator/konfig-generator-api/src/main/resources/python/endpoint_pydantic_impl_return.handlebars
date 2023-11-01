@@ -1,0 +1,9 @@
+{{#if returnModel.isArray}}
+if validate:
+    return {{> endpoint_pydantic_impl_return_model}}(raw_response.body).root
+return {{> endpoint_pydantic_impl_return_model}}.model_construct(raw_response.body).root
+{{else}}
+if validate:
+    return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
+return {{> endpoint_pydantic_impl_return_model}}.model_construct(**raw_response.body)
+{{/if}}
