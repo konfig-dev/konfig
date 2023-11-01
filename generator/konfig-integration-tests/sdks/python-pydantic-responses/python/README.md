@@ -18,6 +18,7 @@ A simple API based on python pydantic responses.
 - [Async](#async)
 - [Reference](#reference)
   * [`pythonpydanticresponses.test.fetch`](#pythonpydanticresponsestestfetch)
+  * [`pythonpydanticresponses.test.reserved_word`](#pythonpydanticresponsestestreserved_word)
 
 <!-- tocstop -->
 
@@ -136,6 +137,28 @@ The input parameter to process.
 #### 🌐 Endpoint
 
 `/simple-endpoint` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `pythonpydanticresponses.test.reserved_word`
+
+Reserved word in Python
+
+#### 🛠️ Usage
+
+```python
+reserved_word_response = pythonpydanticresponses.test.reserved_word()
+```
+
+#### 🔄 Return
+
+[TestReservedWord](./python_pydantic/type/test_reserved_word.py)
+
+#### 🌐 Endpoint
+
+`/reserved-word` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

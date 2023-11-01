@@ -1,10 +1,7 @@
 # do not import all endpoints into this module because that uses a lot of memory and stack frames
 # if you need the ability to import all endpoints from this module, import them with
-# from python_pydantic.apis.path_to_api import path_to_api
+# from python_pydantic.paths.reserved_word import Api
 
-import enum
+from python_pydantic.paths import PathValues
 
-
-class PathValues(str, enum.Enum):
-    RESERVEDWORD = "/reserved-word"
-    SIMPLEENDPOINT = "/simple-endpoint"
+path = PathValues.RESERVEDWORD

@@ -343,7 +343,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class RawFetch(BaseApi):
+class FetchRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     async def afetch(
@@ -376,9 +376,6 @@ class RawFetch(BaseApi):
         )
 
 class Fetch(BaseApi):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.raw = RawFetch(*args, **kwargs)
 
     async def afetch(
         self,

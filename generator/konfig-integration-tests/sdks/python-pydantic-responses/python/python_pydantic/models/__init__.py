@@ -14,3 +14,4 @@
 from python_pydantic.model.test_fetch400_response import TestFetch400Response
 from python_pydantic.model.test_fetch500_response import TestFetch500Response
 from python_pydantic.model.test_fetch_response import TestFetchResponse
+from python_pydantic.model.test_reserved_word import TestReservedWord

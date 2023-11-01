@@ -32,6 +32,14 @@ class TestSimple(unittest.TestCase):
         response = client.test.raw.fetch("test")
         self.assertRaises(AttributeError, lambda: response.propertyA)
 
+    # Ensure that reserved words are properly handled by appending _ and aliasing the original name
+    def test_reserved_word(self):
+        client = PythonPydanticResponses(
+            api_key="YOUR_API_KEY", host="http://127.0.0.1:4011"
+        )
+        response = client.test.reserved_word()
+        self.assertIsNotNone(response.class_)
+
     def tearDown(self):
         pass
 

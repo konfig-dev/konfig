@@ -17,6 +17,19 @@ servers:
 tags:
   - name: Test
 paths:
+  /reserved-word:
+    get:
+      tags:
+        - Test
+      operationId: Test_reservedWord
+      description: Reserved word in Python
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestReservedWord'
   /simple-endpoint:
     get:
       tags:
@@ -57,6 +70,12 @@ components:
       in: header
       name: X-API-KEY
   schemas:
+    TestReservedWord:
+      type: object
+      properties:
+        class:
+          description: Reserved word in Python
+          type: string
     TestFetchResponse:
       type: object
       properties:

@@ -32,61 +32,23 @@ import frozendict  # noqa: F401
 
 from python_pydantic import schemas  # noqa: F401
 
-from python_pydantic.model.test_fetch_response import TestFetchResponse as TestFetchResponseSchema
-from python_pydantic.model.test_fetch400_response import TestFetch400Response as TestFetch400ResponseSchema
-from python_pydantic.model.test_fetch500_response import TestFetch500Response as TestFetch500ResponseSchema
+from python_pydantic.model.test_reserved_word import TestReservedWord as TestReservedWordSchema
 
-from python_pydantic.type.test_fetch400_response import TestFetch400Response
-from python_pydantic.type.test_fetch500_response import TestFetch500Response
-from python_pydantic.type.test_fetch_response import TestFetchResponse
+from python_pydantic.type.test_reserved_word import TestReservedWord
 
-from python_pydantic.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
-from python_pydantic.pydantic.test_fetch500_response import TestFetch500Response as TestFetch500ResponsePydantic
-from python_pydantic.pydantic.test_fetch400_response import TestFetch400Response as TestFetch400ResponsePydantic
+from python_pydantic.pydantic.test_reserved_word import TestReservedWord as TestReservedWordPydantic
 
-from . import path
-
-# Query params
-InputParameterSchema = schemas.StrSchema
-RequestRequiredQueryParams = typing_extensions.TypedDict(
-    'RequestRequiredQueryParams',
-    {
-        'inputParameter': typing.Union[InputParameterSchema, str, ],
-    }
-)
-RequestOptionalQueryParams = typing_extensions.TypedDict(
-    'RequestOptionalQueryParams',
-    {
-    },
-    total=False
-)
-
-
-class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams):
-    pass
-
-
-request_query_input_parameter = api_client.QueryParameter(
-    name="inputParameter",
-    style=api_client.ParameterStyle.FORM,
-    schema=InputParameterSchema,
-    required=True,
-    explode=True,
-)
-_auth = [
-    'ApiKeyAuth',
-]
-SchemaFor200ResponseBodyApplicationJson = TestFetchResponseSchema
+SchemaFor200ResponseBodyApplicationJson = TestReservedWordSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: TestFetchResponse
+    body: TestReservedWord
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: TestFetchResponse
+    body: TestReservedWord
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -97,53 +59,6 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
-SchemaFor400ResponseBodyApplicationJson = TestFetch400ResponseSchema
-
-
-@dataclass
-class ApiResponseFor400(api_client.ApiResponse):
-    body: TestFetch400Response
-
-
-@dataclass
-class ApiResponseFor400Async(api_client.AsyncApiResponse):
-    body: TestFetch400Response
-
-
-_response_for_400 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor400,
-    response_cls_async=ApiResponseFor400Async,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor400ResponseBodyApplicationJson),
-    },
-)
-SchemaFor500ResponseBodyApplicationJson = TestFetch500ResponseSchema
-
-
-@dataclass
-class ApiResponseFor500(api_client.ApiResponse):
-    body: TestFetch500Response
-
-
-@dataclass
-class ApiResponseFor500Async(api_client.AsyncApiResponse):
-    body: TestFetch500Response
-
-
-_response_for_500 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor500,
-    response_cls_async=ApiResponseFor500Async,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor500ResponseBodyApplicationJson),
-    },
-)
-_status_code_to_response = {
-    '200': _response_for_200,
-    '400': _response_for_400,
-    '500': _response_for_500,
-}
 _all_accept_content_types = (
     'application/json',
 )
@@ -151,20 +66,14 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _fetch_mapped_args(
+    def _reserved_word_mapped_args(
         self,
-        input_parameter: str,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
-        _query_params = {}
-        if input_parameter is not None:
-            _query_params["inputParameter"] = input_parameter
-        args.query = _query_params
         return args
 
-    async def _afetch_oapg(
+    async def _areserved_word_oapg(
         self,
-            query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -175,26 +84,11 @@ class BaseApi(api_client.Api):
         AsyncGeneratorResponse,
     ]:
         """
-        Fetches a JSON value based on input parameter
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
-        self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
         used_path = path.value
-    
-        prefix_separator_iterator = None
-        for parameter in (
-            request_query_input_parameter,
-        ):
-            parameter_data = query_params.get(parameter.name, schemas.unset)
-            if parameter_data is schemas.unset:
-                continue
-            if prefix_separator_iterator is None:
-                prefix_separator_iterator = parameter.get_prefix_separator_iterator()
-            serialized_data = parameter.serialize(parameter_data, prefix_separator_iterator)
-            for serialized_value in serialized_data.values():
-                used_path += serialized_value
     
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
@@ -215,7 +109,6 @@ class BaseApi(api_client.Api):
             method=method,
             headers=_headers,
             auth_settings=_auth,
-            prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
         )
     
@@ -273,9 +166,8 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-    def _fetch_oapg(
+    def _reserved_word_oapg(
         self,
-            query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -285,26 +177,11 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]:
         """
-        Fetches a JSON value based on input parameter
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
-        self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
         used_path = path.value
-    
-        prefix_separator_iterator = None
-        for parameter in (
-            request_query_input_parameter,
-        ):
-            parameter_data = query_params.get(parameter.name, schemas.unset)
-            if parameter_data is schemas.unset:
-                continue
-            if prefix_separator_iterator is None:
-                prefix_separator_iterator = parameter.get_prefix_separator_iterator()
-            serialized_data = parameter.serialize(parameter_data, prefix_separator_iterator)
-            for serialized_value in serialized_data.values():
-                used_path += serialized_value
     
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
@@ -325,7 +202,6 @@ class BaseApi(api_client.Api):
             method=method,
             headers=_headers,
             auth_settings=_auth,
-            prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
         )
     
@@ -353,63 +229,53 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class FetchRaw(BaseApi):
+class ReservedWordRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    async def afetch(
+    async def areserved_word(
         self,
-        input_parameter: str,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._fetch_mapped_args(
-            input_parameter=input_parameter,
+        args = self._reserved_word_mapped_args(
         )
-        return await self._afetch_oapg(
-            query_params=args.query,
+        return await self._areserved_word_oapg(
         )
     
-    def fetch(
+    def reserved_word(
         self,
-        input_parameter: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._fetch_mapped_args(
-            input_parameter=input_parameter,
+        args = self._reserved_word_mapped_args(
         )
-        return self._fetch_oapg(
-            query_params=args.query,
+        return self._reserved_word_oapg(
         )
 
-class Fetch(BaseApi):
+class ReservedWord(BaseApi):
 
-    async def afetch(
+    async def areserved_word(
         self,
-        input_parameter: str,
         validate: bool = False,
     ):
-        raw_response = await self.raw.afetch(
-            input_parameter=input_parameter,
+        raw_response = await self.raw.areserved_word(
         )
         if validate:
-            return TestFetchResponsePydantic(**raw_response.body)
-        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+            return TestReservedWordPydantic(**raw_response.body)
+        return TestReservedWordPydantic.model_construct(**raw_response.body)
     
-    def fetch(
+    def reserved_word(
         self,
-        input_parameter: str,
         validate: bool = False,
     ):
-        raw_response = self.raw.fetch(
-            input_parameter=input_parameter,
+        raw_response = self.raw.reserved_word(
         )
         if validate:
-            return TestFetchResponsePydantic(**raw_response.body)
-        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+            return TestReservedWordPydantic(**raw_response.body)
+        return TestReservedWordPydantic.model_construct(**raw_response.body)
 
 
 class ApiForget(BaseApi):
@@ -417,30 +283,24 @@ class ApiForget(BaseApi):
 
     async def aget(
         self,
-        input_parameter: str,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._fetch_mapped_args(
-            input_parameter=input_parameter,
+        args = self._reserved_word_mapped_args(
         )
-        return await self._afetch_oapg(
-            query_params=args.query,
+        return await self._areserved_word_oapg(
         )
     
     def get(
         self,
-        input_parameter: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._fetch_mapped_args(
-            input_parameter=input_parameter,
+        args = self._reserved_word_mapped_args(
         )
-        return self._fetch_oapg(
-            query_params=args.query,
+        return self._reserved_word_oapg(
         )
 
