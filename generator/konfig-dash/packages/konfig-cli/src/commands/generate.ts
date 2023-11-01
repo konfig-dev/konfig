@@ -1521,6 +1521,7 @@ const DO_NOT_DELETE_THESE_FILES = new Set([
   KONFIG_IGNORE_FILE_NAME,
   'CHANGELOG.md', // for all SDKs
   'yarn.lock', // for TypeScript SDK
+  'poetry.lock', // for Python SDK
   'pubspec.lock', // for Dart SDK
 ])
 

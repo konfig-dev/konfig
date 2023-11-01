@@ -189,7 +189,9 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         dependencies.add(new PythonDependency("urllib3", "1.26.18", "~=", "^"));
         dependencies.add(new PythonDependency("frozendict", "2.3.4", "~=", "^"));
         dependencies.add(new PythonDependency("aiohttp", "3.8.4", "~=", "^"));
-        dependencies.add(new PythonDependency("pydantic", "2.4.2", "~=", "^"));
+        if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
+            dependencies.add(new PythonDependency("pydantic", "2.4.2", "~=", "^"));
+        }
         ArrayList<PythonDependency> poetryDependencies = new ArrayList<>();
         poetryDependencies.add(new PythonDependency("python", "3.7", "N/A", "^"));
         poetryDependencies.addAll(dependencies);
