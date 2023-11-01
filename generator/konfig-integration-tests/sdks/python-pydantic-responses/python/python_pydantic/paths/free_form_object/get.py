@@ -32,29 +32,26 @@ import frozendict  # noqa: F401
 
 from python_pydantic import schemas  # noqa: F401
 
-from python_pydantic.model.test_reserved_word import TestReservedWord as TestReservedWordSchema
 
-from python_pydantic.type.test_reserved_word import TestReservedWord
 
 from ...api_client import Dictionary
-from python_pydantic.pydantic.test_reserved_word import TestReservedWord as TestReservedWordPydantic
 
 from . import path
 
 _auth = [
     'ApiKeyAuth',
 ]
-SchemaFor200ResponseBodyApplicationJson = TestReservedWordSchema
+SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: TestReservedWord
+    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: TestReservedWord
+    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -75,13 +72,13 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _reserved_word_mapped_args(
+    def _free_form_object_mapped_args(
         self,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         return args
 
-    async def _areserved_word_oapg(
+    async def _afree_form_object_oapg(
         self,
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -175,7 +172,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-    def _reserved_word_oapg(
+    def _free_form_object_oapg(
         self,
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -238,53 +235,53 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class ReservedWordRaw(BaseApi):
+class FreeFormObjectRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    async def areserved_word(
+    async def afree_form_object(
         self,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._reserved_word_mapped_args(
+        args = self._free_form_object_mapped_args(
         )
-        return await self._areserved_word_oapg(
+        return await self._afree_form_object_oapg(
         )
     
-    def reserved_word(
+    def free_form_object(
         self,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._reserved_word_mapped_args(
+        args = self._free_form_object_mapped_args(
         )
-        return self._reserved_word_oapg(
+        return self._free_form_object_oapg(
         )
 
-class ReservedWord(BaseApi):
+class FreeFormObject(BaseApi):
 
-    async def areserved_word(
+    async def afree_form_object(
         self,
         validate: bool = False,
     ):
-        raw_response = await self.raw.areserved_word(
+        raw_response = await self.raw.afree_form_object(
         )
         if validate:
-            return TestReservedWordPydantic(**raw_response.body)
-        return TestReservedWordPydantic.model_construct(**raw_response.body)
+            return Dictionary(**raw_response.body)
+        return Dictionary.model_construct(**raw_response.body)
     
-    def reserved_word(
+    def free_form_object(
         self,
         validate: bool = False,
     ):
-        raw_response = self.raw.reserved_word(
+        raw_response = self.raw.free_form_object(
         )
         if validate:
-            return TestReservedWordPydantic(**raw_response.body)
-        return TestReservedWordPydantic.model_construct(**raw_response.body)
+            return Dictionary(**raw_response.body)
+        return Dictionary.model_construct(**raw_response.body)
 
 
 class ApiForget(BaseApi):
@@ -297,9 +294,9 @@ class ApiForget(BaseApi):
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._reserved_word_mapped_args(
+        args = self._free_form_object_mapped_args(
         )
-        return await self._areserved_word_oapg(
+        return await self._afree_form_object_oapg(
         )
     
     def get(
@@ -308,8 +305,8 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._reserved_word_mapped_args(
+        args = self._free_form_object_mapped_args(
         )
-        return self._reserved_word_oapg(
+        return self._free_form_object_oapg(
         )
 

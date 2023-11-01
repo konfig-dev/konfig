@@ -40,6 +40,7 @@ from python_pydantic.type.test_fetch400_response import TestFetch400Response
 from python_pydantic.type.test_fetch500_response import TestFetch500Response
 from python_pydantic.type.test_fetch_response import TestFetchResponse
 
+from ...api_client import Dictionary
 from python_pydantic.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
 from python_pydantic.pydantic.test_fetch500_response import TestFetch500Response as TestFetch500ResponsePydantic
 from python_pydantic.pydantic.test_fetch400_response import TestFetch400Response as TestFetch400ResponsePydantic

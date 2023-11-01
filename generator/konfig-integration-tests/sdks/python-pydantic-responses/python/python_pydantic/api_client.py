@@ -25,6 +25,7 @@ import typing
 import typing_extensions
 import aiohttp
 import urllib3
+from pydantic import BaseModel
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
 from urllib3.fields import RequestField as RequestFieldBase
@@ -65,6 +66,16 @@ class RequestField(RequestFieldBase):
         if not isinstance(other, RequestField):
             return False
         return self.__dict__ == other.__dict__
+
+
+class Dictionary(BaseModel):
+    """
+    For free-form objects that can have any keys and values
+    (i.e. "type: object" with no properties)
+    """
+    class Config:
+        extra = 'allow'
+
 
 def DeprecationWarningOnce(func=None, *, prefix=None):
     def decorator(func):

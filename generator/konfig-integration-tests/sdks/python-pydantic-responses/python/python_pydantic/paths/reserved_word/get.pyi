@@ -36,6 +36,7 @@ from python_pydantic.model.test_reserved_word import TestReservedWord as TestRes
 
 from python_pydantic.type.test_reserved_word import TestReservedWord
 
+from ...api_client import Dictionary
 from python_pydantic.pydantic.test_reserved_word import TestReservedWord as TestReservedWordPydantic
 
 SchemaFor200ResponseBodyApplicationJson = TestReservedWordSchema

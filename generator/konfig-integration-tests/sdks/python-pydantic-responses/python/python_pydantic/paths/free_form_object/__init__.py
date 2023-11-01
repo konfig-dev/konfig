@@ -1,10 +1,7 @@
 # do not import all endpoints into this module because that uses a lot of memory and stack frames
 # if you need the ability to import all endpoints from this module, import them with
-# from python_pydantic.apis.tag_to_api import tag_to_api
+# from python_pydantic.paths.free_form_object import Api
 
-import enum
+from python_pydantic.paths import PathValues
 
-
-class TagValues(str, enum.Enum):
-    TEST = "Test"
-    TEST_RESPONSE = "TestResponse"
+path = PathValues.FREEFORMOBJECT

@@ -17,6 +17,7 @@ from python_pydantic.configuration import Configuration
 from python_pydantic.api_client import ApiClient
 from python_pydantic.type_util import copy_signature
 from python_pydantic.apis.tags.test_api import TestApi
+from python_pydantic.apis.tags.test_response_api import TestResponseApi
 
 
 
@@ -30,3 +31,4 @@ class PythonPydanticResponses(ClientCustom):
             raise Exception("configuration is required")
         api_client = ApiClient(configuration)
         self.test: TestApi = TestApi(api_client)
+        self.test_response: TestResponseApi = TestResponseApi(api_client)
