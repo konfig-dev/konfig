@@ -31,13 +31,12 @@ setup(
     author_email="{{#if infoEmail}}{{infoEmail}}{{else}}engineering@konfigthis.com{{/if}}",
     url="{{#if packageUrl}}{{packageUrl}}{{/if}}{{#unless packageUrl}}https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{/unless}}",
     keywords=[{{#unless removeKonfigBranding}}"Konfig", {{/unless}}"{{{appName}}}"],
-    license="MIT",
     python_requires="{{{generatorLanguageVersion}}}",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
-    {{#if licenseInfo}}license="{{licenseInfo}}",
-    {{/if}}long_description=long_description,
+    license="{{#if licenseInfo}}{{licenseInfo}}{{else}}MIT{{/if}}",
+    long_description=long_description,
     long_description_content_type='text/markdown'
 )
 {{/with}}
