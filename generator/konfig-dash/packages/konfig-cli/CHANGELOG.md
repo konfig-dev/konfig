@@ -1,5 +1,18 @@
 # konfig-cli
 
+## 1.25.0
+
+### Minor Changes
+
+- [#320](https://github.com/konfig-dev/konfig/pull/320) [`feda4e8f`](https://github.com/konfig-dev/konfig/commit/feda4e8f96bc7c4f731807126d088de3bb274aa9) Thanks [@dphuang2](https://github.com/dphuang2)! - fix location of .pytest for Python SDK in "konfig test"
+
+### Patch Changes
+
+- Updated dependencies [[`962ab778`](https://github.com/konfig-dev/konfig/commit/962ab7789efa4af28efed53ecf38b33af1a8800a)]:
+  - konfig-lib@1.27.0
+  - konfig-openapi-spec@1.6.4
+  - konfig-postman-to-openapi@3.0.141
+
 ## 1.24.0
 
 ### Minor Changes

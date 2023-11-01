@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.27.0
+
+### Minor Changes
+
+- [#323](https://github.com/konfig-dev/konfig/pull/323) [`962ab778`](https://github.com/konfig-dev/konfig/commit/962ab7789efa4af28efed53ecf38b33af1a8800a) Thanks [@dphuang2](https://github.com/dphuang2)! - update description of pythonResponseType
+
 ## 1.26.1
 
 ### Patch Changes
