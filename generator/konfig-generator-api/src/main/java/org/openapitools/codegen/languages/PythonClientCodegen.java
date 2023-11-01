@@ -333,7 +333,9 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         additionalModelTemplateFiles.put("pydantic." + templateExtension, ".py");
 
         apiTemplateFiles.put("api." + templateExtension, ".py");
-        apiTemplateFiles.put("api_raw." + templateExtension, ".py");
+        if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
+            apiTemplateFiles.put("api_raw." + templateExtension, ".py");
+        }
         modelTestTemplateFiles.put("model_test." + templateExtension, ".py");
 
         // Commented these out as we now generate all docs in the top-level Python SDK's README.md

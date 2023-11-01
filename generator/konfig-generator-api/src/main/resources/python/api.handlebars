@@ -7,7 +7,9 @@
 from {{packageName}}.paths.{{nickname}}.{{httpMethod}} import {{operationIdCamelCase}}
 {{/each}}
 {{/with}}
+{{#if prstv2}}
 from {{packageName}}.apis.tags.{{classFilename}}_raw import {{classname}}Raw
+{{/if}}
 
 
 {{#with operations}}
@@ -19,9 +21,13 @@ class {{classname}}(
     """NOTE:
 {{> partial_class_header}}
     """
+    {{#if prstv2}}
     raw: {{classname}}Raw
 
     def __init__(self, api_client=None):
         super().__init__(api_client)
         self.raw = {{classname}}Raw(api_client)
+    {{else}}
+    pass
+    {{/if}}
 {{/with}}
