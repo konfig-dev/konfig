@@ -36,8 +36,6 @@ from leap_workflows.model.workflow_run_entity import WorkflowRunEntity as Workfl
 
 from leap_workflows.type.workflow_run_entity import WorkflowRunEntity
 
-from leap_workflows.pydantic.workflow_run_entity import WorkflowRunEntity as WorkflowRunEntityPydantic
-
 # Path params
 WorkflowRunIdSchema = schemas.StrSchema
 RequestRequiredPathParams = typing_extensions.TypedDict(

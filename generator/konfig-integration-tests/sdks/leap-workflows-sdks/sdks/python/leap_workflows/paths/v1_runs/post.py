@@ -40,10 +40,6 @@ from leap_workflows.type.workflow_run_entity import WorkflowRunEntity
 from leap_workflows.type.workflow_run_post_request_input import WorkflowRunPostRequestInput
 from leap_workflows.type.workflow_run_post_request import WorkflowRunPostRequest
 
-from leap_workflows.pydantic.workflow_run_entity import WorkflowRunEntity as WorkflowRunEntityPydantic
-from leap_workflows.pydantic.workflow_run_post_request import WorkflowRunPostRequest as WorkflowRunPostRequestPydantic
-from leap_workflows.pydantic.workflow_run_post_request_input import WorkflowRunPostRequestInput as WorkflowRunPostRequestInputPydantic
-
 from . import path
 
 # body param
