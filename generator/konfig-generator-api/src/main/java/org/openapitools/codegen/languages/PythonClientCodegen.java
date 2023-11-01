@@ -1166,6 +1166,11 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         } else {
             cp.nameInSnakeCase = null;
         }
+        if (cp.baseName.startsWith("model_")) {
+            cp.violatesPydanticNamespace = true;
+        }
+        cp.problematicNameOrViolatesPydantic = cp.hasProblematicName || cp.violatesPydanticNamespace;
+
         if (cp.isEnum) {
             updateCodegenPropertyEnum(cp);
         }

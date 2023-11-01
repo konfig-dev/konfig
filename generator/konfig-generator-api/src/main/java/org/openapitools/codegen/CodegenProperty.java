@@ -54,6 +54,8 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
      */
     public String name;
     public boolean hasProblematicName = false;
+    public boolean violatesPydanticNamespace = false;
+    public boolean problematicNameOrViolatesPydantic = false;
     public String min; // TODO: is this really used?
     public String max; // TODO: is this really used?
     public String defaultValue;
