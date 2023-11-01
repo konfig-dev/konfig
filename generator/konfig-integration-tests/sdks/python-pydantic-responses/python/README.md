@@ -1,9 +1,9 @@
-# python-dataclass-responses-python-sdk
+# python-pydantic-responses-python-sdk
 
-A simple API based on python dataclass responses.
+A simple API based on python pydantic responses.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-dataclass-responses-python-sdk/1.0.0)
+[![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-pydantic-responses-python-sdk/1.0.0)
 [![GitHub last commit](https://img.shields.io/github/last-commit/konfig-dev/konfig.svg)](https://github.com/konfig-dev/konfig/commits)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
@@ -17,7 +17,7 @@ A simple API based on python dataclass responses.
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Reference](#reference)
-  * [`pythondataclassresponses.test.fetch`](#pythondataclassresponsestestfetch)
+  * [`pythonpydanticresponses.test.fetch`](#pythonpydanticresponsestestfetch)
 
 <!-- tocstop -->
 
@@ -28,22 +28,22 @@ Python >=3.7
 ## Installing
 
 ```sh
-pip install python-dataclass-responses-python-sdk==1.0.0
+pip install python-pydantic-responses-python-sdk==1.0.0
 ```
 
 ## Getting Started
 
 ```python
 from pprint import pprint
-from python_dataclass_responses import PythonDataclassResponses, ApiException
+from python_pydantic import PythonPydanticResponses, ApiException
 
-pythondataclassresponses = PythonDataclassResponses(
+pythonpydanticresponses = PythonPydanticResponses(
     api_key="YOUR_API_KEY",
 )
 
 try:
     # Fetches a JSON value based on input parameter
-    fetch_response = pythondataclassresponses.test.fetch(
+    fetch_response = pythonpydanticresponses.test.fetch(
         input_parameter="inputParameter_example",
     )
     pprint(fetch_response.body)
@@ -73,9 +73,9 @@ except ApiException as e:
 ```python
 import asyncio
 from pprint import pprint
-from python_dataclass_responses import PythonDataclassResponses, ApiException
+from python_pydantic import PythonPydanticResponses, ApiException
 
-pythondataclassresponses = PythonDataclassResponses(
+pythonpydanticresponses = PythonPydanticResponses(
     api_key="YOUR_API_KEY",
 )
 
@@ -83,7 +83,7 @@ pythondataclassresponses = PythonDataclassResponses(
 async def main():
     try:
         # Fetches a JSON value based on input parameter
-        fetch_response = await pythondataclassresponses.test.afetch(
+        fetch_response = await pythonpydanticresponses.test.afetch(
             input_parameter="inputParameter_example",
         )
         pprint(fetch_response.body)
@@ -111,14 +111,14 @@ asyncio.run(main())
 
 
 ## Reference
-### `pythondataclassresponses.test.fetch`
+### `pythonpydanticresponses.test.fetch`
 
 Provide an input parameter to receive a JSON value with properties.
 
 #### 🛠️ Usage
 
 ```python
-fetch_response = pythondataclassresponses.test.fetch(
+fetch_response = pythonpydanticresponses.test.fetch(
     input_parameter="inputParameter_example",
 )
 ```
@@ -131,7 +131,7 @@ The input parameter to process.
 
 #### 🔄 Return
 
-[TestFetchResponse](./python_dataclass_responses/type/test_fetch_response.py)
+[TestFetchResponse](./python_pydantic/type/test_fetch_response.py)
 
 #### 🌐 Endpoint
 

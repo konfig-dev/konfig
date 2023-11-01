@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch
 
-from python_dataclass_responses.api_client import ApiClient, DeprecationWarningOnce
-from python_dataclass_responses.configuration import Configuration
+from python_pydantic.api_client import ApiClient, DeprecationWarningOnce
+from python_pydantic.configuration import Configuration
 
 
 class RandomClass:

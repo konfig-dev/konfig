@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Python Dataclass Responses API
+    Python Pydantic Responses API
 
-    A simple API based on python dataclass responses.
+    A simple API based on python pydantic responses.
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@example.com
@@ -11,8 +11,8 @@
 """
 
 import unittest
-from python_dataclass_responses.configuration import check_url
-from python_dataclass_responses.exceptions import InvalidHostConfigurationError
+from python_pydantic.configuration import check_url
+from python_pydantic.exceptions import InvalidHostConfigurationError
 
 
 class TestIsValidUrl(unittest.TestCase):

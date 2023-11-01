@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Python Dataclass Responses API
+    Python Pydantic Responses API
 
-    A simple API based on python dataclass responses.
+    A simple API based on python pydantic responses.
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@example.com
@@ -15,9 +15,9 @@ from unittest.mock import patch
 
 import urllib3
 
-import python_dataclass_responses
-from python_dataclass_responses.paths.simple_endpoint import get
-from python_dataclass_responses import configuration, schemas, api_client
+import python_pydantic
+from python_pydantic.paths.simple_endpoint import get
+from python_pydantic import configuration, schemas, api_client
 
 from .. import ApiTestMixin
 
