@@ -14,12 +14,5 @@ from datetime import datetime, date
 from pydantic import BaseModel, Field
 
 
-class TestFetchResponse(BaseModel):
-    # Description of property A.
-    propertyA: str = Field(None)
-
-    # Description of property B.
-    propertyB: int = Field(None)
-
-    # Description of property C.
-    propertyC: bool = Field(None)
+class TestFetch500Response(BaseModel):
+    error: str = Field(None)

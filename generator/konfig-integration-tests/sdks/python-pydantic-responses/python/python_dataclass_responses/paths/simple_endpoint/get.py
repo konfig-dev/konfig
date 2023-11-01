@@ -40,6 +40,8 @@ from python_dataclass_responses.type.test_fetch500_response import TestFetch500R
 from python_dataclass_responses.type.test_fetch_response import TestFetchResponse
 from python_dataclass_responses.type.test_fetch400_response import TestFetch400Response
 
+from python_dataclass_responses.pydantic.test_fetch500_response import TestFetch500Response as TestFetch500ResponsePydantic
+from python_dataclass_responses.pydantic.test_fetch400_response import TestFetch400Response as TestFetch400ResponsePydantic
 from python_dataclass_responses.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
 
 from . import path
@@ -383,29 +385,28 @@ class RawFetch(BaseApi):
             query_params=args.query,
         )
 
-
 class Fetch(BaseApi):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.raw = RawFetch(*args, **kwargs)
 
     async def afetch(
-            self,
-            input_parameter: str,
-            validate: bool = False,
-    ) -> TestFetchResponsePydantic:
+        self,
+        input_parameter: str,
+        validate: bool = False,
+    ):
         raw_response = await self.raw.afetch(
             input_parameter=input_parameter,
         )
         if validate:
             return TestFetchResponsePydantic(**raw_response.body)
         return TestFetchResponsePydantic.model_construct(**raw_response.body)
-
+    
     def fetch(
-            self,
-            input_parameter: str,
-            validate: bool = False,
-    ) -> TestFetchResponsePydantic:
+        self,
+        input_parameter: str,
+        validate: bool = False,
+    ):
         raw_response = self.raw.fetch(
             input_parameter=input_parameter,
         )
