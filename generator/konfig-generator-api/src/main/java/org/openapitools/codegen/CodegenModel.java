@@ -93,6 +93,10 @@ public class CodegenModel implements IJsonSchemaValidationProperties {
     public Set<String> imports = new TreeSet<>();
     public Set<String> typeImports = new TreeSet<>();
     public Set<String> additionalModelImports = new TreeSet<>();
+
+    // In Python, we need a modified version of Import without the "as [Model]Pydantic" suffix so I added this
+    public Set<String> additionalModelImportsModified = new TreeSet<>();
+
     public boolean hasVars, emptyVars, hasMoreModels, hasEnums, isEnum, hasValidation;
     /**
      * Indicates the OAS schema specifies "nullable: true".

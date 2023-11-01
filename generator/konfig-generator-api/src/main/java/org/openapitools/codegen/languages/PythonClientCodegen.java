@@ -612,7 +612,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
             endpointMap.put("imports", co.imports);
             endpointMap.put("schemaImports", co.schemaImports);
             endpointMap.put("typeImports", co.typeImports);
-            endpointMap.put("pydanticImports", co.additionalModelImports);
+            endpointMap.put("additionalModelImports", co.additionalModelImports);
             endpointMap.put("packageName", packageName);
             endpointMap.put("operations", operations);
             ((HashMap<String, Object>) operations.get("additionalProperties")).entrySet().forEach((entry) -> {
@@ -956,7 +956,11 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
     }
 
     public String toPydanticImport(String name) {
-        return "from " + packagePath() + "." +  "pydantic" + "." + toModelFilename(name) + " import " + toModelName(name) + " as " + toModelName(name) + "Pydantic";
+        return toPydanticImportBase(name) + " as " + toModelName(name) + "Pydantic";
+    }
+
+    public String toPydanticImportBase(String name) {
+        return "from " + packagePath() + "." +  "pydantic" + "." + toModelFilename(name) + " import " + toModelName(name);
     }
 
     @Override
@@ -1032,6 +1036,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
                 }
                 for (String importModelName : importModelNames) {
                     cm.additionalModelImports.add(toPydanticImport(importModelName));
+                    cm.additionalModelImportsModified.add(toPydanticImportBase(importModelName));
                 }
             }
         }

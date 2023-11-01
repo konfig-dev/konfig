@@ -36,6 +36,8 @@ from leap_workflows.model.workflow_run_entity import WorkflowRunEntity as Workfl
 
 from leap_workflows.type.workflow_run_entity import WorkflowRunEntity
 
+from leap_workflows.pydantic.workflow_run_entity import WorkflowRunEntity as WorkflowRunEntityPydantic
+
 # Path params
 WorkflowRunIdSchema = schemas.StrSchema
 RequestRequiredPathParams = typing_extensions.TypedDict(
@@ -306,7 +308,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetWorkflowRun(BaseApi):
+class RawGetWorkflowRun(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     async def aget_workflow_run(
@@ -337,6 +339,36 @@ class GetWorkflowRun(BaseApi):
         return self._get_workflow_run_oapg(
             path_params=args.path,
         )
+
+class GetWorkflowRun(BaseApi):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.raw = RawGetWorkflowRun(*args, **kwargs)
+
+    async def aget_workflow_run(
+        self,
+        workflow_run_id: str,
+        validate: bool = False,
+    ):
+        raw_response = await self.raw.aget_workflow_run(
+            workflow_run_id=workflow_run_id,
+        )
+        if validate:
+            return WorkflowRunEntityPydantic(**raw_response.body)
+        return WorkflowRunEntityPydantic.model_construct(**raw_response.body)
+    
+    def get_workflow_run(
+        self,
+        workflow_run_id: str,
+        validate: bool = False,
+    ):
+        raw_response = self.raw.get_workflow_run(
+            workflow_run_id=workflow_run_id,
+        )
+        if validate:
+            return WorkflowRunEntityPydantic(**raw_response.body)
+        return WorkflowRunEntityPydantic.model_construct(**raw_response.body)
+
 
 class ApiForget(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names

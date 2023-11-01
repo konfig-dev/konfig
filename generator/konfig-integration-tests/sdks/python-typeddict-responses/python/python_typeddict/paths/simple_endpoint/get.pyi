@@ -40,6 +40,10 @@ from python_typeddict.type.test_fetch500_response import TestFetch500Response
 from python_typeddict.type.test_fetch400_response import TestFetch400Response
 from python_typeddict.type.test_fetch_response import TestFetchResponse
 
+from python_typeddict.pydantic.test_fetch500_response import TestFetch500Response as TestFetch500ResponsePydantic
+from python_typeddict.pydantic.test_fetch400_response import TestFetch400Response as TestFetch400ResponsePydantic
+from python_typeddict.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
+
 # Query params
 InputParameterSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
