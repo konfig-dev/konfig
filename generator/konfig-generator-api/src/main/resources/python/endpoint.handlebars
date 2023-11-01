@@ -219,7 +219,7 @@ class BaseApi(api_client.Api):
     {{> endpoint_operation_impl}}
 
 
-class {{#prstv2}}Raw{{/prstv2}}{{operationIdCamelCase}}(BaseApi):
+class {{operationIdCamelCase}}{{#prstv2}}Raw{{/prstv2}}(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     {{> endpoint_interface_impl methodName=operationId}}
@@ -227,9 +227,6 @@ class {{#prstv2}}Raw{{/prstv2}}{{operationIdCamelCase}}(BaseApi):
 
 
 class {{operationIdCamelCase}}(BaseApi):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.raw = Raw{{operationIdCamelCase}}(*args, **kwargs)
 
     {{> endpoint_pydantic_impl}}
 {{/prstv2}}

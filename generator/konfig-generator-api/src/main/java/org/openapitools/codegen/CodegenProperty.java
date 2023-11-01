@@ -53,6 +53,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
      * The name of this property in the OpenAPI schema.
      */
     public String name;
+    public boolean hasProblematicName = false;
     public String min; // TODO: is this really used?
     public String max; // TODO: is this really used?
     public String defaultValue;
@@ -185,6 +186,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     public String nameInCamelCase; // property name in camel case
     public String nameInCamelCaseLowerFirst; // property name in camel case with lowercase first character
     public String nameInSnakeCase; // property name in upper snake case
+    public String nameInSnakeCaseLower; // property name in lower snake case
     // enum name based on the property name, usually use as a prefix (e.g. VAR_NAME) for enum name (e.g. VAR_NAME_VALUE1)
     public String enumName;
     public Integer maxItems;

@@ -1,0 +1,22 @@
+# coding: utf-8
+
+{{>partial_header}}
+
+{{#with operations}}
+{{#each operation}}
+from {{packageName}}.paths.{{nickname}}.{{httpMethod}} import {{operationIdCamelCase}}Raw
+{{/each}}
+{{/with}}
+
+
+{{#with operations}}
+class {{classname}}Raw(
+{{#each operation}}
+    {{operationIdCamelCase}}Raw,
+{{/each}}
+):
+    """NOTE:
+{{> partial_class_header}}
+    """
+    pass
+{{/with}}

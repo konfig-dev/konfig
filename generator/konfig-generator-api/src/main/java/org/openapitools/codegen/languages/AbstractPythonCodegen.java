@@ -691,6 +691,10 @@ public abstract class AbstractPythonCodegen extends DefaultCodegen implements Co
         return underscore(toApiName(name));
     }
 
+    public String toApiFilenameRaw(String name) {
+        return toApiFilename(name) + "_raw";
+    }
+
     @Override
     public String toClientApiName(String name) {
         return underscore(name);

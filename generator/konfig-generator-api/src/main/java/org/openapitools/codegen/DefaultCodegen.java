@@ -3941,6 +3941,7 @@ public class DefaultCodegen implements CodegenConfig {
         property.nameInCamelCase = camelize(property.name);
         property.nameInCamelCaseLowerFirst = camelize(property.name, CamelizeOption.LOWERCASE_FIRST_LETTER);
         property.nameInSnakeCase = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, property.nameInCamelCase);
+        property.nameInSnakeCaseLower = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, property.baseName);
         property.description = escapeText(p.getDescription());
         property.unescapedDescription = p.getDescription();
         property.title = p.getTitle();

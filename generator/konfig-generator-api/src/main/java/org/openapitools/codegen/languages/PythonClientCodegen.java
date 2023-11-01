@@ -333,6 +333,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         additionalModelTemplateFiles.put("pydantic." + templateExtension, ".py");
 
         apiTemplateFiles.put("api." + templateExtension, ".py");
+        apiTemplateFiles.put("api_raw." + templateExtension, ".py");
         modelTestTemplateFiles.put("model_test." + templateExtension, ".py");
 
         // Commented these out as we now generate all docs in the top-level Python SDK's README.md
@@ -545,7 +546,8 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
     @Override
     public String apiFilename(String templateName, String tag) {
         String suffix = apiTemplateFiles().get(templateName);
-        return apiFileFolder() + File.separator + toApiFilename(tag) + suffix;
+        String filename = templateName.contains("_raw") ? toApiFilenameRaw(tag) : toApiFilename(tag);
+        return apiFileFolder() + File.separator + filename + suffix;
     }
 
     private void generateFiles(List<List<Object>> processTemplateToFileInfos, boolean shouldGenerate, String skippedByOption) {
@@ -1158,6 +1160,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         // templates use its presence to handle these badly named variables / keys
         if ((isReservedWord(cp.baseName) || !isValidPythonVarOrClassName(cp.baseName)) && !cp.baseName.equals(cp.name)) {
             cp.nameInSnakeCase = cp.name;
+            cp.hasProblematicName = true;
         } else {
             cp.nameInSnakeCase = null;
         }
