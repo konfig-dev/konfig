@@ -27,12 +27,14 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 REQUIRES = [
-    "certifi >= 2022.12.7",
-    "frozendict ~= 2.3.4",
+    "certifi >= 2023.7.22",
     "python-dateutil ~= 2.8.2",
     "typing_extensions ~= 4.3.0",
-    "urllib3 ~= 1.26.7",
-    "validators ~= 0.20.0",]
+    "urllib3 ~= 1.26.18",
+    "frozendict ~= 2.3.4",
+    "aiohttp ~= 3.8.4",
+    "pydantic ~= 2.4.2"
+]
 
 setup(
     name=NAME,
