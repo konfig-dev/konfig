@@ -7,6 +7,13 @@ public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
     public boolean verifyingSsl = true;
     public String host = "{{{basePath}}}";
+{{#hasOAuthMethods}}
+{{#oauthMethods}}
+{{#-first}}
+    public String tokenUrl = "{{{tokenUrl}}}";
+{{/-first}}
+{{/oauthMethods}}
+{{/hasOAuthMethods}}
 {{#authMethods}}
 {{#isApiKey}}
     public String {{keyParamName}};
