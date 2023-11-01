@@ -330,10 +330,10 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         modelTemplateFiles.put("model_stub." + templateExtension, ".pyi");
 
         typeTemplateFiles.put("type." + templateExtension, ".py");
-        additionalModelTemplateFiles.put("pydantic." + templateExtension, ".py");
 
         apiTemplateFiles.put("api." + templateExtension, ".py");
         if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
+            additionalModelTemplateFiles.put("pydantic." + templateExtension, ".py");
             apiTemplateFiles.put("api_raw." + templateExtension, ".py");
         }
         modelTestTemplateFiles.put("model_test." + templateExtension, ".py");
