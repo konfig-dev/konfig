@@ -182,27 +182,6 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         // default HIDE_GENERATION_TIMESTAMP to true
         hideGenerationTimestamp = Boolean.TRUE;
 
-        ArrayList<PythonDependency> dependencies = new ArrayList<>();
-        dependencies.add(new PythonDependency("certifi", "2023.7.22", ">=", ">="));
-        dependencies.add(new PythonDependency("python-dateutil", "2.8.2", "~=", "^"));
-        dependencies.add(new PythonDependency("typing_extensions", "4.3.0", "~=", "^"));
-        dependencies.add(new PythonDependency("urllib3", "1.26.18", "~=", "^"));
-        dependencies.add(new PythonDependency("frozendict", "2.3.4", "~=", "^"));
-        dependencies.add(new PythonDependency("aiohttp", "3.8.4", "~=", "^"));
-        if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
-            dependencies.add(new PythonDependency("pydantic", "2.4.2", "~=", "^"));
-        }
-        ArrayList<PythonDependency> poetryDependencies = new ArrayList<>();
-        poetryDependencies.add(new PythonDependency("python", "3.7", "N/A", "^"));
-        poetryDependencies.addAll(dependencies);
-
-
-        // join dependencies with newline
-        additionalProperties.put("poetryDependencies", String.join("\n", poetryDependencies.stream().map(PythonDependency::poetry).collect(Collectors.toList())));
-
-        // join dependencies with ",\n"
-        additionalProperties.put("setupRequirements", String.join(",\n    ", dependencies.stream().map(PythonDependency::setupPy).collect(Collectors.toList())));
-
         // from https://docs.python.org/3/reference/lexical_analysis.html#keywords
         setReservedWordsLowerCase(
                 Arrays.asList(
@@ -428,7 +407,8 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         supportingFiles.add(new SupportingFile(readmeTemplate, "", readmePath));
 
         if (!generateSourceCodeOnly) {
-            supportingFiles.add(new SupportingFile("poetry.lock." + templateExtension, "", "poetry.lock"));
+            // Dylan: this is now generated after generation
+//            supportingFiles.add(new SupportingFile("poetry.lock." + templateExtension, "", "poetry.lock"));
             supportingFiles.add(new SupportingFile("settings.json." + templateExtension, "", ".vscode/settings.json"));
             supportingFiles.add(new SupportingFile("pyproject." + templateExtension, "", "pyproject.toml"));
 //            supportingFiles.add(new SupportingFile("tox." + templateExtension, "", "tox.ini"));
@@ -512,6 +492,24 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         if (!DEFAULT_LIBRARY.equals(getLibrary())) {
             throw new RuntimeException("Only the `urllib3` library is supported in the refactored `python` client generator at the moment. Please fall back to `python-legacy` client generator for the time being. We welcome contributions to add back `asyncio`, `tornado` support to the `python` client generator.");
         }
+
+        ArrayList<PythonDependency> dependencies = new ArrayList<>();
+        dependencies.add(new PythonDependency("certifi", "2023.7.22", ">=", ">="));
+        dependencies.add(new PythonDependency("python-dateutil", "2.8.2", "~=", "^"));
+        dependencies.add(new PythonDependency("typing_extensions", "4.3.0", "~=", "^"));
+        dependencies.add(new PythonDependency("urllib3", "1.26.18", "~=", "^"));
+        dependencies.add(new PythonDependency("frozendict", "2.3.4", "~=", "^"));
+        dependencies.add(new PythonDependency("aiohttp", "3.8.4", "~=", "^"));
+        if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
+            dependencies.add(new PythonDependency("pydantic", "2.4.2", "~=", "^"));
+        }
+        ArrayList<PythonDependency> poetryDependencies = new ArrayList<>();
+        poetryDependencies.add(new PythonDependency("python", "3.7", "N/A", "^"));
+        poetryDependencies.addAll(dependencies);
+        // join dependencies with newline
+        additionalProperties.put("poetryDependencies", String.join("\n", poetryDependencies.stream().map(PythonDependency::poetry).collect(Collectors.toList())));
+        // join dependencies with ",\n"
+        additionalProperties.put("setupRequirements", String.join(",\n    ", dependencies.stream().map(PythonDependency::setupPy).collect(Collectors.toList())));
     }
 
     public String packageFilename(List<String> pathSegments) {
