@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: python-pydantic-reserved-namespace-model API
+  description: A simple API based for testing python-pydantic-reserved-namespace-model.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://python-pydantic-reserved-namespace-model.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchResponse:
+      type: object
+      properties:
+        model_config:
+          $ref: '#/components/schemas/Inner'
+    Inner:
+      type: object
+      properties:
+        a:
+          type: string
+security:
+  - ApiKeyAuth: []
