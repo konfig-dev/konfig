@@ -77,6 +77,11 @@
     {{/if}}
     stream: bool = False,
 {{/if}}
+{{#if interface}}
+{{#if validateArg}}
+    validate: bool = False,
+{{/if}}
+{{/if}}
 ){{#unless omitReturnType}} -> {{#if isMappedArgs}}api_client.MappedArgs{{else}}typing.Union[
     {{#each responses}}
         {{#if isDefault}}

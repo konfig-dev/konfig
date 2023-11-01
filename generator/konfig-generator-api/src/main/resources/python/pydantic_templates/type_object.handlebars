@@ -1,60 +1,26 @@
 {{#if hasVars}}
-{{#if useDictionaryBasedTypedDict}}
-Required{{classname}} = TypedDict("Required{{classname}}", {
-    {{#each requiredVars}}
-        {{#if description}}
-    # {{{description}}}
-        {{/if}}
-    "{{baseName}}": {{dataType}},
-    {{#unless @last}}
-
-    {{/unless}}
-    {{/each}}
-    })
-{{else}}
-class Required{{classname}}(TypedDict):
+class {{classname}}(BaseModel):
     {{#each requiredVars}}
         {{#if description}}
     # {{{description}}}
         {{/if}}
     {{baseName}}: {{{dataType}}}
+    {{#unless @last}}
+
+    {{/unless}}
+    {{/each}}
+    {{#each optionalVars}}
+        {{#if description}}
+    # {{{description}}}
+        {{/if}}
+    {{baseName}}: {{{dataType}}} = Field(None)
     {{#unless @last}}
 
     {{/unless}}
     {{/each}}
     {{#unless requiredVars}}
-    pass
-    {{/unless}}
-{{/if}}
-
-{{#if useDictionaryBasedTypedDict}}
-Optional{{classname}} = TypedDict("Optional{{classname}}", {
-    {{#each optionalVars}}
-        {{#if description}}
-    # {{{description}}}
-        {{/if}}
-    "{{baseName}}": {{dataType}},
-    {{#unless @last}}
-
-    {{/unless}}
-    {{/each}}
-    }, total=False)
-{{else}}
-class Optional{{classname}}(TypedDict, total=False):
-    {{#each optionalVars}}
-        {{#if description}}
-    # {{{description}}}
-        {{/if}}
-    {{baseName}}: {{{dataType}}}
-    {{#unless @last}}
-
-    {{/unless}}
-    {{/each}}
     {{#unless optionalVars}}
     pass
     {{/unless}}
-{{/if}}
-
-class {{classname}}(Required{{classname}}, Optional{{classname}}):
-    pass
+    {{/unless}}
 {{/if}}
