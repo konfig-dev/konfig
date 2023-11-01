@@ -320,7 +320,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class RawWorkflow(BaseApi):
+class Workflow(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     async def aworkflow(
@@ -359,44 +359,6 @@ class RawWorkflow(BaseApi):
         return self._workflow_oapg(
             body=args.body,
         )
-
-class Workflow(BaseApi):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.raw = RawWorkflow(*args, **kwargs)
-
-    async def aworkflow(
-        self,
-        workflow_id: str,
-        webhook_url: typing.Optional[str] = None,
-        input: typing.Optional[WorkflowRunPostRequestInput] = None,
-        validate: bool = False,
-    ):
-        raw_response = await self.raw.aworkflow(
-            workflow_id=workflow_id,
-            webhook_url=webhook_url,
-            input=input,
-        )
-        if validate:
-            return WorkflowRunEntityPydantic(**raw_response.body)
-        return WorkflowRunEntityPydantic.model_construct(**raw_response.body)
-    
-    def workflow(
-        self,
-        workflow_id: str,
-        webhook_url: typing.Optional[str] = None,
-        input: typing.Optional[WorkflowRunPostRequestInput] = None,
-        validate: bool = False,
-    ):
-        raw_response = self.raw.workflow(
-            workflow_id=workflow_id,
-            webhook_url=webhook_url,
-            input=input,
-        )
-        if validate:
-            return WorkflowRunEntityPydantic(**raw_response.body)
-        return WorkflowRunEntityPydantic.model_construct(**raw_response.body)
-
 
 class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names

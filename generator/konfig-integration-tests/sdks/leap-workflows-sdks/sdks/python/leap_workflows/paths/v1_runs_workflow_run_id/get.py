@@ -317,7 +317,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class RawGetWorkflowRun(BaseApi):
+class GetWorkflowRun(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     async def aget_workflow_run(
@@ -348,36 +348,6 @@ class RawGetWorkflowRun(BaseApi):
         return self._get_workflow_run_oapg(
             path_params=args.path,
         )
-
-class GetWorkflowRun(BaseApi):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.raw = RawGetWorkflowRun(*args, **kwargs)
-
-    async def aget_workflow_run(
-        self,
-        workflow_run_id: str,
-        validate: bool = False,
-    ):
-        raw_response = await self.raw.aget_workflow_run(
-            workflow_run_id=workflow_run_id,
-        )
-        if validate:
-            return WorkflowRunEntityPydantic(**raw_response.body)
-        return WorkflowRunEntityPydantic.model_construct(**raw_response.body)
-    
-    def get_workflow_run(
-        self,
-        workflow_run_id: str,
-        validate: bool = False,
-    ):
-        raw_response = self.raw.get_workflow_run(
-            workflow_run_id=workflow_run_id,
-        )
-        if validate:
-            return WorkflowRunEntityPydantic(**raw_response.body)
-        return WorkflowRunEntityPydantic.model_construct(**raw_response.body)
-
 
 class ApiForget(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
