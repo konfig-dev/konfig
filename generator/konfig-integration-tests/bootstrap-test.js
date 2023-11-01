@@ -27,7 +27,7 @@ rl.question('Which language would you like to create a test for? (Python/TypeScr
     // Extract ports
     testFiles.forEach(file => {
       const content = fs.readFileSync(path.join('tests', file), 'utf-8');
-      const matches = content.match(/e2e\((\d+)\)/g);
+      const matches = content.match(/(?<=e2e\()\d+/g);
       if (matches) {
         ports.push(...matches.map(match => parseInt(match.replace(/\D/g, ''))));
       }
