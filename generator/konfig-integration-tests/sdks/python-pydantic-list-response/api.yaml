@@ -1,0 +1,60 @@
+openapi: 3.0.3
+# https://github.com/stoplightio/prism/blob/master/docs/guides/11-dynamic-response-with-faker.md
+x-json-schema-faker:
+  useExamplesValue: true
+info:
+  title: python-pydantic-list-response API
+  description: A simple API based for testing python-pydantic-list-response.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://python-pydantic-list-response.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchResponse:
+      type: list
+      items:
+        $ref: '#/components/schemas/TestFetchResponseItem'
+      example:
+        - id: my_id
+    TestFetchResponseItem:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: A unique identifier
+security:
+  - ApiKeyAuth: []
