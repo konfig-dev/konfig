@@ -4,6 +4,10 @@
 - each map to test under `tests/`
 - see `util.ts` for implementation of tests
 
+## To create a test
+
+1. Run ./bootstrap-test.js
+
 ## To run tests
 
 1. `cd` into `konfig-integration-tests`
