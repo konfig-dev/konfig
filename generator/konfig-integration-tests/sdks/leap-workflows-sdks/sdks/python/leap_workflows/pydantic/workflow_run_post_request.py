@@ -20,8 +20,8 @@ from leap_workflows.pydantic.workflow_run_post_request_input import WorkflowRunP
 
 class WorkflowRunPostRequest(BaseModel):
     # The UUID of the workflow to be run.
-    workflow_id: str
+        workflow_id: str = Field(alias='workflow_id')
     # The URL to which the workflow results should be sent to on completion.
-    webhook_url: str = Field(None)
+        webhook_url: str = Field(None, alias='webhook_url')
 
-    input: WorkflowRunPostRequestInput = Field(None)
+        input: WorkflowRunPostRequestInput = Field(None, alias='input')

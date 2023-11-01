@@ -18,22 +18,22 @@ from pydantic import BaseModel, Field
 
 
 class WorkflowRunEntity(BaseModel):
-    id: str
+        id: str = Field(alias='id')
 
-    version_id: str
+        version_id: str = Field(alias='version_id')
 
-    status: str
+        status: str = Field(alias='status')
 
-    created_at: datetime
+        created_at: datetime = Field(alias='created_at')
 
-    started_at: datetime
+        started_at: datetime = Field(alias='started_at')
 
-    ended_at: datetime
+        ended_at: datetime = Field(alias='ended_at')
 
-    workflow_id: str
+        workflow_id: str = Field(alias='workflow_id')
 
-    error: str
+        error: str = Field(alias='error')
 
-    input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+        input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='input')
 
-    output: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+        output: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='output')

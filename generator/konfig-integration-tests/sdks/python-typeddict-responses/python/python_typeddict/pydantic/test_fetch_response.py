@@ -19,10 +19,10 @@ from pydantic import BaseModel, Field
 
 class TestFetchResponse(BaseModel):
     # Description of property A.
-    propertyA: str = Field(None)
+        property_a: str = Field(None, alias='propertyA')
 
     # Description of property B.
-    propertyB: int = Field(None)
+        property_b: int = Field(None, alias='propertyB')
 
     # Description of property C.
-    propertyC: bool = Field(None)
+        property_c: bool = Field(None, alias='propertyC')

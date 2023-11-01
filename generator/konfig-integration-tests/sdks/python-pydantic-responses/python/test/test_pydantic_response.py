@@ -16,7 +16,7 @@ class TestSimple(unittest.TestCase):
             api_key="YOUR_API_KEY", host="http://127.0.0.1:4011"
         )
         response = client.test.fetch("test")
-        self.assertIsNotNone(response.propertyA)
+        self.assertIsNotNone(response.property_a)
 
     def test_raw_response(self):
         client = PythonPydanticResponses(
