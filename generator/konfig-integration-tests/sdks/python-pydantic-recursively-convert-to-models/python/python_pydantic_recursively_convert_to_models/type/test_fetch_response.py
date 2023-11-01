@@ -1,0 +1,29 @@
+# coding: utf-8
+
+"""
+    python-pydantic-recursively-convert-to-models API
+
+    A simple API based for testing python-pydantic-recursively-convert-to-models.
+
+    The version of the OpenAPI document: 1.0.0
+    Contact: support@example.com
+    Created by: http://example.com/support
+"""
+
+from datetime import datetime, date
+import typing
+from enum import Enum
+from typing_extensions import TypedDict, Literal
+
+from python_pydantic_recursively_convert_to_models.type.inner import Inner
+
+class RequiredTestFetchResponse(TypedDict):
+    pass
+
+class OptionalTestFetchResponse(TypedDict, total=False):
+    a: Inner
+
+    b: typing.List[Inner]
+
+class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
+    pass
