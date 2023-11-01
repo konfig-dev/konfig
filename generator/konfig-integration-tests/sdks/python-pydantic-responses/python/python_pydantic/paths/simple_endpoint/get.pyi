@@ -390,6 +390,7 @@ class Fetch(BaseApi):
             return TestFetchResponsePydantic(**raw_response.body)
         return TestFetchResponsePydantic.model_construct(**raw_response.body)
     
+    
     def fetch(
         self,
         input_parameter: str,

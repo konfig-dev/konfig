@@ -267,8 +267,9 @@ class Fetch(BaseApi):
         raw_response = await self.raw.afetch(
         )
         if validate:
-            return TestFetchResponsePydantic(**raw_response.body)
-        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+            return TestFetchResponsePydantic(raw_response.body).root
+        return TestFetchResponsePydantic.model_construct(raw_response.body).root
+    
     
     def fetch(
         self,
@@ -277,8 +278,8 @@ class Fetch(BaseApi):
         raw_response = self.raw.fetch(
         )
         if validate:
-            return TestFetchResponsePydantic(**raw_response.body)
-        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+            return TestFetchResponsePydantic(raw_response.body).root
+        return TestFetchResponsePydantic.model_construct(raw_response.body).root
 
 
 class ApiForget(BaseApi):

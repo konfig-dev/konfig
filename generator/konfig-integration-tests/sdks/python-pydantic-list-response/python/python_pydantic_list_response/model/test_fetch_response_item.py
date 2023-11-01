@@ -33,12 +33,17 @@ class TestFetchResponseItem(
 
 
     class MetaOapg:
+        required = {
+            "id",
+        }
         
         class properties:
             id = schemas.UUIDSchema
             __annotations__ = {
                 "id": id,
             }
+    
+    id: MetaOapg.properties.id
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
@@ -52,7 +57,7 @@ class TestFetchResponseItem(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> typing.Union[MetaOapg.properties.id, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -64,7 +69,7 @@ class TestFetchResponseItem(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        id: typing.Union[MetaOapg.properties.id, str, uuid.UUID, schemas.Unset] = schemas.unset,
+        id: typing.Union[MetaOapg.properties.id, str, uuid.UUID, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'TestFetchResponseItem':

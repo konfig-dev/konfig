@@ -339,6 +339,7 @@ class Fetch(BaseApi):
             return Dictionary(**raw_response.body)
         return Dictionary.model_construct(**raw_response.body)
     
+    
     def fetch(
         self,
         input_parameter: str,

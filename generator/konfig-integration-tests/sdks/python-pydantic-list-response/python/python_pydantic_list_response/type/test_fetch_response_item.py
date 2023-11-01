@@ -17,11 +17,11 @@ from typing_extensions import TypedDict, Literal
 
 
 class RequiredTestFetchResponseItem(TypedDict):
-    pass
-
-class OptionalTestFetchResponseItem(TypedDict, total=False):
     # A unique identifier
     id: str
+
+class OptionalTestFetchResponseItem(TypedDict, total=False):
+    pass
 
 class TestFetchResponseItem(RequiredTestFetchResponseItem, OptionalTestFetchResponseItem):
     pass
