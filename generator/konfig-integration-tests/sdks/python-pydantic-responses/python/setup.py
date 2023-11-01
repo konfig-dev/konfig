@@ -44,7 +44,6 @@ setup(
     author_email="support@example.com",
     url="https://github.com/konfig-dev/konfig/tree/main/python",
     keywords=["Konfig", "Python Dataclass Responses API"],
-    license="MIT",
     python_requires=">=3.7",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
