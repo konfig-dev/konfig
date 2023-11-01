@@ -19,7 +19,6 @@ A simple API based on python pydantic responses.
 - [Reference](#reference)
   * [`pythonpydanticresponses.test.fetch`](#pythonpydanticresponsestestfetch)
   * [`pythonpydanticresponses.test.reserved_word`](#pythonpydanticresponsestestreserved_word)
-  * [`pythonpydanticresponses.test_response.free_form_object`](#pythonpydanticresponsestest_responsefree_form_object)
 
 <!-- tocstop -->
 
@@ -160,24 +159,6 @@ reserved_word_response = pythonpydanticresponses.test.reserved_word()
 #### 🌐 Endpoint
 
 `/reserved-word` `get`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `pythonpydanticresponses.test_response.free_form_object`
-
-Free form object
-
-#### 🛠️ Usage
-
-```python
-free_form_object_response = pythonpydanticresponses.test_response.free_form_object()
-```
-
-#### 🌐 Endpoint
-
-`/free-form-object` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

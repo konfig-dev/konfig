@@ -11,8 +11,6 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  x-konfig-ignore:
-    object-with-no-properties: true
 servers:
   - description: Live API server
     url: https://python-pydantic-responses.konfigthis.com
@@ -20,19 +18,6 @@ tags:
   - name: Test
   - name: TestResponse
 paths:
-  /free-form-object:
-    get:
-      tags:
-        - TestResponse
-      operationId: Test_freeFormObject
-      description: Free form object
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TestFreeFormObjectResponse'
   /reserved-word:
     get:
       tags:
@@ -114,9 +99,5 @@ components:
       properties:
         error:
           type: string
-    TestFreeFormObjectResponse:
-      type: object
-      properties: {}
-      example: {}
 security:
   - ApiKeyAuth: []

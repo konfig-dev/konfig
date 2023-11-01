@@ -6,6 +6,5 @@ import enum
 
 
 class PathValues(str, enum.Enum):
-    FREEFORMOBJECT = "/free-form-object"
     RESERVEDWORD = "/reserved-word"
     SIMPLEENDPOINT = "/simple-endpoint"

@@ -32,7 +32,8 @@ REQUIRES = [
     "typing_extensions ~= 4.3.0",
     "urllib3 ~= 1.26.18",
     "frozendict ~= 2.3.4",
-    "aiohttp ~= 3.8.4"
+    "aiohttp ~= 3.8.4",
+    "pydantic ~= 2.4.2"
 ]
 
 setup(
