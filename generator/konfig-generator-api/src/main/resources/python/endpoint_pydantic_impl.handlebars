@@ -5,8 +5,8 @@
         {{> endpoint_args_call_mapped_args}}
     )
     if validate:
-        return {{returnType}}Pydantic(**raw_response.body)
-    return {{returnType}}Pydantic.model_construct(**raw_response.body)
+        return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
+    return {{> endpoint_pydantic_impl_return_model}}.model_construct(**raw_response.body)
 
 {{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
 {{/if}}def {{operationId}}(
@@ -15,5 +15,5 @@
         {{> endpoint_args_call_mapped_args}}
     )
     if validate:
-        return {{returnType}}Pydantic(**raw_response.body)
-    return {{returnType}}Pydantic.model_construct(**raw_response.body)
+        return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
+    return {{> endpoint_pydantic_impl_return_model}}.model_construct(**raw_response.body)
