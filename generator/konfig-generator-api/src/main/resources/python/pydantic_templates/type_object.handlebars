@@ -5,7 +5,11 @@ class {{classname}}(BaseModel):
     # {{{description}}}
     {{/if}}
   {{> pydantic_templates/type_property_name}}: {{{dataType}}} = Field(alias='{{baseName}}')
+    {{#unless optionalVars}}
     {{#unless @last}}
+
+    {{/unless}}
+    {{else}}
 
     {{/unless}}
     {{/each}}
