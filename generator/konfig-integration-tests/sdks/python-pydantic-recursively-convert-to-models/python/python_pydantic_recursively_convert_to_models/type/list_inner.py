@@ -16,15 +16,5 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal
 
 from python_pydantic_recursively_convert_to_models.type.inner import Inner
-from python_pydantic_recursively_convert_to_models.type.list_inner import ListInner
 
-class RequiredTestFetchResponse(TypedDict):
-    pass
-
-class OptionalTestFetchResponse(TypedDict, total=False):
-    a: Inner
-
-    b: ListInner
-
-class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
-    pass
+ListInner = typing.List[Inner]

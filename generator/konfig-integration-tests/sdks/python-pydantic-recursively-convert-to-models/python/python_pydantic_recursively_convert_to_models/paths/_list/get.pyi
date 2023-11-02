@@ -32,32 +32,24 @@ import frozendict  # noqa: F401
 
 from python_pydantic_recursively_convert_to_models import schemas  # noqa: F401
 
-from python_pydantic_recursively_convert_to_models.model.test_fetch_response import TestFetchResponse as TestFetchResponseSchema
-from python_pydantic_recursively_convert_to_models.model.inner import Inner as InnerSchema
+from python_pydantic_recursively_convert_to_models.model.list_inner import ListInner as ListInnerSchema
 
-from python_pydantic_recursively_convert_to_models.type.test_fetch_response import TestFetchResponse
-from python_pydantic_recursively_convert_to_models.type.inner import Inner
+from python_pydantic_recursively_convert_to_models.type.list_inner import ListInner
 
 from ...api_client import Dictionary
-from python_pydantic_recursively_convert_to_models.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
-from python_pydantic_recursively_convert_to_models.pydantic.inner import Inner as InnerPydantic
+from python_pydantic_recursively_convert_to_models.pydantic.list_inner import ListInner as ListInnerPydantic
 
-from . import path
-
-_auth = [
-    'ApiKeyAuth',
-]
-SchemaFor200ResponseBodyApplicationJson = TestFetchResponseSchema
+SchemaFor200ResponseBodyApplicationJson = ListInnerSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: TestFetchResponse
+    body: ListInner
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: TestFetchResponse
+    body: ListInner
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -68,9 +60,6 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
-_status_code_to_response = {
-    '200': _response_for_200,
-}
 _all_accept_content_types = (
     'application/json',
 )
@@ -78,13 +67,13 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _fetch_mapped_args(
+    def _list_mapped_args(
         self,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         return args
 
-    async def _afetch_oapg(
+    async def _alist_oapg(
         self,
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -96,7 +85,7 @@ class BaseApi(api_client.Api):
         AsyncGeneratorResponse,
     ]:
         """
-        Fetches a JSON value based on input parameter
+        Fetches a list value
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -179,7 +168,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-    def _fetch_oapg(
+    def _list_oapg(
         self,
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -190,7 +179,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]:
         """
-        Fetches a JSON value based on input parameter
+        Fetches a list value
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -243,54 +232,54 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class FetchRaw(BaseApi):
+class ListRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    async def afetch(
+    async def alist(
         self,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._fetch_mapped_args(
+        args = self._list_mapped_args(
         )
-        return await self._afetch_oapg(
+        return await self._alist_oapg(
         )
     
-    def fetch(
+    def list(
         self,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._fetch_mapped_args(
+        args = self._list_mapped_args(
         )
-        return self._fetch_oapg(
+        return self._list_oapg(
         )
 
-class Fetch(BaseApi):
+class List(BaseApi):
 
-    async def afetch(
+    async def alist(
         self,
         validate: bool = False,
     ):
-        raw_response = await self.raw.afetch(
+        raw_response = await self.raw.alist(
         )
         if validate:
-            return TestFetchResponsePydantic(**raw_response.body)
-        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+            return ListInnerPydantic(raw_response.body).root
+        return ListInnerPydantic.model_construct(raw_response.body).root
     
     
-    def fetch(
+    def list(
         self,
         validate: bool = False,
     ):
-        raw_response = self.raw.fetch(
+        raw_response = self.raw.list(
         )
         if validate:
-            return TestFetchResponsePydantic(**raw_response.body)
-        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+            return ListInnerPydantic(raw_response.body).root
+        return ListInnerPydantic.model_construct(raw_response.body).root
 
 
 class ApiForget(BaseApi):
@@ -303,9 +292,9 @@ class ApiForget(BaseApi):
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._fetch_mapped_args(
+        args = self._list_mapped_args(
         )
-        return await self._afetch_oapg(
+        return await self._alist_oapg(
         )
     
     def get(
@@ -314,8 +303,8 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._fetch_mapped_args(
+        args = self._list_mapped_args(
         )
-        return self._fetch_oapg(
+        return self._list_oapg(
         )
 

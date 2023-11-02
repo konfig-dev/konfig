@@ -68,7 +68,7 @@ class RequestField(RequestFieldBase):
         return self.__dict__ == other.__dict__
 
 
-def recursively_construct_model(model: BaseModel):
+def handle_response(model: BaseModel):
     """
     Since BaseModel#model_construct does not recursively construct models, we need to do it ourselves.
     This is a recursive function that will construct the model and all of its child models.

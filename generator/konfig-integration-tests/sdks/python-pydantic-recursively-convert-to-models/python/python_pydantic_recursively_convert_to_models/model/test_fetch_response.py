@@ -39,32 +39,10 @@ class TestFetchResponse(
             @staticmethod
             def a() -> typing.Type['Inner']:
                 return Inner
-            
-            
-            class b(
-                schemas.ListSchema
-            ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['Inner']:
-                        return Inner
-            
-                def __new__(
-                    cls,
-                    arg: typing.Union[typing.Tuple['Inner'], typing.List['Inner']],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'b':
-                    return super().__new__(
-                        cls,
-                        arg,
-                        _configuration=_configuration,
-                    )
-            
-                def __getitem__(self, i: int) -> 'Inner':
-                    return super().__getitem__(i)
+        
+            @staticmethod
+            def b() -> typing.Type['ListInner']:
+                return ListInner
             __annotations__ = {
                 "a": a,
                 "b": b,
@@ -74,7 +52,7 @@ class TestFetchResponse(
     def __getitem__(self, name: typing_extensions.Literal["a"]) -> 'Inner': ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["b"]) -> MetaOapg.properties.b: ...
+    def __getitem__(self, name: typing_extensions.Literal["b"]) -> 'ListInner': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -88,7 +66,7 @@ class TestFetchResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["a"]) -> typing.Union['Inner', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["b"]) -> typing.Union[MetaOapg.properties.b, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["b"]) -> typing.Union['ListInner', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -101,7 +79,7 @@ class TestFetchResponse(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         a: typing.Union['Inner', schemas.Unset] = schemas.unset,
-        b: typing.Union[MetaOapg.properties.b, list, tuple, schemas.Unset] = schemas.unset,
+        b: typing.Union['ListInner', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'TestFetchResponse':
@@ -115,3 +93,4 @@ class TestFetchResponse(
         )
 
 from python_pydantic_recursively_convert_to_models.model.inner import Inner
+from python_pydantic_recursively_convert_to_models.model.list_inner import ListInner

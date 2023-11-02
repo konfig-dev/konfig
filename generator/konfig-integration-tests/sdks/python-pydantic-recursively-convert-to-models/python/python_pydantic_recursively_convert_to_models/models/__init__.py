@@ -12,4 +12,5 @@
 # sys.setrecursionlimit(n)
 
 from python_pydantic_recursively_convert_to_models.model.inner import Inner
+from python_pydantic_recursively_convert_to_models.model.list_inner import ListInner
 from python_pydantic_recursively_convert_to_models.model.test_fetch_response import TestFetchResponse

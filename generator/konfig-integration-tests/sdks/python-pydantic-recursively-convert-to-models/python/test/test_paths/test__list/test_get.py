@@ -16,16 +16,16 @@ from unittest.mock import patch
 import urllib3
 
 import python_pydantic_recursively_convert_to_models
-from python_pydantic_recursively_convert_to_models.paths.simple_endpoint import get
+from python_pydantic_recursively_convert_to_models.paths._list import get
 from python_pydantic_recursively_convert_to_models import configuration, schemas, api_client
 
 from .. import ApiTestMixin
 
 
-class TestSimpleEndpoint(ApiTestMixin, unittest.TestCase):
+class TestModelList(ApiTestMixin, unittest.TestCase):
     """
-    SimpleEndpoint unit test stubs
-        Fetches a JSON value based on input parameter
+    ModelList unit test stubs
+        Fetches a list value
     """
 
     def setUp(self):
