@@ -5,12 +5,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
     if: >
-     contains(github.event.head_commit.message, 'run-integration-tests') ||
-     contains(github.event.head_commit.message, 'run-it') ||
-     contains(github.event.commits[0].modified, 'generator/konfig-integrations-tests/') ||
-     contains(github.event.commits[0].modified, 'generator/konfig-dash/') ||
-     contains(github.event.commits[0].modified, 'generator/konfig-python-formatter-server-blackd/') ||
-     contains(github.event.commits[0].modified, 'generator/konfig-generator-api/')
+      contains(github.event.head_commit.message, 'run-integration-tests') ||
+      contains(github.event.head_commit.message, 'run-it') ||
+      (
+        (
+          contains(github.event.commits[0].modified, 'generator/konfig-integrations-tests/') ||
+          contains(github.event.commits[0].modified, 'generator/konfig-dash/') ||
+          contains(github.event.commits[0].modified, 'generator/konfig-python-formatter-server-blackd/') ||
+          contains(github.event.commits[0].modified, 'generator/konfig-generator-api/')
+        ) &&
+        (
+          !contains(join(github.event.commits[0].modified, ' '), '.md') &&
+          !contains(join(github.event.commits[0].added, ' '), '.md') &&
+          !contains(join(github.event.commits[0].removed, ' '), '.md')
+        )
+      )
     env:
       EARTHLY_SECRETS: ${{ secrets.EARTHLY_SECRETS }}
       EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}

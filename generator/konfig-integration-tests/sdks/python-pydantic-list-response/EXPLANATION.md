@@ -1,0 +1,1 @@
+Ensures that pydantic response type handles list values as response
