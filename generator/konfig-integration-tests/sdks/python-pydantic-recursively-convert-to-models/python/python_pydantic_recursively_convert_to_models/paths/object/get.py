@@ -13,6 +13,7 @@
 from dataclasses import dataclass
 import typing_extensions
 import urllib3
+from pydantic import RootModel
 from python_pydantic_recursively_convert_to_models.request_before_hook import request_before_hook
 import json
 from urllib3._collections import HTTPHeaderDict

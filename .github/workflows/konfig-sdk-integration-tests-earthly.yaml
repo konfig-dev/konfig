@@ -2,24 +2,35 @@ name: Konfig SDK Integration Tests
 on: push
 
 jobs:
-  test:
+  check_for_relevant_changes:
+    runs-on: ubuntu-latest
+    outputs:
+      shouldRun: ${{ steps.check_changes.outputs.shouldRun }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get changed files
+        id: get_changed_files
+        uses: jitterbit/get-changed-files@v1
+
+      - name: Check for changes in specific paths
+        id: check_changes
+        run: |
+          for file in ${{ steps.get_changed_files.outputs.all }}; do
+            if [[ $file =~ ^generator/konfig-(integration-tests|dash|python-formatter-server-blackd|generator-api)/ && ! $file =~ \.md$ ]]; then
+              echo "::set-output name=shouldRun::true"
+              exit 0
+            fi
+          done
+
+  execute_integration_tests:
+    needs: check_for_relevant_changes
     runs-on: ubuntu-latest
     if: >
+      needs.check_for_relevant_changes.outputs.shouldRun == 'true' ||
       contains(github.event.head_commit.message, 'run-integration-tests') ||
-      contains(github.event.head_commit.message, 'run-it') ||
-      (
-        (
-          contains(github.event.commits[0].modified, 'generator/konfig-integrations-tests/') ||
-          contains(github.event.commits[0].modified, 'generator/konfig-dash/') ||
-          contains(github.event.commits[0].modified, 'generator/konfig-python-formatter-server-blackd/') ||
-          contains(github.event.commits[0].modified, 'generator/konfig-generator-api/')
-        ) &&
-        (
-          !contains(join(github.event.commits[0].modified, ' '), '.md') &&
-          !contains(join(github.event.commits[0].added, ' '), '.md') &&
-          !contains(join(github.event.commits[0].removed, ' '), '.md')
-        )
-      )
+      contains(github.event.head_commit.message, 'run-it')
     env:
       EARTHLY_SECRETS: ${{ secrets.EARTHLY_SECRETS }}
       EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}

@@ -18,4 +18,4 @@ from pydantic import BaseModel, Field, RootModel
 
 from python_pydantic_recursively_convert_to_models.pydantic.inner import Inner
 
-ListInner = RootModel[typing.List[Inner]]
+ListInner = typing.List[Inner]

@@ -13,6 +13,7 @@
 from dataclasses import dataclass
 import typing_extensions
 import urllib3
+from pydantic import RootModel
 from python_pydantic_recursively_convert_to_models.request_before_hook import request_before_hook
 import json
 from urllib3._collections import HTTPHeaderDict
@@ -275,8 +276,8 @@ class List(BaseApi):
         raw_response = await self.raw.alist(
         )
         if validate:
-            return ListInnerPydantic(raw_response.body).root
-        return ListInnerPydantic.model_construct(raw_response.body).root
+            return RootModel[ListInnerPydantic](raw_response.body).root
+        return raw_response.body
     
     
     def list(
@@ -286,8 +287,8 @@ class List(BaseApi):
         raw_response = self.raw.list(
         )
         if validate:
-            return ListInnerPydantic(raw_response.body).root
-        return ListInnerPydantic.model_construct(raw_response.body).root
+            return RootModel[ListInnerPydantic](raw_response.body).root
+        return raw_response.body
 
 
 class ApiForget(BaseApi):
