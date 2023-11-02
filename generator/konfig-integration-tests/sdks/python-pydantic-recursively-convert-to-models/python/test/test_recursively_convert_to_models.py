@@ -18,14 +18,18 @@ from python_pydantic_recursively_convert_to_models import PythonPydanticRecursiv
 
 class TestSimple(unittest.TestCase):
     def setUp(self):
-        pass
-
-    def test_rescursively_convert_to_models(self):
-        client = PythonPydanticRecursivelyConvertToModels(
-            api_key = 'YOUR_API_KEY',
-            host = "http://127.0.0.1:4003"
+        self.client = PythonPydanticRecursivelyConvertToModels(
+            api_key='YOUR_API_KEY',
+            host="http://127.0.0.1:4003"
         )
-        response = client.test.fetch()
+
+    def test_recursively_convert_to_models(self):
+        response = self.client.test.fetch()
+        self.assertIsNotNone(response.a.id)
+        self.assertIsNotNone(response.b[0].id)
+
+    def test_validate_recursively_converts(self):
+        response = self.client.test.fetch(validate=True)
         self.assertIsNotNone(response.a.id)
         self.assertIsNotNone(response.b[0].id)
 

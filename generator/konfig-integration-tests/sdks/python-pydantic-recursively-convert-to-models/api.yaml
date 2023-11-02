@@ -17,7 +17,20 @@ servers:
 tags:
   - name: Test
 paths:
-  /simple-endpoint:
+  /list:
+    get:
+      tags:
+        - Test
+      summary: Fetches a list value
+      operationId: Test_list
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListInner'
+  /object:
     get:
       tags:
         - Test
@@ -44,9 +57,11 @@ components:
         a:
           $ref: '#/components/schemas/Inner'
         b:
-          type: array
-          items:
-            $ref: '#/components/schemas/Inner'
+          $ref: '#/components/schemas/ListInner'
+    ListInner:
+      type: array
+      items:
+        $ref: '#/components/schemas/Inner'
     Inner:
       type: object
       properties:
