@@ -15,9 +15,33 @@ const toCamelCase = (str) => {
       .join('');
   };
 
+function generateKonfigYamlString(language, testName) {
+  const languageSpecificFields = generateKonfigYamlFieldsForLanguage(language, testName);
+  return `outputDirectory: /tmp/${testName}-sdks-out
+specPath: api.yaml
+generators:
+  ${language}:
+    version: 1.0.0
+    outputDirectory: ${language}
+    clientName: ${toCamelCase(testName)}
+    ${languageSpecificFields}
+    git:
+      userId: konfig-dev
+      repoId: konfig/tree/main/${language}`;
+}
+
+function generateKonfigYamlFieldsForLanguage(language, testName) {
+  if (language == 'python') {
+    return `packageName: ${testName.replace(/-/g, '_')}
+    projectName: ${testName}`
+  } else if (language == 'typescript') {
+    return `npmName: ${testName}`
+  }
+}
+
 // Prompt for language
-rl.question('Which language would you like to create a test for? (Python/TypeScript) ', (languageInput) => {
-  const language = (languageInput === 'Python') ? 'python' : 'typescript';
+rl.question('Which language would you like to create a test for? (python/typescript) ', (languageInput) => {
+  const language = (languageInput.toLowerCase() === 'python') ? 'python' : 'typescript';
 
   // Prompt for test name
   rl.question('What would you like to name your test? ', (testName) => {
@@ -51,20 +75,7 @@ test("${testName}", async () => {
     // Create directory and konfig.yaml file
     const sdkPath = `sdks/${testName}`;
     fs.mkdirSync(sdkPath, { recursive: true });
-
-    const konfigContent = `outputDirectory: /tmp/${testName}-sdks-out
-specPath: api.yaml
-generators:
-  ${language}:
-    version: 1.0.0
-    packageName: ${testName.replace(/-/g, '_')}
-    projectName: ${testName}
-    outputDirectory: ${language}
-    clientName: ${toCamelCase(testName)}
-    git:
-      userId: konfig-dev
-      repoId: konfig/tree/main/${language}`;
-    fs.writeFileSync(`${sdkPath}/konfig.yaml`, konfigContent);
+    fs.writeFileSync(`${sdkPath}/konfig.yaml`, generateKonfigYamlString(language, testName));
 
     // Copy api-template.yaml and replace {test_name} with actual test name
     const apiTemplate = fs.readFileSync('api-template.yaml', 'utf-8');
