@@ -84,7 +84,16 @@ def construct_model_instance(model: typing.Type[T], data: dict) -> T:
             elif issubclass(field_type, BaseModel):
                 data[field_name] = construct_model_instance(field_type, data[field_name])
 
-    return model(**data)
+    return model.model_construct(**data)
+
+
+def construct_model_list(model: typing.Type[typing.List[T]], data_list: typing.List[dict]) -> typing.List[T]:
+    """
+    Construct a list of Pydantic model instances from a list of dictionaries.
+    """
+    # Extract the inner model type from Type[List[T]]
+    inner_model = typing_extensions.get_args(model)[0]
+    return [construct_model_instance(inner_model, data) for data in data_list]
 
 
 class Dictionary(BaseModel):
