@@ -5,6 +5,9 @@
 from dataclasses import dataclass
 import typing_extensions
 import urllib3
+{{#if prstv2}}
+from pydantic import RootModel
+{{/if}}
 from {{packageName}}.request_before_hook import request_before_hook
 import json
 {{#with operation}}

@@ -1,7 +1,7 @@
 {{#if returnModel.isArray}}
 if validate:
-    return {{> endpoint_pydantic_impl_return_model}}(raw_response.body).root
-return {{> endpoint_pydantic_impl_return_model}}.model_construct(raw_response.body).root
+    return RootModel[{{> endpoint_pydantic_impl_return_model}}](raw_response.body).root
+return raw_response.body
 {{else}}
 if validate:
     return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
