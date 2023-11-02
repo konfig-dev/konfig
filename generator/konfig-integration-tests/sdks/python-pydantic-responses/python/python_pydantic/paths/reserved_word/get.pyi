@@ -267,7 +267,7 @@ class ReservedWord(BaseApi):
         )
         if validate:
             return TestReservedWordPydantic(**raw_response.body)
-        return TestReservedWordPydantic.model_construct(**raw_response.body)
+        return api_client.construct_model_instance(TestReservedWordPydantic, raw_response.body)
     
     
     def reserved_word(
@@ -278,7 +278,7 @@ class ReservedWord(BaseApi):
         )
         if validate:
             return TestReservedWordPydantic(**raw_response.body)
-        return TestReservedWordPydantic.model_construct(**raw_response.body)
+        return api_client.construct_model_instance(TestReservedWordPydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):

@@ -338,7 +338,7 @@ class Fetch(BaseApi):
         )
         if validate:
             return Dictionary(**raw_response.body)
-        return Dictionary.model_construct(**raw_response.body)
+        return api_client.construct_model_instance(Dictionary, raw_response.body)
     
     
     def fetch(
@@ -351,7 +351,7 @@ class Fetch(BaseApi):
         )
         if validate:
             return Dictionary(**raw_response.body)
-        return Dictionary.model_construct(**raw_response.body)
+        return api_client.construct_model_instance(Dictionary, raw_response.body)
 
 
 class ApiForget(BaseApi):

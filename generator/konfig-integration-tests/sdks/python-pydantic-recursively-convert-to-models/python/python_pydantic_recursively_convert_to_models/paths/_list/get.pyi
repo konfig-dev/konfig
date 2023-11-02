@@ -269,7 +269,7 @@ class List(BaseApi):
         )
         if validate:
             return RootModel[ListInnerPydantic](raw_response.body).root
-        return raw_response.body
+        return  api_client.construct_model_list(ListInnerPydantic, raw_response.body)
     
     
     def list(
@@ -280,7 +280,7 @@ class List(BaseApi):
         )
         if validate:
             return RootModel[ListInnerPydantic](raw_response.body).root
-        return api_client.construct_model_list(ListInnerPydantic, raw_response.body)
+        return  api_client.construct_model_list(ListInnerPydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):
