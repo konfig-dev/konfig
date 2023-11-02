@@ -19,7 +19,7 @@ jobs:
         run: |
           for file in ${{ steps.get_changed_files.outputs.all }}; do
             if [[ $file =~ ^generator/konfig-(integration-tests|dash|python-formatter-server-blackd|generator-api)/ && ! $file =~ \.md$ ]]; then
-              echo "::set-output name=shouldRun::true"
+              echo "shouldRun=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
           done
