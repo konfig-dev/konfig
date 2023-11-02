@@ -68,12 +68,23 @@ class RequestField(RequestFieldBase):
         return self.__dict__ == other.__dict__
 
 
-def handle_response(model: BaseModel):
+T = typing.TypeVar('T', bound=BaseModel)
+
+
+def construct_model_instance(model: typing.Type[T], data: dict) -> T:
     """
-    Since BaseModel#model_construct does not recursively construct models, we need to do it ourselves.
-    This is a recursive function that will construct the model and all of its child models.
+    Recursively construct an instance of a Pydantic model along with its nested models.
     """
-    pass
+    for field_name, field_type in model.__annotations__.items():
+        if field_name in data:
+            if typing_extensions.get_origin(field_type) is list:
+                list_item_type = typing_extensions.get_args(field_type)[0]
+                if issubclass(list_item_type, BaseModel):
+                    data[field_name] = [construct_model_instance(list_item_type, item) for item in data[field_name]]
+            elif issubclass(field_type, BaseModel):
+                data[field_name] = construct_model_instance(field_type, data[field_name])
+
+    return model(**data)
 
 
 class Dictionary(BaseModel):

@@ -286,7 +286,7 @@ class Fetch(BaseApi):
         )
         if validate:
             return TestFetchResponsePydantic(**raw_response.body)
-        return TestFetchResponsePydantic.model_construct(**raw_response.body)
+        return api_client.construct_model_instance(TestFetchResponsePydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):
