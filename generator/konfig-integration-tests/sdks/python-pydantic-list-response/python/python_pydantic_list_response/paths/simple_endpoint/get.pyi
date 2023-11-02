@@ -13,6 +13,7 @@
 from dataclasses import dataclass
 import typing_extensions
 import urllib3
+from pydantic import RootModel
 from python_pydantic_list_response.request_before_hook import request_before_hook
 import json
 from urllib3._collections import HTTPHeaderDict
@@ -267,8 +268,8 @@ class Fetch(BaseApi):
         raw_response = await self.raw.afetch(
         )
         if validate:
-            return TestFetchResponsePydantic(raw_response.body).root
-        return TestFetchResponsePydantic.model_construct(raw_response.body).root
+            return RootModel[TestFetchResponsePydantic](raw_response.body).root
+        return raw_response.body
     
     
     def fetch(
@@ -278,8 +279,8 @@ class Fetch(BaseApi):
         raw_response = self.raw.fetch(
         )
         if validate:
-            return TestFetchResponsePydantic(raw_response.body).root
-        return TestFetchResponsePydantic.model_construct(raw_response.body).root
+            return RootModel[TestFetchResponsePydantic](raw_response.body).root
+        return raw_response.body
 
 
 class ApiForget(BaseApi):

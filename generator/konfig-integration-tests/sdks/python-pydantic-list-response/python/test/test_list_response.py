@@ -20,12 +20,21 @@ class TestSimple(unittest.TestCase):
     def setUp(self):
         pass
 
-    def test_client(self):
+    def test_list_response(self):
         client = PythonPydanticListResponse(
             api_key = 'YOUR_API_KEY',
             host = "http://127.0.0.1:4002"
         )
         response = client.test.fetch()
+        self.assertIsNotNone(response)
+        self.assertTrue(isinstance(response, list))
+
+    def test_list_response_validated(self):
+        client = PythonPydanticListResponse(
+            api_key = 'YOUR_API_KEY',
+            host = "http://127.0.0.1:4002"
+        )
+        response = client.test.fetch(validate=True)
         self.assertIsNotNone(response)
         self.assertTrue(isinstance(response, list))
 

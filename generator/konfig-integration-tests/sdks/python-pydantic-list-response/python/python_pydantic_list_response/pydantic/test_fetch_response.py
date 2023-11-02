@@ -18,4 +18,4 @@ from pydantic import BaseModel, Field, RootModel
 
 from python_pydantic_list_response.pydantic.test_fetch_response_item import TestFetchResponseItem
 
-TestFetchResponse = RootModel[typing.List[TestFetchResponseItem]]
+TestFetchResponse = typing.List[TestFetchResponseItem]
