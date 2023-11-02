@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.26.0
+
+### Minor Changes
+
+- [#324](https://github.com/konfig-dev/konfig/pull/324) [`6cf3abc4`](https://github.com/konfig-dev/konfig/commit/6cf3abc422257a461228ef0b177b9a4469239d68) Thanks [@dphuang2](https://github.com/dphuang2)! - poetry.lock is now generated after generating SDKs
+
 ## 1.25.0
 
 ### Minor Changes
