@@ -922,8 +922,10 @@ public class DefaultGenerator implements Generator {
             CodegenModel m = allModels.get(i).getModel();
             m.hasMoreModels = true;
         }
-
-        bundle.put("hasMultipleApiKeys", ((List) bundle.getOrDefault("apiKeyMethods", new ArrayList())).size() > 1);
+        List<CodegenSecurity> apiKeyMethods = (List<CodegenSecurity>) bundle.getOrDefault("apiKeyMethods", new ArrayList());
+        bundle.put("hasMultipleApiKeys", apiKeyMethods.size() > 1);
+        bundle.put("isApiKeyRequired", apiKeyMethods.size() == 1
+                && (boolean) apiKeyMethods.get(0).vendorExtensions.getOrDefault("x-konfig-globally-required-security", false));
 
         // for convenience instead of openAPI.info.extensions.XXXXX
         if (openAPI.getInfo() != null)
