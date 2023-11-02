@@ -1,0 +1,1 @@
+Ensure construct_model_instance can handle `typing.Union`
