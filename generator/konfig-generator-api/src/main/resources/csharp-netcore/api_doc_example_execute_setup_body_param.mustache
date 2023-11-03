@@ -24,15 +24,16 @@ var {{nameInCamelCaseLowerFirst}} = "{{{nameInCamelCaseLowerFirst}}}_example";{{
 var {{nameInCamelCaseLowerFirst}} = {{{../dataType}}}.{{{enumName}}}.{{> api_doc_example_enum_param}};{{#description}} // {{{.}}}{{/description}}
 {{/isEnum}}
 {{/isString}}
+{{#isBoolean}}
+var {{nameInCamelCaseLowerFirst}} = false;{{#description}} // {{{.}}}{{/description}}
+{{/isBoolean}}
 {{#isAnyType}}
 var {{nameInCamelCaseLowerFirst}} = "{{{nameInCamelCaseLowerFirst}}}_example";{{#description}} // {{{.}}}{{/description}}
 {{/isAnyType}}
 {{/example}}
 {{/isPrimitiveType}}
 {{^isPrimitiveType}}
-{{#isArray}}
 var {{nameInCamelCaseLowerFirst}} = new {{{dataType}}}();{{#description}} // {{{.}}}{{/description}}
-{{/isArray}}
 {{/isPrimitiveType}}
 {{/isEnumRef}}
 {{/vars}}
