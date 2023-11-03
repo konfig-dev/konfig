@@ -15,6 +15,7 @@ A simple API based for testing python-pydantic-list-response.
 - [Installing](#installing)
 - [Getting Started](#getting-started)
 - [Async](#async)
+- [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
   * [`pythonpydanticlistresponse.test.fetch`](#pythonpydanticlistresponsetestfetch)
 
@@ -88,7 +89,7 @@ asyncio.run(main())
 
 To access raw HTTP response values, use the `.raw` namespace.
 
-```
+```python
 from pprint import pprint
 from python_pydantic_list_response import PythonPydanticListResponse, ApiException
 
@@ -111,6 +112,7 @@ except ApiException as e:
     pprint(e.reason)
     pprint(e.round_trip_time)
 ```
+
 
 ## Reference
 ### `pythonpydanticlistresponse.test.fetch`

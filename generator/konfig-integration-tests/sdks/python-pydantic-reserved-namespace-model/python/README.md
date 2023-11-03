@@ -15,6 +15,7 @@ A simple API based for testing python-pydantic-reserved-namespace-model.
 - [Installing](#installing)
 - [Getting Started](#getting-started)
 - [Async](#async)
+- [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
   * [`pythonpydanticreservednamespacemodel.test.fetch`](#pythonpydanticreservednamespacemodeltestfetch)
 
@@ -88,6 +89,38 @@ async def main():
 
 
 asyncio.run(main())
+```
+
+## Raw HTTP Response
+
+To access raw HTTP response values, use the `.raw` namespace.
+
+```python
+from pprint import pprint
+from python_pydantic_reserved_namespace_model import (
+    PythonPydanticReservedNamespaceModel,
+    ApiException,
+)
+
+pythonpydanticreservednamespacemodel = PythonPydanticReservedNamespaceModel(
+    api_key="YOUR_API_KEY",
+)
+
+try:
+    # Fetches a JSON value based on input parameter
+    fetch_response = pythonpydanticreservednamespacemodel.test.raw.fetch()
+    pprint(fetch_response.body)
+    pprint(fetch_response.body["model_config"])
+    pprint(fetch_response.headers)
+    pprint(fetch_response.status)
+    pprint(fetch_response.round_trip_time)
+except ApiException as e:
+    print("Exception when calling TestApi.fetch: %s\n" % e)
+    pprint(e.body)
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 
 

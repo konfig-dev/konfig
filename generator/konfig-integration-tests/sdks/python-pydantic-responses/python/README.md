@@ -15,6 +15,7 @@ A simple API based on python pydantic responses.
 - [Installing](#installing)
 - [Getting Started](#getting-started)
 - [Async](#async)
+- [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
   * [`pythonpydanticresponses.test.fetch`](#pythonpydanticresponsestestfetch)
   * [`pythonpydanticresponses.test.reserved_word`](#pythonpydanticresponsestestreserved_word)
@@ -95,6 +96,43 @@ async def main():
 
 
 asyncio.run(main())
+```
+
+## Raw HTTP Response
+
+To access raw HTTP response values, use the `.raw` namespace.
+
+```python
+from pprint import pprint
+from python_pydantic import PythonPydanticResponses, ApiException
+
+pythonpydanticresponses = PythonPydanticResponses(
+    api_key="YOUR_API_KEY",
+)
+
+try:
+    # Fetches a JSON value based on input parameter
+    fetch_response = pythonpydanticresponses.test.raw.fetch(
+        input_parameter="inputParameter_example",
+    )
+    pprint(fetch_response.body)
+    pprint(fetch_response.body["property_a"])
+    pprint(fetch_response.body["property_b"])
+    pprint(fetch_response.body["property_c"])
+    pprint(fetch_response.headers)
+    pprint(fetch_response.status)
+    pprint(fetch_response.round_trip_time)
+except ApiException as e:
+    print("Exception when calling TestApi.fetch: %s\n" % e)
+    pprint(e.body)
+    if e.status == 400:
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["error"])
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 
 

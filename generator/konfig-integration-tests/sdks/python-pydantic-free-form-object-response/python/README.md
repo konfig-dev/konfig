@@ -15,6 +15,7 @@ A simple API based for testing python-pydantic-free-form-object-response.
 - [Installing](#installing)
 - [Getting Started](#getting-started)
 - [Async](#async)
+- [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
   * [`pythonpydanticfreeformobjectresponse.test.fetch`](#pythonpydanticfreeformobjectresponsetestfetch)
 
@@ -90,6 +91,38 @@ async def main():
 
 
 asyncio.run(main())
+```
+
+## Raw HTTP Response
+
+To access raw HTTP response values, use the `.raw` namespace.
+
+```python
+from pprint import pprint
+from python_pydantic_free_form_object_response import (
+    PythonPydanticFreeFormObjectResponse,
+    ApiException,
+)
+
+pythonpydanticfreeformobjectresponse = PythonPydanticFreeFormObjectResponse(
+    api_key="YOUR_API_KEY",
+)
+
+try:
+    # Fetches a JSON value based on input parameter
+    fetch_response = pythonpydanticfreeformobjectresponse.test.raw.fetch(
+        input_parameter="inputParameter_example",
+    )
+    pprint(fetch_response.headers)
+    pprint(fetch_response.status)
+    pprint(fetch_response.round_trip_time)
+except ApiException as e:
+    print("Exception when calling TestApi.fetch: %s\n" % e)
+    pprint(e.body)
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 
 
