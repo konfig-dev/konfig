@@ -4,7 +4,6 @@ A simple API based for testing python-pydantic-free-form-object-response.
 
 
 [![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-pydantic-free-form-object-response/1.0.0)
-[![GitHub last commit](https://img.shields.io/github/last-commit/konfig-dev/konfig.svg)](https://github.com/konfig-dev/konfig/commits)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
 
@@ -49,9 +48,6 @@ try:
     fetch_response = pythonpydanticfreeformobjectresponse.test.fetch(
         input_parameter="inputParameter_example",
     )
-    pprint(fetch_response.headers)
-    pprint(fetch_response.status)
-    pprint(fetch_response.round_trip_time)
 except ApiException as e:
     print("Exception when calling TestApi.fetch: %s\n" % e)
     pprint(e.body)
@@ -84,9 +80,6 @@ async def main():
         fetch_response = await pythonpydanticfreeformobjectresponse.test.afetch(
             input_parameter="inputParameter_example",
         )
-        pprint(fetch_response.headers)
-        pprint(fetch_response.status)
-        pprint(fetch_response.round_trip_time)
     except ApiException as e:
         print("Exception when calling TestApi.fetch: %s\n" % e)
         pprint(e.body)

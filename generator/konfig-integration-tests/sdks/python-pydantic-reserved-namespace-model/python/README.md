@@ -4,7 +4,6 @@ A simple API based for testing python-pydantic-reserved-namespace-model.
 
 
 [![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-pydantic-reserved-namespace-model/1.0.0)
-[![GitHub last commit](https://img.shields.io/github/last-commit/konfig-dev/konfig.svg)](https://github.com/konfig-dev/konfig/commits)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
 
@@ -47,11 +46,7 @@ pythonpydanticreservednamespacemodel = PythonPydanticReservedNamespaceModel(
 try:
     # Fetches a JSON value based on input parameter
     fetch_response = pythonpydanticreservednamespacemodel.test.fetch()
-    pprint(fetch_response.body)
-    pprint(fetch_response.body["model_config"])
-    pprint(fetch_response.headers)
-    pprint(fetch_response.status)
-    pprint(fetch_response.round_trip_time)
+    print(fetch_response)
 except ApiException as e:
     print("Exception when calling TestApi.fetch: %s\n" % e)
     pprint(e.body)
@@ -82,11 +77,7 @@ async def main():
     try:
         # Fetches a JSON value based on input parameter
         fetch_response = await pythonpydanticreservednamespacemodel.test.afetch()
-        pprint(fetch_response.body)
-        pprint(fetch_response.body["model_config"])
-        pprint(fetch_response.headers)
-        pprint(fetch_response.status)
-        pprint(fetch_response.round_trip_time)
+        print(fetch_response)
     except ApiException as e:
         print("Exception when calling TestApi.fetch: %s\n" % e)
         pprint(e.body)
@@ -113,7 +104,7 @@ fetch_response = pythonpydanticreservednamespacemodel.test.fetch()
 
 #### 🔄 Return
 
-[TestFetchResponse](./python_pydantic_reserved_namespace_model/type/test_fetch_response.py)
+[TestFetchResponse](./python_pydantic_reserved_namespace_model/pydantic/test_fetch_response.py)
 
 #### 🌐 Endpoint
 

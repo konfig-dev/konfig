@@ -5,17 +5,23 @@ try:
     {{> api_doc_example_execute_call}}
 {{#if returnModel}}
 {{#with returnModel}}
+{{#if prstv2}}
+    print({{operationId}}_response)
+{{else}}
     pprint({{operationId}}_response.body)
 {{#each vars}}
     pprint({{operationId}}_response.body["{{{name}}}"])
 {{/each}}
+{{/if}}
 {{/with}}
 {{/if}}
+{{#unless prstv2}}
 {{#if returnType}}
     pprint({{operationId}}_response.headers)
     pprint({{operationId}}_response.status)
     pprint({{operationId}}_response.round_trip_time)
 {{/if}}
+{{/unless}}
 except ApiException as e:
     print("Exception when calling {{classname}}.{{operationId}}: %s\n" % e)
     pprint(e.body)

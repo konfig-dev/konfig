@@ -4,7 +4,6 @@ A simple API based on python pydantic responses.
 
 
 [![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-pydantic-responses-python-sdk/1.0.0)
-[![GitHub last commit](https://img.shields.io/github/last-commit/konfig-dev/konfig.svg)](https://github.com/konfig-dev/konfig/commits)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
 
@@ -47,13 +46,7 @@ try:
     fetch_response = pythonpydanticresponses.test.fetch(
         input_parameter="inputParameter_example",
     )
-    pprint(fetch_response.body)
-    pprint(fetch_response.body["property_a"])
-    pprint(fetch_response.body["property_b"])
-    pprint(fetch_response.body["property_c"])
-    pprint(fetch_response.headers)
-    pprint(fetch_response.status)
-    pprint(fetch_response.round_trip_time)
+    print(fetch_response)
 except ApiException as e:
     print("Exception when calling TestApi.fetch: %s\n" % e)
     pprint(e.body)
@@ -87,13 +80,7 @@ async def main():
         fetch_response = await pythonpydanticresponses.test.afetch(
             input_parameter="inputParameter_example",
         )
-        pprint(fetch_response.body)
-        pprint(fetch_response.body["property_a"])
-        pprint(fetch_response.body["property_b"])
-        pprint(fetch_response.body["property_c"])
-        pprint(fetch_response.headers)
-        pprint(fetch_response.status)
-        pprint(fetch_response.round_trip_time)
+        print(fetch_response)
     except ApiException as e:
         print("Exception when calling TestApi.fetch: %s\n" % e)
         pprint(e.body)
@@ -132,7 +119,7 @@ The input parameter to process.
 
 #### 🔄 Return
 
-[TestFetchResponse](./python_pydantic/type/test_fetch_response.py)
+[TestFetchResponse](./python_pydantic/pydantic/test_fetch_response.py)
 
 #### 🌐 Endpoint
 
@@ -154,7 +141,7 @@ reserved_word_response = pythonpydanticresponses.test.reserved_word()
 
 #### 🔄 Return
 
-[TestReservedWord](./python_pydantic/type/test_reserved_word.py)
+[TestReservedWord](./python_pydantic/pydantic/test_reserved_word.py)
 
 #### 🌐 Endpoint
 
