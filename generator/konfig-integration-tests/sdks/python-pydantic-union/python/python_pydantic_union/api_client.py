@@ -68,7 +68,7 @@ class RequestField(RequestFieldBase):
         return self.__dict__ == other.__dict__
 
 
-T = typing.TypeVar('T', bound=BaseModel)
+T = typing.TypeVar('T')
 
 
 def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
@@ -77,7 +77,7 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     """
 
     # if model is Union,
-    if typing.get_origin(model) is typing.Union:
+    if typing_extensions.get_origin(model) is typing.Union:
         closest = []
         # iterate over all union types and determine which one is closest to the data
         for union_type in model.__args__:
@@ -88,7 +88,7 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         # if no match, just use the first union_type
         return construct_model_instance(model.__args__[0], data)
     # if model is scalar value like str, number, etc., use RootModel to construct
-    elif not isinstance(model, type):
+    elif isinstance(model, type):
         model = RootModel[model]
         # try to coerce value to model type
         try:
@@ -99,34 +99,16 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return model.model_construct(data).root
     # if model is list, iterate over list and recursively call
     elif issubclass(model, list):
-        return construct_model_list(model, data)
+        item_model = typing_extensions.get_args(model)[0]
+        return [construct_model_instance(item_model, item) for item in data]
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):
-        data = {}
+        new_data = {}
         for field_name, field_type in model.__annotations__.items():
             if field_name in data:
-                data[field_name] = construct_model_instance(field_type, data[field_name])
+                new_data[field_name] = construct_model_instance(field_type, data[field_name])
         return model.model_construct(**data)
     raise ApiTypeError(f"Unable to construct model instance of type {model}")
-
-
-def construct_model_dict(model: typing.Type[T], data: dict) -> T:
-    """
-    Recursively construct an instance of a Pydantic model along with its nested models.
-    """
-    for field_name, field_type in model.__annotations__.items():
-        if field_name in data:
-            data[field_name] = construct_model_instance(field_type, data[field_name])
-    return model(**data)
-
-
-def construct_model_list(model: typing.Type[typing.List[T]], data_list: typing.List[dict]) -> typing.List[T]:
-    """
-    Construct a list of Pydantic model instances from a list of dictionaries.
-    """
-    # Extract the inner model type from Type[List[T]]
-    inner_model = typing_extensions.get_args(model)[0]
-    return [construct_model_instance(inner_model, data) for data in data_list]
 
 
 class Dictionary(BaseModel):
