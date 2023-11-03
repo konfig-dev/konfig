@@ -287,7 +287,7 @@ class Fetch(BaseApi):
         raw_response = self.raw.fetch(
         )
         if validate:
-            return ResponsePydantic(**raw_response.body)
+            return RootModel[ResponsePydantic](raw_response.body).root
         return api_client.construct_model_instance(ResponsePydantic, raw_response.body)
 
 

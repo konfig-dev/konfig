@@ -28,6 +28,14 @@ class TestSimple(unittest.TestCase):
         response = client.test.fetch()
         self.assertIsNotNone(response)
 
+    def test_list_in_union_validate(self):
+        client = PythonPydanticListInUnion(
+            api_key = 'YOUR_API_KEY',
+            host = "http://127.0.0.1:4005"
+        )
+        response = client.test.fetch(validate=True)
+        self.assertIsNotNone(response)
+
     def tearDown(self):
         pass
 
