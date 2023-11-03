@@ -3,7 +3,7 @@
 {{>licenseInfo}}
 
 export * from "./api";
-export * from "./configuration";
-{{#withSeparateModelsAndApi}}export * from "./{{tsModelPackage}}";{{/withSeparateModelsAndApi}}
+export * from "./configuration";{{#withSeparateModelsAndApi}}{{#models}}{{#-first}}
+export * from "./{{tsModelPackage}}";{{/-first}}{{/models}}{{/withSeparateModelsAndApi}}
 export * from "./client";
 export * from "./error";
