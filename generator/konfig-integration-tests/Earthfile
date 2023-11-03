@@ -12,7 +12,7 @@ integration-tests:
   COPY tsconfig.json jest.config.ts util.ts .
   COPY sdks sdks
   COPY tests tests
-  ENTRYPOINT ["yarn", "test", "--no-cache"] # TODO: see if we can speed this up more
+  ENTRYPOINT ["yarn", "test", "--no-cache", "--runInBand"] # TODO: see if we can speed this up more
   SAVE IMAGE konfig-integration-tests:latest
 
 test:
