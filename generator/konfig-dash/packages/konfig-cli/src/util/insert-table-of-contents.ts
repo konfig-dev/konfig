@@ -15,5 +15,20 @@ export function insertTableOfContents({
     },
     maxdepth: 3,
   })
-  fs.writeFileSync(readmePath, withToc)
+  const withTocAndReferenceLinkFix = applyReferenceLinkFix(withToc)
+  fs.writeFileSync(readmePath, withTocAndReferenceLinkFix)
+}
+
+// https://github.com/pypa/readme_renderer/issues/169#issuecomment-808577486
+/**
+ * Turns all headings into links by adding <a id="..."></a> after them with no space.
+ * Uses regex to avoid parsing the markdown AST.
+ */
+function applyReferenceLinkFix(markdown: string): string {
+  const { slugify } = require('markdown-toc/lib/utils')
+  const headingRegex = /^#+\s+(.*)$/gm
+  return markdown.replace(headingRegex, (match, p1) => {
+    const slug = slugify(p1)
+    return `${match}<a id="${slug}"></a>`
+  })
 }
