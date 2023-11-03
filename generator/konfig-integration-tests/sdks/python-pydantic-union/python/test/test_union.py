@@ -25,7 +25,8 @@ class TestSimple(unittest.TestCase):
             api_key = 'YOUR_API_KEY',
             host = "http://127.0.0.1:4004"
         )
-        self.assertIsNotNone(client)
+        response = client.test.fetch()
+        self.assertIsNotNone(response.value)
 
     def tearDown(self):
         pass

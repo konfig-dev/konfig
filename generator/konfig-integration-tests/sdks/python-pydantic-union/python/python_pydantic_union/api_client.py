@@ -25,7 +25,7 @@ import typing
 import typing_extensions
 import aiohttp
 import urllib3
-from pydantic import BaseModel
+from pydantic import BaseModel, RootModel, ValidationError
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
 from urllib3.fields import RequestField as RequestFieldBase
@@ -71,20 +71,53 @@ class RequestField(RequestFieldBase):
 T = typing.TypeVar('T', bound=BaseModel)
 
 
-def construct_model_instance(model: typing.Type[T], data: dict) -> T:
+def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
+    """
+    Recursively construct an instance of a Pydantic model along with its nested models.
+    """
+
+    # if model is Union,
+    if typing.get_origin(model) is typing.Union:
+        closest = []
+        # iterate over all union types and determine which one is closest to the data
+        for union_type in model.__args__:
+            matches = isinstance(data, union_type)
+            if matches:
+                # found match, return using construct_model_instance
+                return construct_model_instance(union_type, data)
+        # if no match, just use the first union_type
+        return construct_model_instance(model.__args__[0], data)
+    # if model is scalar value like str, number, etc., use RootModel to construct
+    elif not isinstance(model, type):
+        model = RootModel[model]
+        # try to coerce value to model type
+        try:
+            return model(data).root
+        except ValidationError as e:
+            pass
+        # if not possible, give  up
+        return model.model_construct(data).root
+    # if model is list, iterate over list and recursively call
+    elif issubclass(model, list):
+        return construct_model_list(model, data)
+    # if model is BaseModel, iterate over fields and recursively call
+    elif issubclass(model, BaseModel):
+        data = {}
+        for field_name, field_type in model.__annotations__.items():
+            if field_name in data:
+                data[field_name] = construct_model_instance(field_type, data[field_name])
+        return model.model_construct(**data)
+    raise ApiTypeError(f"Unable to construct model instance of type {model}")
+
+
+def construct_model_dict(model: typing.Type[T], data: dict) -> T:
     """
     Recursively construct an instance of a Pydantic model along with its nested models.
     """
     for field_name, field_type in model.__annotations__.items():
         if field_name in data:
-            if typing_extensions.get_origin(field_type) is list:
-                list_item_type = typing_extensions.get_args(field_type)[0]
-                if issubclass(list_item_type, BaseModel):
-                    data[field_name] = [construct_model_instance(list_item_type, item) for item in data[field_name]]
-            elif issubclass(field_type, BaseModel):
-                data[field_name] = construct_model_instance(field_type, data[field_name])
-
-    return model.model_construct(**data)
+            data[field_name] = construct_model_instance(field_type, data[field_name])
+    return model(**data)
 
 
 def construct_model_list(model: typing.Type[typing.List[T]], data_list: typing.List[dict]) -> typing.List[T]:

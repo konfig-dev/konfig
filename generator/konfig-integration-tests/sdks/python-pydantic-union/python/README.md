@@ -44,6 +44,8 @@ pythonpydanticunion = PythonPydanticUnion(
 try:
     # Fetches a JSON value based on input parameter
     fetch_response = pythonpydanticunion.test.fetch()
+    pprint(fetch_response.body)
+    pprint(fetch_response.body["value"])
     pprint(fetch_response.headers)
     pprint(fetch_response.status)
     pprint(fetch_response.round_trip_time)
@@ -74,6 +76,8 @@ async def main():
     try:
         # Fetches a JSON value based on input parameter
         fetch_response = await pythonpydanticunion.test.afetch()
+        pprint(fetch_response.body)
+        pprint(fetch_response.body["value"])
         pprint(fetch_response.headers)
         pprint(fetch_response.status)
         pprint(fetch_response.round_trip_time)
@@ -100,6 +104,10 @@ Provide an input parameter to receive a JSON value with properties.
 ```python
 fetch_response = pythonpydanticunion.test.fetch()
 ```
+
+#### 🔄 Return
+
+[TestFetchResponse](./python_pydantic_union/type/test_fetch_response.py)
 
 #### 🌐 Endpoint
 
