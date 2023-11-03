@@ -17,7 +17,7 @@ const KONFIG_CLI_PATH = path.join(
   "../konfig-dash/packages/konfig-cli/bin/dev"
 );
 
-export async function e2e(mockServerPort: number) {
+export async function e2e(mockServerPort: number, customAssertions?: () => void) {
   const currentTestName = expect.getState().currentTestName;
   if (!currentTestName) {
     throw new Error("Unable to get current test name");
@@ -66,6 +66,10 @@ export async function e2e(mockServerPort: number) {
         )
       )
     ).toMatchSnapshot();
+  }
+
+  if (customAssertions) {
+    customAssertions();
   }
 }
 
