@@ -5,7 +5,7 @@ try:
     {{> api_doc_example_execute_call}}
 {{#if returnModel}}
 {{#with returnModel}}
-{{#if prstv2}}
+{{#if pydantic}}
     print({{operationId}}_response)
 {{else}}
     pprint({{operationId}}_response.body)
@@ -15,7 +15,7 @@ try:
 {{/if}}
 {{/with}}
 {{/if}}
-{{#unless prstv2}}
+{{#unless pydantic}}
 {{#if returnType}}
     pprint({{operationId}}_response.headers)
     pprint({{operationId}}_response.status)

@@ -17,7 +17,7 @@
                     {{#with operations}}
                         {{#each operation}}
                             {{#if @first}}
-{{> api_doc_example}}
+{{> api_doc_example pydantic=prstv2}}
                             {{/if}}
                         {{/each}}
                     {{/with}}
@@ -47,7 +47,7 @@ import asyncio
 {{> api_doc_example_setup}}
 
 async def main():
-    {{> api_doc_example_execute async=true}}
+    {{> api_doc_example_execute pydantic=prstv2 async=true}}
 
 asyncio.run(main())
 {{/if}}
@@ -58,6 +58,28 @@ asyncio.run(main())
 {{/with}}
 {{/if}}
 ```
+{{#if prstv2}}
+
+## Raw HTTP Response
+
+To access raw HTTP response values, use the `.raw` namespace.
+
+```python
+{{#with apiInfo}}
+{{#each apis}}
+{{#if @first}}
+{{#with operations}}
+{{#each operation}}
+{{#if @first}}
+{{> api_doc_example raw=true}}
+{{/if}}
+{{/each}}
+{{/with}}
+{{/if}}
+{{/each}}
+{{/with}}
+```
+{{/if}}
 
 {{#if readmeSupportingDescriptionSnippet}}
 
