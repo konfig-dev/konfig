@@ -265,9 +265,6 @@ class Fetch(BaseApi):
     ):
         raw_response = self.raw.fetch(
         )
-        if validate:
-            return Pydantic(**raw_response.body)
-        return api_client.construct_model_instance(Pydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):
