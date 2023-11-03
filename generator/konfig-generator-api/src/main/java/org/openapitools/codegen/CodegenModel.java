@@ -200,6 +200,7 @@ public class CodegenModel implements IJsonSchemaValidationProperties {
     }
 
     public boolean isPolymorphic() {
+        if (this.composedSchemas == null) return false;
         return this.composedSchemas.getAllOf() != null || this.composedSchemas.getAnyOf() != null || this.composedSchemas.getOneOf() != null;
     }
 
