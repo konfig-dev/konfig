@@ -336,6 +336,10 @@ export default class Publish extends Command {
       name: 'skipRemoteCheck',
       description: 'Do not check that remote is in sync',
     }),
+    skipDirtyGitCheck: Flags.boolean({
+      name: 'skipDirtyGitCheck',
+      description: 'Do not check that git repo is dirty',
+    }),
     skipTests: Flags.boolean({
       name: 'skipTests',
       description: 'Do not run tests before publishing',
@@ -360,7 +364,7 @@ export default class Publish extends Command {
   public async run(): Promise<void> {
     const { flags } = await this.parse(Publish)
 
-    if (!isGitDirectoryClean())
+    if (!isGitDirectoryClean() && !flags.skipDirtyGitCheck)
       CliUx.ux.error(
         'Git directory must be clean. Make sure there are no unstaged changes.'
       )
