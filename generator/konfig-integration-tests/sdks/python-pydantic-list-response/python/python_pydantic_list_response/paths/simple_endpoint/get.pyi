@@ -269,7 +269,7 @@ class Fetch(BaseApi):
         )
         if validate:
             return RootModel[TestFetchResponsePydantic](raw_response.body).root
-        return  api_client.construct_model_list(TestFetchResponsePydantic, raw_response.body)
+        return api_client.construct_model_instance(TestFetchResponsePydantic, raw_response.body)
     
     
     def fetch(
@@ -280,7 +280,7 @@ class Fetch(BaseApi):
         )
         if validate:
             return RootModel[TestFetchResponsePydantic](raw_response.body).root
-        return  api_client.construct_model_list(TestFetchResponsePydantic, raw_response.body)
+        return api_client.construct_model_instance(TestFetchResponsePydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):
