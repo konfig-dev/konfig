@@ -2,6 +2,7 @@
 
 
 import unittest
+import asyncio
 
 from python_pydantic import PythonPydanticResponses
 from dataclasses import is_dataclass
@@ -17,6 +18,15 @@ class TestSimple(unittest.TestCase):
         )
         response = client.test.fetch("test")
         self.assertIsNotNone(response.property_a)
+
+    def test_response_is_pydantic_async(self):
+        async def run_async_test():
+            client = PythonPydanticResponses(
+                api_key="YOUR_API_KEY", host="http://127.0.0.1:4011"
+            )
+            response = await client.test.afetch("test")
+            self.assertIsNotNone(response.property_a)
+        asyncio.run(run_async_test())
 
     def test_raw_response(self):
         client = PythonPydanticResponses(
