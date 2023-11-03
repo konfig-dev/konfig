@@ -1,3 +1,4 @@
+{{#if returnType}}
 {{#if returnModel.isArrayOrPolymorphic}}
 if validate:
     return RootModel[{{> endpoint_pydantic_impl_return_model}}](raw_response.body).root
@@ -6,4 +7,5 @@ return api_client.construct_model_instance({{> endpoint_pydantic_impl_return_mod
 if validate:
     return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
 return api_client.construct_model_instance({{> endpoint_pydantic_impl_return_model}}, raw_response.body)
+{{/if}}
 {{/if}}
