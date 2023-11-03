@@ -2,23 +2,31 @@ VERSION 0.7
 FROM node:16-slim
 WORKDIR /konfig-dash
 
-build-konfig-dash:
-  RUN apt-get update
-
-  ### PYTHON
+konfig-test-dependencies:
+  # TODO: Once we figure out how to better package/extract konfig-cli from konfig-dash, move this to
+  #       generator/konfig-integration-tests/Earthfile as the base image for +integration-tests
   ENV PYTHONDONTWRITEBYTECODE=1 # Don't write .pyc files, which are not needed in a container
-  ENV PIP_DEFAULT_TIMEOUT=100
-
-  # lsof required for killing mock server after test
-  RUN apt-get install -y lsof python3 python3-pip
+  ENV PIP_DEFAULT_TIMEOUT=100 # Increase pip timeout to avoid timeouts when installing python packages
+  ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true # Avoids error when running dotnet
+  # lsof: used by konfig test
+  # openssl: used by prisma
+  # wget: used to get C# install script
+  RUN apt-get update
+  RUN apt-get install -y lsof python3 python3-pip openssl wget
+  ## node comes from base image
+  ## csharp
+  RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+  RUN chmod +x ./dotnet-install.sh
+  RUN ./dotnet-install.sh --channel 7.0
+  ENV PATH=$PATH:/root/.dotnet
+  ## python
   RUN pip3 install --upgrade pip
   RUN pip3 install poetry
-  # Clean up python installations
+  # Clean up
   RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-  # not present in node:16-slim but required by prisma
-  RUN apt-get install -y openssl
-
+build-konfig-dash:
+  FROM +konfig-test-dependencies
   # Copy everything we need to run `yarn` without copying the source code so that dependencies are cached
   COPY package.json yarn.lock .yarnrc.yml redwood.toml .
   COPY .yarn .yarn

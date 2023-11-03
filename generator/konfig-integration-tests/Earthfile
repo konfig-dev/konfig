@@ -2,11 +2,7 @@ VERSION 0.7
 FROM ../konfig-dash+build-konfig-dash
 WORKDIR /konfig-integration-tests
 
-konfig-test-dependencies:
-  ### NODE comes from base image
-
 integration-tests:
-  FROM +konfig-test-dependencies
   COPY package.json yarn.lock .
   RUN yarn
   COPY tsconfig.json vitest.config.ts util.ts .
