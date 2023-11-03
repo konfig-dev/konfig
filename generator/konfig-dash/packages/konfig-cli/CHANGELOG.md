@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.27.0
+
+### Minor Changes
+
+- [#332](https://github.com/konfig-dev/konfig/pull/332) [`077a3abe`](https://github.com/konfig-dev/konfig/commit/077a3abe1adee0c041528c72afd22eccff1dd61d) Thanks [@dphuang2](https://github.com/dphuang2)! - fix reference link in PyPI
+
 ## 1.26.0
 
 ### Minor Changes
