@@ -84,6 +84,33 @@ async def main():
 asyncio.run(main())
 ```
 
+## Raw HTTP Response
+
+To access raw HTTP response values, use the `.raw` namespace.
+
+```
+from pprint import pprint
+from python_pydantic_list_response import PythonPydanticListResponse, ApiException
+
+pythonpydanticlistresponse = PythonPydanticListResponse(
+    api_key="YOUR_API_KEY",
+)
+
+try:
+    # Fetches a JSON value based on input parameter
+    fetch_response = pythonpydanticlistresponse.test.raw.fetch()
+    pprint(fetch_response.body)
+    pprint(fetch_response.headers)
+    pprint(fetch_response.status)
+    pprint(fetch_response.round_trip_time)
+except ApiException as e:
+    print("Exception when calling TestApi.fetch: %s\n" % e)
+    pprint(e.body)
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
+```
 
 ## Reference
 ### `pythonpydanticlistresponse.test.fetch`
