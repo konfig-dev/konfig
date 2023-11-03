@@ -69,6 +69,51 @@ class RequestField(RequestFieldBase):
 T = typing.TypeVar('T')
 
 
+def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> typing.Type:
+    best_match = None
+
+    for t in types:
+        # Check for generic types
+        origin = typing_extensions.get_origin(t)
+        args = typing_extensions.get_args(t)
+
+        # Check for Literal types
+        if origin == typing_extensions.Literal:
+            if value in args:
+                best_match = t
+                continue
+
+        # Check for Pydantic models and non-generic types
+        if isinstance(t, type):  # Ensure t is a class
+            if issubclass(t, BaseModel):
+                if isinstance(value, dict):
+                    try:
+                        t(**value)
+                        best_match = t
+                    except ValidationError:
+                        continue
+            else:  # This is a non-generic type
+                if isinstance(value, t):
+                    if best_match is None or issubclass(best_match, t):
+                        best_match = t
+                continue
+
+        # Check for generic list type
+        if origin == list and isinstance(value, list):
+            if args and issubclass(args[0], BaseModel):
+                try:
+                    [args[0](**item) for item in value]
+                    best_match = t
+                except ValidationError:
+                    continue
+            elif best_match is None or (typing_extensions.get_origin(best_match) == list and len(
+                    typing_extensions.get_args(best_match)) < len(args)):
+                if args and all(isinstance(item, args[0]) for item in value):
+                    best_match = t
+
+    return best_match
+
+
 def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     """
     Recursively construct an instance of a Pydantic model along with its nested models.
@@ -76,15 +121,8 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
 
     # if model is Union,
     if typing_extensions.get_origin(model) is typing.Union:
-        closest = []
-        # iterate over all union types and determine which one is closest to the data
-        for union_type in model.__args__:
-            matches = isinstance(data, union_type)
-            if matches:
-                # found match, return using construct_model_instance
-                return construct_model_instance(union_type, data)
-        # if no match, just use the first union_type
-        return construct_model_instance(model.__args__[0], data)
+        best_type = closest_type_match(data, model.__args__)
+        return construct_model_instance(best_type, data)
     # if model is scalar value like str, number, etc., use RootModel to construct
     elif isinstance(model, type):
         model = RootModel[model]
