@@ -70,7 +70,7 @@ pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
 async def main():
     try:
         # Fetches a JSON value based on input parameter
-        pythonpydanticemptyresponse.test.afetch()
+        await pythonpydanticemptyresponse.test.afetch()
     except ApiException as e:
         print("Exception when calling TestApi.fetch: %s\n" % e)
         pprint(e.body)
