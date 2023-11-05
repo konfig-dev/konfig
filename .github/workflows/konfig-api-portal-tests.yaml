@@ -28,6 +28,7 @@ jobs:
             fi
           done
   unit-tests:
+    needs: check_for_relevant_changes
     if: needs.check_for_relevant_changes.outputs.shouldRun == 'true'
     strategy:
       matrix:

@@ -30,9 +30,10 @@ jobs:
             fi
           done
   release:
+    needs: check_for_relevant_changes
+    if: needs.check_for_relevant_changes.outputs.shouldRun == 'true'
     name: Release
     runs-on: ubuntu-latest
-    if: needs.check_for_relevant_changes.outputs.shouldRun == 'true'
     env:
       DIRECTORY: ./generator/konfig-dash
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
