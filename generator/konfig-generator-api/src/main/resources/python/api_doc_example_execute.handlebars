@@ -16,11 +16,11 @@ try:
 {{/with}}
 {{/if}}
 {{#unless pydantic}}
-{{#if returnType}}
+{{#or returnType raw}}
     pprint({{operationId}}_response.headers)
     pprint({{operationId}}_response.status)
     pprint({{operationId}}_response.round_trip_time)
-{{/if}}
+{{/or}}
 {{/unless}}
 except ApiException as e:
     print("Exception when calling {{classname}}.{{operationId}}: %s\n" % e)

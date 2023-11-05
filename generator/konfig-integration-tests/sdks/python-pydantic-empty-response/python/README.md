@@ -97,7 +97,10 @@ pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
 
 try:
     # Fetches a JSON value based on input parameter
-    pythonpydanticemptyresponse.test.raw.fetch()
+    fetch_response = pythonpydanticemptyresponse.test.raw.fetch()
+    pprint(fetch_response.headers)
+    pprint(fetch_response.status)
+    pprint(fetch_response.round_trip_time)
 except ApiException as e:
     print("Exception when calling TestApi.fetch: %s\n" % e)
     pprint(e.body)
