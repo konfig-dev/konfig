@@ -1,0 +1,174 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`deeply nested objects with file 1`] = `
+"import { Groundx } from \\"groundx-typescript-sdk\\";
+import fs from \\"fs\\";
+
+const groundx = new Groundx({
+  apiKey: \\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\\",
+});
+
+const response =
+  await groundx.documents.uploadLocal([
+    {
+      blob: fs.readFileSync(\\"file.txt\\"),
+      metadata: {
+        bucketId: 321,
+        fileName: \\"321\\",
+        fileType: \\"docx\\",
+      },
+    },
+  ]);
+console.log(response.data);
+"
+`;
+
+exports[`example with boolean 1`] = `
+"import { Test } from \\"test\\";
+
+const test = new Test({
+  clientId: \\"XXX\\",
+  consumerKey: \\"XXX\\",
+});
+
+const response =
+  await test.authentication.loginSnapTradeUser({
+    userId: \\"321\\",
+    userSecret: \\"321\\",
+    broker: \\"fda\\",
+    immediateRedirect: true,
+  });
+console.log(response.data);
+"
+`;
+
+exports[`example with inner object 1`] = `
+"import { Test } from \\"test\\";
+
+const test = new Test({
+  clientId: \\"XXX\\",
+  consumerKey: \\"XXX\\",
+});
+
+const response =
+  await test.options.getOptionStrategy({
+    accountId: \\"fda321\\",
+    userId: \\"321\\",
+    userSecret: \\"321\\",
+    underlying_symbol_id: \\"321\\",
+    legs: [
+      {
+        action: \\"SELL_TO_CLOSE\\",
+        option_symbol_id: \\"fda\\",
+        quantity: 321,
+      },
+      {
+        action: \\"BUY_TO_OPEN\\",
+        option_symbol_id: \\"fda\\",
+        quantity: 1,
+      },
+    ],
+    strategy_type: \\"CUSTOM\\",
+  });
+console.log(response.data);
+"
+`;
+
+exports[`example with no form data but > 1 parameters 1`] = `
+"import { Test } from \\"test\\";
+
+const test = new Test({});
+
+const response =
+  await test.options.getOptionStrategy({});
+console.log(response.data);
+"
+`;
+
+exports[`example with no setup 1`] = `
+"import { Test } from \\"test\\";
+
+const test = new Test({});
+
+const response =
+  await test.options.getOptionStrategy({});
+console.log(response.data);
+"
+`;
+
+exports[`nested objects does not have empty properties 1`] = `
+"import { Groundx } from \\"groundx-typescript-sdk\\";
+
+const groundx = new Groundx({
+  apiKey: \\"XXXXX\\",
+});
+
+const response =
+  await groundx.documents.uploadRemote({
+    documents: [{ bucketId: 1 }],
+  });
+console.log(response.data);
+"
+`;
+
+exports[`request body with blob values 1`] = `
+"import { Groundx } from \\"groundx-typescript-sdk\\";
+import fs from \\"fs\\";
+
+const groundx = new Groundx({
+  apiKey: \\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\\",
+});
+
+const response =
+  await groundx.documents.uploadLocal([
+    {
+      blob: fs.readFileSync(\\"file_1.txt\\"),
+      metadata: {
+        bucketId: 321,
+        fileName: \\"321\\",
+        fileType: \\"txt\\",
+        callbackData: \\"321\\",
+        callbackUrl: \\"3213\\",
+      },
+    },
+    {
+      blob: fs.readFileSync(\\"file_2.txt\\"),
+      metadata: {
+        bucketId: 321,
+        fileName: \\"321\\",
+        fileType: \\"txt\\",
+      },
+    },
+  ]);
+console.log(response.data);
+"
+`;
+
+exports[`simple example 1`] = `
+"import { Test } from \\"test\\";
+
+const test = new Test({
+  clientId: \\"XXX\\",
+  consumerKey: \\"XXX\\",
+});
+
+const response = await test.apiStatus.check();
+console.log(response.data);
+"
+`;
+
+exports[`simple parameters example 1`] = `
+"import { Test } from \\"test\\";
+
+const test = new Test({
+  clientId: \\"XXX\\",
+  consumerKey: \\"XXX\\",
+});
+
+const response =
+  await test.authentication.registerSnapTradeUser(
+    { userId: \\"321\\" },
+  );
+console.log(response.data);
+"
+`;
