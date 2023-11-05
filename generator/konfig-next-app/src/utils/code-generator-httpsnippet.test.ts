@@ -3,6 +3,7 @@ import {
   CodeGeneratorHttpSnippetConstructorArgs,
   CodeGeneratorHttpsnippet,
 } from './code-generator-httpsnippet'
+import {test} from "vitest"
 
 test.skip('httpsnippet - deeply nested objects with files', async () => {
   const args: CodeGeneratorHttpSnippetConstructorArgs = {

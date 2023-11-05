@@ -1,6 +1,7 @@
 import { HttpMethodsEnum } from 'konfig-lib'
 import { CodeGeneratorConstructorArgs } from './code-generator'
 import { CodeGeneratorPython } from './code-generator-python'
+import {test, expect, it} from "vitest"
 
 test('deeply nested objects with file', async () => {
   const args: CodeGeneratorConstructorArgs = {

@@ -1,19 +1,19 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`deeply nested objects with file 1`] = `
 "from pprint import pprint
 from groundx import Groundx
 
 groundx = Groundx(
-    api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    api_key=\\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\\"
 )
 
 response = groundx.documents.upload_local([{
-    "blob": open("file.txt", "rb"),
-    "metadata": {
-        "bucket_id": 321,
-        "file_name": "321",
-        "file_type": "docx"
+    \\"blob\\": open(\\"file.txt\\", \\"rb\\"),
+    \\"metadata\\": {
+        \\"bucket_id\\": 321,
+        \\"file_name\\": \\"321\\",
+        \\"file_type\\": \\"docx\\"
     }
 }])
 pprint(response.body)"
@@ -24,14 +24,14 @@ exports[`example with boolean 1`] = `
 from snaptrade_client import SnapTrade
 
 snaptrade = SnapTrade(
-    client_id="XXX",
-    consumer_key="XXX"
+    client_id=\\"XXX\\",
+    consumer_key=\\"XXX\\"
 )
 
 response = snaptrade.authentication.login_snap_trade_user(
-    user_id="321",
-    user_secret="321",
-    broker="fda",
+    user_id=\\"321\\",
+    user_secret=\\"321\\",
+    broker=\\"fda\\",
     immediate_redirect=True
 )
 pprint(response.body)"
@@ -42,28 +42,28 @@ exports[`example with inner object 1`] = `
 from snaptrade_client import SnapTrade
 
 snaptrade = SnapTrade(
-    client_id="XXX",
-    consumer_key="XXX"
+    client_id=\\"XXX\\",
+    consumer_key=\\"XXX\\"
 )
 
 response = snaptrade.options.get_option_strategy(
-    account_id="fda321",
-    user_id="321",
-    user_secret="321",
-    underlying_symbol_id="321",
+    account_id=\\"fda321\\",
+    user_id=\\"321\\",
+    user_secret=\\"321\\",
+    underlying_symbol_id=\\"321\\",
     legs=[
         {
-            "action": "SELL_TO_CLOSE",
-            "option_symbol_id": "fda",
-            "quantity": 321
+            \\"action\\": \\"SELL_TO_CLOSE\\",
+            \\"option_symbol_id\\": \\"fda\\",
+            \\"quantity\\": 321
         },
         {
-            "action": "BUY_TO_OPEN",
-            "option_symbol_id": "fda",
-            "quantity": 1
+            \\"action\\": \\"BUY_TO_OPEN\\",
+            \\"option_symbol_id\\": \\"fda\\",
+            \\"quantity\\": 1
         }
     ],
-    strategy_type="CUSTOM"
+    strategy_type=\\"CUSTOM\\"
 )
 pprint(response.body)"
 `;
@@ -93,13 +93,13 @@ exports[`nested objects does not have empty properties 1`] = `
 from groundx import Groundx
 
 groundx = Groundx(
-    api_key="XXXXX"
+    api_key=\\"XXXXX\\"
 )
 
 response = groundx.documents.upload_remote(
     documents=[
         {
-            "bucket_id": 1
+            \\"bucket_id\\": 1
         }
     ]
 )
@@ -111,24 +111,24 @@ exports[`request body with blob values 1`] = `
 from groundx import Groundx
 
 groundx = Groundx(
-    api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    api_key=\\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\\"
 )
 
 response = groundx.documents.upload_local([{
-    "blob": open("file_1.txt", "rb"),
-    "metadata": {
-        "bucket_id": 321,
-        "file_name": "321",
-        "file_type": "txt",
-        "callback_data": "321",
-        "callback_url": "3213"
+    \\"blob\\": open(\\"file_1.txt\\", \\"rb\\"),
+    \\"metadata\\": {
+        \\"bucket_id\\": 321,
+        \\"file_name\\": \\"321\\",
+        \\"file_type\\": \\"txt\\",
+        \\"callback_data\\": \\"321\\",
+        \\"callback_url\\": \\"3213\\"
     }
 }, {
-    "blob": open("file_2.txt", "rb"),
-    "metadata": {
-        "bucket_id": 321,
-        "file_name": "321",
-        "file_type": "txt"
+    \\"blob\\": open(\\"file_2.txt\\", \\"rb\\"),
+    \\"metadata\\": {
+        \\"bucket_id\\": 321,
+        \\"file_name\\": \\"321\\",
+        \\"file_type\\": \\"txt\\"
     }
 }])
 pprint(response.body)"
@@ -139,8 +139,8 @@ exports[`simple example 1`] = `
 from snaptrade_client import SnapTrade
 
 snaptrade = SnapTrade(
-    client_id="XXX",
-    consumer_key="XXX"
+    client_id=\\"XXX\\",
+    consumer_key=\\"XXX\\"
 )
 
 response = snaptrade.api_status.check()
@@ -152,12 +152,12 @@ exports[`simple parameters example 1`] = `
 from snaptrade_client import SnapTrade
 
 snaptrade = SnapTrade(
-    client_id="XXX",
-    consumer_key="XXX"
+    client_id=\\"XXX\\",
+    consumer_key=\\"XXX\\"
 )
 
 response = snaptrade.authentication.register_snap_trade_user(
-    user_id="321"
+    user_id=\\"321\\"
 )
 pprint(response.body)"
 `;
