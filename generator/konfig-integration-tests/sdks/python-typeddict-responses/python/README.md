@@ -130,7 +130,7 @@ The input parameter to process.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[TestFetchResponse](./python_typeddict/type/test_fetch_response.py)
+[`TestFetchResponse`](./python_typeddict/type/test_fetch_response.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

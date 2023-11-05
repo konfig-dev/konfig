@@ -127,7 +127,7 @@ fetch_response = pythonpydanticlistresponse.test.fetch()
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[TestFetchResponse](./python_pydantic_list_response/pydantic/test_fetch_response.py)
+[`TestFetchResponse`](./python_pydantic_list_response/pydantic/test_fetch_response.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

@@ -128,7 +128,7 @@ fetch_response = pythonpydanticunion.test.fetch()
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[TestFetchResponse](./python_pydantic_union/pydantic/test_fetch_response.py)
+[`TestFetchResponse`](./python_pydantic_union/pydantic/test_fetch_response.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

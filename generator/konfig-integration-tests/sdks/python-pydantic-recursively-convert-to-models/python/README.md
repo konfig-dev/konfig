@@ -139,7 +139,7 @@ fetch_response = pythonpydanticrecursivelyconverttomodels.test.fetch()
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[TestFetchResponse](./python_pydantic_recursively_convert_to_models/pydantic/test_fetch_response.py)
+[`TestFetchResponse`](./python_pydantic_recursively_convert_to_models/pydantic/test_fetch_response.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -161,7 +161,7 @@ list_response = pythonpydanticrecursivelyconverttomodels.test.list()
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[ListInner](./python_pydantic_recursively_convert_to_models/pydantic/list_inner.py)
+[`ListInner`](./python_pydantic_recursively_convert_to_models/pydantic/list_inner.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

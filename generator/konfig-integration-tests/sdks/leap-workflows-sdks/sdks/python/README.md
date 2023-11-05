@@ -138,7 +138,7 @@ The ID of the workflow run to retrieve.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[WorkflowRunEntity](./leap_workflows/type/workflow_run_entity.py)
+[`WorkflowRunEntity`](./leap_workflows/type/workflow_run_entity.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -182,7 +182,7 @@ The URL to which the workflow results should be sent to on completion.
 [`WorkflowRunPostRequest`](./leap_workflows/type/workflow_run_post_request.py)
 #### 🔄 Return<a id="🔄-return"></a>
 
-[WorkflowRunEntity](./leap_workflows/type/workflow_run_entity.py)
+[`WorkflowRunEntity`](./leap_workflows/type/workflow_run_entity.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
