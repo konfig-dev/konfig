@@ -3,9 +3,9 @@ import {
   CodeGeneratorHttpSnippetConstructorArgs,
   CodeGeneratorHttpsnippet,
 } from './code-generator-httpsnippet'
-import {test} from "vitest"
+import { test, expect } from 'vitest'
 
-test.skip('httpsnippet - deeply nested objects with files', async () => {
+test('httpsnippet - deeply nested objects with files', async () => {
   const args: CodeGeneratorHttpSnippetConstructorArgs = {
     contentType: 'multipart/form-data',
     httpMethod: HttpMethodsEnum.POST,
