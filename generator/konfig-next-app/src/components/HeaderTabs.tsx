@@ -12,6 +12,7 @@ import { HeaderButton, TABS, Tab } from './HeaderButton'
 import { IconMenu } from '@tabler/icons-react'
 import Link from 'next/link'
 import { getClickableStyles } from '@/utils/get-clickable-styles'
+import { Search } from './Search'
 
 export function HeaderTabs({
   currentTab,
@@ -123,49 +124,51 @@ export function HeaderTabs({
         </Box>
       </MediaQuery>
       <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
-        <Group
-          h="100%"
-          style={{
-            alignItems: 'flex-end',
-          }}
-          px="sm"
-          noWrap
-          spacing={0}
-        >
-          {hasDocumentation && (
+        <div className="h-full flex items-center justify-between px-3">
+          <Group
+            h="100%"
+            style={{
+              alignItems: 'flex-end',
+            }}
+            noWrap
+            spacing={0}
+          >
+            {hasDocumentation && (
+              <HeaderTab
+                hasLightAndDarkLogo={hasLightAndDarkLogo}
+                disabled={isSandbox}
+                label={TABS.documentation}
+                active={currentTab === TABS.documentation}
+                link={linkForTab(TABS.documentation)}
+              />
+            )}
             <HeaderTab
               hasLightAndDarkLogo={hasLightAndDarkLogo}
               disabled={isSandbox}
-              label={TABS.documentation}
-              active={currentTab === TABS.documentation}
-              link={linkForTab(TABS.documentation)}
+              label={TABS.reference}
+              active={currentTab === TABS.reference}
+              link={linkForTab(TABS.reference)}
             />
-          )}
-          <HeaderTab
-            hasLightAndDarkLogo={hasLightAndDarkLogo}
-            disabled={isSandbox}
-            label={TABS.reference}
-            active={currentTab === TABS.reference}
-            link={linkForTab(TABS.reference)}
-          />
-          {demos.length > 0 && (
+            {demos.length > 0 && (
+              <HeaderTab
+                hasLightAndDarkLogo={hasLightAndDarkLogo}
+                label={TABS.demos}
+                active={currentTab === TABS.demos}
+                link={linkForTab(TABS.demos)}
+                disabled={isSandbox}
+              />
+            )}
             <HeaderTab
               hasLightAndDarkLogo={hasLightAndDarkLogo}
-              label={TABS.demos}
-              active={currentTab === TABS.demos}
-              link={linkForTab(TABS.demos)}
               disabled={isSandbox}
+              external
+              label={TABS.sdks}
+              active={currentTab === TABS.sdks}
+              link={linkForTab(TABS.sdks)}
             />
-          )}
-          <HeaderTab
-            hasLightAndDarkLogo={hasLightAndDarkLogo}
-            disabled={isSandbox}
-            external
-            label={TABS.sdks}
-            active={currentTab === TABS.sdks}
-            link={linkForTab(TABS.sdks)}
-          />
-        </Group>
+          </Group>
+          <Search />
+        </div>
       </MediaQuery>
     </Box>
   )

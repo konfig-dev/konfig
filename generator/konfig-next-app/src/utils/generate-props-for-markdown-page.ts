@@ -20,7 +20,6 @@ import { transformImageLinks } from './transform-image-links'
 import { transformInternalLinks } from './transform-internal-links'
 import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
-import { computeSearchIndex } from './compute-search-index'
 
 export type MarkdownPageProps = {
   konfigYaml: KonfigYamlType
@@ -36,6 +35,7 @@ export type MarkdownPageProps = {
   googleAnalyticsId: string | null
   markdown: string
   defaultBranch: string
+  allMarkdown: { id: string; content: string }[]
 
   /**
    * Mapping of document id from konfig.yaml and the first heading text of the document.
@@ -81,7 +81,6 @@ export async function generatePropsForMarkdownPage({
 
   // TODO: handle multiple konfig.yaml
   const konfigYaml = konfigYamls?.[0]
-
   if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
 
   const faviconLink = generateFaviconLink({
@@ -194,16 +193,13 @@ export async function generatePropsForMarkdownPage({
     idToLabel[id] = docTitle
   }
 
-  computeSearchIndex({
-    markdown: Object.entries(idToContent).map(([id, content]) => {
-      if (content === undefined)
-        throw Error(`Couldn't find content for id: ${id}`)
-      return {
-        id,
-        content,
-      }
-    }),
-    openapi: spec.spec,
+  const allMarkdown = Object.entries(idToContent).map(([id, content]) => {
+    if (content === undefined)
+      throw Error(`Couldn't find content for id: ${id}`)
+    return {
+      id,
+      content,
+    }
   })
 
   const idToBreadcrumbs: Record<string, string[] | undefined> = {}
@@ -259,6 +255,7 @@ export async function generatePropsForMarkdownPage({
       owner,
       repo,
       breadcrumb,
+      allMarkdown,
       operations,
       defaultBranch,
       idToLabel,
