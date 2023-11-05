@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`leap-workflows-sdks 1`] = `
-"# leap-workflows-python-sdk<a id="leap-workflows-python-sdk"></a>
+"# leap-workflows-python-sdk<a id=\\"leap-workflows-python-sdk\\"></a>
 
 The Leap Workflows API allows developers to run workflows, fetch workflow runs, and provide other utility functions related to workflow runs. Please use the X-Api-Key for authenticated requests.
 
@@ -10,7 +10,7 @@ The Leap Workflows API allows developers to run workflows, fetch workflow runs, 
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/leap-ai/workflows-sdks/tree/main/sdks/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](https://tryleap.ai/)
 
-## Table of Contents<a id="table-of-contents"></a>
+## Table of Contents<a id=\\"table-of-contents\\"></a>
 
 <!-- toc -->
 
@@ -24,47 +24,47 @@ The Leap Workflows API allows developers to run workflows, fetch workflow runs, 
 
 <!-- tocstop -->
 
-## Requirements<a id="requirements"></a>
+## Requirements<a id=\\"requirements\\"></a>
 
 Python >=3.7
 
-## Installing<a id="installing"></a>
+## Installing<a id=\\"installing\\"></a>
 
 \`\`\`sh
 pip install leap-workflows-python-sdk==1.0.0
 \`\`\`
 
-## Getting Started<a id="getting-started"></a>
+## Getting Started<a id=\\"getting-started\\"></a>
 
 \`\`\`python
 from pprint import pprint
 from leap_workflows import Leap, ApiException
 
 leap = Leap(
-    api_key="YOUR_API_KEY",
+    api_key=\\"YOUR_API_KEY\\",
 )
 
 try:
     # Get a workflow run
     get_workflow_run_response = leap.workflow_runs.get_workflow_run(
-        workflow_run_id="workflow_run_id_example",
+        workflow_run_id=\\"workflow_run_id_example\\",
     )
     pprint(get_workflow_run_response.body)
-    pprint(get_workflow_run_response.body["id"])
-    pprint(get_workflow_run_response.body["version_id"])
-    pprint(get_workflow_run_response.body["status"])
-    pprint(get_workflow_run_response.body["created_at"])
-    pprint(get_workflow_run_response.body["started_at"])
-    pprint(get_workflow_run_response.body["ended_at"])
-    pprint(get_workflow_run_response.body["workflow_id"])
-    pprint(get_workflow_run_response.body["error"])
-    pprint(get_workflow_run_response.body["input"])
-    pprint(get_workflow_run_response.body["output"])
+    pprint(get_workflow_run_response.body[\\"id\\"])
+    pprint(get_workflow_run_response.body[\\"version_id\\"])
+    pprint(get_workflow_run_response.body[\\"status\\"])
+    pprint(get_workflow_run_response.body[\\"created_at\\"])
+    pprint(get_workflow_run_response.body[\\"started_at\\"])
+    pprint(get_workflow_run_response.body[\\"ended_at\\"])
+    pprint(get_workflow_run_response.body[\\"workflow_id\\"])
+    pprint(get_workflow_run_response.body[\\"error\\"])
+    pprint(get_workflow_run_response.body[\\"input\\"])
+    pprint(get_workflow_run_response.body[\\"output\\"])
     pprint(get_workflow_run_response.headers)
     pprint(get_workflow_run_response.status)
     pprint(get_workflow_run_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling WorkflowRunsApi.get_workflow_run: %s\\n" % e)
+    print(\\"Exception when calling WorkflowRunsApi.get_workflow_run: %s\\\\n\\" % e)
     pprint(e.body)
     pprint(e.headers)
     pprint(e.status)
@@ -72,7 +72,7 @@ except ApiException as e:
     pprint(e.round_trip_time)
 \`\`\`
 
-## Async<a id="async"></a>
+## Async<a id=\\"async\\"></a>
 
 \`async\` support is available by prepending \`a\` to any method.
 
@@ -82,7 +82,7 @@ from pprint import pprint
 from leap_workflows import Leap, ApiException
 
 leap = Leap(
-    api_key="YOUR_API_KEY",
+    api_key=\\"YOUR_API_KEY\\",
 )
 
 
@@ -90,24 +90,24 @@ async def main():
     try:
         # Get a workflow run
         get_workflow_run_response = await leap.workflow_runs.aget_workflow_run(
-            workflow_run_id="workflow_run_id_example",
+            workflow_run_id=\\"workflow_run_id_example\\",
         )
         pprint(get_workflow_run_response.body)
-        pprint(get_workflow_run_response.body["id"])
-        pprint(get_workflow_run_response.body["version_id"])
-        pprint(get_workflow_run_response.body["status"])
-        pprint(get_workflow_run_response.body["created_at"])
-        pprint(get_workflow_run_response.body["started_at"])
-        pprint(get_workflow_run_response.body["ended_at"])
-        pprint(get_workflow_run_response.body["workflow_id"])
-        pprint(get_workflow_run_response.body["error"])
-        pprint(get_workflow_run_response.body["input"])
-        pprint(get_workflow_run_response.body["output"])
+        pprint(get_workflow_run_response.body[\\"id\\"])
+        pprint(get_workflow_run_response.body[\\"version_id\\"])
+        pprint(get_workflow_run_response.body[\\"status\\"])
+        pprint(get_workflow_run_response.body[\\"created_at\\"])
+        pprint(get_workflow_run_response.body[\\"started_at\\"])
+        pprint(get_workflow_run_response.body[\\"ended_at\\"])
+        pprint(get_workflow_run_response.body[\\"workflow_id\\"])
+        pprint(get_workflow_run_response.body[\\"error\\"])
+        pprint(get_workflow_run_response.body[\\"input\\"])
+        pprint(get_workflow_run_response.body[\\"output\\"])
         pprint(get_workflow_run_response.headers)
         pprint(get_workflow_run_response.status)
         pprint(get_workflow_run_response.round_trip_time)
     except ApiException as e:
-        print("Exception when calling WorkflowRunsApi.get_workflow_run: %s\\n" % e)
+        print(\\"Exception when calling WorkflowRunsApi.get_workflow_run: %s\\\\n\\" % e)
         pprint(e.body)
         pprint(e.headers)
         pprint(e.status)
@@ -119,30 +119,30 @@ asyncio.run(main())
 \`\`\`
 
 
-## Reference<a id="reference"></a>
-### \`leap.workflow_runs.get_workflow_run\`<a id="leapworkflow_runsget_workflow_run"></a>
+## Reference<a id=\\"reference\\"></a>
+### \`leap.workflow_runs.get_workflow_run\`<a id=\\"leapworkflow_runsget_workflow_run\\"></a>
 
 This endpoint retrieves the details of a specific workflow run using its \`workflow_run_id\`.
 
-#### 🛠️ Usage<a id="🛠️-usage"></a>
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
 
 \`\`\`python
 get_workflow_run_response = leap.workflow_runs.get_workflow_run(
-    workflow_run_id="workflow_run_id_example",
+    workflow_run_id=\\"workflow_run_id_example\\",
 )
 \`\`\`
 
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
 
-##### workflow_run_id: \`str\`<a id="workflow_run_id-str"></a>
+##### workflow_run_id: \`str\`<a id=\\"workflow_run_id-str\\"></a>
 
 The ID of the workflow run to retrieve.
 
-#### 🔄 Return<a id="🔄-return"></a>
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
 
 [\`WorkflowRunEntity\`](./leap_workflows/type/workflow_run_entity.py)
 
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
 
 \`/v1/runs/{workflow_run_id}\` \`get\`
 
@@ -150,43 +150,43 @@ The ID of the workflow run to retrieve.
 
 ---
 
-### \`leap.workflow_runs.workflow\`<a id="leapworkflow_runsworkflow"></a>
+### \`leap.workflow_runs.workflow\`<a id=\\"leapworkflow_runsworkflow\\"></a>
 
 This endpoint lets the user run a specified workflow with the provided workflow definition.
 
-#### 🛠️ Usage<a id="🛠️-usage"></a>
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
 
 \`\`\`python
 workflow_response = leap.workflow_runs.workflow(
-    workflow_id="123e4567-e89b-12d3-a456-426614174000",
-    webhook_url="https://myapp.com/webhook",
+    workflow_id=\\"123e4567-e89b-12d3-a456-426614174000\\",
+    webhook_url=\\"https://myapp.com/webhook\\",
     input={
-        "first_name": "Sam",
-        "last_name": "Altman",
+        \\"first_name\\": \\"Sam\\",
+        \\"last_name\\": \\"Altman\\",
     },
 )
 \`\`\`
 
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
 
-##### workflow_id: \`str\`<a id="workflow_id-str"></a>
+##### workflow_id: \`str\`<a id=\\"workflow_id-str\\"></a>
 
 The UUID of the workflow to be run.
 
-##### webhook_url: \`str\`<a id="webhook_url-str"></a>
+##### webhook_url: \`str\`<a id=\\"webhook_url-str\\"></a>
 
 The URL to which the workflow results should be sent to on completion.
 
-##### input: [\`WorkflowRunPostRequestInput\`](./leap_workflows/type/workflow_run_post_request_input.py)<a id="input-workflowrunpostrequestinputleap_workflowstypeworkflow_run_post_request_inputpy"></a>
+##### input: [\`WorkflowRunPostRequestInput\`](./leap_workflows/type/workflow_run_post_request_input.py)<a id=\\"input-workflowrunpostrequestinputleap_workflowstypeworkflow_run_post_request_inputpy\\"></a>
 
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
 
 [\`WorkflowRunPostRequest\`](./leap_workflows/type/workflow_run_post_request.py)
-#### 🔄 Return<a id="🔄-return"></a>
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
 
 [\`WorkflowRunEntity\`](./leap_workflows/type/workflow_run_entity.py)
 
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
 
 \`/v1/runs\` \`post\`
 
@@ -195,20 +195,20 @@ The URL to which the workflow results should be sent to on completion.
 ---
 
 
-## Author<a id="author"></a>
+## Author<a id=\\"author\\"></a>
 This Python package is automatically generated by [Konfig](https://konfigthis.com)
 "
 `;
 
 exports[`leap-workflows-sdks 2`] = `
-"# @leap-ai/workflows<a id="leap-aiworkflows"></a>
+"# @leap-ai/workflows<a id=\\"leap-aiworkflows\\"></a>
 
 The Leap Workflows API allows developers to run workflows, fetch workflow runs, and provide other utility functions related to workflow runs. Please use the X-Api-Key for authenticated requests.
 
 [![npm](https://img.shields.io/badge/npm-v1.0.0-blue)](https://www.npmjs.com/package/@leap-ai/workflows/v/1.0.0)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](https://tryleap.ai/)
 
-## Table of Contents<a id="table-of-contents"></a>
+## Table of Contents<a id=\\"table-of-contents\\"></a>
 
 <!-- toc -->
 
@@ -222,62 +222,62 @@ The Leap Workflows API allows developers to run workflows, fetch workflow runs, 
 
 <!-- tocstop -->
 
-## Installing<a id="installing"></a>
+## Installing<a id=\\"installing\\"></a>
 
-### npm<a id="npm"></a>
+### npm<a id=\\"npm\\"></a>
 \`\`\`
 npm install @leap-ai/workflows --save
 \`\`\`
 
-### yarn<a id="yarn"></a>
+### yarn<a id=\\"yarn\\"></a>
 \`\`\`
 yarn add @leap-ai/workflows
 \`\`\`
 
-## Getting Started<a id="getting-started"></a>
+## Getting Started<a id=\\"getting-started\\"></a>
 
 \`\`\`typescript
-import { Leap } from "@leap-ai/workflows";
+import { Leap } from \\"@leap-ai/workflows\\";
 
 const leap = new Leap({
   // Defining the base path is optional and defaults to https://api.workflows.tryleap.ai
-  // basePath: "https://api.workflows.tryleap.ai",
-  apiKey: "API_KEY",
+  // basePath: \\"https://api.workflows.tryleap.ai\\",
+  apiKey: \\"API_KEY\\",
 });
 
 const getWorkflowRunResponse = await leap.workflowRuns.getWorkflowRun({
-  workflowRunId: "workflowRunId_example",
+  workflowRunId: \\"workflowRunId_example\\",
 });
 
 console.log(getWorkflowRunResponse);
 \`\`\`
 
-## Reference<a id="reference"></a>
+## Reference<a id=\\"reference\\"></a>
 
 
-### \`leap.workflowRuns.getWorkflowRun\`<a id="leapworkflowrunsgetworkflowrun"></a>
+### \`leap.workflowRuns.getWorkflowRun\`<a id=\\"leapworkflowrunsgetworkflowrun\\"></a>
 
 This endpoint retrieves the details of a specific workflow run using its \`workflow_run_id\`.
 
-#### 🛠️ Usage<a id="🛠️-usage"></a>
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
 
 \`\`\`typescript
 const getWorkflowRunResponse = await leap.workflowRuns.getWorkflowRun({
-  workflowRunId: "workflowRunId_example",
+  workflowRunId: \\"workflowRunId_example\\",
 });
 \`\`\`
 
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
 
-##### workflowRunId: \`string\`<a id="workflowrunid-string"></a>
+##### workflowRunId: \`string\`<a id=\\"workflowrunid-string\\"></a>
 
 The ID of the workflow run to retrieve.
 
-#### 🔄 Return<a id="🔄-return"></a>
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
 
 [WorkflowRunEntity](./models/workflow-run-entity.ts)
 
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
 
 \`/v1/runs/{workflow_run_id}\` \`GET\`
 
@@ -286,38 +286,38 @@ The ID of the workflow run to retrieve.
 ---
 
 
-### \`leap.workflowRuns.workflow\`<a id="leapworkflowrunsworkflow"></a>
+### \`leap.workflowRuns.workflow\`<a id=\\"leapworkflowrunsworkflow\\"></a>
 
 This endpoint lets the user run a specified workflow with the provided workflow definition.
 
-#### 🛠️ Usage<a id="🛠️-usage"></a>
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
 
 \`\`\`typescript
 const workflowResponse = await leap.workflowRuns.workflow({
-  workflow_id: "123e4567-e89b-12d3-a456-426614174000",
-  webhook_url: "https://myapp.com/webhook",
+  workflow_id: \\"123e4567-e89b-12d3-a456-426614174000\\",
+  webhook_url: \\"https://myapp.com/webhook\\",
 });
 \`\`\`
 
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
 
-##### workflow_id: \`string\`<a id="workflow_id-string"></a>
+##### workflow_id: \`string\`<a id=\\"workflow_id-string\\"></a>
 
 The UUID of the workflow to be run.
 
-##### webhook_url: \`string\`<a id="webhook_url-string"></a>
+##### webhook_url: \`string\`<a id=\\"webhook_url-string\\"></a>
 
 The URL to which the workflow results should be sent to on completion.
 
-##### input: \`{ [key: string]: any; }\`<a id="input--key-string-any-"></a>
+##### input: \`{ [key: string]: any; }\`<a id=\\"input--key-string-any-\\"></a>
 
 Variables that the workflow can use globally and their values.
 
-#### 🔄 Return<a id="🔄-return"></a>
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
 
 [WorkflowRunEntity](./models/workflow-run-entity.ts)
 
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
 
 \`/v1/runs\` \`POST\`
 
@@ -326,7 +326,7 @@ Variables that the workflow can use globally and their values.
 ---
 
 
-## Author<a id="author"></a>
+## Author<a id=\\"author\\"></a>
 This TypeScript package is automatically generated by [Konfig](https://konfigthis.com)
 "
 `;
