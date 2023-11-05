@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`python-pydantic-empty-response 1`] = `
-"# python-pydantic-empty-response<a id="python-pydantic-empty-response"></a>
+exports[`python-pydantic-raw-http-doc-with-top-level-configuration 1`] = `
+"# python-pydantic-raw-http-doc-with-top-level-configuration<a id="python-pydantic-raw-http-doc-with-top-level-configuration"></a>
 
-A simple API based for testing python-pydantic-empty-response.
+A simple API based for testing python-pydantic-raw-http-doc-with-top-level-configuration.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-pydantic-empty-response/1.0.0)
+[![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-pydantic-raw-http-doc-with-top-level-configuration/1.0.0)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
 
@@ -20,7 +20,7 @@ A simple API based for testing python-pydantic-empty-response.
 - [Async](#async)
 - [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
-  * [\`pythonpydanticemptyresponse.test.fetch\`](#pythonpydanticemptyresponsetestfetch)
+  * [\`pythonpydanticrawhttpdocwithtoplevelconfiguration.fetch\`](#pythonpydanticrawhttpdocwithtoplevelconfigurationfetch)
 
 <!-- tocstop -->
 
@@ -31,24 +31,32 @@ Python >=3.7
 ## Installing<a id="installing"></a>
 
 \`\`\`sh
-pip install python-pydantic-empty-response==1.0.0
+pip install python-pydantic-raw-http-doc-with-top-level-configuration==1.0.0
 \`\`\`
 
 ## Getting Started<a id="getting-started"></a>
 
 \`\`\`python
 from pprint import pprint
-from python_pydantic_empty_response import PythonPydanticEmptyResponse, ApiException
+from python_pydantic_raw_http_doc_with_top_level_configuration import (
+    PythonPydanticRawHttpDocWithTopLevelConfiguration,
+    ApiException,
+)
 
-pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
-    api_key="YOUR_API_KEY",
+pythonpydanticrawhttpdocwithtoplevelconfiguration = (
+    PythonPydanticRawHttpDocWithTopLevelConfiguration(
+        api_key="YOUR_API_KEY",
+    )
 )
 
 try:
     # Fetches a JSON value based on input parameter
-    pythonpydanticemptyresponse.test.fetch()
+    fetch_response = pythonpydanticrawhttpdocwithtoplevelconfiguration.fetch()
+    pprint(fetch_response.headers)
+    pprint(fetch_response.status)
+    pprint(fetch_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling TestApi.fetch: %s\\n" % e)
+    print("Exception when calling .fetch: %s\\n" % e)
     pprint(e.body)
     pprint(e.headers)
     pprint(e.status)
@@ -63,17 +71,24 @@ except ApiException as e:
 \`\`\`python
 import asyncio
 from pprint import pprint
-from python_pydantic_empty_response import PythonPydanticEmptyResponse, ApiException
+from python_pydantic_raw_http_doc_with_top_level_configuration import (
+    PythonPydanticRawHttpDocWithTopLevelConfiguration,
+    ApiException,
+)
 
-pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
-    api_key="YOUR_API_KEY",
+pythonpydanticrawhttpdocwithtoplevelconfiguration = (
+    PythonPydanticRawHttpDocWithTopLevelConfiguration(
+        api_key="YOUR_API_KEY",
+    )
 )
 
 
 async def main():
     try:
         # Fetches a JSON value based on input parameter
-        await pythonpydanticemptyresponse.test.afetch()
+        fetch_response = (
+            await pythonpydanticrawhttpdocwithtoplevelconfiguration.afetch()
+        )
     except ApiException as e:
         print("Exception when calling TestApi.fetch: %s\\n" % e)
         pprint(e.body)
@@ -92,15 +107,20 @@ To access raw HTTP response values, use the \`.raw\` namespace.
 
 \`\`\`python
 from pprint import pprint
-from python_pydantic_empty_response import PythonPydanticEmptyResponse, ApiException
+from python_pydantic_raw_http_doc_with_top_level_configuration import (
+    PythonPydanticRawHttpDocWithTopLevelConfiguration,
+    ApiException,
+)
 
-pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
-    api_key="YOUR_API_KEY",
+pythonpydanticrawhttpdocwithtoplevelconfiguration = (
+    PythonPydanticRawHttpDocWithTopLevelConfiguration(
+        api_key="YOUR_API_KEY",
+    )
 )
 
 try:
     # Fetches a JSON value based on input parameter
-    fetch_response = pythonpydanticemptyresponse.test.raw.fetch()
+    fetch_response = pythonpydanticrawhttpdocwithtoplevelconfiguration.test.raw.fetch()
     pprint(fetch_response.headers)
     pprint(fetch_response.status)
     pprint(fetch_response.round_trip_time)
@@ -115,14 +135,14 @@ except ApiException as e:
 
 
 ## Reference<a id="reference"></a>
-### \`pythonpydanticemptyresponse.test.fetch\`<a id="pythonpydanticemptyresponsetestfetch"></a>
+### \`pythonpydanticrawhttpdocwithtoplevelconfiguration.fetch\`<a id="pythonpydanticrawhttpdocwithtoplevelconfigurationfetch"></a>
 
 Provide an input parameter to receive a JSON value with properties.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 \`\`\`python
-pythonpydanticemptyresponse.test.fetch()
+fetch_response = pythonpydanticrawhttpdocwithtoplevelconfiguration.fetch()
 \`\`\`
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
