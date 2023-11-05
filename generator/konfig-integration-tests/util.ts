@@ -1,6 +1,7 @@
-import execa from "execa";
+import { execa } from "execa";
 import * as path from "path";
 import yaml from "js-yaml";
+import { expect } from "vitest";
 import * as fs from "fs";
 import {
   KONFIG_YAML_NAME,
@@ -9,12 +10,11 @@ import {
   KonfigYamlGeneratorConfig,
   KonfigYamlType,
 } from "konfig-lib";
-import waitOn from "wait-on"
+import waitOn from "wait-on";
 
-const IS_GITHUB = process.env.GITHUB_ACTIONS === 'true';
+const IS_GITHUB = process.env.GITHUB_ACTIONS === "true";
 
 console.log("IS_GITHUB", IS_GITHUB);
-
 
 // relative path from this file to: ""../konfig-dash/packages/konfig-cli/bin/dev""
 // use nodejs __dirname to get the current directory of this file
@@ -23,14 +23,28 @@ const KONFIG_CLI_PATH = path.join(
   `../konfig-dash/packages/konfig-cli/bin/${IS_GITHUB ? "run" : "dev"}`
 );
 
-export async function e2e(mockServerPort: number, customAssertions?: () => void) {
+/**
+ * parse 'python-pydantic-empty-response' from 'tests/python-pydantic-empty-response.test.ts > python-pydantic-empty-response'
+ */
+function getCurrentTestName(): string {
   const currentTestName = expect.getState().currentTestName;
-  if (!currentTestName) {
+  const parsed = currentTestName?.split(" > ")[1];
+  if (!parsed) {
+    throw new Error(`Unable to parse current test name: ${currentTestName}`);
+  }
+  return parsed;
+}
+
+export async function e2e(
+  mockServerPort: number,
+  customAssertions?: () => void
+) {
+  if (!getCurrentTestName()) {
     throw new Error("Unable to get current test name");
   }
-  const sdkDir = path.join(__dirname, "sdks", currentTestName);
+  const sdkDir = path.join(__dirname, "sdks", getCurrentTestName());
 
-  const apiUrl = process.env.KONFIG_API_URL ?? "http://127.0.0.1:8911"
+  const apiUrl = process.env.KONFIG_API_URL ?? "http://127.0.0.1:8911";
 
   // wait until KONFIG_API_URL/healthz is available
   await waitOn({
@@ -39,23 +53,23 @@ export async function e2e(mockServerPort: number, customAssertions?: () => void)
   });
 
   const env = {
-      // This ensure oclif doesn't bug out
-      // See: https://github.com/oclif/oclif/issues/1161#issuecomment-1661372245
-      "NODE_ENV": "",
-    }
+    // This ensure oclif doesn't bug out
+    // See: https://github.com/oclif/oclif/issues/1161#issuecomment-1661372245
+    NODE_ENV: "",
+  };
 
   // run "konfig generate -d" inside the path
   await execa(KONFIG_CLI_PATH, ["generate", "-d"], {
     cwd: sdkDir,
     stdio: "inherit",
-    env
+    env,
   });
 
   // run "konfig test" inside the path
   await execa(KONFIG_CLI_PATH, ["test", "-p", mockServerPort.toString()], {
     cwd: sdkDir,
     stdio: "inherit",
-    env
+    env,
   });
 
   // validate top-level README.md

@@ -6,23 +6,21 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@types/jest": "^29.5.5",
     "@types/js-yaml": "^4.0.7",
     "@types/wait-on": "^5.3.3",
     "concurrently": "^8.2.2",
-    "execa": "5.1.1",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.1",
+    "execa": "^8.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
     "wait-on": "^7.1.0"
   },
   "scripts": {
-    "test": "jest",
-    "test:1": "jest --shard 1/2",
-    "test:2": "jest --shard 2/2",
+    "test": "vitest",
+    "test:1": "vitest --shard 1/2",
+    "test:2": "vitest --shard 2/2",
     "test:parallel": "concurrently \"yarn test:1\" \"yarn test:2\"",
-    "test:us": "jest --updateSnapshot"
+    "test:us": "vitest --updateSnapshot"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",

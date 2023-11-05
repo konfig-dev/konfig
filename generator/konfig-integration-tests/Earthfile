@@ -9,7 +9,7 @@ integration-tests:
   FROM +konfig-test-dependencies
   COPY package.json yarn.lock .
   RUN yarn
-  COPY tsconfig.json jest.config.ts util.ts .
+  COPY tsconfig.json vitest.config.ts util.ts .
   COPY sdks sdks
   COPY tests tests
   # can be overridden at runtime (e.g. "docker run konfig-integration-tests:latest --testName=TestName")

@@ -1,11 +1,19 @@
 import { e2e } from "../util";
+import { test, expect } from "vitest";
 import * as fs from "fs";
 import * as path from "path";
 
 const customAssertions = () => {
   console.log("Ensuring that configuration apiKey field is optional...");
   const configuration = fs.readFileSync(
-    path.join(__dirname, "..", "sdks", "typescript-optional-api-key", "typescript", "configuration.ts"),
+    path.join(
+      __dirname,
+      "..",
+      "sdks",
+      "typescript-optional-api-key",
+      "typescript",
+      "configuration.ts"
+    ),
     "utf-8"
   );
   expect(configuration).toContain("apiKey?:");
