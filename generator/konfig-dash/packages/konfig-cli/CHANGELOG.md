@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.28.0
+
+### Minor Changes
+
+- [`c83d71f0`](https://github.com/konfig-dev/konfig/commit/c83d71f0395c3eee4917d1ed66a43ff74b1c8f87) Thanks [@dphuang2](https://github.com/dphuang2)! - fix comments in code snippets for Python having reference link fix applied
+
 ## 1.27.0
 
 ### Minor Changes
