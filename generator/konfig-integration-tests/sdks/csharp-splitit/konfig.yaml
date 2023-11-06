@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+outputDirectory: /tmp/csharp-splitit-sdks-out
+specInputPath: swagger.json
+specPath: swagger-fixed.json
+fixConfig:
+  modify:
+    $.servers[0]:
+      url: https://web-api-v3.production.splitit.com
+generators:
+  csharp:
+    version: 1.0.0
+    outputDirectory: csharp
+    clientName: CsharpSplititClient
+    packageName: CsharpSplitit.Net
+    logoPath: ../../logo.png
+    git:
+      userId: konfig-dev
+      repoId: konfig/tree/main/csharp

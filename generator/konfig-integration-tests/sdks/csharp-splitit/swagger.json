@@ -1,0 +1,2316 @@
+{
+  "x-generator": "NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "splitit-web-api-v3",
+    "version": "1.0.0"
+  },
+  "host": "web-api-v3.production.splitit.com",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "text/plain",
+    "application/json",
+    "text/json"
+  ],
+  "paths": {
+    "/api/installmentplans/{installmentPlanNumber}": {
+      "get": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_Get",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "installmentPlanNumber",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanGetResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/search": {
+      "get": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_Search",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "installmentPlanNumber",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "refOrderNumber",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "object",
+            "name": "extendedParams",
+            "in": "query",
+            "x-nullable": true,
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanSearchResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/initiate": {
+      "post": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_Post",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanInitiateRequest"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-TestMode",
+            "x-originalName": "testMode",
+            "in": "header",
+            "x-schema": {
+              "$ref": "#/definitions/TestModes"
+            },
+            "x-nullable": true,
+            "enum": [
+              "None",
+              "Regular",
+              "Fast",
+              "Automation"
+            ]
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InitiatePlanResponse"
+            }
+          },
+          "400": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PlanErrorResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans": {
+      "post": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_Post2",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanCreateRequest"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-TestMode",
+            "x-originalName": "testMode",
+            "in": "header",
+            "x-schema": {
+              "$ref": "#/definitions/TestModes"
+            },
+            "x-nullable": true,
+            "enum": [
+              "None",
+              "Regular",
+              "Fast",
+              "Automation"
+            ]
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanCreateResponse"
+            }
+          },
+          "400": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PlanErrorResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/{installmentPlanNumber}/verifyauthorization": {
+      "get": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_VerifyAuthorization",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "installmentPlanNumber",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VerifyAuthorizationResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/{installmentPlanNumber}/updateorder": {
+      "put": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_UpdateOrder",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "installmentPlanNumber",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateOrderRequest"
+            },
+            "x-nullable": false
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanUpdateResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/updateorder": {
+      "put": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_UpdateOrder2",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanUpdateRequestByIdentifier"
+            },
+            "x-nullable": false
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanUpdateResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/{installmentPlanNumber}/refund": {
+      "post": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_Refund",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "installmentPlanNumber",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanRefundRequest"
+            },
+            "x-nullable": false
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanRefundResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/{installmentPlanNumber}/cancel": {
+      "post": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_Cancel",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "installmentPlanNumber",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentPlanCancelResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/installmentplans/check-eligibility": {
+      "post": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_CheckEligibility",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CheckInstallmentsEligibilityRequest"
+            },
+            "x-nullable": false
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InstallmentsEligibilityResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FailedResponse": {
+      "type": "object",
+      "properties": {
+        "TraceId": {
+          "type": "string"
+        },
+        "Error": {
+          "$ref": "#/definitions/ErrorExtended"
+        }
+      }
+    },
+    "ErrorExtended": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Error"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ExtraData": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Message": {
+          "type": "string"
+        },
+        "AdditionalInfo": {
+          "type": "string"
+        }
+      }
+    },
+    "InstallmentPlanGetResponse": {
+      "type": "object",
+      "required": [
+        "DateCreated",
+        "Status"
+      ],
+      "properties": {
+        "InstallmentPlanNumber": {
+          "type": "string"
+        },
+        "DateCreated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "PurchaseMethod": {
+          "$ref": "#/definitions/PurchaseMethod"
+        },
+        "Status": {
+          "$ref": "#/definitions/PlanStatus"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "OriginalAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Authorization": {
+          "$ref": "#/definitions/AuthorizationModel"
+        },
+        "Shopper": {
+          "$ref": "#/definitions/ShopperData"
+        },
+        "BillingAddress": {
+          "$ref": "#/definitions/AddressData"
+        },
+        "PaymentMethod": {
+          "$ref": "#/definitions/PaymentMethodModel"
+        },
+        "ExtendedParams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Installments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Installment"
+          }
+        },
+        "Refunds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RefundModel"
+          }
+        },
+        "Links": {
+          "$ref": "#/definitions/LinksData"
+        }
+      }
+    },
+    "PurchaseMethod": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "InStore",
+        "PhoneOrder",
+        "ECommerce"
+      ],
+      "enum": [
+        "InStore",
+        "PhoneOrder",
+        "ECommerce"
+      ]
+    },
+    "PlanStatus": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Initialized",
+        "PendingCapture",
+        "Active",
+        "Cleared",
+        "Canceled"
+      ],
+      "enum": [
+        "Initialized",
+        "PendingCapture",
+        "Active",
+        "Cleared",
+        "Canceled"
+      ]
+    },
+    "AuthorizationModel": {
+      "type": "object",
+      "required": [
+        "Status"
+      ],
+      "properties": {
+        "Status": {
+          "$ref": "#/definitions/GwAuthorizationStatus"
+        },
+        "Date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "SplititErrorResultCode": {
+          "type": "string"
+        },
+        "GatewayTransactionID": {
+          "type": "string"
+        },
+        "GatewayResultCode": {
+          "type": "string"
+        },
+        "GatewayResultMessage": {
+          "type": "string"
+        },
+        "ThreeDSRedirect": {
+          "$ref": "#/definitions/ThreeDsRedirectDataV3"
+        },
+        "CAVV": {
+          "type": "string"
+        },
+        "ECI": {
+          "type": "string"
+        },
+        "GatewaySourceResponse": {
+          "type": "string"
+        }
+      }
+    },
+    "GwAuthorizationStatus": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "NA",
+        "Succeeded",
+        "Pending3DS",
+        "Failed"
+      ],
+      "enum": [
+        "NA",
+        "Succeeded",
+        "Pending3DS",
+        "Failed"
+      ]
+    },
+    "ThreeDsRedirectDataV3": {
+      "type": "object",
+      "properties": {
+        "Url": {
+          "type": "string"
+        },
+        "Verb": {
+          "type": "string"
+        },
+        "Params": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ShopperData": {
+      "type": "object",
+      "properties": {
+        "FullName": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "PhoneNumber": {
+          "type": "string"
+        },
+        "Culture": {
+          "type": "string"
+        }
+      }
+    },
+    "AddressData": {
+      "type": "object",
+      "properties": {
+        "AddressLine": {
+          "type": "string"
+        },
+        "AddressLine2": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "Zip": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentMethodModel": {
+      "type": "object",
+      "required": [
+        "Type"
+      ],
+      "properties": {
+        "Type": {
+          "$ref": "#/definitions/PaymentMethodType"
+        },
+        "Card": {
+          "$ref": "#/definitions/CardData"
+        },
+        "Token": {
+          "type": "string"
+        },
+        "BluesnapVaultedShopperToken": {
+          "$ref": "#/definitions/BluesnapVaultedShopperToken"
+        },
+        "MockerShopperToken": {
+          "$ref": "#/definitions/MockerShopperToken"
+        },
+        "SpreedlyToken": {
+          "$ref": "#/definitions/SpreedlyToken"
+        }
+      }
+    },
+    "PaymentMethodType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Card",
+        "SplititToken",
+        "BluesnapVaultedShopperToken",
+        "SplititMockerV2Token",
+        "SpreedlyToken"
+      ],
+      "enum": [
+        "Card",
+        "SplititToken",
+        "BluesnapVaultedShopperToken",
+        "SplititMockerV2Token",
+        "SpreedlyToken"
+      ]
+    },
+    "CardData": {
+      "type": "object",
+      "properties": {
+        "CardHolderFullName": {
+          "type": "string"
+        },
+        "CardNumber": {
+          "type": "string"
+        },
+        "CardExpYear": {
+          "type": "string"
+        },
+        "CardExpMonth": {
+          "type": "string"
+        },
+        "CardCvv": {
+          "type": "string"
+        },
+        "CardBrand": {
+          "$ref": "#/definitions/CardBrand"
+        },
+        "CardType": {
+          "$ref": "#/definitions/CardType"
+        }
+      }
+    },
+    "CardBrand": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Mastercard",
+        "Visa",
+        "AmericanExpress",
+        "Maestro",
+        "JCB",
+        "CUP",
+        "UPI",
+        "Discover",
+        "Other"
+      ],
+      "enum": [
+        "Mastercard",
+        "Visa",
+        "AmericanExpress",
+        "Maestro",
+        "JCB",
+        "CUP",
+        "UPI",
+        "Discover",
+        "Other"
+      ]
+    },
+    "CardType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Credit",
+        "Debit",
+        "Charge",
+        "Other",
+        "Prepaid",
+        "VisaDeferredDebit",
+        "NetworkOnly"
+      ],
+      "enum": [
+        "Credit",
+        "Debit",
+        "Charge",
+        "Other",
+        "Prepaid",
+        "VisaDeferredDebit",
+        "NetworkOnly"
+      ]
+    },
+    "BluesnapVaultedShopperToken": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/GatewayTokenData"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "GatewayTokenData": {
+      "type": "object",
+      "x-abstract": true,
+      "properties": {
+        "Token": {
+          "type": "string"
+        },
+        "Last4Digit": {
+          "type": "string"
+        }
+      }
+    },
+    "MockerShopperToken": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/GatewayTokenData"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "SpreedlyToken": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/GatewayTokenData"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "Installment": {
+      "type": "object",
+      "required": [
+        "InstallmentNumber",
+        "Amount",
+        "Status"
+      ],
+      "properties": {
+        "InstallmentNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "ProcessDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Status": {
+          "$ref": "#/definitions/InstallmentStatus"
+        }
+      }
+    },
+    "InstallmentStatus": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Pending",
+        "Processed",
+        "Canceled"
+      ],
+      "enum": [
+        "Pending",
+        "Processed",
+        "Canceled"
+      ]
+    },
+    "RefundModel": {
+      "type": "object",
+      "required": [
+        "SubmitDate",
+        "TotalAmount",
+        "Status",
+        "NonCreditRefundAmount",
+        "CreditRefundAmount"
+      ],
+      "properties": {
+        "RefundId": {
+          "type": "string"
+        },
+        "SubmitDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TotalAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Status": {
+          "$ref": "#/definitions/RefundStatus"
+        },
+        "NonCreditRefundAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "CreditRefundAmount": {
+          "type": "number",
+          "format": "decimal"
+        }
+      }
+    },
+    "RefundStatus": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Pending",
+        "Succeeded",
+        "Failed"
+      ],
+      "enum": [
+        "Pending",
+        "Succeeded",
+        "Failed"
+      ]
+    },
+    "LinksData": {
+      "type": "object",
+      "properties": {
+        "Checkout": {
+          "type": "string"
+        },
+        "LearnMore": {
+          "type": "string"
+        },
+        "TermsConditions": {
+          "type": "string"
+        },
+        "PrivacyPolicy": {
+          "type": "string"
+        }
+      }
+    },
+    "InstallmentPlanSearchResponse": {
+      "type": "object",
+      "properties": {
+        "PlanList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SearchInstallmentPlanResponseItem"
+          }
+        }
+      }
+    },
+    "SearchInstallmentPlanResponseItem": {
+      "type": "object",
+      "required": [
+        "DateCreated",
+        "Status"
+      ],
+      "properties": {
+        "InstallmentPlanNumber": {
+          "type": "string"
+        },
+        "DateCreated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "PurchaseMethod": {
+          "$ref": "#/definitions/PurchaseMethod"
+        },
+        "Status": {
+          "$ref": "#/definitions/PlanStatus"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "OriginalAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Authorization": {
+          "$ref": "#/definitions/AuthorizationModel"
+        },
+        "Shopper": {
+          "$ref": "#/definitions/ShopperData"
+        },
+        "BillingAddress": {
+          "$ref": "#/definitions/AddressData"
+        },
+        "PaymentMethod": {
+          "$ref": "#/definitions/PaymentMethodModel"
+        },
+        "ExtendedParams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Installments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Installment"
+          }
+        },
+        "Refunds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RefundModel"
+          }
+        },
+        "Links": {
+          "$ref": "#/definitions/LinksData"
+        }
+      }
+    },
+    "InitiatePlanResponse": {
+      "type": "object",
+      "required": [
+        "Status"
+      ],
+      "properties": {
+        "InstallmentPlanNumber": {
+          "type": "string"
+        },
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "PurchaseMethod": {
+          "$ref": "#/definitions/PurchaseMethod"
+        },
+        "Status": {
+          "$ref": "#/definitions/PlanStatus"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "ExtendedParams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Shopper": {
+          "$ref": "#/definitions/ShopperData"
+        },
+        "BillingAddress": {
+          "$ref": "#/definitions/AddressData"
+        },
+        "CheckoutUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "PlanErrorResponse": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FailedResponse"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "InstallmentPlanNumber": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "InstallmentPlanInitiateRequest": {
+      "type": "object",
+      "required": [
+        "AutoCapture"
+      ],
+      "properties": {
+        "AutoCapture": {
+          "type": "boolean"
+        },
+        "Attempt3dSecure": {
+          "type": "boolean"
+        },
+        "Shopper": {
+          "$ref": "#/definitions/ShopperData"
+        },
+        "PlanData": {
+          "$ref": "#/definitions/PlanDataModel"
+        },
+        "BillingAddress": {
+          "$ref": "#/definitions/AddressDataModel"
+        },
+        "RedirectUrls": {
+          "$ref": "#/definitions/InitiateRedirectionEndpointsModel"
+        },
+        "UxSettings": {
+          "$ref": "#/definitions/UxSettingsModel"
+        },
+        "EventsEndpoints": {
+          "$ref": "#/definitions/EventsEndpointsModel"
+        },
+        "ProcessingData": {
+          "$ref": "#/definitions/ProcessingData"
+        }
+      }
+    },
+    "PlanDataModel": {
+      "type": "object",
+      "required": [
+        "TotalAmount",
+        "PurchaseMethod"
+      ],
+      "properties": {
+        "TotalAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "NumberOfInstallments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "TerminalId": {
+          "type": "string"
+        },
+        "PurchaseMethod": {
+          "$ref": "#/definitions/PurchaseMethod"
+        },
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "ExtendedParams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "FirstInstallmentAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "FirstInstallmentDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AddressDataModel": {
+      "type": "object",
+      "properties": {
+        "AddressLine1": {
+          "type": "string"
+        },
+        "AddressLine2": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "Zip": {
+          "type": "string"
+        }
+      }
+    },
+    "InitiateRedirectionEndpointsModel": {
+      "type": "object",
+      "properties": {
+        "Succeeded": {
+          "type": "string"
+        },
+        "Failed": {
+          "type": "string"
+        },
+        "Cancel": {
+          "type": "string"
+        }
+      }
+    },
+    "UxSettingsModel": {
+      "type": "object",
+      "properties": {
+        "DisplayedInstallmentOptions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "EventsEndpointsModel": {
+      "type": "object",
+      "properties": {
+        "CreateSucceeded": {
+          "type": "string"
+        }
+      }
+    },
+    "ProcessingData": {
+      "type": "object",
+      "properties": {
+        "AttemptThreeDSecured": {
+          "type": "boolean"
+        },
+        "SoftDescriptor": {
+          "type": "string"
+        },
+        "ThreeDSData": {
+          "$ref": "#/definitions/ThreeDSData"
+        }
+      }
+    },
+    "ThreeDSData": {
+      "type": "object",
+      "properties": {
+        "ECI": {
+          "type": "string"
+        },
+        "CAVV": {
+          "type": "string"
+        },
+        "XID": {
+          "type": "string"
+        },
+        "DirectoryServerTxnId": {
+          "type": "string"
+        },
+        "ThreeDSVersion": {
+          "type": "string"
+        },
+        "TransactionId": {
+          "type": "string"
+        }
+      }
+    },
+    "TestModes": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "None",
+        "Regular",
+        "Fast",
+        "Automation"
+      ],
+      "enum": [
+        "None",
+        "Regular",
+        "Fast",
+        "Automation"
+      ]
+    },
+    "InstallmentPlanCreateResponse": {
+      "type": "object",
+      "required": [
+        "DateCreated",
+        "Status"
+      ],
+      "properties": {
+        "InstallmentPlanNumber": {
+          "type": "string"
+        },
+        "DateCreated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "PurchaseMethod": {
+          "$ref": "#/definitions/PurchaseMethod"
+        },
+        "Status": {
+          "$ref": "#/definitions/PlanStatus"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "OriginalAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "ExtendedParams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Authorization": {
+          "$ref": "#/definitions/AuthorizationModel"
+        },
+        "Shopper": {
+          "$ref": "#/definitions/ShopperData"
+        },
+        "BillingAddress": {
+          "$ref": "#/definitions/AddressData"
+        },
+        "PaymentMethod": {
+          "$ref": "#/definitions/PaymentMethodModel"
+        },
+        "Installments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Installment"
+          }
+        },
+        "Links": {
+          "$ref": "#/definitions/LinksData"
+        }
+      }
+    },
+    "InstallmentPlanCreateRequest": {
+      "type": "object",
+      "required": [
+        "AutoCapture",
+        "TermsAndConditionsAccepted"
+      ],
+      "properties": {
+        "AutoCapture": {
+          "type": "boolean"
+        },
+        "Attempt3dSecure": {
+          "type": "boolean"
+        },
+        "TermsAndConditionsAccepted": {
+          "type": "boolean"
+        },
+        "Shopper": {
+          "$ref": "#/definitions/ShopperData"
+        },
+        "PlanData": {
+          "$ref": "#/definitions/PlanDataModel"
+        },
+        "BillingAddress": {
+          "$ref": "#/definitions/AddressDataModel"
+        },
+        "PaymentMethod": {
+          "$ref": "#/definitions/PaymentMethodModel"
+        },
+        "RedirectUrls": {
+          "$ref": "#/definitions/RedirectionEndpointsModel"
+        },
+        "ProcessingData": {
+          "$ref": "#/definitions/ProcessingData"
+        },
+        "EventsEndpoints": {
+          "$ref": "#/definitions/EventsEndpointsModel"
+        }
+      }
+    },
+    "RedirectionEndpointsModel": {
+      "type": "object",
+      "properties": {
+        "AuthorizeSucceeded": {
+          "type": "string",
+          "x-deprecated": true,
+          "x-deprecatedMessage": "Please use Succeeded property"
+        },
+        "Succeeded": {
+          "type": "string"
+        },
+        "AuthorizeFailed": {
+          "type": "string",
+          "x-deprecated": true,
+          "x-deprecatedMessage": "Please use Failed property"
+        },
+        "Failed": {
+          "type": "string"
+        }
+      }
+    },
+    "VerifyAuthorizationResponse": {
+      "type": "object",
+      "required": [
+        "IsAuthorized"
+      ],
+      "properties": {
+        "IsAuthorized": {
+          "type": "boolean"
+        },
+        "AuthorizationAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Authorization": {
+          "$ref": "#/definitions/AuthorizationModel"
+        }
+      }
+    },
+    "InstallmentPlanUpdateResponse": {
+      "type": "object",
+      "required": [
+        "Status",
+        "ShippingStatus"
+      ],
+      "properties": {
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "InstallmentPlanNumber": {
+          "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/PlanStatus"
+        },
+        "ShippingStatus": {
+          "$ref": "#/definitions/ShippingStatus"
+        }
+      }
+    },
+    "ShippingStatus": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Pending",
+        "Shipped",
+        "Delivered"
+      ],
+      "enum": [
+        "Pending",
+        "Shipped",
+        "Delivered"
+      ]
+    },
+    "UpdateOrderRequest": {
+      "type": "object",
+      "properties": {
+        "TrackingNumber": {
+          "type": "string"
+        },
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "ShippingStatus": {
+          "$ref": "#/definitions/ShippingStatus"
+        },
+        "Capture": {
+          "type": "boolean"
+        }
+      }
+    },
+    "InstallmentPlanUpdateRequestByIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/InstallmentPlanUpdateRequest"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Identifier": {
+              "$ref": "#/definitions/IdentifierContract"
+            }
+          }
+        }
+      ]
+    },
+    "IdentifierContract": {
+      "type": "object",
+      "properties": {
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "InstallmentPlanNumber": {
+          "type": "string"
+        },
+        "ExtendedParams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "InstallmentPlanUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "TrackingNumber": {
+          "type": "string"
+        },
+        "Capture": {
+          "type": "boolean"
+        },
+        "ShippingStatus": {
+          "$ref": "#/definitions/ShippingStatus2"
+        }
+      }
+    },
+    "ShippingStatus2": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Shipped",
+        "Delivered"
+      ],
+      "enum": [
+        "Shipped",
+        "Delivered"
+      ]
+    },
+    "InstallmentPlanRefundResponse": {
+      "type": "object",
+      "properties": {
+        "RefundId": {
+          "type": "string"
+        },
+        "InstallmentPlanNumber": {
+          "type": "string"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "NonCreditRefundAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "CreditRefundAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Summary": {
+          "$ref": "#/definitions/RefundSummary"
+        }
+      }
+    },
+    "RefundSummary": {
+      "type": "object",
+      "properties": {
+        "TotalAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "FailedAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "SucceededAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "PendingAmount": {
+          "type": "number",
+          "format": "decimal"
+        }
+      }
+    },
+    "InstallmentPlanRefundRequest": {
+      "type": "object",
+      "required": [
+        "Amount"
+      ],
+      "properties": {
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "RefundStrategy": {
+          "$ref": "#/definitions/RefundStrategy"
+        }
+      }
+    },
+    "RefundStrategy": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "FutureInstallmentsFirst",
+        "FutureInstallmentsLast",
+        "FutureInstallmentsNotAllowed",
+        "ReduceFromLastInstallment"
+      ],
+      "enum": [
+        "FutureInstallmentsFirst",
+        "FutureInstallmentsLast",
+        "FutureInstallmentsNotAllowed",
+        "ReduceFromLastInstallment"
+      ]
+    },
+    "InstallmentPlanCancelResponse": {
+      "type": "object",
+      "properties": {
+        "InstallmentPlanNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "InstallmentsEligibilityResponse": {
+      "type": "object",
+      "properties": {
+        "InstallmentProvider": {
+          "type": "string"
+        },
+        "PaymentPlanOptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentPlanOptionModel"
+          }
+        }
+      }
+    },
+    "PaymentPlanOptionModel": {
+      "type": "object",
+      "required": [
+        "NumberOfInstallments",
+        "FirstInstallmentAmount",
+        "InstallmentAmount",
+        "LastInstallmentAmount"
+      ],
+      "properties": {
+        "NumberOfInstallments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "FirstInstallmentAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "InstallmentAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "LastInstallmentAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Links": {
+          "$ref": "#/definitions/LinksModel"
+        },
+        "TermsAndConditionsBrief": {
+          "type": "string"
+        },
+        "InstallmentFrequency": {
+          "type": "string"
+        }
+      }
+    },
+    "LinksModel": {
+      "type": "object",
+      "properties": {
+        "PrivacyPolicyUrl": {
+          "type": "string"
+        },
+        "TermsAndConditionsUrl": {
+          "type": "string"
+        },
+        "LearnMoreUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "CheckInstallmentsEligibilityRequest": {
+      "type": "object",
+      "properties": {
+        "PlanData": {
+          "$ref": "#/definitions/PlanData"
+        },
+        "CardDetails": {
+          "$ref": "#/definitions/CardData"
+        },
+        "BillingAddress": {
+          "$ref": "#/definitions/AddressData"
+        }
+      }
+    },
+    "PlanData": {
+      "type": "object",
+      "required": [
+        "TotalAmount",
+        "NumberOfInstallments",
+        "PurchaseMethod"
+      ],
+      "properties": {
+        "TerminalId": {
+          "type": "string"
+        },
+        "TotalAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "FirstInstallmentAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "NumberOfInstallments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PurchaseMethod": {
+          "$ref": "#/definitions/PurchaseMethod"
+        },
+        "RefOrderNumber": {
+          "type": "string"
+        },
+        "AllowedInstallmentOptions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "Tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ProcessingData": {
+          "$ref": "#/definitions/ProcessingData2"
+        },
+        "FirstInstallmentDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ProcessingData2": {
+      "type": "object",
+      "properties": {
+        "AttemptThreeDSecured": {
+          "type": "boolean"
+        },
+        "SoftDescriptor": {
+          "type": "string"
+        },
+        "ThreeDSData": {
+          "$ref": "#/definitions/ThreeDSData2"
+        }
+      }
+    },
+    "ThreeDSData2": {
+      "type": "object",
+      "properties": {
+        "ECI": {
+          "type": "string"
+        },
+        "CAVV": {
+          "type": "string"
+        },
+        "XID": {
+          "type": "string"
+        },
+        "DirectoryServerTxnId": {
+          "type": "string"
+        },
+        "ThreeDSVersion": {
+          "type": "string"
+        },
+        "TransactionId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
