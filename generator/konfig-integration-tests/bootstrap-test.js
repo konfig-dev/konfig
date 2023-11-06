@@ -35,7 +35,7 @@ generators:
   ${language}:
     version: 1.0.0
     outputDirectory: ${language}
-    clientName: ${toCamelCase(testName)}
+    clientName: ${toCamelCase(testName)}Client
     ${languageSpecificFields}
     git:
       userId: konfig-dev
@@ -43,20 +43,25 @@ generators:
 }
 
 function generateKonfigYamlFieldsForLanguage(language, testName) {
-  if (language == "python") {
-    return `packageName: ${testName.replace(/-/g, "_")}
-    projectName: ${testName}`;
-  } else if (language == "typescript") {
-    return `npmName: ${testName}`;
+  if (language == 'python') {
+    return `packageName: ${testName.replace(/-/g, '_')}
+    projectName: ${testName}`
+  } else if (language == 'typescript') {
+    return `npmName: ${testName}`
+  } else if (language == 'csharp') {
+    return `packageName: ${toCamelCase(testName)}.Net
+    logoPath: ../../logo.png`
   }
 }
 
+const supportedLanguages = ['python', 'typescript', 'csharp'];
 // Prompt for language
-rl.question(
-  "Which language would you like to create a test for? (python/typescript) ",
-  (languageInput) => {
-    const language =
-      languageInput.toLowerCase() === "python" ? "python" : "typescript";
+rl.question(`Which language would you like to create a test for? (${supportedLanguages.join("/")}) `, (languageInput) => {
+  const language = languageInput.toLowerCase();
+  if (!supportedLanguages.includes(language)) {
+    console.error(`Language ${language} is not supported.`);
+    process.exit(1);
+  }
 
     // Prompt for test name
     rl.question("What would you like to name your test? ", (testName) => {
