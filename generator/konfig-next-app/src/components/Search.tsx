@@ -51,11 +51,15 @@ export function Search({
       searchIcon={<IconSearch size="1.2rem" />}
       searchPlaceholder="Search..."
       nothingFoundMessage="Nothing found..."
+      classNames={{
+        content: 'dark:bg-zinc-950 rounded-lg',
+        searchInput: 'dark:bg-zinc-900',
+      }}
     >
       <button
         type="button"
         onClick={() => spotlight.open()}
-        className="dark:outline-brand-700 flex group transition text-mantine-gray-600 hover:text-mantine-gray-100 border gap-12 dark:border-mantine-gray-800 hover:dark:border-mantine-gray-700 dark:bg-mantine-gray-900 hover:dark:bg-mantine-gray-800 p-2 md:p-4 rounded-lg my-auto items-center h-2/3 text-sm"
+        className="dark:outline-brand-700 bg-zinc flex group transition text-zinc-500 hover:text-zinc-200 border gap-24 dark:border-zinc-800 hover:dark:border-zinc-700 dark:bg-zinc-950 hover:dark:bg-zinc-900 p-2 md:p-4 rounded-lg my-auto items-center h-2/3 text-sm"
       >
         <IconSearch className="md:hidden" stroke="3" size=".75rem" />
         <div className="md:flex hidden gap-2 items-center">
@@ -64,7 +68,7 @@ export function Search({
         </div>
         <div className="hidden md:flex items-center pointer-events-none">
           <Kbd
-            className=" h-1/2 group-hover:text-mantine-gray-100 transition border border-mantine-gray-700"
+            className=" h-1/2 bg-zinc-800 group-hover:text-zinc-200 transition border border-zinc-700"
             size="xs"
             mr={5}
           >
@@ -72,7 +76,7 @@ export function Search({
           </Kbd>
           <Kbd
             size="xs"
-            className="group-hover:text-mantine-gray-100 h-1/2 transition border border-mantine-gray-700"
+            className="group-hover:text-zinc-200 bg-zinc-800  h-1/2 transition border border-zinc-700"
           >
             K
           </Kbd>
