@@ -55,13 +55,14 @@ export function Search({
       <button
         type="button"
         onClick={() => spotlight.open()}
-        className="dark:outline-brand-700 flex group transition text-mantine-gray-600 hover:text-mantine-gray-100 border gap-9 dark:border-mantine-gray-800 hover:dark:border-mantine-gray-700 dark:bg-mantine-gray-900 hover:dark:bg-mantine-gray-800 p-4 rounded-lg my-auto items-center h-2/3 text-sm"
+        className="dark:outline-brand-700 flex group transition text-mantine-gray-600 hover:text-mantine-gray-100 border gap-12 dark:border-mantine-gray-800 hover:dark:border-mantine-gray-700 dark:bg-mantine-gray-900 hover:dark:bg-mantine-gray-800 p-2 md:p-4 rounded-lg my-auto items-center h-2/3 text-sm"
       >
-        <div className="flex gap-2 items-center">
+        <IconSearch className="md:hidden" stroke="3" size=".75rem" />
+        <div className="md:flex hidden gap-2 items-center">
           <IconSearch stroke="3" size=".75rem" />
           <span>Search</span>
         </div>
-        <div className="flex items-center pointer-events-none">
+        <div className="hidden md:flex items-center pointer-events-none">
           <Kbd
             className=" h-1/2 group-hover:text-mantine-gray-100 transition border border-mantine-gray-700"
             size="xs"

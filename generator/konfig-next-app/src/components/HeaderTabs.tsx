@@ -1,11 +1,4 @@
-import {
-  Box,
-  Flex,
-  Group,
-  MediaQuery,
-  Menu,
-  useMantineTheme,
-} from '@mantine/core'
+import { Box, Flex, Group, Menu, clsx, useMantineTheme } from '@mantine/core'
 import { HeaderTab } from './HeaderTab'
 import { useBasePath } from '@/utils/use-base-path'
 import { HeaderButton, TABS, Tab } from './HeaderButton'
@@ -52,127 +45,127 @@ export function HeaderTabs({
   const theme = useMantineTheme()
   return (
     <Box h="45%">
-      <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
-        <Box w="100%" h="100%">
-          <Menu
-            shadow="xl"
-            // opened={true}
-            withinPortal={true}
-            styles={{
-              dropdown: {
-                ...getClickableStyles(theme),
-              },
-            }}
-            offset={5}
-            width="95%"
-            radius="sm"
-          >
-            <Menu.Target>
-              <Flex
-                px="lg"
-                style={{ cursor: 'pointer' }}
-                h="100%"
-                align="center"
-                justify="space-between"
-              >
-                <HeaderButton
-                  hasLightDarkMode={hasLightAndDarkLogo}
-                  tab={currentTab}
-                />
-                <IconMenu
-                  color={
-                    hasLightAndDarkLogo
-                      ? theme.colorScheme === 'dark'
-                        ? theme.white
-                        : theme.black
-                      : theme.white
-                  }
-                  size="0.9rem"
-                />
-              </Flex>
-            </Menu.Target>
-            <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
-              <Menu.Dropdown>
-                {Object.values(TABS)
-                  .filter((tab) => tab !== currentTab)
-                  .map((tab) => {
-                    if (tab === TABS.documentation && !hasDocumentation) {
-                      return null
-                    }
-                    if (tab === TABS.demos && demos.length === 0) {
-                      return null
-                    }
-                    return (
-                      <Menu.Item key={tab}>
-                        <Link
-                          style={{ textDecoration: 'none', color: 'inherit' }}
-                          target={tab === TABS.sdks ? '_blank' : undefined}
-                          href={linkForTab(tab)}
-                        >
-                          <HeaderButton
-                            hasLightDarkMode={hasLightAndDarkLogo}
-                            noColor
-                            tab={tab}
-                          />
-                        </Link>
-                      </Menu.Item>
-                    )
-                  })}
-              </Menu.Dropdown>
-            </MediaQuery>
-          </Menu>
-        </Box>
-      </MediaQuery>
-      <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
-        <div className="h-full flex items-center justify-between px-3">
-          <Group
-            h="100%"
-            style={{
-              alignItems: 'flex-end',
-            }}
-            noWrap
-            spacing={0}
-          >
-            {hasDocumentation && (
-              <HeaderTab
-                hasLightAndDarkLogo={hasLightAndDarkLogo}
-                disabled={isSandbox}
-                label={TABS.documentation}
-                active={currentTab === TABS.documentation}
-                link={linkForTab(TABS.documentation)}
+      <Box className="sm:hidden" w="100%" h="100%">
+        <Menu
+          shadow="xl"
+          // opened={true}
+          withinPortal={true}
+          styles={{
+            dropdown: {
+              ...getClickableStyles(theme),
+            },
+          }}
+          offset={5}
+          width="95%"
+          radius="sm"
+        >
+          <Menu.Target>
+            <Flex
+              px="lg"
+              style={{ cursor: 'pointer' }}
+              h="100%"
+              align="center"
+              justify="space-between"
+            >
+              <HeaderButton
+                hasLightDarkMode={hasLightAndDarkLogo}
+                tab={currentTab}
               />
-            )}
+              <IconMenu
+                color={
+                  hasLightAndDarkLogo
+                    ? theme.colorScheme === 'dark'
+                      ? theme.white
+                      : theme.black
+                    : theme.white
+                }
+                size="0.9rem"
+              />
+            </Flex>
+          </Menu.Target>
+          <Menu.Dropdown className="sm:hidden">
+            {Object.values(TABS)
+              .filter((tab) => tab !== currentTab)
+              .map((tab) => {
+                if (tab === TABS.documentation && !hasDocumentation) {
+                  return null
+                }
+                if (tab === TABS.demos && demos.length === 0) {
+                  return null
+                }
+                return (
+                  <Menu.Item key={tab}>
+                    <Link
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                      target={tab === TABS.sdks ? '_blank' : undefined}
+                      href={linkForTab(tab)}
+                    >
+                      <HeaderButton
+                        hasLightDarkMode={hasLightAndDarkLogo}
+                        noColor
+                        tab={tab}
+                      />
+                    </Link>
+                  </Menu.Item>
+                )
+              })}
+          </Menu.Dropdown>
+        </Menu>
+      </Box>
+      <div
+        className={clsx(
+          'h-full hidden sm:flex items-center justify-between px-3'
+        )}
+      >
+        <Group
+          h="100%"
+          style={{
+            alignItems: 'flex-end',
+          }}
+          noWrap
+          spacing={0}
+        >
+          {hasDocumentation && (
             <HeaderTab
               hasLightAndDarkLogo={hasLightAndDarkLogo}
               disabled={isSandbox}
-              label={TABS.reference}
-              active={currentTab === TABS.reference}
-              link={linkForTab(TABS.reference)}
+              label={TABS.documentation}
+              active={currentTab === TABS.documentation}
+              link={linkForTab(TABS.documentation)}
             />
-            {demos.length > 0 && (
-              <HeaderTab
-                hasLightAndDarkLogo={hasLightAndDarkLogo}
-                label={TABS.demos}
-                active={currentTab === TABS.demos}
-                link={linkForTab(TABS.demos)}
-                disabled={isSandbox}
-              />
-            )}
+          )}
+          <HeaderTab
+            hasLightAndDarkLogo={hasLightAndDarkLogo}
+            disabled={isSandbox}
+            label={TABS.reference}
+            active={currentTab === TABS.reference}
+            link={linkForTab(TABS.reference)}
+          />
+          {demos.length > 0 && (
             <HeaderTab
               hasLightAndDarkLogo={hasLightAndDarkLogo}
+              label={TABS.demos}
+              active={currentTab === TABS.demos}
+              link={linkForTab(TABS.demos)}
               disabled={isSandbox}
-              external
-              label={TABS.sdks}
-              active={currentTab === TABS.sdks}
-              link={linkForTab(TABS.sdks)}
             />
-          </Group>
-          <Search />
-        </div>
-      </MediaQuery>
+          )}
+          <HeaderTab
+            hasLightAndDarkLogo={hasLightAndDarkLogo}
+            disabled={isSandbox}
+            external
+            label={TABS.sdks}
+            active={currentTab === TABS.sdks}
+            link={linkForTab(TABS.sdks)}
+          />
+        </Group>
+        <Search />
+      </div>
     </Box>
   )
 }
+
+function Tabs({ className }: { className: string }) {}
 
 function useGithubUrl({
   owner,
