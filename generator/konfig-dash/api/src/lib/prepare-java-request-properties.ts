@@ -20,6 +20,10 @@ import {
  *    (file located at: [KONFIG REPO]/misc/openapi-generator-configs/openapi-generator-api/generate-models.sh)
  * 4. Make updates to KonfigYaml.ts / KonfigYamlCommon.ts
  * 5. Extract data from body and return as a key-value pair in the properties object (in this function implementation)
+ *
+ * Note: If you are adding a configuration that points to a file like "readmeHeaderSnippet", you need to add code to
+ * "/generator/konfig-dash/packages/konfig-cli/src/commands/generate.ts" to read the file contents and send the contents
+ * to the generator api instead.
  */
 export function prepareJavaRequestProperties({
   body,
