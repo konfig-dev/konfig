@@ -3,7 +3,7 @@
 A simple API based for testing python-readme-header-snippet.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-readme-header-snippet/1.0.0)
+[![PyPI](https://img.shields.io/badge/PyPI-v1.0.0beta.1-blue)](https://pypi.org/project/python-readme-header-snippet/1.0.0-beta.1)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
 
@@ -58,7 +58,7 @@ Python >=3.7
 ## Installing<a id="installing"></a>
 
 ```sh
-pip install python-readme-header-snippet==1.0.0
+pip install python-readme-header-snippet==1.0.0-beta.1
 ```
 
 ## Getting Started<a id="getting-started"></a>

@@ -12,7 +12,7 @@
     Created by: http://example.com/support
 """
 
-__version__ = "1.0.0"
+__version__ = "1.0.0-beta.1"
 
 # import ApiClient
 from python_readme_header_snippet.api_client import ApiClient
