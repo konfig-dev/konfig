@@ -1167,35 +1167,7 @@ export default class Deploy extends Command {
               ])
               for (const markdownPath of markdownFiles) {
                 const markdown = fs.readFileSync(markdownPath, 'utf-8')
-                const pythonSnippetRegex =
-                  // rewrite the following regex to not include "```" in the match
-                  /\`\`\`python\r?\n([\s\S]*?)\r?\n\`\`\`/g
-
-                // find all code snippets in the markdown string that matches typescriptSnippetRegex
-                // and format them and replace the code snippets with the formatted code snippets
-                try {
-                  const formattedMarkdown = await replaceAsync(
-                    markdown,
-                    pythonSnippetRegex,
-                    async (_, codeSnippet) => {
-                      const { data: formattedCodeSnippet } =
-                        await konfig.sdk.formatPython(codeSnippet)
-                      return '```python\n' + formattedCodeSnippet + '```'
-                    }
-                  )
-                  fs.writeFileSync(markdownPath, formattedMarkdown)
-                } catch (e) {
-                  if (e instanceof KonfigError)
-                    if (typeof e.responseBody === 'string') {
-                      console.log(
-                        boxen(e.responseBody, {
-                          title: "Warning: Couldn't format Python code snippet",
-                          titleAlignment: 'center',
-                          borderColor: 'yellow',
-                        })
-                      )
-                    }
-                }
+                await formatPythonSnippet({ markdown, markdownPath, konfig })
               }
 
               CliUx.ux.action.stop()
@@ -1582,6 +1554,60 @@ function constructGoGenerationRequest({
   }
   initializeFlowsDirectory('go')
   return requestGo
+}
+
+async function formatPythonSnippet({
+  markdown,
+  markdownPath,
+  konfig,
+}: {
+  konfig: Konfig
+  markdownPath: string
+  markdown: string
+}) {
+  const pythonSnippetRegex = /\`\`\`python\r?\n([\s\S]*?)\r?\n\`\`\`/g
+
+  // find all code snippets in the markdown string that matches typescriptSnippetRegex
+  // and format them and replace the code snippets with the formatted code snippets
+  try {
+    const formattedMarkdown = await replaceAsync(
+      markdown,
+      pythonSnippetRegex,
+      async (match, codeSnippet, offset) => {
+        // Check if the block is preceded by a line ending with '>'
+        const blockStartIndex = offset - 1
+        const startOfLineIndex =
+          markdown.lastIndexOf('\n', blockStartIndex - 1) + 1
+        const lineBeforeBlock = markdown.substring(
+          startOfLineIndex,
+          blockStartIndex
+        )
+
+        if (lineBeforeBlock.endsWith('>')) {
+          // If it is, we leave the match unaltered
+          return match
+        } else {
+          // If it's not, proceed with formatting
+          const { data: formattedCodeSnippet } = await konfig.sdk.formatPython(
+            codeSnippet
+          )
+          return '```python\n' + formattedCodeSnippet + '```'
+        }
+      }
+    )
+    fs.writeFileSync(markdownPath, formattedMarkdown)
+  } catch (e) {
+    if (e instanceof KonfigError)
+      if (typeof e.responseBody === 'string') {
+        console.log(
+          boxen(e.responseBody, {
+            title: "Warning: Couldn't format Python code snippet",
+            titleAlignment: 'center',
+            borderColor: 'yellow',
+          })
+        )
+      }
+  }
 }
 
 function constructPhpGenerationRequest({
