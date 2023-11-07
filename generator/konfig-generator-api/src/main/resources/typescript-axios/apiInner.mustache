@@ -411,7 +411,7 @@ export interface {{classname}}Interface {
  * @export
  * @interface {{> singleRequestParameterName}}
  */
-export type {{> singleRequestParameterName}} = {{#onlyHasPrimitiveBodyParameter}}{{{dataType}}}{{/onlyHasPrimitiveBodyParameter}}{{^onlyHasPrimitiveBodyParameter}}{{^isArray}}{
+export type {{> singleRequestParameterName}} = {{#onlyHasPrimitiveOrArrayBodyParameter}}{{{dataType}}}{{/onlyHasPrimitiveOrArrayBodyParameter}}{{^onlyHasPrimitiveOrArrayBodyParameter}}{{#hasParams}}{
  {{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
     {{#allParams}}{{^isBodyParam}}
     /**
@@ -432,7 +432,7 @@ export type {{> singleRequestParameterName}} = {{#onlyHasPrimitiveBodyParameter}
     readonly {{#isBodyParam}}requestBody{{/isBodyParam}}{{^isBodyParam}}{{> requestPropertyName}}{{/isBodyParam}}{{^required}}?{{/required}}: {{{dataType}}}
     {{/allParams}}
 {{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
-}{{/isArray}}{{#bodyParam}}{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{^isArray}} & {{/isArray}}{{{dataType}}}{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{/bodyParam}}{{/onlyHasPrimitiveBodyParameter}}
+}{{/hasParams}}{{#bodyParam}}{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{^isArray}} & {{/isArray}}{{{dataType}}}{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{/bodyParam}}{{/onlyHasPrimitiveOrArrayBodyParameter}}
 
 {{/allParams.0}}
 {{/operation}}
