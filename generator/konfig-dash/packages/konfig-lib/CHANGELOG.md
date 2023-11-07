@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.28.0
+
+### Minor Changes
+
+- [#343](https://github.com/konfig-dev/konfig/pull/343) [`c88285d0`](https://github.com/konfig-dev/konfig/commit/c88285d03321f2d1fedffdfa6164bc22cba92f2b) Thanks [@dphuang2](https://github.com/dphuang2)! - add readmeHeaderSnippet configuration
+
 ## 1.27.0
 
 ### Minor Changes

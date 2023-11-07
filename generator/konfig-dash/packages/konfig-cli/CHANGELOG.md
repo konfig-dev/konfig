@@ -1,5 +1,18 @@
 # konfig-cli
 
+## 1.29.0
+
+### Minor Changes
+
+- [#343](https://github.com/konfig-dev/konfig/pull/343) [`c88285d0`](https://github.com/konfig-dev/konfig/commit/c88285d03321f2d1fedffdfa6164bc22cba92f2b) Thanks [@dphuang2](https://github.com/dphuang2)! - add readmeHeaderSnippet configuration
+
+### Patch Changes
+
+- Updated dependencies [[`c88285d0`](https://github.com/konfig-dev/konfig/commit/c88285d03321f2d1fedffdfa6164bc22cba92f2b)]:
+  - konfig-openapi-spec@1.7.0
+  - konfig-lib@1.28.0
+  - konfig-postman-to-openapi@3.0.142
+
 ## 1.28.0
 
 ### Minor Changes
