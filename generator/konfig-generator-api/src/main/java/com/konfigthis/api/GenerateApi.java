@@ -324,7 +324,7 @@ public interface GenerateApi {
         putIfPresent(map, "swiftPackagePath", additionalProperties.getSwiftPackagePath());
         putIfPresent(map, "apiDocumentationAuthenticationPartial", additionalProperties.getApiDocumentationAuthenticationPartial());
         putIfPresent(map, "readmeSnippet", additionalProperties.getReadmeSnippet());
-        putIfPresent(map, "readmeHeaderSnippet", additionalProperties.getReadmeHeader());
+        putIfPresent(map, "readmeHeaderSnippet", additionalProperties.getReadmeHeaderSnippet());
         putIfPresent(map, "asyncReadmeSnippet", additionalProperties.getAsyncReadmeSnippet());
         putIfPresent(map, "readmeSupportingDescriptionSnippet", additionalProperties.getReadmeSupportingDescriptionSnippet());
         putIfPresent(map, "readmeDescriptionSnippet", additionalProperties.getReadmeDescriptionSnippet());

@@ -3,6 +3,7 @@ import { z } from './zod'
 import { TemplateFiles } from './TemplateFiles'
 import {
   clientStateWithExamples,
+  readmeHeaderSnippet,
   topLevelOperationsOrderedSchema,
 } from './KonfigYaml'
 import { tagPrioritySchema } from './KonfigYamlCommon'
@@ -11,6 +12,7 @@ const additionalProperties = z
   .object({
     useDescriptionInOperationTableDocumentation: z.boolean().optional(),
     apiPackage: z.string().optional(),
+    readmeHeaderSnippet: readmeHeaderSnippet,
     artifactId: z.string().optional(),
     artifactUrl: z.string().optional(),
     authorEmail: z.string().describe('engineering@acme.com').optional(),

@@ -1415,11 +1415,17 @@ function handleReadmeSnippet<
   C extends object & {
     readmeSnippet?: string
     asyncReadmeSnippet?: string
+    readmeHeaderSnippet?: string
     readmeDescriptionSnippet?: string
   }
 >({ config }: { config: C }): C {
   if (config.readmeSnippet !== undefined)
     config.readmeSnippet = fs.readFileSync(config.readmeSnippet, 'utf-8')
+  if (config.readmeHeaderSnippet !== undefined)
+    config.readmeHeaderSnippet = fs.readFileSync(
+      config.readmeHeaderSnippet,
+      'utf-8'
+    )
   if (config.asyncReadmeSnippet !== undefined)
     config.asyncReadmeSnippet = fs.readFileSync(
       config.asyncReadmeSnippet,

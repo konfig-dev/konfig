@@ -15,10 +15,11 @@ import {
  *
  * 1. Modify the AdditionalProperties schema in the Java API's OpenAPI specification at api.yaml
  *    (file located at: [KONFIG REPO]/misc/openapi-generator-configs/openapi-generator-api/api.yaml)
- * 2. Run generate-models.sh
+ * 2. Update JavaGenerateApiRequestBody.ts file with same changes as api.yaml
+ * 3. Run generate-models.sh
  *    (file located at: [KONFIG REPO]/misc/openapi-generator-configs/openapi-generator-api/generate-models.sh)
- * 3. Make updates to KonfigYaml.ts / KonfigYamlCommon.ts
- * 4. Extract data from body and return as a key-value pair in the properties object (in this function implementation)
+ * 4. Make updates to KonfigYaml.ts / KonfigYamlCommon.ts
+ * 5. Extract data from body and return as a key-value pair in the properties object (in this function implementation)
  */
 export function prepareJavaRequestProperties({
   body,
@@ -45,7 +46,7 @@ export function prepareJavaRequestProperties({
   }
 
   if ('readmeHeaderSnippet' in generatorConfig) {
-    properties['readmeHeaderSnippet']
+    properties['readmeHeaderSnippet'] = generatorConfig.readmeHeaderSnippet
   }
 
   if ('outputDirectory' in generatorConfig) {
