@@ -68,8 +68,7 @@ from pprint import pprint
 from python_readme_header_snippet import PythonReadmeHeaderSnippetClient, ApiException
 
 pythonreadmeheadersnippetclient = PythonReadmeHeaderSnippetClient(
-
-    api_key = 'YOUR_API_KEY',
+    api_key="YOUR_API_KEY",
 )
 
 try:
@@ -89,15 +88,14 @@ except ApiException as e:
 `async` support is available by prepending `a` to any method.
 
 ```python
-
 import asyncio
 from pprint import pprint
 from python_readme_header_snippet import PythonReadmeHeaderSnippetClient, ApiException
 
 pythonreadmeheadersnippetclient = PythonReadmeHeaderSnippetClient(
-
-    api_key = 'YOUR_API_KEY',
+    api_key="YOUR_API_KEY",
 )
+
 
 async def main():
     try:
@@ -111,6 +109,7 @@ async def main():
         pprint(e.reason)
         pprint(e.round_trip_time)
 
+
 asyncio.run(main())
 ```
 
@@ -123,8 +122,7 @@ from pprint import pprint
 from python_readme_header_snippet import PythonReadmeHeaderSnippetClient, ApiException
 
 pythonreadmeheadersnippetclient = PythonReadmeHeaderSnippetClient(
-
-    api_key = 'YOUR_API_KEY',
+    api_key="YOUR_API_KEY",
 )
 
 try:
