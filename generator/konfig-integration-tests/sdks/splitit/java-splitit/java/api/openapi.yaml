@@ -1,0 +1,3340 @@
+openapi: 3.0.0
+info:
+  description: Splitit's Web API
+  title: splitit-web-api-v3
+  version: 1.0.0
+  x-konfig-has-globally-required-security: true
+servers:
+- url: https://web-api-v3.production.splitit.com
+tags:
+- name: InstallmentPlan
+paths:
+  /api/installmentplans/{installmentPlanNumber}:
+    get:
+      operationId: InstallmentPlan_Get
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanGetResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanGetResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanGetResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber
+      x-accepts: application/json
+  /api/installmentplans/search:
+    get:
+      operationId: InstallmentPlan_Search
+      parameters:
+      - explode: true
+        in: query
+        name: installmentPlanNumber
+        required: false
+        schema:
+          type: string
+        style: form
+        x-nullable: true
+      - explode: true
+        in: query
+        name: refOrderNumber
+        required: false
+        schema:
+          type: string
+        style: form
+        x-nullable: true
+      - explode: true
+        in: query
+        name: extendedParams
+        required: false
+        schema:
+          additionalProperties:
+            type: string
+          type: object
+        style: form
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-search-get-parameters-4-schema
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanSearchResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanSearchResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanSearchResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-installmentplans-search
+      x-accepts: application/json
+  /api/installmentplans/initiate:
+    post:
+      operationId: InstallmentPlan_Post
+      parameters:
+      - explode: false
+        in: header
+        name: X-Splitit-TestMode
+        required: false
+        schema:
+          enum:
+          - None
+          - Regular
+          - Fast
+          - Automation
+          type: string
+        style: simple
+        x-originalName: testMode
+        x-schema:
+          $ref: '#/components/schemas/TestModes'
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-2-schema
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanInitiateRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanInitiateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanInitiateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanInitiateRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InitiatePlanResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitiatePlanResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InitiatePlanResponse'
+          description: ""
+          x-nullable: false
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans-initiate
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/installmentplans:
+    post:
+      operationId: InstallmentPlan_Post2
+      parameters:
+      - explode: false
+        in: header
+        name: X-Splitit-TestMode
+        required: false
+        schema:
+          enum:
+          - None
+          - Regular
+          - Fast
+          - Automation
+          type: string
+        style: simple
+        x-originalName: testMode
+        x-schema:
+          $ref: '#/components/schemas/TestModes'
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-2-schema
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCreateResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCreateResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCreateResponse'
+          description: ""
+          x-nullable: false
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/installmentplans/{installmentPlanNumber}/verifyauthorization:
+    get:
+      operationId: InstallmentPlan_VerifyAuthorization
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-verifyauthorization-get-parameters-2-schema
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VerifyAuthorizationResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyAuthorizationResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VerifyAuthorizationResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber-verifyauthorization
+      x-accepts: application/json
+  /api/installmentplans/{installmentPlanNumber}/updateorder:
+    put:
+      operationId: InstallmentPlan_UpdateOrder
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-updateorder-put-parameters-2-schema
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-put--api-installmentplans-installmentPlanNumber-updateorder
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/installmentplans/updateorder:
+    put:
+      operationId: InstallmentPlan_UpdateOrder2
+      parameters:
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-updateorder-put-parameters-1-schema
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-put--api-installmentplans-updateorder
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/installmentplans/{installmentPlanNumber}/refund:
+    post:
+      operationId: InstallmentPlan_Refund
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-refund-post-parameters-2-schema
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanRefundResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanRefundResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanRefundResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-refund
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/installmentplans/{installmentPlanNumber}/cancel:
+    post:
+      operationId: InstallmentPlan_Cancel
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-cancel
+      x-accepts: application/json
+  /api/installmentplans/check-eligibility:
+    post:
+      operationId: InstallmentPlan_CheckEligibility
+      parameters:
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CheckInstallmentsEligibilityRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckInstallmentsEligibilityRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CheckInstallmentsEligibilityRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CheckInstallmentsEligibilityRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentsEligibilityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentsEligibilityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentsEligibilityResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+          x-do-not-generate: true
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans-check-eligibility
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+components:
+  schemas:
+    FailedResponse:
+      properties:
+        TraceId:
+          type: string
+        Error:
+          $ref: '#/components/schemas/ErrorExtended'
+      type: object
+      x-konfig-is-used-in-non-successful-response: true
+      x-do-not-generate: true
+    ErrorExtended:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - $ref: '#/components/schemas/ErrorExtended_allOf'
+    Error:
+      properties:
+        Code:
+          type: string
+        Message:
+          type: string
+        AdditionalInfo:
+          type: string
+      type: object
+    InstallmentPlanGetResponse:
+      example:
+        Status: null
+        Installments:
+        - Status: null
+          InstallmentNumber: 1
+          Amount: 5.962133916683182
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+        - Status: null
+          InstallmentNumber: 1
+          Amount: 5.962133916683182
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+        InstallmentPlanNumber: InstallmentPlanNumber
+        RefOrderNumber: RefOrderNumber
+        Amount: 6.027456183070403
+        DateCreated: 2000-01-23T04:56:07.000+00:00
+        Shopper:
+          Email: Email
+          FullName: FullName
+          PhoneNumber: PhoneNumber
+          Culture: Culture
+        PurchaseMethod: null
+        OriginalAmount: 0.8008281904610115
+        Authorization:
+          Status: null
+          CAVV: CAVV
+          ThreeDSRedirect:
+            Verb: Verb
+            Params:
+              key: Params
+            Url: Url
+          GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
+          GatewayResultMessage: GatewayResultMessage
+          ECI: ECI
+          SplititErrorResultCode: SplititErrorResultCode
+          GatewayResultCode: GatewayResultCode
+          Date: 2000-01-23T04:56:07.000+00:00
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine: AddressLine
+          State: State
+          Country: Country
+          City: City
+        ExtendedParams:
+          key: ExtendedParams
+        Currency: Currency
+        Refunds:
+        - Status: null
+          NonCreditRefundAmount: 2.3021358869347655
+          SubmitDate: 2000-01-23T04:56:07.000+00:00
+          RefundId: RefundId
+          TotalAmount: 5.637376656633329
+          CreditRefundAmount: 7.061401241503109
+        - Status: null
+          NonCreditRefundAmount: 2.3021358869347655
+          SubmitDate: 2000-01-23T04:56:07.000+00:00
+          RefundId: RefundId
+          TotalAmount: 5.637376656633329
+          CreditRefundAmount: 7.061401241503109
+        PaymentMethod:
+          Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
+          Token: Token
+          Card:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            CardType: null
+            CardHolderFullName: CardHolderFullName
+            CardBrand: null
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
+        Links:
+          TermsConditions: TermsConditions
+          Checkout: Checkout
+          LearnMore: LearnMore
+          PrivacyPolicy: PrivacyPolicy
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        DateCreated:
+          format: date-time
+          type: string
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        OriginalAmount:
+          format: decimal
+          type: number
+        Amount:
+          format: decimal
+          type: number
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        Installments:
+          items:
+            $ref: '#/components/schemas/Installment'
+          type: array
+        Refunds:
+          items:
+            $ref: '#/components/schemas/RefundModel'
+          type: array
+        Links:
+          $ref: '#/components/schemas/LinksData'
+      required:
+      - DateCreated
+      - Status
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    PurchaseMethod:
+      description: ""
+      enum:
+      - InStore
+      - PhoneOrder
+      - ECommerce
+      type: string
+      x-enumNames:
+      - InStore
+      - PhoneOrder
+      - ECommerce
+    PlanStatus:
+      description: ""
+      enum:
+      - Initialized
+      - PendingCapture
+      - Active
+      - Cleared
+      - Canceled
+      type: string
+      x-enumNames:
+      - Initialized
+      - PendingCapture
+      - Active
+      - Cleared
+      - Canceled
+    AuthorizationModel:
+      example:
+        Status: null
+        CAVV: CAVV
+        ThreeDSRedirect:
+          Verb: Verb
+          Params:
+            key: Params
+          Url: Url
+        GatewayTransactionID: GatewayTransactionID
+        GatewaySourceResponse: GatewaySourceResponse
+        GatewayResultMessage: GatewayResultMessage
+        ECI: ECI
+        SplititErrorResultCode: SplititErrorResultCode
+        GatewayResultCode: GatewayResultCode
+        Date: 2000-01-23T04:56:07.000+00:00
+      properties:
+        Status:
+          $ref: '#/components/schemas/GwAuthorizationStatus'
+        Date:
+          format: date-time
+          type: string
+        SplititErrorResultCode:
+          type: string
+        GatewayTransactionID:
+          type: string
+        GatewayResultCode:
+          type: string
+        GatewayResultMessage:
+          type: string
+        ThreeDSRedirect:
+          $ref: '#/components/schemas/ThreeDsRedirectDataV3'
+        CAVV:
+          type: string
+        ECI:
+          type: string
+        GatewaySourceResponse:
+          type: string
+      required:
+      - Status
+      type: object
+    GwAuthorizationStatus:
+      description: ""
+      enum:
+      - NA
+      - Succeeded
+      - Pending3DS
+      - Failed
+      type: string
+      x-enumNames:
+      - NA
+      - Succeeded
+      - Pending3DS
+      - Failed
+    ThreeDsRedirectDataV3:
+      example:
+        Verb: Verb
+        Params:
+          key: Params
+        Url: Url
+      properties:
+        Url:
+          type: string
+        Verb:
+          type: string
+        Params:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    ShopperData:
+      example:
+        Email: Email
+        FullName: FullName
+        PhoneNumber: PhoneNumber
+        Culture: Culture
+      properties:
+        FullName:
+          type: string
+        Email:
+          type: string
+        PhoneNumber:
+          type: string
+        Culture:
+          type: string
+      type: object
+    AddressData:
+      example:
+        Zip: Zip
+        AddressLine2: AddressLine2
+        AddressLine: AddressLine
+        State: State
+        Country: Country
+        City: City
+      properties:
+        AddressLine:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        Country:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+      type: object
+    PaymentMethodModel:
+      example:
+        Type: null
+        SpreedlyToken: null
+        MockerShopperToken: null
+        Token: Token
+        Card:
+          CardNumber: CardNumber
+          CardExpMonth: CardExpMonth
+          CardType: null
+          CardHolderFullName: CardHolderFullName
+          CardBrand: null
+          CardExpYear: CardExpYear
+          CardCvv: CardCvv
+        BluesnapVaultedShopperToken: null
+      properties:
+        Type:
+          $ref: '#/components/schemas/PaymentMethodType'
+        Card:
+          $ref: '#/components/schemas/CardData'
+        Token:
+          type: string
+        BluesnapVaultedShopperToken:
+          $ref: '#/components/schemas/BluesnapVaultedShopperToken'
+        MockerShopperToken:
+          $ref: '#/components/schemas/MockerShopperToken'
+        SpreedlyToken:
+          $ref: '#/components/schemas/SpreedlyToken'
+      required:
+      - Type
+      type: object
+    PaymentMethodType:
+      description: ""
+      enum:
+      - Card
+      - SplititToken
+      - BluesnapVaultedShopperToken
+      - SplititMockerV2Token
+      - SpreedlyToken
+      type: string
+      x-enumNames:
+      - Card
+      - SplititToken
+      - BluesnapVaultedShopperToken
+      - SplititMockerV2Token
+      - SpreedlyToken
+    CardData:
+      example:
+        CardNumber: CardNumber
+        CardExpMonth: CardExpMonth
+        CardType: null
+        CardHolderFullName: CardHolderFullName
+        CardBrand: null
+        CardExpYear: CardExpYear
+        CardCvv: CardCvv
+      properties:
+        CardHolderFullName:
+          type: string
+        CardNumber:
+          type: string
+        CardExpYear:
+          type: string
+        CardExpMonth:
+          type: string
+        CardCvv:
+          type: string
+        CardBrand:
+          $ref: '#/components/schemas/CardBrand'
+        CardType:
+          $ref: '#/components/schemas/CardType'
+      type: object
+    CardBrand:
+      description: ""
+      enum:
+      - Mastercard
+      - Visa
+      - AmericanExpress
+      - Maestro
+      - JCB
+      - CUP
+      - UPI
+      - Discover
+      - Other
+      type: string
+      x-enumNames:
+      - Mastercard
+      - Visa
+      - AmericanExpress
+      - Maestro
+      - JCB
+      - CUP
+      - UPI
+      - Discover
+      - Other
+    CardType:
+      description: ""
+      enum:
+      - Credit
+      - Debit
+      - Charge
+      - Other
+      - Prepaid
+      - VisaDeferredDebit
+      - NetworkOnly
+      type: string
+      x-enumNames:
+      - Credit
+      - Debit
+      - Charge
+      - Other
+      - Prepaid
+      - VisaDeferredDebit
+      - NetworkOnly
+    BluesnapVaultedShopperToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
+    GatewayTokenData:
+      properties:
+        Token:
+          type: string
+        Last4Digit:
+          type: string
+      type: object
+      x-abstract: true
+    MockerShopperToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
+    SpreedlyToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
+    Installment:
+      example:
+        Status: null
+        InstallmentNumber: 1
+        Amount: 5.962133916683182
+        ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+      properties:
+        InstallmentNumber:
+          format: int32
+          type: integer
+        Amount:
+          format: decimal
+          type: number
+        ProcessDateTime:
+          format: date-time
+          type: string
+        Status:
+          $ref: '#/components/schemas/InstallmentStatus'
+      required:
+      - Amount
+      - InstallmentNumber
+      - Status
+      type: object
+    InstallmentStatus:
+      description: ""
+      enum:
+      - Pending
+      - Processed
+      - Canceled
+      type: string
+      x-enumNames:
+      - Pending
+      - Processed
+      - Canceled
+    RefundModel:
+      example:
+        Status: null
+        NonCreditRefundAmount: 2.3021358869347655
+        SubmitDate: 2000-01-23T04:56:07.000+00:00
+        RefundId: RefundId
+        TotalAmount: 5.637376656633329
+        CreditRefundAmount: 7.061401241503109
+      properties:
+        RefundId:
+          type: string
+        SubmitDate:
+          format: date-time
+          type: string
+        TotalAmount:
+          format: decimal
+          type: number
+        Status:
+          $ref: '#/components/schemas/RefundStatus'
+        NonCreditRefundAmount:
+          format: decimal
+          type: number
+        CreditRefundAmount:
+          format: decimal
+          type: number
+      required:
+      - CreditRefundAmount
+      - NonCreditRefundAmount
+      - Status
+      - SubmitDate
+      - TotalAmount
+      type: object
+    RefundStatus:
+      description: ""
+      enum:
+      - Pending
+      - Succeeded
+      - Failed
+      type: string
+      x-enumNames:
+      - Pending
+      - Succeeded
+      - Failed
+    LinksData:
+      example:
+        TermsConditions: TermsConditions
+        Checkout: Checkout
+        LearnMore: LearnMore
+        PrivacyPolicy: PrivacyPolicy
+      properties:
+        Checkout:
+          type: string
+        LearnMore:
+          type: string
+        TermsConditions:
+          type: string
+        PrivacyPolicy:
+          type: string
+      type: object
+    InstallmentPlanSearchResponse:
+      example:
+        PlanList:
+        - Status: null
+          Installments:
+          - Status: null
+            InstallmentNumber: 1
+            Amount: 5.962133916683182
+            ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+          - Status: null
+            InstallmentNumber: 1
+            Amount: 5.962133916683182
+            ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+          InstallmentPlanNumber: InstallmentPlanNumber
+          RefOrderNumber: RefOrderNumber
+          Amount: 6.027456183070403
+          DateCreated: 2000-01-23T04:56:07.000+00:00
+          Shopper:
+            Email: Email
+            FullName: FullName
+            PhoneNumber: PhoneNumber
+            Culture: Culture
+          PurchaseMethod: null
+          OriginalAmount: 0.8008281904610115
+          Authorization:
+            Status: null
+            CAVV: CAVV
+            ThreeDSRedirect:
+              Verb: Verb
+              Params:
+                key: Params
+              Url: Url
+            GatewayTransactionID: GatewayTransactionID
+            GatewaySourceResponse: GatewaySourceResponse
+            GatewayResultMessage: GatewayResultMessage
+            ECI: ECI
+            SplititErrorResultCode: SplititErrorResultCode
+            GatewayResultCode: GatewayResultCode
+            Date: 2000-01-23T04:56:07.000+00:00
+          BillingAddress:
+            Zip: Zip
+            AddressLine2: AddressLine2
+            AddressLine: AddressLine
+            State: State
+            Country: Country
+            City: City
+          ExtendedParams:
+            key: ExtendedParams
+          Currency: Currency
+          Refunds:
+          - Status: null
+            NonCreditRefundAmount: 2.3021358869347655
+            SubmitDate: 2000-01-23T04:56:07.000+00:00
+            RefundId: RefundId
+            TotalAmount: 5.637376656633329
+            CreditRefundAmount: 7.061401241503109
+          - Status: null
+            NonCreditRefundAmount: 2.3021358869347655
+            SubmitDate: 2000-01-23T04:56:07.000+00:00
+            RefundId: RefundId
+            TotalAmount: 5.637376656633329
+            CreditRefundAmount: 7.061401241503109
+          PaymentMethod:
+            Type: null
+            SpreedlyToken: null
+            MockerShopperToken: null
+            Token: Token
+            Card:
+              CardNumber: CardNumber
+              CardExpMonth: CardExpMonth
+              CardType: null
+              CardHolderFullName: CardHolderFullName
+              CardBrand: null
+              CardExpYear: CardExpYear
+              CardCvv: CardCvv
+            BluesnapVaultedShopperToken: null
+          Links:
+            TermsConditions: TermsConditions
+            Checkout: Checkout
+            LearnMore: LearnMore
+            PrivacyPolicy: PrivacyPolicy
+        - Status: null
+          Installments:
+          - Status: null
+            InstallmentNumber: 1
+            Amount: 5.962133916683182
+            ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+          - Status: null
+            InstallmentNumber: 1
+            Amount: 5.962133916683182
+            ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+          InstallmentPlanNumber: InstallmentPlanNumber
+          RefOrderNumber: RefOrderNumber
+          Amount: 6.027456183070403
+          DateCreated: 2000-01-23T04:56:07.000+00:00
+          Shopper:
+            Email: Email
+            FullName: FullName
+            PhoneNumber: PhoneNumber
+            Culture: Culture
+          PurchaseMethod: null
+          OriginalAmount: 0.8008281904610115
+          Authorization:
+            Status: null
+            CAVV: CAVV
+            ThreeDSRedirect:
+              Verb: Verb
+              Params:
+                key: Params
+              Url: Url
+            GatewayTransactionID: GatewayTransactionID
+            GatewaySourceResponse: GatewaySourceResponse
+            GatewayResultMessage: GatewayResultMessage
+            ECI: ECI
+            SplititErrorResultCode: SplititErrorResultCode
+            GatewayResultCode: GatewayResultCode
+            Date: 2000-01-23T04:56:07.000+00:00
+          BillingAddress:
+            Zip: Zip
+            AddressLine2: AddressLine2
+            AddressLine: AddressLine
+            State: State
+            Country: Country
+            City: City
+          ExtendedParams:
+            key: ExtendedParams
+          Currency: Currency
+          Refunds:
+          - Status: null
+            NonCreditRefundAmount: 2.3021358869347655
+            SubmitDate: 2000-01-23T04:56:07.000+00:00
+            RefundId: RefundId
+            TotalAmount: 5.637376656633329
+            CreditRefundAmount: 7.061401241503109
+          - Status: null
+            NonCreditRefundAmount: 2.3021358869347655
+            SubmitDate: 2000-01-23T04:56:07.000+00:00
+            RefundId: RefundId
+            TotalAmount: 5.637376656633329
+            CreditRefundAmount: 7.061401241503109
+          PaymentMethod:
+            Type: null
+            SpreedlyToken: null
+            MockerShopperToken: null
+            Token: Token
+            Card:
+              CardNumber: CardNumber
+              CardExpMonth: CardExpMonth
+              CardType: null
+              CardHolderFullName: CardHolderFullName
+              CardBrand: null
+              CardExpYear: CardExpYear
+              CardCvv: CardCvv
+            BluesnapVaultedShopperToken: null
+          Links:
+            TermsConditions: TermsConditions
+            Checkout: Checkout
+            LearnMore: LearnMore
+            PrivacyPolicy: PrivacyPolicy
+      properties:
+        PlanList:
+          items:
+            $ref: '#/components/schemas/SearchInstallmentPlanResponseItem'
+          type: array
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    SearchInstallmentPlanResponseItem:
+      example:
+        Status: null
+        Installments:
+        - Status: null
+          InstallmentNumber: 1
+          Amount: 5.962133916683182
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+        - Status: null
+          InstallmentNumber: 1
+          Amount: 5.962133916683182
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+        InstallmentPlanNumber: InstallmentPlanNumber
+        RefOrderNumber: RefOrderNumber
+        Amount: 6.027456183070403
+        DateCreated: 2000-01-23T04:56:07.000+00:00
+        Shopper:
+          Email: Email
+          FullName: FullName
+          PhoneNumber: PhoneNumber
+          Culture: Culture
+        PurchaseMethod: null
+        OriginalAmount: 0.8008281904610115
+        Authorization:
+          Status: null
+          CAVV: CAVV
+          ThreeDSRedirect:
+            Verb: Verb
+            Params:
+              key: Params
+            Url: Url
+          GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
+          GatewayResultMessage: GatewayResultMessage
+          ECI: ECI
+          SplititErrorResultCode: SplititErrorResultCode
+          GatewayResultCode: GatewayResultCode
+          Date: 2000-01-23T04:56:07.000+00:00
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine: AddressLine
+          State: State
+          Country: Country
+          City: City
+        ExtendedParams:
+          key: ExtendedParams
+        Currency: Currency
+        Refunds:
+        - Status: null
+          NonCreditRefundAmount: 2.3021358869347655
+          SubmitDate: 2000-01-23T04:56:07.000+00:00
+          RefundId: RefundId
+          TotalAmount: 5.637376656633329
+          CreditRefundAmount: 7.061401241503109
+        - Status: null
+          NonCreditRefundAmount: 2.3021358869347655
+          SubmitDate: 2000-01-23T04:56:07.000+00:00
+          RefundId: RefundId
+          TotalAmount: 5.637376656633329
+          CreditRefundAmount: 7.061401241503109
+        PaymentMethod:
+          Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
+          Token: Token
+          Card:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            CardType: null
+            CardHolderFullName: CardHolderFullName
+            CardBrand: null
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
+        Links:
+          TermsConditions: TermsConditions
+          Checkout: Checkout
+          LearnMore: LearnMore
+          PrivacyPolicy: PrivacyPolicy
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        DateCreated:
+          format: date-time
+          type: string
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        OriginalAmount:
+          format: decimal
+          type: number
+        Amount:
+          format: decimal
+          type: number
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        Installments:
+          items:
+            $ref: '#/components/schemas/Installment'
+          type: array
+        Refunds:
+          items:
+            $ref: '#/components/schemas/RefundModel'
+          type: array
+        Links:
+          $ref: '#/components/schemas/LinksData'
+      required:
+      - DateCreated
+      - Status
+      type: object
+    InitiatePlanResponse:
+      example:
+        Status: null
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine: AddressLine
+          State: State
+          Country: Country
+          City: City
+        InstallmentPlanNumber: InstallmentPlanNumber
+        ExtendedParams:
+          key: ExtendedParams
+        RefOrderNumber: RefOrderNumber
+        Currency: Currency
+        Amount: 0.8008281904610115
+        Shopper:
+          Email: Email
+          FullName: FullName
+          PhoneNumber: PhoneNumber
+          Culture: Culture
+        CheckoutUrl: CheckoutUrl
+        PurchaseMethod: null
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        Amount:
+          format: decimal
+          type: number
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        CheckoutUrl:
+          type: string
+      required:
+      - Status
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    PlanErrorResponse:
+      allOf:
+      - $ref: '#/components/schemas/FailedResponse'
+      - $ref: '#/components/schemas/PlanErrorResponse_allOf'
+      x-konfig-is-used-in-non-successful-response: true
+    InstallmentPlanInitiateRequest:
+      example:
+        PlanData:
+          ExtendedParams:
+            key: ExtendedParams
+          RefOrderNumber: RefOrderNumber
+          Currency: Currency
+          TerminalId: TerminalId
+          TotalAmount: 0.8008281904610115
+          PurchaseMethod: null
+          FirstInstallmentAmount: 1.4658129805029452
+          NumberOfInstallments: 6
+          FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine1: AddressLine1
+          State: State
+          Country: Country
+          City: City
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
+        UxSettings:
+          DisplayedInstallmentOptions:
+          - 5
+          - 5
+        EventsEndpoints:
+          CreateSucceeded: CreateSucceeded
+        AutoCapture: true
+        Shopper:
+          Email: Email
+          FullName: FullName
+          PhoneNumber: PhoneNumber
+          Culture: Culture
+        RedirectUrls:
+          Succeeded: Succeeded
+          Cancel: Cancel
+          Failed: Failed
+        Attempt3dSecure: true
+      properties:
+        AutoCapture:
+          type: boolean
+        Attempt3dSecure:
+          type: boolean
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        PlanData:
+          $ref: '#/components/schemas/PlanDataModel'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressDataModel'
+        RedirectUrls:
+          $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
+        UxSettings:
+          $ref: '#/components/schemas/UxSettingsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
+      required:
+      - AutoCapture
+      type: object
+    PlanDataModel:
+      example:
+        ExtendedParams:
+          key: ExtendedParams
+        RefOrderNumber: RefOrderNumber
+        Currency: Currency
+        TerminalId: TerminalId
+        TotalAmount: 0.8008281904610115
+        PurchaseMethod: null
+        FirstInstallmentAmount: 1.4658129805029452
+        NumberOfInstallments: 6
+        FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        TotalAmount:
+          format: decimal
+          type: number
+        Currency:
+          type: string
+        NumberOfInstallments:
+          format: int32
+          type: integer
+        TerminalId:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        RefOrderNumber:
+          type: string
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        FirstInstallmentAmount:
+          format: decimal
+          type: number
+        FirstInstallmentDate:
+          format: date-time
+          type: string
+      required:
+      - PurchaseMethod
+      - TotalAmount
+      type: object
+    AddressDataModel:
+      example:
+        Zip: Zip
+        AddressLine2: AddressLine2
+        AddressLine1: AddressLine1
+        State: State
+        Country: Country
+        City: City
+      properties:
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        Country:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+      type: object
+    InitiateRedirectionEndpointsModel:
+      example:
+        Succeeded: Succeeded
+        Cancel: Cancel
+        Failed: Failed
+      properties:
+        Succeeded:
+          type: string
+        Failed:
+          type: string
+        Cancel:
+          type: string
+      type: object
+    UxSettingsModel:
+      example:
+        DisplayedInstallmentOptions:
+        - 5
+        - 5
+      properties:
+        DisplayedInstallmentOptions:
+          items:
+            format: int32
+            type: integer
+          type: array
+      type: object
+    EventsEndpointsModel:
+      example:
+        CreateSucceeded: CreateSucceeded
+      properties:
+        CreateSucceeded:
+          type: string
+      type: object
+    ProcessingData:
+      example:
+        ThreeDSData:
+          CAVV: CAVV
+          XID: XID
+          DirectoryServerTxnId: DirectoryServerTxnId
+          ThreeDSVersion: ThreeDSVersion
+          ECI: ECI
+          TransactionId: TransactionId
+        AttemptThreeDSecured: true
+        SoftDescriptor: SoftDescriptor
+      properties:
+        AttemptThreeDSecured:
+          type: boolean
+        SoftDescriptor:
+          type: string
+        ThreeDSData:
+          $ref: '#/components/schemas/ThreeDSData'
+      type: object
+    ThreeDSData:
+      example:
+        CAVV: CAVV
+        XID: XID
+        DirectoryServerTxnId: DirectoryServerTxnId
+        ThreeDSVersion: ThreeDSVersion
+        ECI: ECI
+        TransactionId: TransactionId
+      properties:
+        ECI:
+          type: string
+        CAVV:
+          type: string
+        XID:
+          type: string
+        DirectoryServerTxnId:
+          type: string
+        ThreeDSVersion:
+          type: string
+        TransactionId:
+          type: string
+      type: object
+    TestModes:
+      description: ""
+      enum:
+      - None
+      - Regular
+      - Fast
+      - Automation
+      type: string
+      x-enumNames:
+      - None
+      - Regular
+      - Fast
+      - Automation
+    InstallmentPlanCreateResponse:
+      example:
+        Status: null
+        Installments:
+        - Status: null
+          InstallmentNumber: 1
+          Amount: 5.962133916683182
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+        - Status: null
+          InstallmentNumber: 1
+          Amount: 5.962133916683182
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+        InstallmentPlanNumber: InstallmentPlanNumber
+        RefOrderNumber: RefOrderNumber
+        Amount: 6.027456183070403
+        DateCreated: 2000-01-23T04:56:07.000+00:00
+        Shopper:
+          Email: Email
+          FullName: FullName
+          PhoneNumber: PhoneNumber
+          Culture: Culture
+        PurchaseMethod: null
+        OriginalAmount: 0.8008281904610115
+        Authorization:
+          Status: null
+          CAVV: CAVV
+          ThreeDSRedirect:
+            Verb: Verb
+            Params:
+              key: Params
+            Url: Url
+          GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
+          GatewayResultMessage: GatewayResultMessage
+          ECI: ECI
+          SplititErrorResultCode: SplititErrorResultCode
+          GatewayResultCode: GatewayResultCode
+          Date: 2000-01-23T04:56:07.000+00:00
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine: AddressLine
+          State: State
+          Country: Country
+          City: City
+        ExtendedParams:
+          key: ExtendedParams
+        Currency: Currency
+        PaymentMethod:
+          Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
+          Token: Token
+          Card:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            CardType: null
+            CardHolderFullName: CardHolderFullName
+            CardBrand: null
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
+        Links:
+          TermsConditions: TermsConditions
+          Checkout: Checkout
+          LearnMore: LearnMore
+          PrivacyPolicy: PrivacyPolicy
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        DateCreated:
+          format: date-time
+          type: string
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        OriginalAmount:
+          format: decimal
+          type: number
+        Amount:
+          format: decimal
+          type: number
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        Installments:
+          items:
+            $ref: '#/components/schemas/Installment'
+          type: array
+        Links:
+          $ref: '#/components/schemas/LinksData'
+      required:
+      - DateCreated
+      - Status
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    InstallmentPlanCreateRequest:
+      example:
+        PlanData:
+          ExtendedParams:
+            key: ExtendedParams
+          RefOrderNumber: RefOrderNumber
+          Currency: Currency
+          TerminalId: TerminalId
+          TotalAmount: 0.8008281904610115
+          PurchaseMethod: null
+          FirstInstallmentAmount: 1.4658129805029452
+          NumberOfInstallments: 6
+          FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine1: AddressLine1
+          State: State
+          Country: Country
+          City: City
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
+        TermsAndConditionsAccepted: true
+        EventsEndpoints:
+          CreateSucceeded: CreateSucceeded
+        AutoCapture: true
+        Shopper:
+          Email: Email
+          FullName: FullName
+          PhoneNumber: PhoneNumber
+          Culture: Culture
+        PaymentMethod:
+          Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
+          Token: Token
+          Card:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            CardType: null
+            CardHolderFullName: CardHolderFullName
+            CardBrand: null
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
+        RedirectUrls:
+          Succeeded: Succeeded
+          Failed: Failed
+          AuthorizeSucceeded: AuthorizeSucceeded
+          AuthorizeFailed: AuthorizeFailed
+        Attempt3dSecure: true
+      properties:
+        AutoCapture:
+          type: boolean
+        Attempt3dSecure:
+          type: boolean
+        TermsAndConditionsAccepted:
+          type: boolean
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        PlanData:
+          $ref: '#/components/schemas/PlanDataModel'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressDataModel'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        RedirectUrls:
+          $ref: '#/components/schemas/RedirectionEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+      required:
+      - AutoCapture
+      - TermsAndConditionsAccepted
+      type: object
+    RedirectionEndpointsModel:
+      example:
+        Succeeded: Succeeded
+        Failed: Failed
+        AuthorizeSucceeded: AuthorizeSucceeded
+        AuthorizeFailed: AuthorizeFailed
+      properties:
+        AuthorizeSucceeded:
+          type: string
+          x-deprecated: true
+          x-deprecatedMessage: Please use Succeeded property
+        Succeeded:
+          type: string
+        AuthorizeFailed:
+          type: string
+          x-deprecated: true
+          x-deprecatedMessage: Please use Failed property
+        Failed:
+          type: string
+      type: object
+    VerifyAuthorizationResponse:
+      example:
+        Authorization:
+          Status: null
+          CAVV: CAVV
+          ThreeDSRedirect:
+            Verb: Verb
+            Params:
+              key: Params
+            Url: Url
+          GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
+          GatewayResultMessage: GatewayResultMessage
+          ECI: ECI
+          SplititErrorResultCode: SplititErrorResultCode
+          GatewayResultCode: GatewayResultCode
+          Date: 2000-01-23T04:56:07.000+00:00
+        IsAuthorized: true
+        AuthorizationAmount: 0.8008281904610115
+      properties:
+        IsAuthorized:
+          type: boolean
+        AuthorizationAmount:
+          format: decimal
+          type: number
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+      required:
+      - IsAuthorized
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    InstallmentPlanUpdateResponse:
+      example:
+        Status: null
+        InstallmentPlanNumber: InstallmentPlanNumber
+        RefOrderNumber: RefOrderNumber
+        ShippingStatus: null
+      properties:
+        RefOrderNumber:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus'
+      required:
+      - ShippingStatus
+      - Status
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    ShippingStatus:
+      description: ""
+      enum:
+      - Pending
+      - Shipped
+      - Delivered
+      type: string
+      x-enumNames:
+      - Pending
+      - Shipped
+      - Delivered
+    UpdateOrderRequest:
+      example:
+        TrackingNumber: TrackingNumber
+        RefOrderNumber: RefOrderNumber
+        ShippingStatus: null
+        Capture: true
+      properties:
+        TrackingNumber:
+          type: string
+        RefOrderNumber:
+          type: string
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus'
+        Capture:
+          type: boolean
+      type: object
+    InstallmentPlanUpdateRequestByIdentifier:
+      allOf:
+      - $ref: '#/components/schemas/InstallmentPlanUpdateRequest'
+      - $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier_allOf'
+    IdentifierContract:
+      properties:
+        RefOrderNumber:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    InstallmentPlanUpdateRequest:
+      properties:
+        RefOrderNumber:
+          type: string
+        TrackingNumber:
+          type: string
+        Capture:
+          type: boolean
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus2'
+      type: object
+    ShippingStatus2:
+      description: ""
+      enum:
+      - Shipped
+      - Delivered
+      type: string
+      x-enumNames:
+      - Shipped
+      - Delivered
+    InstallmentPlanRefundResponse:
+      example:
+        InstallmentPlanNumber: InstallmentPlanNumber
+        NonCreditRefundAmount: 0.8008281904610115
+        Currency: Currency
+        Summary:
+          SucceededAmount: 5.637376656633329
+          TotalAmount: 1.4658129805029452
+          FailedAmount: 5.962133916683182
+          PendingAmount: 2.3021358869347655
+        RefundId: RefundId
+        CreditRefundAmount: 6.027456183070403
+      properties:
+        RefundId:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        Currency:
+          type: string
+        NonCreditRefundAmount:
+          format: decimal
+          type: number
+        CreditRefundAmount:
+          format: decimal
+          type: number
+        Summary:
+          $ref: '#/components/schemas/RefundSummary'
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    RefundSummary:
+      example:
+        SucceededAmount: 5.637376656633329
+        TotalAmount: 1.4658129805029452
+        FailedAmount: 5.962133916683182
+        PendingAmount: 2.3021358869347655
+      properties:
+        TotalAmount:
+          format: decimal
+          type: number
+        FailedAmount:
+          format: decimal
+          type: number
+        SucceededAmount:
+          format: decimal
+          type: number
+        PendingAmount:
+          format: decimal
+          type: number
+      type: object
+    InstallmentPlanRefundRequest:
+      example:
+        RefundStrategy: null
+        Amount: 0.8008281904610115
+      properties:
+        Amount:
+          format: decimal
+          type: number
+        RefundStrategy:
+          $ref: '#/components/schemas/RefundStrategy'
+      required:
+      - Amount
+      type: object
+    RefundStrategy:
+      description: ""
+      enum:
+      - FutureInstallmentsFirst
+      - FutureInstallmentsLast
+      - FutureInstallmentsNotAllowed
+      - ReduceFromLastInstallment
+      type: string
+      x-enumNames:
+      - FutureInstallmentsFirst
+      - FutureInstallmentsLast
+      - FutureInstallmentsNotAllowed
+      - ReduceFromLastInstallment
+    InstallmentPlanCancelResponse:
+      example:
+        InstallmentPlanNumber: InstallmentPlanNumber
+      properties:
+        InstallmentPlanNumber:
+          type: string
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    InstallmentsEligibilityResponse:
+      example:
+        InstallmentProvider: InstallmentProvider
+        PaymentPlanOptions:
+        - LastInstallmentAmount: 5.962133916683182
+          InstallmentFrequency: InstallmentFrequency
+          InstallmentAmount: 1.4658129805029452
+          Links:
+            TermsAndConditionsUrl: TermsAndConditionsUrl
+            LearnMoreUrl: LearnMoreUrl
+            PrivacyPolicyUrl: PrivacyPolicyUrl
+          TermsAndConditionsBrief: TermsAndConditionsBrief
+          FirstInstallmentAmount: 6.027456183070403
+          NumberOfInstallments: 0
+        - LastInstallmentAmount: 5.962133916683182
+          InstallmentFrequency: InstallmentFrequency
+          InstallmentAmount: 1.4658129805029452
+          Links:
+            TermsAndConditionsUrl: TermsAndConditionsUrl
+            LearnMoreUrl: LearnMoreUrl
+            PrivacyPolicyUrl: PrivacyPolicyUrl
+          TermsAndConditionsBrief: TermsAndConditionsBrief
+          FirstInstallmentAmount: 6.027456183070403
+          NumberOfInstallments: 0
+      properties:
+        InstallmentProvider:
+          type: string
+        PaymentPlanOptions:
+          items:
+            $ref: '#/components/schemas/PaymentPlanOptionModel'
+          type: array
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    PaymentPlanOptionModel:
+      example:
+        LastInstallmentAmount: 5.962133916683182
+        InstallmentFrequency: InstallmentFrequency
+        InstallmentAmount: 1.4658129805029452
+        Links:
+          TermsAndConditionsUrl: TermsAndConditionsUrl
+          LearnMoreUrl: LearnMoreUrl
+          PrivacyPolicyUrl: PrivacyPolicyUrl
+        TermsAndConditionsBrief: TermsAndConditionsBrief
+        FirstInstallmentAmount: 6.027456183070403
+        NumberOfInstallments: 0
+      properties:
+        NumberOfInstallments:
+          format: int32
+          type: integer
+        FirstInstallmentAmount:
+          format: decimal
+          type: number
+        InstallmentAmount:
+          format: decimal
+          type: number
+        LastInstallmentAmount:
+          format: decimal
+          type: number
+        Links:
+          $ref: '#/components/schemas/LinksModel'
+        TermsAndConditionsBrief:
+          type: string
+        InstallmentFrequency:
+          type: string
+      required:
+      - FirstInstallmentAmount
+      - InstallmentAmount
+      - LastInstallmentAmount
+      - NumberOfInstallments
+      type: object
+    LinksModel:
+      example:
+        TermsAndConditionsUrl: TermsAndConditionsUrl
+        LearnMoreUrl: LearnMoreUrl
+        PrivacyPolicyUrl: PrivacyPolicyUrl
+      properties:
+        PrivacyPolicyUrl:
+          type: string
+        TermsAndConditionsUrl:
+          type: string
+        LearnMoreUrl:
+          type: string
+      type: object
+    CheckInstallmentsEligibilityRequest:
+      example:
+        PlanData:
+          ProcessingData:
+            ThreeDSData:
+              CAVV: CAVV
+              XID: XID
+              DirectoryServerTxnId: DirectoryServerTxnId
+              ThreeDSVersion: ThreeDSVersion
+              ECI: ECI
+              TransactionId: TransactionId
+            AttemptThreeDSecured: true
+            SoftDescriptor: SoftDescriptor
+          RefOrderNumber: RefOrderNumber
+          Currency: Currency
+          AllowedInstallmentOptions:
+          - 5
+          - 5
+          TerminalId: TerminalId
+          TotalAmount: 0.8008281904610115
+          PurchaseMethod: null
+          FirstInstallmentAmount: 6.027456183070403
+          NumberOfInstallments: 1
+          Tags:
+            key: Tags
+          FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine: AddressLine
+          State: State
+          Country: Country
+          City: City
+        CardDetails:
+          CardNumber: CardNumber
+          CardExpMonth: CardExpMonth
+          CardType: null
+          CardHolderFullName: CardHolderFullName
+          CardBrand: null
+          CardExpYear: CardExpYear
+          CardCvv: CardCvv
+      properties:
+        PlanData:
+          $ref: '#/components/schemas/PlanData'
+        CardDetails:
+          $ref: '#/components/schemas/CardData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+      type: object
+    PlanData:
+      example:
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
+        RefOrderNumber: RefOrderNumber
+        Currency: Currency
+        AllowedInstallmentOptions:
+        - 5
+        - 5
+        TerminalId: TerminalId
+        TotalAmount: 0.8008281904610115
+        PurchaseMethod: null
+        FirstInstallmentAmount: 6.027456183070403
+        NumberOfInstallments: 1
+        Tags:
+          key: Tags
+        FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        TerminalId:
+          type: string
+        TotalAmount:
+          format: decimal
+          type: number
+        FirstInstallmentAmount:
+          format: decimal
+          type: number
+        Currency:
+          type: string
+        NumberOfInstallments:
+          format: int32
+          type: integer
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        RefOrderNumber:
+          type: string
+        AllowedInstallmentOptions:
+          items:
+            format: int32
+            type: integer
+          type: array
+        Tags:
+          additionalProperties:
+            type: string
+          type: object
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData2'
+        FirstInstallmentDate:
+          format: date-time
+          type: string
+      required:
+      - NumberOfInstallments
+      - PurchaseMethod
+      - TotalAmount
+      type: object
+    ProcessingData2:
+      example:
+        ThreeDSData:
+          CAVV: CAVV
+          XID: XID
+          DirectoryServerTxnId: DirectoryServerTxnId
+          ThreeDSVersion: ThreeDSVersion
+          ECI: ECI
+          TransactionId: TransactionId
+        AttemptThreeDSecured: true
+        SoftDescriptor: SoftDescriptor
+      properties:
+        AttemptThreeDSecured:
+          type: boolean
+        SoftDescriptor:
+          type: string
+        ThreeDSData:
+          $ref: '#/components/schemas/ThreeDSData2'
+      type: object
+    ThreeDSData2:
+      example:
+        CAVV: CAVV
+        XID: XID
+        DirectoryServerTxnId: DirectoryServerTxnId
+        ThreeDSVersion: ThreeDSVersion
+        ECI: ECI
+        TransactionId: TransactionId
+      properties:
+        ECI:
+          type: string
+        CAVV:
+          type: string
+        XID:
+          type: string
+        DirectoryServerTxnId:
+          type: string
+        ThreeDSVersion:
+          type: string
+        TransactionId:
+          type: string
+      type: object
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-search-get-parameters-4-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-verifyauthorization-get-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-updateorder-put-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-updateorder-put-parameters-1-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-refund-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber:
+      properties:
+        installmentPlanNumber:
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      - installmentPlanNumber
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - installmentPlanNumber
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-get--api-installmentplans-search:
+      properties:
+        installmentPlanNumber:
+          type: string
+        refOrderNumber:
+          type: string
+        extendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-search-get-parameters-4-schema
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - installmentPlanNumber
+      - refOrderNumber
+      - extendedParams
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-post--api-installmentplans-initiate:
+      properties:
+        X-Splitit-TestMode:
+          enum:
+          - None
+          - Regular
+          - Fast
+          - Automation
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-2-schema
+        AutoCapture:
+          type: boolean
+        Attempt3dSecure:
+          type: boolean
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        PlanData:
+          $ref: '#/components/schemas/PlanDataModel'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressDataModel'
+        RedirectUrls:
+          $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
+        UxSettings:
+          $ref: '#/components/schemas/UxSettingsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
+      required:
+      - AutoCapture
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - X-Splitit-TestMode
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-post--api-installmentplans:
+      properties:
+        X-Splitit-TestMode:
+          enum:
+          - None
+          - Regular
+          - Fast
+          - Automation
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-2-schema
+        AutoCapture:
+          type: boolean
+        Attempt3dSecure:
+          type: boolean
+        TermsAndConditionsAccepted:
+          type: boolean
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        PlanData:
+          $ref: '#/components/schemas/PlanDataModel'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressDataModel'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        RedirectUrls:
+          $ref: '#/components/schemas/RedirectionEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+      required:
+      - AutoCapture
+      - TermsAndConditionsAccepted
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - X-Splitit-TestMode
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber-verifyauthorization:
+      properties:
+        installmentPlanNumber:
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-verifyauthorization-get-parameters-2-schema
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      - installmentPlanNumber
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - installmentPlanNumber
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-put--api-installmentplans-installmentPlanNumber-updateorder:
+      properties:
+        installmentPlanNumber:
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-updateorder-put-parameters-2-schema
+        TrackingNumber:
+          type: string
+        RefOrderNumber:
+          type: string
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus'
+        Capture:
+          type: boolean
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      - installmentPlanNumber
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - installmentPlanNumber
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-put--api-installmentplans-updateorder:
+      properties:
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-updateorder-put-parameters-1-schema
+        RefOrderNumber:
+          type: string
+        TrackingNumber:
+          type: string
+        Capture:
+          type: boolean
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus2'
+        Identifier:
+          $ref: '#/components/schemas/IdentifierContract'
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-refund:
+      properties:
+        installmentPlanNumber:
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-refund-post-parameters-2-schema
+        Amount:
+          format: decimal
+          type: number
+        RefundStrategy:
+          $ref: '#/components/schemas/RefundStrategy'
+      required:
+      - Amount
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      - installmentPlanNumber
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - installmentPlanNumber
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-cancel:
+      properties:
+        installmentPlanNumber:
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      - installmentPlanNumber
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - installmentPlanNumber
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-post--api-installmentplans-check-eligibility:
+      properties:
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema
+        PlanData:
+          $ref: '#/components/schemas/PlanData'
+        CardDetails:
+          $ref: '#/components/schemas/CardData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    ErrorExtended_allOf:
+      properties:
+        ExtraData:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+      example: null
+    PlanErrorResponse_allOf:
+      properties:
+        InstallmentPlanNumber:
+          type: string
+      type: object
+      example: null
+    InstallmentPlanUpdateRequestByIdentifier_allOf:
+      properties:
+        Identifier:
+          $ref: '#/components/schemas/IdentifierContract'
+      type: object
+      example: null
+  securitySchemes:
+    oauth:
+      flows:
+        clientCredentials:
+          scopes:
+            api.v3: ""
+          tokenUrl: https://id.production.splitit.com/connect/token
+      type: oauth2
+      x-konfig-globally-required-security: true
+x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))
+
