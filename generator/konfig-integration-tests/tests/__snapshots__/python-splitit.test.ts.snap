@@ -1,0 +1,657 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`splitit/python-splitit 1`] = `
+"# splitit-web-python-sdk<a id=\\"splitit-web-python-sdk\\"></a>
+
+Splitit's Web API
+
+
+[![PyPI](https://img.shields.io/badge/PyPI-v2.6.1-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.1)
+[![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/csharp#readme)
+
+## Table of Contents<a id=\\"table-of-contents\\"></a>
+
+<!-- toc -->
+
+- [Requirements](#requirements)
+- [Installing](#installing)
+- [Getting Started](#getting-started)
+- [Async](#async)
+- [Reference](#reference)
+  * [\`pythonsplitit.installment_plan.cancel\`](#pythonsplititinstallment_plancancel)
+  * [\`pythonsplitit.installment_plan.check_eligibility\`](#pythonsplititinstallment_plancheck_eligibility)
+  * [\`pythonsplitit.installment_plan.get\`](#pythonsplititinstallment_planget)
+  * [\`pythonsplitit.installment_plan.post\`](#pythonsplititinstallment_planpost)
+  * [\`pythonsplitit.installment_plan.post2\`](#pythonsplititinstallment_planpost2)
+  * [\`pythonsplitit.installment_plan.refund\`](#pythonsplititinstallment_planrefund)
+  * [\`pythonsplitit.installment_plan.search\`](#pythonsplititinstallment_plansearch)
+  * [\`pythonsplitit.installment_plan.update_order\`](#pythonsplititinstallment_planupdate_order)
+  * [\`pythonsplitit.installment_plan.update_order2\`](#pythonsplititinstallment_planupdate_order2)
+  * [\`pythonsplitit.installment_plan.verify_authorization\`](#pythonsplititinstallment_planverify_authorization)
+
+<!-- tocstop -->
+
+## Requirements<a id=\\"requirements\\"></a>
+
+Python >=3.7
+
+## Installing<a id=\\"installing\\"></a>
+
+\`\`\`sh
+pip install splitit-web-python-sdk==2.6.1
+\`\`\`
+
+## Getting Started<a id=\\"getting-started\\"></a>
+
+\`\`\`python
+from pprint import pprint
+from python_splitit_client import PythonSplitit, ApiException
+
+pythonsplitit = PythonSplitit(
+    client_id=\\"YOUR_CLIENT_ID\\",
+    client_secret=\\"YOUR_CLIENT_SECRET\\",
+)
+
+try:
+    cancel_response = pythonsplitit.installment_plan.cancel(
+        installment_plan_number=\\"installmentPlanNumber_example\\",
+        x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+        x_splitit_touch_point=\\"\\",
+    )
+    pprint(cancel_response.body)
+    pprint(cancel_response.body[\\"installment_plan_number\\"])
+    pprint(cancel_response.headers)
+    pprint(cancel_response.status)
+    pprint(cancel_response.round_trip_time)
+except ApiException as e:
+    print(\\"Exception when calling InstallmentPlanApi.cancel: %s\\\\n\\" % e)
+    pprint(e.body)
+    if e.status == 401:
+        pprint(e.body[\\"trace_id\\"])
+        pprint(e.body[\\"error\\"])
+    if e.status == 500:
+        pprint(e.body[\\"trace_id\\"])
+        pprint(e.body[\\"error\\"])
+    if e.status == 403:
+        pprint(e.body[\\"trace_id\\"])
+        pprint(e.body[\\"error\\"])
+    if e.status == 404:
+        pprint(e.body[\\"trace_id\\"])
+        pprint(e.body[\\"error\\"])
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
+\`\`\`
+
+## Async<a id=\\"async\\"></a>
+
+\`async\` support is available by prepending \`a\` to any method.
+
+\`\`\`python
+import asyncio
+from pprint import pprint
+from python_splitit_client import PythonSplitit, ApiException
+
+pythonsplitit = PythonSplitit(
+    client_id=\\"YOUR_CLIENT_ID\\",
+    client_secret=\\"YOUR_CLIENT_SECRET\\",
+)
+
+
+async def main():
+    try:
+        cancel_response = await pythonsplitit.installment_plan.acancel(
+            installment_plan_number=\\"installmentPlanNumber_example\\",
+            x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+            x_splitit_touch_point=\\"\\",
+        )
+        pprint(cancel_response.body)
+        pprint(cancel_response.body[\\"installment_plan_number\\"])
+        pprint(cancel_response.headers)
+        pprint(cancel_response.status)
+        pprint(cancel_response.round_trip_time)
+    except ApiException as e:
+        print(\\"Exception when calling InstallmentPlanApi.cancel: %s\\\\n\\" % e)
+        pprint(e.body)
+        if e.status == 401:
+            pprint(e.body[\\"trace_id\\"])
+            pprint(e.body[\\"error\\"])
+        if e.status == 500:
+            pprint(e.body[\\"trace_id\\"])
+            pprint(e.body[\\"error\\"])
+        if e.status == 403:
+            pprint(e.body[\\"trace_id\\"])
+            pprint(e.body[\\"error\\"])
+        if e.status == 404:
+            pprint(e.body[\\"trace_id\\"])
+            pprint(e.body[\\"error\\"])
+        pprint(e.headers)
+        pprint(e.status)
+        pprint(e.reason)
+        pprint(e.round_trip_time)
+
+
+asyncio.run(main())
+\`\`\`
+
+
+## Reference<a id=\\"reference\\"></a>
+### \`pythonsplitit.installment_plan.cancel\`<a id=\\"pythonsplititinstallment_plancancel\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+cancel_response = pythonsplitit.installment_plan.cancel(
+    installment_plan_number=\\"installmentPlanNumber_example\\",
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### installment_plan_number: \`str\`<a id=\\"installment_plan_number-str\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentPlanCancelResponse\`](./python_splitit_client/type/installment_plan_cancel_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/cancel\` \`post\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.check_eligibility\`<a id=\\"pythonsplititinstallment_plancheck_eligibility\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+check_eligibility_response = pythonsplitit.installment_plan.check_eligibility(
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+    plan_data={
+        \\"total_amount\\": 3.14,
+        \\"number_of_installments\\": 1,
+        \\"purchase_method\\": \\"InStore\\",
+    },
+    card_details={
+        \\"card_brand\\": \\"Mastercard\\",
+        \\"card_type\\": \\"Credit\\",
+    },
+    billing_address={},
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+##### plan_data: [\`PlanData\`](./python_splitit_client/type/plan_data.py)<a id=\\"plan_data-plandatapython_splitit_clienttypeplan_datapy\\"></a>
+
+
+##### card_details: [\`CardData\`](./python_splitit_client/type/card_data.py)<a id=\\"card_details-carddatapython_splitit_clienttypecard_datapy\\"></a>
+
+
+##### billing_address: [\`AddressData\`](./python_splitit_client/type/address_data.py)<a id=\\"billing_address-addressdatapython_splitit_clienttypeaddress_datapy\\"></a>
+
+
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
+
+[\`CheckInstallmentsEligibilityRequest\`](./python_splitit_client/type/check_installments_eligibility_request.py)
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentsEligibilityResponse\`](./python_splitit_client/type/installments_eligibility_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/check-eligibility\` \`post\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.get\`<a id=\\"pythonsplititinstallment_planget\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+get_response = pythonsplitit.installment_plan.get(
+    installment_plan_number=\\"installmentPlanNumber_example\\",
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### installment_plan_number: \`str\`<a id=\\"installment_plan_number-str\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentPlanGetResponse\`](./python_splitit_client/type/installment_plan_get_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}\` \`get\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.post\`<a id=\\"pythonsplititinstallment_planpost\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+post_response = pythonsplitit.installment_plan.post(
+    auto_capture=True,
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+    attempt3d_secure=True,
+    shopper={},
+    plan_data={
+        \\"total_amount\\": 3.14,
+        \\"purchase_method\\": \\"InStore\\",
+    },
+    billing_address={},
+    redirect_urls={},
+    ux_settings={},
+    events_endpoints={},
+    processing_data={},
+    x_splitit_test_mode=\\"None\\",
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### auto_capture: \`bool\`<a id=\\"auto_capture-bool\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+##### attempt3d_secure: \`bool\`<a id=\\"attempt3d_secure-bool\\"></a>
+
+##### shopper: [\`ShopperData\`](./python_splitit_client/type/shopper_data.py)<a id=\\"shopper-shopperdatapython_splitit_clienttypeshopper_datapy\\"></a>
+
+
+##### plan_data: [\`PlanDataModel\`](./python_splitit_client/type/plan_data_model.py)<a id=\\"plan_data-plandatamodelpython_splitit_clienttypeplan_data_modelpy\\"></a>
+
+
+##### billing_address: [\`AddressDataModel\`](./python_splitit_client/type/address_data_model.py)<a id=\\"billing_address-addressdatamodelpython_splitit_clienttypeaddress_data_modelpy\\"></a>
+
+
+##### redirect_urls: [\`InitiateRedirectionEndpointsModel\`](./python_splitit_client/type/initiate_redirection_endpoints_model.py)<a id=\\"redirect_urls-initiateredirectionendpointsmodelpython_splitit_clienttypeinitiate_redirection_endpoints_modelpy\\"></a>
+
+
+##### ux_settings: [\`UxSettingsModel\`](./python_splitit_client/type/ux_settings_model.py)<a id=\\"ux_settings-uxsettingsmodelpython_splitit_clienttypeux_settings_modelpy\\"></a>
+
+
+##### events_endpoints: [\`EventsEndpointsModel\`](./python_splitit_client/type/events_endpoints_model.py)<a id=\\"events_endpoints-eventsendpointsmodelpython_splitit_clienttypeevents_endpoints_modelpy\\"></a>
+
+
+##### processing_data: [\`ProcessingData\`](./python_splitit_client/type/processing_data.py)<a id=\\"processing_data-processingdatapython_splitit_clienttypeprocessing_datapy\\"></a>
+
+
+##### x_splitit_test_mode: \`str\`<a id=\\"x_splitit_test_mode-str\\"></a>
+
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
+
+[\`InstallmentPlanInitiateRequest\`](./python_splitit_client/type/installment_plan_initiate_request.py)
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InitiatePlanResponse\`](./python_splitit_client/type/initiate_plan_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/initiate\` \`post\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.post2\`<a id=\\"pythonsplititinstallment_planpost2\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+post2_response = pythonsplitit.installment_plan.post2(
+    auto_capture=True,
+    terms_and_conditions_accepted=True,
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+    attempt3d_secure=True,
+    shopper={},
+    plan_data={
+        \\"total_amount\\": 3.14,
+        \\"purchase_method\\": \\"InStore\\",
+    },
+    billing_address={},
+    payment_method={
+        \\"type\\": \\"Card\\",
+    },
+    redirect_urls={},
+    processing_data={},
+    events_endpoints={},
+    x_splitit_test_mode=\\"None\\",
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### auto_capture: \`bool\`<a id=\\"auto_capture-bool\\"></a>
+
+##### terms_and_conditions_accepted: \`bool\`<a id=\\"terms_and_conditions_accepted-bool\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+##### attempt3d_secure: \`bool\`<a id=\\"attempt3d_secure-bool\\"></a>
+
+##### shopper: [\`ShopperData\`](./python_splitit_client/type/shopper_data.py)<a id=\\"shopper-shopperdatapython_splitit_clienttypeshopper_datapy\\"></a>
+
+
+##### plan_data: [\`PlanDataModel\`](./python_splitit_client/type/plan_data_model.py)<a id=\\"plan_data-plandatamodelpython_splitit_clienttypeplan_data_modelpy\\"></a>
+
+
+##### billing_address: [\`AddressDataModel\`](./python_splitit_client/type/address_data_model.py)<a id=\\"billing_address-addressdatamodelpython_splitit_clienttypeaddress_data_modelpy\\"></a>
+
+
+##### payment_method: [\`PaymentMethodModel\`](./python_splitit_client/type/payment_method_model.py)<a id=\\"payment_method-paymentmethodmodelpython_splitit_clienttypepayment_method_modelpy\\"></a>
+
+
+##### redirect_urls: [\`RedirectionEndpointsModel\`](./python_splitit_client/type/redirection_endpoints_model.py)<a id=\\"redirect_urls-redirectionendpointsmodelpython_splitit_clienttyperedirection_endpoints_modelpy\\"></a>
+
+
+##### processing_data: [\`ProcessingData\`](./python_splitit_client/type/processing_data.py)<a id=\\"processing_data-processingdatapython_splitit_clienttypeprocessing_datapy\\"></a>
+
+
+##### events_endpoints: [\`EventsEndpointsModel\`](./python_splitit_client/type/events_endpoints_model.py)<a id=\\"events_endpoints-eventsendpointsmodelpython_splitit_clienttypeevents_endpoints_modelpy\\"></a>
+
+
+##### x_splitit_test_mode: \`str\`<a id=\\"x_splitit_test_mode-str\\"></a>
+
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
+
+[\`InstallmentPlanCreateRequest\`](./python_splitit_client/type/installment_plan_create_request.py)
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentPlanCreateResponse\`](./python_splitit_client/type/installment_plan_create_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans\` \`post\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.refund\`<a id=\\"pythonsplititinstallment_planrefund\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+refund_response = pythonsplitit.installment_plan.refund(
+    amount=3.14,
+    installment_plan_number=\\"installmentPlanNumber_example\\",
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+    refund_strategy=\\"FutureInstallmentsFirst\\",
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### amount: \`Union[int, float]\`<a id=\\"amount-unionint-float\\"></a>
+
+##### installment_plan_number: \`str\`<a id=\\"installment_plan_number-str\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+##### refund_strategy: [\`RefundStrategy\`](./python_splitit_client/type/refund_strategy.py)<a id=\\"refund_strategy-refundstrategypython_splitit_clienttyperefund_strategypy\\"></a>
+
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
+
+[\`InstallmentPlanRefundRequest\`](./python_splitit_client/type/installment_plan_refund_request.py)
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentPlanRefundResponse\`](./python_splitit_client/type/installment_plan_refund_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/refund\` \`post\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.search\`<a id=\\"pythonsplititinstallment_plansearch\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+search_response = pythonsplitit.installment_plan.search(
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+    installment_plan_number=\\"string_example\\",
+    ref_order_number=\\"string_example\\",
+    extended_params={
+        \\"key\\": \\"string_example\\",
+    },
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+##### installment_plan_number: \`str\`<a id=\\"installment_plan_number-str\\"></a>
+
+##### ref_order_number: \`str\`<a id=\\"ref_order_number-str\\"></a>
+
+##### extended_params: [\`Dict[str, str]\`](./python_splitit_client/type/.py)<a id=\\"extended_params-dictstr-strpython_splitit_clienttypepy\\"></a>
+
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentPlanSearchResponse\`](./python_splitit_client/type/installment_plan_search_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/search\` \`get\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.update_order\`<a id=\\"pythonsplititinstallment_planupdate_order\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+update_order_response = pythonsplitit.installment_plan.update_order(
+    installment_plan_number=\\"installmentPlanNumber_example\\",
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+    tracking_number=\\"string_example\\",
+    ref_order_number=\\"string_example\\",
+    shipping_status=\\"Pending\\",
+    capture=True,
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### installment_plan_number: \`str\`<a id=\\"installment_plan_number-str\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+##### tracking_number: \`str\`<a id=\\"tracking_number-str\\"></a>
+
+##### ref_order_number: \`str\`<a id=\\"ref_order_number-str\\"></a>
+
+##### shipping_status: [\`ShippingStatus\`](./python_splitit_client/type/shipping_status.py)<a id=\\"shipping_status-shippingstatuspython_splitit_clienttypeshipping_statuspy\\"></a>
+
+##### capture: \`bool\`<a id=\\"capture-bool\\"></a>
+
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
+
+[\`UpdateOrderRequest\`](./python_splitit_client/type/update_order_request.py)
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentPlanUpdateResponse\`](./python_splitit_client/type/installment_plan_update_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/updateorder\` \`put\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.update_order2\`<a id=\\"pythonsplititinstallment_planupdate_order2\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+update_order2_response = pythonsplitit.installment_plan.update_order2(
+    body=None,
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+    ref_order_number=\\"string_example\\",
+    tracking_number=\\"string_example\\",
+    capture=True,
+    shipping_status=\\"Shipped\\",
+    identifier={},
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+##### ref_order_number: \`str\`<a id=\\"ref_order_number-str\\"></a>
+
+##### tracking_number: \`str\`<a id=\\"tracking_number-str\\"></a>
+
+##### capture: \`bool\`<a id=\\"capture-bool\\"></a>
+
+##### shipping_status: [\`ShippingStatus2\`](./python_splitit_client/type/shipping_status2.py)<a id=\\"shipping_status-shippingstatus2python_splitit_clienttypeshipping_status2py\\"></a>
+
+##### identifier: [\`IdentifierContract\`](./python_splitit_client/type/identifier_contract.py)<a id=\\"identifier-identifiercontractpython_splitit_clienttypeidentifier_contractpy\\"></a>
+
+
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
+
+[\`InstallmentPlanUpdateRequestByIdentifier\`](./python_splitit_client/type/installment_plan_update_request_by_identifier.py)
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`InstallmentPlanUpdateResponse\`](./python_splitit_client/type/installment_plan_update_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/updateorder\` \`put\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonsplitit.installment_plan.verify_authorization\`<a id=\\"pythonsplititinstallment_planverify_authorization\\"></a>
+
+
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+verify_authorization_response = pythonsplitit.installment_plan.verify_authorization(
+    installment_plan_number=\\"installmentPlanNumber_example\\",
+    x_splitit_idempotency_key=\\"X-Splitit-IdempotencyKey_example\\",
+    x_splitit_touch_point=\\"\\",
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### installment_plan_number: \`str\`<a id=\\"installment_plan_number-str\\"></a>
+
+##### x_splitit_idempotency_key: \`str\`<a id=\\"x_splitit_idempotency_key-str\\"></a>
+
+##### x_splitit_touch_point: \`str\`<a id=\\"x_splitit_touch_point-str\\"></a>
+
+TouchPoint
+
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`VerifyAuthorizationResponse\`](./python_splitit_client/type/verify_authorization_response.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/verifyauthorization\` \`get\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+## Author<a id=\\"author\\"></a>
+This Python package is automatically generated by [Konfig](https://konfigthis.com)
+"
+`;

@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+outputDirectory: /tmp/csharp-splitit-sdks-out
+specInputPath: ../swagger.json
+specPath: ../swagger-fixed.json
+fixConfig:
+  modify:
+    $.servers[0]:
+      url: https://web-api-v3.production.splitit.com
+generators:
+  python:
+    version: 2.6.1
+    responseTypeVersion: '1'
+    packageName: python_splitit_client
+    projectName: splitit-web-python-sdk
+    outputDirectory: python
+    clientName: PythonSplitit
+    setSkipSerializationToTrueByDefault: true
+    git:
+      userId: konfig-dev
+      repoId: konfig/tree/main/csharp
+
