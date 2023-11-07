@@ -1,6 +1,6 @@
 import type { APIGatewayEvent, Context } from 'aws-lambda'
 import { urlForBlackdApi } from 'src/lib/urlForBlackdApi'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import {
   CORS_HEADERS_METHOD_HEADERS,
   CORS_HEADERS_ORIGIN,
@@ -30,22 +30,35 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     }
   }
   if (event.body === null) throw Error('Missing Request body')
-  const { data: formattedSource } = await axios.post(
-    urlForBlackdApi(),
-    event.body
-  )
+  try {
+    const { data: formattedSource } = await axios.post(
+      urlForBlackdApi(),
+      event.body
+    )
 
-  return {
-    statusCode: 200,
-    headers: {
-      ...CORS_HEADERS_ORIGIN,
-      'Content-Type': 'text/plain',
-    },
-    // For some reason blackd returns an empty string if the
-    // code snippet is already formatted so we have to handle
-    // that edge case with an empty string check
-    // From: https://black.readthedocs.io/en/stable/usage_and_configuration/black_as_a_server.html
-    // "HTTP 204: If the input is already well-formatted. The response body is empty."
-    body: formattedSource == '' ? event.body : formattedSource,
+    return {
+      statusCode: 200,
+      headers: {
+        ...CORS_HEADERS_ORIGIN,
+        'Content-Type': 'text/plain',
+      },
+      // For some reason blackd returns an empty string if the
+      // code snippet is already formatted so we have to handle
+      // that edge case with an empty string check
+      // From: https://black.readthedocs.io/en/stable/usage_and_configuration/black_as_a_server.html
+      // "HTTP 204: If the input is already well-formatted. The response body is empty."
+      body: formattedSource == '' ? event.body : formattedSource,
+    }
+  } catch (e) {
+    if (e instanceof AxiosError) {
+      return {
+        statusCode: 500,
+        headers: {
+          ...CORS_HEADERS_ORIGIN,
+          'Content-Type': 'text/plain',
+        },
+        body: event.body,
+      }
+    }
   }
 }
