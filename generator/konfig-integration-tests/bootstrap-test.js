@@ -51,10 +51,14 @@ function generateKonfigYamlFieldsForLanguage(language, testName) {
   } else if (language == 'csharp') {
     return `packageName: ${toCamelCase(testName)}.Net
     logoPath: ../../logo.png`
+  } else if (language == 'java') {
+    return `groupId: com.konfigthis
+    packageName: ${toCamelCase(testName)}
+    artifactId: ${test}`
   }
 }
 
-const supportedLanguages = ['python', 'typescript', 'csharp'];
+const supportedLanguages = ['python', 'typescript', 'csharp', 'java'];
 // Prompt for language
 rl.question(`Which language would you like to create a test for? (${supportedLanguages.join("/")}) `, (languageInput) => {
   const language = languageInput.toLowerCase();
