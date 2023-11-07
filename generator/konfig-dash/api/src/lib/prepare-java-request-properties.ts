@@ -14,9 +14,11 @@ import {
  * Now all thats necessary to give the Java Generator more context is:
  *
  * 1. Modify the AdditionalProperties schema in the Java API's OpenAPI specification at api.yaml
+ *    (file located at: [KONFIG REPO]/misc/openapi-generator-configs/openapi-generator-api/api.yaml)
  * 2. Run generate-models.sh
+ *    (file located at: [KONFIG REPO]/misc/openapi-generator-configs/openapi-generator-api/generate-models.sh)
  * 3. Make updates to KonfigYaml.ts / KonfigYamlCommon.ts
- * 4. Extract data from body and return as a key-value pair in the properties object
+ * 4. Extract data from body and return as a key-value pair in the properties object (in this function implementation)
  */
 export function prepareJavaRequestProperties({
   body,
@@ -40,6 +42,10 @@ export function prepareJavaRequestProperties({
 
   if ('repoName' in git) {
     properties['gitRepoName'] = git.repoName
+  }
+
+  if ('readmeHeaderSnippet' in generatorConfig) {
+    properties['readmeHeaderSnippet']
   }
 
   if ('outputDirectory' in generatorConfig) {

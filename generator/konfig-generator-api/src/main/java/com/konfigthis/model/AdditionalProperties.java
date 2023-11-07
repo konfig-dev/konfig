@@ -223,6 +223,9 @@ public class AdditionalProperties {
   @JsonProperty("readmeSnippet")
   private String readmeSnippet;
 
+  @JsonProperty("readmeHeaderSnippet")
+  private String readmeHeaderSnippet;
+
   @JsonProperty("asyncReadmeSnippet")
   private String asyncReadmeSnippet;
 
@@ -1468,6 +1471,25 @@ public class AdditionalProperties {
     this.readmeSnippet = readmeSnippet;
   }
 
+  public AdditionalProperties readmeHeaderSnippet(String readmeHeaderSnippet) {
+    this.readmeHeaderSnippet = readmeHeaderSnippet;
+    return this;
+  }
+
+  /**
+   * Get readmeHeaderSnippet
+   * @return readmeHeaderSnippet
+  */
+  
+  @Schema(name = "readmeHeaderSnippet", required = false)
+  public String getReadmeHeaderSnippet() {
+    return readmeHeaderSnippet;
+  }
+
+  public void setReadmeHeaderSnippet(String readmeHeaderSnippet) {
+    this.readmeHeaderSnippet = readmeHeaderSnippet;
+  }
+
   public AdditionalProperties asyncReadmeSnippet(String asyncReadmeSnippet) {
     this.asyncReadmeSnippet = asyncReadmeSnippet;
     return this;
@@ -1697,6 +1719,7 @@ public class AdditionalProperties {
         Objects.equals(this.userAgent, additionalProperties.userAgent) &&
         Objects.equals(this.npmName, additionalProperties.npmName) &&
         Objects.equals(this.readmeSnippet, additionalProperties.readmeSnippet) &&
+        Objects.equals(this.readmeHeaderSnippet, additionalProperties.readmeHeaderSnippet) &&
         Objects.equals(this.asyncReadmeSnippet, additionalProperties.asyncReadmeSnippet) &&
         Objects.equals(this.readmeSupportingDescriptionSnippet, additionalProperties.readmeSupportingDescriptionSnippet) &&
         Objects.equals(this.readmeDescriptionSnippet, additionalProperties.readmeDescriptionSnippet) &&
@@ -1708,7 +1731,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1778,6 +1801,7 @@ public class AdditionalProperties {
     sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("    npmName: ").append(toIndentedString(npmName)).append("\n");
     sb.append("    readmeSnippet: ").append(toIndentedString(readmeSnippet)).append("\n");
+    sb.append("    readmeHeaderSnippet: ").append(toIndentedString(readmeHeaderSnippet)).append("\n");
     sb.append("    asyncReadmeSnippet: ").append(toIndentedString(asyncReadmeSnippet)).append("\n");
     sb.append("    readmeSupportingDescriptionSnippet: ").append(toIndentedString(readmeSupportingDescriptionSnippet)).append("\n");
     sb.append("    readmeDescriptionSnippet: ").append(toIndentedString(readmeDescriptionSnippet)).append("\n");
