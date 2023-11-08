@@ -40,13 +40,20 @@ export default class Changeset extends Command {
   public async run(): Promise<void> {
     const { flags } = await this.parse(Changeset)
     const { parsedKonfigYaml } = parseKonfigYaml({ configDir: process.cwd() })
-    const bumpType = parsedKonfigYaml.defaultChangesetBumpType
-    this.log(`Using bump type: ${bumpType}`)
+    const bumpTypes: { [sdk: string]: string | undefined } = {}
+    for (const [generatorName, generatorConfig] of [
+      ...Object.entries(parsedKonfigYaml.generators),
+      ...Object.entries(parsedKonfigYaml.additionalGenerators ?? []),
+    ]) {
+      bumpTypes[generatorName] =
+        generatorConfig.defaultChangesetBumpType ??
+        parsedKonfigYaml.defaultChangesetBumpType
+    }
 
     const fileName = humanId({ separator: '-', capitalize: false })
     const filter = parseFilterFlag(flags.generator)
 
-    const sdkOptions = []
+    const sdkOptions: { name: string; checked: boolean; value: string }[] = []
 
     for (const [generatorName, generatorConfig] of [
       ...Object.entries(parsedKonfigYaml.generators),
@@ -92,7 +99,13 @@ export default class Changeset extends Command {
     const sdks =
       flags.all || filter ? sdkOptions.map((s) => s.value) : answers.sdks
     const message = flags.message ? flags.message : answers.message
-    for (const sdk of sdks) sdkBumpStr += `${sdk}: ${bumpType}\n`
+    for (const sdk of sdks) {
+      const bumpType = bumpTypes[sdk]
+      if (!bumpType) {
+        this.error(`No default bump type found for ${sdk}`)
+      }
+      sdkBumpStr += `${sdk}: ${bumpType}\n`
+    }
 
     const changesetStr = `---\n${sdkBumpStr}---\n\n${message}\n`
 

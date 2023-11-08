@@ -140,6 +140,12 @@ const logoSchema = z
   })
   .describe("Light and dark logos for Konfig's API Portal")
 
+export const defaultChangesetBumpType = z
+  .enum(['major', 'minor', 'patch', 'prerelease'])
+  .optional()
+  .default('patch')
+  .describe("Default changeset bump type for 'konfig changeset' command")
+
 export const portal = z
   .object({
     primaryColor,
@@ -257,11 +263,7 @@ export const KonfigYamlCommon = z
       .string()
       .optional()
       .describe("Title to be used in Konfig's API Portal"),
-    defaultChangesetBumpType: z
-      .enum(['major', 'minor', 'patch', 'prerelease'])
-      .optional()
-      .default('patch')
-      .describe("Default changeset bump type for 'konfig changeset' command"),
+    defaultChangesetBumpType,
     fixConfig: fixConfig.optional(),
     filterQueryParams: z.string().array().optional(),
     filterTags: z.array(z.string()).optional(),

@@ -1,9 +1,8 @@
 import { z } from './zod'
 
-import { KonfigYamlCommon } from './KonfigYamlCommon'
+import { KonfigYamlCommon, defaultChangesetBumpType } from './KonfigYamlCommon'
 import { KonfigYamlFiles } from './KonfigYamlFiles'
 import { testConfig } from './TestConfig'
-import path from 'path'
 
 /**
  * Don't use this anymore, its not as flexible as clientStateWithExamples
@@ -426,6 +425,7 @@ export type CopyFilesType = z.infer<typeof copyFilesSchema>
 export const generatorCommonOptional = z
   .object({
     outputDirectory: z.string(),
+    defaultChangesetBumpType,
     readmeSnippet: z.string().optional(),
     readmeSupportingDescriptionSnippet: z.string().optional(),
     readmeDescriptionSnippet: z.string().optional(),
