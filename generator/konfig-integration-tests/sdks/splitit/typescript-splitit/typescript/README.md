@@ -9,8 +9,6 @@ Splitit\'s Web API
 <!-- toc -->
 
 - [Installing](#installing)
-  * [npm](#npm)
-  * [yarn](#yarn)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`typescriptsplitit.installmentplan.cancel`](#typescriptsplititinstallmentplancancel)
@@ -28,15 +26,36 @@ Splitit\'s Web API
 
 ## Installing<a id="installing"></a>
 
-### npm<a id="npm"></a>
-```
-npm install splitit-web-typescript-sdk --save
+<table>
+<tr>
+<th width="292px"><code>npm</code></th>
+<th width="293px"><code>pnpm</code></th>
+<th width="292px"><code>yarn</code></th>
+</tr>
+<tr>
+<td>
+
+```bash
+npm i splitit-web-typescript-sdk
 ```
 
-### yarn<a id="yarn"></a>
+</td>
+<td>
+
+```bash
+pnpm i splitit-web-typescript-sdk
 ```
+
+</td>
+<td>
+
+```bash
 yarn add splitit-web-typescript-sdk
 ```
+
+</td>
+</tr>
+</table>
 
 ## Getting Started<a id="getting-started"></a>
 

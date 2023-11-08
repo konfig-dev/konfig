@@ -10,8 +10,6 @@ A simple API based for testing typescript-array-query-string.
 <!-- toc -->
 
 - [Installing](#installing)
-  * [npm](#npm)
-  * [yarn](#yarn)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`typescriptarrayquerystringclient.test.fetch`](#typescriptarrayquerystringclienttestfetch)
@@ -20,15 +18,36 @@ A simple API based for testing typescript-array-query-string.
 
 ## Installing<a id="installing"></a>
 
-### npm<a id="npm"></a>
-```
-npm install typescript-array-query-string --save
+<table>
+<tr>
+<th width="292px"><code>npm</code></th>
+<th width="293px"><code>pnpm</code></th>
+<th width="292px"><code>yarn</code></th>
+</tr>
+<tr>
+<td>
+
+```bash
+npm i typescript-array-query-string
 ```
 
-### yarn<a id="yarn"></a>
+</td>
+<td>
+
+```bash
+pnpm i typescript-array-query-string
 ```
+
+</td>
+<td>
+
+```bash
 yarn add typescript-array-query-string
 ```
+
+</td>
+</tr>
+</table>
 
 ## Getting Started<a id="getting-started"></a>
 

@@ -10,8 +10,6 @@ A simple API based for testing typescript-optional-api-key.
 <!-- toc -->
 
 - [Installing](#installing)
-  * [npm](#npm)
-  * [yarn](#yarn)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`typescriptoptionalapikey.test.fetch`](#typescriptoptionalapikeytestfetch)
@@ -21,15 +19,36 @@ A simple API based for testing typescript-optional-api-key.
 
 ## Installing<a id="installing"></a>
 
-### npm<a id="npm"></a>
-```
-npm install typescript-optional-api-key --save
+<table>
+<tr>
+<th width="292px"><code>npm</code></th>
+<th width="293px"><code>pnpm</code></th>
+<th width="292px"><code>yarn</code></th>
+</tr>
+<tr>
+<td>
+
+```bash
+npm i typescript-optional-api-key
 ```
 
-### yarn<a id="yarn"></a>
+</td>
+<td>
+
+```bash
+pnpm i typescript-optional-api-key
 ```
+
+</td>
+<td>
+
+```bash
 yarn add typescript-optional-api-key
 ```
+
+</td>
+</tr>
+</table>
 
 ## Getting Started<a id="getting-started"></a>
 
