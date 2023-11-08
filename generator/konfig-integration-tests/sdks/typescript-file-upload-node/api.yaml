@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: typescript-file-upload-node API
+  description: A simple API based for testing typescript-file-upload-node.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  x-konfig-ignore:
+    object-with-no-properties: true
+servers:
+  - description: Live API server
+    url: https://typescript-file-upload-node.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TestFetchRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetch200Response'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchResponse:
+      type: object
+    TestFetchRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    TestFetch200Response:
+      type: object
+      properties: {}
+      example: {}
+security:
+  - ApiKeyAuth: []
