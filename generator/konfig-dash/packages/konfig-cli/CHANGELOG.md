@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.30.0
+
+### Minor Changes
+
+- [`2e7c6a41`](https://github.com/konfig-dev/konfig/commit/2e7c6a413dfe0234aa69c68d2d406c719199bf93) Thanks [@dphuang2](https://github.com/dphuang2)! - ensure 'poetry lock --no-update' is called if necessary
+
 ## 1.29.0
 
 ### Minor Changes
