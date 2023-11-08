@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.30.1
+
+### Patch Changes
+
+- [`1bd979ad`](https://github.com/konfig-dev/konfig/commit/1bd979ad10e48ad65829b7c00365fad55db29b7d) Thanks [@dphuang2](https://github.com/dphuang2)! - add logging before error about dirty git repo in konfig publish
+
 ## 1.30.0
 
 ### Minor Changes
