@@ -332,6 +332,10 @@ export default class Publish extends Command {
       description: 'Force use TWINE_USERNAME and TWINE_PASSWORD for publishing',
     }),
     test: Flags.boolean({ name: 'test', char: 't' }),
+    skipGitCleanCheck: Flags.boolean({
+      name: 'skipGitCleanCheck',
+      description: 'Do not check that git directory is clean',
+    }),
     skipRemoteCheck: Flags.boolean({
       name: 'skipRemoteCheck',
       description: 'Do not check that remote is in sync',
@@ -360,7 +364,7 @@ export default class Publish extends Command {
   public async run(): Promise<void> {
     const { flags } = await this.parse(Publish)
 
-    if (!isGitDirectoryClean()) {
+    if (flags.skipGitDirtyCheck && !isGitDirectoryClean()) {
       // use git status --porcelain to print list of changes
       CliUx.ux.log('Git status:')
       CliUx.ux.log(shell.exec('git status --porcelain').stdout)
