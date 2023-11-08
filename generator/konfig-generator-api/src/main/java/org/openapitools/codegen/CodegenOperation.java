@@ -27,7 +27,6 @@ public class CodegenOperation {
     // This was created to determine if TypeScript SDK can generate "= {}" in methods so that SDK user can pass nothing
     public boolean defaultCanBeEmptyObject;
     public boolean onlyHasPrimitiveBodyParameter = false;
-    public boolean onlyHasPrimitiveOrArrayBodyParameter = false;
     public boolean hasMultipleApiKeys;
     public boolean hasAuthMethods, hasConsumes, hasProduces, hasParams, hasOptionalParams, hasRequiredParams,
             returnTypeIsPrimitive, returnSimpleType, subresourceOperation, isMap,

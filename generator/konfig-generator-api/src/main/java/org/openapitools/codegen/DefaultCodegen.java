@@ -4824,7 +4824,6 @@ public class DefaultCodegen implements CodegenConfig {
 
         if (bodyParam != null && allParams.size() == 1) {
             op.onlyHasPrimitiveBodyParameter = bodyParam.isPrimitiveType;
-            op.onlyHasPrimitiveOrArrayBodyParameter = op.onlyHasPrimitiveBodyParameter || bodyParam.isArray;
         }
 
         op.allParams = allParams;
