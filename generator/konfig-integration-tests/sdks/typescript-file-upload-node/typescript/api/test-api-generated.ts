@@ -23,6 +23,7 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { TestFetchRequest } from '../models';
 import { paginate } from "../pagination/paginate";
+import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
 /**
  * TestApi - axios parameter creator
@@ -38,7 +39,7 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetch: async (file?: Uint8Array | File, testFetchRequest?: TestFetchRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        fetch: async (file?: Uint8Array | File | buffer.File, testFetchRequest?: TestFetchRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/simple-endpoint`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -161,7 +162,7 @@ export type TestApiFetchRequest = {
     * @type {Uint8Array | File}
     * @memberof TestApiFetch
     */
-    readonly file?: Uint8Array | File
+    readonly file?: Uint8Array | File | buffer.File
     
 } & TestFetchRequest
 
