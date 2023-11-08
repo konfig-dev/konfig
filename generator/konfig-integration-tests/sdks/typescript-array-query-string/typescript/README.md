@@ -9,14 +9,14 @@ A simple API based for testing typescript-array-query-string.
 
 <!-- toc -->
 
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`typescriptarrayquerystringclient.test.fetch`](#typescriptarrayquerystringclienttestfetch)
 
 <!-- tocstop -->
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 <table>
 <tr>

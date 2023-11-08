@@ -9,7 +9,7 @@ A simple API based for testing typescript-optional-api-key.
 
 <!-- toc -->
 
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`typescriptoptionalapikey.test.fetch`](#typescriptoptionalapikeytestfetch)
@@ -17,7 +17,7 @@ A simple API based for testing typescript-optional-api-key.
 
 <!-- tocstop -->
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 <table>
 <tr>

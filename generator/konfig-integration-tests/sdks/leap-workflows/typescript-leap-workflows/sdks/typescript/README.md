@@ -10,7 +10,7 @@ The Leap Workflows API allows developers to run workflows, fetch workflow runs, 
 
 <!-- toc -->
 
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`leap.workflowRuns.getWorkflowRun`](#leapworkflowrunsgetworkflowrun)
@@ -18,7 +18,7 @@ The Leap Workflows API allows developers to run workflows, fetch workflow runs, 
 
 <!-- tocstop -->
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 <table>
 <tr>

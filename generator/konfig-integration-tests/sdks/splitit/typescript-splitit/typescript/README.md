@@ -8,7 +8,7 @@ Splitit\'s Web API
 
 <!-- toc -->
 
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`typescriptsplitit.installmentplan.cancel`](#typescriptsplititinstallmentplancancel)
@@ -24,7 +24,7 @@ Splitit\'s Web API
 
 <!-- tocstop -->
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 <table>
 <tr>
