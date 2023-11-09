@@ -76,7 +76,7 @@ export function OperationRequest({
             Request
           </div>
           <ScrollArea type="never" scrollbarSize={4} className="-mb-px">
-            <Tab.List className="flex gap-4 text-xs font-medium px-4">
+            <Tab.List className="flex text-sm font-medium px-4">
               {languagesFiltered.map(({ label }) => {
                 return (
                   <Tab as={Fragment} key={label}>
@@ -90,7 +90,7 @@ export function OperationRequest({
                             ['border-transparent text-mantine-gray-600 hover:text-mantine-gray-800 dark:hover:text-mantine-gray-100']:
                               !selected,
                           },
-                          'border-b py-4 transition ui-not-focus-visible:outline-none ui-focus-visible:outline-brand-500 ui-focus-visible:dark:outline-brand-600 whitespace-nowrap'
+                          'border-b-2 py-5 px-3 transition ui-not-focus-visible:outline-none ui-focus-visible:outline-brand-500 ui-focus-visible:dark:outline-brand-600 whitespace-nowrap'
                         )}
                       >
                         {label}
