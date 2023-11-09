@@ -13,10 +13,10 @@ konfig-test-dependencies:
   # wget: used to get C# install script
   ## java [openjdk-11-jre]
   RUN apt-get update
-  RUN apt-get install -y lsof python3 python3-pip openssl wget openjdk-11-jre
+  RUN apt-get install -y lsof python3 python3-pip openssl curl openjdk-11-jre
   ## node comes from base image
   ## csharp
-  RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+  RUN curl -o dotnet-install.sh https://dot.net/v1/dotnet-install.sh
   RUN chmod +x ./dotnet-install.sh
   RUN ./dotnet-install.sh --channel 7.0
   RUN ./dotnet-install.sh --channel 5.0
