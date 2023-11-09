@@ -207,7 +207,7 @@ const defaultTestScripts: Record<
   dart: () => ['dart test'],
   typescript: () => ['yarn', 'yarn test', 'yarn build'],
   csharp: () => ['dotnet test'],
-  java: () => ['mvn test'],
+  java: () => ['mvn test --quiet'],
   ruby: () => [
     // If you don't remove .gem files you get:
     // You have one or more invalid gemspecs that need to be fixed.
