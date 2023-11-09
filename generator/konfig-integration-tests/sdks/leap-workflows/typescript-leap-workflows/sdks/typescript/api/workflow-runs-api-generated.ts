@@ -23,6 +23,7 @@ import { WorkflowRunEntity } from '../models';
 // @ts-ignore
 import { WorkflowRunPostRequest } from '../models';
 import { paginate } from "../pagination/paginate";
+import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
 /**
  * WorkflowRunsApi - axios parameter creator

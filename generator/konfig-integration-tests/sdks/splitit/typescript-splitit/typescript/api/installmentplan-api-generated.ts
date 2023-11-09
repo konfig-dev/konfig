@@ -134,6 +134,7 @@ import { UxSettingsModel } from '../models';
 // @ts-ignore
 import { VerifyAuthorizationResponse } from '../models';
 import { paginate } from "../pagination/paginate";
+import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
 /**
  * InstallmentplanApi - axios parameter creator
