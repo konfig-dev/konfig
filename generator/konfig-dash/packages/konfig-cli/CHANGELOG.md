@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.32.0
+
+### Minor Changes
+
+- [#357](https://github.com/konfig-dev/konfig/pull/357) [`fee1ac96`](https://github.com/konfig-dev/konfig/commit/fee1ac965b9cffcf8fa5428ef22f504979986510) Thanks [@dphuang2](https://github.com/dphuang2)! - set output directory to date to avoid conflict
+
 ## 1.31.1
 
 ### Patch Changes
