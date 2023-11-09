@@ -59,7 +59,8 @@ function getOutputDir(
   konfigOutputDirectory: string | undefined
 ): string {
   if (outputFlag !== undefined) return outputFlag
-  if (konfigOutputDirectory) return konfigOutputDirectory
+  if (konfigOutputDirectory)
+    return path.join(konfigOutputDirectory, new Date().toISOString())
   return `${process.cwd()}/out`
 }
 

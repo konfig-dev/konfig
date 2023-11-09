@@ -1,5 +1,5 @@
 VERSION 0.7
-FROM node:16-slim
+FROM node:18
 WORKDIR /konfig-dash
 
 konfig-test-dependencies:
@@ -22,8 +22,8 @@ konfig-test-dependencies:
   RUN ./dotnet-install.sh --channel 3.1
   ENV PATH=$PATH:/root/.dotnet
   ## python
-  RUN pip3 install --upgrade pip
-  RUN pip3 install poetry
+  RUN apt install python3-pip -y
+  RUN apt install python3-poetry -y
   # Clean up
   RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
