@@ -71,16 +71,12 @@ export function OperationRequest({
   return (
     <div className="border rounded-md border-mantine-gray-400 dark:border-mantine-gray-800 overflow-hidden">
       <Tab.Group>
-        <div className="flex pl-4 flex-wrap items-start gap-x-4 bg-gray-50 dark:bg-mantine-gray-900 border-b dark:border-b-mantine-gray-800">
-          <div className="mr-auto pt-3 text-black dark:text-white text-sm font-semibold">
+        <div className="flex flex-wrap items-start gap-x-4 bg-gray-50 dark:bg-mantine-gray-900 border-b dark:border-b-mantine-gray-800">
+          <div className="mr-auto pt-3 text-black dark:text-white text-sm font-semibold pl-4">
             Request
           </div>
-          <ScrollArea
-            type="scroll"
-            scrollbarSize={7}
-            className="-mb-px max-w-xs"
-          >
-            <Tab.List className="flex gap-4 text-xs font-medium pr-4">
+          <ScrollArea type="never" scrollbarSize={4} className="-mb-px">
+            <Tab.List className="flex gap-4 text-xs font-medium px-4">
               {languagesFiltered.map(({ label }) => {
                 return (
                   <Tab as={Fragment} key={label}>
