@@ -155,6 +155,9 @@ export function convertToHarRequest(
     parameter.toUpperCase()
   )
 
+  // URI encode har.url so spaces and other characters are encoded
+  har.url = encodeURI(har.url)
+
   // if request body is not empty then add it to postData
   if (Object.keys(requestBody).length > 0) {
     har.postData = {

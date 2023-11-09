@@ -5,6 +5,49 @@ import {
 } from './code-generator-httpsnippet'
 import { test, expect } from 'vitest'
 
+test('httpsnippet - HAR validation error', async () => {
+  const args: CodeGeneratorHttpSnippetConstructorArgs = {
+    contentType: null,
+    httpMethod: HttpMethodsEnum.GET,
+    path: '/v1/runs/{workflow_run_id}',
+    parameters: [
+      {
+        description: 'The ID of the workflow run to retrieve.',
+        name: 'workflow_run_id',
+        required: true,
+        in: 'path',
+        example: 'rnp_x3p27VQk6MyJfLe',
+        schema: { type: 'string' },
+      },
+    ],
+    requestBody: null,
+    securitySchemes: {
+      api_key: { type: 'apiKey', in: 'header', name: 'X-Api-Key' },
+    },
+    formData: {
+      parameters: { workflow_run_id: 'm ' },
+      security: {
+        api_key: { type: 'apiKey', in: 'header', key: 'X-Api-Key', value: '' },
+      },
+      requestBody: '',
+    },
+    languageConfigurations: {
+      typescript: { clientName: 'Leap', packageName: '@leap-ai/workflows' },
+      python: { clientName: 'Leap', packageName: 'leap_workflows' },
+    },
+    servers: ['https://api.workflows.tryleap.ai'],
+    operationId: 'WorkflowRuns_getWorkflowRun',
+    tag: 'Workflow Runs',
+    basePath: 'https://api.workflows.tryleap.ai',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: false,
+    targetId: 'shell',
+  }
+  const code = await new CodeGeneratorHttpsnippet(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 test('httpsnippet - deeply nested objects with files', async () => {
   const args: CodeGeneratorHttpSnippetConstructorArgs = {
     contentType: 'multipart/form-data',
