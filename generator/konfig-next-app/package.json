@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "redis": "docker run -p 6379:6379 -i redis/redis-stack-server:latest",
+    "predev": "sh check-docker.sh",
     "dev:next": "next dev",
     "dev:prce": "cd ../konfig-python-remote-code-executor && ./dev.sh",
     "dev": "concurrently \"yarn:redis\" \"yarn:dev:next\" \"yarn:dev:prce\"",
