@@ -40,7 +40,7 @@ setup(
     description="splitit-web-api-v3",
     author="Konfig",
     author_email="engineering@konfigthis.com",
-    url="https://github.com/konfig-dev/konfig/tree/main/csharp",
+    url="https://github.com/konfig-dev/konfig/tree/main/python",
     keywords=["Konfig", "splitit-web-api-v3"],
     python_requires=">=3.7",
     install_requires=REQUIRES,
