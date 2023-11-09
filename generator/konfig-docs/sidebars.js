@@ -118,6 +118,11 @@ const sidebars = {
             },
             {
               type: "doc",
+              label: "Configuring Google Analytics",
+              id: "portal/tutorials/configuring-google-analytics",
+            },
+            {
+              type: "doc",
               label: "Styling Your Portal",
               id: "portal/tutorials/styling-your-portal",
             },
