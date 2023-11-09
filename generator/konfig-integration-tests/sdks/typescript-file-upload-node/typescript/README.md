@@ -80,7 +80,7 @@ const fetchResponse = await typescriptfileuploadnodeclient.test.fetch({});
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### file: `Uint8Array | File`<a id="file-uint8array--file"></a>
+##### file: `Uint8Array | File | buffer.File`<a id="file-uint8array--file--bufferfile"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

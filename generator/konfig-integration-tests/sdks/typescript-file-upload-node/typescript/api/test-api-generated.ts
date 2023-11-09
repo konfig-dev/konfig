@@ -34,7 +34,7 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * Provide an input parameter to receive a JSON value with properties.
          * @summary Fetches a JSON value based on input parameter
-         * @param {Uint8Array | File} [file] 
+         * @param {Uint8Array | File | buffer.File} [file] 
          * @param {TestFetchRequest} [testFetchRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -171,7 +171,7 @@ export type TestApiFetchRequest = {
     
     /**
     * 
-    * @type {Uint8Array | File}
+    * @type {Uint8Array | File | buffer.File}
     * @memberof TestApiFetch
     */
     readonly file?: Uint8Array | File | buffer.File
