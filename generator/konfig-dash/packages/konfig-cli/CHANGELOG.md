@@ -1,5 +1,18 @@
 # konfig-cli
 
+## 1.32.0
+
+### Minor Changes
+
+- [#357](https://github.com/konfig-dev/konfig/pull/357) [`fee1ac96`](https://github.com/konfig-dev/konfig/commit/fee1ac965b9cffcf8fa5428ef22f504979986510) Thanks [@dphuang2](https://github.com/dphuang2)! - set output directory to date to avoid conflict
+
+### Patch Changes
+
+- Updated dependencies [[`107261c4`](https://github.com/konfig-dev/konfig/commit/107261c4821f9165d012b8f85b0b8248bae9acd2)]:
+  - konfig-lib@1.30.0
+  - konfig-openapi-spec@1.7.2
+  - konfig-postman-to-openapi@3.0.144
+
 ## 1.31.0
 
 ### Minor Changes

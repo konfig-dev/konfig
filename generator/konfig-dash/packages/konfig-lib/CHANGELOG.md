@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.30.0
+
+### Minor Changes
+
+- [#355](https://github.com/konfig-dev/konfig/pull/355) [`107261c4`](https://github.com/konfig-dev/konfig/commit/107261c4821f9165d012b8f85b0b8248bae9acd2) Thanks [@dphuang2](https://github.com/dphuang2)! - add googleAnalyticsId configuration for API portal
+
 ## 1.29.0
 
 ### Minor Changes
