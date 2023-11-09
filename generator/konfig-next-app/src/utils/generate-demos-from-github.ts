@@ -112,6 +112,7 @@ export async function generateDemosDataFromGithub({
     mainBranch,
     organization,
     portal,
+    googleAnalyticsId: fetchResult.googleAnalyticsId,
     demo,
     portalTitle: fetchResult.portalTitle ?? null,
     faviconLink: fetchResult.faviconLink,

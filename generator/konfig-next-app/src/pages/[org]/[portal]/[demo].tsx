@@ -105,17 +105,6 @@ const DemoPage = observer(
             ) : (
               <link rel="icon" href="/favicon.png" />
             )}
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=G-${googleAnalyticsId}`}
-            ></script>
-            <script>
-              {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', '${googleAnalyticsId}');`}
-            </script>
           </Head>
           <DemoPortal
             omitOwnerAndRepo={omitOwnerAndRepo}

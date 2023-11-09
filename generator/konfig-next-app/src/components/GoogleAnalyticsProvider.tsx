@@ -2,13 +2,13 @@ import Head from 'next/head'
 import React, { PropsWithChildren } from 'react'
 
 interface GoogleAnalyticsProviderProps {
-  googleAnalyticsId: string | null
+  googleAnalyticsId: string | null | undefined
 }
 
 export const GoogleAnalyticsProvider: React.FC<
   PropsWithChildren<GoogleAnalyticsProviderProps>
 > = ({ children, googleAnalyticsId }) => {
-  if (googleAnalyticsId === null) {
+  if (!googleAnalyticsId) {
     return <>{children}</>
   }
   return (
