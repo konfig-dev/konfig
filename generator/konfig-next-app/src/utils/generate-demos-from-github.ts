@@ -27,6 +27,7 @@ export const _mappings: {
 export type FetchResult = {
   primaryColor?: string
   portalTitle?: string
+  googleAnalyticsId: string | null
   organization: Organization
   portal: Portal
   demos: Demo[]
@@ -75,6 +76,7 @@ export async function generateDemosDataFromGithub({
       organization: Organization
       portal: Portal
       mainBranch: string
+      googleAnalyticsId: string | null
       demo: Demo
       /**
        * Have to make this nullable because of the following error:
@@ -186,6 +188,7 @@ async function _fetch({
     portal,
     demos,
     hasDocumentation: konfigYaml.content.portal.documentation !== undefined,
+    googleAnalyticsId: konfigYaml.content.portal?.googleAnalyticsId ?? null,
     portalTitle: konfigYaml.content.portal.title,
     primaryColor: konfigYaml.content.portal.primaryColor,
     mainBranch: repository.data.default_branch,

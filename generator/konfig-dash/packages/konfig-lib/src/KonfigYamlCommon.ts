@@ -149,6 +149,12 @@ export const defaultChangesetBumpType = z
 export const portal = z
   .object({
     primaryColor,
+    googleAnalyticsId: z
+      .string()
+      .optional()
+      .describe(
+        "Google Analytics ID. If provided, Konfig's API Portal will include Google Analytics tracking."
+      ),
     favicon: z
       .string()
       .optional()

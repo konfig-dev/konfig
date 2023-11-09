@@ -32,6 +32,7 @@ export type MarkdownPageProps = {
   owner: string
   repo: string
   operations: OperationObject[]
+  googleAnalyticsId: string | null
   markdown: string
   defaultBranch: string
 
@@ -232,6 +233,7 @@ export async function generatePropsForMarkdownPage({
       title: konfigYaml.content.portal?.title,
       konfigYaml: konfigYaml.content,
       markdown,
+      googleAnalyticsId: konfigYaml.content.portal?.googleAnalyticsId ?? null,
       faviconLink,
       docTitle,
       logo: logoLink,

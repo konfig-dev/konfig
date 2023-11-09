@@ -3,14 +3,11 @@ import { observer } from 'mobx-react'
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useMemo } from 'react'
-import {
-  GenerationSuccess,
-  generateDemosDataFromGithub,
-} from '@/utils/generate-demos-from-github'
+import { GenerationSuccess } from '@/utils/generate-demos-from-github'
 import { MantineProvider, useMantineTheme } from '@mantine/core'
-import { generateShadePalette } from '@/utils/generate-shade-palette'
 import { generatePropsForDemoPage } from '@/utils/generate-props-for-demo-page'
 import { generateMantineThemeColors } from '@/utils/generate-mantine-theme-colors'
+import { GoogleAnalyticsProvider } from '@/components/GoogleAnalyticsProvider'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -58,6 +55,7 @@ const DemoPage = observer(
     portalTitle,
     primaryColor,
     omitOwnerAndRepo,
+    googleAnalyticsId,
     hasDocumentation,
     owner,
     repo,
@@ -100,21 +98,34 @@ const DemoPage = observer(
           primaryColor: 'brand',
         }}
       >
-        <Head>
-          {faviconLink ? (
-            <link rel="icon" href={faviconLink} />
-          ) : (
-            <link rel="icon" href="/favicon.png" />
-          )}
-        </Head>
-        <DemoPortal
-          omitOwnerAndRepo={omitOwnerAndRepo}
-          hasDocumentation={hasDocumentation}
-          state={state}
-          owner={owner}
-          repo={repo}
-          logo={logo}
-        />
+        <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId}>
+          <Head>
+            {faviconLink ? (
+              <link rel="icon" href={faviconLink} />
+            ) : (
+              <link rel="icon" href="/favicon.png" />
+            )}
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=G-${googleAnalyticsId}`}
+            ></script>
+            <script>
+              {`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${googleAnalyticsId}');`}
+            </script>
+          </Head>
+          <DemoPortal
+            omitOwnerAndRepo={omitOwnerAndRepo}
+            hasDocumentation={hasDocumentation}
+            state={state}
+            owner={owner}
+            repo={repo}
+            logo={logo}
+          />
+        </GoogleAnalyticsProvider>
       </MantineProvider>
     )
   }

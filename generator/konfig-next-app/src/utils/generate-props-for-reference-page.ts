@@ -41,6 +41,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   cookieParameters: Parameter[]
   requestBodyProperties: Record<string, SchemaObject> | null
   requestBodyRequired: string[] | null
+  googleAnalyticsId: string | null
   responses: Record<string, ResponseObject>
   securityRequirements: Record<string, string[]> | null
   securitySchemes: Record<string, SecurityScheme> | null
@@ -279,6 +280,7 @@ export async function generatePropsForReferencePage({
       oauthTokenUrl,
       cookieParameters,
       omitOwnerAndRepo: omitOwnerAndRepo ?? false,
+      googleAnalyticsId: props.konfigYaml.portal.googleAnalyticsId ?? null,
       hasDocumentation: props.konfigYaml.portal?.documentation !== undefined,
       requestBodyProperties,
       demos:

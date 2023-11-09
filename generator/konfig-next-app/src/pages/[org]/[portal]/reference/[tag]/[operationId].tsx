@@ -18,6 +18,7 @@ import {
 } from '@/utils/generate-props-for-reference-page'
 import { useNavbarStyles } from '@/utils/use-navbar-styles'
 import { generateMantineThemeColors } from '@/utils/generate-mantine-theme-colors'
+import { GoogleAnalyticsProvider } from '@/components/GoogleAnalyticsProvider'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -84,6 +85,7 @@ const Operation = ({
   oauthTokenUrl: originalOauthTokenUrl,
   omitOwnerAndRepo,
   hideNonSdkSnippets,
+  googleAnalyticsId,
   responses,
   logo,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -111,96 +113,98 @@ const Operation = ({
         primaryColor: 'brand',
       }}
     >
-      <Head>
-        <title>
-          {operation.operation.summary ??
-            `${operation.method} ${operation.path}`}
-        </title>
-        {faviconLink ? (
-          <link rel="icon" href={faviconLink} />
-        ) : (
-          <link rel="icon" href="/favicon.png" />
-        )}
-      </Head>
-      <Script
-        src={`https://unpkg.com/${konfigYaml.generators.typescript?.npmName}@${konfigYaml.generators.typescript?.version}/dist/browser.js`}
-      />
-      <AppShell
-        styles={{
-          main: {
-            background: colorScheme === 'dark' ? colors.dark[8] : undefined,
-          },
-        }}
-        navbarOffsetBreakpoint="lg"
-        asideOffsetBreakpoint="lg"
-        navbar={
-          <Navbar
-            className={navbarClasses.classes.navbar}
-            hiddenBreakpoint="lg"
-            hidden={!opened}
-            width={{ lg: NAVBAR_WIDTH }}
-            sx={{
-              overflowY: 'auto',
-              height:
-                'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
-            }}
-          >
-            <ReferenceNavbar
-              setOauthTokenUrl={setOauthTokenUrl}
-              oauthTokenUrls={oauthTokenUrls}
-              originalOauthTokenUrl={originalOauthTokenUrl}
-              setOauthTokenUrls={setOauthTokenUrls}
-              servers={servers}
-              setServers={setServers}
+      <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId}>
+        <Head>
+          <title>
+            {operation.operation.summary ??
+              `${operation.method} ${operation.path}`}
+          </title>
+          {faviconLink ? (
+            <link rel="icon" href={faviconLink} />
+          ) : (
+            <link rel="icon" href="/favicon.png" />
+          )}
+        </Head>
+        <Script
+          src={`https://unpkg.com/${konfigYaml.generators.typescript?.npmName}@${konfigYaml.generators.typescript?.version}/dist/browser.js`}
+        />
+        <AppShell
+          styles={{
+            main: {
+              background: colorScheme === 'dark' ? colors.dark[8] : undefined,
+            },
+          }}
+          navbarOffsetBreakpoint="lg"
+          asideOffsetBreakpoint="lg"
+          navbar={
+            <Navbar
+              className={navbarClasses.classes.navbar}
+              hiddenBreakpoint="lg"
+              hidden={!opened}
+              width={{ lg: NAVBAR_WIDTH }}
+              sx={{
+                overflowY: 'auto',
+                height:
+                  'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
+              }}
+            >
+              <ReferenceNavbar
+                setOauthTokenUrl={setOauthTokenUrl}
+                oauthTokenUrls={oauthTokenUrls}
+                originalOauthTokenUrl={originalOauthTokenUrl}
+                setOauthTokenUrls={setOauthTokenUrls}
+                servers={servers}
+                setServers={setServers}
+                owner={owner}
+                repo={repo}
+                basePath={basePath}
+                setBasePath={setBasePath}
+                oauthTokenUrl={oauthTokenUrl}
+                setOpened={setOpened}
+                navbarData={navbarData}
+                originalServers={initialServers}
+              />
+            </Navbar>
+          }
+          header={
+            <ReferenceHeader
               owner={owner}
               repo={repo}
-              basePath={basePath}
-              setBasePath={setBasePath}
-              oauthTokenUrl={oauthTokenUrl}
+              hasDocumentation={hasDocumentation}
+              opened={opened}
               setOpened={setOpened}
-              navbarData={navbarData}
-              originalServers={initialServers}
+              title={title}
+              demos={demos}
+              logo={logo}
+              omitOwnerAndRepo={omitOwnerAndRepo}
             />
-          </Navbar>
-        }
-        header={
-          <ReferenceHeader
+          }
+        >
+          <OperationReferenceMain
+            path={path}
+            requestBodyParameter={requestBodyParameter}
+            hideNonSdkSnippets={hideNonSdkSnippets}
+            originalOauthTokenUrl={originalOauthTokenUrl}
+            contentType={contentType}
             owner={owner}
+            servers={servers}
             repo={repo}
-            hasDocumentation={hasDocumentation}
-            opened={opened}
-            setOpened={setOpened}
-            title={title}
-            demos={demos}
-            logo={logo}
-            omitOwnerAndRepo={omitOwnerAndRepo}
+            konfigYaml={konfigYaml}
+            oauthTokenUrl={oauthTokenUrl}
+            pathParameters={pathParameters}
+            queryParameters={queryParameters}
+            headerParameters={headerParameters}
+            cookieParameters={cookieParameters}
+            requestBodyProperties={requestBodyProperties}
+            requestBodyRequired={requestBodyRequired}
+            responses={responses}
+            securitySchemes={securitySchemes}
+            operation={operation}
+            httpMethod={httpMethod}
+            basePath={basePath ?? servers[0]}
           />
-        }
-      >
-        <OperationReferenceMain
-          path={path}
-          requestBodyParameter={requestBodyParameter}
-          hideNonSdkSnippets={hideNonSdkSnippets}
-          originalOauthTokenUrl={originalOauthTokenUrl}
-          contentType={contentType}
-          owner={owner}
-          servers={servers}
-          repo={repo}
-          konfigYaml={konfigYaml}
-          oauthTokenUrl={oauthTokenUrl}
-          pathParameters={pathParameters}
-          queryParameters={queryParameters}
-          headerParameters={headerParameters}
-          cookieParameters={cookieParameters}
-          requestBodyProperties={requestBodyProperties}
-          requestBodyRequired={requestBodyRequired}
-          responses={responses}
-          securitySchemes={securitySchemes}
-          operation={operation}
-          httpMethod={httpMethod}
-          basePath={basePath ?? servers[0]}
-        />
-      </AppShell>
+        </AppShell>
+      </GoogleAnalyticsProvider>
     </MantineProvider>
   )
 }

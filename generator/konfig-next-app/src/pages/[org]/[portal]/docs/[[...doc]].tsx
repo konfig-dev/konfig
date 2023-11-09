@@ -39,6 +39,7 @@ import { asideOffsetBreakpoint } from '@/utils/aside-offset-breakpoint'
 import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
 import { useNavbarStyles } from '@/utils/use-navbar-styles'
 import { NavbarSectionLabel } from '@/components/NavbarSectionLabel'
+import { GoogleAnalyticsProvider } from '@/components/GoogleAnalyticsProvider'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -86,6 +87,7 @@ const DocumentationPage = observer(
     docTitle,
     docId,
     docConfig,
+    googleAnalyticsId,
     operations,
     owner,
     defaultBranch,
@@ -137,7 +139,7 @@ const DocumentationPage = observer(
     }, [router.asPath])
 
     return (
-      <>
+      <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId}>
         <Head>
           <title>{docTitle}</title>
           {faviconLink ? (
@@ -252,7 +254,7 @@ const DocumentationPage = observer(
             </OperationsContext.Provider>
           </AppShell>
         </MantineProvider>
-      </>
+      </GoogleAnalyticsProvider>
     )
   }
 )
