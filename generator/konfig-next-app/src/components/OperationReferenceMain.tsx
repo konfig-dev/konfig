@@ -298,8 +298,11 @@ export function OperationReferenceMain({
                     borderRadius: theme.radius.xl,
                   }}
                 />
-                <Code style={{ backgroundColor: 'unset' }}>
-                  {operation.path}
+                <Code
+                  className="overflow-scroll"
+                  style={{ backgroundColor: 'unset' }}
+                >
+                  {`${basePath}${operation.path}`}
                 </Code>
               </Group>
               {operation.operation.deprecated && (
