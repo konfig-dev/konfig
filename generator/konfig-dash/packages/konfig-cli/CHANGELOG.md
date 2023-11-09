@@ -1,5 +1,20 @@
 # konfig-cli
 
+## 1.31.0
+
+### Minor Changes
+
+- [#351](https://github.com/konfig-dev/konfig/pull/351) [`e19a56d9`](https://github.com/konfig-dev/konfig/commit/e19a56d9cd7337a30070ba56f78083f61a27da92) Thanks [@dphuang2](https://github.com/dphuang2)! - allow default changeset bump type to be configured for a generator
+
+- [#349](https://github.com/konfig-dev/konfig/pull/349) [`9f95edfa`](https://github.com/konfig-dev/konfig/commit/9f95edfabe9e745251f58f6ed9b554031e161ccb) Thanks [@dphuang2](https://github.com/dphuang2)! - add skipGitCleanCheck flag to konfig publish
+
+### Patch Changes
+
+- Updated dependencies [[`e19a56d9`](https://github.com/konfig-dev/konfig/commit/e19a56d9cd7337a30070ba56f78083f61a27da92)]:
+  - konfig-lib@1.29.0
+  - konfig-openapi-spec@1.7.1
+  - konfig-postman-to-openapi@3.0.143
+
 ## 1.30.1
 
 ### Patch Changes

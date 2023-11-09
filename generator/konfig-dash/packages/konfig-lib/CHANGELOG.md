@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.29.0
+
+### Minor Changes
+
+- [#351](https://github.com/konfig-dev/konfig/pull/351) [`e19a56d9`](https://github.com/konfig-dev/konfig/commit/e19a56d9cd7337a30070ba56f78083f61a27da92) Thanks [@dphuang2](https://github.com/dphuang2)! - allow default changeset bump type to be configured for a generator
+
 ## 1.28.0
 
 ### Minor Changes
