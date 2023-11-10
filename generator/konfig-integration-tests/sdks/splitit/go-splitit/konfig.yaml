@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
 
-outputDirectory: /tmp/typescript-splitit-sdks-out
+outputDirectory: /tmp/go-splitit-sdks-out
 specInputPath: ../swagger.json
 specPath: ../swagger-fixed.json
 fixConfig:
@@ -8,11 +8,10 @@ fixConfig:
     $.servers[0]:
       url: https://web-api-v3.production.splitit.com
 generators:
-  typescript:
-    version: 3.3.2
-    outputDirectory: typescript
-    npmName: splitit-web-typescript-sdk
-    clientName: TypescriptSplitit
+  go:
+    version: 1.7.1
+    packageName: splitit
+    outputDirectory: go
     git:
       userId: konfig-dev
-      repoId: konfig/tree/main/typescript
+      repoId: konfig/tree/main/go
