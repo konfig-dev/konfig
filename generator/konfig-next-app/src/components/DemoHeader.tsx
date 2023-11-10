@@ -6,6 +6,7 @@ import { HeaderWrapper } from './HeaderWrapper'
 import { TABS } from './HeaderButton'
 import { HeaderTabs } from './HeaderTabs'
 import type { generateLogoLink } from '@/utils/generate-logo-link'
+import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 
 export const DemoHeader = observer(
   ({
@@ -19,10 +20,12 @@ export const DemoHeader = observer(
     owner,
     repo,
     logo,
+    allMarkdown,
   }: {
     opened: boolean
     setOpened: Dispatch<SetStateAction<boolean>>
     state: PortalState
+    allMarkdown: MarkdownPageProps['allMarkdown']
     sandbox?: boolean
     hasDocumentation: boolean
     demos: string[]
@@ -42,6 +45,7 @@ export const DemoHeader = observer(
         />
         <HeaderTabs
           hasLightAndDarkLogo={typeof logo !== 'string'}
+          allMarkdown={allMarkdown}
           hasDocumentation={hasDocumentation}
           demos={demos}
           owner={owner}

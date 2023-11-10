@@ -6,6 +6,7 @@ import { IconMenu } from '@tabler/icons-react'
 import Link from 'next/link'
 import { getClickableStyles } from '@/utils/get-clickable-styles'
 import { Search } from './Search'
+import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 
 export function HeaderTabs({
   currentTab,
@@ -14,6 +15,7 @@ export function HeaderTabs({
   hasDocumentation,
   omitOwnerAndRepo,
   owner,
+  allMarkdown,
   repo,
   hasLightAndDarkLogo,
 }: {
@@ -25,6 +27,7 @@ export function HeaderTabs({
   repo: string
   hasLightAndDarkLogo: boolean
   omitOwnerAndRepo?: boolean
+  allMarkdown: MarkdownPageProps['allMarkdown']
 }) {
   const docsPath = useDocsPath({ omitOwnerAndRepo })
   const referencePath = useReferencePath({ omitOwnerAndRepo })
@@ -159,13 +162,11 @@ export function HeaderTabs({
             link={linkForTab(TABS.sdks)}
           />
         </Group>
-        <Search />
+        <Search allMarkdown={allMarkdown} />
       </div>
     </Box>
   )
 }
-
-function Tabs({ className }: { className: string }) {}
 
 function useGithubUrl({
   owner,

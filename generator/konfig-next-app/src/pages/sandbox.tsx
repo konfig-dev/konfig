@@ -171,6 +171,7 @@ const DemoPortalWrapper = observer(() => {
         owner="sandbox"
         repo="sandbox"
         omitOwnerAndRepo={true}
+        allMarkdown={[]}
         hasDocumentation={false}
         logo={null}
         refreshSandbox={async () => {

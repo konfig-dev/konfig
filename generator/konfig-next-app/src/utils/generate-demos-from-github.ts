@@ -8,6 +8,8 @@ import type { KonfigYamlType, SocialObject } from 'konfig-lib'
 import { Octokit } from '@octokit/rest'
 import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
+import { MarkdownPageProps } from './generate-props-for-markdown-page'
+import { computeDocumentProps } from './compute-document-props'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -32,6 +34,7 @@ export type FetchResult = {
   portal: Portal
   demos: Demo[]
   socials?: SocialObject
+  allMarkdown: MarkdownPageProps['allMarkdown']
   mainBranch: string
   hasDocumentation: boolean
   faviconLink: string | null
@@ -86,6 +89,7 @@ export async function generateDemosDataFromGithub({
       portalTitle: string | null
       primaryColor: string | null
       hasDocumentation: boolean
+      allMarkdown: MarkdownPageProps['allMarkdown']
       faviconLink: string | null
       logo: ReturnType<typeof generateLogoLink>
     }
@@ -114,6 +118,7 @@ export async function generateDemosDataFromGithub({
     portal,
     googleAnalyticsId: fetchResult.googleAnalyticsId,
     demo,
+    allMarkdown: fetchResult.allMarkdown,
     portalTitle: fetchResult.portalTitle ?? null,
     faviconLink: fetchResult.faviconLink,
     primaryColor: fetchResult.primaryColor ?? null,
@@ -184,10 +189,22 @@ async function _fetch({
     portals: [portal],
   }
 
+  const allMarkdown = konfigYaml.content.portal?.documentation
+    ? (
+        await computeDocumentProps({
+          documentationConfig: konfigYaml.content.portal?.documentation,
+          owner,
+          repo,
+          octokit,
+        })
+      ).allMarkdown
+    : []
+
   return {
     organization,
     portal,
     demos,
+    allMarkdown,
     hasDocumentation: konfigYaml.content.portal.documentation !== undefined,
     googleAnalyticsId: konfigYaml.content.portal?.googleAnalyticsId ?? null,
     portalTitle: konfigYaml.content.portal.title,

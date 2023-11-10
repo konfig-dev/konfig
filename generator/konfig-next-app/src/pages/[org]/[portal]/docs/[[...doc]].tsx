@@ -227,6 +227,7 @@ const DocumentationPage = observer(
                 omitOwnerAndRepo={omitOwnerAndRepo}
                 opened={opened}
                 setOpened={setOpened}
+                allMarkdown={allMarkdown}
                 title={title}
                 demos={demos}
                 logo={logo}

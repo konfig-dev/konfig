@@ -5,6 +5,7 @@ import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
 import { HeaderTabs } from './HeaderTabs'
 import { TABS } from './HeaderButton'
 import type { generateLogoLink } from '@/utils/generate-logo-link'
+import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 
 export function DocumentationHeader({
   opened,
@@ -15,6 +16,7 @@ export function DocumentationHeader({
   owner,
   repo,
   logo,
+  allMarkdown,
 }: {
   opened: boolean
   setOpened: Dispatch<SetStateAction<boolean>>
@@ -24,6 +26,7 @@ export function DocumentationHeader({
   owner: string
   repo: string
   logo: ReturnType<typeof generateLogoLink>
+  allMarkdown: MarkdownPageProps['allMarkdown']
 }) {
   return (
     <HeaderWrapper hasLightAndDarkLogo={typeof logo !== 'string'}>
@@ -42,6 +45,7 @@ export function DocumentationHeader({
         demos={demos}
         currentTab={TABS.documentation}
         omitOwnerAndRepo={omitOwnerAndRepo}
+        allMarkdown={allMarkdown}
       />
     </HeaderWrapper>
   )

@@ -57,6 +57,7 @@ const DemoPage = observer(
     omitOwnerAndRepo,
     googleAnalyticsId,
     hasDocumentation,
+    allMarkdown,
     owner,
     repo,
     faviconLink,
@@ -110,6 +111,7 @@ const DemoPage = observer(
             omitOwnerAndRepo={omitOwnerAndRepo}
             hasDocumentation={hasDocumentation}
             state={state}
+            allMarkdown={allMarkdown}
             owner={owner}
             repo={repo}
             logo={logo}

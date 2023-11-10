@@ -87,6 +87,7 @@ const Operation = ({
   hideNonSdkSnippets,
   googleAnalyticsId,
   responses,
+  allMarkdown,
   logo,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
@@ -171,6 +172,7 @@ const Operation = ({
               owner={owner}
               repo={repo}
               hasDocumentation={hasDocumentation}
+              allMarkdown={allMarkdown}
               opened={opened}
               setOpened={setOpened}
               title={title}

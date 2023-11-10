@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPropsResult } from 'next'
+import { GetStaticPropsResult } from 'next'
 import {
   GenerationSuccess,
   generateDemosDataFromGithub,

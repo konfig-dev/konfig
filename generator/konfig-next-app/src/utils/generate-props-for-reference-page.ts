@@ -18,6 +18,9 @@ import { NavbarDataItem } from '@/components/LinksGroup'
 import { generateDemosDataFromGithub } from './generate-demos-from-github'
 import { sortParametersByRequired } from './sort-parameters-by-required'
 import { generateLogoLink } from './generate-logo-link'
+import { MarkdownPageProps } from './generate-props-for-markdown-page'
+import { computeDocumentProps } from './compute-document-props'
+import { createOctokitInstance } from './octokit'
 
 export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   spec: Spec['spec']
@@ -42,6 +45,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   requestBodyProperties: Record<string, SchemaObject> | null
   requestBodyRequired: string[] | null
   googleAnalyticsId: string | null
+  allMarkdown: MarkdownPageProps['allMarkdown']
   responses: Record<string, ResponseObject>
   securityRequirements: Record<string, string[]> | null
   securitySchemes: Record<string, SecurityScheme> | null
@@ -62,6 +66,7 @@ export async function generatePropsForReferencePage({
   operationId: string
   omitOwnerAndRepo?: boolean
 }): Promise<GetStaticPropsResult<ReferencePageProps>> {
+  const octokit = await createOctokitInstance({ owner, repo })
   const { spec, ...props } = await githubGetReferenceResources({
     owner,
     repo,
@@ -259,6 +264,17 @@ export async function generatePropsForReferencePage({
       notFound: true,
     }
 
+  const allMarkdown = props.konfigYaml.portal?.documentation
+    ? (
+        await computeDocumentProps({
+          documentationConfig: props.konfigYaml.portal.documentation,
+          owner,
+          repo,
+          octokit,
+        })
+      ).allMarkdown
+    : []
+
   return {
     props: {
       ...props,
@@ -267,6 +283,7 @@ export async function generatePropsForReferencePage({
       hideNonSdkSnippets: props.konfigYaml.portal.hideNonSdkSnippets ?? false,
       httpMethod: operation.method,
       path: operation.path,
+      allMarkdown,
       operationId,
       operation,
       spec: spec.spec,

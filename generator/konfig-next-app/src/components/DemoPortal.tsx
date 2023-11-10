@@ -42,6 +42,7 @@ import type { generateLogoLink } from '@/utils/generate-logo-link'
 import { useNavbarStyles } from '@/utils/use-navbar-styles'
 import { NavbarSectionLabel } from './NavbarSectionLabel'
 import { navbarLinkColor } from './NavbarLink'
+import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 
 type DemosInput = Demo[]
 
@@ -172,6 +173,7 @@ export const DemoPortal = observer(
     owner,
     repo,
     logo,
+    allMarkdown,
   }: {
     state: PortalState
     sandbox?: boolean
@@ -179,6 +181,7 @@ export const DemoPortal = observer(
     hasDocumentation: boolean
     omitOwnerAndRepo: boolean
     owner: string
+    allMarkdown: MarkdownPageProps['allMarkdown']
     repo: string
     logo: ReturnType<typeof generateLogoLink>
   }) => {
@@ -315,6 +318,7 @@ export const DemoPortal = observer(
               repo={repo}
               omitOwnerAndRepo={omitOwnerAndRepo}
               hasDocumentation={hasDocumentation}
+              allMarkdown={allMarkdown}
               demos={state.demos.map((demo) => demo.id)}
               opened={opened}
               setOpened={setOpened}
