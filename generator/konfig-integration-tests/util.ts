@@ -58,8 +58,8 @@ export async function e2e(
     NODE_ENV: "",
   };
 
-  // run "konfig generate -d" inside the path
-  await execa(KONFIG_CLI_PATH, ["generate", "-d"], {
+  // run "konfig generate -d -I" inside the path
+  await execa(KONFIG_CLI_PATH, ["generate", "-d", "-I"], {
     cwd: sdkDir,
     stdio: "inherit",
     env,

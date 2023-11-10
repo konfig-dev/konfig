@@ -159,6 +159,12 @@ export default class Deploy extends Command {
       description:
         'Comma separated list of generators to run (e.g. "-f python,java,go,csharp,objc")',
     }),
+    ignoreSubmodules: Flags.boolean({
+      char: 'I',
+      description:
+        'Ignore submodules. With this flag, certain generators (e.g. php) are not forced to be submodules. \
+        This should only be used for integration testing.',
+    }),
   }
 
   static args = []
@@ -1773,7 +1779,11 @@ async function copyGoOutput({
   sdkDirName,
   configDir,
 }: {
-  flags: { copyGoOutputDir?: string; doNotCopy?: boolean }
+  flags: {
+    copyGoOutputDir?: string
+    doNotCopy?: boolean
+    ignoreSubmodules?: boolean
+  }
   go: GenerateRequestBodyInputType['generators']['go']
   sdkDirName?: string
   copyToOutputDirectory: (input: CopyFilesInput) => Promise<void>
@@ -1782,7 +1792,10 @@ async function copyGoOutput({
   if (go === undefined) return
   const outputDirectory = flags.copyGoOutputDir ?? go.outputDirectory
   if (outputDirectory && !flags.doNotCopy) {
-    if (await isSubmodule({ git: go.git, configDir })) {
+    if (
+      !flags.ignoreSubmodules &&
+      (await isSubmodule({ git: go.git, configDir }))
+    ) {
       await handleSubmodule({
         outputDirectory: go.outputDirectory,
         configDir,
@@ -1815,7 +1828,11 @@ async function copyPhpOutput({
   sdkDirName,
   configDir,
 }: {
-  flags: { copyPHPOutputDir?: string; doNotCopy?: boolean }
+  flags: {
+    copyPHPOutputDir?: string
+    doNotCopy?: boolean
+    ignoreSubmodules?: boolean
+  }
   php: GenerateRequestBodyInputType['generators']['php']
   sdkDirName?: string
   copyToOutputDirectory: (input: CopyFilesInput) => Promise<void>
@@ -1824,12 +1841,14 @@ async function copyPhpOutput({
   if (php === undefined) return
   const outputDirectory = flags.copyPHPOutputDir ?? php.outputDirectory
   if (outputDirectory && !flags.doNotCopy) {
-    await handleSubmodule({
-      outputDirectory,
-      configDir,
-      git: php.git,
-      generator: 'php',
-    })
+    if (!flags.ignoreSubmodules) {
+      await handleSubmodule({
+        outputDirectory,
+        configDir,
+        git: php.git,
+        generator: 'php',
+      })
+    }
     CliUx.ux.action.start(
       `Deleting contents of existing directory "${outputDirectory}"`
     )
