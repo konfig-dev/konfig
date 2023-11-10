@@ -65,6 +65,11 @@ export async function e2e(
     env,
   });
 
+  // Let python tests share dependencies
+  await execa("./scripts/poetry-share-venv.sh", [sdkDir], {
+    stdio: "inherit",
+  });
+
   // run "konfig test" inside the path
   await execa(KONFIG_CLI_PATH, ["test", "-p", mockServerPort.toString()], {
     cwd: sdkDir,
