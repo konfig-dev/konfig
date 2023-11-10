@@ -4,7 +4,7 @@ WORKDIR /konfig-integration-tests
 
 integration-tests:
   COPY package.json yarn.lock logo.png .
-  RUN yarn
+  RUN yarn --frozen-lockfile
   COPY tsconfig.json vitest.config.ts util.ts .
   COPY sdks sdks
   COPY tests tests

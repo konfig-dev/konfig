@@ -2,32 +2,27 @@ VERSION 0.7
 FROM node:18-bullseye
 WORKDIR /konfig-dash
 
+# TODO: Once we figure out how to better package/extract konfig-cli from konfig-dash, move this to
+#       generator/konfig-integration-tests/Earthfile as the base image for +integration-tests
 konfig-test-dependencies:
-  # TODO: Once we figure out how to better package/extract konfig-cli from konfig-dash, move this to
-  #       generator/konfig-integration-tests/Earthfile as the base image for +integration-tests
   ENV PYTHONDONTWRITEBYTECODE=1 # Don't write .pyc files, which are not needed in a container
   ENV PIP_DEFAULT_TIMEOUT=100 # Increase pip timeout to avoid timeouts when installing python packages
   ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true # Avoids error when running dotnet
-  # lsof: used by konfig test
-  # openssl: used by prisma
-  # wget: used to get C# install script
-  ## java [openjdk-11-jdk, maven]
-  ## go [golang]
-  RUN apt-get update
-  RUN apt-get install -y lsof python3 python3-pip openssl curl openjdk-11-jdk maven golang
-  ## node comes from base image
-  ## csharp
-  RUN curl -Lo dotnet-install.sh https://dot.net/v1/dotnet-install.sh
-  RUN chmod +x ./dotnet-install.sh
-  RUN ./dotnet-install.sh --channel 7.0
-  RUN ./dotnet-install.sh --channel 5.0
-  RUN ./dotnet-install.sh --channel 3.1
+  RUN apt-get update && apt-get install --no-install-recommends -y \
+      python3 python3-pip \ # python
+      openjdk-11-jdk maven \ # java
+      golang \ # go
+      lsof \ # used by konfig test
+      openssl \ # used by prisma
+      curl # used to get C# install script
+  RUN curl -Lo dotnet-install.sh https://dot.net/v1/dotnet-install.sh && \
+      chmod +x ./dotnet-install.sh && \
+      ./dotnet-install.sh --channel 7.0 && \
+      ./dotnet-install.sh --channel 5.0 && \
+      ./dotnet-install.sh --channel 3.1
   ENV PATH=$PATH:/root/.dotnet
-  ## python
-  RUN pip3 install --upgrade pip
-  RUN pip3 install poetry
-  # Clean up
-  RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+  RUN pip3 install --upgrade pip && pip3 install poetry
+  RUN apt-get clean && rm -rf /var/lib/apt/lists/* # Clean up
 
 build-konfig-dash:
   FROM +konfig-test-dependencies
@@ -46,7 +41,7 @@ build-konfig-dash:
   COPY packages/konfig-swagger2openapi/package.json packages/konfig-swagger2openapi/package.json
   COPY packages/konfig-typescript-sdk/package.json packages/konfig-typescript-sdk/package.json
   COPY packages/konfig-zod-to-openapi/package.json packages/konfig-zod-to-openapi/package.json
-  RUN --secret NPM_TOKEN yarn
+  RUN --secret NPM_TOKEN yarn --frozen-lockfile
   # Now that dependencies are installed, copy the source code and build
   COPY api api
   COPY web web
