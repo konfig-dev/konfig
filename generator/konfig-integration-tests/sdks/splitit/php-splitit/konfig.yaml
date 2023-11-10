@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+outputDirectory: /tmp/php-splitit-sdks-out
+specInputPath: ../swagger.json
+specPath: ../swagger-fixed.json
+fixConfig:
+  modify:
+    $.servers[0]:
+      url: https://web-api-v3.production.splitit.com
+generators:
+  php:
+    version: 2.3.0
+    outputDirectory: php
+    packageName: splitit-web-php-sdk
+    invokerPackage: Splitit
+    apiDocumentationAuthenticationPartial: snippets/phpDocAuthPartial.php
+    supportPhp7: true
+    git:
+      userId: konfig-dev
+      repoId: konfig/tree/main/php
