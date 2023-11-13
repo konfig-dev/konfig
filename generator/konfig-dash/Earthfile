@@ -8,13 +8,19 @@ konfig-test-dependencies:
   ENV PYTHONDONTWRITEBYTECODE=1 # Don't write .pyc files, which are not needed in a container
   ENV PIP_DEFAULT_TIMEOUT=100 # Increase pip timeout to avoid timeouts when installing python packages
   ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true # Avoids error when running dotnet
+  # To install php, first add SURY repository (php repository for debian)
+  RUN apt-get update && apt-get install --no-install-recommends -y \
+      software-properties-common ca-certificates lsb-release apt-transport-https
+  RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' && \
+      wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add -
   RUN apt-get update && apt-get install --no-install-recommends -y \
       python3 python3-pip \ # python
       openjdk-11-jdk maven \ # java
       golang \ # go
+      php8.2 \ # php
       lsof \ # used by konfig test
-      openssl \ # used by prisma
-      curl # used to get C# install script
+      openssl # used by prisma
+  RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer # used for php
   RUN curl -Lo dotnet-install.sh https://dot.net/v1/dotnet-install.sh && \
       chmod +x ./dotnet-install.sh && \
       ./dotnet-install.sh --channel 7.0 && \
