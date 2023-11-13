@@ -1,5 +1,6 @@
 import { NavbarDataItem } from '@/components/LinksGroup'
 import type { Spec, HttpMethods, KonfigYamlType } from 'konfig-lib'
+import { isOperationHidden } from './is-operation-hidden'
 
 /**
  * Generates the navbar links as NavbarDataItem[]. Each group is determined by the tag of an operation.
@@ -63,14 +64,15 @@ export function generateNavbarLinks({
             : `/${owner}/${repo}/${suffix}`
 
           // if path and method match up with operation in hideOperations then continue
-          const hideOperations = konfigYaml.portal?.hideOperations
-          if (hideOperations !== undefined) {
-            if (path in hideOperations) {
-              const methods = hideOperations[path]
-              if (methods === undefined) return
-              if (method in methods) return
-            }
-          }
+          if (
+            isOperationHidden({
+              path,
+              method,
+              konfigYaml,
+              tag: operation.tags[0],
+            })
+          )
+            return
 
           navbarLink.links.push({
             label: operation.summary ?? path,

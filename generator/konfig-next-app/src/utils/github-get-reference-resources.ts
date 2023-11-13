@@ -1,14 +1,11 @@
-import path from 'path'
 import { generateNavbarLinks } from './generate-navbar-links'
-import { githubGetFileContent } from './github-get-file-content'
-import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { createOctokitInstance } from './octokit'
-import { parseSpec } from 'konfig-lib/dist/parseSpec'
-import { orderOpenApiSpecification } from 'konfig-lib/dist/util/order-openapi-specification'
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function'
 import { githubGetRepository } from './github-get-repository'
 import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
+import { githubGetOpenApiSpec } from './github-get-openapi-spec'
+import { githubGetKonfigYaml } from './github-get-konfig-yaml'
 
 export type GithubResources = UnwrapPromise<
   ReturnType<typeof githubGetReferenceResources>
@@ -27,13 +24,8 @@ export async function githubGetReferenceResources({
 
   // time the next two lines
   const start = Date.now()
-  const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
+  const konfigYaml = await githubGetKonfigYaml({ owner, repo, octokit })
   console.log(`githubGetKonfigYamls took ${Date.now() - start}ms`)
-
-  // TODO: handle multiple konfig.yaml
-  const konfigYaml = konfigYamls?.[0]
-
-  if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
 
   // get default branch of repo
   const { data: repoData } = await githubGetRepository({
@@ -57,25 +49,14 @@ export async function githubGetReferenceResources({
     repo,
   })
 
-  const specPath = konfigYaml.content.specPath
-
   // time the next three lines
   const start2 = Date.now()
-  const openapi = await githubGetFileContent({
+  const spec = await githubGetOpenApiSpec({
     owner,
     repo,
     octokit,
-    path: path.join(path.dirname(konfigYaml.info.path), specPath),
+    konfigYaml,
   })
-
-  const spec = await parseSpec(openapi)
-
-  if (konfigYaml.content.order !== undefined) {
-    orderOpenApiSpecification({
-      spec: spec.spec,
-      order: konfigYaml.content.order,
-    })
-  }
 
   const navbarData = generateNavbarLinks({
     spec: spec.spec,

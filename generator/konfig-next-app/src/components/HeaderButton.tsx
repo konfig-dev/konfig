@@ -10,9 +10,10 @@ export const TABS = {
   sdks: 'SDKs',
 } as const
 
+export type TabType = typeof TABS
 export type Tab = (typeof TABS)[keyof typeof TABS]
 
-const ICONS = {
+export const ICONS = {
   [TABS.documentation]: IconBook,
   [TABS.reference]: IconCode,
   [TABS.demos]: IconTerminal,

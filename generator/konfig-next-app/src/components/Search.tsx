@@ -17,6 +17,8 @@ import { useDeepCompareMemo } from 'use-deep-compare'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import HighlightTextComponent from './HighlightTextComponent'
+import { ICONS, TABS } from './HeaderButton'
+import { HttpMethodBadge } from './HttpMethodBadge'
 
 export function Search({
   allMarkdown,
@@ -25,14 +27,12 @@ export function Search({
 }) {
   const options: IFuseOptions<MarkdownPageProps['allMarkdown'][0]> = {
     keys: ['content', 'title'],
-    includeScore: true,
-    includeMatches: true,
 
     // Fuzzy finding options
     useExtendedSearch: true, // use ' to do substring search
     ignoreLocation: true, // distance & location mean nothing
-    threshold: 0.3, // 0.0 is perfect, 1.0 is match all so 0.3 is stricter
-    fieldNormWeight: 2, // title means more
+    threshold: 0.3, // 0.0 is perfect, 1.0 is match all so 0.3 is stricter than default value of 0.6
+    fieldNormWeight: 2, // title has more weight than content
   }
   const fuse = useDeepCompareMemo(() => {
     return new Fuse(allMarkdown, options)
@@ -40,13 +40,20 @@ export function Search({
   const os = useOs()
   const router = useRouter()
   const actions: SpotlightAction[] = allMarkdown.map((doc) => {
+    const Icon = ICONS[doc.type]
     return {
       id: doc.id,
       title: doc.title,
       content: doc.content,
-      icon: <IconBook size="1.2rem" />,
+      icon: <Icon size="1.2rem" />,
+      path: doc.type === TABS.reference ? doc.path : '',
+      method: doc.type === TABS.reference ? doc.method : '',
       onTrigger: () => {
-        router.push(`/docs/${doc.id}`)
+        if (doc.type === TABS.documentation) {
+          router.push(`/docs/${doc.id}`)
+        } else if (doc.type === TABS.reference) {
+          router.push(`/reference/${doc.tag}/${doc.id}`)
+        }
       },
     }
   })
@@ -64,16 +71,13 @@ export function Search({
             searchResult.some((result) => result.item.id === action.id)
           )
           .sort((a, b) => {
-            const aScore = searchResult.find(
+            const aIndex = searchResult.findIndex(
               (result) => result.item.id === a.id
-            )?.score
-            const bScore = searchResult.find(
+            )
+            const bIndex = searchResult.findIndex(
               (result) => result.item.id === b.id
-            )?.score
-            if (aScore && bScore) {
-              return aScore - bScore
-            }
-            return 0
+            )
+            return aIndex - bIndex
           })
         // add description if there is a case insensitive substring match between query term and content
         const terms = query.split(' ')
@@ -94,6 +98,7 @@ export function Search({
         return filteredActions
       }}
       onQueryChange={setQuery}
+      limit={15}
       searchIcon={<IconSearch size="1.2rem" />}
       searchPlaceholder="Search..."
       nothingFoundMessage="Nothing found..."
@@ -192,6 +197,7 @@ function CustomAction({
             </HighlightTextComponent>
           )}
         </div>
+        {action.method && <HttpMethodBadge httpMethod={action.method} />}
       </Group>
     </UnstyledButton>
   )
