@@ -161,6 +161,7 @@ export default class Deploy extends Command {
     }),
     ignoreSubmodules: Flags.boolean({
       char: 'I',
+      hidden: true,
       description:
         'Ignore submodules. With this flag, certain generators (e.g. php) are not forced to be submodules. \
         This should only be used for integration testing.',
