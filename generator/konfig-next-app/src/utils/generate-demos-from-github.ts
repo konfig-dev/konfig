@@ -218,7 +218,7 @@ async function _fetch({
   }
 }
 
-async function getDemos({
+export async function getDemos({
   konfigYaml,
   repo,
   owner,

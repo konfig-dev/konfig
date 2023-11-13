@@ -53,6 +53,8 @@ export function Search({
           router.push(`/docs/${doc.id}`)
         } else if (doc.type === TABS.reference) {
           router.push(`/reference/${doc.tag}/${doc.id}`)
+        } else if (doc.type === TABS.demos) {
+          router.push(`/demo/${doc.id}`)
         }
       },
     }

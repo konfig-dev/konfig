@@ -7,6 +7,7 @@ import { githubGetKonfigYaml } from './github-get-konfig-yaml'
 import { githubGetOpenApiSpec } from './github-get-openapi-spec'
 import { isOperationHidden } from './is-operation-hidden'
 import { TABS, TabType } from '@/components/HeaderButton'
+import { getDemos } from './generate-demos-from-github'
 
 type SearchRecordBase = {
   id: string
@@ -16,6 +17,9 @@ type SearchRecordBase = {
 export type SearchRecord = (
   | {
       type: TabType['documentation']
+    }
+  | {
+      type: TabType['demos']
     }
   | {
       method: string
@@ -62,7 +66,7 @@ export async function computeDocumentProps({
 
       // strip all non-alphanumeric characters from content
       // this is used for search
-      content = content.replace(/[^a-zA-Z0-9 ]/g, ' ')
+      content = stripNonAlphanumericCharacters(content)
 
       return {
         id,
@@ -106,6 +110,24 @@ export async function computeDocumentProps({
     })
   }
 
+  const demos = await getDemos({
+    konfigYaml: konfigYaml.content,
+    octokit,
+    repo,
+    owner,
+  })
+
+  if (demos !== null) {
+    for (const demo of demos) {
+      allMarkdown.push({
+        id: demo.id,
+        title: demo.name,
+        content: stripNonAlphanumericCharacters(demo.markdown),
+        type: TABS.demos,
+      })
+    }
+  }
+
   const idToBreadcrumbs: Record<string, string[] | undefined> = {}
   for (const { id } of docs) {
     // compute breadcrumb for every document in the documentation config
@@ -146,4 +168,8 @@ export async function computeDocumentProps({
     idToContent,
     docs,
   }
+}
+
+function stripNonAlphanumericCharacters(str: string) {
+  return str.replace(/[^a-zA-Z0-9 ]/g, ' ')
 }
