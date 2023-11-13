@@ -36,7 +36,7 @@ export type MarkdownPageProps = {
   googleAnalyticsId: string | null
   markdown: string
   defaultBranch: string
-  allMarkdown: { id: string; content: string }[]
+  allMarkdown: { id: string; content: string; title: string }[]
 
   /**
    * Mapping of document id from konfig.yaml and the first heading text of the document.

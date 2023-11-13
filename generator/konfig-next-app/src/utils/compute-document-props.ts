@@ -34,8 +34,16 @@ export async function computeDocumentProps({
   const allMarkdown = Object.entries(idToContent).map(([id, content]) => {
     if (content === undefined)
       throw Error(`Couldn't find content for id: ${id}`)
+    const title = idToLabel[id]
+    if (title === undefined) throw Error("Couldn't find title for id: " + id)
+
+    // strip all non-alphanumeric characters from content
+    // this is used for search
+    content = content.replace(/[^a-zA-Z0-9 ]/g, ' ')
+
     return {
       id,
+      title,
       content,
     }
   })

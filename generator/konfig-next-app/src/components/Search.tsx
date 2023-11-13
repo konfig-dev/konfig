@@ -1,60 +1,109 @@
 import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
-import { Kbd } from '@mantine/core'
-import { useOs } from '@mantine/hooks'
 import {
-  IconDashboard,
-  IconFileText,
-  IconHome,
-  IconSearch,
-} from '@tabler/icons-react'
+  Center,
+  Group,
+  Kbd,
+  Text,
+  UnstyledButton,
+  createStyles,
+  rem,
+} from '@mantine/core'
+import { useOs } from '@mantine/hooks'
+import { IconBook, IconSearch } from '@tabler/icons-react'
 import { SpotlightProvider, spotlight } from '@mantine/spotlight'
-import type { SpotlightAction } from '@mantine/spotlight'
-import Fuse from 'fuse.js'
-
-const actions: SpotlightAction[] = [
-  {
-    title: 'Home',
-    description: 'Get to home page',
-    onTrigger: () => console.log('Home'),
-    icon: <IconHome size="1.2rem" />,
-  },
-  {
-    title: 'Dashboard',
-    description: 'Get full information about current system status',
-    onTrigger: () => console.log('Dashboard'),
-    icon: <IconDashboard size="1.2rem" />,
-  },
-  {
-    title: 'Documentation',
-    description: 'Visit documentation to lean more about all features',
-    onTrigger: () => console.log('Documentation'),
-    icon: <IconFileText size="1.2rem" />,
-  },
-]
+import type { SpotlightAction, SpotlightActionProps } from '@mantine/spotlight'
+import Fuse, { IFuseOptions } from 'fuse.js'
+import { useDeepCompareMemo } from 'use-deep-compare'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import HighlightTextComponent from './HighlightTextComponent'
 
 export function Search({
   allMarkdown,
 }: {
-  allMarkdown?: MarkdownPageProps['allMarkdown']
+  allMarkdown: MarkdownPageProps['allMarkdown']
 }) {
-  //   const fuse = new Fuse(allMarkdown, {
-  //     keys: ['id', 'content'],
-  //     includeScore: true,
-  //     includeMatches: true,
-  //     useExtendedSearch: true,
-  //   })
-  //   console.log(fuse)
+  const options: IFuseOptions<MarkdownPageProps['allMarkdown'][0]> = {
+    keys: ['content', 'title'],
+    includeScore: true,
+    includeMatches: true,
+
+    // Fuzzy finding options
+    useExtendedSearch: true, // use ' to do substring search
+    ignoreLocation: true, // distance & location mean nothing
+    threshold: 0.3, // 0.0 is perfect, 1.0 is match all so 0.3 is stricter
+    fieldNormWeight: 2, // title means more
+  }
+  const fuse = useDeepCompareMemo(() => {
+    return new Fuse(allMarkdown, options)
+  }, [allMarkdown, options])
   const os = useOs()
+  const router = useRouter()
+  const actions: SpotlightAction[] = allMarkdown.map((doc) => {
+    return {
+      id: doc.id,
+      title: doc.title,
+      content: doc.content,
+      icon: <IconBook size="1.2rem" />,
+      onTrigger: () => {
+        router.push(`/docs/${doc.id}`)
+      },
+    }
+  })
+  const [query, setQuery] = useState('')
   return (
     <SpotlightProvider
       actions={actions}
+      query={query}
+      filter={(query, actions) => {
+        if (query === '') return actions
+        const searchResult = fuse.search(query)
+        // filter/sort actions by search result
+        const filteredActions = actions
+          .filter((action) =>
+            searchResult.some((result) => result.item.id === action.id)
+          )
+          .sort((a, b) => {
+            const aScore = searchResult.find(
+              (result) => result.item.id === a.id
+            )?.score
+            const bScore = searchResult.find(
+              (result) => result.item.id === b.id
+            )?.score
+            if (aScore && bScore) {
+              return aScore - bScore
+            }
+            return 0
+          })
+        // add description if there is a case insensitive substring match between query term and content
+        const terms = query.split(' ')
+        filteredActions.forEach((action) => {
+          const content: string = action.content.toLowerCase()
+
+          for (const term of terms) {
+            const index = content.indexOf(term.toLowerCase())
+            if (index === -1) continue
+            action.description = content.substring(
+              Math.max(0, index - 100),
+              Math.min(content.length, index + term.length + 100)
+            )
+            return
+          }
+        })
+
+        return filteredActions
+      }}
+      onQueryChange={setQuery}
       searchIcon={<IconSearch size="1.2rem" />}
       searchPlaceholder="Search..."
       nothingFoundMessage="Nothing found..."
-      classNames={{
-        content: 'dark:bg-zinc-950 rounded-lg',
-        searchInput: 'dark:bg-zinc-900',
-      }}
+      actionComponent={CustomAction}
+      classNames={
+        {
+          // content: 'dark:bg-zinc-950 rounded-lg',
+          // searchInput: 'dark:bg-zinc-900',
+        }
+      }
     >
       <button
         type="button"
@@ -83,5 +132,67 @@ export function Search({
         </div>
       </button>
     </SpotlightProvider>
+  )
+}
+
+const useStyles = createStyles((theme) => ({
+  action: {
+    position: 'relative',
+    display: 'block',
+    width: '100%',
+    padding: `${rem(10)} ${rem(12)}`,
+    borderRadius: theme.radius.sm,
+    ...theme.fn.hover({
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[6]
+          : theme.colors.gray[1],
+    }),
+
+    '&[data-hovered]': {
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[4]
+          : theme.colors.gray[1],
+    },
+  },
+}))
+
+function CustomAction({
+  action,
+  styles,
+  classNames,
+  hovered,
+  onTrigger,
+  query,
+  highlightQuery,
+  ...others
+}: SpotlightActionProps) {
+  const { classes } = useStyles()
+  const queryTerms = query.split(' ')
+
+  return (
+    <UnstyledButton
+      className={classes.action}
+      data-hovered={hovered || undefined}
+      tabIndex={-1}
+      onMouseDown={(event) => event.preventDefault()}
+      onClick={onTrigger}
+      {...others}
+    >
+      <Group noWrap>
+        {action.icon && <Center>{action.icon}</Center>}
+        <div style={{ flex: 1 }}>
+          <HighlightTextComponent className="font-semibold" bold={queryTerms}>
+            {action.title}
+          </HighlightTextComponent>
+          {action.description && (
+            <HighlightTextComponent className="text-xs" bold={queryTerms}>
+              {action.description}
+            </HighlightTextComponent>
+          )}
+        </div>
+      </Group>
+    </UnstyledButton>
   )
 }
