@@ -34,7 +34,7 @@ export function Kbd({
       size="xs"
       className={clsx(
         className,
-        'dark:group-hover:text-zinc-200 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 bg-zinc-50 dark:bg-zinc-800  h-1/2 transition border border-zinc-300 dark:border-zinc-700'
+        'dark:group-hover:text-zinc-200 text-xs min-w-[24px] px-[6px] py-[3px] text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 bg-zinc-50 dark:bg-zinc-800  h-1/2 transition border border-zinc-300 dark:border-zinc-700'
       )}
     >
       {children}
