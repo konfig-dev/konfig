@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.30.2
+
+### Patch Changes
+
+- [`cc7c73f2`](https://github.com/konfig-dev/konfig/commit/cc7c73f2590ac4827eef94754482dc58b83e0960) Thanks [@eddiechayes](https://github.com/eddiechayes)! - apply filterPaths to konfig fix
+
 ## 1.30.1
 
 ### Patch Changes

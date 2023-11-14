@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.32.2
+
+### Patch Changes
+
+- [`cc7c73f2`](https://github.com/konfig-dev/konfig/commit/cc7c73f2590ac4827eef94754482dc58b83e0960) Thanks [@eddiechayes](https://github.com/eddiechayes)! - apply filterPaths to konfig fix
+
+- Updated dependencies [[`cc7c73f2`](https://github.com/konfig-dev/konfig/commit/cc7c73f2590ac4827eef94754482dc58b83e0960)]:
+  - konfig-lib@1.30.2
+  - konfig-openapi-spec@1.7.4
+  - konfig-postman-to-openapi@3.0.146
+
 ## 1.32.1
 
 ### Patch Changes
