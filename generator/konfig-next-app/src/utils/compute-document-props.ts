@@ -69,7 +69,7 @@ export async function computeDocumentProps({
       content = stripNonAlphanumericCharacters(content)
 
       return {
-        id,
+        id: `/docs/${id}`,
         title,
         content,
         type: TABS.documentation,
@@ -99,14 +99,15 @@ export async function computeDocumentProps({
       tag: operation.tags[0],
     })
     if (hidden) continue
+    const tag = operation.tags[0]
     allMarkdown.push({
-      id: operation.operationId,
+      id: `/reference/${tag}/${operation.operationId}`,
       title: operation.summary ?? `${path}`,
       content: operation.description ?? '',
       method,
       path,
       type: TABS.reference,
-      tag: operation.tags[0],
+      tag,
     })
   }
 
@@ -120,7 +121,7 @@ export async function computeDocumentProps({
   if (demos !== null) {
     for (const demo of demos) {
       allMarkdown.push({
-        id: demo.id,
+        id: `/demo/${demo.id}`,
         title: demo.name,
         content: stripNonAlphanumericCharacters(demo.markdown),
         type: TABS.demos,
