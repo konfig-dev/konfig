@@ -1,11 +1,4 @@
-import {
-  Dispatch,
-  SetStateAction,
-  use,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import type { HttpMethods } from 'konfig-lib'
 import {
   Group,
@@ -14,18 +7,11 @@ import {
   UnstyledButton,
   createStyles,
   rem,
-  NavLink,
-  MantineTheme,
 } from '@mantine/core'
-import {
-  IconCalendarStats,
-  IconChevronLeft,
-  IconChevronRight,
-} from '@tabler/icons-react'
-import Link from 'next/link'
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import { HttpMethodBadge } from './HttpMethodBadge'
-import { navLinkColor } from '@/utils/nav-link-color'
 import { NavbarLink, navbarLinkColor } from './NavbarLink'
+import { useRouter } from 'next/router'
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -87,6 +73,14 @@ export function LinksGroup({
   const [opened, setOpened] = useState(initiallyOpened || false)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
   const ref = useRef<HTMLAnchorElement>(null)
+
+  const router = useRouter()
+  useEffect(() => {
+    if (router.query.tag === label) {
+      setOpened(true)
+    }
+  }, [router.query])
+
   useEffect(() => {
     ref.current?.scrollIntoView({
       behavior: 'smooth',
