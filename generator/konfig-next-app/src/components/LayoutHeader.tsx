@@ -17,6 +17,8 @@ import { useBaseUrl } from '@/utils/use-base-url'
 import Link from 'next/link'
 import type { generateLogoLink } from '@/utils/generate-logo-link'
 import { useHeaderColor } from '@/utils/use-header-color'
+import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
+import { Search } from './Search'
 
 const useLogoStyles = createStyles(() => ({
   logo: {
@@ -30,6 +32,7 @@ export const LayoutHeader = observer(
     opened,
     setOpened,
     breakpoint,
+    allMarkdown,
     logo,
   }: {
     title: string
@@ -37,6 +40,7 @@ export const LayoutHeader = observer(
     setOpened: Dispatch<SetStateAction<boolean>>
     breakpoint: MantineNumberSize
     logo: ReturnType<typeof generateLogoLink>
+    allMarkdown: MarkdownPageProps['allMarkdown']
   }) => {
     const theme = useMantineTheme()
     const baseUrl = useBaseUrl()
@@ -101,6 +105,9 @@ export const LayoutHeader = observer(
           )}
         </Group>
         <Group>
+          <div className="sm:hidden">
+            <Search />
+          </div>
           <ColorSchemeToggle hasLightAndDarkLogo={typeof logo !== 'string'} />
         </Group>
       </Box>

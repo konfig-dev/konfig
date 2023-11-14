@@ -1,11 +1,17 @@
 import { Header, useMantineTheme } from '@mantine/core'
 import { PropsWithChildren } from 'react'
 import { TITLE_OFFSET_PX } from './DemoTitle'
+import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
+import { SpotlightProvider } from './SpotlightProvider'
 
 export function HeaderWrapper({
   children,
   hasLightAndDarkLogo,
-}: PropsWithChildren<{ hasLightAndDarkLogo: boolean }>) {
+  allMarkdown,
+}: PropsWithChildren<{
+  hasLightAndDarkLogo: boolean
+  allMarkdown: MarkdownPageProps['allMarkdown']
+}>) {
   const theme = useMantineTheme()
   return (
     <Header
@@ -21,7 +27,9 @@ export function HeaderWrapper({
       }}
       height={TITLE_OFFSET_PX}
     >
-      {children}
+      <SpotlightProvider allMarkdown={allMarkdown}>
+        {children}
+      </SpotlightProvider>
     </Header>
   )
 }

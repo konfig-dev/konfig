@@ -35,8 +35,12 @@ export const DemoHeader = observer(
     logo: ReturnType<typeof generateLogoLink>
   }) => {
     return (
-      <HeaderWrapper hasLightAndDarkLogo={typeof logo !== 'string'}>
+      <HeaderWrapper
+        allMarkdown={allMarkdown}
+        hasLightAndDarkLogo={typeof logo !== 'string'}
+      >
         <LayoutHeader
+          allMarkdown={allMarkdown}
           logo={logo}
           breakpoint="sm"
           opened={opened}

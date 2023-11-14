@@ -29,8 +29,12 @@ export function DocumentationHeader({
   allMarkdown: MarkdownPageProps['allMarkdown']
 }) {
   return (
-    <HeaderWrapper hasLightAndDarkLogo={typeof logo !== 'string'}>
+    <HeaderWrapper
+      allMarkdown={allMarkdown}
+      hasLightAndDarkLogo={typeof logo !== 'string'}
+    >
       <LayoutHeader
+        allMarkdown={allMarkdown}
         breakpoint={navbarOffsetBreakpoint}
         opened={opened}
         setOpened={setOpened}

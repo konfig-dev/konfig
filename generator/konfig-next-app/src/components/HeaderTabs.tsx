@@ -162,7 +162,7 @@ export function HeaderTabs({
             link={linkForTab(TABS.sdks)}
           />
         </Group>
-        <Search allMarkdown={allMarkdown} />
+        <Search />
       </div>
     </Box>
   )

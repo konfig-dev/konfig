@@ -30,8 +30,12 @@ export function ReferenceHeader({
   logo: ReturnType<typeof generateLogoLink>
 }) {
   return (
-    <HeaderWrapper hasLightAndDarkLogo={typeof logo !== 'string'}>
+    <HeaderWrapper
+      allMarkdown={allMarkdown}
+      hasLightAndDarkLogo={typeof logo !== 'string'}
+    >
       <LayoutHeader
+        allMarkdown={allMarkdown}
         breakpoint="lg"
         opened={opened}
         setOpened={setOpened}
