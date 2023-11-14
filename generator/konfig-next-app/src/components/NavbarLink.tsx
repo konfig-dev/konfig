@@ -6,14 +6,16 @@ import {
   useMantineTheme,
 } from '@mantine/core'
 import Link, { LinkProps } from 'next/link'
-import { RefObject } from 'react'
+import { forwardRef } from 'react'
 
-export function NavbarLink(
-  props: NavLinkProps & LinkProps & { ref?: RefObject<HTMLAnchorElement> }
-) {
+export const NavbarLink = forwardRef<
+  HTMLAnchorElement,
+  NavLinkProps & LinkProps
+>((props, ref) => {
   const theme = useMantineTheme()
   return (
     <NavLink<typeof Link>
+      ref={ref}
       {...props}
       component={Link}
       styles={{
@@ -23,7 +25,7 @@ export function NavbarLink(
       }}
     />
   )
-}
+})
 
 export function navbarLinkColor({
   theme,
