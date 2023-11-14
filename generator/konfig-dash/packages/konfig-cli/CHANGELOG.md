@@ -1,5 +1,18 @@
 # konfig-cli
 
+## 1.32.1
+
+### Patch Changes
+
+- [#354](https://github.com/konfig-dev/konfig/pull/354) [`c57aded2`](https://github.com/konfig-dev/konfig/commit/c57aded2618c791fd7442a01b9e6533b2a394450) Thanks [@eddiechayes](https://github.com/eddiechayes)! - maven test run in quiet mode
+
+- [#366](https://github.com/konfig-dev/konfig/pull/366) [`905876e3`](https://github.com/konfig-dev/konfig/commit/905876e3adee94eff659d2efdadc5b08758e2e1c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add --ignoreSubmodules flag to generate
+
+- Updated dependencies [[`e5213a41`](https://github.com/konfig-dev/konfig/commit/e5213a41cbea37716363345da920e3612d05ed4c), [`c57aded2`](https://github.com/konfig-dev/konfig/commit/c57aded2618c791fd7442a01b9e6533b2a394450), [`4522afbc`](https://github.com/konfig-dev/konfig/commit/4522afbc9b3e44b52fa73e55457de2992742a7ed)]:
+  - konfig-lib@1.30.1
+  - konfig-postman-to-openapi@3.0.145
+  - konfig-openapi-spec@1.7.3
+
 ## 1.32.0
 
 ### Minor Changes

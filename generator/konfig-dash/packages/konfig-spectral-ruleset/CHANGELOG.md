@@ -1,5 +1,14 @@
 # konfig-spectral-ruleset
 
+## 1.2.20
+
+### Patch Changes
+
+- [#354](https://github.com/konfig-dev/konfig/pull/354) [`c57aded2`](https://github.com/konfig-dev/konfig/commit/c57aded2618c791fd7442a01b9e6533b2a394450) Thanks [@eddiechayes](https://github.com/eddiechayes)! - maven test run in quiet mode
+
+- Updated dependencies [[`e5213a41`](https://github.com/konfig-dev/konfig/commit/e5213a41cbea37716363345da920e3612d05ed4c), [`c57aded2`](https://github.com/konfig-dev/konfig/commit/c57aded2618c791fd7442a01b9e6533b2a394450), [`4522afbc`](https://github.com/konfig-dev/konfig/commit/4522afbc9b3e44b52fa73e55457de2992742a7ed)]:
+  - konfig-lib@1.30.1
+
 ## 1.2.19
 
 ### Patch Changes
