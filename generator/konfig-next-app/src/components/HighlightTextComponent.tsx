@@ -47,7 +47,10 @@ const HighlightTextComponent: React.FC<HighlightTextProps> = ({
         )
       }
       parts.push(
-        <span className="dark:text-mantine-gray-200" key={matchIndex}>
+        <span
+          className="text-mantine-gray-800 dark:text-mantine-gray-200"
+          key={matchIndex}
+        >
           {match[0]}
         </span>
       )
@@ -67,7 +70,11 @@ const HighlightTextComponent: React.FC<HighlightTextProps> = ({
 }
 
 function Demphasized({ children }: PropsWithChildren<{}>) {
-  return <span className="dark:text-mantine-gray-500">{children}</span>
+  return (
+    <span className="text-mantine-gray-600 dark:text-mantine-gray-500">
+      {children}
+    </span>
+  )
 }
 
 export default HighlightTextComponent

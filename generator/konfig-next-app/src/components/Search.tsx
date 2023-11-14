@@ -2,19 +2,19 @@ import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 import {
   Center,
   Group,
-  Kbd,
-  Text,
+  Kbd as MantineKbd,
   UnstyledButton,
+  clsx,
   createStyles,
   rem,
 } from '@mantine/core'
 import { useOs } from '@mantine/hooks'
-import { IconBook, IconSearch } from '@tabler/icons-react'
+import { IconSearch } from '@tabler/icons-react'
 import { SpotlightProvider, spotlight } from '@mantine/spotlight'
 import type { SpotlightAction, SpotlightActionProps } from '@mantine/spotlight'
 import Fuse, { IFuseOptions } from 'fuse.js'
 import { useDeepCompareMemo } from 'use-deep-compare'
-import { useState } from 'react'
+import { PropsWithChildren, useState } from 'react'
 import { useRouter } from 'next/router'
 import HighlightTextComponent from './HighlightTextComponent'
 import { ICONS, TABS } from './HeaderButton'
@@ -115,7 +115,7 @@ export function Search({
       <button
         type="button"
         onClick={() => spotlight.open()}
-        className="dark:outline-brand-700 bg-zinc flex group transition text-zinc-500 hover:text-zinc-200 border gap-24 dark:border-zinc-800 hover:dark:border-zinc-700 dark:bg-zinc-950 hover:dark:bg-zinc-900 p-2 md:p-4 rounded-lg my-auto items-center h-2/3 text-sm"
+        className="dark:outline-brand-700 border-zinc-200 hover:border-zinc-300 bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-950 hover:dark:bg-zinc-900 flex group transition text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 border gap-24 dark:border-zinc-800 hover:dark:border-zinc-700  p-2 md:p-4 rounded-lg my-auto items-center h-2/3 text-sm"
       >
         <IconSearch className="md:hidden" stroke="3" size=".75rem" />
         <div className="md:flex hidden gap-2 items-center">
@@ -123,22 +123,28 @@ export function Search({
           <span>Search</span>
         </div>
         <div className="hidden md:flex items-center pointer-events-none">
-          <Kbd
-            className=" h-1/2 bg-zinc-800 group-hover:text-zinc-200 transition border border-zinc-700"
-            size="xs"
-            mr={5}
-          >
-            {os === 'macos' ? '⌘' : 'Ctrl'}
-          </Kbd>
-          <Kbd
-            size="xs"
-            className="group-hover:text-zinc-200 bg-zinc-800  h-1/2 transition border border-zinc-700"
-          >
-            K
-          </Kbd>
+          <Kbd className="mr-1">{os === 'macos' ? '⌘' : 'Ctrl'}</Kbd>
+          <Kbd>K</Kbd>
         </div>
       </button>
     </SpotlightProvider>
+  )
+}
+
+export function Kbd({
+  children,
+  className,
+}: PropsWithChildren<{ className?: string }>) {
+  return (
+    <MantineKbd
+      size="xs"
+      className={clsx(
+        className,
+        'dark:group-hover:text-zinc-200 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 bg-zinc-50 dark:bg-zinc-800  h-1/2 transition border border-zinc-300 dark:border-zinc-700'
+      )}
+    >
+      {children}
+    </MantineKbd>
   )
 }
 
@@ -153,7 +159,7 @@ const useStyles = createStyles((theme) => ({
       backgroundColor:
         theme.colorScheme === 'dark'
           ? theme.colors.dark[6]
-          : theme.colors.gray[1],
+          : theme.colors.gray[0],
     }),
 
     '&[data-hovered]': {
