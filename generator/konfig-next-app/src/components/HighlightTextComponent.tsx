@@ -38,27 +38,35 @@ const HighlightTextComponent: React.FC<HighlightTextProps> = ({
     let lastIndex = 0
 
     let matched = false
+    let key = 0
     while ((match = regex.exec(text)) !== null) {
       matched = true
       const matchIndex = match.index
       if (lastIndex !== matchIndex) {
         parts.push(
-          <Demphasized>{text.substring(lastIndex, matchIndex)}</Demphasized>
+          <Demphasized key={key}>
+            {text.substring(lastIndex, matchIndex)}
+          </Demphasized>
         )
+        key++
       }
       parts.push(
         <span
           className="text-mantine-gray-800 dark:text-mantine-gray-200"
-          key={matchIndex}
+          key={key}
         >
           {match[0]}
         </span>
       )
+      key++
       lastIndex = matchIndex + match[0].length
     }
 
     if (lastIndex < text.length) {
-      parts.push(<Demphasized>{text.substring(lastIndex)}</Demphasized>)
+      parts.push(
+        <Demphasized key={lastIndex}>{text.substring(lastIndex)}</Demphasized>
+      )
+      key++
     }
 
     return { parts, matched }
