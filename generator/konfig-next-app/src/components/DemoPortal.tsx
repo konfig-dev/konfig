@@ -13,6 +13,7 @@ import {
   Divider,
   rem,
   SegmentedControl,
+  ScrollArea,
 } from '@mantine/core'
 import { IconBug, IconSettings2 } from '@tabler/icons-react'
 import { observer } from 'mobx-react'
@@ -236,79 +237,82 @@ export const DemoPortal = observer(
               hidden={!opened}
               width={{ [navbarOffsetBreakpoint]: NAVBAR_WIDTH }}
               className={navbar.classes.navbar}
-              sx={{
-                overflowY: 'auto',
-                // height:
-                //   'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
-              }}
+              sx={
+                {
+                  // height:
+                  //   'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
+                }
+              }
             >
-              <Navbar.Section pt="xl">
-                <Box px="sm">
-                  <NavbarSectionLabel Logo={IconSettings2}>
-                    Settings
-                  </NavbarSectionLabel>
+              <ScrollArea>
+                <Navbar.Section pt="xl">
                   <Box px="sm">
-                    <SegmentedControl
-                      size="xs"
-                      color="brand"
-                      value={state.showCode ? 'show-code' : 'hide-code'}
-                      w="100%"
-                      bg={
-                        theme.colorScheme === 'dark'
-                          ? theme.colors.gray[9]
-                          : theme.colors.gray[3]
-                      }
-                      styles={{
-                        label: {
-                          fontSize: `${rem(11)} !important`,
-                        },
-                      }}
-                      data={[
-                        { label: 'Hide Code', value: 'hide-code' },
-                        { label: 'Show Code', value: 'show-code' },
-                      ]}
-                      onChange={(value) => {
-                        state.setShowCode(value === 'show-code')
-                      }}
-                    />
-                  </Box>
-                </Box>
-                <Divider mt="xl" mx="xs" />
-              </Navbar.Section>
-              <Navbar.Section px="md" py="xl" grow>
-                <Stack spacing={0}>
-                  {state.demos.map(({ name }, i) => {
-                    const isCurrentlySelected = state.currentDemoIndex === i
-                    return (
-                      <NavLink
-                        key={name}
-                        onClick={() => {
-                          setOpened(false)
-                          navigateToDemo({
-                            omitOwnerAndRepo,
-                            demoId: state.demos[i].id,
-                            demoIndex: i,
-                            organizationId: state.organizationId,
-                            portal: state,
-                            router,
-                            sandbox,
-                          })
-                        }}
+                    <NavbarSectionLabel Logo={IconSettings2}>
+                      Settings
+                    </NavbarSectionLabel>
+                    <Box px="sm">
+                      <SegmentedControl
+                        size="xs"
+                        color="brand"
+                        value={state.showCode ? 'show-code' : 'hide-code'}
+                        w="100%"
+                        bg={
+                          theme.colorScheme === 'dark'
+                            ? theme.colors.gray[9]
+                            : theme.colors.gray[3]
+                        }
                         styles={{
                           label: {
-                            color: navbarLinkColor({
-                              active: isCurrentlySelected,
-                              theme,
-                            }),
+                            fontSize: `${rem(11)} !important`,
                           },
                         }}
-                        label={name}
-                        active={isCurrentlySelected}
+                        data={[
+                          { label: 'Hide Code', value: 'hide-code' },
+                          { label: 'Show Code', value: 'show-code' },
+                        ]}
+                        onChange={(value) => {
+                          state.setShowCode(value === 'show-code')
+                        }}
                       />
-                    )
-                  })}
-                </Stack>
-              </Navbar.Section>
+                    </Box>
+                  </Box>
+                  <Divider mt="xl" mx="xs" />
+                </Navbar.Section>
+                <Navbar.Section px="md" py="xl" grow>
+                  <Stack spacing={0}>
+                    {state.demos.map(({ name }, i) => {
+                      const isCurrentlySelected = state.currentDemoIndex === i
+                      return (
+                        <NavLink
+                          key={name}
+                          onClick={() => {
+                            setOpened(false)
+                            navigateToDemo({
+                              omitOwnerAndRepo,
+                              demoId: state.demos[i].id,
+                              demoIndex: i,
+                              organizationId: state.organizationId,
+                              portal: state,
+                              router,
+                              sandbox,
+                            })
+                          }}
+                          styles={{
+                            label: {
+                              color: navbarLinkColor({
+                                active: isCurrentlySelected,
+                                theme,
+                              }),
+                            },
+                          }}
+                          label={name}
+                          active={isCurrentlySelected}
+                        />
+                      )
+                    })}
+                  </Stack>
+                </Navbar.Section>
+              </ScrollArea>
             </Navbar>
           }
           aside={<DemoTableOfContents demoDiv={state.currentDemo.demoDiv} />}
