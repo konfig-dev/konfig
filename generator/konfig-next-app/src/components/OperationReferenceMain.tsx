@@ -13,6 +13,7 @@ import {
   MediaQuery,
   Alert,
   useMantineTheme,
+  ScrollArea,
 } from '@mantine/core'
 import { HttpMethodBadge } from './HttpMethodBadge'
 import { OperationForm } from './OperationForm'
@@ -285,11 +286,12 @@ export function OperationReferenceMain({
               >
                 {header}
               </Title>
-              <Group spacing="xs">
+              <Group noWrap spacing="xs">
                 <HttpMethodBadge httpMethod={operation.method} />
                 <Box
                   h={2}
                   w={2}
+                  className="flex-shrink-0"
                   style={{
                     backgroundColor:
                       theme.colorScheme === 'dark'
@@ -298,12 +300,11 @@ export function OperationReferenceMain({
                     borderRadius: theme.radius.xl,
                   }}
                 />
-                <Code
-                  className="overflow-scroll"
-                  style={{ backgroundColor: 'unset' }}
-                >
-                  {`${basePath}${operation.path}`}
-                </Code>
+                <ScrollArea type="never">
+                  <Code style={{ backgroundColor: 'unset' }}>
+                    {`${basePath}${operation.path}`}
+                  </Code>
+                </ScrollArea>
               </Group>
               {operation.operation.deprecated && (
                 <Alert

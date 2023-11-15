@@ -3,7 +3,11 @@ import type { HttpMethods } from 'konfig-lib'
 import { HttpMethodsEnum } from 'konfig-lib/dist/forEachOperation'
 
 export function HttpMethodBadge({ httpMethod }: { httpMethod: HttpMethods }) {
-  return <Badge color={httpMethodColor(httpMethod)}>{httpMethod}</Badge>
+  return (
+    <Badge className="flex-shrink-0" color={httpMethodColor(httpMethod)}>
+      {httpMethod}
+    </Badge>
+  )
 }
 
 function httpMethodColor(method: HttpMethods): MantineColor {
