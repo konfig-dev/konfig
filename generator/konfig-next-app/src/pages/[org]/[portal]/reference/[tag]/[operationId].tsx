@@ -4,6 +4,7 @@ import {
   useMantineColorScheme,
   useMantineTheme,
   MantineProvider,
+  ScrollArea,
 } from '@mantine/core'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useState } from 'react'
@@ -144,27 +145,28 @@ const Operation = ({
               hidden={!opened}
               width={{ lg: NAVBAR_WIDTH }}
               sx={{
-                overflowY: 'auto',
                 height:
                   'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
               }}
             >
-              <ReferenceNavbar
-                setOauthTokenUrl={setOauthTokenUrl}
-                oauthTokenUrls={oauthTokenUrls}
-                originalOauthTokenUrl={originalOauthTokenUrl}
-                setOauthTokenUrls={setOauthTokenUrls}
-                servers={servers}
-                setServers={setServers}
-                owner={owner}
-                repo={repo}
-                basePath={basePath}
-                setBasePath={setBasePath}
-                oauthTokenUrl={oauthTokenUrl}
-                setOpened={setOpened}
-                navbarData={navbarData}
-                originalServers={initialServers}
-              />
+              <ScrollArea>
+                <ReferenceNavbar
+                  setOauthTokenUrl={setOauthTokenUrl}
+                  oauthTokenUrls={oauthTokenUrls}
+                  originalOauthTokenUrl={originalOauthTokenUrl}
+                  setOauthTokenUrls={setOauthTokenUrls}
+                  servers={servers}
+                  setServers={setServers}
+                  owner={owner}
+                  repo={repo}
+                  basePath={basePath}
+                  setBasePath={setBasePath}
+                  oauthTokenUrl={oauthTokenUrl}
+                  setOpened={setOpened}
+                  navbarData={navbarData}
+                  originalServers={initialServers}
+                />
+              </ScrollArea>
             </Navbar>
           }
           header={

@@ -16,6 +16,7 @@ import {
   rem,
   Text,
   createStyles,
+  ScrollArea,
 } from '@mantine/core'
 import { OperationObject } from 'konfig-lib'
 import { observer } from 'mobx-react'
@@ -177,47 +178,49 @@ const DocumentationPage = observer(
                 hidden={!opened}
                 width={{ [navbarOffsetBreakpoint]: NAVBAR_WIDTH }}
                 className={navbarClasses.classes.navbar}
-                py="xl"
                 px="md"
                 sx={{
-                  overflowY: 'auto',
                   height:
                     'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
                 }}
               >
-                <Stack spacing="xl">
-                  {docConfig.sidebar.sections.map((section, i) => {
-                    return (
-                      <Box key={`${section.label}-${i}`}>
-                        <NavbarSectionLabel>{section.label}</NavbarSectionLabel>
-                        <Stack spacing={0}>
-                          {section.links.map((link) => {
-                            if (link.type === 'link') {
-                              const label = idToLabel[link.id]
-                              if (label === undefined)
-                                throw Error(
-                                  `Couldn't find label for link with ID: ${link.id}`
+                <ScrollArea offsetScrollbars>
+                  <Stack py="xl" spacing="xl">
+                    {docConfig.sidebar.sections.map((section, i) => {
+                      return (
+                        <Box key={`${section.label}-${i}`}>
+                          <NavbarSectionLabel>
+                            {section.label}
+                          </NavbarSectionLabel>
+                          <Stack spacing={0}>
+                            {section.links.map((link) => {
+                              if (link.type === 'link') {
+                                const label = idToLabel[link.id]
+                                if (label === undefined)
+                                  throw Error(
+                                    `Couldn't find label for link with ID: ${link.id}`
+                                  )
+                                return (
+                                  <DocNavLink
+                                    omitOwnerAndRepo={omitOwnerAndRepo}
+                                    key={link.id}
+                                    id={link.id}
+                                    label={link.label ?? label}
+                                    docId={docId}
+                                    setOpened={setOpened}
+                                  />
                                 )
-                              return (
-                                <DocNavLink
-                                  omitOwnerAndRepo={omitOwnerAndRepo}
-                                  key={link.id}
-                                  id={link.id}
-                                  label={link.label ?? label}
-                                  docId={docId}
-                                  setOpened={setOpened}
-                                />
+                              }
+                              throw Error(
+                                `Not implemented link type ${link.type}`
                               )
-                            }
-                            throw Error(
-                              `Not implemented link type ${link.type}`
-                            )
-                          })}
-                        </Stack>
-                      </Box>
-                    )
-                  })}
-                </Stack>
+                            })}
+                          </Stack>
+                        </Box>
+                      )
+                    })}
+                  </Stack>
+                </ScrollArea>
               </Navbar>
             }
             header={
