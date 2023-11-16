@@ -31,6 +31,7 @@ import { HttpMethods } from './forEachOperation'
 import { transformInnerSchemas } from './util/transform-inner-schemas'
 import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
 import { orderOpenApiSpecification } from './util/order-openapi-specification'
+import { convertAnyOfSchemasToAny } from './convert-any-of-schemas-to-any'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -650,6 +651,7 @@ export const transformSpec = async ({
 
     // convert all "oneOf" schemas to {} to denote any since java generator does not support polymorphism
     convertOneOfSchemasToAny({ spec: spec.spec })
+    convertAnyOfSchemasToAny({ spec: spec.spec })
   }
 
   if (generator === 'dart') {
