@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+order:
+  - tag: API Status
+  - tag: Authentication
+    operations:
+      - Authentication_registerSnapTradeUser
+      - Authentication_loginSnapTradeUser
+  - tag: Connections
+  - tag: Account Information
+    operations:
+      - path: /accounts
+        method: get
+  - tag: Trading
+    operations:
+      - Trading_getUserAccountQuotes
+      - Trading_getOrderImpact
+      - Trading_placeOrder
+      - Trading_placeForceOrder
+      - Trading_placeOCOOrder
+      - Trading_cancelUserAccountOrder
+filterTags:
+  - Webhooks
+  - Development Tools
+  - Custom Brokerage API Credentials
+filterModels:
+  - SnapTradePartnerAPICredential
+  - WebhookBase
+  - MockSignatureResponse
+filterRequestBodies:
+  - CreateSnapTradeParterAPICredentialsRequestBody
+  - MockSignatureRequestBody
+allObjectsHaveAdditionalProperties:
+  requestBody: false
+  exclude:
+    - encryptedResponse
+    - LoginRedirectURI
+  include:
+    - PortfolioGroup
+requiredEnvironmentVariables:
+  - SNAPTRADE_CONSUMER_KEY
+  - SNAPTRADE_CLIENT_ID
+  - SNAPTRADE_TEST_USER_ID
+  - SNAPTRADE_TEST_USER_SECRET
+outputDirectory: /tmp/snaptrade-sdks-out
+infoContactName: SnapTrade
+infoContactUrl: https://snaptrade.com/
+doNotValidateGloballyRequiredSecurity: true
+tagPriority:
+  - Account Information
+readmeHeader:
+  title: SnapTrade
+  image: header.png
+  url: https://snaptrade.com
+generators:
+  java:
+    version: 4.13.3
+    outputDirectory: sdks/java
+    readmeSnippet: snippets/java.java
+    clientName: Snaptrade
+    apiDocumentationAuthenticationPartial: snippets/javaDocAuthPartial.java
+    clientState:
+      - consumerKey
+    git:
+      host: github.com
+      userId: passiv
+      repoId: snaptrade-sdks/tree/master/sdks/java
+    groupId: com.konfigthis
+    artifactId: snaptrade-java-sdk
+specPath: api.yaml
