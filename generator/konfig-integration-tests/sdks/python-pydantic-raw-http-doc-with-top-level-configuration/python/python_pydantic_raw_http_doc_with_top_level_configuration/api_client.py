@@ -1565,7 +1565,6 @@ class ApiClient:
         session = aiohttp.ClientSession()
         t1 = time.time()
         if method == "GET":
-            session.get(url)
             response = await session.get(url, headers=headers)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         elif method == "HEAD":
