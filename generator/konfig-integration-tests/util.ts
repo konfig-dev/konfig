@@ -12,15 +12,17 @@ import {
 } from "konfig-lib";
 import waitOn from "wait-on";
 
-const IS_GITHUB = process.env.GITHUB_ACTIONS === "true";
+const USE_RUN =
+  process.env.GITHUB_ACTIONS === "true" ||
+  (process.env.MY_VAR && process.env.MY_VAR.trim() !== "");
 
-console.log("IS_GITHUB", IS_GITHUB);
+console.log("USE_RUN", USE_RUN);
 
 // relative path from this file to: ""../konfig-dash/packages/konfig-cli/bin/dev""
 // use nodejs __dirname to get the current directory of this file
 const KONFIG_CLI_PATH = path.join(
   __dirname,
-  `../konfig-dash/packages/konfig-cli/bin/${IS_GITHUB ? "run" : "dev"}`
+  `../konfig-dash/packages/konfig-cli/bin/${USE_RUN ? "run" : "dev"}`
 );
 
 /**
