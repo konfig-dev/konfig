@@ -15,6 +15,8 @@ import logging
 import multiprocessing
 import sys
 import urllib3
+import tempfile
+import os
 
 
 import re
@@ -128,6 +130,11 @@ conf = python_pydantic.Configuration(
         """
         self.temp_folder_path = None
         """Temp file folder for downloading files
+        """
+        self.har_log_file_path = os.path.join(os.path.expanduser("~"), '.python-pydantic', 'log.har')
+        print(self.har_log_file_path)
+        """Temp file path for storing files in HAR format
+        Has a default value set to OS's temp folder path.
         """
         # Authentication Settings
         self.api_key = {}
