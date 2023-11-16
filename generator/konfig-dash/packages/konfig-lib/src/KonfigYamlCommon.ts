@@ -250,12 +250,32 @@ const ApiOrderConfigurationSchema = z
 
 export type ApiOrderConfiguration = z.infer<typeof ApiOrderConfigurationSchema>
 
+const _useSecurityKeyNameDescription = `Instead of using the security scheme's key, use the security scheme's name in the OpenAPI specification.
+
+For example take the following OAS security scheme:
+
+components:
+  securitySchemes:
+    apiKey: # <- security name
+      type: apiKey
+      in: header
+      name: X-API-Key # <- security key
+
+If this field is true then "X-API-Key" will be used instead of "apiKey" in the generated SDKs.
+`
+
+export const useSecurityKeyName = z
+  .boolean()
+  .optional()
+  .describe(_useSecurityKeyNameDescription)
+
 export const KonfigYamlCommon = z
   .object({
     primaryColor,
     portal,
     order: ApiOrderConfigurationSchema.optional(),
     readmeHeader,
+    useSecurityKeyName,
     readmeOperation: z
       .object({
         operationId: z.string(),

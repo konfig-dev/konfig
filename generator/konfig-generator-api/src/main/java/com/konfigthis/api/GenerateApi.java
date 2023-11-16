@@ -322,6 +322,7 @@ public interface GenerateApi {
         putIfPresent(map, "includeFetchAdapter", additionalProperties.getIncludeFetchAdapter());
         putIfPresent(map, "includeEventSourceParser", additionalProperties.getIncludeEventSourceParser());
         putIfPresent(map, "swiftPackagePath", additionalProperties.getSwiftPackagePath());
+        putIfPresent(map, "useSecurityKeyName", additionalProperties.getUseSecurityKeyParamNameAsPropertyName());
         putIfPresent(map, "apiDocumentationAuthenticationPartial", additionalProperties.getApiDocumentationAuthenticationPartial());
         putIfPresent(map, "readmeSnippet", additionalProperties.getReadmeSnippet());
         putIfPresent(map, "readmeHeaderSnippet", additionalProperties.getReadmeHeaderSnippet());

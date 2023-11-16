@@ -99,6 +99,9 @@ public class AdditionalProperties {
   @Valid
   private List<AdditionalPropertiesTopLevelOperationsInner> topLevelOperations = null;
 
+  @JsonProperty("useSecurityKeyName")
+  private Boolean useSecurityKeyName;
+
   @JsonProperty("omitInfoDescription")
   private Boolean omitInfoDescription;
 
@@ -682,6 +685,25 @@ public class AdditionalProperties {
 
   public void setTopLevelOperations(List<AdditionalPropertiesTopLevelOperationsInner> topLevelOperations) {
     this.topLevelOperations = topLevelOperations;
+  }
+
+  public AdditionalProperties useSecurityKeyName(Boolean useSecurityKeyName) {
+    this.useSecurityKeyName = useSecurityKeyName;
+    return this;
+  }
+
+  /**
+   * Get useSecurityKeyName
+   * @return useSecurityKeyName
+  */
+  
+  @Schema(name = "useSecurityKeyName", required = false)
+  public Boolean getUseSecurityKeyName() {
+    return useSecurityKeyName;
+  }
+
+  public void setUseSecurityKeyName(Boolean useSecurityKeyName) {
+    this.useSecurityKeyName = useSecurityKeyName;
   }
 
   public AdditionalProperties omitInfoDescription(Boolean omitInfoDescription) {
@@ -1678,6 +1700,7 @@ public class AdditionalProperties {
         Objects.equals(this.gitLabProjectId, additionalProperties.gitLabProjectId) &&
         Objects.equals(this.outputDirectory, additionalProperties.outputDirectory) &&
         Objects.equals(this.topLevelOperations, additionalProperties.topLevelOperations) &&
+        Objects.equals(this.useSecurityKeyName, additionalProperties.useSecurityKeyName) &&
         Objects.equals(this.omitInfoDescription, additionalProperties.omitInfoDescription) &&
         Objects.equals(this.omitModelDocumentation, additionalProperties.omitModelDocumentation) &&
         Objects.equals(this.omitApiDocumentation, additionalProperties.omitApiDocumentation) &&
@@ -1731,7 +1754,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1760,6 +1783,7 @@ public class AdditionalProperties {
     sb.append("    gitLabProjectId: ").append(toIndentedString(gitLabProjectId)).append("\n");
     sb.append("    outputDirectory: ").append(toIndentedString(outputDirectory)).append("\n");
     sb.append("    topLevelOperations: ").append(toIndentedString(topLevelOperations)).append("\n");
+    sb.append("    useSecurityKeyName: ").append(toIndentedString(useSecurityKeyName)).append("\n");
     sb.append("    omitInfoDescription: ").append(toIndentedString(omitInfoDescription)).append("\n");
     sb.append("    omitModelDocumentation: ").append(toIndentedString(omitModelDocumentation)).append("\n");
     sb.append("    omitApiDocumentation: ").append(toIndentedString(omitApiDocumentation)).append("\n");

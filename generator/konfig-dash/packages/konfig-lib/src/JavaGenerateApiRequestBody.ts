@@ -15,6 +15,7 @@ const additionalProperties = z
     readmeHeaderSnippet: readmeHeaderSnippet,
     artifactId: z.string().optional(),
     artifactUrl: z.string().optional(),
+    useSecurityKeyName: z.boolean().optional(),
     authorEmail: z.string().describe('engineering@acme.com').optional(),
     authorName: z.string().describe('acme.com').optional(),
     pythonResponseTypeVersion: z.string().optional(),
