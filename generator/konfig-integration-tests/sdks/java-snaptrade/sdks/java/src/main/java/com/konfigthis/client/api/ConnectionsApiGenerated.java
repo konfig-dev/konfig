@@ -29,7 +29,7 @@ import java.io.IOException;
 import com.konfigthis.client.model.Brokerage;
 import com.konfigthis.client.model.BrokerageAuthorization;
 import com.konfigthis.client.model.BrokerageType;
-import com.konfigthis.client.model.SessionEvent;
+import com.konfigthis.client.model.ConnectionsSessionEvents200ResponseInner;
 import java.util.UUID;
 
 import java.lang.reflect.Type;
@@ -710,16 +710,16 @@ public class ConnectionsApiGenerated {
     }
 
 
-    private ApiResponse<List<SessionEvent>> sessionEventsWithHttpInfo(String partnerClientId, String userId, String sessionId) throws ApiException {
+    private ApiResponse<List<ConnectionsSessionEvents200ResponseInner>> sessionEventsWithHttpInfo(String partnerClientId, String userId, String sessionId) throws ApiException {
         okhttp3.Call localVarCall = sessionEventsValidateBeforeCall(partnerClientId, userId, sessionId, null);
-        Type localVarReturnType = new TypeToken<List<SessionEvent>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ConnectionsSessionEvents200ResponseInner>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call sessionEventsAsync(String partnerClientId, String userId, String sessionId, final ApiCallback<List<SessionEvent>> _callback) throws ApiException {
+    private okhttp3.Call sessionEventsAsync(String partnerClientId, String userId, String sessionId, final ApiCallback<List<ConnectionsSessionEvents200ResponseInner>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = sessionEventsValidateBeforeCall(partnerClientId, userId, sessionId, _callback);
-        Type localVarReturnType = new TypeToken<List<SessionEvent>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ConnectionsSessionEvents200ResponseInner>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -772,7 +772,7 @@ public class ConnectionsApiGenerated {
 
         /**
          * Execute sessionEvents request
-         * @return List&lt;SessionEvent&gt;
+         * @return List&lt;ConnectionsSessionEvents200ResponseInner&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -781,14 +781,14 @@ public class ConnectionsApiGenerated {
             <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
          </table>
          */
-        public List<SessionEvent> execute() throws ApiException {
-            ApiResponse<List<SessionEvent>> localVarResp = sessionEventsWithHttpInfo(partnerClientId, userId, sessionId);
+        public List<ConnectionsSessionEvents200ResponseInner> execute() throws ApiException {
+            ApiResponse<List<ConnectionsSessionEvents200ResponseInner>> localVarResp = sessionEventsWithHttpInfo(partnerClientId, userId, sessionId);
             return localVarResp.getResponseBody();
         }
 
         /**
          * Execute sessionEvents request with HTTP info returned
-         * @return ApiResponse&lt;List&lt;SessionEvent&gt;&gt;
+         * @return ApiResponse&lt;List&lt;ConnectionsSessionEvents200ResponseInner&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -797,7 +797,7 @@ public class ConnectionsApiGenerated {
             <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<List<SessionEvent>> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<List<ConnectionsSessionEvents200ResponseInner>> executeWithHttpInfo() throws ApiException {
             return sessionEventsWithHttpInfo(partnerClientId, userId, sessionId);
         }
 
@@ -813,7 +813,7 @@ public class ConnectionsApiGenerated {
             <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<List<SessionEvent>> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<List<ConnectionsSessionEvents200ResponseInner>> _callback) throws ApiException {
             return sessionEventsAsync(partnerClientId, userId, sessionId, _callback);
         }
     }

@@ -303,7 +303,7 @@ null (empty response body)
 
 <a name="sessionEvents"></a>
 # **sessionEvents**
-> List&lt;SessionEvent&gt; sessionEvents(partnerClientId).userId(userId).sessionId(sessionId).execute();
+> List&lt;ConnectionsSessionEvents200ResponseInner&gt; sessionEvents(partnerClientId).userId(userId).sessionId(sessionId).execute();
 
 List all session events for the partner
 
@@ -334,13 +334,12 @@ public class Example {
     String userId = "userId_example"; // Optional comma seperated list of user IDs used to filter the request on specific users
     String sessionId = "sessionId_example"; // Optional comma seperated list of session IDs used to filter the request on specific users
     try {
-      List<SessionEvent> result = client
+      List<ConnectionsSessionEvents200ResponseInner> result = client
               .connections
               .sessionEvents(partnerClientId)
               .userId(userId)
               .sessionId(sessionId)
               .execute();
-      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConnectionsApi#sessionEvents");
       System.err.println("Status code: " + e.getStatusCode());
@@ -351,7 +350,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<List<SessionEvent>> response = client
+      ApiResponse<List<ConnectionsSessionEvents200ResponseInner>> response = client
               .connections
               .sessionEvents(partnerClientId)
               .userId(userId)
@@ -384,7 +383,7 @@ public class Example {
 
 ### Return type
 
-[**List&lt;SessionEvent&gt;**](SessionEvent.md)
+[**List&lt;ConnectionsSessionEvents200ResponseInner&gt;**](ConnectionsSessionEvents200ResponseInner.md)
 
 ### Authorization
 
