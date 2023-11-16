@@ -14,7 +14,7 @@ import waitOn from "wait-on";
 
 const USE_RUN =
   process.env.GITHUB_ACTIONS === "true" ||
-  (process.env.MY_VAR && process.env.MY_VAR.trim() !== "");
+  (process.env.RUN && process.env.RUN.trim() !== "");
 
 console.log("USE_RUN", USE_RUN);
 
