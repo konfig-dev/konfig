@@ -26,8 +26,9 @@ public class GettingStartedTest {
         @Test
         public void setPortfolioTargets() throws ApiException {
                 Configuration configuration = new Configuration();
-                configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-                configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+                configuration.host = "http://127.0.0.1:4026";
+                configuration.clientId = "SNAPTRADE_CLIENT_ID";
+                configuration.consumerKey = "SNAPTRADE_CONSUMER_KEY";
                 Snaptrade snaptrade = new Snaptrade(configuration);
                 UUID userId = UUID.randomUUID();
                 UserIDandSecret userIDandSecret = snaptrade.authentication.registerSnapTradeUser()
@@ -41,8 +42,9 @@ public class GettingStartedTest {
         public void gettingStartedTest() throws ApiException {
                 // 1) Initialize default client with clientID and consumerKey
                 Configuration configuration = new Configuration();
-                configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-                configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+                configuration.host = "http://127.0.0.1:4026";
+                configuration.clientId = "SNAPTRADE_CLIENT_ID";
+                configuration.consumerKey = "SNAPTRADE_CONSUMER_KEY";
                 Snaptrade snaptrade = new Snaptrade(configuration);
 
                 // 2) Check that the client is able to make a request to the API server
