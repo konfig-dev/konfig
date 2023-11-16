@@ -652,6 +652,31 @@ export const transformSpec = async ({
     // convert all "oneOf" schemas to {} to denote any since java generator does not support polymorphism
     convertOneOfSchemasToAny({ spec: spec.spec })
     convertAnyOfSchemasToAny({ spec: spec.spec })
+
+    /*
+    If you have the following schema:
+    {
+      type: object,
+      default: {}
+    },
+    then Java SDK will generate the following:
+
+    ```java
+    public property = {};
+    ```
+
+    This is invalid syntax and an easy way to fix this is to just catch this case and remove the default value
+    */
+    recurseObject(spec.spec, ({ value: schema }) => {
+      if (schema === null) return
+      if (typeof schema !== 'object') return
+      if (schema['type'] !== 'object') return
+      if (schema['default'] === undefined) return
+      // if this is an empty object, delete the 'default' property
+      if (Object.keys(schema['default']).length === 0) {
+        delete schema['default']
+      }
+    })
   }
 
   if (generator === 'dart') {
