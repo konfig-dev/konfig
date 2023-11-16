@@ -14,7 +14,12 @@ export function convertAnyOfSchemasToAny({ spec }: { spec: Spec['spec'] }) {
           schema[key] !== null &&
           'anyOf' in schema[key]
         ) {
-          schema[key] = {}
+          // If there is only one option, then just use that option
+          if (schema[key].anyOf.length === 1) {
+            schema[key] = schema[key].anyOf[0]
+          } else {
+            schema[key] = {}
+          }
         }
       }
     }
