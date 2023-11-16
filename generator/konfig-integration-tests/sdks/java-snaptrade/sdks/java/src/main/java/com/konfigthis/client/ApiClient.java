@@ -442,36 +442,6 @@ public class ApiClient extends ApiClientCustom {
     }
 
     /**
-     * Helper method to set API key value for the first API key authentication.
-     *
-     * @param apiKey API key
-     */
-    public void setApiKey(String apiKey) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKey(apiKey);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
-
-    /**
-     * Helper method to set API key prefix for the first API key authentication.
-     *
-     * @param apiKeyPrefix API key prefix
-     */
-    public void setApiKeyPrefix(String apiKeyPrefix) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKeyPrefix(apiKeyPrefix);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
-
-    /**
      * Helper method to set access token for the first OAuth2 authentication.
      *
      * @param accessToken Access token
