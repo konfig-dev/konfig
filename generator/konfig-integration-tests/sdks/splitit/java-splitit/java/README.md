@@ -122,7 +122,6 @@ public class Example {
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
     
-    
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";

@@ -46,7 +46,6 @@ public class Example {
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
     
-    
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -144,7 +143,6 @@ public class Example {
     String clientSecret = System.getenv("CLIENT_SECRET");
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
-    
     
     JavaSplitit client = new JavaSplitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -252,7 +250,6 @@ public class Example {
     String clientSecret = System.getenv("CLIENT_SECRET");
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
-    
     
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
@@ -366,7 +363,6 @@ public class Example {
     String clientSecret = System.getenv("CLIENT_SECRET");
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
-    
     
     JavaSplitit client = new JavaSplitit(configuration);
     Boolean autoCapture = true;
@@ -502,7 +498,6 @@ public class Example {
     String clientSecret = System.getenv("CLIENT_SECRET");
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
-    
     
     JavaSplitit client = new JavaSplitit(configuration);
     Boolean autoCapture = true;
@@ -645,7 +640,6 @@ public class Example {
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
     
-    
     JavaSplitit client = new JavaSplitit(configuration);
     Double amount = 3.4D;
     String installmentPlanNumber = "installmentPlanNumber_example";
@@ -754,7 +748,6 @@ public class Example {
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
     
-    
     JavaSplitit client = new JavaSplitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -862,7 +855,6 @@ public class Example {
     String clientSecret = System.getenv("CLIENT_SECRET");
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
-    
     
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
@@ -978,7 +970,6 @@ public class Example {
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
     
-    
     JavaSplitit client = new JavaSplitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -1093,7 +1084,6 @@ public class Example {
     String clientSecret = System.getenv("CLIENT_SECRET");
     configuration.clientId = "clientId";
     configuration.clientSecret = "clientSecret";
-    
     
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";

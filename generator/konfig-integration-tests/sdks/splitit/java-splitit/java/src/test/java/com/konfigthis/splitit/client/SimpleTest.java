@@ -17,7 +17,6 @@ public class SimpleTest {
         configuration.clientId = "clientId";
         configuration.clientSecret = "clientSecret";
         
-        
         JavaSplitit client = new JavaSplitit(configuration);
         assertNotNull(client);
     }

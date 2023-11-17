@@ -3742,6 +3742,24 @@ components:
             - title
             - url
           description: Call to action to be displayed in SDKs README.md
+        useSecurityKeyName:
+          type: boolean
+          description: >
+            Instead of using the security scheme's key, use the security
+            scheme's name in the OpenAPI specification.
+
+
+            For example take the following OAS security scheme:
+
+
+            components:
+              securitySchemes:
+                apiKey: # <- security name
+                  type: apiKey
+                  in: header
+                  name: X-API-Key # <- security key
+
+            If this field is true then "X-API-Key" will be used instead of "apiKey" in the generated SDKs.
         readmeOperation:
           type: object
           properties:
