@@ -14,9 +14,18 @@ export function convertAnyOfSchemasToAny({ spec }: { spec: Spec['spec'] }) {
           schema[key] !== null &&
           'anyOf' in schema[key]
         ) {
-          // If there is only one option, then just use that option
           if (schema[key].anyOf.length > 1) {
-            schema[key] = {}
+            // if all schemas are strings then just use string
+            if (
+              schema[key].anyOf.every(
+                (schema: any) =>
+                  typeof schema === 'object' && schema.type === 'string'
+              )
+            ) {
+              schema[key] = { type: 'string' }
+            } else {
+              schema[key] = {}
+            }
           }
         }
       }
