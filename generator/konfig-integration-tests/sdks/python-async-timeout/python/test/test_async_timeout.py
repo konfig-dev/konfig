@@ -25,8 +25,9 @@ class TestAsyncTimeout(unittest.TestCase):
             client = PythonAsyncTimeoutClient(
                 api_key="YOUR_API_KEY", host="http://127.0.0.1:4015"
             )
-            # expect exception to be thrown with a timeout of 0
-            await client.test.afetch(timeout=0)
+            # expect exception to be thrown with a timeout of pretty much 0
+            with self.assertRaises(asyncio.TimeoutError):
+                await client.test.afetch(timeout=0.00000000000000000001)
 
         asyncio.run(run_async_test())
 
