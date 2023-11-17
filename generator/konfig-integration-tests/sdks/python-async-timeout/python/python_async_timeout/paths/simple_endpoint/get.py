@@ -245,7 +245,7 @@ class FetchRaw(BaseApi):
 
     async def afetch(
         self,
-        **kwargs
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -254,7 +254,7 @@ class FetchRaw(BaseApi):
         args = self._fetch_mapped_args(
         )
         return await self._afetch_oapg(
-            **kwargs
+            **kwargs,
         )
     
     def fetch(
@@ -276,7 +276,7 @@ class Fetch(BaseApi):
         **kwargs,
     ):
         raw_response = await self.raw.afetch(
-            **kwargs
+            **kwargs,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -299,6 +299,7 @@ class ApiForget(BaseApi):
 
     async def aget(
         self,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -307,6 +308,7 @@ class ApiForget(BaseApi):
         args = self._fetch_mapped_args(
         )
         return await self._afetch_oapg(
+            **kwargs,
         )
     
     def get(

@@ -82,6 +82,9 @@
     validate: bool = False,
 {{/if}}
 {{/if}}
+{{#if async}}
+    **kwargs,
+{{/if}}
 ){{#unless omitReturnType}} -> {{#if isMappedArgs}}api_client.MappedArgs{{else}}typing.Union[
     {{#each responses}}
         {{#if isDefault}}

@@ -1,8 +1,8 @@
 {{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
 {{/if}}async def a{{operationId}}(
-{{> endpoint_args isOverload=false skipDeserialization="null" contentType="null" interface=true omitReturnType=true validateArg=true}}
+{{> endpoint_args async=true isOverload=false skipDeserialization="null" contentType="null" interface=true omitReturnType=true validateArg=true}}
     raw_response = await self.raw.a{{operationId}}(
-        {{> endpoint_args_call_mapped_args}}
+        {{> endpoint_args_call_mapped_args async=true}}
     )
     {{> endpoint_pydantic_impl_return}}
 
