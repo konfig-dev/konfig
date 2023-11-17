@@ -148,6 +148,9 @@ public class AdditionalProperties {
   @JsonProperty("defaultTimeout")
   private BigDecimal defaultTimeout;
 
+  @JsonProperty("defaultAsyncTimeout")
+  private BigDecimal defaultAsyncTimeout;
+
   @JsonProperty("supportPhp7")
   private Boolean supportPhp7;
 
@@ -999,6 +1002,25 @@ public class AdditionalProperties {
     this.defaultTimeout = defaultTimeout;
   }
 
+  public AdditionalProperties defaultAsyncTimeout(BigDecimal defaultAsyncTimeout) {
+    this.defaultAsyncTimeout = defaultAsyncTimeout;
+    return this;
+  }
+
+  /**
+   * Get defaultAsyncTimeout
+   * @return defaultAsyncTimeout
+  */
+  @Valid 
+  @Schema(name = "defaultAsyncTimeout", required = false)
+  public BigDecimal getDefaultAsyncTimeout() {
+    return defaultAsyncTimeout;
+  }
+
+  public void setDefaultAsyncTimeout(BigDecimal defaultAsyncTimeout) {
+    this.defaultAsyncTimeout = defaultAsyncTimeout;
+  }
+
   public AdditionalProperties supportPhp7(Boolean supportPhp7) {
     this.supportPhp7 = supportPhp7;
     return this;
@@ -1716,6 +1738,7 @@ public class AdditionalProperties {
         Objects.equals(this.apiDocumentationAuthenticationPartial, additionalProperties.apiDocumentationAuthenticationPartial) &&
         Objects.equals(this.composerPackageName, additionalProperties.composerPackageName) &&
         Objects.equals(this.defaultTimeout, additionalProperties.defaultTimeout) &&
+        Objects.equals(this.defaultAsyncTimeout, additionalProperties.defaultAsyncTimeout) &&
         Objects.equals(this.supportPhp7, additionalProperties.supportPhp7) &&
         Objects.equals(this.useSingleRequestParameter, additionalProperties.useSingleRequestParameter) &&
         Objects.equals(this.artifactUrl, additionalProperties.artifactUrl) &&
@@ -1754,7 +1777,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1799,6 +1822,7 @@ public class AdditionalProperties {
     sb.append("    apiDocumentationAuthenticationPartial: ").append(toIndentedString(apiDocumentationAuthenticationPartial)).append("\n");
     sb.append("    composerPackageName: ").append(toIndentedString(composerPackageName)).append("\n");
     sb.append("    defaultTimeout: ").append(toIndentedString(defaultTimeout)).append("\n");
+    sb.append("    defaultAsyncTimeout: ").append(toIndentedString(defaultAsyncTimeout)).append("\n");
     sb.append("    supportPhp7: ").append(toIndentedString(supportPhp7)).append("\n");
     sb.append("    useSingleRequestParameter: ").append(toIndentedString(useSingleRequestParameter)).append("\n");
     sb.append("    artifactUrl: ").append(toIndentedString(artifactUrl)).append("\n");

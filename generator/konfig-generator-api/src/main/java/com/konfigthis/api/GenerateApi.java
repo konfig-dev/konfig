@@ -338,6 +338,7 @@ public interface GenerateApi {
         }
         putIfPresent(map, "setSkipSerializationToTrueByDefault", additionalProperties.getSetSkipSerializationToTrueByDefault());
         putIfPresent(map, "defaultTimeout", additionalProperties.getDefaultTimeout());
+        putIfPresent(map, "defaultAsyncTimeout", additionalProperties.getDefaultAsyncTimeout());
         putIfPresent(map, "composerPackageName", additionalProperties.getComposerPackageName());
         putIfPresent(map, "packageUrl", additionalProperties.getPackageUrl());
         putIfPresent(map, "moduleName", additionalProperties.getModuleName());

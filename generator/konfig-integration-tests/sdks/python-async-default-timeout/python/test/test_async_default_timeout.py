@@ -22,7 +22,8 @@ class TestAsyncDefaultTimeout(unittest.TestCase):
 
     def test_async_default_timeout(self):
         # Ensure that the default timeout is set to what is configured in the konfig.yaml
-        # by asserting that making a request with no timeout specified throws a timeout error
+        # by asserting that making a request with no timeout specified throws a timeout error.
+        # this happens because the konfig.yaml sets the default timeout to a really small number
         async def run_async_test():
             client = PythonAsyncDefaultTimeoutClient(
                 api_key="YOUR_API_KEY",

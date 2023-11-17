@@ -82,6 +82,7 @@ const additionalProperties = z
     useSingleRequestParameter: z.boolean().optional(),
     keepAllParametersOptional: z.boolean().optional(),
     defaultTimeout: z.number().optional(),
+    defaultAsyncTimeout: z.number().optional(),
     tagPriority: tagPrioritySchema.optional(),
   })
   .passthrough()

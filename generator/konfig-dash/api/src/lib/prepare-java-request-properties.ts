@@ -50,6 +50,10 @@ export function prepareJavaRequestProperties({
     }
   }
 
+  if ('defaultAsyncTimeout' in generatorConfig) {
+    properties['defaultAsyncTimeout'] = generatorConfig.defaultAsyncTimeout
+  }
+
   if ('repoName' in git) {
     properties['gitRepoName'] = git.repoName
   }

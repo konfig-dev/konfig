@@ -231,6 +231,12 @@ export const pythonConfig = z.object({
   omitModelDocumentation: z.boolean().optional(),
   packageUrl: z.string().optional(),
   topLevelOperations: topLevelOperationsSchema,
+  defaultAsyncTimeout: z
+    .number()
+    .optional()
+    .describe(
+      'Configure a default timeout for async operations. By default the timeout will be the default inherited from aiohttp which is 300 seconds (5 minutes).'
+    ),
   testPyPI: z.boolean().optional(),
   keepAllParametersOptional: z
     .boolean()
