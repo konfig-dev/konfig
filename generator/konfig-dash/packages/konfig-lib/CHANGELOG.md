@@ -1,5 +1,13 @@
 # konfig-lib
 
+## 1.31.0
+
+### Minor Changes
+
+- [#375](https://github.com/konfig-dev/konfig/pull/375) [`d0f443c5`](https://github.com/konfig-dev/konfig/commit/d0f443c598a2d7c4ded710eb1c1d786aea20b37a) Thanks [@dphuang2](https://github.com/dphuang2)! - convert anyOf schemas to any for Java SDKs
+
+- [#379](https://github.com/konfig-dev/konfig/pull/379) [`234f77a7`](https://github.com/konfig-dev/konfig/commit/234f77a75464ba458edafab91624153b60984577) Thanks [@dphuang2](https://github.com/dphuang2)! - add defaultAsyncTimeout configuration to Python SDK
+
 ## 1.30.2
 
 ### Patch Changes
