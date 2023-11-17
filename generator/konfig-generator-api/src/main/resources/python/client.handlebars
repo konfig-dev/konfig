@@ -42,7 +42,7 @@ class {{clientName}}(ClientCustom):
     async def a{{vendorExtensions.x-konfig-top-level-operation}}(
     {{> endpoint_args async=true isOverload=false skipDeserialization="null" contentType="null" interface=true omitReturnType=true}}
         return await self.{{> api_class_name}}.a{{operationId}}(
-            {{> endpoint_args_call_mapped_args}}
+            {{> endpoint_args_call_mapped_args async=true}}
         )
 
     @copy_signature({{classname}}.{{operationId}})

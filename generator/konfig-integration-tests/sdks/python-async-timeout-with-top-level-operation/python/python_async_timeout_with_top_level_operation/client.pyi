@@ -37,6 +37,7 @@ class PythonAsyncTimeoutWithTopLevelOperationClient(ClientCustom):
         **kwargs,
     ):
         return await self.test.afetch(
+            **kwargs,
         )
 
     @copy_signature(TestApi.fetch)
