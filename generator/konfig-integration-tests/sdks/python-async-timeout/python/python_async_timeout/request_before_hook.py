@@ -23,4 +23,6 @@ def request_before_hook(
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
 ):
-    pass
+    # sleep for 0.25 seconds
+    import time
+    time.sleep(0.25)
