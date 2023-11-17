@@ -1,0 +1,34 @@
+Configuration configuration = new Configuration();
+configuration.host = "{{{basePath}}}";
+{{#apiDocumentationAuthenticationPartial}}
+{{{apiDocumentationAuthenticationPartial}}}
+{{/apiDocumentationAuthenticationPartial}}
+{{^apiDocumentationAuthenticationPartial}}
+{{#hasAuthMethods}}
+{{#authMethods}}
+{{#-first}}
+{{#isApplication}}
+// Configure OAuth2 client credentials for "application" OAuth flow
+String clientId = System.getenv("CLIENT_ID");
+String clientSecret = System.getenv("CLIENT_SECRET");
+configuration.clientId = clientId
+configuration.clientSecret = clientSecret
+
+{{/isApplication}}
+{{/-first}}
+{{/authMethods}}
+{{/hasAuthMethods}}
+{{#hasAuthMethods}}
+{{#authMethods}}{{#isBasic}}{{#isBasicBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+configuration.username = "YOUR USERNAME";
+configuration.password = "YOUR PASSWORD";{{/isBasicBasic}}{{#isBasicBearer}}
+// Configure HTTP bearer authorization: {{{name}}}
+configuration.token = "BEARER TOKEN";{{/isBasicBearer}}{{/isBasic}}{{#isApiKey}}
+configuration.{{> securityName}}  = "YOUR API KEY";{{/isApiKey}}{{#isOAuth}}{{^isApplication}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+configuration.accessToken = "YOUR ACCESS TOKEN";{{/isApplication}}{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}
+{{/apiDocumentationAuthenticationPartial}}
+{{{clientName}}} client = new {{{clientName}}}(configuration);
