@@ -21,6 +21,7 @@ class TestAsyncTimeout(unittest.TestCase):
         pass
 
     def test_response_is_pydantic_async(self):
+        # Ensure that we can provide a timeout to the client
         async def run_async_test():
             client = PythonAsyncTimeoutClient(
                 api_key="YOUR_API_KEY", host="http://127.0.0.1:4015"
