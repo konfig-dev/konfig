@@ -61,18 +61,20 @@ export async function e2e(
   };
 
   // run "konfig generate -d -I" inside the path
-  await execa(KONFIG_CLI_PATH, ["generate", "-d", "-I"], {
+  await callAndLogExeca(KONFIG_CLI_PATH, ["generate", "-d", "-I"], {
     cwd: sdkDir,
-    stdio: "inherit",
     env,
   });
 
   // run "konfig test" inside the path
-  await execa(KONFIG_CLI_PATH, ["test", "-p", mockServerPort.toString()], {
-    cwd: sdkDir,
-    stdio: "inherit",
-    env,
-  });
+  await callAndLogExeca(
+    KONFIG_CLI_PATH,
+    ["test", "-p", mockServerPort.toString()],
+    {
+      cwd: sdkDir,
+      env,
+    }
+  );
 
   // validate top-level README.md
   const konfigYamlPath = path.join(sdkDir, KONFIG_YAML_NAME);
@@ -109,6 +111,15 @@ export async function e2e(
   if (customAssertions) {
     customAssertions();
   }
+}
+
+async function callAndLogExeca(command: string, args: string[], options: any) {
+  console.log(`Running: ${command} ${args.join(" ")}`);
+  const { stdout, stderr } = await execa(command, args, {
+    ...options,
+  });
+  console.log(stdout);
+  console.error(stderr);
 }
 
 // Removes the [GitHub last commit] line from the README
