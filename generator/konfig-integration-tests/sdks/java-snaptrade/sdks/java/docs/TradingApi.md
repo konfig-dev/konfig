@@ -36,10 +36,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
@@ -153,10 +152,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
@@ -275,10 +273,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
@@ -375,10 +372,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
@@ -512,10 +508,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
@@ -631,10 +626,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     UUID tradeId = UUID.randomUUID(); // The ID of trade object obtained from trade/impact endpoint
     String userId = "userId_example";

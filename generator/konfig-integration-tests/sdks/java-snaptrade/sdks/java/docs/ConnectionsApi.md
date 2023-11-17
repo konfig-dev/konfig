@@ -34,10 +34,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     UUID authorizationId = UUID.randomUUID(); // The ID of a brokerage authorization object.
     String userId = "userId_example";
@@ -139,10 +138,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
@@ -233,10 +231,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     UUID authorizationId = UUID.randomUUID(); // The ID of the Authorization to delete.
     String userId = "userId_example";
@@ -325,10 +322,9 @@ public class Example {
   public static void main(String[] args) {
     Configuration configuration = new Configuration();
     configuration.host = "https://api.snaptrade.com/api/v1";
-    configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
-    configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
-
-
+        configuration.clientId = System.getenv("SNAPTRADE_CLIENT_ID");
+        configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
+    
     Snaptrade client = new Snaptrade(configuration);
     String partnerClientId = "partnerClientId_example";
     String userId = "userId_example"; // Optional comma seperated list of user IDs used to filter the request on specific users

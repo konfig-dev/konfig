@@ -119,11 +119,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";

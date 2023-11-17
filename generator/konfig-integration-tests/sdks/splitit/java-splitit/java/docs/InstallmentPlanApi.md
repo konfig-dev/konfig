@@ -43,11 +43,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -143,11 +142,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -252,11 +250,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -367,11 +364,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     Boolean autoCapture = true;
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -504,11 +500,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     Boolean autoCapture = true;
     Boolean termsAndConditionsAccepted = true;
@@ -647,11 +642,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     Double amount = 3.4D;
     String installmentPlanNumber = "installmentPlanNumber_example";
@@ -757,11 +751,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -867,11 +860,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -983,11 +975,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -1100,11 +1091,10 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
+    
     JavaSplitit client = new JavaSplitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
