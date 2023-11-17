@@ -375,9 +375,10 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -437,6 +438,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -498,7 +500,7 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -595,6 +597,7 @@ class Search(BaseApi):
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -610,6 +613,7 @@ class Search(BaseApi):
         return await self._asearch_oapg(
             query_params=args.query,
             header_params=args.header,
+            **kwargs,
         )
     
     def search(
@@ -645,6 +649,7 @@ class ApiForget(BaseApi):
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -660,6 +665,7 @@ class ApiForget(BaseApi):
         return await self._asearch_oapg(
             query_params=args.query,
             header_params=args.header,
+            **kwargs,
         )
     
     def get(

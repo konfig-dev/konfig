@@ -107,7 +107,7 @@ class RESTClientObject(object):
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, typing.Any], ...]] = None,
         body: typing.Optional[typing.Union[str, bytes]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
     ) -> ResponseWrapper:
         """Perform requests.
 

@@ -121,9 +121,10 @@ class BaseApi(api_client.Api):
         self,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -171,6 +172,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -231,7 +233,7 @@ class BaseApi(api_client.Api):
         self,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -312,6 +314,7 @@ class GetWorkflowRun(BaseApi):
     async def aget_workflow_run(
         self,
         workflow_run_id: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -322,6 +325,7 @@ class GetWorkflowRun(BaseApi):
         )
         return await self._aget_workflow_run_oapg(
             path_params=args.path,
+            **kwargs,
         )
     
     def get_workflow_run(
@@ -344,6 +348,7 @@ class ApiForget(BaseApi):
     async def aget(
         self,
         workflow_run_id: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -354,6 +359,7 @@ class ApiForget(BaseApi):
         )
         return await self._aget_workflow_run_oapg(
             path_params=args.path,
+            **kwargs,
         )
     
     def get(

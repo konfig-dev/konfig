@@ -152,9 +152,10 @@ class BaseApi(api_client.Api):
         self,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -203,6 +204,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -263,7 +265,7 @@ class BaseApi(api_client.Api):
         self,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -345,6 +347,7 @@ class Fetch(BaseApi):
     async def afetch(
         self,
         input_parameter: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -355,6 +358,7 @@ class Fetch(BaseApi):
         )
         return await self._afetch_oapg(
             query_params=args.query,
+            **kwargs,
         )
     
     def fetch(
@@ -377,6 +381,7 @@ class ApiForget(BaseApi):
     async def aget(
         self,
         input_parameter: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -387,6 +392,7 @@ class ApiForget(BaseApi):
         )
         return await self._afetch_oapg(
             query_params=args.query,
+            **kwargs,
         )
     
     def get(

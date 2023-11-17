@@ -375,10 +375,11 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -438,6 +439,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -499,7 +501,7 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
@@ -604,6 +606,7 @@ class Post(BaseApi):
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -626,6 +629,7 @@ class Post(BaseApi):
         return await self._apost_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def post(
@@ -682,6 +686,7 @@ class ApiForpost(BaseApi):
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -704,6 +709,7 @@ class ApiForpost(BaseApi):
         return await self._apost_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def post(

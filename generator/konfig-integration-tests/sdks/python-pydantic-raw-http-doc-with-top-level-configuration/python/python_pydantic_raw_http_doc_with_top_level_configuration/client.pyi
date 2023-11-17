@@ -34,6 +34,7 @@ class PythonPydanticRawHttpDocWithTopLevelConfiguration(ClientCustom):
     @copy_signature(TestApi.afetch)
     async def afetch(
         self,
+        **kwargs,
     ):
         return await self.test.afetch(
         )

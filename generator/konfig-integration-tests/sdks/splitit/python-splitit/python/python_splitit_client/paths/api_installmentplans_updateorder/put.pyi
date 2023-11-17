@@ -283,10 +283,11 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -345,6 +346,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -406,7 +408,7 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
@@ -505,6 +507,7 @@ class UpdateOrder2(BaseApi):
         capture: typing.Optional[bool] = None,
         shipping_status: typing.Optional[ShippingStatus2] = None,
         identifier: typing.Optional[IdentifierContract] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -523,6 +526,7 @@ class UpdateOrder2(BaseApi):
         return await self._aupdate_order2_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def update_order2(
@@ -565,6 +569,7 @@ class ApiForput(BaseApi):
         capture: typing.Optional[bool] = None,
         shipping_status: typing.Optional[ShippingStatus2] = None,
         identifier: typing.Optional[IdentifierContract] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -583,6 +588,7 @@ class ApiForput(BaseApi):
         return await self._aupdate_order2_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def put(

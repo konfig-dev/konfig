@@ -85,9 +85,10 @@ class BaseApi(api_client.Api):
     async def _areserved_word_oapg(
         self,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -120,6 +121,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -179,7 +181,7 @@ class BaseApi(api_client.Api):
     def _reserved_word_oapg(
         self,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -244,6 +246,7 @@ class ReservedWordRaw(BaseApi):
 
     async def areserved_word(
         self,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -252,6 +255,7 @@ class ReservedWordRaw(BaseApi):
         args = self._reserved_word_mapped_args(
         )
         return await self._areserved_word_oapg(
+            **kwargs,
         )
     
     def reserved_word(
@@ -270,8 +274,10 @@ class ReservedWord(BaseApi):
     async def areserved_word(
         self,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.areserved_word(
+            **kwargs,
         )
         if validate:
             return TestReservedWordPydantic(**raw_response.body)
@@ -294,6 +300,7 @@ class ApiForget(BaseApi):
 
     async def aget(
         self,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -302,6 +309,7 @@ class ApiForget(BaseApi):
         args = self._reserved_word_mapped_args(
         )
         return await self._areserved_word_oapg(
+            **kwargs,
         )
     
     def get(

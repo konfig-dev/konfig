@@ -267,9 +267,10 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -326,6 +327,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -387,7 +389,7 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -479,6 +481,7 @@ class Cancel(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -492,6 +495,7 @@ class Cancel(BaseApi):
         return await self._acancel_oapg(
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def cancel(
@@ -521,6 +525,7 @@ class ApiForpost(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -534,6 +539,7 @@ class ApiForpost(BaseApi):
         return await self._acancel_oapg(
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def post(

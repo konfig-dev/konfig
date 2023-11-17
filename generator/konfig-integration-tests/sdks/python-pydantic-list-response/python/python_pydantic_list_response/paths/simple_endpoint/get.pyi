@@ -77,9 +77,10 @@ class BaseApi(api_client.Api):
     async def _afetch_oapg(
         self,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -113,6 +114,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -172,7 +174,7 @@ class BaseApi(api_client.Api):
     def _fetch_oapg(
         self,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -238,6 +240,7 @@ class FetchRaw(BaseApi):
 
     async def afetch(
         self,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -246,6 +249,7 @@ class FetchRaw(BaseApi):
         args = self._fetch_mapped_args(
         )
         return await self._afetch_oapg(
+            **kwargs,
         )
     
     def fetch(
@@ -264,8 +268,10 @@ class Fetch(BaseApi):
     async def afetch(
         self,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.afetch(
+            **kwargs,
         )
         if validate:
             return RootModel[TestFetchResponsePydantic](raw_response.body).root
@@ -288,6 +294,7 @@ class ApiForget(BaseApi):
 
     async def aget(
         self,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -296,6 +303,7 @@ class ApiForget(BaseApi):
         args = self._fetch_mapped_args(
         )
         return await self._afetch_oapg(
+            **kwargs,
         )
     
     def get(

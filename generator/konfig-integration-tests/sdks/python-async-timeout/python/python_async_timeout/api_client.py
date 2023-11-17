@@ -1291,7 +1291,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
         **kwargs
@@ -1368,7 +1368,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
     ) -> ResponseWrapper:
@@ -1443,7 +1443,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
         **kwargs
@@ -1497,7 +1497,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
     ) -> ResponseWrapper:
@@ -1557,7 +1557,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         body: typing.Optional[typing.Union[str, bytes]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         **kwargs
     ) -> AsyncResponseWrapper:
         if body and fields:
@@ -1603,7 +1603,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         body: typing.Optional[typing.Union[str, bytes]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
     ) -> ResponseWrapper:
         """Makes the HTTP request using RESTClient."""
         if method == "GET":
