@@ -671,7 +671,9 @@ export const transformSpec = async ({
       if (schema === null) return
       if (typeof schema !== 'object') return
       if (schema['type'] !== 'object') return
+      if (typeof schema['default'] !== 'object') return
       if (schema['default'] === undefined) return
+      if (schema['default'] === null) return
       // if this is an empty object, delete the 'default' property
       if (Object.keys(schema['default']).length === 0) {
         delete schema['default']
