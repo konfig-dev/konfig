@@ -145,10 +145,10 @@ public class TargetAsset {
 
 
   public TargetAsset percent(Double percent) {
-    if (percent < 0) {
+    if (percent != null && percent < 0) {
       throw new IllegalArgumentException("Invalid value for percent. Must be greater than or equal to 0.");
     }
-    if (percent > 100) {
+    if (percent != null && percent > 100) {
       throw new IllegalArgumentException("Invalid value for percent. Must be less than or equal to 100.");
     }
     
@@ -158,10 +158,10 @@ public class TargetAsset {
   }
 
   public TargetAsset percent(Integer percent) {
-    if (percent < 0) {
+    if (percent != null && percent < 0) {
       throw new IllegalArgumentException("Invalid value for percent. Must be greater than or equal to 0.");
     }
-    if (percent > 100) {
+    if (percent != null && percent > 100) {
       throw new IllegalArgumentException("Invalid value for percent. Must be less than or equal to 100.");
     }
     
@@ -185,10 +185,10 @@ public class TargetAsset {
 
 
   public void setPercent(Double percent) {
-    if (percent < 0) {
+    if (percent != null && percent < 0) {
       throw new IllegalArgumentException("Invalid value for percent. Must be greater than or equal to 0.");
     }
-    if (percent > 100) {
+    if (percent != null && percent > 100) {
       throw new IllegalArgumentException("Invalid value for percent. Must be less than or equal to 100.");
     }
     

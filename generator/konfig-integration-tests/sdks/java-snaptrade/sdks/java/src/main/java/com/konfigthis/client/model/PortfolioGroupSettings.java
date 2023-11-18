@@ -163,10 +163,10 @@ public class PortfolioGroupSettings {
 
 
   public PortfolioGroupSettings driftThreshold(Double driftThreshold) {
-    if (driftThreshold < 0) {
+    if (driftThreshold != null && driftThreshold < 0) {
       throw new IllegalArgumentException("Invalid value for driftThreshold. Must be greater than or equal to 0.");
     }
-    if (driftThreshold > 100) {
+    if (driftThreshold != null && driftThreshold > 100) {
       throw new IllegalArgumentException("Invalid value for driftThreshold. Must be less than or equal to 100.");
     }
     
@@ -176,10 +176,10 @@ public class PortfolioGroupSettings {
   }
 
   public PortfolioGroupSettings driftThreshold(Integer driftThreshold) {
-    if (driftThreshold < 0) {
+    if (driftThreshold != null && driftThreshold < 0) {
       throw new IllegalArgumentException("Invalid value for driftThreshold. Must be greater than or equal to 0.");
     }
-    if (driftThreshold > 100) {
+    if (driftThreshold != null && driftThreshold > 100) {
       throw new IllegalArgumentException("Invalid value for driftThreshold. Must be less than or equal to 100.");
     }
     
@@ -203,10 +203,10 @@ public class PortfolioGroupSettings {
 
 
   public void setDriftThreshold(Double driftThreshold) {
-    if (driftThreshold < 0) {
+    if (driftThreshold != null && driftThreshold < 0) {
       throw new IllegalArgumentException("Invalid value for driftThreshold. Must be greater than or equal to 0.");
     }
-    if (driftThreshold > 100) {
+    if (driftThreshold != null && driftThreshold > 100) {
       throw new IllegalArgumentException("Invalid value for driftThreshold. Must be less than or equal to 100.");
     }
     

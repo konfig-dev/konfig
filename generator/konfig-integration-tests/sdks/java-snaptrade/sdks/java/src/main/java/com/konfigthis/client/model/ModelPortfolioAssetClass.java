@@ -93,10 +93,10 @@ public class ModelPortfolioAssetClass {
 
 
   public ModelPortfolioAssetClass percent(Integer percent) {
-    if (percent < 0) {
+    if (percent != null && percent < 0) {
       throw new IllegalArgumentException("Invalid value for percent. Must be greater than or equal to 0.");
     }
-    if (percent > 100) {
+    if (percent != null && percent > 100) {
       throw new IllegalArgumentException("Invalid value for percent. Must be less than or equal to 100.");
     }
     
@@ -120,10 +120,10 @@ public class ModelPortfolioAssetClass {
 
 
   public void setPercent(Integer percent) {
-    if (percent < 0) {
+    if (percent != null && percent < 0) {
       throw new IllegalArgumentException("Invalid value for percent. Must be greater than or equal to 0.");
     }
-    if (percent > 100) {
+    if (percent != null && percent > 100) {
       throw new IllegalArgumentException("Invalid value for percent. Must be less than or equal to 100.");
     }
     
