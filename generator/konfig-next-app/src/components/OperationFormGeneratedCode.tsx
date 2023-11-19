@@ -111,7 +111,7 @@ export function OperationFormGeneratedCode(
   }
 
   return (
-    <div className="relative group">
+    <div className="relative group py-4">
       <Prism noCopy withLineNumbers {...styles} language={args.language as any}>
         {data}
       </Prism>

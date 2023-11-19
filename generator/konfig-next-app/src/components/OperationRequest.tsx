@@ -1,9 +1,17 @@
-import { Button, ScrollArea, clsx, useMantineTheme } from '@mantine/core'
+import {
+  Box,
+  Button,
+  Code,
+  ScrollArea,
+  clsx,
+  useMantineTheme,
+} from '@mantine/core'
 import { OperationFormGeneratedCode } from './OperationFormGeneratedCode'
 import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
 import { Tab } from '@headlessui/react'
 import { LanguageExtended } from './DemoCode'
 import { Fragment } from 'react'
+import { LanguageInstallationCommand } from './LanguageInstallationCommand'
 
 const languages: { value: LanguageExtended; isSdk?: boolean; label: string }[] =
   [
@@ -109,6 +117,7 @@ export function OperationRequest({
                 className="outline-brand-500 dark:outline-brand-600"
                 key={value}
               >
+                <LanguageInstallationCommand codegenArgs={codegenArgs} />
                 <OperationFormGeneratedCode
                   {...codegenArgs}
                   language={value as any}
