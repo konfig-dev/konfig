@@ -26,26 +26,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.konfigthis.client.model.AccountSimple;
-import com.konfigthis.client.model.AccountSyncStatus;
-import com.konfigthis.client.model.Currency;
-import com.konfigthis.client.model.DividendAtDate;
-import com.konfigthis.client.model.Exchange;
 import java.time.LocalDate;
-import com.konfigthis.client.model.MonthlyDividends;
-import com.konfigthis.client.model.NetContributions;
-import com.konfigthis.client.model.NetDividend;
-import com.konfigthis.client.model.OptionsSymbol;
-import com.konfigthis.client.model.PastValue;
 import com.konfigthis.client.model.PerformanceCustom;
-import com.konfigthis.client.model.SecurityType;
-import com.konfigthis.client.model.SubPeriodReturnRate;
-import com.konfigthis.client.model.Symbol;
-import com.konfigthis.client.model.USExchange;
-import java.util.UUID;
-import com.konfigthis.client.model.UnderlyingSymbol;
 import com.konfigthis.client.model.UniversalActivity;
-import com.konfigthis.client.model.UniversalSymbol;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

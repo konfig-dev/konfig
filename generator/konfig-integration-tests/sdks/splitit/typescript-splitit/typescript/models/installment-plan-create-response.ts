@@ -12,22 +12,12 @@ import type * as buffer from "buffer"
 
 import { AddressData } from './address-data';
 import { AuthorizationModel } from './authorization-model';
-import { BluesnapVaultedShopperToken } from './bluesnap-vaulted-shopper-token';
-import { CardBrand } from './card-brand';
-import { CardData } from './card-data';
-import { CardType } from './card-type';
-import { GwAuthorizationStatus } from './gw-authorization-status';
 import { Installment } from './installment';
-import { InstallmentStatus } from './installment-status';
 import { LinksData } from './links-data';
-import { MockerShopperToken } from './mocker-shopper-token';
 import { PaymentMethodModel } from './payment-method-model';
-import { PaymentMethodType } from './payment-method-type';
 import { PlanStatus } from './plan-status';
 import { PurchaseMethod } from './purchase-method';
 import { ShopperData } from './shopper-data';
-import { SpreedlyToken } from './spreedly-token';
-import { ThreeDsRedirectDataV3 } from './three-ds-redirect-data-v3';
 
 /**
  * 

@@ -16,14 +16,19 @@ const USE_RUN =
   process.env.GITHUB_ACTIONS === "true" ||
   (process.env.RUN && process.env.RUN.trim() !== "");
 
+const USE_GLOBAL_CLI = process.env.GLOBAL && process.env.GLOBAL.trim() !== "";
+
 console.log("USE_RUN", USE_RUN);
+console.log("USE_GLOBAL_CLI", USE_GLOBAL_CLI);
 
 // relative path from this file to: ""../konfig-dash/packages/konfig-cli/bin/dev""
 // use nodejs __dirname to get the current directory of this file
-const KONFIG_CLI_PATH = path.join(
-  __dirname,
-  `../konfig-dash/packages/konfig-cli/bin/${USE_RUN ? "run" : "dev"}`
-);
+const KONFIG_CLI_PATH = USE_GLOBAL_CLI
+  ? "konfig"
+  : path.join(
+      __dirname,
+      `../konfig-dash/packages/konfig-cli/bin/${USE_RUN ? "run" : "dev"}`
+    );
 
 /**
  * parse 'python-pydantic-empty-response' from 'tests/python-pydantic-empty-response.test.ts > python-pydantic-empty-response'

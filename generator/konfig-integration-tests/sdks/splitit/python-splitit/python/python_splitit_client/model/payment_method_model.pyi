@@ -146,9 +146,7 @@ class PaymentMethodModel(
         )
 
 from python_splitit_client.model.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
-from python_splitit_client.model.card_brand import CardBrand
 from python_splitit_client.model.card_data import CardData
-from python_splitit_client.model.card_type import CardType
 from python_splitit_client.model.mocker_shopper_token import MockerShopperToken
 from python_splitit_client.model.payment_method_type import PaymentMethodType
 from python_splitit_client.model.spreedly_token import SpreedlyToken

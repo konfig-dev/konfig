@@ -15,22 +15,12 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal
 
 from python_splitit_client.type.address_data_model import AddressDataModel
-from python_splitit_client.type.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
-from python_splitit_client.type.card_brand import CardBrand
-from python_splitit_client.type.card_data import CardData
-from python_splitit_client.type.card_type import CardType
 from python_splitit_client.type.events_endpoints_model import EventsEndpointsModel
-from python_splitit_client.type.mocker_shopper_token import MockerShopperToken
 from python_splitit_client.type.payment_method_model import PaymentMethodModel
-from python_splitit_client.type.payment_method_type import PaymentMethodType
 from python_splitit_client.type.plan_data_model import PlanDataModel
-from python_splitit_client.type.plan_data_model_extended_params import PlanDataModelExtendedParams
 from python_splitit_client.type.processing_data import ProcessingData
-from python_splitit_client.type.purchase_method import PurchaseMethod
 from python_splitit_client.type.redirection_endpoints_model import RedirectionEndpointsModel
 from python_splitit_client.type.shopper_data import ShopperData
-from python_splitit_client.type.spreedly_token import SpreedlyToken
-from python_splitit_client.type.three_ds_data import ThreeDSData
 
 class RequiredInstallmentPlanCreateRequest(TypedDict):
     AutoCapture: bool

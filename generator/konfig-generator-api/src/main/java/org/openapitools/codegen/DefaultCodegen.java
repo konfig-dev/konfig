@@ -4108,13 +4108,15 @@ public class DefaultCodegen implements CodegenConfig {
             updatePropertyForObject(property, p);
         } else if (ModelUtils.isAnyType(p)) {
             updatePropertyForAnyType(property, p);
-        } else if (ModelUtils.isTypeObjectSchema(pDeref)) {
-            // I keep going back and forth between p / pDeref for second argument here
-            // we really need tests so I can make changes to fix customer bugs and be confident I didn't break
-            // something else. Or else we could be going in circles / making backward progress when fixing bugs for
-            // customers.
-            updatePropertyForObject(property, pDeref);
-        } else if (!ModelUtils.isNullType(p)) {
+        }
+//        else if (ModelUtils.isTypeObjectSchema(pDeref)) {
+//            // I keep going back and forth between p / pDeref for second argument here
+//            // we really need tests so I can make changes to fix customer bugs and be confident I didn't break
+//            // something else. Or else we could be going in circles / making backward progress when fixing bugs for
+//            // customers.
+//            updatePropertyForObject(property, pDeref);
+//        }
+        else if (!ModelUtils.isNullType(p)) {
             // referenced model
             ;
         }

@@ -18,7 +18,6 @@ from python_splitit_client.type.plan_data_allowed_installment_options import Pla
 from python_splitit_client.type.plan_data_tags import PlanDataTags
 from python_splitit_client.type.processing_data2 import ProcessingData2
 from python_splitit_client.type.purchase_method import PurchaseMethod
-from python_splitit_client.type.three_ds_data2 import ThreeDSData2
 
 class RequiredPlanData(TypedDict):
     TotalAmount: typing.Union[int, float]

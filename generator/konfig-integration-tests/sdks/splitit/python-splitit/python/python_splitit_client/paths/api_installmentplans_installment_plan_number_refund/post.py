@@ -35,15 +35,11 @@ from python_splitit_client.model.installment_plan_refund_response import Install
 from python_splitit_client.model.installment_plan_refund_request import InstallmentPlanRefundRequest as InstallmentPlanRefundRequestSchema
 from python_splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from python_splitit_client.model.refund_strategy import RefundStrategy as RefundStrategySchema
-from python_splitit_client.model.refund_summary import RefundSummary as RefundSummarySchema
-from python_splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 
 from python_splitit_client.type.installment_plan_refund_request import InstallmentPlanRefundRequest
 from python_splitit_client.type.refund_strategy import RefundStrategy
 from python_splitit_client.type.installment_plan_refund_response import InstallmentPlanRefundResponse
-from python_splitit_client.type.refund_summary import RefundSummary
 from python_splitit_client.type.failed_response import FailedResponse
-from python_splitit_client.type.error_extended import ErrorExtended
 
 from . import path
 

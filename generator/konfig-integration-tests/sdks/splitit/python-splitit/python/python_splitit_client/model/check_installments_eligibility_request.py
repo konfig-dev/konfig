@@ -105,12 +105,5 @@ class CheckInstallmentsEligibilityRequest(
         )
 
 from python_splitit_client.model.address_data import AddressData
-from python_splitit_client.model.card_brand import CardBrand
 from python_splitit_client.model.card_data import CardData
-from python_splitit_client.model.card_type import CardType
 from python_splitit_client.model.plan_data import PlanData
-from python_splitit_client.model.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
-from python_splitit_client.model.plan_data_tags import PlanDataTags
-from python_splitit_client.model.processing_data2 import ProcessingData2
-from python_splitit_client.model.purchase_method import PurchaseMethod
-from python_splitit_client.model.three_ds_data2 import ThreeDSData2

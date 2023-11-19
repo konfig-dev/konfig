@@ -14,7 +14,6 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
-from python_splitit_client.type.links_model import LinksModel
 from python_splitit_client.type.payment_plan_option_model import PaymentPlanOptionModel
 
 class RequiredInstallmentsEligibilityResponse(TypedDict):

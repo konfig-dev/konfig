@@ -15,15 +15,8 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal
 
 from python_splitit_client.type.address_data import AddressData
-from python_splitit_client.type.card_brand import CardBrand
 from python_splitit_client.type.card_data import CardData
-from python_splitit_client.type.card_type import CardType
 from python_splitit_client.type.plan_data import PlanData
-from python_splitit_client.type.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
-from python_splitit_client.type.plan_data_tags import PlanDataTags
-from python_splitit_client.type.processing_data2 import ProcessingData2
-from python_splitit_client.type.purchase_method import PurchaseMethod
-from python_splitit_client.type.three_ds_data2 import ThreeDSData2
 
 class RequiredCheckInstallmentsEligibilityRequest(TypedDict):
     pass

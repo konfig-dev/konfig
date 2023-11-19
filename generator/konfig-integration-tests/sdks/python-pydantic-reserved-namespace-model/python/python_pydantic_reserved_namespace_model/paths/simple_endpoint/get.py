@@ -33,15 +33,12 @@ import frozendict  # noqa: F401
 
 from python_pydantic_reserved_namespace_model import schemas  # noqa: F401
 
-from python_pydantic_reserved_namespace_model.model.inner import Inner as InnerSchema
 from python_pydantic_reserved_namespace_model.model.test_fetch_response import TestFetchResponse as TestFetchResponseSchema
 
-from python_pydantic_reserved_namespace_model.type.inner import Inner
 from python_pydantic_reserved_namespace_model.type.test_fetch_response import TestFetchResponse
 
 from ...api_client import Dictionary
 from python_pydantic_reserved_namespace_model.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
-from python_pydantic_reserved_namespace_model.pydantic.inner import Inner as InnerPydantic
 
 from . import path
 

@@ -12,7 +12,6 @@ import type * as buffer from "buffer"
 
 import { ProcessingData2 } from './processing-data2';
 import { PurchaseMethod } from './purchase-method';
-import { ThreeDSData2 } from './three-dsdata2';
 
 /**
  * 

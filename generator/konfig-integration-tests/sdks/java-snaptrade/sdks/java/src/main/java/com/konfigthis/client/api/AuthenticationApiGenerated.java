@@ -28,7 +28,6 @@ import java.io.IOException;
 
 import com.konfigthis.client.model.DeleteUserResponse;
 import com.konfigthis.client.model.EncryptedResponse;
-import com.konfigthis.client.model.EncryptedResponseEncryptedMessageData;
 import com.konfigthis.client.model.SnapTradeLoginUserRequestBody;
 import com.konfigthis.client.model.SnapTradeRegisterUserRequestBody;
 import com.konfigthis.client.model.UserIDandSecret;

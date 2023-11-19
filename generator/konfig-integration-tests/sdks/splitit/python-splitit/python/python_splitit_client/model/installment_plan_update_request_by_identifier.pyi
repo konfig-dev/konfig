@@ -116,6 +116,4 @@ class InstallmentPlanUpdateRequestByIdentifier(
         )
 
 from python_splitit_client.model.identifier_contract import IdentifierContract
-from python_splitit_client.model.identifier_contract_extended_params import IdentifierContractExtendedParams
 from python_splitit_client.model.installment_plan_update_request import InstallmentPlanUpdateRequest
-from python_splitit_client.model.shipping_status2 import ShippingStatus2

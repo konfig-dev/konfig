@@ -26,9 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.konfigthis.client.model.Brokerage;
 import com.konfigthis.client.model.BrokerageAuthorization;
-import com.konfigthis.client.model.BrokerageType;
 import com.konfigthis.client.model.ConnectionsSessionEvents200ResponseInner;
 import java.util.UUID;
 

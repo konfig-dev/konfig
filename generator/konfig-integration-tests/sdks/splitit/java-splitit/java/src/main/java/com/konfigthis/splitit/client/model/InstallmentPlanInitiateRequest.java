@@ -24,16 +24,11 @@ import com.konfigthis.splitit.client.model.EventsEndpointsModel;
 import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
 import com.konfigthis.splitit.client.model.PlanDataModel;
 import com.konfigthis.splitit.client.model.ProcessingData;
-import com.konfigthis.splitit.client.model.PurchaseMethod;
 import com.konfigthis.splitit.client.model.ShopperData;
-import com.konfigthis.splitit.client.model.ThreeDSData;
 import com.konfigthis.splitit.client.model.UxSettingsModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -33,17 +33,13 @@ from python_splitit_client import schemas  # noqa: F401
 
 from python_splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from python_splitit_client.model.installment_plan_update_response import InstallmentPlanUpdateResponse as InstallmentPlanUpdateResponseSchema
-from python_splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 from python_splitit_client.model.shipping_status import ShippingStatus as ShippingStatusSchema
 from python_splitit_client.model.update_order_request import UpdateOrderRequest as UpdateOrderRequestSchema
-from python_splitit_client.model.plan_status import PlanStatus as PlanStatusSchema
 
 from python_splitit_client.type.shipping_status import ShippingStatus
-from python_splitit_client.type.plan_status import PlanStatus
 from python_splitit_client.type.installment_plan_update_response import InstallmentPlanUpdateResponse
 from python_splitit_client.type.update_order_request import UpdateOrderRequest
 from python_splitit_client.type.failed_response import FailedResponse
-from python_splitit_client.type.error_extended import ErrorExtended
 
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema

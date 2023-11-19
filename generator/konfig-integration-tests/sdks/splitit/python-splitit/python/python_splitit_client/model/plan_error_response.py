@@ -112,5 +112,4 @@ class PlanErrorResponse(
             **kwargs,
         )
 
-from python_splitit_client.model.error_extended import ErrorExtended
 from python_splitit_client.model.failed_response import FailedResponse

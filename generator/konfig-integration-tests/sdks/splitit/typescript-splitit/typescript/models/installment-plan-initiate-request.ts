@@ -15,9 +15,7 @@ import { EventsEndpointsModel } from './events-endpoints-model';
 import { InitiateRedirectionEndpointsModel } from './initiate-redirection-endpoints-model';
 import { PlanDataModel } from './plan-data-model';
 import { ProcessingData } from './processing-data';
-import { PurchaseMethod } from './purchase-method';
 import { ShopperData } from './shopper-data';
-import { ThreeDSData } from './three-dsdata';
 import { UxSettingsModel } from './ux-settings-model';
 
 /**

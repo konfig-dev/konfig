@@ -15,8 +15,6 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal
 
 from python_splitit_client.type.identifier_contract import IdentifierContract
-from python_splitit_client.type.identifier_contract_extended_params import IdentifierContractExtendedParams
 from python_splitit_client.type.installment_plan_update_request import InstallmentPlanUpdateRequest
-from python_splitit_client.type.shipping_status2 import ShippingStatus2
 
 InstallmentPlanUpdateRequestByIdentifier = typing.Union[InstallmentPlanUpdateRequest,typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]

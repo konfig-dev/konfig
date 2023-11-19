@@ -31,39 +31,19 @@ import frozendict  # noqa: F401
 
 from python_splitit_client import schemas  # noqa: F401
 
-from python_splitit_client.model.card_type import CardType as CardTypeSchema
-from python_splitit_client.model.plan_data_tags import PlanDataTags as PlanDataTagsSchema
-from python_splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
-from python_splitit_client.model.three_ds_data2 import ThreeDSData2 as ThreeDSData2Schema
-from python_splitit_client.model.address_data import AddressData as AddressDataSchema
-from python_splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
-from python_splitit_client.model.card_brand import CardBrand as CardBrandSchema
 from python_splitit_client.model.installments_eligibility_response import InstallmentsEligibilityResponse as InstallmentsEligibilityResponseSchema
 from python_splitit_client.model.check_installments_eligibility_request import CheckInstallmentsEligibilityRequest as CheckInstallmentsEligibilityRequestSchema
+from python_splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from python_splitit_client.model.plan_data import PlanData as PlanDataSchema
+from python_splitit_client.model.address_data import AddressData as AddressDataSchema
 from python_splitit_client.model.card_data import CardData as CardDataSchema
-from python_splitit_client.model.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions as PlanDataAllowedInstallmentOptionsSchema
-from python_splitit_client.model.payment_plan_option_model import PaymentPlanOptionModel as PaymentPlanOptionModelSchema
-from python_splitit_client.model.purchase_method import PurchaseMethod as PurchaseMethodSchema
-from python_splitit_client.model.processing_data2 import ProcessingData2 as ProcessingData2Schema
-from python_splitit_client.model.links_model import LinksModel as LinksModelSchema
 
-from python_splitit_client.type.check_installments_eligibility_request import CheckInstallmentsEligibilityRequest
-from python_splitit_client.type.purchase_method import PurchaseMethod
-from python_splitit_client.type.processing_data2 import ProcessingData2
-from python_splitit_client.type.plan_data import PlanData
-from python_splitit_client.type.card_data import CardData
-from python_splitit_client.type.card_type import CardType
-from python_splitit_client.type.error_extended import ErrorExtended
-from python_splitit_client.type.address_data import AddressData
 from python_splitit_client.type.installments_eligibility_response import InstallmentsEligibilityResponse
-from python_splitit_client.type.plan_data_tags import PlanDataTags
-from python_splitit_client.type.payment_plan_option_model import PaymentPlanOptionModel
-from python_splitit_client.type.card_brand import CardBrand
+from python_splitit_client.type.check_installments_eligibility_request import CheckInstallmentsEligibilityRequest
+from python_splitit_client.type.plan_data import PlanData
 from python_splitit_client.type.failed_response import FailedResponse
-from python_splitit_client.type.three_ds_data2 import ThreeDSData2
-from python_splitit_client.type.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
-from python_splitit_client.type.links_model import LinksModel
+from python_splitit_client.type.card_data import CardData
+from python_splitit_client.type.address_data import AddressData
 
 from . import path
 

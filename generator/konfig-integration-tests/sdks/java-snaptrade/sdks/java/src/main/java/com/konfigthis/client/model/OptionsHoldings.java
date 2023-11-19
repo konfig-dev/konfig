@@ -21,14 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.client.model.Currency;
 import com.konfigthis.client.model.OptionsSymbol;
-import com.konfigthis.client.model.SecurityType;
-import com.konfigthis.client.model.USExchange;
-import com.konfigthis.client.model.UnderlyingSymbol;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 

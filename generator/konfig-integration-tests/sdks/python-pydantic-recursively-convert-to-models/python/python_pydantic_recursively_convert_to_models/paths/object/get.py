@@ -34,17 +34,11 @@ import frozendict  # noqa: F401
 from python_pydantic_recursively_convert_to_models import schemas  # noqa: F401
 
 from python_pydantic_recursively_convert_to_models.model.test_fetch_response import TestFetchResponse as TestFetchResponseSchema
-from python_pydantic_recursively_convert_to_models.model.list_inner import ListInner as ListInnerSchema
-from python_pydantic_recursively_convert_to_models.model.inner import Inner as InnerSchema
 
-from python_pydantic_recursively_convert_to_models.type.list_inner import ListInner
 from python_pydantic_recursively_convert_to_models.type.test_fetch_response import TestFetchResponse
-from python_pydantic_recursively_convert_to_models.type.inner import Inner
 
 from ...api_client import Dictionary
-from python_pydantic_recursively_convert_to_models.pydantic.list_inner import ListInner as ListInnerPydantic
 from python_pydantic_recursively_convert_to_models.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
-from python_pydantic_recursively_convert_to_models.pydantic.inner import Inner as InnerPydantic
 
 from . import path
 

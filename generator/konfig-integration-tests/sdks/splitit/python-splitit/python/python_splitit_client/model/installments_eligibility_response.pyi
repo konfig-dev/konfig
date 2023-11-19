@@ -110,5 +110,4 @@ class InstallmentsEligibilityResponse(
             **kwargs,
         )
 
-from python_splitit_client.model.links_model import LinksModel
 from python_splitit_client.model.payment_plan_option_model import PaymentPlanOptionModel

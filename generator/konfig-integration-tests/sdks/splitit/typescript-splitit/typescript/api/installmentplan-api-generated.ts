@@ -24,33 +24,19 @@ import { AddressData } from '../models';
 // @ts-ignore
 import { AddressDataModel } from '../models';
 // @ts-ignore
-import { AuthorizationModel } from '../models';
-// @ts-ignore
-import { BluesnapVaultedShopperToken } from '../models';
-// @ts-ignore
-import { CardBrand } from '../models';
-// @ts-ignore
 import { CardData } from '../models';
 // @ts-ignore
-import { CardType } from '../models';
-// @ts-ignore
 import { CheckInstallmentsEligibilityRequest } from '../models';
-// @ts-ignore
-import { ErrorExtended } from '../models';
 // @ts-ignore
 import { EventsEndpointsModel } from '../models';
 // @ts-ignore
 import { FailedResponse } from '../models';
-// @ts-ignore
-import { GwAuthorizationStatus } from '../models';
 // @ts-ignore
 import { IdentifierContract } from '../models';
 // @ts-ignore
 import { InitiatePlanResponse } from '../models';
 // @ts-ignore
 import { InitiateRedirectionEndpointsModel } from '../models';
-// @ts-ignore
-import { Installment } from '../models';
 // @ts-ignore
 import { InstallmentPlanCancelResponse } from '../models';
 // @ts-ignore
@@ -72,21 +58,9 @@ import { InstallmentPlanUpdateRequestByIdentifier } from '../models';
 // @ts-ignore
 import { InstallmentPlanUpdateResponse } from '../models';
 // @ts-ignore
-import { InstallmentStatus } from '../models';
-// @ts-ignore
 import { InstallmentsEligibilityResponse } from '../models';
 // @ts-ignore
-import { LinksData } from '../models';
-// @ts-ignore
-import { LinksModel } from '../models';
-// @ts-ignore
-import { MockerShopperToken } from '../models';
-// @ts-ignore
 import { PaymentMethodModel } from '../models';
-// @ts-ignore
-import { PaymentMethodType } from '../models';
-// @ts-ignore
-import { PaymentPlanOptionModel } from '../models';
 // @ts-ignore
 import { PlanData } from '../models';
 // @ts-ignore
@@ -94,39 +68,17 @@ import { PlanDataModel } from '../models';
 // @ts-ignore
 import { PlanErrorResponse } from '../models';
 // @ts-ignore
-import { PlanStatus } from '../models';
-// @ts-ignore
 import { ProcessingData } from '../models';
-// @ts-ignore
-import { ProcessingData2 } from '../models';
-// @ts-ignore
-import { PurchaseMethod } from '../models';
 // @ts-ignore
 import { RedirectionEndpointsModel } from '../models';
 // @ts-ignore
-import { RefundModel } from '../models';
-// @ts-ignore
-import { RefundStatus } from '../models';
-// @ts-ignore
 import { RefundStrategy } from '../models';
-// @ts-ignore
-import { RefundSummary } from '../models';
-// @ts-ignore
-import { SearchInstallmentPlanResponseItem } from '../models';
 // @ts-ignore
 import { ShippingStatus } from '../models';
 // @ts-ignore
 import { ShippingStatus2 } from '../models';
 // @ts-ignore
 import { ShopperData } from '../models';
-// @ts-ignore
-import { SpreedlyToken } from '../models';
-// @ts-ignore
-import { ThreeDSData } from '../models';
-// @ts-ignore
-import { ThreeDSData2 } from '../models';
-// @ts-ignore
-import { ThreeDsRedirectDataV3 } from '../models';
 // @ts-ignore
 import { UpdateOrderRequest } from '../models';
 // @ts-ignore
