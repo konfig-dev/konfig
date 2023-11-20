@@ -13,9 +13,10 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from python_circular_reference.type.test_infinite_loop import TestInfiniteLoop
+if TYPE_CHECKING:
+    from python_circular_reference.type.test_infinite_loop import TestInfiniteLoop
 
 class RequiredTestFetchResponse(TypedDict):
     pass
