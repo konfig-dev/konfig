@@ -88,14 +88,14 @@ function Links({
       <a
         target="_blank"
         href={githubLink({ codegenArgs, language })}
-        className="hover:text-black dark:hover:text-mantine-gray-400"
+        className="hover:text-black dark:hover:text-mantine-gray-400 font-semibold"
       >
         GitHub
       </a>
       {pkg && (
         <a
           target="_blank"
-          className="hover:text-black dark:hover:text-mantine-gray-400"
+          className="hover:text-black dark:hover:text-mantine-gray-400 font-semibold"
           href={pkg.link}
         >
           {pkg.packageManager}
