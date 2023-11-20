@@ -555,7 +555,35 @@ public class DefaultCodegen implements CodegenConfig {
             }
         }
 
+        /**
+         * Populdate *CodegenImports for all models
+         */
+        for (ModelsMap modelsAttrs : objs.values()) {
+            List<Map<String, String>> modelsImports = modelsAttrs.getImportsOrEmpty();
+            for (ModelMap mo : modelsAttrs.getModels()) {
+                CodegenModel cm = mo.getModel();
+                populateCodegenImports(cm);
+            }
+        }
+
         return objs;
+    }
+
+    protected void populateCodegenImports(CodegenModel m) {
+        m.typeImports.forEach(i -> {
+            // compute whether import is circular import based on allVars
+            boolean isCircularImport = m.allVars.stream().anyMatch(p -> {
+                return p.isCircularReference;
+            });
+            m.typeCodegenImports.add(new CodegenImport(i, isCircularImport));
+        });
+        m.additionalModelImports.forEach(i -> {
+            // compute whether import is circular import based on allVars
+            boolean isCircularImport = m.allVars.stream().anyMatch(p -> {
+                return p.isCircularReference;
+            });
+            m.additionalModelCodegenImports.add(new CodegenImport(i, isCircularImport));
+        });
     }
 
     /**

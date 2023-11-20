@@ -1075,6 +1075,17 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
 
         }
 
+        /**
+         * Populdate *CodegenImports for all models
+         */
+        for (ModelsMap modelsAttrs : objs.values()) {
+            List<Map<String, String>> modelsImports = modelsAttrs.getImportsOrEmpty();
+            for (ModelMap mo : modelsAttrs.getModels()) {
+                CodegenModel cm = mo.getModel();
+                populateCodegenImports(cm);
+            }
+        }
+
         return objs;
     }
 
