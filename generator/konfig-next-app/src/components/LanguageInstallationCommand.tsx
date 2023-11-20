@@ -76,7 +76,7 @@ export const LanguageInstallationCommand: React.FC<
               })
             }}
             type="never"
-            className="cursor-copy font-semibold"
+            className="cursor-pointer font-semibold transition text-mantine-gray-700 dark:text-mantine-gray-500 hover:text-black dark:hover:text-mantine-gray-0"
           >
             {`npm install ${codegenArgs.languageConfigurations.typescript.packageName}`}
           </ScrollArea>
