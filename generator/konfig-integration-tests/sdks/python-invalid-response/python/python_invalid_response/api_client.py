@@ -125,16 +125,9 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     if typing_extensions.get_origin(model) is typing.Union:
         best_type = closest_type_match(data, model.__args__)
         return construct_model_instance(best_type, data)
-    # if model is scalar value like str, number, etc., use RootModel to construct
-    elif isinstance(model, type):
-        model = RootModel[model]
-        # try to coerce value to model type
-        try:
-            return model(data).root
-        except ValidationError as e:
-            pass
-        # if not possible, give  up
-        return model.model_construct(data).root
+    # if model is scalar value like str, number, etc. just return the value
+    elif isinstance(data, (str, float, int, bytes, bool)):
+        return data
     # if model is list, iterate over list and recursively call
     elif typing_extensions.get_origin(model) is list:
         item_model = typing_extensions.get_args(model)[0]
@@ -143,9 +136,11 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     elif issubclass(model, BaseModel):
         new_data = {}
         for field_name, field_type in model.__annotations__.items():
-            if field_name in data:
-                new_data[field_name] = construct_model_instance(field_type, data[field_name])
-        return model.model_construct(**data)
+            # get alias
+            alias = model.model_fields[field_name].alias
+            if alias in data:
+                new_data[alias] = construct_model_instance(field_type, data[alias])
+        return model.model_construct(**new_data)
     raise ApiTypeError(f"Unable to construct model instance of type {model}")
 
 
