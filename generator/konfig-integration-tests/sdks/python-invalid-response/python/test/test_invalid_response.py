@@ -29,6 +29,15 @@ class TestInvalidResponse(unittest.TestCase):
         self.assertIsNotNone(resp)
         self.assertIsInstance(resp.str_, int)
 
+    def test_invalid_array(self):
+        client = PythonInvalidResponseClient(
+            host="http://127.0.0.1:4027",
+            api_key = 'YOUR_API_KEY',
+        )
+        resp = client.test.invalid_array()
+        self.assertIsNotNone(resp)
+        self.assertIsInstance(resp.array, dict)
+
     def tearDown(self):
         pass
 

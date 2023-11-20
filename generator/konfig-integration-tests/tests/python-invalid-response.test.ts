@@ -12,6 +12,15 @@ test("python-invalid-response", async () => {
             str: 2,
           },
         },
+        {
+          path: "/invalid-array",
+          method: "get",
+          response: {
+            array: {
+              hello: "world",
+            },
+          },
+        },
       ],
     },
   });
