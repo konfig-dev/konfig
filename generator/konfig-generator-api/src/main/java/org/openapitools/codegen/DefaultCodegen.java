@@ -75,6 +75,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -675,14 +676,24 @@ public class DefaultCodegen implements CodegenConfig {
     }
 
     public void setCircularReferences(Map<String, CodegenModel> models) {
+        setCircularReferences(models, CodegenModel::getVars);
+        setCircularReferences(models, CodegenModel::getAllVars);
+        setCircularReferences(models, CodegenModel::getOptionalVars);
+        setCircularReferences(models, CodegenModel::getRequiredVars);
+        setCircularReferences(models, CodegenModel::getReadOnlyVars);
+        setCircularReferences(models, CodegenModel::getReadWriteVars);
+        setCircularReferences(models, CodegenModel::getNonNullableVars);
+    }
+
+    public void setCircularReferences(Map<String, CodegenModel> models, Function<CodegenModel, List<CodegenProperty>> properties) {
         final Map<String, List<CodegenProperty>> dependencyMap = models.entrySet().stream()
-                .collect(Collectors.toMap(Entry::getKey, entry -> getModelDependencies(entry.getValue())));
+                .collect(Collectors.toMap(Entry::getKey, entry -> getModelDependencies(properties.apply(entry.getValue()))));
 
         models.keySet().forEach(name -> setCircularReferencesOnProperties(name, dependencyMap));
     }
 
-    private List<CodegenProperty> getModelDependencies(CodegenModel model) {
-        return model.getAllVars().stream()
+    private List<CodegenProperty> getModelDependencies(List<CodegenProperty> properties) {
+        return properties.stream()
                 .map(prop -> {
                     if (prop.isContainer) {
                         return prop.items.dataType == null ? null : prop;
