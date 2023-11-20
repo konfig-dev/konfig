@@ -10,6 +10,7 @@ import {
   KonfigYamlGeneratorConfig,
   KonfigYamlType,
 } from "konfig-lib";
+import express, { Express, Request, Response } from "express";
 import waitOn from "wait-on";
 
 const USE_RUN =
@@ -46,6 +47,7 @@ export async function e2e(
   mockServerPort: number,
   options?: {
     customAssertions?: () => void;
+    customServer?: ServerConfig;
   }
 ) {
   if (!getCurrentTestName()) {
@@ -74,14 +76,22 @@ export async function e2e(
   });
 
   // run "konfig test" inside the path
-  await callAndLogExeca(
-    KONFIG_CLI_PATH,
-    ["test", "-p", mockServerPort.toString()],
-    {
-      cwd: sdkDir,
-      env,
-    }
-  );
+  const testArgs = options?.customServer
+    ? []
+    : ["-p", mockServerPort.toString()];
+  let pid: number | null = null;
+  if (options?.customServer) {
+    pid = spawnServer({ port: mockServerPort, ...options.customServer });
+  }
+  await callAndLogExeca(KONFIG_CLI_PATH, ["test", ...testArgs], {
+    cwd: sdkDir,
+    env,
+  });
+
+  if (pid !== null) {
+    // kill the server
+    process.kill(pid);
+  }
 
   // validate top-level README.md
   const konfigYamlPath = path.join(sdkDir, KONFIG_YAML_NAME);
@@ -119,6 +129,66 @@ export async function e2e(
     options.customAssertions();
   }
 }
+
+interface RouteConfig {
+  path: string;
+  method: "GET" | "POST" | "PUT" | "DELETE"; // Extend as needed
+  response: object;
+}
+
+type ServerConfigWithPort = ServerConfig & {
+  port: number;
+};
+
+type ServerConfig = {
+  routes: RouteConfig[];
+};
+
+// Function to create and start the server
+const startServer = (config: ServerConfigWithPort): Express => {
+  const app = express();
+  app.use(express.json());
+
+  config.routes.forEach((route) => {
+    app[route.method.toLowerCase() as keyof Express](
+      route.path,
+      (req: Request, res: Response) => {
+        res.json(route.response);
+      }
+    );
+  });
+
+  const server = app.listen(config.port, () => {
+    console.log(`Mock server running on port ${config.port}`);
+  });
+
+  return app;
+};
+
+// Function to spawn the server as a child process
+const spawnServer = (config: ServerConfigWithPort): number => {
+  const serverString = `
+      const config = ${JSON.stringify(config)};
+      (${startServer.toString()})(config);
+  `;
+
+  const child = execa("node", ["-e", serverString]);
+
+  child.stdout?.pipe(process.stdout);
+  child.stderr?.pipe(process.stderr);
+
+  child
+    .then(() => {
+      console.log("Server process ended");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  const pid = child.pid;
+  if (pid === undefined) throw new Error("Unable to get pid");
+  return pid;
+};
 
 async function callAndLogExeca(command: string, args: string[], options: any) {
   console.log(`Running: ${command} ${args.join(" ")}`);
