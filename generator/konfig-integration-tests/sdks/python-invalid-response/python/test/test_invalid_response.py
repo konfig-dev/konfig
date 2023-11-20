@@ -24,9 +24,9 @@ class TestInvalidResponse(unittest.TestCase):
         client = PythonInvalidResponseClient(
             api_key = 'YOUR_API_KEY',
         )
-        response = client.test.invalid_scalar()
-        self.assertIsNotNone(response)
-        self.assertTrue(isinstance(response.str_, int))
+        resp = client.test.invalid_scalar()
+        self.assertIsNotNone(resp)
+        self.assertIsInstance(resp.str_, int)
 
     def tearDown(self):
         pass
