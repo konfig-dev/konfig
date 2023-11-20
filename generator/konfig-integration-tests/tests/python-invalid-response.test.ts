@@ -21,6 +21,17 @@ test("python-invalid-response", async () => {
             },
           },
         },
+        {
+          path: "/invalid-object",
+          method: "get",
+          response: {
+            object: [
+              {
+                hello: "world",
+              },
+            ],
+          },
+        },
       ],
     },
   });
