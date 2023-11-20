@@ -188,11 +188,20 @@ export function OperationReferenceMain({
       typescript: {
         clientName: typecriptConfig.clientName,
         packageName: typecriptConfig.npmName,
+        git: {
+          owner: typecriptConfig.git.userId,
+          path: typecriptConfig.git.repoId,
+        },
       },
       ...(pythonConfig && {
         python: {
           clientName: pythonConfig.clientName,
           packageName: pythonConfig.packageName,
+          projectName: pythonConfig.projectName,
+          git: {
+            owner: pythonConfig.git.userId,
+            path: pythonConfig.git.repoId,
+          },
         },
       }),
     },

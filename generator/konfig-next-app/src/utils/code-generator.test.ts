@@ -2,7 +2,7 @@ import { HttpMethodsEnum } from 'konfig-lib'
 import { CodeGenerator, CodeGeneratorConstructorArgs } from './code-generator'
 import { SECURITY_FORM_NAME_PREFIX } from './generate-initial-operation-form-values'
 import clone from 'clone'
-import {test, expect} from "vitest"
+import { test, expect } from 'vitest'
 
 class CodeGeneratorTest extends CodeGenerator {
   protected format(code: string): Promise<string> {
@@ -15,6 +15,11 @@ class CodeGeneratorTest extends CodeGenerator {
       'This class is only used for testing shared functions in CodeGenerator'
     )
   }
+}
+
+const gitConfig = {
+  owner: '',
+  path: '',
 }
 
 /**
@@ -49,10 +54,13 @@ function testArgs(): CodeGeneratorConstructorArgs {
       typescript: {
         clientName: 'Test',
         packageName: 'test',
+        git: gitConfig,
       },
       python: {
         clientName: 'Test',
-        packageName: 'tet',
+        packageName: 'test',
+        projectName: 'test',
+        git: gitConfig,
       },
     },
     tag: 'Test',

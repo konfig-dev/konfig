@@ -5,6 +5,11 @@ import {
 } from './code-generator-httpsnippet'
 import { test, expect } from 'vitest'
 
+const gitConfig = {
+  owner: '',
+  path: '',
+}
+
 test('httpsnippet - HAR validation error', async () => {
   const args: CodeGeneratorHttpSnippetConstructorArgs = {
     contentType: null,
@@ -32,8 +37,17 @@ test('httpsnippet - HAR validation error', async () => {
       requestBody: '',
     },
     languageConfigurations: {
-      typescript: { clientName: 'Leap', packageName: '@leap-ai/workflows' },
-      python: { clientName: 'Leap', packageName: 'leap_workflows' },
+      typescript: {
+        clientName: 'Leap',
+        packageName: '@leap-ai/workflows',
+        git: gitConfig,
+      },
+      python: {
+        clientName: 'Leap',
+        packageName: 'leap_workflows',
+        projectName: 'leap-python-sdk',
+        git: gitConfig,
+      },
     },
     servers: ['https://api.workflows.tryleap.ai'],
     operationId: 'WorkflowRuns_getWorkflowRun',
@@ -142,10 +156,13 @@ test('httpsnippet - deeply nested objects with files', async () => {
       typescript: {
         clientName: 'Groundx',
         packageName: 'groundx-typescript-sdk',
+        git: gitConfig,
       },
       python: {
         clientName: 'Groundx',
         packageName: 'groundx',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     servers: ['https://api.groundx.ai/api'],

@@ -1,7 +1,12 @@
 import { HttpMethodsEnum } from 'konfig-lib'
 import { CodeGeneratorConstructorArgs } from './code-generator'
 import { CodeGeneratorPython } from './code-generator-python'
-import {test, expect, it} from "vitest"
+import { test, expect, it } from 'vitest'
+
+const gitConfig = {
+  owner: '',
+  path: '',
+}
 
 test('deeply nested objects with file', async () => {
   const args: CodeGeneratorConstructorArgs = {
@@ -97,10 +102,13 @@ test('deeply nested objects with file', async () => {
       typescript: {
         clientName: 'Groundx',
         packageName: 'groundx-typescript-sdk',
+        git: gitConfig,
       },
       python: {
         clientName: 'Groundx',
         packageName: 'groundx',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     servers: ['https://api.groundx.ai/api'],
@@ -263,10 +271,13 @@ test('nested objects does not have empty properties', async () => {
       typescript: {
         clientName: 'Groundx',
         packageName: 'groundx-typescript-sdk',
+        git: gitConfig,
       },
       python: {
         clientName: 'Groundx',
         packageName: 'groundx',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     servers: ['https://api.groundx.ai/api'],
@@ -386,10 +397,13 @@ test('request body with blob values', async () => {
       typescript: {
         clientName: 'Groundx',
         packageName: 'groundx-typescript-sdk',
+        git: gitConfig,
       },
       python: {
         clientName: 'Groundx',
         packageName: 'groundx',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     servers: ['https://api.groundx.ai/api'],
@@ -448,10 +462,13 @@ test('simple example', async () => {
       typescript: {
         clientName: 'Test',
         packageName: 'test',
+        git: gitConfig,
       },
       python: {
         clientName: 'SnapTrade',
         packageName: 'snaptrade_client',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     requestBody: null,
@@ -535,10 +552,13 @@ test('simple parameters example', async () => {
       typescript: {
         clientName: 'Test',
         packageName: 'test',
+        git: gitConfig,
       },
       python: {
         clientName: 'SnapTrade',
         packageName: 'snaptrade_client',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     requestBody: null,
@@ -687,10 +707,13 @@ it('example with boolean', async () => {
       typescript: {
         clientName: 'Test',
         packageName: 'test',
+        git: gitConfig,
       },
       python: {
         clientName: 'SnapTrade',
         packageName: 'snaptrade_client',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     tag: 'Authentication',
@@ -867,10 +890,13 @@ it('example with inner object', async () => {
       typescript: {
         clientName: 'Test',
         packageName: 'test',
+        git: gitConfig,
       },
       python: {
         clientName: 'SnapTrade',
         packageName: 'snaptrade_client',
+        projectName: 'groundx-python-sdk',
+        git: gitConfig,
       },
     },
     securitySchemes: {
@@ -934,10 +960,13 @@ it('example with no setup', async () => {
       typescript: {
         clientName: 'Test',
         packageName: 'test',
+        git: gitConfig,
       },
       python: {
         clientName: 'SnapTrade',
         packageName: 'snaptrade_client',
+        projectName: 'snaptrade-python-sdk',
+        git: gitConfig,
       },
     },
     tag: 'Options',
@@ -995,10 +1024,13 @@ it('example with no form data but > 1 parameters', async () => {
       typescript: {
         clientName: 'Test',
         packageName: 'test',
+        git: gitConfig,
       },
       python: {
         clientName: 'SnapTrade',
         packageName: 'snaptrade_client',
+        projectName: 'snaptrade-python-sdk',
+        git: gitConfig,
       },
     },
     tag: 'Options',

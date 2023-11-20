@@ -117,7 +117,10 @@ export function OperationRequest({
                 className="outline-brand-500 dark:outline-brand-600"
                 key={value}
               >
-                <LanguageInstallationCommand codegenArgs={codegenArgs} />
+                <LanguageInstallationCommand
+                  language={value}
+                  codegenArgs={codegenArgs}
+                />
                 <OperationFormGeneratedCode
                   {...codegenArgs}
                   language={value as any}

@@ -5,16 +5,20 @@ import { notifications } from '@mantine/notifications'
 import { useClipboard } from '@mantine/hooks'
 import { IconTerminal } from '@tabler/icons-react'
 import { linkColor } from '@/utils/link-color'
+import { LanguageExtended } from './DemoCode'
 
 interface LanguageInstallationCommandProps {
   codegenArgs: CodeGeneratorConstructorArgs
+  language: LanguageExtended
 }
 
 export const LanguageInstallationCommand: React.FC<
   LanguageInstallationCommandProps
-> = ({ codegenArgs }) => {
+> = ({ codegenArgs, language }) => {
   const clipboard = useClipboard()
   const theme = useMantineTheme()
+  const cmd = installCommand({ codegenArgs, language })
+  if (cmd === null) return null
   return (
     <div className="px-4 py-6 text-xs border-b border-b-mantine-gray-200 dark:border-b-zinc-800">
       <div className="mb-3 flex justify-between">
@@ -22,20 +26,7 @@ export const LanguageInstallationCommand: React.FC<
           Installation
         </div>
         <div className="flex gap-2 text-mantine-gray-700 dark:text-mantine-gray-600">
-          <a
-            target="_blank"
-            href="https://github.com/groundxai/groundx-sdks/blob/main/sdks/typescript/README.md"
-            className="hover:text-black dark:hover:text-mantine-gray-400"
-          >
-            GitHub
-          </a>
-          <a
-            target="_blank"
-            className="hover:text-black dark:hover:text-mantine-gray-400"
-            href="https://www.npmjs.com/package/groundx-typescript-sdk"
-          >
-            npm
-          </a>
+          <Links codegenArgs={codegenArgs} language={language} />
         </div>
       </div>
       <div className="font-mono flex whitespace-nowrap">
@@ -50,9 +41,7 @@ export const LanguageInstallationCommand: React.FC<
         >
           <ScrollArea
             onClick={() => {
-              clipboard.copy(
-                `npm install ${codegenArgs.languageConfigurations.typescript.packageName}`
-              )
+              clipboard.copy(cmd.cmd)
               notifications.show({
                 id: 'command-copied-to-your-clipboard',
                 radius: 'md',
@@ -78,10 +67,120 @@ export const LanguageInstallationCommand: React.FC<
             type="never"
             className="cursor-pointer font-semibold transition text-mantine-gray-700 dark:text-mantine-gray-500 hover:text-black dark:hover:text-mantine-gray-0"
           >
-            {`npm install ${codegenArgs.languageConfigurations.typescript.packageName}`}
+            {cmd.cmd}
           </ScrollArea>
         </Tooltip>
       </div>
     </div>
   )
+}
+
+function Links({
+  codegenArgs,
+  language,
+}: {
+  codegenArgs: CodeGeneratorConstructorArgs
+  language: LanguageExtended
+}) {
+  const pkg = packageLink({ codegenArgs, language })
+  return (
+    <>
+      <a
+        target="_blank"
+        href={githubLink({ codegenArgs, language })}
+        className="hover:text-black dark:hover:text-mantine-gray-400"
+      >
+        GitHub
+      </a>
+      {pkg && (
+        <a
+          target="_blank"
+          className="hover:text-black dark:hover:text-mantine-gray-400"
+          href={pkg.link}
+        >
+          {pkg.packageManager}
+        </a>
+      )}
+    </>
+  )
+}
+
+function githubLink({
+  codegenArgs,
+  language,
+}: {
+  codegenArgs: CodeGeneratorConstructorArgs
+  language: LanguageExtended
+}) {
+  const config = languageConfiguration({ codegenArgs, language })
+  if (config === undefined) return ''
+  if (typeof config === 'string') return ''
+  if (config.git === undefined) return ''
+  return `https://github.com/${config.git.owner}/${config.git.path}/README.md`
+}
+
+function packageLink({
+  codegenArgs,
+  language,
+}: {
+  codegenArgs: CodeGeneratorConstructorArgs
+  language: LanguageExtended
+}): { packageManager: 'npm' | 'PyPI'; link: string } | undefined {
+  const config = languageConfiguration({ codegenArgs, language })
+  if (config === undefined) return
+  if (typeof config === 'string') return
+  if (config.type === 'typescript') {
+    return {
+      packageManager: 'npm',
+      link: `https://www.npmjs.com/package/${config.packageName}`,
+    }
+  }
+  if (config.type === 'python') if (config.projectName === undefined) return
+  return {
+    packageManager: 'PyPI',
+    link: `https://pypi.org/project/${config.projectName}`,
+  }
+}
+
+function languageConfiguration({
+  codegenArgs,
+  language,
+}: {
+  codegenArgs: CodeGeneratorConstructorArgs
+  language: LanguageExtended
+}) {
+  if (language === 'typescript') {
+    return {
+      type: 'typescript',
+      ...codegenArgs.languageConfigurations.typescript,
+    } as const
+  } else if (language === 'python') {
+    return {
+      type: 'python',
+      ...codegenArgs.languageConfigurations.python,
+    } as const
+  }
+  return language
+}
+
+function installCommand({
+  codegenArgs,
+  language,
+}: {
+  language: LanguageExtended
+  codegenArgs: CodeGeneratorConstructorArgs
+}): { cmd: string } | null {
+  if (language === 'typescript') {
+    return {
+      cmd: `npm install ${codegenArgs.languageConfigurations.typescript.packageName}`,
+    }
+  } else if (language === 'python') {
+    if (!codegenArgs.languageConfigurations.python?.packageName) {
+      return { cmd: '' }
+    }
+    return {
+      cmd: `pip install ${codegenArgs.languageConfigurations.python?.packageName}`,
+    }
+  }
+  return null
 }

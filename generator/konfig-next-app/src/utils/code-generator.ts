@@ -15,6 +15,11 @@ import {
 import { ReferencePageProps } from './generate-props-for-reference-page'
 import { HttpMethods } from 'konfig-lib'
 
+type GitConfig = {
+  owner: string
+  path: string
+}
+
 export type CodeGeneratorConstructorArgs = {
   basePath: string
   servers: string[]
@@ -34,10 +39,13 @@ export type CodeGeneratorConstructorArgs = {
     typescript: {
       clientName: string
       packageName: string
+      git: GitConfig
     }
     python?: {
       clientName: string
       packageName: string
+      projectName: string
+      git: GitConfig
     }
   }
 
