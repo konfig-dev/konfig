@@ -40,6 +40,14 @@ test("python-invalid-response", async () => {
             number: "some string",
           },
         },
+        {
+          path: "/object-instead-of-scalar",
+          method: "get",
+          response: {
+            string: "some string",
+            number: "some string",
+          },
+        },
       ],
     },
   });
