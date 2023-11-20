@@ -33,24 +33,24 @@ import frozendict  # noqa: F401
 
 from python_invalid_response import schemas  # noqa: F401
 
-from python_invalid_response.model.list_instead_of_object import ListInsteadOfObject as ListInsteadOfObjectSchema
+from python_invalid_response.model.only_one_property_is_invalid import OnlyOnePropertyIsInvalid as OnlyOnePropertyIsInvalidSchema
 
-from python_invalid_response.type.list_instead_of_object import ListInsteadOfObject
+from python_invalid_response.type.only_one_property_is_invalid import OnlyOnePropertyIsInvalid
 
 from ...api_client import Dictionary
-from python_invalid_response.pydantic.list_instead_of_object import ListInsteadOfObject as ListInsteadOfObjectPydantic
+from python_invalid_response.pydantic.only_one_property_is_invalid import OnlyOnePropertyIsInvalid as OnlyOnePropertyIsInvalidPydantic
 
-SchemaFor200ResponseBodyApplicationJson = ListInsteadOfObjectSchema
+SchemaFor200ResponseBodyApplicationJson = OnlyOnePropertyIsInvalidSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: ListInsteadOfObject
+    body: OnlyOnePropertyIsInvalid
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: ListInsteadOfObject
+    body: OnlyOnePropertyIsInvalid
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -68,13 +68,13 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _list_instead_of_object_mapped_args(
+    def _only_one_property_is_invalid_mapped_args(
         self,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         return args
 
-    async def _alist_instead_of_object_oapg(
+    async def _aonly_one_property_is_invalid_oapg(
         self,
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
@@ -170,7 +170,7 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-    def _list_instead_of_object_oapg(
+    def _only_one_property_is_invalid_oapg(
         self,
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
@@ -233,10 +233,10 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class ListInsteadOfObjectRaw(BaseApi):
+class OnlyOnePropertyIsInvalidRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    async def alist_instead_of_object(
+    async def aonly_one_property_is_invalid(
         self,
         **kwargs,
     ) -> typing.Union[
@@ -244,47 +244,47 @@ class ListInsteadOfObjectRaw(BaseApi):
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._list_instead_of_object_mapped_args(
+        args = self._only_one_property_is_invalid_mapped_args(
         )
-        return await self._alist_instead_of_object_oapg(
+        return await self._aonly_one_property_is_invalid_oapg(
             **kwargs,
         )
     
-    def list_instead_of_object(
+    def only_one_property_is_invalid(
         self,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._list_instead_of_object_mapped_args(
+        args = self._only_one_property_is_invalid_mapped_args(
         )
-        return self._list_instead_of_object_oapg(
+        return self._only_one_property_is_invalid_oapg(
         )
 
-class ListInsteadOfObject(BaseApi):
+class OnlyOnePropertyIsInvalid(BaseApi):
 
-    async def alist_instead_of_object(
+    async def aonly_one_property_is_invalid(
         self,
         validate: bool = False,
         **kwargs,
     ):
-        raw_response = await self.raw.alist_instead_of_object(
+        raw_response = await self.raw.aonly_one_property_is_invalid(
             **kwargs,
         )
         if validate:
-            return ListInsteadOfObjectPydantic(**raw_response.body)
-        return api_client.construct_model_instance(ListInsteadOfObjectPydantic, raw_response.body)
+            return OnlyOnePropertyIsInvalidPydantic(**raw_response.body)
+        return api_client.construct_model_instance(OnlyOnePropertyIsInvalidPydantic, raw_response.body)
     
     
-    def list_instead_of_object(
+    def only_one_property_is_invalid(
         self,
         validate: bool = False,
     ):
-        raw_response = self.raw.list_instead_of_object(
+        raw_response = self.raw.only_one_property_is_invalid(
         )
         if validate:
-            return ListInsteadOfObjectPydantic(**raw_response.body)
-        return api_client.construct_model_instance(ListInsteadOfObjectPydantic, raw_response.body)
+            return OnlyOnePropertyIsInvalidPydantic(**raw_response.body)
+        return api_client.construct_model_instance(OnlyOnePropertyIsInvalidPydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):
@@ -298,9 +298,9 @@ class ApiForget(BaseApi):
         api_client.ApiResponseWithoutDeserializationAsync,
         AsyncGeneratorResponse,
     ]:
-        args = self._list_instead_of_object_mapped_args(
+        args = self._only_one_property_is_invalid_mapped_args(
         )
-        return await self._alist_instead_of_object_oapg(
+        return await self._aonly_one_property_is_invalid_oapg(
             **kwargs,
         )
     
@@ -310,8 +310,8 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
-        args = self._list_instead_of_object_mapped_args(
+        args = self._only_one_property_is_invalid_mapped_args(
         )
-        return self._list_instead_of_object_oapg(
+        return self._only_one_property_is_invalid_oapg(
         )
 

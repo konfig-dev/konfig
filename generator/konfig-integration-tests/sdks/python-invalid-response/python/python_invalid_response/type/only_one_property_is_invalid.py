@@ -16,4 +16,13 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-ListInsteadOfObjectObject = typing.List[str]
+class RequiredOnlyOnePropertyIsInvalid(TypedDict):
+    pass
+
+class OptionalOnlyOnePropertyIsInvalid(TypedDict, total=False):
+    string: str
+
+    number: typing.Union[int, float]
+
+class OnlyOnePropertyIsInvalid(RequiredOnlyOnePropertyIsInvalid, OptionalOnlyOnePropertyIsInvalid):
+    pass

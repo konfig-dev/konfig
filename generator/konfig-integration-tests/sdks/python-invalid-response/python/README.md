@@ -20,10 +20,9 @@ A simple API based for testing python-invalid-response.
   * [`pythoninvalidresponseclient.test.invalid_array`](#pythoninvalidresponseclienttestinvalid_array)
   * [`pythoninvalidresponseclient.test.invalid_object`](#pythoninvalidresponseclienttestinvalid_object)
   * [`pythoninvalidresponseclient.test.invalid_scalar`](#pythoninvalidresponseclienttestinvalid_scalar)
-  * [`pythoninvalidresponseclient.test.list_instead_of_object`](#pythoninvalidresponseclienttestlist_instead_of_object)
   * [`pythoninvalidresponseclient.test.list_instead_of_scalar`](#pythoninvalidresponseclienttestlist_instead_of_scalar)
-  * [`pythoninvalidresponseclient.test.object_instead_of_list`](#pythoninvalidresponseclienttestobject_instead_of_list)
   * [`pythoninvalidresponseclient.test.object_instead_of_scalar`](#pythoninvalidresponseclienttestobject_instead_of_scalar)
+  * [`pythoninvalidresponseclient.test.only_one_property_is_invalid`](#pythoninvalidresponseclienttestonly_one_property_is_invalid)
 
 <!-- tocstop -->
 
@@ -185,30 +184,6 @@ invalid_scalar_response = pythoninvalidresponseclient.test.invalid_scalar()
 
 ---
 
-### `pythoninvalidresponseclient.test.list_instead_of_object`<a id="pythoninvalidresponseclienttestlist_instead_of_object"></a>
-
-
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-list_instead_of_object_response = (
-    pythoninvalidresponseclient.test.list_instead_of_object()
-)
-```
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`ListInsteadOfObject`](./python_invalid_response/pydantic/list_instead_of_object.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/list-instead-of-object` `get`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
 ### `pythoninvalidresponseclient.test.list_instead_of_scalar`<a id="pythoninvalidresponseclienttestlist_instead_of_scalar"></a>
 
 
@@ -229,30 +204,6 @@ list_instead_of_scalar_response = (
 
 ---
 
-### `pythoninvalidresponseclient.test.object_instead_of_list`<a id="pythoninvalidresponseclienttestobject_instead_of_list"></a>
-
-
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-object_instead_of_list_response = (
-    pythoninvalidresponseclient.test.object_instead_of_list()
-)
-```
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`ObjectInsteadOfList`](./python_invalid_response/pydantic/object_instead_of_list.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/object-instead-of-list` `get`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
 ### `pythoninvalidresponseclient.test.object_instead_of_scalar`<a id="pythoninvalidresponseclienttestobject_instead_of_scalar"></a>
 
 
@@ -268,6 +219,30 @@ object_instead_of_scalar_response = (
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/object-instead-of-scalar` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `pythoninvalidresponseclient.test.only_one_property_is_invalid`<a id="pythoninvalidresponseclienttestonly_one_property_is_invalid"></a>
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+only_one_property_is_invalid_response = (
+    pythoninvalidresponseclient.test.only_one_property_is_invalid()
+)
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OnlyOnePropertyIsInvalid`](./python_invalid_response/pydantic/only_one_property_is_invalid.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/only-one-property-is-invalid` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

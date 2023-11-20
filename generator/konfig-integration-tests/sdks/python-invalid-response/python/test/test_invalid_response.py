@@ -47,6 +47,16 @@ class TestInvalidResponse(unittest.TestCase):
         self.assertIsNotNone(resp)
         self.assertIsInstance(resp.object, list)
 
+    def test_only_one_property_is_invalid(self):
+        client = PythonInvalidResponseClient(
+            host="http://127.0.0.1:4027",
+            api_key = 'YOUR_API_KEY',
+        )
+        resp = client.test.only_one_property_is_invalid()
+        self.assertIsNotNone(resp)
+        self.assertIsInstance(resp.string, str)
+        self.assertIsInstance(resp.number, str)
+
     def tearDown(self):
         pass
 

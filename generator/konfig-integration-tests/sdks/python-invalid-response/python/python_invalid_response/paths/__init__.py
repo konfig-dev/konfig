@@ -9,7 +9,6 @@ class PathValues(str, enum.Enum):
     INVALIDSCALAR = "/invalid-scalar"
     INVALIDARRAY = "/invalid-array"
     INVALIDOBJECT = "/invalid-object"
-    LISTINSTEADOFOBJECT = "/list-instead-of-object"
-    OBJECTINSTEADOFLIST = "/object-instead-of-list"
+    ONLYONEPROPERTYISINVALID = "/only-one-property-is-invalid"
     OBJECTINSTEADOFSCALAR = "/object-instead-of-scalar"
     LISTINSTEADOFSCALAR = "/list-instead-of-scalar"

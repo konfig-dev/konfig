@@ -16,15 +16,15 @@ from unittest.mock import patch
 import urllib3
 
 import python_invalid_response
-from python_invalid_response.paths.list_instead_of_object import get
+from python_invalid_response.paths.only_one_property_is_invalid import get
 from python_invalid_response import configuration, schemas, api_client
 
 from .. import ApiTestMixin
 
 
-class TestListInsteadOfObject(ApiTestMixin, unittest.TestCase):
+class TestOnlyOnePropertyIsInvalid(ApiTestMixin, unittest.TestCase):
     """
-    ListInsteadOfObject unit test stubs
+    OnlyOnePropertyIsInvalid unit test stubs
     """
 
     def setUp(self):

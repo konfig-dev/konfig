@@ -56,11 +56,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidObject'
-  /list-instead-of-object:
+  /only-one-property-is-invalid:
     get:
       tags:
         - Test
-      operationId: Test_listInsteadOfObject
+      operationId: Test_onlyOnePropertyIsInvalid
       description: ''
       responses:
         '200':
@@ -68,20 +68,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListInsteadOfObject'
-  /object-instead-of-list:
-    get:
-      tags:
-        - Test
-      operationId: Test_objectInsteadOfList
-      description: ''
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ObjectInsteadOfList'
+                $ref: '#/components/schemas/OnlyOnePropertyIsInvalid'
   /object-instead-of-scalar:
     get:
       tags:
@@ -136,17 +123,13 @@ components:
           properties:
             str:
               type: string
-    ListInsteadOfObject:
+    OnlyOnePropertyIsInvalid:
       type: object
       properties:
-        object:
-          type: array
-          items:
-            type: string
-    ObjectInsteadOfList:
-      type: array
-      items:
-        type: string
+        string:
+          type: string
+        number:
+          type: number
     ObjectInsteadOfScalar:
       type: string
     ListInsteadOfScalar:

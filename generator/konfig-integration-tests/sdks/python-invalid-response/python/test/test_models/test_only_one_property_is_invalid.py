@@ -13,12 +13,12 @@
 import unittest
 
 import python_invalid_response
-from python_invalid_response.model.list_instead_of_object_object import ListInsteadOfObjectObject
+from python_invalid_response.model.only_one_property_is_invalid import OnlyOnePropertyIsInvalid
 from python_invalid_response import configuration
 
 
-class TestListInsteadOfObjectObject(unittest.TestCase):
-    """ListInsteadOfObjectObject unit test stubs"""
+class TestOnlyOnePropertyIsInvalid(unittest.TestCase):
+    """OnlyOnePropertyIsInvalid unit test stubs"""
     pass
 
 

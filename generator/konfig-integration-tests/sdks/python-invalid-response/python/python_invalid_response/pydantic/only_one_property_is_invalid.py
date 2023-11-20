@@ -17,4 +17,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
 
-ObjectInsteadOfList = typing.List[str]
+class OnlyOnePropertyIsInvalid(BaseModel):
+    string: typing.Optional[str] = Field(None, alias='string')
+
+    number: typing.Optional[typing.Union[int, float]] = Field(None, alias='number')

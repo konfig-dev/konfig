@@ -32,6 +32,14 @@ test("python-invalid-response", async () => {
             ],
           },
         },
+        {
+          path: "/only-one-property-is-invalid",
+          method: "get",
+          response: {
+            string: "some string",
+            number: "some string",
+          },
+        },
       ],
     },
   });

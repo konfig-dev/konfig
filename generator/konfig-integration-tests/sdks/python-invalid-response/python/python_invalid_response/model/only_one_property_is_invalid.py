@@ -24,7 +24,7 @@ import frozendict  # noqa: F401
 from python_invalid_response import schemas  # noqa: F401
 
 
-class ListInsteadOfObject(
+class OnlyOnePropertyIsInvalid(
     schemas.DictSchema
 ):
     """
@@ -35,48 +35,53 @@ class ListInsteadOfObject(
     class MetaOapg:
         
         class properties:
-        
-            @staticmethod
-            def object() -> typing.Type['ListInsteadOfObjectObject']:
-                return ListInsteadOfObjectObject
+            string = schemas.StrSchema
+            number = schemas.NumberSchema
             __annotations__ = {
-                "object": object,
+                "string": string,
+                "number": number,
             }
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["object"]) -> 'ListInsteadOfObjectObject': ...
+    def __getitem__(self, name: typing_extensions.Literal["string"]) -> MetaOapg.properties.string: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["number"]) -> MetaOapg.properties.number: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["object", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["string", "number", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["object"]) -> typing.Union['ListInsteadOfObjectObject', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["string"]) -> typing.Union[MetaOapg.properties.string, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["number"]) -> typing.Union[MetaOapg.properties.number, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["object", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["string", "number", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        object: typing.Union['ListInsteadOfObjectObject', schemas.Unset] = schemas.unset,
+        string: typing.Union[MetaOapg.properties.string, str, schemas.Unset] = schemas.unset,
+        number: typing.Union[MetaOapg.properties.number, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-    ) -> 'ListInsteadOfObject':
+    ) -> 'OnlyOnePropertyIsInvalid':
         return super().__new__(
             cls,
             *args,
-            object=object,
+            string=string,
+            number=number,
             _configuration=_configuration,
             **kwargs,
         )
-
-from python_invalid_response.model.list_instead_of_object_object import ListInsteadOfObjectObject
