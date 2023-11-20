@@ -22,6 +22,7 @@ class TestInvalidResponse(unittest.TestCase):
 
     def test_invalid_scalar(self):
         client = PythonInvalidResponseClient(
+            host="http://127.0.0.1:4027",
             api_key = 'YOUR_API_KEY',
         )
         resp = client.test.invalid_scalar()

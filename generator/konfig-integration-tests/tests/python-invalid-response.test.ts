@@ -7,7 +7,7 @@ test("python-invalid-response", async () => {
       routes: [
         {
           path: "/invalid-scalar",
-          method: "GET",
+          method: "get",
           response: {
             str: 2,
           },
