@@ -98,6 +98,7 @@ public class CodegenModel implements IJsonSchemaValidationProperties {
 
     // In Python, we need a modified version of Import without the "as [Model]Pydantic" suffix so I added this
     public Set<String> additionalModelImportsModified = new TreeSet<>();
+    public List<CodegenImport> additionalModelCodegenImportsModified = new ArrayList<>();
 
     public boolean hasVars, emptyVars, hasMoreModels, hasEnums, isEnum, hasValidation;
     /**

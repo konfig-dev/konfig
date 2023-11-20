@@ -584,6 +584,13 @@ public class DefaultCodegen implements CodegenConfig {
             });
             m.additionalModelCodegenImports.add(new CodegenImport(i, isCircularImport));
         });
+        m.additionalModelImportsModified.forEach(i -> {
+            // compute whether import is circular import based on allVars
+            boolean isCircularImport = m.allVars.stream().anyMatch(p -> {
+                return p.isCircularReference;
+            });
+            m.additionalModelCodegenImportsModified.add(new CodegenImport(i, isCircularImport));
+        });
     }
 
     /**
