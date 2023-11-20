@@ -12,7 +12,7 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from python_splitit_client.type.address_data import AddressData
 from python_splitit_client.type.authorization_model import AuthorizationModel

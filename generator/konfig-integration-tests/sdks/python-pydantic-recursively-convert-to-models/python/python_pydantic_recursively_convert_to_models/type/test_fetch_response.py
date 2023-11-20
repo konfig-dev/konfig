@@ -13,7 +13,7 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from python_pydantic_recursively_convert_to_models.type.inner import Inner
 from python_pydantic_recursively_convert_to_models.type.list_inner import ListInner

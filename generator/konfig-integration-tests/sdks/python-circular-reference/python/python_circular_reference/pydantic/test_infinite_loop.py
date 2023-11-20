@@ -17,7 +17,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
 if TYPE_CHECKING:
-    from python_circular_reference.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
+    from python_circular_reference.pydantic.test_fetch_response import TestFetchResponse
 
 class TestInfiniteLoop(BaseModel):
     value: 'TestFetchResponse' = Field(None, alias='value')

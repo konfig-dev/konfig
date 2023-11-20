@@ -12,7 +12,7 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from python_splitit_client.type.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
 
