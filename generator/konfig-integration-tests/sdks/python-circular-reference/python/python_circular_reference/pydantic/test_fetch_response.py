@@ -13,10 +13,11 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
-from python_circular_reference.pydantic.test_infinite_loop import TestInfiniteLoop
+if TYPE_CHECKING:
+    from python_circular_reference.pydantic.test_infinite_loop import TestInfiniteLoop as TestInfiniteLoopPydantic
 
 class TestFetchResponse(BaseModel):
-    value: TestInfiniteLoop = Field(None, alias='value')
+    value: 'TestInfiniteLoop' = Field(None, alias='value')
