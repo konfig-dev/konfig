@@ -15,6 +15,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from python_circular_reference.type.item import Item
 if TYPE_CHECKING:
     from python_circular_reference.type.test_infinite_loop import TestInfiniteLoop
 
@@ -23,6 +24,8 @@ class RequiredTestFetchResponse(TypedDict):
 
 class OptionalTestFetchResponse(TypedDict, total=False):
     value: 'TestInfiniteLoop'
+
+    array: typing.List[Item]
 
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass

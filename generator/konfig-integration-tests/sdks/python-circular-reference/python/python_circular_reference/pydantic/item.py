@@ -16,13 +16,6 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
-from python_circular_reference.pydantic.item import Item
-if TYPE_CHECKING:
-    from python_circular_reference.pydantic.test_infinite_loop import TestInfiniteLoop
 
-class TestFetchResponse(BaseModel):
-    required: 'TestInfiniteLoop' = Field(alias='required')
-
-    value: 'TestInfiniteLoop' = Field(None, alias='value')
-
-    array: typing.List[Item] = Field(None, alias='array')
+class Item(BaseModel):
+    value: str = Field(None, alias='value')

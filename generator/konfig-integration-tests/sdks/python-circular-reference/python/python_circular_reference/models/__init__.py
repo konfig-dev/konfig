@@ -11,5 +11,6 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from python_circular_reference.model.item import Item
 from python_circular_reference.model.test_fetch_response import TestFetchResponse
 from python_circular_reference.model.test_infinite_loop import TestInfiniteLoop

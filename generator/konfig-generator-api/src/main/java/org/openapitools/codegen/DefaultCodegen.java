@@ -570,26 +570,19 @@ public class DefaultCodegen implements CodegenConfig {
     }
 
     protected void populateCodegenImports(CodegenModel m) {
-        m.typeImports.forEach(i -> {
+        populateCodegenImports(m.typeImports, m.typeCodegenImports, m.allVars);
+        populateCodegenImports(m.additionalModelImports, m.additionalModelCodegenImports, m.allVars);
+        populateCodegenImports(m.additionalModelImportsModified, m.additionalModelCodegenImportsModified, m.allVars);
+    }
+
+    private void populateCodegenImports(Set<String> imports, List<CodegenImport> codegenImports, List<CodegenProperty> properties) {
+        imports.forEach(i -> {
             // compute whether import is circular import based on allVars
-            boolean isCircularImport = m.allVars.stream().anyMatch(p -> {
+            boolean isCircularImport = properties.stream().anyMatch(p -> {
+                if (!i.contains(p.dataType)) return false;
                 return p.isCircularReference;
             });
-            m.typeCodegenImports.add(new CodegenImport(i, isCircularImport));
-        });
-        m.additionalModelImports.forEach(i -> {
-            // compute whether import is circular import based on allVars
-            boolean isCircularImport = m.allVars.stream().anyMatch(p -> {
-                return p.isCircularReference;
-            });
-            m.additionalModelCodegenImports.add(new CodegenImport(i, isCircularImport));
-        });
-        m.additionalModelImportsModified.forEach(i -> {
-            // compute whether import is circular import based on allVars
-            boolean isCircularImport = m.allVars.stream().anyMatch(p -> {
-                return p.isCircularReference;
-            });
-            m.additionalModelCodegenImportsModified.add(new CodegenImport(i, isCircularImport));
+            codegenImports.add(new CodegenImport(i, isCircularImport));
         });
     }
 
