@@ -44,7 +44,9 @@ function getCurrentTestName(): string {
 
 export async function e2e(
   mockServerPort: number,
-  customAssertions?: () => void
+  options?: {
+    customAssertions?: () => void;
+  }
 ) {
   if (!getCurrentTestName()) {
     throw new Error("Unable to get current test name");
@@ -113,8 +115,8 @@ export async function e2e(
     ).toMatchSnapshot();
   }
 
-  if (customAssertions) {
-    customAssertions();
+  if (options?.customAssertions) {
+    options.customAssertions();
   }
 }
 
