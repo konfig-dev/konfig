@@ -20,4 +20,6 @@ if TYPE_CHECKING:
     from python_circular_reference.pydantic.test_fetch_response import TestFetchResponse
 
 class TestInfiniteLoop(BaseModel):
+    required: 'TestFetchResponse' = Field(alias='required')
+
     value: 'TestFetchResponse' = Field(None, alias='value')

@@ -33,15 +33,28 @@ class TestFetchResponse(
 
 
     class MetaOapg:
+        required = {
+            "required",
+        }
         
         class properties:
+        
+            @staticmethod
+            def required() -> typing.Type['TestInfiniteLoop']:
+                return TestInfiniteLoop
         
             @staticmethod
             def value() -> typing.Type['TestInfiniteLoop']:
                 return TestInfiniteLoop
             __annotations__ = {
+                "required": required,
                 "value": value,
             }
+    
+    required: 'TestInfiniteLoop'
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["required"]) -> 'TestInfiniteLoop': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["value"]) -> 'TestInfiniteLoop': ...
@@ -49,10 +62,13 @@ class TestFetchResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["value", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["required", "value", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["required"]) -> 'TestInfiniteLoop': ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["value"]) -> typing.Union['TestInfiniteLoop', schemas.Unset]: ...
@@ -60,13 +76,14 @@ class TestFetchResponse(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["value", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["required", "value", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        required: 'TestInfiniteLoop',
         value: typing.Union['TestInfiniteLoop', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -74,6 +91,7 @@ class TestFetchResponse(
         return super().__new__(
             cls,
             *args,
+            required=required,
             value=value,
             _configuration=_configuration,
             **kwargs,

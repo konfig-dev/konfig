@@ -5,7 +5,7 @@ Required{{classname}} = TypedDict("Required{{classname}}", {
         {{#if description}}
     # {{{description}}}
         {{/if}}
-    "{{baseName}}": {{dataType}},
+    "{{baseName}}": {{> type_templates/type_property_data_type}},
     {{#unless @last}}
 
     {{/unless}}
@@ -17,7 +17,7 @@ class Required{{classname}}(TypedDict):
         {{#if description}}
     # {{{description}}}
         {{/if}}
-    {{baseName}}: {{{dataType}}}
+    {{baseName}}: {{> type_templates/type_property_data_type}}
     {{#unless @last}}
 
     {{/unless}}

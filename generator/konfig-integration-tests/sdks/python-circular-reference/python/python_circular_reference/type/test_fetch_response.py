@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from python_circular_reference.type.test_infinite_loop import TestInfiniteLoop
 
 class RequiredTestFetchResponse(TypedDict):
-    pass
+    required: 'TestInfiniteLoop'
 
 class OptionalTestFetchResponse(TypedDict, total=False):
     value: 'TestInfiniteLoop'

@@ -101,6 +101,7 @@ try:
     # Fetches a JSON value based on input parameter
     fetch_response = pythoncircularreferenceclient.test.raw.fetch()
     pprint(fetch_response.body)
+    pprint(fetch_response.body["required"])
     pprint(fetch_response.body["value"])
     pprint(fetch_response.headers)
     pprint(fetch_response.status)
