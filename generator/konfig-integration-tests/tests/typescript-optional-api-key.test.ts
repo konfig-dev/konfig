@@ -20,5 +20,5 @@ const customAssertions = () => {
 };
 
 test("typescript-optional-api-key", async () => {
-  await e2e(4004, customAssertions);
+  await e2e(4004, { customAssertions });
 });
