@@ -18,4 +18,4 @@ from pydantic import BaseModel, Field, RootModel
 
 
 class TestFetchResponse(BaseModel):
-    free_form_object: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='freeFormObject')
+    free_form_object: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='freeFormObject')

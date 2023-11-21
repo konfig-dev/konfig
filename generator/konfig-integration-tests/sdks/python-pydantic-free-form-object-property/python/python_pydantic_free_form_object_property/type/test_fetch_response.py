@@ -17,10 +17,10 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
 class RequiredTestFetchResponse(TypedDict):
-    pass
+    freeFormObject: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
 class OptionalTestFetchResponse(TypedDict, total=False):
-    freeFormObject: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    pass
 
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass

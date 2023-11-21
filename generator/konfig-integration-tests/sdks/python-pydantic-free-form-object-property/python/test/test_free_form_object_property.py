@@ -27,6 +27,7 @@ class TestFreeFormObjectProperty(unittest.TestCase):
         )
         resp = client.test.fetch()
         self.assertIsNotNone(resp.free_form_object)
+        self.assertIsInstance(resp.free_form_object, dict)
 
     def tearDown(self):
         pass

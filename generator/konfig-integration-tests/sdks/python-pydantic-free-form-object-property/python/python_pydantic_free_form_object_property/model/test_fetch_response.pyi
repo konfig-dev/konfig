@@ -33,12 +33,17 @@ class TestFetchResponse(
 
 
     class MetaOapg:
+        required = {
+            "freeFormObject",
+        }
         
         class properties:
             freeFormObject = schemas.DictSchema
             __annotations__ = {
                 "freeFormObject": freeFormObject,
             }
+    
+    freeFormObject: MetaOapg.properties.freeFormObject
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["freeFormObject"]) -> MetaOapg.properties.freeFormObject: ...
@@ -52,7 +57,7 @@ class TestFetchResponse(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["freeFormObject"]) -> typing.Union[MetaOapg.properties.freeFormObject, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["freeFormObject"]) -> MetaOapg.properties.freeFormObject: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -64,7 +69,7 @@ class TestFetchResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        freeFormObject: typing.Union[MetaOapg.properties.freeFormObject, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        freeFormObject: typing.Union[MetaOapg.properties.freeFormObject, dict, frozendict.frozendict, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'TestFetchResponse':
