@@ -61,32 +61,32 @@ function generateJavaTest({ testName, port }) {
     testName
   )}.client;
 
-  import org.junit.jupiter.api.BeforeAll;
-  import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-  import java.util.Map;
+import java.util.Map;
 
-  import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotNull;
 
-  public class ${toCamelCase(testName)}Test {
-      static final String MOCK_SERVER_URL = "http://localhost:${port}";
-      static ${toCamelCase(testName)} client;
+public class ${toCamelCase(testName)}Test {
+    static final String MOCK_SERVER_URL = "http://localhost:${port}";
+    static ${toCamelCase(testName)}Client client;
 
-      @BeforeAll
-      public static void setUp() throws Exception {
-          Configuration configuration = new Configuration();
-          configuration.host = MOCK_SERVER_URL;
-          configuration.apiKey = "YOUR API KEY";
-          client = new ${toCamelCase(testName)}(configuration);
-      }
+    @BeforeAll
+    public static void setUp() throws Exception {
+        Configuration configuration = new Configuration();
+        configuration.host = MOCK_SERVER_URL;
+        configuration.apiKey = "YOUR API KEY";
+        client = new ${toCamelCase(testName)}Client(configuration);
+    }
 
-      @Test
-      public void testFetch() throws ApiException {
-          Object response = client.test.fetch().execute();
-          assertNotNull(response);
-      }
+    @Test
+    public void testFetch() throws ApiException {
+        Object response = client.test.fetch().execute();
+        assertNotNull(response);
+    }
 
-  }
+}
 `;
   return {
     test,
@@ -143,7 +143,7 @@ function generateKonfigYamlFieldsForLanguage(language, testName) {
     logoPath: ../../logo.png`;
   } else if (language == "java") {
     return `groupId: com.konfigthis
-    packageName: ${toCamelCase(testName)}
+    packageName: ${toLowercaseOnlyAlphanumeric(testName)}
     artifactId: ${testName}`;
   }
 }
