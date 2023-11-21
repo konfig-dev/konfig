@@ -22,7 +22,7 @@ class TestInvalidResponse(unittest.TestCase):
 
     def test_invalid_scalar(self):
         client = PythonInvalidResponseClient(
-            host="http://127.0.0.1:4027",
+            host="http://127.0.0.1:5555",
             api_key = 'YOUR_API_KEY',
         )
         resp = client.test.invalid_scalar()
@@ -31,7 +31,7 @@ class TestInvalidResponse(unittest.TestCase):
 
     def test_invalid_array(self):
         client = PythonInvalidResponseClient(
-            host="http://127.0.0.1:4027",
+            host="http://127.0.0.1:5555",
             api_key = 'YOUR_API_KEY',
         )
         resp = client.test.invalid_array()
@@ -40,7 +40,7 @@ class TestInvalidResponse(unittest.TestCase):
 
     def test_invalid_object(self):
         client = PythonInvalidResponseClient(
-            host="http://127.0.0.1:4027",
+            host="http://127.0.0.1:5555",
             api_key = 'YOUR_API_KEY',
         )
         resp = client.test.invalid_object()
@@ -49,7 +49,7 @@ class TestInvalidResponse(unittest.TestCase):
 
     def test_only_one_property_is_invalid(self):
         client = PythonInvalidResponseClient(
-            host="http://127.0.0.1:4027",
+            host="http://127.0.0.1:5555",
             api_key = 'YOUR_API_KEY',
         )
         resp = client.test.only_one_property_is_invalid()
@@ -59,7 +59,7 @@ class TestInvalidResponse(unittest.TestCase):
 
     def test_object_instead_of_scalar(self):
         client = PythonInvalidResponseClient(
-            host="http://127.0.0.1:4027",
+            host="http://127.0.0.1:5555",
             api_key = 'YOUR_API_KEY',
         )
         resp = client.test.object_instead_of_scalar()
