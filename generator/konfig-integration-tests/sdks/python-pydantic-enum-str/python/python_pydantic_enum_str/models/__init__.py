@@ -11,4 +11,5 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from python_pydantic_enum_str.model.enum import Enum
 from python_pydantic_enum_str.model.test_fetch_response import TestFetchResponse

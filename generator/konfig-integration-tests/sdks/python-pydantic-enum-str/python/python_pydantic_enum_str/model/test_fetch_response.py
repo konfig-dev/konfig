@@ -38,29 +38,41 @@ class TestFetchResponse(
             
             
             class value(
-                schemas.EnumBase,
-                schemas.StrSchema
+                schemas.ComposedSchema,
             ):
             
             
                 class MetaOapg:
-                    enum_value_to_name = {
-                        "foo": "FOO",
-                        "bar": "BAR",
-                        "baz": "BAZ",
-                    }
-                
-                @schemas.classproperty
-                def FOO(cls):
-                    return cls("foo")
-                
-                @schemas.classproperty
-                def BAR(cls):
-                    return cls("bar")
-                
-                @schemas.classproperty
-                def BAZ(cls):
-                    return cls("baz")
+                    any_of_1 = schemas.StrSchema
+                    
+                    @classmethod
+                    @functools.lru_cache()
+                    def any_of(cls):
+                        # we need this here to make our import statements work
+                        # we must store _composed_schemas in here so the code is only run
+                        # when we invoke this method. If we kept this at the class
+                        # level we would get an error because the class level
+                        # code would be run when this module is imported, and these composed
+                        # classes don't exist yet because their module has not finished
+                        # loading
+                        return [
+                            Enum,
+                            cls.any_of_1,
+                        ]
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'value':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
             __annotations__ = {
                 "value": value,
             }
@@ -89,7 +101,7 @@ class TestFetchResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        value: typing.Union[MetaOapg.properties.value, str, schemas.Unset] = schemas.unset,
+        value: typing.Union[MetaOapg.properties.value, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'TestFetchResponse':
@@ -100,3 +112,5 @@ class TestFetchResponse(
             _configuration=_configuration,
             **kwargs,
         )
+
+from python_pydantic_enum_str.model.enum import Enum

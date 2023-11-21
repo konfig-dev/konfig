@@ -16,7 +16,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
+from python_pydantic_enum_str.pydantic.enum import Enum
 
 class TestFetchResponse(BaseModel):
-    # A string value
-    value: typing.Optional[str] = Field(None, alias='value')
+    value: typing.Optional[typing.Union[Enum, str]] = Field(None, alias='value')

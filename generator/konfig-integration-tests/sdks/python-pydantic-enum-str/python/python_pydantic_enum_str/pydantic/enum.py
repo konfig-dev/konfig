@@ -14,14 +14,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
+from pydantic import BaseModel, Field, RootModel
 
-from python_pydantic_enum_str.type.enum import Enum
 
-class RequiredTestFetchResponse(TypedDict):
-    pass
-
-class OptionalTestFetchResponse(TypedDict, total=False):
-    value: typing.Union[Enum, str]
-
-class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
-    pass
+Enum = Literal["foo", "bar", "baz"]
