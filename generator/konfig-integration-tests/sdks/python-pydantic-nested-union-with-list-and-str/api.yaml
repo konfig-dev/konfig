@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: python-pydantic-nested-union-with-list-and-str API
+  description: A simple API based for testing python-pydantic-nested-union-with-list-and-str.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://python-pydantic-nested-union-with-list-and-str.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestChatMessage:
+      title: TestChatMessage
+      type: object
+      properties:
+        testContent:
+          title: Test Content
+          description: The test content of the message.
+          anyOf:
+            - type: string
+            - type: array
+              items:
+                anyOf:
+                  - $ref: '#/components/schemas/GenericTextContent'
+                  - $ref: '#/components/schemas/GenericImageContent'
+          nullable: true
+
+    TestFetchResponse:
+      type: object
+      properties:
+        testMessages:
+          title: Test Messages
+          type: array
+          items:
+            $ref: '#/components/schemas/TestChatMessage'
+
+    GenericTextContent:
+      title: GenericTextContent
+      type: object
+      properties:
+        text:
+          type: string
+          description: "Generic text content for testing."
+
+    GenericImageContent:
+      title: GenericImageContent
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: "URL of the test image."
+        imageDescription:
+          type: string
+          description: "A brief description of the image."
+
+security:
+  - ApiKeyAuth: []
