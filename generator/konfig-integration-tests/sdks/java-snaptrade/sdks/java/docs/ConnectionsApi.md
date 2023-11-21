@@ -336,6 +336,7 @@ public class Example {
               .userId(userId)
               .sessionId(sessionId)
               .execute();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ConnectionsApi#sessionEvents");
       System.err.println("Status code: " + e.getStatusCode());

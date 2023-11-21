@@ -288,6 +288,7 @@ public class Example {
               .getUserAccountQuotes(userId, userSecret, symbols, accountId)
               .useTicker(useTicker)
               .execute();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TradingApi#getUserAccountQuotes");
       System.err.println("Status code: " + e.getStatusCode());

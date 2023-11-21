@@ -141,6 +141,9 @@ public class Example {
               .authentication
               .getUserJWT(userId, userSecret)
               .execute();
+      System.out.println(result);
+      System.out.println(result.getEncryptedSharedKey());
+      System.out.println(result.getEncryptedMessageData());
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthenticationApi#getUserJWT");
       System.err.println("Status code: " + e.getStatusCode());

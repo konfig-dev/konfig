@@ -152,6 +152,7 @@ public class Example {
               .options
               .getOptionsChain(userId, userSecret, accountId, symbol)
               .execute();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OptionsApi#getOptionsChain");
       System.err.println("Status code: " + e.getStatusCode());
