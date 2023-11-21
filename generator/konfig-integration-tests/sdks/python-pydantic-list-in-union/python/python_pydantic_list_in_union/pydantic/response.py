@@ -19,4 +19,3 @@ from pydantic import BaseModel, Field, RootModel
 from python_pydantic_list_in_union.pydantic.obj import Obj
 
 Response = typing.Union[Obj,typing.List[Obj]]
-Response = RootModel[object]
