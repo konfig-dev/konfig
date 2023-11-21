@@ -269,8 +269,8 @@ class ListInsteadOfScalar(BaseApi):
             **kwargs,
         )
         if validate:
-            return strPydantic(**raw_response.body)
-        return api_client.construct_model_instance(strPydantic, raw_response.body)
+            return RootModel[str](raw_response.body).root
+        return raw_response.body
     
     
     def list_instead_of_scalar(
@@ -280,8 +280,8 @@ class ListInsteadOfScalar(BaseApi):
         raw_response = self.raw.list_instead_of_scalar(
         )
         if validate:
-            return strPydantic(**raw_response.body)
-        return api_client.construct_model_instance(strPydantic, raw_response.body)
+            return RootModel[str](raw_response.body).root
+        return raw_response.body
 
 
 class ApiForget(BaseApi):
