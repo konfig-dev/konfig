@@ -83,12 +83,11 @@ export async function e2e(
   if (options?.customServer) {
     await killPort(mockServerPort);
     pid = spawnServer({ port: mockServerPort, ...options.customServer });
+    await waitOn({
+      resources: [`http://127.0.0.1:${mockServerPort}/healthz`],
+      timeout: 100000,
+    });
   }
-
-  await waitOn({
-    resources: [`http://127.0.0.1:${mockServerPort}/healthz`],
-    timeout: 100000,
-  });
 
   try {
     await callAndLogExeca(KONFIG_CLI_PATH, ["test", ...testArgs], {

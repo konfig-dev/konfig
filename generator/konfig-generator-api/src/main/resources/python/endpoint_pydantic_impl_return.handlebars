@@ -9,9 +9,15 @@ if validate:
     return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
 return api_client.construct_model_instance({{> endpoint_pydantic_impl_return_model}}, raw_response.body)
 {{else}}
+{{#if returnProperty.isFreeFormObject}}
+if validate:
+    return {{> endpoint_pydantic_impl_return_model}}(**raw_response.body)
+return api_client.construct_model_instance({{> endpoint_pydantic_impl_return_model}}, raw_response.body)
+{{else}}
 if validate:
     return RootModel[{{returnProperty.dataType}}](raw_response.body).root
 return raw_response.body
+{{/if}}
 {{/if}}
 {{/if}}
 {{/if}}
