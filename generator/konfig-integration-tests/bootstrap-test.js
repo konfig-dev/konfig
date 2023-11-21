@@ -43,29 +43,33 @@ generators:
 }
 
 function generateKonfigYamlFieldsForLanguage(language, testName) {
-  if (language == 'python') {
-    return `packageName: ${testName.replace(/-/g, '_')}
-    projectName: ${testName}`
-  } else if (language == 'typescript') {
-    return `npmName: ${testName}`
-  } else if (language == 'csharp') {
+  if (language == "python") {
+    return `packageName: ${testName.replace(/-/g, "_")}
+    projectName: ${testName}`;
+  } else if (language == "typescript") {
+    return `npmName: ${testName}`;
+  } else if (language == "csharp") {
     return `packageName: ${toCamelCase(testName)}.Net
-    logoPath: ../../logo.png`
-  } else if (language == 'java') {
+    logoPath: ../../logo.png`;
+  } else if (language == "java") {
     return `groupId: com.konfigthis
     packageName: ${toCamelCase(testName)}
-    artifactId: ${test}`
+    artifactId: ${test}`;
   }
 }
 
-const supportedLanguages = ['python', 'typescript', 'csharp', 'java'];
+const supportedLanguages = ["python", "typescript", "csharp", "java"];
 // Prompt for language
-rl.question(`Which language would you like to create a test for? (${supportedLanguages.join("/")}) `, (languageInput) => {
-  const language = languageInput.toLowerCase();
-  if (!supportedLanguages.includes(language)) {
-    console.error(`Language ${language} is not supported.`);
-    process.exit(1);
-  }
+rl.question(
+  `Which language would you like to create a test for? (${supportedLanguages.join(
+    "/"
+  )}) `,
+  (languageInput) => {
+    const language = languageInput.toLowerCase();
+    if (!supportedLanguages.includes(language)) {
+      console.error(`Language ${language} is not supported.`);
+      process.exit(1);
+    }
 
     // Prompt for test name
     rl.question("What would you like to name your test? ", (testName) => {
@@ -89,7 +93,8 @@ rl.question(`Which language would you like to create a test for? (${supportedLan
       ports = ports.sort((a, b) => a - b);
       let unusedPort = 4000;
       while (ports.includes(unusedPort)) {
-        unusedPort++;
+        // add random number between 1 and 10
+        unusedPort += Math.floor(Math.random() * 10) + 1;
       }
 
       // Create test file
