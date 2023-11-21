@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: support@example.com
+    name: API Support
+    url: http://example.com/support
+  description: A simple API based for testing java-merge-anyof-object-schemas.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://example.com/terms/
+  title: java-merge-anyof-object-schemas API
+  version: 1.0.0
+  x-konfig-has-globally-required-security: true
+servers:
+- description: Live API server
+  url: https://java-merge-anyof-object-schemas.konfigthis.com
+security:
+- ApiKey: []
+tags:
+- name: Test
+paths:
+  /simple-endpoint:
+    get:
+      description: Provide an input parameter to receive a JSON value with properties.
+      operationId: Test_fetch
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+          description: Successful response
+      summary: Fetches a JSON value based on input parameter
+      tags:
+      - Test
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--simple-endpoint
+      x-accepts: application/json
+components:
+  schemas:
+    TestFetchResponse:
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    konfig-generated-schema-single-parameter-schema-get--simple-endpoint:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+  securitySchemes:
+    ApiKey:
+      in: header
+      name: X-API-KEY
+      type: apiKey
+      x-konfig-globally-required-security: true
+
