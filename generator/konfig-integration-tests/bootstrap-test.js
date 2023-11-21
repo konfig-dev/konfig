@@ -166,7 +166,7 @@ test("${testName}", async () => {
         }, `sdks`);
 
         fs.writeFileSync(`sdks/${testName}/${path}`, test);
-        fs.writeFileSync(`sdks/${testName}/.konfigignore`, konfigIgnore);
+        fs.writeFileSync(`sdks/${testName}/python/.konfigignore`, konfigIgnore);
       }
 
       // Create directory and konfig.yaml file
