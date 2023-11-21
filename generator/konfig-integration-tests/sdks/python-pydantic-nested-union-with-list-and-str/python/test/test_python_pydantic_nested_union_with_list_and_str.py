@@ -15,6 +15,7 @@ class TestPythonPydanticNestedUnionWithListAndStr(unittest.TestCase):
         )
         resp = client.test.fetch()
         self.assertIsNotNone(resp)
+        self.assertIsNotNone(resp.test_messages[0].test_content)
 
     def tearDown(self):
         pass
