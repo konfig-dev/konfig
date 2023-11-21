@@ -96,7 +96,7 @@ def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> ty
                         continue
             else:  # This is a non-generic type
                 if isinstance(value, t):
-                    if best_match is None or issubclass(best_match, t):
+                    if best_match is None or (isinstance(value, type) and issubclass(best_match, t)):
                         best_match = t
                 continue
 
@@ -134,6 +134,9 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     elif typing_extensions.get_origin(model) is list:
         item_model = typing_extensions.get_args(model)[0]
         return [construct_model_instance(item_model, item) for item in data]
+    # if model is free form object, just return the value
+    elif typing_extensions.get_origin(model) is dict:
+        return data
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):
         new_data = {}
