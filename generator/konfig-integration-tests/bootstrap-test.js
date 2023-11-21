@@ -93,8 +93,8 @@ rl.question(
       ports = ports.sort((a, b) => a - b);
       let unusedPort = 4000;
       while (ports.includes(unusedPort)) {
-        // add random number between 1 and 10
-        unusedPort += Math.floor(Math.random() * 10) + 1;
+        // add random number between 1 and 50
+        unusedPort += Math.floor(Math.random() * 50) + 1;
       }
 
       // Create test file
