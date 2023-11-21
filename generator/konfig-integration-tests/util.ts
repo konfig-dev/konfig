@@ -80,9 +80,11 @@ export async function e2e(
     ? ["-x"]
     : ["-p", mockServerPort.toString()];
   let pid: number | null = null;
+  console.log("Killing port", mockServerPort);
   if (options?.customServer) {
     await killPort(mockServerPort);
     pid = spawnServer({ port: mockServerPort, ...options.customServer });
+    console.log("Waiting for server to start");
     await waitOn({
       resources: [`http://127.0.0.1:${mockServerPort}/healthz`],
       timeout: 100000,
@@ -97,6 +99,7 @@ export async function e2e(
   } finally {
     if (pid !== null) {
       // kill the server
+      console.log("Killing server with pid", pid);
       process.kill(pid);
     }
   }
