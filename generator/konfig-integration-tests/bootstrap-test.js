@@ -24,6 +24,13 @@ const toCamelCase = (str) => {
     .join("");
 };
 
+/**
+ * converts "python-pydantic-test" to "python_pydantic_test"
+ */
+function toSnakeCase(str) {
+  return str.replace(/-/g, "_");
+}
+
 function generateKonfigYamlString(language, testName) {
   const languageSpecificFields = generateKonfigYamlFieldsForLanguage(
     language,
@@ -40,6 +47,39 @@ generators:
     git:
       userId: konfig-dev
       repoId: konfig/tree/main/${language}`;
+}
+
+function generatePythonTest({ testName, port }) {
+  const test = `import unittest
+
+import os
+from pprint import pprint
+from ${toSnakeCase(testName)} import ${toCamelCase(testName)}Client
+
+class Test${toCamelCase(testName)}(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def test_${toSnakeCase(testName)}(self):
+        client = ${toCamelCase(testName)}Client(
+            host="http://127.0.0.1:${port}",
+            api_key='YOUR_API_KEY',
+        )
+        resp = client.test.fetch()
+        self.assertIsNotNone(resp)
+
+    def tearDown(self):
+        pass
+
+
+if __name__ == "__main__":
+    unittest.main()
+`;
+  return {
+    test,
+    path: `python/test/test_${toSnakeCase(testName)}.py`,
+    konfigIgnore: `test/test_${toSnakeCase(testName)}.py`,
+  };
 }
 
 function generateKonfigYamlFieldsForLanguage(language, testName) {
@@ -105,6 +145,29 @@ test("${testName}", async () => {
   await e2e(${unusedPort});
 });`;
       fs.writeFileSync(`tests/${testName}.test.ts`, testContent);
+
+      // if language is python, bootstrap a test
+      if (language === "python") {
+        const { test, path, konfigIgnore } = generatePythonTest({
+          testName,
+          port: unusedPort,
+        });
+        // ensure directories exist
+        const directories = path.split("/");
+        directories.pop();
+        // push testName to beginning of directories
+        directories.unshift(testName);
+        directories.reduce((prev, curr) => {
+          const directory = `${prev}/${curr}`;
+          if (!fs.existsSync(directory)) {
+            fs.mkdirSync(directory);
+          }
+          return directory;
+        }, `sdks`);
+
+        fs.writeFileSync(`sdks/${testName}/${path}`, test);
+        fs.writeFileSync(`sdks/${testName}/.konfigignore`, konfigIgnore);
+      }
 
       // Create directory and konfig.yaml file
       const sdkPath = `sdks/${testName}`;
