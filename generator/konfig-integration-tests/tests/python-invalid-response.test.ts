@@ -48,6 +48,16 @@ test("python-invalid-response", async () => {
             number: "some string",
           },
         },
+        {
+          path: "/list-instead-of-scalar",
+          method: "get",
+          response: [
+            {
+              string: "some string",
+              number: "some string",
+            },
+          ],
+        },
       ],
     },
   });
