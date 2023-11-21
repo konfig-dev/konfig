@@ -94,7 +94,7 @@ def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> ty
                         continue
             else:  # This is a non-generic type
                 if isinstance(value, t):
-                    if best_match is None or issubclass(best_match, t):
+                    if best_match is None or (isinstance(value, type) and issubclass(best_match, t)):
                         best_match = t
                 continue
 
