@@ -25,6 +25,13 @@ const toCamelCase = (str) => {
 };
 
 /**
+ * converts "python-pydantic-test" to "pythonpydantictest"
+ */
+function toLowercaseOnlyAlphanumeric(str) {
+  return str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+}
+
+/**
  * converts "python-pydantic-test" to "python_pydantic_test"
  */
 function toSnakeCase(str) {
@@ -47,6 +54,49 @@ generators:
     git:
       userId: konfig-dev
       repoId: konfig/tree/main/${language}`;
+}
+
+function generateJavaTest({ testName, port }) {
+  const test = `package com.konfigthis.${toLowercaseOnlyAlphanumeric(
+    testName
+  )}.client;
+
+  import org.junit.jupiter.api.BeforeAll;
+  import org.junit.jupiter.api.Test;
+
+  import java.util.Map;
+
+  import static org.junit.Assert.assertNotNull;
+
+  public class ${toCamelCase(testName)}Test {
+      static final String MOCK_SERVER_URL = "http://localhost:${port}";
+      static ${toCamelCase(testName)} client;
+
+      @BeforeAll
+      public static void setUp() throws Exception {
+          Configuration configuration = new Configuration();
+          configuration.host = MOCK_SERVER_URL;
+          configuration.apiKey = "YOUR API KEY";
+          client = new ${toCamelCase(testName)}(configuration);
+      }
+
+      @Test
+      public void testFetch() throws ApiException {
+          Object response = client.test.fetch().execute();
+          assertNotNull(response);
+      }
+
+  }
+`;
+  return {
+    test,
+    path: `java/src/test/java/com/konfigthis/${toLowercaseOnlyAlphanumeric(
+      testName
+    )}/client/${toCamelCase(testName)}Test.java`,
+    konfigIgnore: `src/test/java/com/konfigthis/${toLowercaseOnlyAlphanumeric(
+      testName
+    )}/client/${toCamelCase(testName)}Test.java`,
+  };
 }
 
 function generatePythonTest({ testName, port }) {
@@ -94,7 +144,7 @@ function generateKonfigYamlFieldsForLanguage(language, testName) {
   } else if (language == "java") {
     return `groupId: com.konfigthis
     packageName: ${toCamelCase(testName)}
-    artifactId: ${test}`;
+    artifactId: ${testName}`;
   }
 }
 
@@ -157,16 +207,26 @@ test("${testName}", async () => {
         directories.pop();
         // push testName to beginning of directories
         directories.unshift(testName);
-        directories.reduce((prev, curr) => {
-          const directory = `${prev}/${curr}`;
-          if (!fs.existsSync(directory)) {
-            fs.mkdirSync(directory);
-          }
-          return directory;
-        }, `sdks`);
+        ensureDirectory({ directories, cwd: "sdks" });
 
         fs.writeFileSync(`sdks/${testName}/${path}`, test);
         fs.writeFileSync(`sdks/${testName}/python/.konfigignore`, konfigIgnore);
+      }
+
+      if (language === "java") {
+        const { test, path, konfigIgnore } = generateJavaTest({
+          testName,
+          port: unusedPort,
+        });
+        // ensure directories exist
+        const directories = path.split("/");
+        directories.pop();
+        // push testName to beginning of directories
+        directories.unshift(testName);
+        ensureDirectory({ directories, cwd: "sdks" });
+
+        fs.writeFileSync(`sdks/${testName}/${path}`, test);
+        fs.writeFileSync(`sdks/${testName}/java/.konfigignore`, konfigIgnore);
       }
 
       // Create directory and konfig.yaml file
@@ -187,3 +247,13 @@ test("${testName}", async () => {
     });
   }
 );
+
+function ensureDirectory({ directories, cwd }) {
+  directories.reduce((prev, curr) => {
+    const directory = `${prev}/${curr}`;
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory);
+    }
+    return directory;
+  }, cwd);
+}
