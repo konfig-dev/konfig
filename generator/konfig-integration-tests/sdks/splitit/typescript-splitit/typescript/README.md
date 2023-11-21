@@ -11,16 +11,16 @@ Splitit\'s Web API
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
-  * [`typescriptsplitit.installmentplan.cancel`](#typescriptsplititinstallmentplancancel)
-  * [`typescriptsplitit.installmentplan.checkEligibility`](#typescriptsplititinstallmentplancheckeligibility)
-  * [`typescriptsplitit.installmentplan.get`](#typescriptsplititinstallmentplanget)
-  * [`typescriptsplitit.installmentplan.post`](#typescriptsplititinstallmentplanpost)
-  * [`typescriptsplitit.installmentplan.post2`](#typescriptsplititinstallmentplanpost2)
-  * [`typescriptsplitit.installmentplan.refund`](#typescriptsplititinstallmentplanrefund)
-  * [`typescriptsplitit.installmentplan.search`](#typescriptsplititinstallmentplansearch)
-  * [`typescriptsplitit.installmentplan.updateOrder`](#typescriptsplititinstallmentplanupdateorder)
-  * [`typescriptsplitit.installmentplan.updateOrder2`](#typescriptsplititinstallmentplanupdateorder2)
-  * [`typescriptsplitit.installmentplan.verifyAuthorization`](#typescriptsplititinstallmentplanverifyauthorization)
+  * [`typescriptsplitit.installmentPlan.cancel`](#typescriptsplititinstallmentplancancel)
+  * [`typescriptsplitit.installmentPlan.checkEligibility`](#typescriptsplititinstallmentplancheckeligibility)
+  * [`typescriptsplitit.installmentPlan.get`](#typescriptsplititinstallmentplanget)
+  * [`typescriptsplitit.installmentPlan.post`](#typescriptsplititinstallmentplanpost)
+  * [`typescriptsplitit.installmentPlan.post2`](#typescriptsplititinstallmentplanpost2)
+  * [`typescriptsplitit.installmentPlan.refund`](#typescriptsplititinstallmentplanrefund)
+  * [`typescriptsplitit.installmentPlan.search`](#typescriptsplititinstallmentplansearch)
+  * [`typescriptsplitit.installmentPlan.updateOrder`](#typescriptsplititinstallmentplanupdateorder)
+  * [`typescriptsplitit.installmentPlan.updateOrder2`](#typescriptsplititinstallmentplanupdateorder2)
+  * [`typescriptsplitit.installmentPlan.verifyAuthorization`](#typescriptsplititinstallmentplanverifyauthorization)
 
 <!-- tocstop -->
 
@@ -69,7 +69,7 @@ const typescriptsplitit = new TypescriptSplitit({
   oauthClientSecret: "CLIENT_SECRET",
 });
 
-const cancelResponse = await typescriptsplitit.installmentplan.cancel({
+const cancelResponse = await typescriptsplitit.installmentPlan.cancel({
   installmentPlanNumber: "installmentPlanNumber_example",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
@@ -81,14 +81,14 @@ console.log(cancelResponse);
 ## Reference<a id="reference"></a>
 
 
-### `typescriptsplitit.installmentplan.cancel`<a id="typescriptsplititinstallmentplancancel"></a>
+### `typescriptsplitit.installmentPlan.cancel`<a id="typescriptsplititinstallmentplancancel"></a>
 
 
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const cancelResponse = await typescriptsplitit.installmentplan.cancel({
+const cancelResponse = await typescriptsplitit.installmentPlan.cancel({
   installmentPlanNumber: "installmentPlanNumber_example",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
@@ -118,7 +118,7 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.checkEligibility`<a id="typescriptsplititinstallmentplancheckeligibility"></a>
+### `typescriptsplitit.installmentPlan.checkEligibility`<a id="typescriptsplititinstallmentplancheckeligibility"></a>
 
 
 
@@ -126,7 +126,7 @@ TouchPoint
 
 ```typescript
 const checkEligibilityResponse =
-  await typescriptsplitit.installmentplan.checkEligibility({
+  await typescriptsplitit.installmentPlan.checkEligibility({
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
     xSplititTouchPoint: "",
   });
@@ -159,14 +159,14 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.get`<a id="typescriptsplititinstallmentplanget"></a>
+### `typescriptsplitit.installmentPlan.get`<a id="typescriptsplititinstallmentplanget"></a>
 
 
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const getResponse = await typescriptsplitit.installmentplan.get({
+const getResponse = await typescriptsplitit.installmentPlan.get({
   installmentPlanNumber: "installmentPlanNumber_example",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
@@ -196,14 +196,14 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.post`<a id="typescriptsplititinstallmentplanpost"></a>
+### `typescriptsplitit.installmentPlan.post`<a id="typescriptsplititinstallmentplanpost"></a>
 
 
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const postResponse = await typescriptsplitit.installmentplan.post({
+const postResponse = await typescriptsplitit.installmentPlan.post({
   xSplititTestMode: "None",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
@@ -252,14 +252,14 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.post2`<a id="typescriptsplititinstallmentplanpost2"></a>
+### `typescriptsplitit.installmentPlan.post2`<a id="typescriptsplititinstallmentplanpost2"></a>
 
 
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const post2Response = await typescriptsplitit.installmentplan.post2({
+const post2Response = await typescriptsplitit.installmentPlan.post2({
   xSplititTestMode: "None",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
@@ -311,14 +311,14 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.refund`<a id="typescriptsplititinstallmentplanrefund"></a>
+### `typescriptsplitit.installmentPlan.refund`<a id="typescriptsplititinstallmentplanrefund"></a>
 
 
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const refundResponse = await typescriptsplitit.installmentplan.refund({
+const refundResponse = await typescriptsplitit.installmentPlan.refund({
   installmentPlanNumber: "installmentPlanNumber_example",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
@@ -354,14 +354,14 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.search`<a id="typescriptsplititinstallmentplansearch"></a>
+### `typescriptsplitit.installmentPlan.search`<a id="typescriptsplititinstallmentplansearch"></a>
 
 
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const searchResponse = await typescriptsplitit.installmentplan.search({
+const searchResponse = await typescriptsplitit.installmentPlan.search({
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
 });
@@ -394,14 +394,14 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.updateOrder`<a id="typescriptsplititinstallmentplanupdateorder"></a>
+### `typescriptsplitit.installmentPlan.updateOrder`<a id="typescriptsplititinstallmentplanupdateorder"></a>
 
 
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const updateOrderResponse = await typescriptsplitit.installmentplan.updateOrder(
+const updateOrderResponse = await typescriptsplitit.installmentPlan.updateOrder(
   {
     installmentPlanNumber: "installmentPlanNumber_example",
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
@@ -442,7 +442,7 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.updateOrder2`<a id="typescriptsplititinstallmentplanupdateorder2"></a>
+### `typescriptsplitit.installmentPlan.updateOrder2`<a id="typescriptsplititinstallmentplanupdateorder2"></a>
 
 
 
@@ -450,7 +450,7 @@ TouchPoint
 
 ```typescript
 const updateOrder2Response =
-  await typescriptsplitit.installmentplan.updateOrder2({
+  await typescriptsplitit.installmentPlan.updateOrder2({
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
     xSplititTouchPoint: "",
     ShippingStatus: "Shipped",
@@ -488,7 +488,7 @@ TouchPoint
 ---
 
 
-### `typescriptsplitit.installmentplan.verifyAuthorization`<a id="typescriptsplititinstallmentplanverifyauthorization"></a>
+### `typescriptsplitit.installmentPlan.verifyAuthorization`<a id="typescriptsplititinstallmentplanverifyauthorization"></a>
 
 
 
@@ -496,7 +496,7 @@ TouchPoint
 
 ```typescript
 const verifyAuthorizationResponse =
-  await typescriptsplitit.installmentplan.verifyAuthorization({
+  await typescriptsplitit.installmentPlan.verifyAuthorization({
     installmentPlanNumber: "installmentPlanNumber_example",
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
     xSplititTouchPoint: "",

@@ -89,10 +89,10 @@ import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
 /**
- * InstallmentplanApi - axios parameter creator
+ * InstallmentPlanApi - axios parameter creator
  * @export
  */
-export const InstallmentplanApiAxiosParamCreator = function (configuration?: Configuration) {
+export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
@@ -711,109 +711,109 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 };
 
 /**
- * InstallmentplanApi - functional programming interface
+ * InstallmentPlanApi - functional programming interface
  * @export
  */
-export const InstallmentplanApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = InstallmentplanApiAxiosParamCreator(configuration)
+export const InstallmentPlanApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = InstallmentPlanApiAxiosParamCreator(configuration)
     return {
         /**
          * 
-         * @param {InstallmentplanApiCancelRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiCancelRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cancel(requestParameters: InstallmentplanApiCancelRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanCancelResponse>> {
+        async cancel(requestParameters: InstallmentPlanApiCancelRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanCancelResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.cancel(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiCheckEligibilityRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiCheckEligibilityRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async checkEligibility(requestParameters: InstallmentplanApiCheckEligibilityRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentsEligibilityResponse>> {
+        async checkEligibility(requestParameters: InstallmentPlanApiCheckEligibilityRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentsEligibilityResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.checkEligibility(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiGetRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async get(requestParameters: InstallmentplanApiGetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanGetResponse>> {
+        async get(requestParameters: InstallmentPlanApiGetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanGetResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.get(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiPostRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async post(requestParameters: InstallmentplanApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InitiatePlanResponse>> {
+        async post(requestParameters: InstallmentPlanApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InitiatePlanResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiPost2Request} requestParameters Request parameters.
+         * @param {InstallmentPlanApiPost2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async post2(requestParameters: InstallmentplanApiPost2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanCreateResponse>> {
+        async post2(requestParameters: InstallmentPlanApiPost2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanCreateResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.post2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiRefundRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiRefundRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refund(requestParameters: InstallmentplanApiRefundRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanRefundResponse>> {
+        async refund(requestParameters: InstallmentPlanApiRefundRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanRefundResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.refund(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiSearchRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiSearchRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search(requestParameters: InstallmentplanApiSearchRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanSearchResponse>> {
+        async search(requestParameters: InstallmentPlanApiSearchRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanSearchResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.search(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters.installmentPlanNumber, requestParameters.refOrderNumber, requestParameters.extendedParams, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiUpdateOrderRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiUpdateOrderRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOrder(requestParameters: InstallmentplanApiUpdateOrderRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanUpdateResponse>> {
+        async updateOrder(requestParameters: InstallmentPlanApiUpdateOrderRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanUpdateResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateOrder(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiUpdateOrder2Request} requestParameters Request parameters.
+         * @param {InstallmentPlanApiUpdateOrder2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateOrder2(requestParameters: InstallmentplanApiUpdateOrder2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanUpdateResponse>> {
+        async updateOrder2(requestParameters: InstallmentPlanApiUpdateOrder2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanUpdateResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateOrder2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {InstallmentplanApiVerifyAuthorizationRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiVerifyAuthorizationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async verifyAuthorization(requestParameters: InstallmentplanApiVerifyAuthorizationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VerifyAuthorizationResponse>> {
+        async verifyAuthorization(requestParameters: InstallmentPlanApiVerifyAuthorizationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VerifyAuthorizationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.verifyAuthorization(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -821,519 +821,519 @@ export const InstallmentplanApiFp = function(configuration?: Configuration) {
 };
 
 /**
- * InstallmentplanApi - factory interface
+ * InstallmentPlanApi - factory interface
  * @export
  */
-export const InstallmentplanApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = InstallmentplanApiFp(configuration)
+export const InstallmentPlanApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = InstallmentPlanApiFp(configuration)
     return {
         /**
          * 
-         * @param {InstallmentplanApiCancelRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiCancelRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancel(requestParameters: InstallmentplanApiCancelRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanCancelResponse> {
+        cancel(requestParameters: InstallmentPlanApiCancelRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanCancelResponse> {
             return localVarFp.cancel(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiCheckEligibilityRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiCheckEligibilityRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        checkEligibility(requestParameters: InstallmentplanApiCheckEligibilityRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentsEligibilityResponse> {
+        checkEligibility(requestParameters: InstallmentPlanApiCheckEligibilityRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentsEligibilityResponse> {
             return localVarFp.checkEligibility(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiGetRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get(requestParameters: InstallmentplanApiGetRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanGetResponse> {
+        get(requestParameters: InstallmentPlanApiGetRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanGetResponse> {
             return localVarFp.get(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiPostRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post(requestParameters: InstallmentplanApiPostRequest, options?: AxiosRequestConfig): AxiosPromise<InitiatePlanResponse> {
+        post(requestParameters: InstallmentPlanApiPostRequest, options?: AxiosRequestConfig): AxiosPromise<InitiatePlanResponse> {
             return localVarFp.post(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiPost2Request} requestParameters Request parameters.
+         * @param {InstallmentPlanApiPost2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post2(requestParameters: InstallmentplanApiPost2Request, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanCreateResponse> {
+        post2(requestParameters: InstallmentPlanApiPost2Request, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanCreateResponse> {
             return localVarFp.post2(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiRefundRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiRefundRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refund(requestParameters: InstallmentplanApiRefundRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanRefundResponse> {
+        refund(requestParameters: InstallmentPlanApiRefundRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanRefundResponse> {
             return localVarFp.refund(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiSearchRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiSearchRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(requestParameters: InstallmentplanApiSearchRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanSearchResponse> {
+        search(requestParameters: InstallmentPlanApiSearchRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanSearchResponse> {
             return localVarFp.search(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiUpdateOrderRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiUpdateOrderRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOrder(requestParameters: InstallmentplanApiUpdateOrderRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanUpdateResponse> {
+        updateOrder(requestParameters: InstallmentPlanApiUpdateOrderRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanUpdateResponse> {
             return localVarFp.updateOrder(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiUpdateOrder2Request} requestParameters Request parameters.
+         * @param {InstallmentPlanApiUpdateOrder2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOrder2(requestParameters: InstallmentplanApiUpdateOrder2Request, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanUpdateResponse> {
+        updateOrder2(requestParameters: InstallmentPlanApiUpdateOrder2Request, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanUpdateResponse> {
             return localVarFp.updateOrder2(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InstallmentplanApiVerifyAuthorizationRequest} requestParameters Request parameters.
+         * @param {InstallmentPlanApiVerifyAuthorizationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        verifyAuthorization(requestParameters: InstallmentplanApiVerifyAuthorizationRequest, options?: AxiosRequestConfig): AxiosPromise<VerifyAuthorizationResponse> {
+        verifyAuthorization(requestParameters: InstallmentPlanApiVerifyAuthorizationRequest, options?: AxiosRequestConfig): AxiosPromise<VerifyAuthorizationResponse> {
             return localVarFp.verifyAuthorization(requestParameters, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for cancel operation in InstallmentplanApi.
+ * Request parameters for cancel operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiCancelRequest
+ * @interface InstallmentPlanApiCancelRequest
  */
-export type InstallmentplanApiCancelRequest = {
+export type InstallmentPlanApiCancelRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiCancel
+    * @memberof InstallmentPlanApiCancel
     */
     readonly installmentPlanNumber: string
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiCancel
+    * @memberof InstallmentPlanApiCancel
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiCancel
+    * @memberof InstallmentPlanApiCancel
     */
     readonly xSplititTouchPoint: string
     
 }
 
 /**
- * Request parameters for checkEligibility operation in InstallmentplanApi.
+ * Request parameters for checkEligibility operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiCheckEligibilityRequest
+ * @interface InstallmentPlanApiCheckEligibilityRequest
  */
-export type InstallmentplanApiCheckEligibilityRequest = {
+export type InstallmentPlanApiCheckEligibilityRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiCheckEligibility
+    * @memberof InstallmentPlanApiCheckEligibility
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiCheckEligibility
+    * @memberof InstallmentPlanApiCheckEligibility
     */
     readonly xSplititTouchPoint: string
     
 } & CheckInstallmentsEligibilityRequest
 
 /**
- * Request parameters for get operation in InstallmentplanApi.
+ * Request parameters for get operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiGetRequest
+ * @interface InstallmentPlanApiGetRequest
  */
-export type InstallmentplanApiGetRequest = {
+export type InstallmentPlanApiGetRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiGet
+    * @memberof InstallmentPlanApiGet
     */
     readonly installmentPlanNumber: string
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiGet
+    * @memberof InstallmentPlanApiGet
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiGet
+    * @memberof InstallmentPlanApiGet
     */
     readonly xSplititTouchPoint: string
     
 }
 
 /**
- * Request parameters for post operation in InstallmentplanApi.
+ * Request parameters for post operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiPostRequest
+ * @interface InstallmentPlanApiPostRequest
  */
-export type InstallmentplanApiPostRequest = {
+export type InstallmentPlanApiPostRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiPost
+    * @memberof InstallmentPlanApiPost
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiPost
+    * @memberof InstallmentPlanApiPost
     */
     readonly xSplititTouchPoint: string
     
     /**
     * 
     * @type {'None' | 'Regular' | 'Fast' | 'Automation'}
-    * @memberof InstallmentplanApiPost
+    * @memberof InstallmentPlanApiPost
     */
     readonly xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation'
     
 } & InstallmentPlanInitiateRequest
 
 /**
- * Request parameters for post2 operation in InstallmentplanApi.
+ * Request parameters for post2 operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiPost2Request
+ * @interface InstallmentPlanApiPost2Request
  */
-export type InstallmentplanApiPost2Request = {
+export type InstallmentPlanApiPost2Request = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiPost2
+    * @memberof InstallmentPlanApiPost2
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiPost2
+    * @memberof InstallmentPlanApiPost2
     */
     readonly xSplititTouchPoint: string
     
     /**
     * 
     * @type {'None' | 'Regular' | 'Fast' | 'Automation'}
-    * @memberof InstallmentplanApiPost2
+    * @memberof InstallmentPlanApiPost2
     */
     readonly xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation'
     
 } & InstallmentPlanCreateRequest
 
 /**
- * Request parameters for refund operation in InstallmentplanApi.
+ * Request parameters for refund operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiRefundRequest
+ * @interface InstallmentPlanApiRefundRequest
  */
-export type InstallmentplanApiRefundRequest = {
+export type InstallmentPlanApiRefundRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiRefund
+    * @memberof InstallmentPlanApiRefund
     */
     readonly installmentPlanNumber: string
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiRefund
+    * @memberof InstallmentPlanApiRefund
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiRefund
+    * @memberof InstallmentPlanApiRefund
     */
     readonly xSplititTouchPoint: string
     
 } & InstallmentPlanRefundRequest
 
 /**
- * Request parameters for search operation in InstallmentplanApi.
+ * Request parameters for search operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiSearchRequest
+ * @interface InstallmentPlanApiSearchRequest
  */
-export type InstallmentplanApiSearchRequest = {
+export type InstallmentPlanApiSearchRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiSearch
+    * @memberof InstallmentPlanApiSearch
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiSearch
+    * @memberof InstallmentPlanApiSearch
     */
     readonly xSplititTouchPoint: string
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiSearch
+    * @memberof InstallmentPlanApiSearch
     */
     readonly installmentPlanNumber?: string
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiSearch
+    * @memberof InstallmentPlanApiSearch
     */
     readonly refOrderNumber?: string
     
     /**
     * 
     * @type {{ [key: string]: string; }}
-    * @memberof InstallmentplanApiSearch
+    * @memberof InstallmentPlanApiSearch
     */
     readonly extendedParams?: { [key: string]: string; }
     
 }
 
 /**
- * Request parameters for updateOrder operation in InstallmentplanApi.
+ * Request parameters for updateOrder operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiUpdateOrderRequest
+ * @interface InstallmentPlanApiUpdateOrderRequest
  */
-export type InstallmentplanApiUpdateOrderRequest = {
+export type InstallmentPlanApiUpdateOrderRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiUpdateOrder
+    * @memberof InstallmentPlanApiUpdateOrder
     */
     readonly installmentPlanNumber: string
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiUpdateOrder
+    * @memberof InstallmentPlanApiUpdateOrder
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiUpdateOrder
+    * @memberof InstallmentPlanApiUpdateOrder
     */
     readonly xSplititTouchPoint: string
     
 } & UpdateOrderRequest
 
 /**
- * Request parameters for updateOrder2 operation in InstallmentplanApi.
+ * Request parameters for updateOrder2 operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiUpdateOrder2Request
+ * @interface InstallmentPlanApiUpdateOrder2Request
  */
-export type InstallmentplanApiUpdateOrder2Request = {
+export type InstallmentPlanApiUpdateOrder2Request = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiUpdateOrder2
+    * @memberof InstallmentPlanApiUpdateOrder2
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiUpdateOrder2
+    * @memberof InstallmentPlanApiUpdateOrder2
     */
     readonly xSplititTouchPoint: string
     
 } & InstallmentPlanUpdateRequestByIdentifier
 
 /**
- * Request parameters for verifyAuthorization operation in InstallmentplanApi.
+ * Request parameters for verifyAuthorization operation in InstallmentPlanApi.
  * @export
- * @interface InstallmentplanApiVerifyAuthorizationRequest
+ * @interface InstallmentPlanApiVerifyAuthorizationRequest
  */
-export type InstallmentplanApiVerifyAuthorizationRequest = {
+export type InstallmentPlanApiVerifyAuthorizationRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiVerifyAuthorization
+    * @memberof InstallmentPlanApiVerifyAuthorization
     */
     readonly installmentPlanNumber: string
     
     /**
     * 
     * @type {string}
-    * @memberof InstallmentplanApiVerifyAuthorization
+    * @memberof InstallmentPlanApiVerifyAuthorization
     */
     readonly xSplititIdempotencyKey: string
     
     /**
     * TouchPoint
     * @type {string}
-    * @memberof InstallmentplanApiVerifyAuthorization
+    * @memberof InstallmentPlanApiVerifyAuthorization
     */
     readonly xSplititTouchPoint: string
     
 }
 
 /**
- * InstallmentplanApiGenerated - object-oriented interface
+ * InstallmentPlanApiGenerated - object-oriented interface
  * @export
- * @class InstallmentplanApiGenerated
+ * @class InstallmentPlanApiGenerated
  * @extends {BaseAPI}
  */
-export class InstallmentplanApiGenerated extends BaseAPI {
+export class InstallmentPlanApiGenerated extends BaseAPI {
     /**
      * 
-     * @param {InstallmentplanApiCancelRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiCancelRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public cancel(requestParameters: InstallmentplanApiCancelRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).cancel(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public cancel(requestParameters: InstallmentPlanApiCancelRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).cancel(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiCheckEligibilityRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiCheckEligibilityRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public checkEligibility(requestParameters: InstallmentplanApiCheckEligibilityRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).checkEligibility(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public checkEligibility(requestParameters: InstallmentPlanApiCheckEligibilityRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).checkEligibility(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiGetRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiGetRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public get(requestParameters: InstallmentplanApiGetRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public get(requestParameters: InstallmentPlanApiGetRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiPostRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiPostRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public post(requestParameters: InstallmentplanApiPostRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).post(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public post(requestParameters: InstallmentPlanApiPostRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).post(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiPost2Request} requestParameters Request parameters.
+     * @param {InstallmentPlanApiPost2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public post2(requestParameters: InstallmentplanApiPost2Request, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).post2(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public post2(requestParameters: InstallmentPlanApiPost2Request, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).post2(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiRefundRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiRefundRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public refund(requestParameters: InstallmentplanApiRefundRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).refund(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public refund(requestParameters: InstallmentPlanApiRefundRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).refund(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiSearchRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiSearchRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public search(requestParameters: InstallmentplanApiSearchRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).search(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public search(requestParameters: InstallmentPlanApiSearchRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).search(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiUpdateOrderRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiUpdateOrderRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public updateOrder(requestParameters: InstallmentplanApiUpdateOrderRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).updateOrder(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public updateOrder(requestParameters: InstallmentPlanApiUpdateOrderRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).updateOrder(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiUpdateOrder2Request} requestParameters Request parameters.
+     * @param {InstallmentPlanApiUpdateOrder2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public updateOrder2(requestParameters: InstallmentplanApiUpdateOrder2Request, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).updateOrder2(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public updateOrder2(requestParameters: InstallmentPlanApiUpdateOrder2Request, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).updateOrder2(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InstallmentplanApiVerifyAuthorizationRequest} requestParameters Request parameters.
+     * @param {InstallmentPlanApiVerifyAuthorizationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
+     * @memberof InstallmentPlanApiGenerated
      */
-    public verifyAuthorization(requestParameters: InstallmentplanApiVerifyAuthorizationRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).verifyAuthorization(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public verifyAuthorization(requestParameters: InstallmentPlanApiVerifyAuthorizationRequest, options?: AxiosRequestConfig) {
+        return InstallmentPlanApiFp(this.configuration).verifyAuthorization(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }
