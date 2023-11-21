@@ -1394,7 +1394,7 @@ public class DefaultGenerator implements Generator {
         Set<String> allImports = new ConcurrentSkipListSet<>();
         for (CodegenOperation op : ops) {
             allImports.addAll(op.imports);
-            Optional<ModelMap> first = allModels.stream().filter(mm -> mm.getModel().name.equals(op.returnBaseType)).findFirst();
+            Optional<ModelMap> first = allModels.stream().filter(mm -> mm.getModel().classname.equals(op.returnBaseType)).findFirst();
             first.ifPresent(modelMap -> {
                 op.returnModel = modelMap.getModel();
             });

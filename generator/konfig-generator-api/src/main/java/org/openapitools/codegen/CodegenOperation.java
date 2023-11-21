@@ -41,7 +41,8 @@ public class CodegenOperation {
     public String singleParameterExample;
 
     public CodegenProperty returnProperty;
-    public String path, operationId, returnType, returnFormat, httpMethod, returnBaseType,
+    public String returnBaseType;
+    public String path, operationId, returnType, returnFormat, httpMethod,
             returnContainer, summary, unescapedNotes, notes, baseName, defaultResponse;
     public CodegenDiscriminator discriminator;
     public List<Map<String, String>> consumes, produces, prioritizedContentTypes;
