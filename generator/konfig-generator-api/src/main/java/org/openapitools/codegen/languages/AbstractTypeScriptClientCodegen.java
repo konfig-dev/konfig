@@ -505,6 +505,39 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
         return outputFolder + File.separator + modelPackage().replace('.', File.separatorChar);
     }
 
+    public static String toCamelCase(String input, boolean pascalCase) {
+        // early return if there are no underscores, dashes, or spaces
+        boolean alreadyCamelCase = !(input.contains("_") || input.contains("-") || input.contains(" "));
+        if (alreadyCamelCase)
+            return (pascalCase ? input.substring(0, 1).toUpperCase() : input.substring(0, 1).toLowerCase()) + input.substring(1);
+
+        // any "term" (group of tokens between separators) that is fully uppercase gets converted to lowercase
+        String[] terms = input.split("[_\\- ]");
+        for (int i = 0; i < terms.length; i++) {
+            if (terms[i].equals(terms[i].toUpperCase(Locale.ROOT)))
+                terms[i] = terms[i].toLowerCase(Locale.ROOT);
+        }
+        // doesn't matter which separator we use here, because they are removed subsequently
+        input = String.join("_", terms);
+
+        StringBuilder result = new StringBuilder();
+        boolean capitalizeNext = pascalCase ? true : false;
+        for (int i = 0; i < input.length(); i++) {
+            char currentChar = input.charAt(i);
+            if (currentChar == '_' || currentChar == '-' || currentChar == ' ') {
+                capitalizeNext = true;
+            } else {
+                if (capitalizeNext) {
+                    result.append(Character.toUpperCase(currentChar));
+                    capitalizeNext = false;
+                } else {
+                    result.append(currentChar);
+                }
+            }
+        }
+        return result.toString();
+    }
+
     @Override
     public String toParamName(String name) {
         name = sanitizeName(name, "[^\\w$]");
@@ -815,9 +848,9 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
             case original:
                 return name;
             case camelCase:
-                return camelize(name, LOWERCASE_FIRST_LETTER);
+                return toCamelCase(name, false);
             case PascalCase:
-                return camelize(name);
+                return toCamelCase(name, true);
             case snake_case:
                 return underscore(name);
             default:

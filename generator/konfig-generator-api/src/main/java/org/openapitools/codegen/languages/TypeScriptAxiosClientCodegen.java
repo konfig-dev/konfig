@@ -51,28 +51,6 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
 
     private String tsModelPackage = "";
 
-    /**
-     * For some reason the camelize function in StringUtils would turn
-     */
-    public static String toCamelCase(String input, boolean pascalCase) {
-        StringBuilder result = new StringBuilder();
-        boolean capitalizeNext = pascalCase ? true : false;
-        for (int i = 0; i < input.length(); i++) {
-            char currentChar = input.charAt(i);
-            if (currentChar == '_' || currentChar == '-' || currentChar == ' ') {
-                capitalizeNext = true;
-            } else {
-                if (capitalizeNext) {
-                    result.append(Character.toUpperCase(currentChar));
-                    capitalizeNext = false;
-                } else {
-                    result.append(Character.toLowerCase(currentChar));
-                }
-            }
-        }
-        return result.toString();
-    }
-
     @Override
     public String sanitizeTag(String tag) {
         return toCamelCase(sanitizeName(tag), true);
