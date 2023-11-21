@@ -137,6 +137,8 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     # if model is free form object, just return the value
     elif typing_extensions.get_origin(model) is dict:
         return data
+    elif model is dict:
+        return data
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):
         new_data = {}
