@@ -124,9 +124,9 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     # if model is Union,
     if typing_extensions.get_origin(model) is typing.Union:
         best_type = closest_type_match(data, model.__args__)
-        if best_type is None:
-            return data
         return construct_model_instance(best_type, data)
+    elif model is None or model is type(None):
+        return data
     # if model is scalar value like str, number, etc. just return the value
     elif isinstance(data, (str, float, int, bytes, bool)):
         return data
