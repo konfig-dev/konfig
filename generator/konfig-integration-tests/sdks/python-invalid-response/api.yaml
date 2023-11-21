@@ -95,6 +95,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListInsteadOfScalar'
+  /dict-instead-of-list-or-scalar:
+    get:
+      tags:
+        - Test
+      operationId: Test_dictInsteadOfListOrScalar
+      description: ''
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DictInsteadOfListOrScalar'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -134,5 +147,11 @@ components:
       type: string
     ListInsteadOfScalar:
       type: string
+    DictInsteadOfListOrScalar:
+      anyOf:
+        - type: string
+        - type: array
+          items:
+            type: string
 security:
   - ApiKeyAuth: []

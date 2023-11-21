@@ -10,6 +10,7 @@
     Created by: http://example.com/support
 """
 
+from python_invalid_response.paths.dict_instead_of_list_or_scalar.get import DictInsteadOfListOrScalarRaw
 from python_invalid_response.paths.invalid_array.get import InvalidArrayRaw
 from python_invalid_response.paths.invalid_object.get import InvalidObjectRaw
 from python_invalid_response.paths.invalid_scalar.get import InvalidScalarRaw
@@ -19,6 +20,7 @@ from python_invalid_response.paths.only_one_property_is_invalid.get import OnlyO
 
 
 class TestApiRaw(
+    DictInsteadOfListOrScalarRaw,
     InvalidArrayRaw,
     InvalidObjectRaw,
     InvalidScalarRaw,

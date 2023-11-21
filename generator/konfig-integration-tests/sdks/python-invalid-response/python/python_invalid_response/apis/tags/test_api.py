@@ -10,6 +10,7 @@
     Created by: http://example.com/support
 """
 
+from python_invalid_response.paths.dict_instead_of_list_or_scalar.get import DictInsteadOfListOrScalar
 from python_invalid_response.paths.invalid_array.get import InvalidArray
 from python_invalid_response.paths.invalid_object.get import InvalidObject
 from python_invalid_response.paths.invalid_scalar.get import InvalidScalar
@@ -20,6 +21,7 @@ from python_invalid_response.apis.tags.test_api_raw import TestApiRaw
 
 
 class TestApi(
+    DictInsteadOfListOrScalar,
     InvalidArray,
     InvalidObject,
     InvalidScalar,

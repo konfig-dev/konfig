@@ -12,3 +12,4 @@ class PathValues(str, enum.Enum):
     ONLYONEPROPERTYISINVALID = "/only-one-property-is-invalid"
     OBJECTINSTEADOFSCALAR = "/object-instead-of-scalar"
     LISTINSTEADOFSCALAR = "/list-instead-of-scalar"
+    DICTINSTEADOFLISTORSCALAR = "/dict-instead-of-list-or-scalar"

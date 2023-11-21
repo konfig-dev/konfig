@@ -58,6 +58,14 @@ test("python-invalid-response", async () => {
             },
           ],
         },
+        {
+          path: "/dict-instead-of-list-or-scalar",
+          method: "get",
+          response: {
+            string: "some string",
+            number: "some string",
+          },
+        },
       ],
     },
   });

@@ -73,6 +73,14 @@ class TestInvalidResponse(unittest.TestCase):
         resp = client.test.list_instead_of_scalar()
         self.assertIsInstance(resp, list)
 
+    def test_dict_instead_of_list_or_scalar(self):
+        client = PythonInvalidResponseClient(
+            host="http://127.0.0.1:5555",
+            api_key = 'YOUR_API_KEY',
+        )
+        resp = client.test.dict_instead_of_list_or_scalar()
+        self.assertIsInstance(resp, dict)
+
     def tearDown(self):
         pass
 

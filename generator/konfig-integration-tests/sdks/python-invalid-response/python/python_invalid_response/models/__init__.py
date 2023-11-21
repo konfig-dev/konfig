@@ -11,6 +11,7 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from python_invalid_response.model.dict_instead_of_list_or_scalar import DictInsteadOfListOrScalar
 from python_invalid_response.model.invalid_array import InvalidArray
 from python_invalid_response.model.invalid_array_array import InvalidArrayArray
 from python_invalid_response.model.invalid_object import InvalidObject

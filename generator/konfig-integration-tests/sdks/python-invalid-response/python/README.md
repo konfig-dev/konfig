@@ -17,6 +17,7 @@ A simple API based for testing python-invalid-response.
 - [Async](#async)
 - [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
+  * [`pythoninvalidresponseclient.test.dict_instead_of_list_or_scalar`](#pythoninvalidresponseclienttestdict_instead_of_list_or_scalar)
   * [`pythoninvalidresponseclient.test.invalid_array`](#pythoninvalidresponseclienttestinvalid_array)
   * [`pythoninvalidresponseclient.test.invalid_object`](#pythoninvalidresponseclienttestinvalid_object)
   * [`pythoninvalidresponseclient.test.invalid_scalar`](#pythoninvalidresponseclienttestinvalid_scalar)
@@ -47,10 +48,12 @@ pythoninvalidresponseclient = PythonInvalidResponseClient(
 )
 
 try:
-    invalid_array_response = pythoninvalidresponseclient.test.invalid_array()
-    print(invalid_array_response)
+    dict_instead_of_list_or_scalar_response = (
+        pythoninvalidresponseclient.test.dict_instead_of_list_or_scalar()
+    )
+    print(dict_instead_of_list_or_scalar_response)
 except ApiException as e:
-    print("Exception when calling TestApi.invalid_array: %s\n" % e)
+    print("Exception when calling TestApi.dict_instead_of_list_or_scalar: %s\n" % e)
     pprint(e.body)
     pprint(e.headers)
     pprint(e.status)
@@ -74,10 +77,12 @@ pythoninvalidresponseclient = PythonInvalidResponseClient(
 
 async def main():
     try:
-        invalid_array_response = await pythoninvalidresponseclient.test.ainvalid_array()
-        print(invalid_array_response)
+        dict_instead_of_list_or_scalar_response = (
+            await pythoninvalidresponseclient.test.adict_instead_of_list_or_scalar()
+        )
+        print(dict_instead_of_list_or_scalar_response)
     except ApiException as e:
-        print("Exception when calling TestApi.invalid_array: %s\n" % e)
+        print("Exception when calling TestApi.dict_instead_of_list_or_scalar: %s\n" % e)
         pprint(e.body)
         pprint(e.headers)
         pprint(e.status)
@@ -101,14 +106,15 @@ pythoninvalidresponseclient = PythonInvalidResponseClient(
 )
 
 try:
-    invalid_array_response = pythoninvalidresponseclient.test.raw.invalid_array()
-    pprint(invalid_array_response.body)
-    pprint(invalid_array_response.body["array"])
-    pprint(invalid_array_response.headers)
-    pprint(invalid_array_response.status)
-    pprint(invalid_array_response.round_trip_time)
+    dict_instead_of_list_or_scalar_response = (
+        pythoninvalidresponseclient.test.raw.dict_instead_of_list_or_scalar()
+    )
+    pprint(dict_instead_of_list_or_scalar_response.body)
+    pprint(dict_instead_of_list_or_scalar_response.headers)
+    pprint(dict_instead_of_list_or_scalar_response.status)
+    pprint(dict_instead_of_list_or_scalar_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling TestApi.invalid_array: %s\n" % e)
+    print("Exception when calling TestApi.dict_instead_of_list_or_scalar: %s\n" % e)
     pprint(e.body)
     pprint(e.headers)
     pprint(e.status)
@@ -118,6 +124,30 @@ except ApiException as e:
 
 
 ## Reference<a id="reference"></a>
+### `pythoninvalidresponseclient.test.dict_instead_of_list_or_scalar`<a id="pythoninvalidresponseclienttestdict_instead_of_list_or_scalar"></a>
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+dict_instead_of_list_or_scalar_response = (
+    pythoninvalidresponseclient.test.dict_instead_of_list_or_scalar()
+)
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`DictInsteadOfListOrScalar`](./python_invalid_response/pydantic/dict_instead_of_list_or_scalar.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/dict-instead-of-list-or-scalar` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `pythoninvalidresponseclient.test.invalid_array`<a id="pythoninvalidresponseclienttestinvalid_array"></a>
 
 
