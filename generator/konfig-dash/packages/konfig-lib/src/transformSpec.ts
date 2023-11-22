@@ -694,6 +694,19 @@ export const transformSpec = async ({
         }
       )
 
+      // ensure all schemas have a $ref property
+      const allSchemasAreRefs = schema['anyOf'].every((schemaOrRef) => {
+        return schemaOrRef['$ref'] !== undefined
+      })
+
+      if (!allSchemasAreRefs) {
+        // delete all properties on schema
+        Object.keys(schema).forEach((key) => delete schema[key])
+        // spread mergedSchema onto schema
+        Object.assign(schema, mergedSchema)
+        return
+      }
+
       // Add merged schema to a components.schemas under a name combining all the schema names
       const schemaNames = schema['anyOf'].map((ref: any) => {
         // assume its a JSON Ref and we can extract the component name from it
