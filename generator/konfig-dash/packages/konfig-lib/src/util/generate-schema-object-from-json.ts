@@ -382,6 +382,17 @@ export function mergeOneOfAndSchemaObject({
           $ref,
         })
         existingSchemaObject.properties[key] = mergedSchemaObject
+
+        // if schemaObject does not have required field then remove it from
+        // existingSchemaObject
+        if (
+          existingSchemaObject.required !== undefined &&
+          !schemaObject.required?.includes(key)
+        ) {
+          existingSchemaObject.required = existingSchemaObject.required.filter(
+            (requiredField) => requiredField !== key
+          )
+        }
       }
       return oneOf
     }

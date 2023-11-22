@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**b** | **String** |  |  |
+|**b** | **String** |  |  [optional] |
 
 
 

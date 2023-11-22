@@ -74,14 +74,17 @@ paths:
 components:
   schemas:
     TestFetchResponse:
-      $ref: '#/components/schemas/AOrBOrC'
+      $ref: '#/components/schemas/ABC'
     MergeDifferent:
-      $ref: '#/components/schemas/AOrAA'
+      $ref: '#/components/schemas/A1'
     MergeSame:
-      $ref: '#/components/schemas/BOrBB'
+      $ref: '#/components/schemas/B1'
     A:
       properties:
-        a:
+        a: {}
+        b:
+          type: string
+        c:
           type: string
       type: object
     AA:
@@ -93,8 +96,6 @@ components:
       properties:
         b:
           type: string
-      required:
-      - b
       type: object
     BB:
       properties:
@@ -121,26 +122,31 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
-    AOrBOrC:
+    ABC:
       example:
-        a: a
+        a: ""
         b: b
         c: c
       properties:
-        a:
-          type: string
+        a: {}
         b:
           type: string
         c:
           type: string
       type: object
-    AOrAA:
+    A1:
       example:
         a: ""
+        b: b
+        c: c
       properties:
         a: {}
+        b:
+          type: string
+        c:
+          type: string
       type: object
-    BOrBB:
+    B1:
       example:
         b: b
       properties:

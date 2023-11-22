@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -44,6 +45,22 @@ public class ATest {
     @Test
     public void aTest() {
         // TODO: test a
+    }
+
+    /**
+     * Test the property 'b'
+     */
+    @Test
+    public void bTest() {
+        // TODO: test b
+    }
+
+    /**
+     * Test the property 'c'
+     */
+    @Test
+    public void cTest() {
+        // TODO: test c
     }
 
 }

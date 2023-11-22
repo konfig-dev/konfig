@@ -20,22 +20,31 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for BOrBB
+ * Model tests for ABC
  */
-public class BOrBBTest {
-    private final BOrBB model = new BOrBB();
+public class ABCTest {
+    private final ABC model = new ABC();
 
     /**
-     * Model tests for BOrBB
+     * Model tests for ABC
      */
     @Test
-    public void testBOrBB() {
-        // TODO: test BOrBB
+    public void testABC() {
+        // TODO: test ABC
+    }
+
+    /**
+     * Test the property 'a'
+     */
+    @Test
+    public void aTest() {
+        // TODO: test a
     }
 
     /**
@@ -44,6 +53,14 @@ public class BOrBBTest {
     @Test
     public void bTest() {
         // TODO: test b
+    }
+
+    /**
+     * Test the property 'c'
+     */
+    @Test
+    public void cTest() {
+        // TODO: test c
     }
 
 }

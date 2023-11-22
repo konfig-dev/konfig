@@ -20,31 +20,30 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for AOrAA
+ * Model tests for B1
  */
-public class AOrAATest {
-    private final AOrAA model = new AOrAA();
+public class B1Test {
+    private final B1 model = new B1();
 
     /**
-     * Model tests for AOrAA
+     * Model tests for B1
      */
     @Test
-    public void testAOrAA() {
-        // TODO: test AOrAA
+    public void testB1() {
+        // TODO: test B1
     }
 
     /**
-     * Test the property 'a'
+     * Test the property 'b'
      */
     @Test
-    public void aTest() {
-        // TODO: test a
+    public void bTest() {
+        // TODO: test b
     }
 
 }

@@ -1,13 +1,13 @@
 
 
-# AOrBOrC
+# ABC
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**a** | **String** |  |  [optional] |
+|**a** | **Object** |  |  [optional] |
 |**b** | **String** |  |  [optional] |
 |**c** | **String** |  |  [optional] |
 

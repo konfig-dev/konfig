@@ -69,8 +69,8 @@ public class B {
    * Get b
    * @return b
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getB() {
     return b;
@@ -180,7 +180,6 @@ public class B {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("b");
   }
 
  /**
@@ -195,14 +194,7 @@ public class B {
           throw new IllegalArgumentException(String.format("The required field(s) %s in B is not found in the empty JSON string", B.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : B.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("b").isJsonPrimitive()) {
+      if ((jsonObj.get("b") != null && !jsonObj.get("b").isJsonNull()) && !jsonObj.get("b").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `b` to be a primitive type in the JSON string but got `%s`", jsonObj.get("b").toString()));
       }
   }

@@ -16,9 +16,9 @@ import com.konfigthis.javamergeanyofobjectschemas.client.ApiException;
 import com.konfigthis.javamergeanyofobjectschemas.client.ApiClient;
 import com.konfigthis.javamergeanyofobjectschemas.client.ApiException;
 import com.konfigthis.javamergeanyofobjectschemas.client.Configuration;
-import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrAA;
-import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC;
-import com.konfigthis.javamergeanyofobjectschemas.client.model.BOrBB;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.A1;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.ABC;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.B1;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -52,7 +52,7 @@ public class TestApiTest {
      */
     @Test
     public void fetchTest() throws ApiException {
-        AOrBOrC response = api.fetch()
+        ABC response = api.fetch()
                 .execute();
         // TODO: test validations
     }
@@ -66,7 +66,7 @@ public class TestApiTest {
      */
     @Test
     public void mergeDifferentTest() throws ApiException {
-        AOrAA response = api.mergeDifferent()
+        A1 response = api.mergeDifferent()
                 .execute();
         // TODO: test validations
     }
@@ -80,7 +80,7 @@ public class TestApiTest {
      */
     @Test
     public void mergeSameTest() throws ApiException {
-        BOrBB response = api.mergeSame()
+        B1 response = api.mergeSame()
                 .execute();
         // TODO: test validations
     }

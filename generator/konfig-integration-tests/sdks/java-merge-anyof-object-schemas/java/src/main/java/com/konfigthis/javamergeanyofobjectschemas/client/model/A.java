@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,12 +52,20 @@ import com.konfigthis.javamergeanyofobjectschemas.client.JSON;
 public class A {
   public static final String SERIALIZED_NAME_A = "a";
   @SerializedName(SERIALIZED_NAME_A)
-  private String a;
+  private Object a = null;
+
+  public static final String SERIALIZED_NAME_B = "b";
+  @SerializedName(SERIALIZED_NAME_B)
+  private String b;
+
+  public static final String SERIALIZED_NAME_C = "c";
+  @SerializedName(SERIALIZED_NAME_C)
+  private String c;
 
   public A() {
   }
 
-  public A a(String a) {
+  public A a(Object a) {
     
     
     
@@ -72,16 +81,74 @@ public class A {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getA() {
+  public Object getA() {
     return a;
   }
 
 
-  public void setA(String a) {
+  public void setA(Object a) {
     
     
     
     this.a = a;
+  }
+
+
+  public A b(String b) {
+    
+    
+    
+    
+    this.b = b;
+    return this;
+  }
+
+   /**
+   * Get b
+   * @return b
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getB() {
+    return b;
+  }
+
+
+  public void setB(String b) {
+    
+    
+    
+    this.b = b;
+  }
+
+
+  public A c(String c) {
+    
+    
+    
+    
+    this.c = c;
+    return this;
+  }
+
+   /**
+   * Get c
+   * @return c
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getC() {
+    return c;
+  }
+
+
+  public void setC(String c) {
+    
+    
+    
+    this.c = c;
   }
 
   /**
@@ -139,13 +206,26 @@ public class A {
       return false;
     }
     A A = (A) o;
-    return Objects.equals(this.a, A.a)&&
+    return Objects.equals(this.a, A.a) &&
+        Objects.equals(this.b, A.b) &&
+        Objects.equals(this.c, A.c)&&
         Objects.equals(this.additionalProperties, A.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(a, additionalProperties);
+    return Objects.hash(a, b, c, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -153,6 +233,8 @@ public class A {
     StringBuilder sb = new StringBuilder();
     sb.append("class A {\n");
     sb.append("    a: ").append(toIndentedString(a)).append("\n");
+    sb.append("    b: ").append(toIndentedString(b)).append("\n");
+    sb.append("    c: ").append(toIndentedString(c)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -177,6 +259,8 @@ public class A {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("a");
+    openapiFields.add("b");
+    openapiFields.add("c");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -194,8 +278,11 @@ public class A {
           throw new IllegalArgumentException(String.format("The required field(s) %s in A is not found in the empty JSON string", A.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("a") != null && !jsonObj.get("a").isJsonNull()) && !jsonObj.get("a").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `a` to be a primitive type in the JSON string but got `%s`", jsonObj.get("a").toString()));
+      if ((jsonObj.get("b") != null && !jsonObj.get("b").isJsonNull()) && !jsonObj.get("b").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `b` to be a primitive type in the JSON string but got `%s`", jsonObj.get("b").toString()));
+      }
+      if ((jsonObj.get("c") != null && !jsonObj.get("c").isJsonNull()) && !jsonObj.get("c").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `c` to be a primitive type in the JSON string but got `%s`", jsonObj.get("c").toString()));
       }
   }
 

@@ -11,7 +11,7 @@ All URIs are relative to *https://java-merge-anyof-object-schemas.konfigthis.com
 
 <a name="fetch"></a>
 # **fetch**
-> AOrBOrC fetch().execute();
+> ABC fetch().execute();
 
 Fetches a JSON value based on input parameter
 
@@ -39,7 +39,7 @@ public class Example {
     configuration.apiKey  = "YOUR API KEY";
     JavaMergeAnyofObjectSchemasClient client = new JavaMergeAnyofObjectSchemasClient(configuration);
     try {
-      AOrBOrC result = client
+      ABC result = client
               .test
               .fetch()
               .execute();
@@ -57,7 +57,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<AOrBOrC> response = client
+      ApiResponse<ABC> response = client
               .test
               .fetch()
               .executeWithHttpInfo();
@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AOrBOrC**](AOrBOrC.md)
+[**ABC**](ABC.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ This endpoint does not need any parameter.
 
 <a name="mergeDifferent"></a>
 # **mergeDifferent**
-> AOrAA mergeDifferent().execute();
+> A1 mergeDifferent().execute();
 
 merge different
 
@@ -129,12 +129,14 @@ public class Example {
     configuration.apiKey  = "YOUR API KEY";
     JavaMergeAnyofObjectSchemasClient client = new JavaMergeAnyofObjectSchemasClient(configuration);
     try {
-      AOrAA result = client
+      A1 result = client
               .test
               .mergeDifferent()
               .execute();
       System.out.println(result);
       System.out.println(result.getA());
+      System.out.println(result.getB());
+      System.out.println(result.getC());
     } catch (ApiException e) {
       System.err.println("Exception when calling TestApi#mergeDifferent");
       System.err.println("Status code: " + e.getStatusCode());
@@ -145,7 +147,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<AOrAA> response = client
+      ApiResponse<A1> response = client
               .test
               .mergeDifferent()
               .executeWithHttpInfo();
@@ -171,7 +173,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AOrAA**](AOrAA.md)
+[**A1**](A1.md)
 
 ### Authorization
 
@@ -189,7 +191,7 @@ This endpoint does not need any parameter.
 
 <a name="mergeSame"></a>
 # **mergeSame**
-> BOrBB mergeSame().execute();
+> B1 mergeSame().execute();
 
 merge same
 
@@ -217,7 +219,7 @@ public class Example {
     configuration.apiKey  = "YOUR API KEY";
     JavaMergeAnyofObjectSchemasClient client = new JavaMergeAnyofObjectSchemasClient(configuration);
     try {
-      BOrBB result = client
+      B1 result = client
               .test
               .mergeSame()
               .execute();
@@ -233,7 +235,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<BOrBB> response = client
+      ApiResponse<B1> response = client
               .test
               .mergeSame()
               .executeWithHttpInfo();
@@ -259,7 +261,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BOrBB**](BOrBB.md)
+[**B1**](B1.md)
 
 ### Authorization
 

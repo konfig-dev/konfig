@@ -1,15 +1,14 @@
 package com.konfigthis.javamergeanyofobjectschemas.client;
 
-import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrAA;
-import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC;
-import com.konfigthis.javamergeanyofobjectschemas.client.model.BOrBB;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.A1;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.ABC;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.B1;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class JavaMergeAnyofObjectSchemasTest {
     static final String MOCK_SERVER_URL = "http://localhost:4034";
@@ -25,7 +24,7 @@ public class JavaMergeAnyofObjectSchemasTest {
 
     @Test
     public void testFetch() throws ApiException {
-        AOrBOrC response = client.test.fetch().execute();
+        ABC response = client.test.fetch().execute();
         assertNotNull(response);
         response.getA();
         response.getB();
@@ -34,16 +33,14 @@ public class JavaMergeAnyofObjectSchemasTest {
 
     @Test
     public void testMergeSame() throws ApiException {
-        BOrBB response = client.test.mergeSame().execute();
+        B1 response = client.test.mergeSame().execute();
         assertNotNull(response);
-        assertNotNull(response.getB());
-        // assert getB() returns instanceof String
-        assertTrue(response.getB() instanceof String);
+        assertNull(response.getB());
     }
 
     @Test
     public void testMergeDifferent() throws ApiException {
-        AOrAA response = client.test.mergeDifferent().execute();
+        A1 response = client.test.mergeDifferent().execute();
         assertNotNull(response);
         assertNotNull(response.getA());
     }
