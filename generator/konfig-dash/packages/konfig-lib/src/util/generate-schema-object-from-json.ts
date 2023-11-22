@@ -377,6 +377,7 @@ export function mergeOneOfAndSchemaObject({
         const mergedSchemaObject = mergeSchemaObject({
           a: existingFieldSchema,
           b: newFieldSchema,
+          $ref,
         })
         existingSchemaObject.properties[key] = mergedSchemaObject
       }
