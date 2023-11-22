@@ -13,7 +13,10 @@ import { matchesPaginationConfig } from './util/matches-pagination-config'
 import { httpMethods } from './http-methods'
 import { jsonSchema } from './util/json-schema'
 import { JSONPath } from 'jsonpath-plus'
-import { generateSchemaObjectFromJson } from './util/generate-schema-object-from-json'
+import {
+  generateSchemaObjectFromJson,
+  mergeSchemaObject,
+} from './util/generate-schema-object-from-json'
 import { getOasVersion } from './util/get-oas-version'
 import { canOperationHaveSingleParameter } from './util/can-operation-have-single-parameter'
 import { getSomeOperationRequestBodySchema } from './util/get-some-operation-request-body-schema'
@@ -624,6 +627,73 @@ export const transformSpec = async ({
         }
       }
     }
+
+    // merge anyOf schemas where all schemas are object type schemas
+    // Why? Newscatcher's API only returned anyOf schemas and its not good DX
+    // to have to deal with anyOf schemas in Java SDK
+    recurseObject(spec.spec, ({ value: schema }) => {
+      if (schema === null) return
+      if (typeof schema !== 'object') return
+      if (schema['anyOf'] === undefined) return
+      if (!Array.isArray(schema['anyOf'])) return
+      if (schema['anyOf'].length === 0) return
+
+      // check if all schemas are object type schemas
+      const allSchemasAreObjectTypes = schema['anyOf'].every(
+        (schemaOrRef: any) => {
+          const schema = resolveRef({
+            refOrObject: schemaOrRef,
+            $ref: spec.$ref,
+          })
+          return schema['type'] === 'object'
+        }
+      )
+      if (!allSchemasAreObjectTypes) return
+
+      // merge all schemas into one schema
+      const mergedSchema: SchemaObject = {
+        type: 'object',
+        properties: {},
+      }
+      for (const schemaOrRef of schema['anyOf']) {
+        const schema = resolveRef({
+          refOrObject: schemaOrRef,
+          $ref: spec.$ref,
+        })
+        if (schema.properties !== undefined) {
+          for (const property in schema.properties) {
+            if (mergedSchema.properties === undefined)
+              mergedSchema.properties = {}
+            if (property in mergedSchema.properties) {
+              const merged = mergeSchemaObject({
+                a: mergedSchema.properties[property],
+                b: schema.properties[property],
+              })
+              mergedSchema.properties[property] = merged
+            } else {
+              mergedSchema.properties[property] = schema.properties[property]
+            }
+          }
+        }
+      }
+
+      // Add merged schema to a components.schemas under a name combining all the schema names
+      const mergedSchemaName = schema['anyOf']
+        .map((ref: any) => {
+          // assume its a JSON Ref and we can extract the component name from it
+          const refString = ref['$ref']
+          const refStringSplit = refString.split('/')
+          const componentName = refStringSplit[refStringSplit.length - 1]
+          return componentName
+        })
+        .join('Or')
+      if (spec.spec.components === undefined) spec.spec.components = {}
+      if (spec.spec.components.schemas === undefined)
+        spec.spec.components.schemas = {}
+      spec.spec.components.schemas[mergedSchemaName] = mergedSchema
+      delete schema['anyOf']
+      schema['$ref'] = `#/components/schemas/${mergedSchemaName}`
+    })
 
     // recurse over all schema objects and add the "x-do-not-generate" vendor
     // extension if the schema is only used in a non-successful response code

@@ -124,10 +124,14 @@ public class Example {
     configuration.apiKey  = \\"YOUR API KEY\\";
     JavaMergeAnyofObjectSchemasClient client = new JavaMergeAnyofObjectSchemasClient(configuration);
     try {
-      Object result = client
+      AOrBOrC result = client
               .test
               .fetch()
               .execute();
+      System.out.println(result);
+      System.out.println(result.getA());
+      System.out.println(result.getB());
+      System.out.println(result.getC());
     } catch (ApiException e) {
       System.err.println(\\"Exception when calling TestApi#fetch\\");
       System.err.println(\\"Status code: \\" + e.getStatusCode());
@@ -138,7 +142,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<Object> response = client
+      ApiResponse<AOrBOrC> response = client
               .test
               .fetch()
               .executeWithHttpInfo();
@@ -170,6 +174,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [A](docs/A.md)
+ - [AOrBOrC](docs/AOrBOrC.md)
+ - [B](docs/B.md)
+ - [C](docs/C.md)
 
 
 ## Author

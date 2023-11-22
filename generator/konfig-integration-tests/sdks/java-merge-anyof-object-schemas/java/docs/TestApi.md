@@ -9,7 +9,7 @@ All URIs are relative to *https://java-merge-anyof-object-schemas.konfigthis.com
 
 <a name="fetch"></a>
 # **fetch**
-> Object fetch().execute();
+> AOrBOrC fetch().execute();
 
 Fetches a JSON value based on input parameter
 
@@ -37,10 +37,14 @@ public class Example {
     configuration.apiKey  = "YOUR API KEY";
     JavaMergeAnyofObjectSchemasClient client = new JavaMergeAnyofObjectSchemasClient(configuration);
     try {
-      Object result = client
+      AOrBOrC result = client
               .test
               .fetch()
               .execute();
+      System.out.println(result);
+      System.out.println(result.getA());
+      System.out.println(result.getB());
+      System.out.println(result.getC());
     } catch (ApiException e) {
       System.err.println("Exception when calling TestApi#fetch");
       System.err.println("Status code: " + e.getStatusCode());
@@ -51,7 +55,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<Object> response = client
+      ApiResponse<AOrBOrC> response = client
               .test
               .fetch()
               .executeWithHttpInfo();
@@ -77,7 +81,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Object**
+[**AOrBOrC**](AOrBOrC.md)
 
 ### Authorization
 

@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -125,16 +126,16 @@ public class TestApiGenerated {
     }
 
 
-    private ApiResponse<Object> fetchWithHttpInfo() throws ApiException {
+    private ApiResponse<AOrBOrC> fetchWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = fetchValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<AOrBOrC>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call fetchAsync(final ApiCallback<Object> _callback) throws ApiException {
+    private okhttp3.Call fetchAsync(final ApiCallback<AOrBOrC> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = fetchValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<AOrBOrC>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -162,7 +163,7 @@ public class TestApiGenerated {
 
         /**
          * Execute fetch request
-         * @return Object
+         * @return AOrBOrC
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -170,14 +171,14 @@ public class TestApiGenerated {
             <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
          </table>
          */
-        public Object execute() throws ApiException {
-            ApiResponse<Object> localVarResp = fetchWithHttpInfo();
+        public AOrBOrC execute() throws ApiException {
+            ApiResponse<AOrBOrC> localVarResp = fetchWithHttpInfo();
             return localVarResp.getResponseBody();
         }
 
         /**
          * Execute fetch request with HTTP info returned
-         * @return ApiResponse&lt;Object&gt;
+         * @return ApiResponse&lt;AOrBOrC&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -185,7 +186,7 @@ public class TestApiGenerated {
             <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<Object> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<AOrBOrC> executeWithHttpInfo() throws ApiException {
             return fetchWithHttpInfo();
         }
 
@@ -200,7 +201,7 @@ public class TestApiGenerated {
             <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<Object> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<AOrBOrC> _callback) throws ApiException {
             return fetchAsync(_callback);
         }
     }

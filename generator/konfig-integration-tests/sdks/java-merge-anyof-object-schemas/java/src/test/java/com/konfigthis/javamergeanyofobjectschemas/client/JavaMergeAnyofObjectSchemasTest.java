@@ -1,5 +1,6 @@
 package com.konfigthis.javamergeanyofobjectschemas.client;
 
+import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +22,11 @@ public class JavaMergeAnyofObjectSchemasTest {
 
     @Test
     public void testFetch() throws ApiException {
-        Object response = client.test.fetch().execute();
+        AOrBOrC response = client.test.fetch().execute();
         assertNotNull(response);
+        response.getA();
+        response.getB();
+        response.getC();
     }
 
 }

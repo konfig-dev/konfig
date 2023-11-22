@@ -16,6 +16,7 @@ import com.konfigthis.javamergeanyofobjectschemas.client.ApiException;
 import com.konfigthis.javamergeanyofobjectschemas.client.ApiClient;
 import com.konfigthis.javamergeanyofobjectschemas.client.ApiException;
 import com.konfigthis.javamergeanyofobjectschemas.client.Configuration;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -49,7 +50,7 @@ public class TestApiTest {
      */
     @Test
     public void fetchTest() throws ApiException {
-        Object response = api.fetch()
+        AOrBOrC response = api.fetch()
                 .execute();
         // TODO: test validations
     }

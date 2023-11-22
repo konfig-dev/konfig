@@ -40,13 +40,42 @@ paths:
 components:
   schemas:
     TestFetchResponse:
+      $ref: '#/components/schemas/AOrBOrC'
+    A:
+      properties:
+        a:
+          type: string
       type: object
-      x-konfig-is-used-in-successful-response: true
+    B:
+      properties:
+        b:
+          type: string
+      required:
+      - b
+      type: object
+    C:
+      properties:
+        c:
+          type: string
+      type: object
     konfig-generated-schema-single-parameter-schema-get--simple-endpoint:
       properties: {}
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    AOrBOrC:
+      example:
+        a: a
+        b: b
+        c: c
+      properties:
+        a:
+          type: string
+        b:
+          type: string
+        c:
+          type: string
+      type: object
   securitySchemes:
     ApiKey:
       in: header

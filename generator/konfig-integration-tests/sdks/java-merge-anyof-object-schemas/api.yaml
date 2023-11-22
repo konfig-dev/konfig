@@ -39,6 +39,26 @@ components:
       name: X-API-KEY
   schemas:
     TestFetchResponse:
+      anyOf:
+        - $ref: '#/components/schemas/A'
+        - $ref: '#/components/schemas/B'
+        - $ref: '#/components/schemas/C'
+    A:
       type: object
+      properties:
+        a:
+          type: string
+    B:
+      type: object
+      properties:
+        b:
+          type: string
+      required:
+        - b
+    C:
+      type: object
+      properties:
+        c:
+          type: string
 security:
   - ApiKey: []

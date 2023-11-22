@@ -110,6 +110,10 @@ public class JSON {
                 return new JsonPrimitive(src);
             }
         });
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.A.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.B.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.C.CustomTypeAdapterFactory());
         gsonBuilder.disableHtmlEscaping();
         gson = gsonBuilder.create();
     }
