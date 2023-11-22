@@ -188,7 +188,9 @@ export function unrollOneOf({
       }
       let resolvedSchema = schema
       if ('$ref' in schema) {
-        if ($ref === undefined) throw Error('Not implemented')
+        if ($ref === undefined) {
+          throw Error('Not implemented')
+        }
         resolvedSchema = resolveRef({ $ref, refOrObject: schema })
       }
 
@@ -235,13 +237,18 @@ export function mergeSchemaObject({
             oneOf: mergeOneOfAndSchemaObject({
               oneOf: b.oneOf,
               schemaObject: a,
+              $ref,
             }),
           }
         }
       }
       if (a.oneOf !== undefined) {
         return {
-          oneOf: mergeOneOfAndSchemaObject({ oneOf: a.oneOf, schemaObject: b }),
+          oneOf: mergeOneOfAndSchemaObject({
+            oneOf: a.oneOf,
+            schemaObject: b,
+            $ref,
+          }),
         }
       }
     }
@@ -249,6 +256,7 @@ export function mergeSchemaObject({
       oneOf: mergeOneOfAndSchemaObject({
         oneOf: [a],
         schemaObject: b,
+        $ref,
       }),
       ...('example' in b ? { example: b.example } : {}),
     }
@@ -331,6 +339,7 @@ export function mergeOneOfAndSchemaObject({
       existingArraySchemaObject.items = mergeSchemaObject({
         a: existingArraySchemaObject.items,
         b: schemaObject.items,
+        $ref,
       })
       return oneOf
     }
