@@ -668,6 +668,7 @@ export const transformSpec = async ({
               const merged = mergeSchemaObject({
                 a: mergedSchema.properties[property],
                 b: schema.properties[property],
+                $ref: spec.$ref,
               })
               mergedSchema.properties[property] = merged
             } else {

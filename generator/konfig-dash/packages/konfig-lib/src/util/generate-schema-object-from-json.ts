@@ -1,5 +1,5 @@
 import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types'
-import { SchemaObject } from '../parseSpec'
+import { SchemaObject, Spec } from '../parseSpec'
 import { ReferenceObject, resolveRef } from '../resolveRef'
 import { OpenApiVersion } from './get-oas-version'
 import { Json } from './json-schema'
@@ -167,8 +167,10 @@ export function mergeOneOfsInOneOf({
  */
 export function unrollOneOf({
   schemaObject,
+  $ref,
 }: {
   schemaObject: SchemaOrReference
+  $ref?: Spec['$ref']
 }): SchemaObject | ReferenceObject {
   if ('oneOf' in schemaObject && schemaObject.oneOf !== undefined) {
     // handle x-konfig-null-placeholder which is essentially a "poison null pill".
@@ -184,11 +186,16 @@ export function unrollOneOf({
       if ('x-konfig-null-placeholder' in schema) {
         continue
       }
-      if ('$ref' in schema) throw Error('Not Implemented')
-      if (poisoned) {
-        ;(schema as any).nullable = true
+      let resolvedSchema = schema
+      if ('$ref' in schema) {
+        if ($ref === undefined) throw Error('Not implemented')
+        resolvedSchema = resolveRef({ $ref, refOrObject: schema })
       }
-      oneOf.push(schema)
+
+      if (poisoned) {
+        ;(resolvedSchema as any).nullable = true
+      }
+      oneOf.push(resolvedSchema)
     }
     schemaObject.oneOf = oneOf
 
@@ -207,9 +214,11 @@ export function unrollOneOf({
 export function mergeSchemaObject({
   a,
   b,
+  $ref,
 }: {
   a: SchemaOrReference
   b: SchemaOrReference
+  $ref?: Spec['$ref']
 }): SchemaOrReference {
   function merge() {
     if (a === undefined) return b
@@ -246,6 +255,7 @@ export function mergeSchemaObject({
   }
   return unrollOneOf({
     schemaObject: mergeOneOfsInOneOf({ schemaObject: merge() }),
+    $ref,
   })
 }
 
@@ -259,9 +269,11 @@ export function mergeOneOfs({ a, b }: { a: OneOf; b: OneOf }): OneOf {
 export function mergeOneOfAndSchemaObject({
   oneOf,
   schemaObject,
+  $ref,
 }: {
   oneOf: OneOf
   schemaObject: SchemaOrReference
+  $ref?: Spec['$ref']
 }): OneOf {
   if ('$ref' in schemaObject) {
     return oneOf.concat(schemaObject)
