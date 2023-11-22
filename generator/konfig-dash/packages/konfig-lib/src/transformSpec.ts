@@ -35,6 +35,7 @@ import { transformInnerSchemas } from './util/transform-inner-schemas'
 import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
 import { orderOpenApiSpecification } from './util/order-openapi-specification'
 import { convertAnyOfSchemasToAny } from './convert-any-of-schemas-to-any'
+import { generateEncapsulatingName } from './generate-encapsulating-name'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -638,62 +639,54 @@ export const transformSpec = async ({
       if (!Array.isArray(schema['anyOf'])) return
       if (schema['anyOf'].length === 0) return
 
-      // check if all schemas are object type schemas
-      const allSchemasAreObjectTypes = schema['anyOf'].every(
-        (schemaOrRef: any) => {
-          const schema = resolveRef({
-            refOrObject: schemaOrRef,
-            $ref: spec.$ref,
-          })
-          return schema['type'] === 'object'
-        }
-      )
-      if (!allSchemasAreObjectTypes) return
-
-      // merge all schemas into one schema
-      const mergedSchema: SchemaObject = {
-        type: 'object',
-        properties: {},
-      }
-      for (const schemaOrRef of schema['anyOf']) {
+      // check if all schemas are the same type
+      const schemaTypes = schema['anyOf'].map((schemaOrRef) => {
         const schema = resolveRef({
           refOrObject: schemaOrRef,
           $ref: spec.$ref,
         })
-        if (schema.properties !== undefined) {
-          for (const property in schema.properties) {
-            if (mergedSchema.properties === undefined)
-              mergedSchema.properties = {}
-            if (property in mergedSchema.properties) {
-              const merged = mergeSchemaObject({
-                a: mergedSchema.properties[property],
-                b: schema.properties[property],
-                $ref: spec.$ref,
-              })
-              mergedSchema.properties[property] = merged
-            } else {
-              mergedSchema.properties[property] = schema.properties[property]
-            }
-          }
+        return schema.type
+      })
+      const allSchemasAreTheSameType = schemaTypes.every(
+        (type) => type === schemaTypes[0]
+      )
+      if (!allSchemasAreTheSameType) return
+
+      // merge all schemas into one schema
+      const mergedSchema: SchemaObject = schema['anyOf'].reduce(
+        (mergedSchema, schemaOrRef) => {
+          const schema = resolveRef({
+            refOrObject: schemaOrRef,
+            $ref: spec.$ref,
+          })
+          return mergeSchemaObject({
+            a: mergedSchema,
+            b: schema,
+            $ref: spec.$ref,
+          })
         }
-      }
+      )
 
       // Add merged schema to a components.schemas under a name combining all the schema names
-      const mergedSchemaName = schema['anyOf']
-        .map((ref: any) => {
-          // assume its a JSON Ref and we can extract the component name from it
-          const refString = ref['$ref']
-          const refStringSplit = refString.split('/')
-          const componentName = refStringSplit[refStringSplit.length - 1]
-          return componentName
-        })
-        .join('Or')
+      const schemaNames = schema['anyOf'].map((ref: any) => {
+        // assume its a JSON Ref and we can extract the component name from it
+        const refString = ref['$ref']
+        const refStringSplit = refString.split('/')
+        const componentName = refStringSplit[refStringSplit.length - 1]
+        return componentName
+      })
+      const generatedName = generateEncapsulatingName(
+        schemaNames,
+        spec.spec.components?.schemas
+          ? Object.keys(spec.spec.components.schemas)
+          : []
+      )
       if (spec.spec.components === undefined) spec.spec.components = {}
       if (spec.spec.components.schemas === undefined)
         spec.spec.components.schemas = {}
-      spec.spec.components.schemas[mergedSchemaName] = mergedSchema
+      spec.spec.components.schemas[generatedName] = mergedSchema
       delete schema['anyOf']
-      schema['$ref'] = `#/components/schemas/${mergedSchemaName}`
+      schema['$ref'] = `#/components/schemas/${generatedName}`
     })
 
     // recurse over all schema objects and add the "x-do-not-generate" vendor

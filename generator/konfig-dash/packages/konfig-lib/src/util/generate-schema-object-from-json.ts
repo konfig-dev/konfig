@@ -292,12 +292,19 @@ export function mergeOneOfAndSchemaObject({
   // if schemaObject is primitive then check if oneOf already has that primitive
   if (typeof schemaObject.type === 'string') {
     if (isTypePrimitive(schemaObject.type)) {
-      const existingSchemaObject = oneOf.find(
-        (so) =>
-          !('$ref' in so) &&
-          so.type === schemaObject.type &&
-          !('x-konfig-null-placeholder' in so)
-      )
+      const existingSchemaObject = oneOf
+        .map((so) => {
+          const resolvedSchemaObject =
+            $ref !== undefined ? resolveRef({ $ref, refOrObject: so }) : so
+          return resolvedSchemaObject
+        })
+        .find((so) => {
+          return (
+            !('$ref' in so) &&
+            so.type === schemaObject.type &&
+            !('x-konfig-null-placeholder' in so)
+          )
+        })
 
       if (existingSchemaObject !== undefined) {
         // Carry nullable over
@@ -346,9 +353,16 @@ export function mergeOneOfAndSchemaObject({
     // if schemaObject is object then merge the object schemas
     if (schemaObject.type === 'object') {
       if (schemaObject.properties === undefined) return oneOf
-      const existingSchemaObject = oneOf.find(
-        (so) => !('$ref' in so) && so.type === 'object'
-      )
+      const existingSchemaObject = oneOf
+        .map((so) => {
+          const resolvedSchemaObject = $ref
+            ? resolveRef({ $ref, refOrObject: so })
+            : so
+          return resolvedSchemaObject
+        })
+        .find((so) => {
+          return !('$ref' in so) && so.type === 'object'
+        })
       if (existingSchemaObject === undefined) return oneOf.concat(schemaObject)
       if ('$ref' in existingSchemaObject) return oneOf.concat(schemaObject)
       if (schemaObject.properties === undefined) return oneOf
