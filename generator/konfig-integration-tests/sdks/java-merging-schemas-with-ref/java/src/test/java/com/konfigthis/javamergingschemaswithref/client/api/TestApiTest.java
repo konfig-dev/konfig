@@ -16,7 +16,7 @@ import com.konfigthis.javamergingschemaswithref.client.ApiException;
 import com.konfigthis.javamergingschemaswithref.client.ApiClient;
 import com.konfigthis.javamergingschemaswithref.client.ApiException;
 import com.konfigthis.javamergingschemaswithref.client.Configuration;
-import com.konfigthis.javamergingschemaswithref.client.model.AOrAA;
+import com.konfigthis.javamergingschemaswithref.client.model.A1;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -50,7 +50,7 @@ public class TestApiTest {
      */
     @Test
     public void fetchTest() throws ApiException {
-        AOrAA response = api.fetch()
+        A1 response = api.fetch()
                 .execute();
         // TODO: test validations
     }

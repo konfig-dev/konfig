@@ -19,10 +19,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.javamergingschemaswithref.client.model.B;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,12 +52,12 @@ import com.konfigthis.javamergingschemaswithref.client.JSON;
 public class A {
   public static final String SERIALIZED_NAME_A = "a";
   @SerializedName(SERIALIZED_NAME_A)
-  private B a;
+  private Object a = null;
 
   public A() {
   }
 
-  public A a(B a) {
+  public A a(Object a) {
     
     
     
@@ -73,12 +73,12 @@ public class A {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public B getA() {
+  public Object getA() {
     return a;
   }
 
 
-  public void setA(B a) {
+  public void setA(Object a) {
     
     
     
@@ -144,9 +144,20 @@ public class A {
         Objects.equals(this.additionalProperties, A.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(a, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -194,10 +205,6 @@ public class A {
         if (!A.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in A is not found in the empty JSON string", A.openapiRequiredFields.toString()));
         }
-      }
-      // validate the optional field `a`
-      if (jsonObj.get("a") != null && !jsonObj.get("a").isJsonNull()) {
-        B.validateJsonObject(jsonObj.getAsJsonObject("a"));
       }
   }
 

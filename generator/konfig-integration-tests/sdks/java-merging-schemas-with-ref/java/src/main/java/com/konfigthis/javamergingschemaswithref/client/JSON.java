@@ -111,8 +111,8 @@ public class JSON {
             }
         });
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergingschemaswithref.client.model.A.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergingschemaswithref.client.model.A1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergingschemaswithref.client.model.AA.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergingschemaswithref.client.model.AOrAA.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergingschemaswithref.client.model.B.CustomTypeAdapterFactory());
         gsonBuilder.disableHtmlEscaping();
         gson = gsonBuilder.create();

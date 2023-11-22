@@ -1,10 +1,8 @@
 package com.konfigthis.javamergingschemaswithref.client;
 
-import com.konfigthis.javamergingschemaswithref.client.model.AOrAA;
+import com.konfigthis.javamergingschemaswithref.client.model.A1;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -22,7 +20,7 @@ public class JavaMergingSchemasWithRefTest {
 
     @Test
     public void testFetch() throws ApiException {
-        AOrAA response = client.test.fetch().execute();
+        A1 response = client.test.fetch().execute();
         assertNotNull(response);
         assertNotNull(response.getA());
     }

@@ -26,17 +26,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for AOrAA
+ * Model tests for A1
  */
-public class AOrAATest {
-    private final AOrAA model = new AOrAA();
+public class A1Test {
+    private final A1 model = new A1();
 
     /**
-     * Model tests for AOrAA
+     * Model tests for A1
      */
     @Test
-    public void testAOrAA() {
-        // TODO: test AOrAA
+    public void testA1() {
+        // TODO: test A1
     }
 
     /**

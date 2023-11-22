@@ -121,7 +121,7 @@ public class Example {
     configuration.apiKey  = "YOUR API KEY";
     JavaMergingSchemasWithRefClient client = new JavaMergingSchemasWithRefClient(configuration);
     try {
-      AOrAA result = client
+      A1 result = client
               .test
               .fetch()
               .execute();
@@ -137,7 +137,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<AOrAA> response = client
+      ApiResponse<A1> response = client
               .test
               .fetch()
               .executeWithHttpInfo();
@@ -170,8 +170,8 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [A](docs/A.md)
+ - [A1](docs/A1.md)
  - [AA](docs/AA.md)
- - [AOrAA](docs/AOrAA.md)
  - [B](docs/B.md)
 
 

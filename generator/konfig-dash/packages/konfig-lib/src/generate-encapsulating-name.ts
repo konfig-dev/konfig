@@ -37,13 +37,14 @@ export function generateEncapsulatingName(
   )
   let potentialName = uniquePart + sharedPart
 
-  if (blacklist.includes(potentialName) || potentialName === '') {
+  if (potentialName === '') {
     potentialName = 'GenericSchemaAggregate'
   }
 
   let attempt = 1
+  let originalPotentialName = potentialName
   while (blacklist.includes(potentialName)) {
-    potentialName = 'GenericSchemaAggregate' + attempt
+    potentialName = originalPotentialName + attempt
     attempt++
   }
 

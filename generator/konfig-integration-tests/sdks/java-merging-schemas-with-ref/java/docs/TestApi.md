@@ -9,7 +9,7 @@ All URIs are relative to *https://java-merging-schemas-with-ref.konfigthis.com*
 
 <a name="fetch"></a>
 # **fetch**
-> AOrAA fetch().execute();
+> A1 fetch().execute();
 
 Fetches a JSON value based on input parameter
 
@@ -37,7 +37,7 @@ public class Example {
     configuration.apiKey  = "YOUR API KEY";
     JavaMergingSchemasWithRefClient client = new JavaMergingSchemasWithRefClient(configuration);
     try {
-      AOrAA result = client
+      A1 result = client
               .test
               .fetch()
               .execute();
@@ -53,7 +53,7 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<AOrAA> response = client
+      ApiResponse<A1> response = client
               .test
               .fetch()
               .executeWithHttpInfo();
@@ -79,7 +79,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AOrAA**](AOrAA.md)
+[**A1**](A1.md)
 
 ### Authorization
 

@@ -225,6 +225,8 @@ export function mergeSchemaObject({
   function merge() {
     if (a === undefined) return b
     if (b === undefined) return a
+    a = $ref !== undefined ? resolveRef({ $ref, refOrObject: a }) : a
+    b = $ref !== undefined ? resolveRef({ $ref, refOrObject: b }) : b
     if ('oneOf' in a) {
       if ('oneOf' in b) {
         if (a.oneOf !== undefined && b.oneOf !== undefined) {
