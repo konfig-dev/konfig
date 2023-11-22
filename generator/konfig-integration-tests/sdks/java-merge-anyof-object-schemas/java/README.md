@@ -167,13 +167,19 @@ All URIs are relative to *https://java-merge-anyof-object-schemas.konfigthis.com
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *TestApi* | [**fetch**](docs/TestApi.md#fetch) | **GET** /simple-endpoint | Fetches a JSON value based on input parameter
+*TestApi* | [**mergeDifferent**](docs/TestApi.md#mergeDifferent) | **GET** /merge-different | merge different
+*TestApi* | [**mergeSame**](docs/TestApi.md#mergeSame) | **GET** /merge-same | merge same
 
 
 ## Documentation for Models
 
  - [A](docs/A.md)
+ - [AA](docs/AA.md)
+ - [AOrAA](docs/AOrAA.md)
  - [AOrBOrC](docs/AOrBOrC.md)
  - [B](docs/B.md)
+ - [BB](docs/BB.md)
+ - [BOrBB](docs/BOrBB.md)
  - [C](docs/C.md)
 
 

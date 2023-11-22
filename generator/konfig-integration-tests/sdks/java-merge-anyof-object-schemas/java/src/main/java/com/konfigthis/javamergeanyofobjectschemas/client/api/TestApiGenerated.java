@@ -26,7 +26,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrAA;
 import com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC;
+import com.konfigthis.javamergeanyofobjectschemas.client.model.BOrBB;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -218,5 +220,293 @@ public class TestApiGenerated {
      */
     public FetchRequestBuilder fetch() throws IllegalArgumentException {
         return new FetchRequestBuilder();
+    }
+    private okhttp3.Call mergeDifferentCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/merge-different";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKey" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call mergeDifferentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return mergeDifferentCall(_callback);
+
+    }
+
+
+    private ApiResponse<AOrAA> mergeDifferentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = mergeDifferentValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<AOrAA>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call mergeDifferentAsync(final ApiCallback<AOrAA> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = mergeDifferentValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<AOrAA>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class MergeDifferentRequestBuilder {
+
+        private MergeDifferentRequestBuilder() {
+        }
+
+        /**
+         * Build call for mergeDifferent
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return mergeDifferentCall(_callback);
+        }
+
+
+        /**
+         * Execute mergeDifferent request
+         * @return AOrAA
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AOrAA execute() throws ApiException {
+            ApiResponse<AOrAA> localVarResp = mergeDifferentWithHttpInfo();
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute mergeDifferent request with HTTP info returned
+         * @return ApiResponse&lt;AOrAA&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AOrAA> executeWithHttpInfo() throws ApiException {
+            return mergeDifferentWithHttpInfo();
+        }
+
+        /**
+         * Execute mergeDifferent request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AOrAA> _callback) throws ApiException {
+            return mergeDifferentAsync(_callback);
+        }
+    }
+
+    /**
+     * merge different
+     * merge different
+     * @return MergeDifferentRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+     </table>
+     */
+    public MergeDifferentRequestBuilder mergeDifferent() throws IllegalArgumentException {
+        return new MergeDifferentRequestBuilder();
+    }
+    private okhttp3.Call mergeSameCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/merge-same";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKey" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call mergeSameValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return mergeSameCall(_callback);
+
+    }
+
+
+    private ApiResponse<BOrBB> mergeSameWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = mergeSameValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<BOrBB>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call mergeSameAsync(final ApiCallback<BOrBB> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = mergeSameValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<BOrBB>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class MergeSameRequestBuilder {
+
+        private MergeSameRequestBuilder() {
+        }
+
+        /**
+         * Build call for mergeSame
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return mergeSameCall(_callback);
+        }
+
+
+        /**
+         * Execute mergeSame request
+         * @return BOrBB
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BOrBB execute() throws ApiException {
+            ApiResponse<BOrBB> localVarResp = mergeSameWithHttpInfo();
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute mergeSame request with HTTP info returned
+         * @return ApiResponse&lt;BOrBB&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BOrBB> executeWithHttpInfo() throws ApiException {
+            return mergeSameWithHttpInfo();
+        }
+
+        /**
+         * Execute mergeSame request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BOrBB> _callback) throws ApiException {
+            return mergeSameAsync(_callback);
+        }
+    }
+
+    /**
+     * merge same
+     * merge same
+     * @return MergeSameRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
+     </table>
+     */
+    public MergeSameRequestBuilder mergeSame() throws IllegalArgumentException {
+        return new MergeSameRequestBuilder();
     }
 }

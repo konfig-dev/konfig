@@ -20,6 +20,40 @@ security:
 tags:
 - name: Test
 paths:
+  /merge-different:
+    get:
+      description: merge different
+      operationId: Test_mergeDifferent
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MergeDifferent'
+          description: Successful response
+      summary: merge different
+      tags:
+      - Test
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--merge-different
+      x-accepts: application/json
+  /merge-same:
+    get:
+      description: merge same
+      operationId: Test_mergeSame
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MergeSame'
+          description: Successful response
+      summary: merge same
+      tags:
+      - Test
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--merge-same
+      x-accepts: application/json
   /simple-endpoint:
     get:
       description: Provide an input parameter to receive a JSON value with properties.
@@ -41,10 +75,19 @@ components:
   schemas:
     TestFetchResponse:
       $ref: '#/components/schemas/AOrBOrC'
+    MergeDifferent:
+      $ref: '#/components/schemas/AOrAA'
+    MergeSame:
+      $ref: '#/components/schemas/BOrBB'
     A:
       properties:
         a:
           type: string
+      type: object
+    AA:
+      properties:
+        a:
+          type: number
       type: object
     B:
       properties:
@@ -53,11 +96,26 @@ components:
       required:
       - b
       type: object
+    BB:
+      properties:
+        b:
+          type: string
+      type: object
     C:
       properties:
         c:
           type: string
       type: object
+    konfig-generated-schema-single-parameter-schema-get--merge-different:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--merge-same:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-get--simple-endpoint:
       properties: {}
       type: object
@@ -74,6 +132,19 @@ components:
         b:
           type: string
         c:
+          type: string
+      type: object
+    AOrAA:
+      example:
+        a: ""
+      properties:
+        a: {}
+      type: object
+    BOrBB:
+      example:
+        b: b
+      properties:
+        b:
           type: string
       type: object
   securitySchemes:

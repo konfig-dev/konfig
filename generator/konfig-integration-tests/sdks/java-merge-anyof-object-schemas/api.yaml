@@ -17,6 +17,34 @@ servers:
 tags:
   - name: Test
 paths:
+  /merge-different:
+    get:
+      tags:
+        - Test
+      summary: merge different
+      operationId: Test_mergeDifferent
+      description: merge different
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MergeDifferent'
+  /merge-same:
+    get:
+      tags:
+        - Test
+      summary: merge same
+      operationId: Test_mergeSame
+      description: merge same
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MergeSame'
   /simple-endpoint:
     get:
       tags:
@@ -43,11 +71,24 @@ components:
         - $ref: '#/components/schemas/A'
         - $ref: '#/components/schemas/B'
         - $ref: '#/components/schemas/C'
+    MergeDifferent:
+      anyOf:
+        - $ref: '#/components/schemas/A'
+        - $ref: '#/components/schemas/AA'
+    MergeSame:
+      anyOf:
+        - $ref: '#/components/schemas/B'
+        - $ref: '#/components/schemas/BB'
     A:
       type: object
       properties:
         a:
           type: string
+    AA:
+      type: object
+      properties:
+        a:
+          type: number
     B:
       type: object
       properties:
@@ -55,6 +96,11 @@ components:
           type: string
       required:
         - b
+    BB:
+      type: object
+      properties:
+        b:
+          type: string
     C:
       type: object
       properties:

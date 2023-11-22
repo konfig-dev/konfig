@@ -111,8 +111,12 @@ public class JSON {
             }
         });
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.A.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.AA.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.AOrAA.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.AOrBOrC.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.B.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.BB.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.BOrBB.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.javamergeanyofobjectschemas.client.model.C.CustomTypeAdapterFactory());
         gsonBuilder.disableHtmlEscaping();
         gson = gsonBuilder.create();
