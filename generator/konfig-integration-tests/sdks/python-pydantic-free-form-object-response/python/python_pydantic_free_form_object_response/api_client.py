@@ -102,16 +102,7 @@ def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> ty
 
         # Check for generic list type
         if origin == list and isinstance(value, list):
-            if args and issubclass(args[0], BaseModel):
-                try:
-                    [args[0](**item) for item in value]
-                    best_match = t
-                except ValidationError:
-                    continue
-            elif best_match is None or (typing_extensions.get_origin(best_match) == list and len(
-                    typing_extensions.get_args(best_match)) < len(args)):
-                if args and all(isinstance(item, args[0]) for item in value):
-                    best_match = t
+            best_match = t
 
     return best_match
 
@@ -138,6 +129,8 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     elif typing_extensions.get_origin(model) is dict:
         return data
     elif model is dict:
+        return data
+    elif model is object:
         return data
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):

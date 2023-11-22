@@ -246,7 +246,6 @@ Class | Method | HTTP request | Description
  - [BrokerageType](docs/BrokerageType.md)
  - [CalculatedTrade](docs/CalculatedTrade.md)
  - [CashRestriction](docs/CashRestriction.md)
- - [ConnectionsSessionEvents200ResponseInner](docs/ConnectionsSessionEvents200ResponseInner.md)
  - [Currency](docs/Currency.md)
  - [DeleteUserResponse](docs/DeleteUserResponse.md)
  - [DividendAtDate](docs/DividendAtDate.md)

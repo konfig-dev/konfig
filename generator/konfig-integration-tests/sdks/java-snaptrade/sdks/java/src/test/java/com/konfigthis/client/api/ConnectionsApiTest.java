@@ -17,7 +17,7 @@ import com.konfigthis.client.ApiClient;
 import com.konfigthis.client.ApiException;
 import com.konfigthis.client.Configuration;
 import com.konfigthis.client.model.BrokerageAuthorization;
-import com.konfigthis.client.model.ConnectionsSessionEvents200ResponseInner;
+import com.konfigthis.client.model.SessionEvent;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -97,7 +97,7 @@ public class ConnectionsApiTest {
         String partnerClientId = null;
         String userId = null;
         String sessionId = null;
-        List<ConnectionsSessionEvents200ResponseInner> response = api.sessionEvents(partnerClientId)
+        List<SessionEvent> response = api.sessionEvents(partnerClientId)
                 .userId(userId)
                 .sessionId(sessionId)
                 .execute();
