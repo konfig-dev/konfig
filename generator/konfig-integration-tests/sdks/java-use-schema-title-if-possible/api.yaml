@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: java-use-schema-title-if-possible API
+  description: A simple API based for testing java-use-schema-title-if-possible.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://java-use-schema-title-if-possible.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchResponse:
+      anyOf:
+        - $ref: '#/components/schemas/Really__ugly_long_and_annoying_name'
+        - $ref: '#/components/schemas/Another__ugly_long_and_annoying_name'
+    Really__ugly_long_and_annoying_name:
+      title: A
+      type: object
+      properties:
+        a:
+          type: string
+    Another__ugly_long_and_annoying_name:
+      title: B
+      type: object
+      properties:
+        b:
+          type: string
+security:
+  - ApiKey: []

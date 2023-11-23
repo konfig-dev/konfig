@@ -708,11 +708,23 @@ export const transformSpec = async ({
       }
 
       // Add merged schema to a components.schemas under a name combining all the schema names
-      const schemaNames = schema['anyOf'].map((ref: any) => {
+      const schemaNames = schema['anyOf'].map((schema: any) => {
         // assume its a JSON Ref and we can extract the component name from it
-        const refString = ref['$ref']
+        const refString = schema['$ref']
         const refStringSplit = refString.split('/')
-        const componentName = refStringSplit[refStringSplit.length - 1]
+        const componentNameFromRef = refStringSplit[refStringSplit.length - 1]
+
+        const resolvedSchema = resolveRef({
+          refOrObject: schema,
+          $ref: spec.$ref,
+        })
+
+        const componentName =
+          'title' in resolvedSchema &&
+          typeof resolvedSchema['title'] === 'string'
+            ? resolvedSchema.title
+            : componentNameFromRef
+
         return componentName
       })
       const generatedName = generateEncapsulatingName(
