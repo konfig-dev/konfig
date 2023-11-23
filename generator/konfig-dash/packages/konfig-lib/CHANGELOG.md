@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.32.0
+
+### Minor Changes
+
+- [#388](https://github.com/konfig-dev/konfig/pull/388) [`7ca27279`](https://github.com/konfig-dev/konfig/commit/7ca27279a2b13ff88812e5dc16cd9730680b2266) Thanks [@dphuang2](https://github.com/dphuang2)! - transform spec for Java to handle anyOf of only object type schemas
+
 ## 1.31.0
 
 ### Minor Changes
