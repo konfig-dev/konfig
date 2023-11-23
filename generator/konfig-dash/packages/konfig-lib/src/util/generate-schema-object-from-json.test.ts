@@ -8,6 +8,38 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 describe('merge-schema-object', () => {
+  it('remove required if missing from other object', () => {
+    const a: SchemaObject = {
+      type: 'object',
+      properties: {
+        field: {
+          type: 'string',
+        },
+      },
+      required: ['field'],
+    }
+    const b: SchemaObject = {
+      type: 'object',
+      properties: {
+        someOtherField: {
+          type: 'string',
+        },
+      },
+    }
+    const mergedSchemaObject = mergeSchemaObject({ a, b })
+    expect(mergedSchemaObject).toStrictEqual({
+      type: 'object',
+      properties: {
+        field: {
+          type: 'string',
+        },
+        someOtherField: {
+          type: 'string',
+        },
+      },
+      required: [],
+    })
+  })
   it('array of object types', () => {
     const a: SchemaObject = {
       type: 'object',
