@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.33.0
+
+### Minor Changes
+
+- [#390](https://github.com/konfig-dev/konfig/pull/390) [`9c59eb37`](https://github.com/konfig-dev/konfig/commit/9c59eb379831703f4dc2c7e4177e67e670dba017) Thanks [@dphuang2](https://github.com/dphuang2)! - improve error messaging when file not found from github
+
 ## 1.32.4
 
 ### Patch Changes
