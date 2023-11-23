@@ -1,5 +1,5 @@
 import { CliUx, Command, Flags } from '@oclif/core'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 function getRevalidatePortalUrl({ dev }: { dev: boolean }) {
   if (dev) return 'http://127.0.0.1:3000/api/revalidate-portal'
@@ -41,21 +41,29 @@ export default class RevalidatePortal extends Command {
     CliUx.ux.action.start(
       `Revalidating portal for "${flags.owner}/${flags.repository}"`
     )
-    const result = await axios.post(url, {
-      owner: flags.owner,
-      repo: flags.repository,
-    })
-    if (result.data['revalidated']) {
-      CliUx.ux.action.stop()
-      this.log(
-        `✅ Successfully revalidated portal at ${flags.owner}/${flags.repository}`
-      )
-      this.debug('Paths Revalidated:')
-      this.debug(result.data['revalidated'].join('\n'))
-    } else {
-      this.error(
-        `Failed to revalidate ${flags.organizationId}/${flags.portalId}: "${result.data}"`
-      )
+    try {
+      const result = await axios.post(url, {
+        owner: flags.owner,
+        repo: flags.repository,
+      })
+      if (result.data['revalidated']) {
+        CliUx.ux.action.stop()
+        this.log(
+          `✅ Successfully revalidated portal at ${flags.owner}/${flags.repository}`
+        )
+        this.debug('Paths Revalidated:')
+        this.debug(result.data['revalidated'].join('\n'))
+      } else {
+        this.error(
+          `Failed to revalidate ${flags.organizationId}/${flags.portalId}: "${result.data}"`
+        )
+      }
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        if (typeof e.response?.data === 'string')
+          CliUx.ux.error(e.response?.data)
+      }
+      throw e
     }
   }
 }

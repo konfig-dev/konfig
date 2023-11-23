@@ -16,6 +16,32 @@ function computeCacheKey({
   return `${owner}/${repo}/${path}`
 }
 
+export class FileNotFoundError extends Error {
+  innerError: Error
+  name = 'FileNotFoundError'
+
+  constructor(innerError: Error) {
+    let message =
+      "Make sure you've configured 'konfig.yaml' to point to the correct files."
+    if (
+      'response' in innerError &&
+      typeof innerError?.response === 'object' &&
+      innerError?.response !== null &&
+      'url' in innerError?.response &&
+      typeof innerError.response?.url === 'string'
+    ) {
+      // parse "https://api.github.com/repos/passiv/snaptrade-sdks/contents/docs%2Frecommended-functionality.md" for "docs/recommended-functionality.md"
+      const path = innerError.response.url
+        .split('repos/')[1]
+        .split('/contents/')[1]
+      const decoded = decodeURIComponent(path)
+      message += ` Could not find file: "${decoded}"`
+    }
+    super(message)
+    this.innerError = innerError
+  }
+}
+
 export async function githubGetFileContent({
   octokit,
   owner,
@@ -62,11 +88,14 @@ export async function githubGetFileContent({
     } else {
       throw new Error('The specified path does not point to a file')
     }
-  } catch (error) {
-    if (error instanceof Error)
-      console.error(
-        `Error occurred while getting file content: ${error.message}`
-      )
-    throw error
+  } catch (e) {
+    if (e instanceof Error) {
+      if ('status' in e && e.status === 404) {
+        throw new FileNotFoundError(e)
+      } else {
+        console.error(`Error occurred while getting file content: ${e.message}`)
+      }
+    }
+    throw e
   }
 }

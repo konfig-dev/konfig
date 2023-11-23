@@ -7,6 +7,7 @@ import { githubGetKonfigYamls } from '@/utils/github-get-konfig-yamls'
 import { createOctokitInstance } from '@/utils/octokit'
 import { collectAllDocuments } from '@/utils/collect-all-documents'
 import { findDomainsForOwnerAndRepo } from '@/utils/find-domains-for-owner-and-repo'
+import { FileNotFoundError } from '@/utils/github-get-file-content'
 
 const requestBodySchema = z.object({
   owner: z.string(),
@@ -35,78 +36,85 @@ export default async function handler(
     ]),
   ]
 
-  // revalidate reference page
-  const { navbarData } = await githubGetReferenceResources({ owner, repo })
-  navbarData.forEach(({ links }) => {
-    links.forEach(({ link }) => {
-      toRevalidate.push(link)
+  try {
+    // revalidate reference page
+    const { navbarData } = await githubGetReferenceResources({ owner, repo })
+    navbarData.forEach(({ links }) => {
+      links.forEach(({ link }) => {
+        toRevalidate.push(link)
+      })
     })
-  })
-  const { navbarData: navbarDataWithoutOwnerAndRepo } =
-    await githubGetReferenceResources({ owner, repo, omitOwnerAndRepo: true })
-  navbarDataWithoutOwnerAndRepo.forEach(({ links }) => {
-    links.forEach(({ link }) => {
-      for (const domain of domains) {
-        toRevalidate.push(`/${domain}${link}`)
-      }
+    const { navbarData: navbarDataWithoutOwnerAndRepo } =
+      await githubGetReferenceResources({ owner, repo, omitOwnerAndRepo: true })
+    navbarDataWithoutOwnerAndRepo.forEach(({ links }) => {
+      links.forEach(({ link }) => {
+        for (const domain of domains) {
+          toRevalidate.push(`/${domain}${link}`)
+        }
+      })
     })
-  })
 
-  const demos = await generateDemosDataFromGithub({
-    orgId: owner,
-    portalId: repo,
-  })
+    const demos = await generateDemosDataFromGithub({
+      orgId: owner,
+      portalId: repo,
+    })
 
-  if (demos.result !== 'error') {
-    for (const demo of demos.portal.demos) {
-      const oldDemoPath = `/${owner}/${repo}/${demo.id}`
-      const newDemoPath = `/${owner}/${repo}/demo/${demo.id}`
-      toRevalidate.push(oldDemoPath)
-      toRevalidate.push(newDemoPath)
+    if (demos.result !== 'error') {
+      for (const demo of demos.portal.demos) {
+        const oldDemoPath = `/${owner}/${repo}/${demo.id}`
+        const newDemoPath = `/${owner}/${repo}/demo/${demo.id}`
+        toRevalidate.push(oldDemoPath)
+        toRevalidate.push(newDemoPath)
 
-      for (const domain of domains) {
-        const newDomainPath = `/${domain}/demo/${demo.id}`
-        toRevalidate.push(newDomainPath)
+        for (const domain of domains) {
+          const newDomainPath = `/${domain}/demo/${demo.id}`
+          toRevalidate.push(newDomainPath)
+        }
       }
     }
-  }
 
-  const octokit = await createOctokitInstance({ owner, repo })
-  const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
-  if (konfigYamls !== null) {
-    for (const konfigYaml of konfigYamls) {
-      if (konfigYaml.content.portal?.documentation !== undefined) {
-        const links = collectAllDocuments({
-          docConfig: konfigYaml.content.portal.documentation,
-        })
-        for (const link of links) {
-          toRevalidate.push(`/${owner}/${repo}/docs/${link.id}`)
-          for (const domain of domains) {
-            toRevalidate.push(`/${domain}/docs/${link.id}`)
+    const octokit = await createOctokitInstance({ owner, repo })
+    const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
+    if (konfigYamls !== null) {
+      for (const konfigYaml of konfigYamls) {
+        if (konfigYaml.content.portal?.documentation !== undefined) {
+          const links = collectAllDocuments({
+            docConfig: konfigYaml.content.portal.documentation,
+          })
+          for (const link of links) {
+            toRevalidate.push(`/${owner}/${repo}/docs/${link.id}`)
+            for (const domain of domains) {
+              toRevalidate.push(`/${domain}/docs/${link.id}`)
+            }
           }
         }
       }
     }
-  }
 
-  const revalidated: string[] = []
+    const revalidated: string[] = []
 
-  for (const path of toRevalidate) {
-    try {
-      await res.revalidate(path, { unstable_onlyGenerated: true })
-      revalidated.push(path)
-    } catch (e) {
-      if (e instanceof Error) {
-        if (e.message.includes('404')) {
-          console.log(`Tried to revalidate ${path} but got 404`)
-          continue
+    for (const path of toRevalidate) {
+      try {
+        await res.revalidate(path, { unstable_onlyGenerated: true })
+        revalidated.push(path)
+      } catch (e) {
+        if (e instanceof Error) {
+          if (e.message.includes('404')) {
+            console.log(`Tried to revalidate ${path} but got 404`)
+            continue
+          }
         }
+        throw e
       }
-      throw e
     }
-  }
 
-  return res.json({
-    revalidated,
-  })
+    return res.json({
+      revalidated,
+    })
+  } catch (e) {
+    if (e instanceof FileNotFoundError) {
+      return res.status(404).send(e.message)
+    }
+    throw e
+  }
 }
