@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+outputDirectory: /tmp/newscatcherapi-sdks-out
+specInputPath: openapi.json
+specPath: openapi-fixed.json
+filterPaths:
+  - path: /api/
+  - path: /api/health
+  - path: /api/endpoints
+requiredEnvironmentVariables:
+  - NEWSCATCHER_API_KEY
+fixConfig:
+  update:
+    $:
+      servers:
+        - url: https://v3-api.newscatcherapi.com/
+    $.info:
+      description: >-
+        <img
+        src='https://uploads-ssl.webflow.com/6429857b17973b636c2195c5/646c6f1eb774ff2f2997bec5_newscatcher_.svg'
+        width='286' height='35' /> <br>  <br>Visit our website  <a
+        href='https://newscatcherapi.com'>https://newscatcherapi.com</a>
+generators:
+  python:
+    version: 6.0.1
+    packageName: newscatcherapi_client
+    projectName: newscatcherapi-python-sdk
+    outputDirectory: python
+    clientName: Newscatcher
+    git:
+      userId: konfig-dev
+      repoId: newscatcher-sdks/tree/main/v3/python
