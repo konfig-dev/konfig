@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+outputDirectory: /tmp/decentro-in-collections-sdks-out
+specPath: specs/oas/api.yaml
+specInputPath: specs/oas/p2o-output.yaml
+validateRequiredPropertiesAndParametersAreNonEmpty: true
+stripRequiredStringProperties: true
+infoContactEmail: admin@decentro.tech
+infoContactUrl: https://decentro.tech
+infoContactName: Decentro
+requiredEnvironmentVariables:
+  - DECENTRO_CLIENT_ID
+  - DECENTRO_CLIENT_SECRET
+  - DECENTRO_MODULE_SECRET
+fixConfig:
+  updateProperty:
+    amount:
+      number:
+        exclusiveMinimum: true
+        minimum: 0
+    expiry_time:
+      number:
+        type: integer
+        exclusiveMinimum: true
+        minimum: 0
+    generate_qr:
+      number:
+        type: integer
+        minimum: 0
+        maximum: 1
+    customized_qr_with_logo:
+      number:
+        type: integer
+        example: 0
+    generate_uri:
+      number:
+        type: integer
+        example: 0
+  update:
+    $.components.schemas.GeneratePaymentLinkRequest:
+      required:
+        - reference_id
+        - payee_account
+        - purpose_message
+        - generate_qr
+        - amount
+    $.components.schemas.IssueUpiRefundRequest:
+      required:
+        - reference_id
+    $.components.schemas.ValidateUpiHandleRequest:
+      required:
+        - reference_id
+        - upi_id
+    $.components.schemas.IssueCollectRequestRequest:
+      required:
+        - reference_id
+        - payer_upi
+        - payee_account
+        - amount
+        - purpose_message
+generators:
+  python:
+    version: 1.0.0
+    pypiApiTokenEnvironmentVariable: DECENTRO_PYPI_API_TOKEN
+    packageName: decentro_in_collections_client
+    projectName: decentro-in-collections-python-sdk
+    objectPropertyNamingConvention: camelCase
+    setSkipSerializationToTrueByDefault: true
+    keepAllParametersOptional: true
+    packageUrl: https://decentro.tech
+    removeKonfigBranding: true
+    outputDirectory: python
+    clientName: Decentro
+    git:
+      userId: decentro-in
+      repoId: decentro-in-collections-sdk/tree/master/python
