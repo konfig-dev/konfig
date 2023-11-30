@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+order:
+  - tag: API Status
+  - tag: Authentication
+    operations:
+      - Authentication_registerSnapTradeUser
+      - Authentication_loginSnapTradeUser
+  - tag: Connections
+  - tag: Account Information
+    operations:
+      - path: /accounts
+        method: get
+  - tag: Trading
+    operations:
+      - Trading_getUserAccountQuotes
+      - Trading_getOrderImpact
+      - Trading_placeOrder
+      - Trading_placeForceOrder
+      - Trading_placeOCOOrder
+      - Trading_cancelUserAccountOrder
+filterTags:
+  - Webhooks
+  - Development Tools
+  - Custom Brokerage API Credentials
+filterModels:
+  - SnapTradePartnerAPICredential
+  - WebhookBase
+  - MockSignatureResponse
+filterRequestBodies:
+  - CreateSnapTradeParterAPICredentialsRequestBody
+  - MockSignatureRequestBody
+allObjectsHaveAdditionalProperties:
+  requestBody: false
+  exclude:
+    - encryptedResponse
+    - LoginRedirectURI
+  include:
+    - PortfolioGroup
+outputDirectory: /tmp/snaptrade-sdks-out
+infoContactName: SnapTrade
+infoContactUrl: https://snaptrade.com/
+doNotValidateGloballyRequiredSecurity: true
+tagPriority:
+  - Account Information
+readmeHeader:
+  title: SnapTrade
+  image: header.png
+  url: https://snaptrade.com
+useSecurityKeyName: true
+generators:
+  csharp:
+    clientName: Snaptrade
+    version: 4.0.6
+    packageName: SnapTrade.Net
+    logoPath: logo.png
+    outputDirectory: sdks/csharp
+    apiDocumentationAuthenticationPartial: snippets/ApiDocumentationAuthPartial.cs
+    clientState:
+      - ConsumerKey
+    git:
+      userId: passiv
+      repoId: snaptrade-sdks/tree/master/sdks/csharp
+specPath: api.yaml

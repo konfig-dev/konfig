@@ -1,0 +1,52 @@
+# SnapTrade.Net.Model.StrategyOrderPlaceOrdersInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | **int** |  | [optional] 
+**Symbol** | **string** |  | [optional] 
+**SymbolId** | **int** |  | [optional] 
+**TotalQuantity** | **int** |  | [optional] 
+**OpenQuantity** | **int** |  | [optional] 
+**FilledQuantity** | **int** |  | [optional] 
+**CanceledQuantity** | **int** |  | [optional] 
+**Side** | **string** |  | [optional] 
+**OrderType** | **string** |  | [optional] 
+**LimitPrice** | **string** |  | [optional] 
+**StopPrice** | **string** |  | [optional] 
+**IsAllOrNone** | **bool** |  | [optional] 
+**IsAnonymous** | **bool** |  | [optional] 
+**IcebergQuantity** | **string** |  | [optional] 
+**MinQuantity** | **string** |  | [optional] 
+**AvgExecPrice** | **int** |  | [optional] 
+**LastExecPrice** | **string** |  | [optional] 
+**Source** | **string** |  | [optional] 
+**TimeInForce** | **string** |  | [optional] 
+**GtdDate** | **string** |  | [optional] 
+**State** | **string** |  | [optional] 
+**RejectionReason** | **string** |  | [optional] 
+**ChainId** | **int** |  | [optional] 
+**CreationTime** | **string** |  | [optional] 
+**UpdateTime** | **string** |  | [optional] 
+**Notes** | **string** |  | [optional] 
+**PrimaryRoute** | **string** |  | [optional] 
+**SecondaryRoute** | **string** |  | [optional] 
+**OrderRoute** | **string** |  | [optional] 
+**VenueHoldingOrder** | **string** |  | [optional] 
+**ComissionCharged** | **int** |  | [optional] 
+**ExchangeOrderId** | **string** |  | [optional] 
+**IsSignificantShareHolder** | **bool** |  | [optional] 
+**IsInsider** | **bool** |  | [optional] 
+**IsLimitOffsetInDollar** | **bool** |  | [optional] 
+**UserId** | **int** |  | [optional] 
+**PlacementCommission** | **string** |  | [optional] 
+**Legs** | [**List&lt;StrategyOrderPlaceOrdersInnerLegsInner&gt;**](StrategyOrderPlaceOrdersInnerLegsInner.md) |  | [optional] 
+**StrategyType** | **string** |  | [optional] 
+**TriggerStopPrice** | **string** |  | [optional] 
+**OrderGroupId** | **int** |  | [optional] 
+**OrderClass** | **string** |  | [optional] 
+**IsCrossZero** | **bool** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

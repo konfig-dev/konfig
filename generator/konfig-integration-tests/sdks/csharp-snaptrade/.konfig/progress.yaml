@@ -1,0 +1,195 @@
+examples: {}
+examples_2: {}
+operationIds: {}
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /accounts/{accountId}/optionStrategy:
+    post:
+      application/json: OptionsGetOptionStrategyRequest
+  /accounts/{accountId}/optionStrategy/{optionStrategyId}/execute:
+    post:
+      application/json: OptionsPlaceOptionStrategyRequest
+  /accounts/{accountId}/orders/cancel:
+    post:
+      application/json: TradingCancelUserAccountOrderRequest
+  /snapTrade/acceptDisclaimer:
+    post:
+      application/json: SnapTradeApiDisclaimerRequest
+  /snapTrade/apiCredentials:
+    post:
+      application/json: CreateSnapTradeParterApiCredentialsRequest
+  /trade/oco:
+    post:
+      application/json: TradingPlaceOcoOrderRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /accounts:
+    get:
+      '200':
+        application/json: AccountInformationListUserAccountsResponse
+  /accounts/{accountId}:
+    get:
+      '200':
+        application/json: AccountInformationGetUserAccountDetailsResponse
+    put:
+      '200':
+        application/json: AccountInformationUpdateUserAccountResponse
+  /accounts/{accountId}/balances:
+    get:
+      '200':
+        '*/*': AccountInformationGetUserAccountBalanceResponse
+  /accounts/{accountId}/orders:
+    get:
+      '200':
+        application/json: AccountInformationGetUserAccountOrdersResponse
+  /accounts/{accountId}/positions:
+    get:
+      '200':
+        '*/*': AccountInformationGetUserAccountPositionsResponse
+  /accounts/{accountId}/symbols:
+    post:
+      '200':
+        '*/*': ReferenceDataSymbolSearchUserAccountResponse
+  /activities:
+    get:
+      '200':
+        application/json: TransactionsAndReportingGetActivitiesResponse
+  /authorizations:
+    get:
+      '200':
+        application/json: ConnectionsListBrokerageAuthorizationsResponse
+  /brokerageAuthorizationTypes:
+    get:
+      '200':
+        application/json: ReferenceDataListAllBrokerageAuthorizationTypeResponse
+  /brokerages:
+    get:
+      '200':
+        application/json: ReferenceDataListAllBrokeragesResponse
+  /currencies:
+    get:
+      '200':
+        application/json: ReferenceDataListAllCurrenciesResponse
+  /currencies/rates:
+    get:
+      '200':
+        application/json: ReferenceDataListAllCurrenciesRatesResponse
+  /exchanges:
+    get:
+      '200':
+        application/json: ReferenceDataGetStockExchangesResponse
+  /holdings:
+    get:
+      '200':
+        application/json: AccountInformationGetAllUserHoldingsResponse
+  /modelAssetClass:
+    get:
+      '200':
+        application/json: PortfolioManagementListAssetClassesResponse
+  /modelPortfolio:
+    get:
+      '200':
+        application/json: PortfolioManagementListModelPortfolioResponse
+  /portfolioGroups:
+    get:
+      '200':
+        application/json: PortfolioManagementListResponse
+    post:
+      '200':
+        application/json: PortfolioManagementCreateResponse
+  /portfolioGroups/{portfolioGroupId}/accounts:
+    get:
+      '200':
+        application/json: PortfolioManagmentListPortfolioAccountsResponse
+  /portfolioGroups/{portfolioGroupId}/balances:
+    get:
+      '200':
+        application/json: PortfolioManagementGetPortfolioBalancesResponse
+  /portfolioGroups/{portfolioGroupId}/calculatedtrades/{calculatedTradeId}/impact:
+    get:
+      '200':
+        application/json: TradingGetCalculatedTradesImpactResponse
+  /portfolioGroups/{portfolioGroupId}/calculatedtrades/{calculatedTradeId}/placeOrders:
+    post:
+      '200':
+        application/json: TradingPlaceCalculatedTradesResponse
+  /portfolioGroups/{portfolioGroupId}/calculatedtrades/{calculatedTradeId}/{TradeId}:
+    get:
+      '200':
+        application/json: PortfolioManagementGetCalculatedTradeByIdResponse
+  /portfolioGroups/{portfolioGroupId}/excludedassets:
+    get:
+      '200':
+        application/json: PortfolioManagementGetPortoflioExcludedAssetsResponse
+  /portfolioGroups/{portfolioGroupId}/import:
+    post:
+      '200':
+        application/json: PortfolioManagementImportModelPortfolioResponse
+  /portfolioGroups/{portfolioGroupId}/symbols:
+    post:
+      '200':
+        application/json: PortfolioManagementSearchPortfolioSymbolsResponse
+  /portfolioGroups/{portfolioGroupId}/targets:
+    get:
+      '200':
+        application/json: PortfolioManagementGetPortfolioTargetsResponse
+  /securityTypes:
+    get:
+      '200':
+        application/json: ReferenceDataGetSecurityTypesResponse
+  /sessionEvents:
+    get:
+      '200':
+        application/json: ConnectionsSessionEventsResponse
+  /snapTrade/apiCredentials:
+    get:
+      '200':
+        application/json: CustomBrokerageApiCredentialsListResponse
+  /snapTrade/listUserErrors:
+    get:
+      '200':
+        application/json: ErrorLogsListUserErrorsResponse
+  /snapTrade/login:
+    post:
+      '200':
+        application/json: AuthenticationLoginSnapTradeUserResponse
+  /symbols:
+    post:
+      '200':
+        application/json: ReferenceDataGetSymbolsResponse
+securityParameters:
+  PartnerClientId:
+    query: false
+  accounts:
+    query: false
+  brokerage:
+    query: false
+  brokerageAuthorizations:
+    query: false
+  brokerage_authorizations:
+    query: false
+  detailed:
+    query: false
+  endDate:
+    query: false
+  frequency:
+    query: false
+  sessionId:
+    query: false
+  startDate:
+    query: false
+  state:
+    query: false
+  symbol:
+    query: false
+  symbolId:
+    query: false
+  symbols:
+    query: false
+  use_ticker:
+    query: false
+  userId:
+    query: false
+  userSecret:
+    query: false

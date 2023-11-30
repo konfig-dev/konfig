@@ -1,0 +1,40 @@
+{{>licenseInfo}}
+
+package {{invokerPackage}};
+
+import {{{invokerPackage}}}.auth.ApiKeyAuth;
+
+{{>generatedAnnotation}}
+public class Configuration {
+    private static ApiClient defaultApiClient = new ApiClient();
+
+    /**
+     * Get the default API client, which would be used when creating API
+     * instances without providing an API client.
+     *
+     * @return Default API client
+     */
+    public static ApiClient getDefaultApiClient() {
+        return defaultApiClient;
+    }
+
+    // CUSTOM CODE
+    public static void setDefaultConsumerKey(String consumerKey) {
+        defaultApiClient.setConsumerKey(consumerKey);
+    }
+
+    // CUSTOM CODE
+    public static void setDefaultClientId(String clientId) {
+        defaultApiClient.setClientId(clientId);
+    }
+
+    /**
+     * Set the default API client, which would be used when creating API
+     * instances without providing an API client.
+     *
+     * @param apiClient API client
+     */
+    public static void setDefaultApiClient(ApiClient apiClient) {
+        defaultApiClient = apiClient;
+    }
+}
