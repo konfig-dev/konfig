@@ -436,6 +436,12 @@ export type CopyFilesType = z.infer<typeof copyFilesSchema>
 export const generatorCommonOptional = z
   .object({
     outputDirectory: z.string(),
+    mockServerPort: z
+      .number()
+      .optional()
+      .describe(
+        'To configure the port of the mock server for generated tests. This will ensure that the SDK client is configured to point to the correct port on the local machine (e.g. http://127.0.0.1:{mockServerPort}).'
+      ),
     defaultChangesetBumpType,
     readmeSnippet: z.string().optional(),
     readmeSupportingDescriptionSnippet: z.string().optional(),

@@ -330,6 +330,11 @@ public interface GenerateApi {
         putIfPresent(map, "readmeSupportingDescriptionSnippet", additionalProperties.getReadmeSupportingDescriptionSnippet());
         putIfPresent(map, "readmeDescriptionSnippet", additionalProperties.getReadmeDescriptionSnippet());
         putIfPresent(map, "objectPropertyNamingConvention", additionalProperties.getObjectPropertyNamingConvention());
+        if (additionalProperties.getMockServerPort() != null) {
+            putIfPresent(map, "mockServerPort", additionalProperties.getMockServerPort());
+        } else {
+            putIfPresent(map, "mockServerPort", 4010);
+        }
         putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention());
         putIfPresent(map, "useSecurityKeyParamNameAsPropertyName", additionalProperties.getUseSecurityKeyParamNameAsPropertyName());
         if (additionalProperties.getObjectPropertyNamingConvention() != null) {

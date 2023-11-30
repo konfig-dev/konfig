@@ -111,6 +111,9 @@ public class AdditionalProperties {
   @JsonProperty("omitApiDocumentation")
   private Boolean omitApiDocumentation;
 
+  @JsonProperty("mockServerPort")
+  private BigDecimal mockServerPort;
+
   @JsonProperty("useSecurityKeyParamNameAsPropertyName")
   private Boolean useSecurityKeyParamNameAsPropertyName;
 
@@ -764,6 +767,25 @@ public class AdditionalProperties {
 
   public void setOmitApiDocumentation(Boolean omitApiDocumentation) {
     this.omitApiDocumentation = omitApiDocumentation;
+  }
+
+  public AdditionalProperties mockServerPort(BigDecimal mockServerPort) {
+    this.mockServerPort = mockServerPort;
+    return this;
+  }
+
+  /**
+   * Get mockServerPort
+   * @return mockServerPort
+  */
+  @Valid 
+  @Schema(name = "mockServerPort", required = false)
+  public BigDecimal getMockServerPort() {
+    return mockServerPort;
+  }
+
+  public void setMockServerPort(BigDecimal mockServerPort) {
+    this.mockServerPort = mockServerPort;
   }
 
   public AdditionalProperties useSecurityKeyParamNameAsPropertyName(Boolean useSecurityKeyParamNameAsPropertyName) {
@@ -1726,6 +1748,7 @@ public class AdditionalProperties {
         Objects.equals(this.omitInfoDescription, additionalProperties.omitInfoDescription) &&
         Objects.equals(this.omitModelDocumentation, additionalProperties.omitModelDocumentation) &&
         Objects.equals(this.omitApiDocumentation, additionalProperties.omitApiDocumentation) &&
+        Objects.equals(this.mockServerPort, additionalProperties.mockServerPort) &&
         Objects.equals(this.useSecurityKeyParamNameAsPropertyName, additionalProperties.useSecurityKeyParamNameAsPropertyName) &&
         Objects.equals(this.tagPriority, additionalProperties.tagPriority) &&
         Objects.equals(this.useDescriptionInOperationTableDocumentation, additionalProperties.useDescriptionInOperationTableDocumentation) &&
@@ -1777,7 +1800,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1810,6 +1833,7 @@ public class AdditionalProperties {
     sb.append("    omitInfoDescription: ").append(toIndentedString(omitInfoDescription)).append("\n");
     sb.append("    omitModelDocumentation: ").append(toIndentedString(omitModelDocumentation)).append("\n");
     sb.append("    omitApiDocumentation: ").append(toIndentedString(omitApiDocumentation)).append("\n");
+    sb.append("    mockServerPort: ").append(toIndentedString(mockServerPort)).append("\n");
     sb.append("    useSecurityKeyParamNameAsPropertyName: ").append(toIndentedString(useSecurityKeyParamNameAsPropertyName)).append("\n");
     sb.append("    tagPriority: ").append(toIndentedString(tagPriority)).append("\n");
     sb.append("    useDescriptionInOperationTableDocumentation: ").append(toIndentedString(useDescriptionInOperationTableDocumentation)).append("\n");

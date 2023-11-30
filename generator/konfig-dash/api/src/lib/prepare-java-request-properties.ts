@@ -50,6 +50,10 @@ export function prepareJavaRequestProperties({
     }
   }
 
+  if ('mockServerPort' in generatorConfig) {
+    properties['mockServerPort'] = generatorConfig.mockServerPort
+  }
+
   if ('defaultAsyncTimeout' in generatorConfig) {
     properties['defaultAsyncTimeout'] = generatorConfig.defaultAsyncTimeout
   }

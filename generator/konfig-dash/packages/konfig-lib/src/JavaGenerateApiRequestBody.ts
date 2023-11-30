@@ -18,6 +18,7 @@ const additionalProperties = z
     useSecurityKeyName: z.boolean().optional(),
     authorEmail: z.string().describe('engineering@acme.com').optional(),
     authorName: z.string().describe('acme.com').optional(),
+    mockServerPort: z.number().optional(),
     pythonResponseTypeVersion: z.string().optional(),
     classPrefix: z.string().describe('A').optional(),
     disallowAdditionalPropertiesIfNotPresent: z.boolean().optional(),
