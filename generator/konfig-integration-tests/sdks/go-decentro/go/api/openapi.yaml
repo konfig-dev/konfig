@@ -1,0 +1,2170 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: admin@decentro.tech
+    name: Decentro
+    url: https://decentro.tech
+  description: Collections
+  title: decentro-in-collections
+  version: 1.0.0
+  x-konfig-ignore:
+    object-with-no-properties: true
+    potential-incorrect-type: true
+  x-konfig-has-globally-required-security: true
+servers:
+- url: https://in.staging.decentro.tech
+tags:
+- name: Collections
+paths:
+  /v2/payments/upi/link:
+    post:
+      operationId: Collections_generatePaymentLink
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example-0:
+                value:
+                  reference_id: ABCDEF12345
+                  payee_account: "00000000000000000"
+                  amount: 4
+                  purpose_message: Welcome to Decentro
+                  generate_qr: 0
+                  expiry_time: 10
+                  customized_qr_with_logo: 0
+                  generate_uri: 0
+              example-1:
+                value:
+                  reference_id: ABCDEF12345
+                  payee_account: "00000000000000000"
+                  amount: 4
+                  purpose_message: Welcome to Decentro
+                  generate_qr: 1
+                  expiry_time: 10
+                  customized_qr_with_logo: 0
+                  generate_uri: 0
+              example-2:
+                value:
+                  reference_id: ABCDEF12345
+                  payee_account: "00000000000000000"
+                  amount: 4
+                  purpose_message: Welcome to Decentro
+                  generate_qr: 0
+                  expiry_time: 10
+                  customized_qr_with_logo: 0
+                  generate_uri: 1
+            schema:
+              $ref: '#/components/schemas/GeneratePaymentLinkRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-0:
+                  summary: Success
+                  value:
+                    decentroTxnId: XYZ
+                    status: SUCCESS
+                    responseCode: S00000
+                    message: Payment Link created Successfully
+                    data:
+                      generatedLink: https://decf.in/pay/bbs2czljt1
+                      transactionId: xyz
+                      transactionStatus: PENDING
+                example-1:
+                  summary: Success with UPI QR code
+                  value:
+                    decentroTxnId: 5296XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    status: SUCCESS
+                    responseCode: S00000
+                    message: Payment Link with Dynamic QR created Successfully
+                    data:
+                      encodedDynamicQrCode: iVBORw0KGgoAAAANSUhEUgAAA/wAAAP8CAYAAAD7obX7AAAAAXNSR0IArs4c6QAAIABJREFUeF7s/e16Y0mSo+0q9vkf88S+4u3u...SHORTENED-BY-KONFIG...VIEqUAWqQBWoAlWgClSBKlAFqkAVuKECXfhvaGopVYEqUAWqQBWoAlWgClSBKlAFqkAV+P8BRKbBe+YKpxYAAAAASUVORK5CYII=
+                      generatedLink: <customised_payment link>
+                      transactionId: 5296XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      transactionStatus: PENDING
+                    responseKey: success_payment_link_created
+                example-2:
+                  summary: Success with UPI Deep Linking URI
+                  value:
+                    decentroTxnId: 5296XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    status: SUCCESS
+                    responseCode: S00000
+                    message: Payment Link with Dynamic QR created Successfully
+                    data:
+                      upiUri: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+                      pspUri:
+                        commonUri: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+                        gpayUri: gpay://upi/pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+                        phonepeUri: phonepe://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+                        paytmUri: paytmmp://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+                      generatedLink: <customised_payment link>
+                      transactionId: 5296XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      transactionStatus: PENDING
+                    responseKey: success_payment_link_created
+              schema:
+                $ref: '#/components/schemas/GeneratePaymentLinkResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                example-0:
+                  summary: "Failure: Invalid account number"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: The combination of this account_number and provider for
+                      `payee` doesn't match with an existing customer. Please check
+                      the values and try resubmitting.
+                example-1:
+                  summary: "Failure: Invalid amount"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: Malformed request detected.
+                example-2:
+                  summary: "Failure: Invalid purpose message"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: Purpose Message cannot exceed 50 characters.
+                example-3:
+                  summary: "Failure: Error invalid generate QR"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "Unsanitized values detected for key(s): purpose_message.\
+                      \ Kindly sanitize the corresponding values by removing special\
+                      \ characters such as . @ # $ % ^ & * ! ; : ' \" ~ ` ? = + )\
+                      \ ( and retry."
+                example-4:
+                  summary: "Failure: Invalid Generate QR value"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "Invalid value entered for Generate QR. Generate QR can\
+                      \ be either 0 or 1. Hint : generate_qr (int)"
+                example-5:
+                  summary: "Failure: Invalid generate uri value"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "Invalid value entered for Generate URI. Generate URI\
+                      \ can be either 0 or 1. Hint : generate_uri (int)"
+                example-6:
+                  summary: "Failure: Missing payee account"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "Payee Account Number cannot be null or empty. Hint:\
+                      \ payee_account (string)"
+              schema:
+                $ref: '#/components/schemas/GeneratePaymentLink400Response'
+          description: Bad Request
+      security:
+      - client_id: []
+        client_secret: []
+        module_secret: []
+        provider_secret: []
+      summary: Generate payment link
+      tags:
+      - Collections
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--v2-payments-upi-link
+  /v2/payments/transaction/{transaction_id}/status:
+    get:
+      operationId: Collections_getTransactionStatus
+      parameters:
+      - explode: false
+        in: path
+        name: transaction_id
+        required: true
+        schema:
+          minLength: 1
+          type: string
+        style: simple
+      responses:
+        default:
+          content:
+            application/json:
+              examples:
+                example-0:
+                  summary: Success
+                  value:
+                    decentroTxnId: XYZ
+                    status: SUCCESS
+                    responseCode: S00000
+                    message: UPI Transaction Status processed successfully
+                    data:
+                      transactionStatus: PENDING
+                      bankReferenceNumber: NA
+                      npciTxnId: NA
+                example-1:
+                  summary: "Failure: No transaction found"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "This transaction was not found in our system. If there\
+                      \ was any debit, it would have already been reversed. Please\
+                      \ retry the corresponding initiate payment transaction."
+                example-2:
+                  summary: "Failure: Unsanitized value"
+                  value:
+                    decentroTxnId: XYZ
+                    error:
+                      message: Internal Server Error
+                      response_code: E00000
+              schema:
+                $ref: '#/components/schemas/GetTransactionStatusResponse'
+          description: Failure
+      security:
+      - client_id: []
+        client_secret: []
+        module_secret: []
+        provider_secret: []
+      summary: Get transaction status
+      tags:
+      - Collections
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--v2-payments-transaction-transaction_id-status
+  /v2/payments/upi/refund:
+    post:
+      operationId: Collections_issueUpiRefund
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example-0:
+                value:
+                  reference_id: ABCDEF12345
+                  transaction_id: XYZ
+                  purpose_message: Welcome to Decentro
+              example-1:
+                value:
+                  reference_id: ABCDEF12345
+                  bank_reference_number: "111111111111"
+                  purpose_message: Welcome to Decentro
+            schema:
+              $ref: '#/components/schemas/IssueUpiRefundRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-0:
+                  summary: "Success: Transaction_id"
+                  value:
+                    decentroTxnId: XYZ
+                    status: SUCCESS
+                    responseCode: S00000
+                    message: Transaction refund request processed successfully
+                    data:
+                      transactionId: XYZ123
+                      transactionStatus: PENDING
+                      transactionStatusDescription: Success
+                example-1:
+                  summary: "Success: Bank_reference_number"
+                  value:
+                    decentroTxnId: XYZ
+                    status: SUCCESS
+                    responseCode: S00000
+                    message: Transaction refund request processed successfully
+                    data:
+                      transactionId: 8319E77ACF0140FBADB0ED0AD5E0DFB3
+                      transactionStatus: PENDING
+                      transactionStatusDescription: Success
+              schema:
+                $ref: '#/components/schemas/IssueUpiRefundResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                example-0:
+                  summary: "Failure: Refund already processed"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: Refund has already been initiated for the given transaction.
+                      Kindly use the status inquiry API to get the latest status.
+                example-1:
+                  summary: "Failure: No transaction found"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: No such transaction found at our end. Please check the
+                      values and retry
+                example-2:
+                  summary: "Failure: Transaction still in pending"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: Given transaction is found in PENDING state. Please initiate
+                      transaction status API to check the current status.
+                example-3:
+                  summary: "Failure: Transaction not success"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "Given transaction is not in SUCCESS state. So, refund\
+                      \ cannot be initiated."
+              schema:
+                $ref: '#/components/schemas/IssueUpiRefund400Response'
+          description: Bad Request
+      security:
+      - client_id: []
+        client_secret: []
+        module_secret: []
+        provider_secret: []
+      summary: Issue UPI Refund
+      tags:
+      - Collections
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--v2-payments-upi-refund
+  /v2/payments/vpa/validate:
+    post:
+      operationId: Collections_validateUpiHandle
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example-0:
+                value:
+                  reference_id: ABCDEF12345
+                  upi_id: DecentroTest12@aaa
+                  type: BASIC
+            schema:
+              $ref: '#/components/schemas/ValidateUpiHandleRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateUpiHandleResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                example-0:
+                  summary: "Failure: Missing UPI id"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "UPI-ID (Virtual Payment Address) cannot be null or empty.\
+                      \ Hint : upi_id (string)"
+                example-1:
+                  summary: "Failure: Empty reference id"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "Request reference id cannot be null or empty. Hint:\
+                      \ reference_id (string)"
+              schema:
+                $ref: '#/components/schemas/ValidateUpiHandle400Response'
+          description: Bad Request
+      security:
+      - client_id: []
+        client_secret: []
+        module_secret: []
+        provider_secret: []
+      summary: Validate UPI handle
+      tags:
+      - Collections
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--v2-payments-vpa-validate
+  /v2/payments/collection:
+    post:
+      operationId: Collections_issueCollectRequest
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example-0:
+                value:
+                  reference_id: ABCDEF12345
+                  payer_upi: DecentroTest@aaa
+                  payee_account: "00000000000000000"
+                  amount: 1
+                  purpose_message: Welcome to Decentro
+                  expiry_time: 30
+            schema:
+              $ref: '#/components/schemas/IssueCollectRequestRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueCollectRequestResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                example-0:
+                  summary: "Failure: Missing UPI Id"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "UPI-ID (Virtual Payment Address) cannot be null or empty.\
+                      \ Hint : payer_upi (string)."
+                example-1:
+                  summary: "Failure: Invalid account number"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: The combination of this account_number and provider for
+                      `payee` doesn't match with an existing customer. Please check
+                      the values and try resubmitting.
+                example-2:
+                  summary: "Failure: Invalid amount"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: Malformed request detected.
+                example-3:
+                  summary: "Failure: Missing payee account"
+                  value:
+                    decentroTxnId: XYZ
+                    status: FAILURE
+                    responseCode: E00009
+                    message: "Payee Account Number cannot be null or empty. Hint:\
+                      \ payee_account (string)"
+              schema:
+                $ref: '#/components/schemas/IssueCollectRequest400Response'
+          description: Bad Request
+      security:
+      - client_id: []
+        client_secret: []
+        module_secret: []
+        provider_secret: []
+      summary: Issue collect request
+      tags:
+      - Collections
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--v2-payments-collection
+components:
+  schemas:
+    GeneratePaymentLinkRequest:
+      example:
+        reference_id: ABCDEF12345
+        payee_account: "00000000000000000"
+        amount: 4
+        purpose_message: Welcome to Decentro
+        generate_qr: 0
+        expiry_time: 10
+        customized_qr_with_logo: 0
+        generate_uri: 0
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-reference_id
+        payee_account:
+          example: "00000000000000000"
+          minLength: 1
+          type: string
+          x-konfig-original-example: "00000000000000000"
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-payee_account
+        amount:
+          example: 4
+          exclusiveMinimum: true
+          minimum: 0
+          type: number
+          x-konfig-original-example: 4
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-amount
+        purpose_message:
+          example: Welcome to Decentro
+          minLength: 1
+          type: string
+          x-konfig-original-example: Welcome to Decentro
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-purpose_message
+        generate_qr:
+          example: 0
+          maximum: 1
+          minimum: 0
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-generate_qr
+        expiry_time:
+          example: 10
+          exclusiveMinimum: true
+          minimum: 0
+          type: integer
+          x-konfig-original-example: 10
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-expiry_time
+        customized_qr_with_logo:
+          example: 0
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-customized_qr_with_logo
+        generate_uri:
+          example: 0
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-generate_uri
+      required:
+      - amount
+      - generate_qr
+      - payee_account
+      - purpose_message
+      - reference_id
+      type: object
+      x-konfig-original-example:
+        reference_id: ABCDEF12345
+        payee_account: "00000000000000000"
+        amount: 4
+        purpose_message: Welcome to Decentro
+        generate_qr: 0
+        expiry_time: 10
+        customized_qr_with_logo: 0
+        generate_uri: 0
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest
+    IssueUpiRefundRequest:
+      example:
+        reference_id: ABCDEF12345
+        transaction_id: 4CE9587AE3D143CDAC72E7D0CF14D028
+        bank_reference_number: "111111111111"
+        purpose_message: Welcome to Decentro
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-reference_id
+        transaction_id:
+          example: 4CE9587AE3D143CDAC72E7D0CF14D028
+          type: string
+          x-konfig-original-example: 4CE9587AE3D143CDAC72E7D0CF14D028
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-transaction_id
+        bank_reference_number:
+          example: "111111111111"
+          type: string
+          x-konfig-original-example: "111111111111"
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-bank_reference_number
+        purpose_message:
+          example: Welcome to Decentro
+          type: string
+          x-konfig-original-example: Welcome to Decentro
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-purpose_message
+      required:
+      - reference_id
+      type: object
+      x-konfig-original-example:
+        reference_id: ABCDEF12345
+        transaction_id: 4CE9587AE3D143CDAC72E7D0CF14D028
+        bank_reference_number: "111111111111"
+        purpose_message: Welcome to Decentro
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest
+    ValidateUpiHandleRequest:
+      example:
+        reference_id: ABCDEF12345
+        upi_id: test001@abc
+        type: BASIC
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-reference_id
+        upi_id:
+          example: test001@abc
+          minLength: 1
+          type: string
+          x-konfig-original-example: test001@abc
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-upi_id
+        type:
+          example: BASIC
+          type: string
+          x-konfig-original-example: BASIC
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-type
+      required:
+      - reference_id
+      - upi_id
+      type: object
+      x-konfig-original-example:
+        reference_id: ABCDEF12345
+        upi_id: test001@abc
+        type: BASIC
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleRequest
+    IssueCollectRequestRequest:
+      example:
+        reference_id: ABCDEF12345
+        payer_upi: test001@abc
+        payee_account: "00000000000000000"
+        amount: 1
+        purpose_message: Welcome to Decentro
+        expiry_time: 30
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-reference_id
+        payer_upi:
+          example: test001@abc
+          minLength: 1
+          type: string
+          x-konfig-original-example: test001@abc
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-payer_upi
+        payee_account:
+          example: "00000000000000000"
+          minLength: 1
+          type: string
+          x-konfig-original-example: "00000000000000000"
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-payee_account
+        amount:
+          example: 1
+          exclusiveMinimum: true
+          minimum: 0
+          type: number
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-amount
+        purpose_message:
+          example: Welcome to Decentro
+          minLength: 1
+          type: string
+          x-konfig-original-example: Welcome to Decentro
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-purpose_message
+        expiry_time:
+          example: 30
+          exclusiveMinimum: true
+          minimum: 0
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-expiry_time
+      required:
+      - amount
+      - payee_account
+      - payer_upi
+      - purpose_message
+      - reference_id
+      type: object
+      x-konfig-original-example:
+        reference_id: ABCDEF12345
+        payer_upi: test001@abc
+        payee_account: "00000000000000000"
+        amount: 1
+        purpose_message: Welcome to Decentro
+        expiry_time: 30
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest
+    GeneratePaymentLinkResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Payment Link created Successfully
+        data:
+          generatedLink: https://decf.in/pay/bbs2czljt1
+          transactionId: xyz
+          transactionStatus: PENDING
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-decentroTxnId
+        status:
+          example: SUCCESS
+          type: string
+          x-konfig-original-example: SUCCESS
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-status
+        responseCode:
+          example: S00000
+          type: string
+          x-konfig-original-example: S00000
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-responseCode
+        message:
+          example: Payment Link created Successfully
+          type: string
+          x-konfig-original-example: Payment Link created Successfully
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-message
+        data:
+          $ref: '#/components/schemas/GeneratePaymentLinkResponse_data'
+        responseKey:
+          example: success_payment_link_created
+          type: string
+          x-konfig-original-example: success_payment_link_created
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-responseKey
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Payment Link created Successfully
+        data:
+          generatedLink: https://decf.in/pay/bbs2czljt1
+          transactionId: xyz
+          transactionStatus: PENDING
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse
+    GeneratePaymentLink400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: The combination of this account_number and provider for `payee` doesn't
+          match with an existing customer. Please check the values and try resubmitting.
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-decentroTxnId
+        status:
+          example: FAILURE
+          type: string
+          x-konfig-original-example: FAILURE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-status
+        responseCode:
+          example: E00009
+          type: string
+          x-konfig-original-example: E00009
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-responseCode
+        message:
+          example: The combination of this account_number and provider for `payee`
+            doesn't match with an existing customer. Please check the values and try
+            resubmitting.
+          type: string
+          x-konfig-original-example: The combination of this account_number and provider
+            for `payee` doesn't match with an existing customer. Please check the
+            values and try resubmitting.
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-message
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: The combination of this account_number and provider for `payee` doesn't
+          match with an existing customer. Please check the values and try resubmitting.
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLink400Response
+    GetTransactionStatusResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: UPI Transaction Status processed successfully
+        data:
+          transactionStatus: PENDING
+          bankReferenceNumber: NA
+          npciTxnId: NA
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-decentroTxnId
+        status:
+          example: SUCCESS
+          type: string
+          x-konfig-original-example: SUCCESS
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-status
+        responseCode:
+          example: S00000
+          type: string
+          x-konfig-original-example: S00000
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-responseCode
+        message:
+          example: UPI Transaction Status processed successfully
+          type: string
+          x-konfig-original-example: UPI Transaction Status processed successfully
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-message
+        data:
+          $ref: '#/components/schemas/GetTransactionStatusResponse_data'
+        error:
+          $ref: '#/components/schemas/GetTransactionStatusResponse_error'
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: UPI Transaction Status processed successfully
+        data:
+          transactionStatus: PENDING
+          bankReferenceNumber: NA
+          npciTxnId: NA
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse
+    IssueUpiRefundResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Transaction refund request processed successfully
+        data:
+          transactionId: XYZ123
+          transactionStatus: PENDING
+          transactionStatusDescription: Success
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-decentroTxnId
+        status:
+          example: SUCCESS
+          type: string
+          x-konfig-original-example: SUCCESS
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-status
+        responseCode:
+          example: S00000
+          type: string
+          x-konfig-original-example: S00000
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-responseCode
+        message:
+          example: Transaction refund request processed successfully
+          type: string
+          x-konfig-original-example: Transaction refund request processed successfully
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-message
+        data:
+          $ref: '#/components/schemas/IssueUpiRefundResponse_data'
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Transaction refund request processed successfully
+        data:
+          transactionId: XYZ123
+          transactionStatus: PENDING
+          transactionStatusDescription: Success
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse
+    IssueUpiRefund400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: Refund has already been initiated for the given transaction. Kindly
+          use the status inquiry API to get the latest status.
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-decentroTxnId
+        status:
+          example: FAILURE
+          type: string
+          x-konfig-original-example: FAILURE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-status
+        responseCode:
+          example: E00009
+          type: string
+          x-konfig-original-example: E00009
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-responseCode
+        message:
+          example: Refund has already been initiated for the given transaction. Kindly
+            use the status inquiry API to get the latest status.
+          type: string
+          x-konfig-original-example: Refund has already been initiated for the given
+            transaction. Kindly use the status inquiry API to get the latest status.
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-message
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: Refund has already been initiated for the given transaction. Kindly
+          use the status inquiry API to get the latest status.
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefund400Response
+    ValidateUpiHandleResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: UPI-ID (Virtual Payment Address) validation processed successfully
+        data:
+          upiId: DecentroTest12@ybl
+          name: Decentro Test
+          status: VALID
+          statusDescription: Success
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-decentroTxnId
+        status:
+          example: SUCCESS
+          type: string
+          x-konfig-original-example: SUCCESS
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-status
+        responseCode:
+          example: S00000
+          type: string
+          x-konfig-original-example: S00000
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-responseCode
+        message:
+          example: UPI-ID (Virtual Payment Address) validation processed successfully
+          type: string
+          x-konfig-original-example: UPI-ID (Virtual Payment Address) validation processed
+            successfully
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-message
+        data:
+          $ref: '#/components/schemas/ValidateUpiHandleResponse_data'
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: UPI-ID (Virtual Payment Address) validation processed successfully
+        data:
+          upiId: DecentroTest12@ybl
+          name: Decentro Test
+          status: VALID
+          statusDescription: Success
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse
+    ValidateUpiHandle400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint :\
+          \ upi_id (string)"
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-decentroTxnId
+        status:
+          example: FAILURE
+          type: string
+          x-konfig-original-example: FAILURE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-status
+        responseCode:
+          example: E00009
+          type: string
+          x-konfig-original-example: E00009
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-responseCode
+        message:
+          example: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint\
+            \ : upi_id (string)"
+          type: string
+          x-konfig-original-example: "UPI-ID (Virtual Payment Address) cannot be null\
+            \ or empty. Hint : upi_id (string)"
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-message
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint :\
+          \ upi_id (string)"
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandle400Response
+    IssueCollectRequestResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Transaction Collection request processed successfully
+        data:
+          transactionId: XYZ
+          transactionStatus: PENDING
+          transactionStatusDescription: Successfully initiated the collection request.
+          bankReferenceNumber: NA
+          npciTransactionId: XYZ1234
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-decentroTxnId
+        status:
+          example: SUCCESS
+          type: string
+          x-konfig-original-example: SUCCESS
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-status
+        responseCode:
+          example: S00000
+          type: string
+          x-konfig-original-example: S00000
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-responseCode
+        message:
+          example: Transaction Collection request processed successfully
+          type: string
+          x-konfig-original-example: Transaction Collection request processed successfully
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-message
+        data:
+          $ref: '#/components/schemas/IssueCollectRequestResponse_data'
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Transaction Collection request processed successfully
+        data:
+          transactionId: XYZ
+          transactionStatus: PENDING
+          transactionStatusDescription: Successfully initiated the collection request.
+          bankReferenceNumber: NA
+          npciTransactionId: XYZ1234
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse
+    IssueCollectRequest400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint :\
+          \ payer_upi (string)."
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-decentroTxnId
+        status:
+          example: FAILURE
+          type: string
+          x-konfig-original-example: FAILURE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-status
+        responseCode:
+          example: E00009
+          type: string
+          x-konfig-original-example: E00009
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-responseCode
+        message:
+          example: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint\
+            \ : payer_upi (string)."
+          type: string
+          x-konfig-original-example: "UPI-ID (Virtual Payment Address) cannot be null\
+            \ or empty. Hint : payer_upi (string)."
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-message
+      type: object
+      x-konfig-original-example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint :\
+          \ payer_upi (string)."
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequest400Response
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest:
+      example:
+        reference_id: ABCDEF12345
+        payee_account: "00000000000000000"
+        amount: 4
+        purpose_message: Welcome to Decentro
+        generate_qr: 0
+        expiry_time: 10
+        customized_qr_with_logo: 0
+        generate_uri: 0
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          type: string
+        payee_account:
+          example: "00000000000000000"
+          type: string
+        amount:
+          example: 4
+          type: number
+        purpose_message:
+          example: Welcome to Decentro
+          type: string
+        generate_qr:
+          example: 0
+          type: number
+        expiry_time:
+          example: 10
+          type: number
+        customized_qr_with_logo:
+          example: 0
+          type: number
+        generate_uri:
+          example: 0
+          type: number
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-reference_id:
+      example: ABCDEF12345
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-payee_account:
+      example: "00000000000000000"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-amount:
+      example: 4
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-purpose_message:
+      example: Welcome to Decentro
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-generate_qr:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-expiry_time:
+      example: 10
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-customized_qr_with_logo:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-generate_uri:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundRequest:
+      example:
+        reference_id: ABCDEF12345
+        transaction_id: 4CE9587AE3D143CDAC72E7D0CF14D028
+        bank_reference_number: "111111111111"
+        purpose_message: Welcome to Decentro
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          type: string
+        transaction_id:
+          example: 4CE9587AE3D143CDAC72E7D0CF14D028
+          type: string
+        bank_reference_number:
+          example: "111111111111"
+          type: string
+        purpose_message:
+          example: Welcome to Decentro
+          type: string
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-reference_id:
+      example: ABCDEF12345
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-transaction_id:
+      example: 4CE9587AE3D143CDAC72E7D0CF14D028
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-bank_reference_number:
+      example: "111111111111"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-purpose_message:
+      example: Welcome to Decentro
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleRequest:
+      example:
+        reference_id: ABCDEF12345
+        upi_id: test001@abc
+        type: BASIC
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          type: string
+        upi_id:
+          example: test001@abc
+          type: string
+        type:
+          example: BASIC
+          type: string
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-reference_id:
+      example: ABCDEF12345
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-upi_id:
+      example: test001@abc
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-type:
+      example: BASIC
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestRequest:
+      example:
+        reference_id: ABCDEF12345
+        payer_upi: test001@abc
+        payee_account: "00000000000000000"
+        amount: 1
+        purpose_message: Welcome to Decentro
+        expiry_time: 30
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          type: string
+        payer_upi:
+          example: test001@abc
+          type: string
+        payee_account:
+          example: "00000000000000000"
+          type: string
+        amount:
+          example: 1
+          type: number
+        purpose_message:
+          example: Welcome to Decentro
+          type: string
+        expiry_time:
+          example: 30
+          type: number
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-reference_id:
+      example: ABCDEF12345
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-payer_upi:
+      example: test001@abc
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-payee_account:
+      example: "00000000000000000"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-amount:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-purpose_message:
+      example: Welcome to Decentro
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-expiry_time:
+      example: 30
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Payment Link created Successfully
+        data:
+          generatedLink: https://decf.in/pay/bbs2czljt1
+          transactionId: xyz
+          transactionStatus: PENDING
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: SUCCESS
+          type: string
+        responseCode:
+          example: S00000
+          type: string
+        message:
+          example: Payment Link created Successfully
+          type: string
+        data:
+          properties:
+            generatedLink:
+              example: https://decf.in/pay/bbs2czljt1
+              type: string
+            transactionId:
+              example: xyz
+              type: string
+            transactionStatus:
+              example: PENDING
+              type: string
+          type: object
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-status:
+      example: SUCCESS
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-responseCode:
+      example: S00000
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-message:
+      example: Payment Link created Successfully
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-generatedLink:
+      example: https://decf.in/pay/bbs2czljt1
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-transactionId:
+      example: xyz
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-transactionStatus:
+      example: PENDING
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-encodedDynamicQrCode:
+      example: iVBORw0KGgoAAAANSUhEUgAAA/wAAAP8CAYAAAD7obX7AAAAAXNSR0IArs4c6QAAIABJREFUeF7s/e16Y0mSo+0q9vkf88S+4u3u...SHORTENED-BY-KONFIG...VIEqUAWqQBWoAlWgClSBKlAFqkAVuKECXfhvaGopVYEqUAWqQBWoAlWgClSBKlAFqkAV+P8BRKbBe+YKpxYAAAAASUVORK5CYII=
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-upiUri:
+      example: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-commonUri:
+      example: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-gpayUri:
+      example: gpay://upi/pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-phonepeUri:
+      example: phonepe://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-paytmUri:
+      example: paytmmp://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-responseKey:
+      example: success_payment_link_created
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLink400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: The combination of this account_number and provider for `payee` doesn't
+          match with an existing customer. Please check the values and try resubmitting.
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: FAILURE
+          type: string
+        responseCode:
+          example: E00009
+          type: string
+        message:
+          example: The combination of this account_number and provider for `payee`
+            doesn't match with an existing customer. Please check the values and try
+            resubmitting.
+          type: string
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-status:
+      example: FAILURE
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-responseCode:
+      example: E00009
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GeneratePaymentLink400Response-properties-message:
+      example: The combination of this account_number and provider for `payee` doesn't
+        match with an existing customer. Please check the values and try resubmitting.
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: UPI Transaction Status processed successfully
+        data:
+          transactionStatus: PENDING
+          bankReferenceNumber: NA
+          npciTxnId: NA
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: SUCCESS
+          type: string
+        responseCode:
+          example: S00000
+          type: string
+        message:
+          example: UPI Transaction Status processed successfully
+          type: string
+        data:
+          properties:
+            transactionStatus:
+              example: PENDING
+              type: string
+            bankReferenceNumber:
+              example: NA
+              type: string
+            npciTxnId:
+              example: NA
+              type: string
+          type: object
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-status:
+      example: SUCCESS
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-responseCode:
+      example: S00000
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-message:
+      example: UPI Transaction Status processed successfully
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-data-properties-transactionStatus:
+      example: PENDING
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-data-properties-bankReferenceNumber:
+      example: NA
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-data-properties-npciTxnId:
+      example: NA
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-error-properties-message:
+      example: Internal Server Error
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-error-properties-response_code:
+      example: E00000
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Transaction refund request processed successfully
+        data:
+          transactionId: XYZ123
+          transactionStatus: PENDING
+          transactionStatusDescription: Success
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: SUCCESS
+          type: string
+        responseCode:
+          example: S00000
+          type: string
+        message:
+          example: Transaction refund request processed successfully
+          type: string
+        data:
+          properties:
+            transactionId:
+              example: XYZ123
+              type: string
+            transactionStatus:
+              example: PENDING
+              type: string
+            transactionStatusDescription:
+              example: Success
+              type: string
+          type: object
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-status:
+      example: SUCCESS
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-responseCode:
+      example: S00000
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-message:
+      example: Transaction refund request processed successfully
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-data-properties-transactionId:
+      example: XYZ123
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-data-properties-transactionStatus:
+      example: PENDING
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-data-properties-transactionStatusDescription:
+      example: Success
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefund400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: Refund has already been initiated for the given transaction. Kindly
+          use the status inquiry API to get the latest status.
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: FAILURE
+          type: string
+        responseCode:
+          example: E00009
+          type: string
+        message:
+          example: Refund has already been initiated for the given transaction. Kindly
+            use the status inquiry API to get the latest status.
+          type: string
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-status:
+      example: FAILURE
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-responseCode:
+      example: E00009
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueUpiRefund400Response-properties-message:
+      example: Refund has already been initiated for the given transaction. Kindly
+        use the status inquiry API to get the latest status.
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: UPI-ID (Virtual Payment Address) validation processed successfully
+        data:
+          upiId: DecentroTest12@ybl
+          name: Decentro Test
+          status: VALID
+          statusDescription: Success
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: SUCCESS
+          type: string
+        responseCode:
+          example: S00000
+          type: string
+        message:
+          example: UPI-ID (Virtual Payment Address) validation processed successfully
+          type: string
+        data:
+          properties:
+            upiId:
+              example: DecentroTest12@ybl
+              type: string
+            name:
+              example: Decentro Test
+              type: string
+            status:
+              example: VALID
+              type: string
+            statusDescription:
+              example: Success
+              type: string
+          type: object
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-status:
+      example: SUCCESS
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-responseCode:
+      example: S00000
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-message:
+      example: UPI-ID (Virtual Payment Address) validation processed successfully
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-upiId:
+      example: DecentroTest12@ybl
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-name:
+      example: Decentro Test
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-status:
+      example: VALID
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-statusDescription:
+      example: Success
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandle400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint :\
+          \ upi_id (string)"
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: FAILURE
+          type: string
+        responseCode:
+          example: E00009
+          type: string
+        message:
+          example: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint\
+            \ : upi_id (string)"
+          type: string
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-status:
+      example: FAILURE
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-responseCode:
+      example: E00009
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidateUpiHandle400Response-properties-message:
+      example: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint : upi_id\
+        \ (string)"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse:
+      example:
+        decentroTxnId: XYZ
+        status: SUCCESS
+        responseCode: S00000
+        message: Transaction Collection request processed successfully
+        data:
+          transactionId: XYZ
+          transactionStatus: PENDING
+          transactionStatusDescription: Successfully initiated the collection request.
+          bankReferenceNumber: NA
+          npciTransactionId: XYZ1234
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: SUCCESS
+          type: string
+        responseCode:
+          example: S00000
+          type: string
+        message:
+          example: Transaction Collection request processed successfully
+          type: string
+        data:
+          properties:
+            transactionId:
+              example: XYZ
+              type: string
+            transactionStatus:
+              example: PENDING
+              type: string
+            transactionStatusDescription:
+              example: Successfully initiated the collection request.
+              type: string
+            bankReferenceNumber:
+              example: NA
+              type: string
+            npciTransactionId:
+              example: XYZ1234
+              type: string
+          type: object
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-status:
+      example: SUCCESS
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-responseCode:
+      example: S00000
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-message:
+      example: Transaction Collection request processed successfully
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-transactionId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-transactionStatus:
+      example: PENDING
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-transactionStatusDescription:
+      example: Successfully initiated the collection request.
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-bankReferenceNumber:
+      example: NA
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-npciTransactionId:
+      example: XYZ1234
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequest400Response:
+      example:
+        decentroTxnId: XYZ
+        status: FAILURE
+        responseCode: E00009
+        message: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint :\
+          \ payer_upi (string)."
+      properties:
+        decentroTxnId:
+          example: XYZ
+          type: string
+        status:
+          example: FAILURE
+          type: string
+        responseCode:
+          example: E00009
+          type: string
+        message:
+          example: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint\
+            \ : payer_upi (string)."
+          type: string
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-decentroTxnId:
+      example: XYZ
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-status:
+      example: FAILURE
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-responseCode:
+      example: E00009
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssueCollectRequest400Response-properties-message:
+      example: "UPI-ID (Virtual Payment Address) cannot be null or empty. Hint : payer_upi\
+        \ (string)."
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-single-parameter-schema-post--v2-payments-upi-link:
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-reference_id
+        payee_account:
+          example: "00000000000000000"
+          minLength: 1
+          type: string
+          x-konfig-original-example: "00000000000000000"
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-payee_account
+        amount:
+          example: 4
+          exclusiveMinimum: true
+          minimum: 0
+          type: number
+          x-konfig-original-example: 4
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-amount
+        purpose_message:
+          example: Welcome to Decentro
+          minLength: 1
+          type: string
+          x-konfig-original-example: Welcome to Decentro
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-purpose_message
+        generate_qr:
+          example: 0
+          maximum: 1
+          minimum: 0
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-generate_qr
+        expiry_time:
+          example: 10
+          exclusiveMinimum: true
+          minimum: 0
+          type: integer
+          x-konfig-original-example: 10
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-expiry_time
+        customized_qr_with_logo:
+          example: 0
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-customized_qr_with_logo
+        generate_uri:
+          example: 0
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkRequest-properties-generate_uri
+      required:
+      - amount
+      - generate_qr
+      - payee_account
+      - purpose_message
+      - reference_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--v2-payments-transaction-transaction_id-status:
+      properties:
+        transaction_id:
+          minLength: 1
+          type: string
+      required:
+      - transaction_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - transaction_id
+    konfig-generated-schema-single-parameter-schema-post--v2-payments-upi-refund:
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-reference_id
+        transaction_id:
+          example: 4CE9587AE3D143CDAC72E7D0CF14D028
+          type: string
+          x-konfig-original-example: 4CE9587AE3D143CDAC72E7D0CF14D028
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-transaction_id
+        bank_reference_number:
+          example: "111111111111"
+          type: string
+          x-konfig-original-example: "111111111111"
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-bank_reference_number
+        purpose_message:
+          example: Welcome to Decentro
+          type: string
+          x-konfig-original-example: Welcome to Decentro
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundRequest-properties-purpose_message
+      required:
+      - reference_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--v2-payments-vpa-validate:
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-reference_id
+        upi_id:
+          example: test001@abc
+          minLength: 1
+          type: string
+          x-konfig-original-example: test001@abc
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-upi_id
+        type:
+          example: BASIC
+          type: string
+          x-konfig-original-example: BASIC
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleRequest-properties-type
+      required:
+      - reference_id
+      - upi_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--v2-payments-collection:
+      properties:
+        reference_id:
+          example: ABCDEF12345
+          minLength: 1
+          type: string
+          x-konfig-original-example: ABCDEF12345
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-reference_id
+        payer_upi:
+          example: test001@abc
+          minLength: 1
+          type: string
+          x-konfig-original-example: test001@abc
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-payer_upi
+        payee_account:
+          example: "00000000000000000"
+          minLength: 1
+          type: string
+          x-konfig-original-example: "00000000000000000"
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-payee_account
+        amount:
+          example: 1
+          exclusiveMinimum: true
+          minimum: 0
+          type: number
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-amount
+        purpose_message:
+          example: Welcome to Decentro
+          minLength: 1
+          type: string
+          x-konfig-original-example: Welcome to Decentro
+          x-konfig-strip: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-purpose_message
+        expiry_time:
+          example: 30
+          exclusiveMinimum: true
+          minimum: 0
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestRequest-properties-expiry_time
+      required:
+      - amount
+      - payee_account
+      - payer_upi
+      - purpose_message
+      - reference_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    GeneratePaymentLinkResponse_data_pspUri:
+      properties:
+        commonUri:
+          example: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          type: string
+          x-konfig-original-example: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-commonUri
+        gpayUri:
+          example: gpay://upi/pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          type: string
+          x-konfig-original-example: gpay://upi/pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-gpayUri
+        phonepeUri:
+          example: phonepe://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          type: string
+          x-konfig-original-example: phonepe://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-phonepeUri
+        paytmUri:
+          example: paytmmp://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          type: string
+          x-konfig-original-example: paytmmp://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-pspUri-properties-paytmUri
+      type: object
+    GeneratePaymentLinkResponse_data:
+      properties:
+        generatedLink:
+          example: https://decf.in/pay/bbs2czljt1
+          type: string
+          x-konfig-original-example: https://decf.in/pay/bbs2czljt1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-generatedLink
+        transactionId:
+          example: xyz
+          type: string
+          x-konfig-original-example: xyz
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-transactionId
+        transactionStatus:
+          example: PENDING
+          type: string
+          x-konfig-original-example: PENDING
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-transactionStatus
+        encodedDynamicQrCode:
+          example: iVBORw0KGgoAAAANSUhEUgAAA/wAAAP8CAYAAAD7obX7AAAAAXNSR0IArs4c6QAAIABJREFUeF7s/e16Y0mSo+0q9vkf88S+4u3u...SHORTENED-BY-KONFIG...VIEqUAWqQBWoAlWgClSBKlAFqkAVuKECXfhvaGopVYEqUAWqQBWoAlWgClSBKlAFqkAV+P8BRKbBe+YKpxYAAAAASUVORK5CYII=
+          type: string
+          x-konfig-original-example: iVBORw0KGgoAAAANSUhEUgAAA/wAAAP8CAYAAAD7obX7AAAAAXNSR0IArs4c6QAAIABJREFUeF7s/e16Y0mSo+0q9vkf88S+4u3u...SHORTENED-BY-KONFIG...VIEqUAWqQBWoAlWgClSBKlAFqkAVuKECXfhvaGopVYEqUAWqQBWoAlWgClSBKlAFqkAV+P8BRKbBe+YKpxYAAAAASUVORK5CYII=
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-encodedDynamicQrCode
+        upiUri:
+          example: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          type: string
+          x-konfig-original-example: upi://pay?ver=01&mode=15&am=1.00&cu=INR&pa=decentro@timecosmos&pn=Decentro%20Tech%20Pvt%20Ltd&mc=6012&tr=KJDYI74HRFIW4E7FG847&tn=Welcome%20to%20Decentro%20Test&mid=DECE1&msid=DEC1&mtid=DEC1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GeneratePaymentLinkResponse-properties-data-properties-upiUri
+        pspUri:
+          $ref: '#/components/schemas/GeneratePaymentLinkResponse_data_pspUri'
+      type: object
+    GetTransactionStatusResponse_data:
+      properties:
+        transactionStatus:
+          example: PENDING
+          type: string
+          x-konfig-original-example: PENDING
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-data-properties-transactionStatus
+        bankReferenceNumber:
+          example: NA
+          type: string
+          x-konfig-original-example: NA
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-data-properties-bankReferenceNumber
+        npciTxnId:
+          example: NA
+          type: string
+          x-konfig-original-example: NA
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-data-properties-npciTxnId
+      type: object
+    GetTransactionStatusResponse_error:
+      properties:
+        message:
+          example: Internal Server Error
+          type: string
+          x-konfig-original-example: Internal Server Error
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-error-properties-message
+        response_code:
+          example: E00000
+          type: string
+          x-konfig-original-example: E00000
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetTransactionStatusResponse-properties-error-properties-response_code
+      type: object
+    IssueUpiRefundResponse_data:
+      properties:
+        transactionId:
+          example: XYZ123
+          type: string
+          x-konfig-original-example: XYZ123
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-data-properties-transactionId
+        transactionStatus:
+          example: PENDING
+          type: string
+          x-konfig-original-example: PENDING
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-data-properties-transactionStatus
+        transactionStatusDescription:
+          example: Success
+          type: string
+          x-konfig-original-example: Success
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueUpiRefundResponse-properties-data-properties-transactionStatusDescription
+      type: object
+    ValidateUpiHandleResponse_data:
+      properties:
+        upiId:
+          example: DecentroTest12@ybl
+          type: string
+          x-konfig-original-example: DecentroTest12@ybl
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-upiId
+        name:
+          example: Decentro Test
+          type: string
+          x-konfig-original-example: Decentro Test
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-name
+        status:
+          example: VALID
+          type: string
+          x-konfig-original-example: VALID
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-status
+        statusDescription:
+          example: Success
+          type: string
+          x-konfig-original-example: Success
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidateUpiHandleResponse-properties-data-properties-statusDescription
+      type: object
+    IssueCollectRequestResponse_data:
+      properties:
+        transactionId:
+          example: XYZ
+          type: string
+          x-konfig-original-example: XYZ
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-transactionId
+        transactionStatus:
+          example: PENDING
+          type: string
+          x-konfig-original-example: PENDING
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-transactionStatus
+        transactionStatusDescription:
+          example: Successfully initiated the collection request.
+          type: string
+          x-konfig-original-example: Successfully initiated the collection request.
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-transactionStatusDescription
+        bankReferenceNumber:
+          example: NA
+          type: string
+          x-konfig-original-example: NA
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-bankReferenceNumber
+        npciTransactionId:
+          example: XYZ1234
+          type: string
+          x-konfig-original-example: XYZ1234
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssueCollectRequestResponse-properties-data-properties-npciTransactionId
+      type: object
+  securitySchemes:
+    client_id:
+      in: header
+      name: client_id
+      type: apiKey
+      x-konfig-globally-required-security: true
+    client_secret:
+      in: header
+      name: client_secret
+      type: apiKey
+      x-konfig-globally-required-security: true
+    module_secret:
+      in: header
+      name: module_secret
+      type: apiKey
+      x-konfig-globally-required-security: true
+    provider_secret:
+      in: header
+      name: provider_secret
+      type: apiKey
+      x-konfig-globally-required-security: true

@@ -1,0 +1,131 @@
+description: Collections
+examples: {}
+examples_2:
+  /v2/payments/collection:
+    post:
+      data:
+        bankReferenceNumber: NA
+        npciTransactionId: XYZ1234
+        transactionId: XYZ
+        transactionStatus: PENDING
+        transactionStatusDescription: Successfully initiated the collection request.
+      decentroTxnId: XYZ
+      message: Transaction Collection request processed successfully
+      responseCode: S00000
+      status: SUCCESS
+  /v2/payments/upi/link:
+    post:
+      data:
+        generatedLink: https://decf.in/pay/bbs2czljt1
+        transactionId: xyz
+        transactionStatus: PENDING
+      decentroTxnId: XYZ
+      message: Payment Link created Successfully
+      responseCode: S00000
+      status: SUCCESS
+  /v2/payments/vpa/validate:
+    post:
+      data:
+        name: Decentro Test
+        status: VALID
+        statusDescription: Success
+        upiId: DecentroTest12@ybl
+      decentroTxnId: XYZ
+      message: UPI-ID (Virtual Payment Address) validation processed successfully
+      responseCode: S00000
+      status: SUCCESS
+examples_3: {}
+fixOnlyOneTagName: false
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /v2/payments/collection:
+    post: Collections_issueCollectRequest
+  /v2/payments/transaction/{transaction_id}/status:
+    get: Collections_getTransactionStatus
+  /v2/payments/upi/link:
+    post: Collections_generatePaymentLink
+  /v2/payments/upi/refund:
+    post: Collections_issueUpiRefund
+  /v2/payments/vpa/validate:
+    post: Collections_validateUpiHandle
+operationTags: {}
+renameTags:
+  default: Collections
+requestSchemaNames:
+  /v2/payments/collection:
+    post:
+      application/json: IssueCollectRequestRequest
+  /v2/payments/upi/link:
+    post:
+      application/json: GeneratePaymentLinkRequest
+  /v2/payments/upi/refund:
+    post:
+      application/json: IssueUpiRefundRequest
+  /v2/payments/vpa/validate:
+    post:
+      application/json: ValidateUpiHandleRequest
+responseDescriptions:
+  /v2/payments/transaction/{transaction_id}/status:
+    get:
+      undefined: Failure
+  /v2/payments/upi/link:
+    post:
+      undefined: OK
+responseSchemaNames:
+  /v2/payments/collection:
+    post:
+      '200':
+        application/json: IssueCollectRequestResponse
+      '400':
+        application/json: IssueCollectRequest400Response
+  /v2/payments/transaction/{transaction_id}/status:
+    get:
+      undefined:
+        application/json: GetTransactionStatusResponse
+  /v2/payments/upi/link:
+    post:
+      '200':
+        application/json: GeneratePaymentLinkResponse
+      '400':
+        application/json: GeneratePaymentLink400Response
+  /v2/payments/upi/refund:
+    post:
+      '200':
+        application/json: IssueUpiRefundResponse
+      '400':
+        application/json: IssueUpiRefund400Response
+  /v2/payments/vpa/validate:
+    post:
+      '200':
+        application/json: ValidateUpiHandleResponse
+      '400':
+        application/json: ValidateUpiHandle400Response
+securityParameters:
+  Content-Type:
+    header: false
+  client_id:
+    header:
+      in: header
+      name: client_id
+      securityName: client_id
+      type: apiKey
+  client_secret:
+    header:
+      in: header
+      name: client_secret
+      securityName: client_secret
+      type: apiKey
+  module_secret:
+    header:
+      in: header
+      name: module_secret
+      securityName: module_secret
+      type: apiKey
+  provider_secret:
+    header:
+      in: header
+      name: provider_secret
+      securityName: provider_secret
+      type: apiKey
+validServerUrls: {}
