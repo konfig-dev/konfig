@@ -20,7 +20,9 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
 
     // configuration := splitit.NewConfiguration()
     // configuration.SetHost("http://127.0.0.1:4010")
-    // client := splitit.NewAPIClient(configuration)
+    /* 
+    client := splitit.NewAPIClient(configuration)
+    */
 
     t.Run("Test InstallmentPlanApiService Cancel", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests

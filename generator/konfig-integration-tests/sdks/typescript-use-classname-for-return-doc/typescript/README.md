@@ -83,7 +83,7 @@ const fetchResponse =
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[TestFetch_Response](./models/test-fetch-response.ts)
+[TestFetchResponse](./models/test-fetch-response.ts)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
