@@ -33,7 +33,7 @@ namespace SnapTrade.Net.Test.Api
         public TradingApiTests()
         {
             client = new Snaptrade();
-            client.SetBasePath("http://127.0.0.1:4010");
+            client.SetBasePath("http://127.0.0.1:4032");
             // Configure custom BasePath if desired
             // client.SetBasePath("https://api.snaptrade.com/api/v1");
             client.SetClientId(System.Environment.GetEnvironmentVariable("SNAPTRADE_CLIENT_ID"));
