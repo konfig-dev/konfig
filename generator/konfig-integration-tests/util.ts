@@ -186,11 +186,10 @@ const spawnServer = (config: ServerConfigWithPort): number => {
 
 async function callAndLogExeca(command: string, args: string[], options: any) {
   console.log(`Running: ${command} ${args.join(" ")}`);
-  const { stdout, stderr } = await execa(command, args, {
+  await execa(command, args, {
     ...options,
+    stdio: "inherit",
   });
-  console.log(stdout);
-  console.error(stderr);
 }
 
 // Removes the [GitHub last commit] line from the README
