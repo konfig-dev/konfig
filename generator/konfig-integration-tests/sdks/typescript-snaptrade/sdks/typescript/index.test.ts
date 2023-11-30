@@ -27,7 +27,7 @@ it("getting started", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
-    basePath: "http://127.0.0.1:4015",
+    basePath: "http://127.0.0.1:4027",
   });
 
   // 2) Check that the client is able to make a request to the API server.
@@ -72,7 +72,7 @@ it("getUserAccountBalance", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
-    basePath: "http://127.0.0.1:4015",
+    basePath: "http://127.0.0.1:4027",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET;
@@ -97,7 +97,7 @@ it("getActivities", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
-    basePath: "http://127.0.0.1:4015",
+    basePath: "http://127.0.0.1:4027",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET;
@@ -137,7 +137,7 @@ it("getUserHoldings", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
-    basePath: "http://127.0.0.1:4015",
+    basePath: "http://127.0.0.1:4027",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET;
@@ -159,7 +159,7 @@ it.skip("getOptionsChain", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
-    basePath: "http://127.0.0.1:4015",
+    basePath: "http://127.0.0.1:4027",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET;
