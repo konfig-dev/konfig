@@ -6,8 +6,12 @@ export function Figure({
 }: PropsWithChildren<{ caption: ReactNode }>) {
   const child = getChildImage(children);
   return (
-    <figure className="flex flex-col">
-      {<div className="mb-[-5px]">{child ? child : children}</div>}
+    <figure className="flex flex-col items-center">
+      {
+        <div className="mb-[-5px] w-full text-center">
+          {child ? child : children}
+        </div>
+      }
       <b>
         <figcaption className="text-center font-light text-sm">
           {caption}
