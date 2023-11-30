@@ -19,41 +19,9 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { AccountSimple } from '../models';
-// @ts-ignore
-import { AccountSyncStatus } from '../models';
-// @ts-ignore
-import { Currency } from '../models';
-// @ts-ignore
-import { DividendAtDate } from '../models';
-// @ts-ignore
-import { Exchange } from '../models';
-// @ts-ignore
-import { MonthlyDividends } from '../models';
-// @ts-ignore
-import { NetContributions } from '../models';
-// @ts-ignore
-import { NetDividend } from '../models';
-// @ts-ignore
-import { OptionsSymbol } from '../models';
-// @ts-ignore
-import { PastValue } from '../models';
-// @ts-ignore
 import { PerformanceCustom } from '../models';
 // @ts-ignore
-import { SecurityType } from '../models';
-// @ts-ignore
-import { SubPeriodReturnRate } from '../models';
-// @ts-ignore
-import { Symbol } from '../models';
-// @ts-ignore
-import { USExchange } from '../models';
-// @ts-ignore
-import { UnderlyingSymbol } from '../models';
-// @ts-ignore
 import { UniversalActivity } from '../models';
-// @ts-ignore
-import { UniversalSymbol } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';

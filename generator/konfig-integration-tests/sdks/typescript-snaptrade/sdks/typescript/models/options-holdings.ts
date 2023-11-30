@@ -12,9 +12,6 @@ import type * as buffer from "buffer"
 
 import { Currency } from './currency';
 import { OptionsSymbol } from './options-symbol';
-import { SecurityType } from './security-type';
-import { USExchange } from './usexchange';
-import { UnderlyingSymbol } from './underlying-symbol';
 
 /**
  * Option Holdings

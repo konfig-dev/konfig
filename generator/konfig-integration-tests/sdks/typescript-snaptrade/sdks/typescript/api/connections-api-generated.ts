@@ -19,11 +19,7 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { Brokerage } from '../models';
-// @ts-ignore
 import { BrokerageAuthorization } from '../models';
-// @ts-ignore
-import { BrokerageType } from '../models';
 // @ts-ignore
 import { ConnectionsSessionEvents200ResponseInner } from '../models';
 import { paginate } from "../pagination/paginate";

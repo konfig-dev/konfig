@@ -23,10 +23,6 @@ import { Brokerage } from '../models';
 // @ts-ignore
 import { BrokerageAuthorizationTypeReadOnly } from '../models';
 // @ts-ignore
-import { BrokerageAuthorizationTypeReadOnlyBrokerage } from '../models';
-// @ts-ignore
-import { BrokerageType } from '../models';
-// @ts-ignore
 import { Currency } from '../models';
 // @ts-ignore
 import { Exchange } from '../models';

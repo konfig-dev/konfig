@@ -559,6 +559,10 @@ const getUserJWTResponse = await snaptrade.authentication.getUserJWT({
 
 ##### userSecret: `string`<a id="usersecret-string"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[EncryptedResponse](./models/encrypted-response.ts)
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/snapTrade/encryptedJWT` `GET`
@@ -632,6 +636,10 @@ The UUID of the brokerage connection to be reconnected
 ##### connectionType: `string`<a id="connectiontype-string"></a>
 
 Sets whether the connection should be read or trade
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AuthenticationLoginSnapTradeUser200Response](./models/authentication-login-snap-trade-user200-response.ts)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -807,6 +815,10 @@ Optional comma seperated list of user IDs used to filter the request on specific
 
 Optional comma seperated list of session IDs used to filter the request on specific users
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ConnectionsSessionEvents200ResponseInner](./models/connections-session-events200-response-inner.ts)
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/sessionEvents` `GET`
@@ -875,8 +887,7 @@ const getOptionStrategyResponse = await snaptrade.options.getOptionStrategy({
 
 ##### underlying_symbol_id: `string`<a id="underlying_symbol_id-string"></a>
 
-##### legs: `OptionLeg`<a id="legs-optionleg"></a>
-            [`OptionLeg`](./models/option-leg.ts)[]
+##### legs: [`OptionLeg`](./models/option-leg.ts)[]<a id="legs-optionlegmodelsoption-legts"></a>
 
 ##### strategy_type: `string`<a id="strategy_type-string"></a>
 
@@ -929,6 +940,10 @@ The ID of the account to get the options chain from.
 ##### symbol: `string`<a id="symbol-string"></a>
 
 Universal symbol ID if symbol
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OptionChainInner](./models/option-chain-inner.ts)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1522,6 +1537,10 @@ The ID of the account to get quotes.
 ##### useTicker: `boolean`<a id="useticker-boolean"></a>
 
 Should be set to True if providing tickers.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[SymbolsQuotesInner](./models/symbols-quotes-inner.ts)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

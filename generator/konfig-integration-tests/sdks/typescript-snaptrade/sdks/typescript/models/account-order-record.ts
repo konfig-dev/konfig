@@ -12,14 +12,9 @@ import type * as buffer from "buffer"
 
 import { AccountOrderRecordStatus } from './account-order-record-status';
 import { Action } from './action';
-import { Currency } from './currency';
-import { Exchange } from './exchange';
 import { OptionsSymbol } from './options-symbol';
 import { OrderType } from './order-type';
-import { SecurityType } from './security-type';
 import { TimeInForce } from './time-in-force';
-import { USExchange } from './usexchange';
-import { UnderlyingSymbol } from './underlying-symbol';
 import { UniversalSymbol } from './universal-symbol';
 
 /**

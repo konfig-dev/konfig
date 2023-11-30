@@ -25,8 +25,6 @@ import { DeleteUserResponse } from '../models';
 // @ts-ignore
 import { EncryptedResponse } from '../models';
 // @ts-ignore
-import { EncryptedResponseEncryptedMessageData } from '../models';
-// @ts-ignore
 import { Model400FailedRequestResponse } from '../models';
 // @ts-ignore
 import { Model403FailedRequestResponse } from '../models';

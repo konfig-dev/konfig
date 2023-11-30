@@ -19,35 +19,11 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { Brokerage } from '../models';
-// @ts-ignore
-import { BrokerageAuthorization } from '../models';
-// @ts-ignore
-import { BrokerageSymbol } from '../models';
-// @ts-ignore
-import { BrokerageSymbolOptionSymbol } from '../models';
-// @ts-ignore
-import { BrokerageSymbolSymbol } from '../models';
-// @ts-ignore
-import { BrokerageType } from '../models';
-// @ts-ignore
-import { Currency } from '../models';
-// @ts-ignore
-import { Exchange } from '../models';
-// @ts-ignore
 import { Model500UnexpectedExceptionResponse } from '../models';
 // @ts-ignore
 import { OptionChainInner } from '../models';
 // @ts-ignore
-import { OptionChainInnerChainPerRootInner } from '../models';
-// @ts-ignore
-import { OptionChainInnerChainPerRootInnerChainPerStrikePriceInner } from '../models';
-// @ts-ignore
 import { OptionLeg } from '../models';
-// @ts-ignore
-import { OptionStrategy } from '../models';
-// @ts-ignore
-import { OptionStrategyLegsInner } from '../models';
 // @ts-ignore
 import { OptionsGetOptionStrategyRequest } from '../models';
 // @ts-ignore
@@ -55,21 +31,13 @@ import { OptionsPlaceOptionStrategyRequest } from '../models';
 // @ts-ignore
 import { OptionsPosition } from '../models';
 // @ts-ignore
-import { OptionsPositionCurrency } from '../models';
-// @ts-ignore
 import { OrderType } from '../models';
-// @ts-ignore
-import { SecurityType } from '../models';
 // @ts-ignore
 import { StrategyOrderRecord } from '../models';
 // @ts-ignore
 import { StrategyQuotes } from '../models';
 // @ts-ignore
-import { StrategyQuotesGreek } from '../models';
-// @ts-ignore
 import { TimeInForce } from '../models';
-// @ts-ignore
-import { UniversalSymbol } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
