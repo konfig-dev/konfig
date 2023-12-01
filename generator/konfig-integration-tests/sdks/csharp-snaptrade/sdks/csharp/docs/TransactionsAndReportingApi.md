@@ -31,8 +31,8 @@ namespace Example
             Snaptrade client = new Snaptrade();
             // Configure custom BasePath if desired
             // client.SetBasePath("https://api.snaptrade.com/api/v1");
-            client.SetClientId(System.Environment.GetEnvironmentVariable("SNAPTRADE_CLIENT_ID"));
-            client.SetConsumerKey(System.Environment.GetEnvironmentVariable("SNAPTRADE_CONSUMER_KEY"));
+            client.SetClientId("test");
+            client.SetConsumerKey("test");
 
             var userId = "userId_example";
             var userSecret = "userSecret_example";
@@ -134,8 +134,8 @@ namespace Example
             Snaptrade client = new Snaptrade();
             // Configure custom BasePath if desired
             // client.SetBasePath("https://api.snaptrade.com/api/v1");
-            client.SetClientId(System.Environment.GetEnvironmentVariable("SNAPTRADE_CLIENT_ID"));
-            client.SetConsumerKey(System.Environment.GetEnvironmentVariable("SNAPTRADE_CONSUMER_KEY"));
+            client.SetClientId("test");
+            client.SetConsumerKey("test");
 
             var startDate = DateTime.Parse("2013-10-20");
             var endDate = DateTime.Parse("2013-10-20");

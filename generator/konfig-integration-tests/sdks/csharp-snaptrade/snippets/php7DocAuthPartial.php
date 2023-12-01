@@ -1,2 +1,0 @@
-    getenv("SNAPTRADE_CONSUMER_KEY"),
-    getenv("SNAPTRADE_CLIENT_ID")
