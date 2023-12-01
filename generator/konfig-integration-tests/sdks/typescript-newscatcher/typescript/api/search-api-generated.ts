@@ -74,10 +74,10 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {boolean} [includeNlpData] 
          * @param {boolean} [hasNlp] 
          * @param {string} [theme] 
-         * @param {string} [oRGEntityName] 
-         * @param {string} [pEREntityName] 
-         * @param {string} [lOCEntityName] 
-         * @param {string} [mISCEntityName] 
+         * @param {string} [orgEntityName] 
+         * @param {string} [perEntityName] 
+         * @param {string} [locEntityName] 
+         * @param {string} [miscEntityName] 
          * @param {number} [titleSentimentMin] 
          * @param {number} [titleSentimentMax] 
          * @param {number} [contentSentimentMin] 
@@ -85,7 +85,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get: async (q: string, searchIn?: string, predefinedSources?: string, sources?: string, notSources?: string, lang?: string, notLang?: string, countries?: string, notCountries?: string, from?: From, to?: To, publishedDatePrecision?: string, byParseDate?: boolean, sortBy?: string, rankedOnly?: string, fromRank?: number, toRank?: number, isHeadline?: boolean, isPaidContent?: boolean, parentUrl?: string, allLinks?: string, allDomainLinks?: string, wordCountMin?: number, wordCountMax?: number, page?: number, pageSize?: number, clusteringEnabled?: boolean, clusteringThreshold?: number, clusteringVariable?: string, includeNlpData?: boolean, hasNlp?: boolean, theme?: string, oRGEntityName?: string, pEREntityName?: string, lOCEntityName?: string, mISCEntityName?: string, titleSentimentMin?: number, titleSentimentMax?: number, contentSentimentMin?: number, contentSentimentMax?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        get: async (q: string, searchIn?: string, predefinedSources?: string, sources?: string, notSources?: string, lang?: string, notLang?: string, countries?: string, notCountries?: string, from?: From, to?: To, publishedDatePrecision?: string, byParseDate?: boolean, sortBy?: string, rankedOnly?: string, fromRank?: number, toRank?: number, isHeadline?: boolean, isPaidContent?: boolean, parentUrl?: string, allLinks?: string, allDomainLinks?: string, wordCountMin?: number, wordCountMax?: number, page?: number, pageSize?: number, clusteringEnabled?: boolean, clusteringThreshold?: number, clusteringVariable?: string, includeNlpData?: boolean, hasNlp?: boolean, theme?: string, orgEntityName?: string, perEntityName?: string, locEntityName?: string, miscEntityName?: string, titleSentimentMin?: number, titleSentimentMax?: number, contentSentimentMin?: number, contentSentimentMax?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'q' is not null or undefined
             assertParamExists('get', 'q', q)
             const localVarPath = `/api/search`;
@@ -230,20 +230,20 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
                 localVarQueryParameter['theme'] = theme;
             }
 
-            if (oRGEntityName !== undefined) {
-                localVarQueryParameter['ORG_entity_name'] = oRGEntityName;
+            if (orgEntityName !== undefined) {
+                localVarQueryParameter['ORG_entity_name'] = orgEntityName;
             }
 
-            if (pEREntityName !== undefined) {
-                localVarQueryParameter['PER_entity_name'] = pEREntityName;
+            if (perEntityName !== undefined) {
+                localVarQueryParameter['PER_entity_name'] = perEntityName;
             }
 
-            if (lOCEntityName !== undefined) {
-                localVarQueryParameter['LOC_entity_name'] = lOCEntityName;
+            if (locEntityName !== undefined) {
+                localVarQueryParameter['LOC_entity_name'] = locEntityName;
             }
 
-            if (mISCEntityName !== undefined) {
-                localVarQueryParameter['MISC_entity_name'] = mISCEntityName;
+            if (miscEntityName !== undefined) {
+                localVarQueryParameter['MISC_entity_name'] = miscEntityName;
             }
 
             if (titleSentimentMin !== undefined) {
@@ -343,7 +343,7 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async get(requestParameters: SearchApiGetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchGetResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get(requestParameters.q, requestParameters.searchIn, requestParameters.predefinedSources, requestParameters.sources, requestParameters.notSources, requestParameters.lang, requestParameters.notLang, requestParameters.countries, requestParameters.notCountries, requestParameters.from, requestParameters.to, requestParameters.publishedDatePrecision, requestParameters.byParseDate, requestParameters.sortBy, requestParameters.rankedOnly, requestParameters.fromRank, requestParameters.toRank, requestParameters.isHeadline, requestParameters.isPaidContent, requestParameters.parentUrl, requestParameters.allLinks, requestParameters.allDomainLinks, requestParameters.wordCountMin, requestParameters.wordCountMax, requestParameters.page, requestParameters.pageSize, requestParameters.clusteringEnabled, requestParameters.clusteringThreshold, requestParameters.clusteringVariable, requestParameters.includeNlpData, requestParameters.hasNlp, requestParameters.theme, requestParameters.oRGEntityName, requestParameters.pEREntityName, requestParameters.lOCEntityName, requestParameters.mISCEntityName, requestParameters.titleSentimentMin, requestParameters.titleSentimentMax, requestParameters.contentSentimentMin, requestParameters.contentSentimentMax, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.get(requestParameters.q, requestParameters.searchIn, requestParameters.predefinedSources, requestParameters.sources, requestParameters.notSources, requestParameters.lang, requestParameters.notLang, requestParameters.countries, requestParameters.notCountries, requestParameters.from, requestParameters.to, requestParameters.publishedDatePrecision, requestParameters.byParseDate, requestParameters.sortBy, requestParameters.rankedOnly, requestParameters.fromRank, requestParameters.toRank, requestParameters.isHeadline, requestParameters.isPaidContent, requestParameters.parentUrl, requestParameters.allLinks, requestParameters.allDomainLinks, requestParameters.wordCountMin, requestParameters.wordCountMax, requestParameters.page, requestParameters.pageSize, requestParameters.clusteringEnabled, requestParameters.clusteringThreshold, requestParameters.clusteringVariable, requestParameters.includeNlpData, requestParameters.hasNlp, requestParameters.theme, requestParameters.orgEntityName, requestParameters.perEntityName, requestParameters.locEntityName, requestParameters.miscEntityName, requestParameters.titleSentimentMin, requestParameters.titleSentimentMax, requestParameters.contentSentimentMin, requestParameters.contentSentimentMax, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -626,28 +626,28 @@ export type SearchApiGetRequest = {
     * @type {string}
     * @memberof SearchApiGet
     */
-    readonly oRGEntityName?: string
+    readonly orgEntityName?: string
     
     /**
     * 
     * @type {string}
     * @memberof SearchApiGet
     */
-    readonly pEREntityName?: string
+    readonly perEntityName?: string
     
     /**
     * 
     * @type {string}
     * @memberof SearchApiGet
     */
-    readonly lOCEntityName?: string
+    readonly locEntityName?: string
     
     /**
     * 
     * @type {string}
     * @memberof SearchApiGet
     */
-    readonly mISCEntityName?: string
+    readonly miscEntityName?: string
     
     /**
     * 

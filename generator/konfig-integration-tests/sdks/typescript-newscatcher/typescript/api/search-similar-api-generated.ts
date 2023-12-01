@@ -34,10 +34,10 @@ import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
 /**
- * SearchsimilarApi - axios parameter creator
+ * SearchSimilarApi - axios parameter creator
  * @export
  */
-export const SearchsimilarApiAxiosParamCreator = function (configuration?: Configuration) {
+export const SearchSimilarApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
@@ -314,31 +314,31 @@ export const SearchsimilarApiAxiosParamCreator = function (configuration?: Confi
 };
 
 /**
- * SearchsimilarApi - functional programming interface
+ * SearchSimilarApi - functional programming interface
  * @export
  */
-export const SearchsimilarApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = SearchsimilarApiAxiosParamCreator(configuration)
+export const SearchSimilarApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SearchSimilarApiAxiosParamCreator(configuration)
     return {
         /**
          * This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
          * @summary [Get] Search For Similar Articles Request
-         * @param {SearchsimilarApiGetRequest} requestParameters Request parameters.
+         * @param {SearchSimilarApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async get(requestParameters: SearchsimilarApiGetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchSimilarGetResponse>> {
+        async get(requestParameters: SearchSimilarApiGetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchSimilarGetResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.get(requestParameters.q, requestParameters.searchIn, requestParameters.includeSimilarDocuments, requestParameters.similarDocumentsNumber, requestParameters.similarDocumentsFields, requestParameters.predefinedSources, requestParameters.sources, requestParameters.notSources, requestParameters.lang, requestParameters.notLang, requestParameters.countries, requestParameters.notCountries, requestParameters.from, requestParameters.to, requestParameters.byParseDate, requestParameters.publishedDatePrecision, requestParameters.sortBy, requestParameters.rankedOnly, requestParameters.fromRank, requestParameters.toRank, requestParameters.isHeadline, requestParameters.isPaidContent, requestParameters.parentUrl, requestParameters.allLinks, requestParameters.allDomainLinks, requestParameters.wordCountMin, requestParameters.wordCountMax, requestParameters.page, requestParameters.pageSize, requestParameters.includeNlpData, requestParameters.hasNlp, requestParameters.theme, requestParameters.nerName, requestParameters.titleSentimentMin, requestParameters.titleSentimentMax, requestParameters.contentSentimentMin, requestParameters.contentSentimentMax, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
          * @summary [Post] Search For Similar Articles Request
-         * @param {SearchsimilarApiPostRequest} requestParameters Request parameters.
+         * @param {SearchSimilarApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async post(requestParameters: SearchsimilarApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchSimilarPostResponse>> {
+        async post(requestParameters: SearchSimilarApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchSimilarPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -346,340 +346,340 @@ export const SearchsimilarApiFp = function(configuration?: Configuration) {
 };
 
 /**
- * SearchsimilarApi - factory interface
+ * SearchSimilarApi - factory interface
  * @export
  */
-export const SearchsimilarApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = SearchsimilarApiFp(configuration)
+export const SearchSimilarApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SearchSimilarApiFp(configuration)
     return {
         /**
          * This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
          * @summary [Get] Search For Similar Articles Request
-         * @param {SearchsimilarApiGetRequest} requestParameters Request parameters.
+         * @param {SearchSimilarApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get(requestParameters: SearchsimilarApiGetRequest, options?: AxiosRequestConfig): AxiosPromise<SearchSimilarGetResponse> {
+        get(requestParameters: SearchSimilarApiGetRequest, options?: AxiosRequestConfig): AxiosPromise<SearchSimilarGetResponse> {
             return localVarFp.get(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
          * @summary [Post] Search For Similar Articles Request
-         * @param {SearchsimilarApiPostRequest} requestParameters Request parameters.
+         * @param {SearchSimilarApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post(requestParameters: SearchsimilarApiPostRequest, options?: AxiosRequestConfig): AxiosPromise<SearchSimilarPostResponse> {
+        post(requestParameters: SearchSimilarApiPostRequest, options?: AxiosRequestConfig): AxiosPromise<SearchSimilarPostResponse> {
             return localVarFp.post(requestParameters, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for get operation in SearchsimilarApi.
+ * Request parameters for get operation in SearchSimilarApi.
  * @export
- * @interface SearchsimilarApiGetRequest
+ * @interface SearchSimilarApiGetRequest
  */
-export type SearchsimilarApiGetRequest = {
+export type SearchSimilarApiGetRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly q: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly searchIn?: string
     
     /**
     * 
     * @type {boolean}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly includeSimilarDocuments?: boolean
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly similarDocumentsNumber?: number
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly similarDocumentsFields?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly predefinedSources?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly sources?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly notSources?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly lang?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly notLang?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly countries?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly notCountries?: string
     
     /**
     * 
     * @type {From}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly from?: From
     
     /**
     * 
     * @type {To}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly to?: To
     
     /**
     * 
     * @type {boolean}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly byParseDate?: boolean
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly publishedDatePrecision?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly sortBy?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly rankedOnly?: string
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly fromRank?: number
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly toRank?: number
     
     /**
     * 
     * @type {boolean}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly isHeadline?: boolean
     
     /**
     * 
     * @type {boolean}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly isPaidContent?: boolean
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly parentUrl?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly allLinks?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly allDomainLinks?: string
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly wordCountMin?: number
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly wordCountMax?: number
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly page?: number
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly pageSize?: number
     
     /**
     * 
     * @type {boolean}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly includeNlpData?: boolean
     
     /**
     * 
     * @type {boolean}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly hasNlp?: boolean
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly theme?: string
     
     /**
     * 
     * @type {string}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly nerName?: string
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly titleSentimentMin?: number
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly titleSentimentMax?: number
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly contentSentimentMin?: number
     
     /**
     * 
     * @type {number}
-    * @memberof SearchsimilarApiGet
+    * @memberof SearchSimilarApiGet
     */
     readonly contentSentimentMax?: number
     
 }
 
 /**
- * Request parameters for post operation in SearchsimilarApi.
+ * Request parameters for post operation in SearchSimilarApi.
  * @export
- * @interface SearchsimilarApiPostRequest
+ * @interface SearchSimilarApiPostRequest
  */
-export type SearchsimilarApiPostRequest = {
+export type SearchSimilarApiPostRequest = {
     
 } & MoreLikeThisRequest
 
 /**
- * SearchsimilarApiGenerated - object-oriented interface
+ * SearchSimilarApiGenerated - object-oriented interface
  * @export
- * @class SearchsimilarApiGenerated
+ * @class SearchSimilarApiGenerated
  * @extends {BaseAPI}
  */
-export class SearchsimilarApiGenerated extends BaseAPI {
+export class SearchSimilarApiGenerated extends BaseAPI {
     /**
      * This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
      * @summary [Get] Search For Similar Articles Request
-     * @param {SearchsimilarApiGetRequest} requestParameters Request parameters.
+     * @param {SearchSimilarApiGetRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SearchsimilarApiGenerated
+     * @memberof SearchSimilarApiGenerated
      */
-    public get(requestParameters: SearchsimilarApiGetRequest, options?: AxiosRequestConfig) {
-        return SearchsimilarApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public get(requestParameters: SearchSimilarApiGetRequest, options?: AxiosRequestConfig) {
+        return SearchSimilarApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
      * @summary [Post] Search For Similar Articles Request
-     * @param {SearchsimilarApiPostRequest} requestParameters Request parameters.
+     * @param {SearchSimilarApiPostRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SearchsimilarApiGenerated
+     * @memberof SearchSimilarApiGenerated
      */
-    public post(requestParameters: SearchsimilarApiPostRequest, options?: AxiosRequestConfig) {
-        return SearchsimilarApiFp(this.configuration).post(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public post(requestParameters: SearchSimilarApiPostRequest, options?: AxiosRequestConfig) {
+        return SearchSimilarApiFp(this.configuration).post(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }

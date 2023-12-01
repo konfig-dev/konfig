@@ -30,10 +30,10 @@ import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
 /**
- * LatestheadlinesApi - axios parameter creator
+ * LatestHeadlinesApi - axios parameter creator
  * @export
  */
-export const LatestheadlinesApiAxiosParamCreator = function (configuration?: Configuration) {
+export const LatestHeadlinesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
@@ -63,10 +63,10 @@ export const LatestheadlinesApiAxiosParamCreator = function (configuration?: Con
          * @param {string} [clusteringVariable] 
          * @param {boolean} [includeNlpData] 
          * @param {boolean} [hasNlp] 
-         * @param {string} [oRGEntityName] 
-         * @param {string} [pEREntityName] 
-         * @param {string} [lOCEntityName] 
-         * @param {string} [mISCEntityName] 
+         * @param {string} [orgEntityName] 
+         * @param {string} [perEntityName] 
+         * @param {string} [locEntityName] 
+         * @param {string} [miscEntityName] 
          * @param {number} [titleSentimentMin] 
          * @param {number} [titleSentimentMax] 
          * @param {number} [contentSentimentMin] 
@@ -74,7 +74,7 @@ export const LatestheadlinesApiAxiosParamCreator = function (configuration?: Con
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get: async (when?: string, byParseDate?: boolean, lang?: string, notLang?: string, countries?: string, notCountries?: string, sources?: string, predefinedSources?: string, notSources?: string, rankedOnly?: string, isHeadline?: boolean, isPaidContent?: boolean, parentUrl?: string, theme?: string, allLinks?: string, allDomainLinks?: string, wordCountMin?: number, wordCountMax?: number, page?: number, pageSize?: number, clusteringEnabled?: boolean, clusteringThreshold?: number, clusteringVariable?: string, includeNlpData?: boolean, hasNlp?: boolean, oRGEntityName?: string, pEREntityName?: string, lOCEntityName?: string, mISCEntityName?: string, titleSentimentMin?: number, titleSentimentMax?: number, contentSentimentMin?: number, contentSentimentMax?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        get: async (when?: string, byParseDate?: boolean, lang?: string, notLang?: string, countries?: string, notCountries?: string, sources?: string, predefinedSources?: string, notSources?: string, rankedOnly?: string, isHeadline?: boolean, isPaidContent?: boolean, parentUrl?: string, theme?: string, allLinks?: string, allDomainLinks?: string, wordCountMin?: number, wordCountMax?: number, page?: number, pageSize?: number, clusteringEnabled?: boolean, clusteringThreshold?: number, clusteringVariable?: string, includeNlpData?: boolean, hasNlp?: boolean, orgEntityName?: string, perEntityName?: string, locEntityName?: string, miscEntityName?: string, titleSentimentMin?: number, titleSentimentMax?: number, contentSentimentMin?: number, contentSentimentMax?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/latest_headlines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -189,20 +189,20 @@ export const LatestheadlinesApiAxiosParamCreator = function (configuration?: Con
                 localVarQueryParameter['has_nlp'] = hasNlp;
             }
 
-            if (oRGEntityName !== undefined) {
-                localVarQueryParameter['ORG_entity_name'] = oRGEntityName;
+            if (orgEntityName !== undefined) {
+                localVarQueryParameter['ORG_entity_name'] = orgEntityName;
             }
 
-            if (pEREntityName !== undefined) {
-                localVarQueryParameter['PER_entity_name'] = pEREntityName;
+            if (perEntityName !== undefined) {
+                localVarQueryParameter['PER_entity_name'] = perEntityName;
             }
 
-            if (lOCEntityName !== undefined) {
-                localVarQueryParameter['LOC_entity_name'] = lOCEntityName;
+            if (locEntityName !== undefined) {
+                localVarQueryParameter['LOC_entity_name'] = locEntityName;
             }
 
-            if (mISCEntityName !== undefined) {
-                localVarQueryParameter['MISC_entity_name'] = mISCEntityName;
+            if (miscEntityName !== undefined) {
+                localVarQueryParameter['MISC_entity_name'] = miscEntityName;
             }
 
             if (titleSentimentMin !== undefined) {
@@ -288,31 +288,31 @@ export const LatestheadlinesApiAxiosParamCreator = function (configuration?: Con
 };
 
 /**
- * LatestheadlinesApi - functional programming interface
+ * LatestHeadlinesApi - functional programming interface
  * @export
  */
-export const LatestheadlinesApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = LatestheadlinesApiAxiosParamCreator(configuration)
+export const LatestHeadlinesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = LatestHeadlinesApiAxiosParamCreator(configuration)
     return {
         /**
          * This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
          * @summary [Get] Search For Latest Headlines Request
-         * @param {LatestheadlinesApiGetRequest} requestParameters Request parameters.
+         * @param {LatestHeadlinesApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async get(requestParameters: LatestheadlinesApiGetRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LatestHeadlinesGetResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get(requestParameters.when, requestParameters.byParseDate, requestParameters.lang, requestParameters.notLang, requestParameters.countries, requestParameters.notCountries, requestParameters.sources, requestParameters.predefinedSources, requestParameters.notSources, requestParameters.rankedOnly, requestParameters.isHeadline, requestParameters.isPaidContent, requestParameters.parentUrl, requestParameters.theme, requestParameters.allLinks, requestParameters.allDomainLinks, requestParameters.wordCountMin, requestParameters.wordCountMax, requestParameters.page, requestParameters.pageSize, requestParameters.clusteringEnabled, requestParameters.clusteringThreshold, requestParameters.clusteringVariable, requestParameters.includeNlpData, requestParameters.hasNlp, requestParameters.oRGEntityName, requestParameters.pEREntityName, requestParameters.lOCEntityName, requestParameters.mISCEntityName, requestParameters.titleSentimentMin, requestParameters.titleSentimentMax, requestParameters.contentSentimentMin, requestParameters.contentSentimentMax, options);
+        async get(requestParameters: LatestHeadlinesApiGetRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LatestHeadlinesGetResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.get(requestParameters.when, requestParameters.byParseDate, requestParameters.lang, requestParameters.notLang, requestParameters.countries, requestParameters.notCountries, requestParameters.sources, requestParameters.predefinedSources, requestParameters.notSources, requestParameters.rankedOnly, requestParameters.isHeadline, requestParameters.isPaidContent, requestParameters.parentUrl, requestParameters.theme, requestParameters.allLinks, requestParameters.allDomainLinks, requestParameters.wordCountMin, requestParameters.wordCountMax, requestParameters.page, requestParameters.pageSize, requestParameters.clusteringEnabled, requestParameters.clusteringThreshold, requestParameters.clusteringVariable, requestParameters.includeNlpData, requestParameters.hasNlp, requestParameters.orgEntityName, requestParameters.perEntityName, requestParameters.locEntityName, requestParameters.miscEntityName, requestParameters.titleSentimentMin, requestParameters.titleSentimentMax, requestParameters.contentSentimentMin, requestParameters.contentSentimentMax, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
          * @summary [Post] Search For Latest Headlines Request
-         * @param {LatestheadlinesApiPostRequest} requestParameters Request parameters.
+         * @param {LatestHeadlinesApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async post(requestParameters: LatestheadlinesApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LatestHeadlinesPostResponse>> {
+        async post(requestParameters: LatestHeadlinesApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LatestHeadlinesPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -320,312 +320,312 @@ export const LatestheadlinesApiFp = function(configuration?: Configuration) {
 };
 
 /**
- * LatestheadlinesApi - factory interface
+ * LatestHeadlinesApi - factory interface
  * @export
  */
-export const LatestheadlinesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = LatestheadlinesApiFp(configuration)
+export const LatestHeadlinesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = LatestHeadlinesApiFp(configuration)
     return {
         /**
          * This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
          * @summary [Get] Search For Latest Headlines Request
-         * @param {LatestheadlinesApiGetRequest} requestParameters Request parameters.
+         * @param {LatestHeadlinesApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get(requestParameters: LatestheadlinesApiGetRequest = {}, options?: AxiosRequestConfig): AxiosPromise<LatestHeadlinesGetResponse> {
+        get(requestParameters: LatestHeadlinesApiGetRequest = {}, options?: AxiosRequestConfig): AxiosPromise<LatestHeadlinesGetResponse> {
             return localVarFp.get(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
          * @summary [Post] Search For Latest Headlines Request
-         * @param {LatestheadlinesApiPostRequest} requestParameters Request parameters.
+         * @param {LatestHeadlinesApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post(requestParameters: LatestheadlinesApiPostRequest, options?: AxiosRequestConfig): AxiosPromise<LatestHeadlinesPostResponse> {
+        post(requestParameters: LatestHeadlinesApiPostRequest, options?: AxiosRequestConfig): AxiosPromise<LatestHeadlinesPostResponse> {
             return localVarFp.post(requestParameters, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for get operation in LatestheadlinesApi.
+ * Request parameters for get operation in LatestHeadlinesApi.
  * @export
- * @interface LatestheadlinesApiGetRequest
+ * @interface LatestHeadlinesApiGetRequest
  */
-export type LatestheadlinesApiGetRequest = {
+export type LatestHeadlinesApiGetRequest = {
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly when?: string
     
     /**
     * 
     * @type {boolean}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly byParseDate?: boolean
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly lang?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly notLang?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly countries?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly notCountries?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly sources?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly predefinedSources?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly notSources?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly rankedOnly?: string
     
     /**
     * 
     * @type {boolean}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly isHeadline?: boolean
     
     /**
     * 
     * @type {boolean}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly isPaidContent?: boolean
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly parentUrl?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly theme?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly allLinks?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly allDomainLinks?: string
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly wordCountMin?: number
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly wordCountMax?: number
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly page?: number
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly pageSize?: number
     
     /**
     * 
     * @type {boolean}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly clusteringEnabled?: boolean
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly clusteringThreshold?: number
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly clusteringVariable?: string
     
     /**
     * 
     * @type {boolean}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly includeNlpData?: boolean
     
     /**
     * 
     * @type {boolean}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly hasNlp?: boolean
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
-    readonly oRGEntityName?: string
+    readonly orgEntityName?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
-    readonly pEREntityName?: string
+    readonly perEntityName?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
-    readonly lOCEntityName?: string
+    readonly locEntityName?: string
     
     /**
     * 
     * @type {string}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
-    readonly mISCEntityName?: string
+    readonly miscEntityName?: string
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly titleSentimentMin?: number
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly titleSentimentMax?: number
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly contentSentimentMin?: number
     
     /**
     * 
     * @type {number}
-    * @memberof LatestheadlinesApiGet
+    * @memberof LatestHeadlinesApiGet
     */
     readonly contentSentimentMax?: number
     
 }
 
 /**
- * Request parameters for post operation in LatestheadlinesApi.
+ * Request parameters for post operation in LatestHeadlinesApi.
  * @export
- * @interface LatestheadlinesApiPostRequest
+ * @interface LatestHeadlinesApiPostRequest
  */
-export type LatestheadlinesApiPostRequest = {
+export type LatestHeadlinesApiPostRequest = {
     
 } & LatestHeadlinesRequest
 
 /**
- * LatestheadlinesApiGenerated - object-oriented interface
+ * LatestHeadlinesApiGenerated - object-oriented interface
  * @export
- * @class LatestheadlinesApiGenerated
+ * @class LatestHeadlinesApiGenerated
  * @extends {BaseAPI}
  */
-export class LatestheadlinesApiGenerated extends BaseAPI {
+export class LatestHeadlinesApiGenerated extends BaseAPI {
     /**
      * This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
      * @summary [Get] Search For Latest Headlines Request
-     * @param {LatestheadlinesApiGetRequest} requestParameters Request parameters.
+     * @param {LatestHeadlinesApiGetRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof LatestheadlinesApiGenerated
+     * @memberof LatestHeadlinesApiGenerated
      */
-    public get(requestParameters: LatestheadlinesApiGetRequest = {}, options?: AxiosRequestConfig) {
-        return LatestheadlinesApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public get(requestParameters: LatestHeadlinesApiGetRequest = {}, options?: AxiosRequestConfig) {
+        return LatestHeadlinesApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
      * @summary [Post] Search For Latest Headlines Request
-     * @param {LatestheadlinesApiPostRequest} requestParameters Request parameters.
+     * @param {LatestHeadlinesApiPostRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof LatestheadlinesApiGenerated
+     * @memberof LatestHeadlinesApiGenerated
      */
-    public post(requestParameters: LatestheadlinesApiPostRequest, options?: AxiosRequestConfig) {
-        return LatestheadlinesApiFp(this.configuration).post(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public post(requestParameters: LatestHeadlinesApiPostRequest, options?: AxiosRequestConfig) {
+        return LatestHeadlinesApiFp(this.configuration).post(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }

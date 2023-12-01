@@ -14,12 +14,12 @@
 - [Reference](#reference)
   * [`newscatcher.authors.get`](#newscatcherauthorsget)
   * [`newscatcher.authors.post`](#newscatcherauthorspost)
-  * [`newscatcher.latestheadlines.get`](#newscatcherlatestheadlinesget)
-  * [`newscatcher.latestheadlines.post`](#newscatcherlatestheadlinespost)
+  * [`newscatcher.latestHeadlines.get`](#newscatcherlatestheadlinesget)
+  * [`newscatcher.latestHeadlines.post`](#newscatcherlatestheadlinespost)
   * [`newscatcher.search.get`](#newscatchersearchget)
   * [`newscatcher.search.post`](#newscatchersearchpost)
-  * [`newscatcher.searchsimilar.get`](#newscatchersearchsimilarget)
-  * [`newscatcher.searchsimilar.post`](#newscatchersearchsimilarpost)
+  * [`newscatcher.searchSimilar.get`](#newscatchersearchsimilarget)
+  * [`newscatcher.searchSimilar.post`](#newscatchersearchsimilarpost)
   * [`newscatcher.sources.get`](#newscatchersourcesget)
   * [`newscatcher.sources.post`](#newscatchersourcespost)
   * [`newscatcher.subscription.get`](#newscatchersubscriptionget)
@@ -279,14 +279,14 @@ const postResponse = await newscatcher.authors.post({
 ---
 
 
-### `newscatcher.latestheadlines.get`<a id="newscatcherlatestheadlinesget"></a>
+### `newscatcher.latestHeadlines.get`<a id="newscatcherlatestheadlinesget"></a>
 
 This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const getResponse = await newscatcher.latestheadlines.get({
+const getResponse = await newscatcher.latestHeadlines.get({
   when: "7d",
   byParseDate: false,
   page: 1,
@@ -346,13 +346,13 @@ const getResponse = await newscatcher.latestheadlines.get({
 
 ##### hasNlp: `boolean`<a id="hasnlp-boolean"></a>
 
-##### oRGEntityName: `string`<a id="orgentityname-string"></a>
+##### orgEntityName: `string`<a id="orgentityname-string"></a>
 
-##### pEREntityName: `string`<a id="perentityname-string"></a>
+##### perEntityName: `string`<a id="perentityname-string"></a>
 
-##### lOCEntityName: `string`<a id="locentityname-string"></a>
+##### locEntityName: `string`<a id="locentityname-string"></a>
 
-##### mISCEntityName: `string`<a id="miscentityname-string"></a>
+##### miscEntityName: `string`<a id="miscentityname-string"></a>
 
 ##### titleSentimentMin: `number`<a id="titlesentimentmin-number"></a>
 
@@ -375,14 +375,14 @@ const getResponse = await newscatcher.latestheadlines.get({
 ---
 
 
-### `newscatcher.latestheadlines.post`<a id="newscatcherlatestheadlinespost"></a>
+### `newscatcher.latestHeadlines.post`<a id="newscatcherlatestheadlinespost"></a>
 
 This endpoint allows you to get latest headlines. You need to specify since when you want to get the latest headlines. You can also filter by language, country, source, and more.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const postResponse = await newscatcher.latestheadlines.post({
+const postResponse = await newscatcher.latestHeadlines.post({
   when: "7d",
   by_parse_date: false,
   page: 1,
@@ -554,13 +554,13 @@ const getResponse = await newscatcher.search.get({
 
 ##### theme: `string`<a id="theme-string"></a>
 
-##### oRGEntityName: `string`<a id="orgentityname-string"></a>
+##### orgEntityName: `string`<a id="orgentityname-string"></a>
 
-##### pEREntityName: `string`<a id="perentityname-string"></a>
+##### perEntityName: `string`<a id="perentityname-string"></a>
 
-##### lOCEntityName: `string`<a id="locentityname-string"></a>
+##### locEntityName: `string`<a id="locentityname-string"></a>
 
-##### mISCEntityName: `string`<a id="miscentityname-string"></a>
+##### miscEntityName: `string`<a id="miscentityname-string"></a>
 
 ##### titleSentimentMin: `number`<a id="titlesentimentmin-number"></a>
 
@@ -695,14 +695,14 @@ const postResponse = await newscatcher.search.post({
 ---
 
 
-### `newscatcher.searchsimilar.get`<a id="newscatchersearchsimilarget"></a>
+### `newscatcher.searchSimilar.get`<a id="newscatchersearchsimilarget"></a>
 
 This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const getResponse = await newscatcher.searchsimilar.get({
+const getResponse = await newscatcher.searchSimilar.get({
   q: "q_example",
   searchIn: "title_content",
   includeSimilarDocuments: false,
@@ -804,14 +804,14 @@ const getResponse = await newscatcher.searchsimilar.get({
 ---
 
 
-### `newscatcher.searchsimilar.post`<a id="newscatchersearchsimilarpost"></a>
+### `newscatcher.searchSimilar.post`<a id="newscatchersearchsimilarpost"></a>
 
 This endpoint returns a list of articles that are similar to the query provided. You also have the option to get similar articles for the results of a search.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const postResponse = await newscatcher.searchsimilar.post({
+const postResponse = await newscatcher.searchSimilar.post({
   q: "q_example",
   search_in: "title_content",
   include_similar_documents: false,
