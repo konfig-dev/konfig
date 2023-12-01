@@ -89,6 +89,14 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
      */
     public String example;
 
+    /**
+     * In some cases (for example, C#), an example needs to be generated for a composed schema.
+     *
+     * In the particular example that we ran into, we needed to compute the example for an anyOf between
+     * string and string(date-time) for C#.
+     */
+    public String exampleComposed;
+
     public String jsonSchema;
     /**
      * The value of the 'minimum' attribute in the OpenAPI schema.

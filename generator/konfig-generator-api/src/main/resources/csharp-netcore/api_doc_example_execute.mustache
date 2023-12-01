@@ -13,11 +13,16 @@ var {{paramName}} = {{{example}}};{{#description}} // {{{description}}}{{^requir
 var {{paramName}} = new {{{dataType}}}();
 {{/isArray}}
 {{^isArray}}
+{{#composedSchemas}}
+var {{paramName}} = {{{example}}};
+{{/composedSchemas}}
+{{^composedSchemas}}
 var {{paramName}} = new {{{dataType}}}(
 {{#vars}}
     {{nameInCamelCaseLowerFirst}}{{^-last}},{{/-last}}
 {{/vars}}
 );
+{{/composedSchemas}}
 {{/isArray}}
 {{/isPrimitiveType}}
 {{/allParams}}

@@ -36,7 +36,12 @@ var {{nameInCamelCaseLowerFirst}} = "{{{nameInCamelCaseLowerFirst}}}_example";{{
 {{/example}}
 {{/isPrimitiveType}}
 {{^isPrimitiveType}}
+{{#exampleComposed}}
+var {{nameInCamelCaseLowerFirst}} = {{{exampleComposed}}};{{#description}} // {{{.}}}{{/description}}
+{{/exampleComposed}}
+{{^exampleComposed}}
 var {{nameInCamelCaseLowerFirst}} = new {{{dataType}}}();{{#description}} // {{{.}}}{{/description}}
+{{/exampleComposed}}
 {{/isPrimitiveType}}
 {{/isEnumRef}}
 {{/vars}}

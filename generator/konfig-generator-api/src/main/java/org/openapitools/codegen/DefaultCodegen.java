@@ -3915,6 +3915,10 @@ public class DefaultCodegen implements CodegenConfig {
         return fromProperty(name, p, false, false);
     }
 
+    protected String toExampleComposed(String dataType, CodegenComposedSchemas composedSchema) {
+        return "NOT_IMPLEMENTED";
+    }
+
     /**
      * Convert OAS Property object to Codegen Property object.
      * <p>
@@ -4103,7 +4107,15 @@ public class DefaultCodegen implements CodegenConfig {
         }
 
         property.setTypeProperties(p);
-        property.setComposedSchemas(getComposedSchemas(p));
+        CodegenComposedSchemas composedSchemas = getComposedSchemas(p);
+        if (composedSchemas == null) {
+            composedSchemas = getComposedSchemas(pDeref);
+        }
+        property.setComposedSchemas(composedSchemas);
+        if (property.getComposedSchemas() != null) {
+            property.exampleComposed = toExampleComposed(property.dataType, property.getComposedSchemas());
+        }
+        // set example
         if (ModelUtils.isIntegerSchema(p)) { // integer type
             updatePropertyForInteger(property, p);
         } else if (ModelUtils.isBooleanSchema(p)) { // boolean type

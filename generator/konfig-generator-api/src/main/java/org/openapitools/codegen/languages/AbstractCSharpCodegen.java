@@ -1004,18 +1004,18 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
      */
     @Override
     public String toExampleValue(Schema p) {
-        if (ModelUtils.isStringSchema(p)) {
-            if (p.getExample() != null) {
-                return "\"" + p.getExample().toString() + "\"";
-            }
-        } else if (ModelUtils.isBooleanSchema(p)) {
+        if (ModelUtils.isBooleanSchema(p)) {
             if (p.getExample() != null) {
                 return p.getExample().toString();
             }
         } else if (ModelUtils.isDateSchema(p)) {
-            // TODO
+            return "DateTime.Now";
         } else if (ModelUtils.isDateTimeSchema(p)) {
-            // TODO
+            return "DateTime.Now";
+        } else if (ModelUtils.isStringSchema(p)) {
+            if (p.getExample() != null) {
+                return "\"" + p.getExample().toString() + "\"";
+            }
         } else if (ModelUtils.isNumberSchema(p)) {
             if (p.getExample() != null) {
                 return p.getExample().toString();
@@ -1471,6 +1471,20 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         } else if (hasAllowableValues) {
             //parameter is enum defined as a schema component
             example = "(" + type + ") \"" + example + "\"";
+        } else if (p.getComposedSchemas() != null) {
+            if (p.getComposedSchemas().getAnyOf() != null) {
+                p.getComposedSchemas().getAnyOf().sort((a, b) -> {
+                    if (a.dataType.equals("DateTime")) {
+                        return -1;
+                    }
+                    if (b.dataType.equals("DateTime")) {
+                        return 1;
+                    }
+                    return 0;
+                });
+
+                example = "new " + type + "(" + p.getComposedSchemas().getAnyOf().get(0).example + ")";
+            }
         } else if (!languageSpecificPrimitives.contains(type)) {
             // type is a model class, e.g. User
             example = "new " + type + "()";
@@ -1490,7 +1504,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
             } else {
                 example = "new List<" + p.items.dataType + ">()";
             }
-        } else if (Boolean.TRUE.equals(p.isModel)) {
+        } else if (Boolean.TRUE.equals(p.isModel) && p.getComposedSchemas() == null) {
             example = "new " + p.dataType + "()";
         } else if (Boolean.TRUE.equals(p.isMap)) {
             if (p.items != null) {
@@ -1502,6 +1516,24 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         }
 
         p.example = example;
+    }
+
+    @Override
+    protected String toExampleComposed(String dataType, CodegenComposedSchemas composedSchema) {
+        if (composedSchema.getAnyOf() != null) {
+            composedSchema.getAnyOf().sort((a, b) -> {
+                if (a.dataType.equals("DateTime")) {
+                    return -1;
+                }
+                if (b.dataType.equals("DateTime")) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            return "new " + dataType + "(" + composedSchema.getAnyOf().get(0).example + ")";
+        }
+        return "null";
     }
 
     @Override
