@@ -1037,6 +1037,17 @@ export default class Deploy extends Command {
           }
 
           if (body.generators.swift) {
+            if (
+              !flags.ignoreSubmodules &&
+              (await isSubmodule({ git: body.generators.swift.git, configDir }))
+            ) {
+              await handleSubmodule({
+                outputDirectory: body.generators.swift.outputDirectory,
+                configDir,
+                git: body.generators.swift.git,
+                generator: 'swift',
+              })
+            }
             const outputDirectory =
               flags.copySwiftOutputDir ?? body.generators.swift.outputDirectory
             this.debug(
