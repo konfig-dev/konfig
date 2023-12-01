@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.33.0
+
+### Minor Changes
+
+- [#397](https://github.com/konfig-dev/konfig/pull/397) [`1e7398dc`](https://github.com/konfig-dev/konfig/commit/1e7398dcc55c23211b77937bbcfb6746a1c2dcae) Thanks [@dphuang2](https://github.com/dphuang2)! - add mockServerPort to generator configuaration for generated tests
+
 ## 1.32.0
 
 ### Minor Changes
