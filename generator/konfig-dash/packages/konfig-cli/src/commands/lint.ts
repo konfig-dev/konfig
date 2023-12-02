@@ -20,19 +20,23 @@ export default class Lint extends Command {
       name: 'spectral',
       cwd: this.config.root,
     })
-    const { parsedKonfigYaml } = parseKonfigYaml({ configDir: process.cwd() })
-    // Support passing nothing and inferring spec path from konfig.yaml
-    if (argv.length === 0)
-      argv.push(parsedKonfigYaml.specPath)
-    if (!fs.existsSync(argv[0])) throw new Error(`File not found: ${argv[0]}`)
 
-    // First run fix if konfig.yaml has specInputPath and we're linting the specPath
-    if (parsedKonfigYaml.specInputPath !== undefined && argv[0] === parsedKonfigYaml.specPath) {
-      await executeFixCommand({
-        spec: parsedKonfigYaml.specPath,
-        specInputPath: parsedKonfigYaml.specInputPath,
-      })
+    // Support passing nothing and inferring spec path from konfig.yaml
+    if (argv.length === 0) {
+      const { parsedKonfigYaml } = parseKonfigYaml({ configDir: process.cwd() })
+      // First run fix if konfig.yaml has specInputPath and we're linting the specPath
+      if (
+        parsedKonfigYaml.specInputPath !== undefined &&
+        argv[0] === parsedKonfigYaml.specPath
+      ) {
+        await executeFixCommand({
+          spec: parsedKonfigYaml.specPath,
+          specInputPath: parsedKonfigYaml.specInputPath,
+        })
+      }
+      argv.push(parsedKonfigYaml.specPath)
     }
+    if (!fs.existsSync(argv[0])) throw new Error(`File not found: ${argv[0]}`)
 
     try {
       execa.sync(pathToPrism, ['lint', '-F', 'warn', ...argv], {
