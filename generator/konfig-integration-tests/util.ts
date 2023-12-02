@@ -188,7 +188,6 @@ async function callAndLogExeca(command: string, args: string[], options: any) {
   console.log(`Running: ${command} ${args.join(" ")}`);
   await execa(command, args, {
     ...options,
-    stdio: "inherit",
   });
 }
 
