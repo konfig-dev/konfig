@@ -6,7 +6,7 @@
 # For example `./run-tests.sh --TEST_ARGS="--shard=1/2"` will run the tests with the `--shard=1/2` flag.
 
 # Store the base command in a variable
-base_cmd="earthly --config earthly-config.yaml --secret NPM_TOKEN='dummy' --secret GITHUB_ACTIONS=false -P +test"
+base_cmd="earthly --config earthly-config.yaml --secret AWS_ACCESS_KEY_ID --secret AWS_SECRET_ACCESS_KEY --secret NPM_TOKEN='dummy' --secret GITHUB_ACTIONS=false -P +test"
 
 # Append command line arguments
 for arg in "$@"; do

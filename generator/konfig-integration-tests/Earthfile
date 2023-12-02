@@ -9,8 +9,10 @@ integration-tests:
   COPY sdks sdks
   COPY tests tests
   COPY apiServer.js .
+  COPY scripts scripts
+  RUN --secret AWS_ACCESS_KEY_ID --secret AWS_SECRET_ACCESS_KEY ./scripts/install-aws-cli.sh
   # can be overridden at runtime (e.g. "docker run konfig-integration-tests:latest --testName=TestName")
-  ENTRYPOINT ["yarn", "test"]
+  ENTRYPOINT ["yarn", "test:ci"]
   CMD []
   SAVE IMAGE konfig-integration-tests:latest
 
