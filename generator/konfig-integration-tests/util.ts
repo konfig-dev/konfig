@@ -1,4 +1,4 @@
-import { execa } from "execa";
+import { ExecaChildProcess, execa } from "execa";
 import * as path from "path";
 import yaml from "js-yaml";
 import { expect } from "vitest";
@@ -188,6 +188,7 @@ async function callAndLogExeca(command: string, args: string[], options: any) {
   console.log(`Running: ${command} ${args.join(" ")}`);
   await execa(command, args, {
     ...options,
+    stdio: "inherit",
   });
 }
 
