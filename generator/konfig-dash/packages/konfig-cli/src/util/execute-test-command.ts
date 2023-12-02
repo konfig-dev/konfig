@@ -32,12 +32,14 @@ export async function executeTestCommand({
   cliRoot,
   noMockServer,
   mockServerPort = 4010,
+  useDynamicResponseConfiguration,
 }: {
   filterInput?: string
   sequence: boolean
   cliRoot: string
   noMockServer: boolean
   mockServerPort?: number
+  useDynamicResponseConfiguration?: boolean
 }) {
   const filter = parseFilterFlag(filterInput)
   const configDir = process.cwd()
@@ -64,7 +66,9 @@ export async function executeTestCommand({
       cwd: cliRoot,
     })
     execa.command(
-      `${pathToPrism} mock -d ${common.specPath} --port ${mockServerPort}`,
+      `${pathToPrism} mock ${useDynamicResponseConfiguration ? '-d' : ''} ${
+        common.specPath
+      } --port ${mockServerPort}`,
       {
         cwd: configDir,
         stdio: 'inherit',

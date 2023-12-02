@@ -26,6 +26,11 @@ export default class Test extends Command {
       char: 'p',
       default: 4010,
     }),
+    useDynamicResponseConfiguration: Flags.boolean({
+      description:
+        'Use dynamic response configuration when mocking API for testing',
+      char: 'd',
+    }),
   }
 
   public async run(): Promise<void> {
@@ -36,6 +41,7 @@ export default class Test extends Command {
       cliRoot: this.config.root,
       noMockServer: flags.noMockServer,
       mockServerPort: flags.mockServerPort,
+      useDynamicResponseConfiguration: flags.useDynamicResponseConfiguration,
     })
   }
 }
