@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# Run vitest and save its exit code
 vitest "$@"  # Pass all arguments to vitest
+vitest_exit_code=$?
 
 echo "Unzipping html.meta.json.gz..."
 gunzip -c html/html.meta.json.gz > html/html.meta.json
@@ -38,3 +40,6 @@ border=$(printf '%*s' "$len" | tr ' ' '-')
 echo "+$border+"
 echo "| $URL |"
 echo "+$border+"
+
+# Exit with the exit code of vitest
+exit $vitest_exit_code
