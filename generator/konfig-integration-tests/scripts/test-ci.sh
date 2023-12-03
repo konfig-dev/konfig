@@ -40,6 +40,7 @@ border=$(printf '%*s' "$len" | tr ' ' '-')
 echo "+$border+"
 echo "| $URL |"
 echo "+$border+"
+echo "::set-output name=test-report::$URL" # Set the URL as an output variable
 
 # Exit with the exit code of vitest
 exit $vitest_exit_code
