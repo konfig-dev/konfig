@@ -1537,6 +1537,18 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     }
 
     @Override
+    protected void setPropertyComposedSchemas(CodegenProperty property, Schema schema, Schema schemaDereferenced) {
+        CodegenComposedSchemas composedSchemas = this.getComposedSchemas(schema);
+        if (composedSchemas == null) {
+            composedSchemas = this.getComposedSchemas(schemaDereferenced);
+        }
+        property.setComposedSchemas(composedSchemas);
+        if (property.getComposedSchemas() != null) {
+            property.exampleComposed = toExampleComposed(property.dataType, property.getComposedSchemas());
+        }
+    }
+
+    @Override
     public void postProcessParameter(CodegenParameter parameter) {
         super.postProcessParameter(parameter);
 
