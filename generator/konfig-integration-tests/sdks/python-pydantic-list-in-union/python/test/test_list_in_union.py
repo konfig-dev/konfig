@@ -26,7 +26,6 @@ class TestSimple(unittest.TestCase):
             host = "http://127.0.0.1:4005"
         )
         response = client.test.fetch()
-        self.assertIsNone(response)
         self.assertIsNotNone(response)
 
     def test_list_in_union_validate(self):
