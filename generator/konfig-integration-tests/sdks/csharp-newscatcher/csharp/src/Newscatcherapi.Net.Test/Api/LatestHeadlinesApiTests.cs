@@ -33,7 +33,7 @@ namespace Newscatcherapi.Net.Test.Api
         public LatestHeadlinesApiTests()
         {
             client = new NewscatcherClient();
-            client.SetBasePath("http://127.0.0.1:4010");
+            client.SetBasePath("http://127.0.0.1:4027");
             // Configure API key authorization: apiKey
             client.SetApiKey("YOUR_API_KEY");
 
