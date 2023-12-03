@@ -186,9 +186,16 @@ const spawnServer = (config: ServerConfigWithPort): number => {
 
 async function callAndLogExeca(command: string, args: string[], options: any) {
   console.log(`Running: ${command} ${args.join(" ")}`);
-  await execa(command, args, {
+
+  // Stream that simply console.logs everything from the child process
+
+  const p = execa(command, args, {
     ...options,
   });
+  p.stdout?.pipe(process.stdout);
+  p.stderr?.pipe(process.stderr);
+
+  await p;
 }
 
 // Removes the [GitHub last commit] line from the README
