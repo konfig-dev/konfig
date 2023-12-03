@@ -61,11 +61,5 @@ jobs:
         working-directory: ./generator/konfig-integration-tests
 
       - name: Build and run integration tests
-        id: integration_tests
         run: earthly --ci --sat larj-boy --secret AWS_ACCESS_KEY_ID --secret AWS_SECRET_ACCESS_KEY --secret NPM_TOKEN=dummy --secret GITHUB_ACTIONS -P +test
         working-directory: ./generator/konfig-integration-tests
-
-      - name: Display Test Report URL
-        if: steps.integration_tests.outputs.test_report_url
-        run: |
-          echo Test Report URL: ${{ steps.integration_tests.outputs.test_report_url }}
