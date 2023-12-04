@@ -1,5 +1,13 @@
 # konfig-lib
 
+## 1.34.0
+
+### Minor Changes
+
+- [#399](https://github.com/konfig-dev/konfig/pull/399) [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb) Thanks [@dphuang2](https://github.com/dphuang2)! - add the openapi-schema-validate utility command
+
+- [#399](https://github.com/konfig-dev/konfig/pull/399) [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb) Thanks [@dphuang2](https://github.com/dphuang2)! - allow running "konfig lint" without "konfig.yaml" in CWD
+
 ## 1.33.0
 
 ### Minor Changes

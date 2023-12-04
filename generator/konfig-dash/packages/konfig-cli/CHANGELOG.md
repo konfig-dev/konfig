@@ -1,5 +1,22 @@
 # konfig-cli
 
+## 1.34.0
+
+### Minor Changes
+
+- [#399](https://github.com/konfig-dev/konfig/pull/399) [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb) Thanks [@dphuang2](https://github.com/dphuang2)! - add the openapi-schema-validate utility command
+
+- [#399](https://github.com/konfig-dev/konfig/pull/399) [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb) Thanks [@dphuang2](https://github.com/dphuang2)! - allow running "konfig lint" without "konfig.yaml" in CWD
+
+### Patch Changes
+
+- [#398](https://github.com/konfig-dev/konfig/pull/398) [`882692b7`](https://github.com/konfig-dev/konfig/commit/882692b71338505527c85b34614b84b60f119ec2) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add handleSubmodule to swift
+
+- Updated dependencies [[`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb), [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb)]:
+  - konfig-postman-to-openapi@3.1.0
+  - konfig-openapi-spec@1.8.0
+  - konfig-lib@1.34.0
+
 ## 1.33.1
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 ### [3.0.1](https://github.com/joolfe/postman-to-openapi/compare/3.0.0...3.0.1) (2023-01-21)
 
+## 3.1.0
+
+### Minor Changes
+
+- [#399](https://github.com/konfig-dev/konfig/pull/399) [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb) Thanks [@dphuang2](https://github.com/dphuang2)! - add the openapi-schema-validate utility command
+
+- [#399](https://github.com/konfig-dev/konfig/pull/399) [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb) Thanks [@dphuang2](https://github.com/dphuang2)! - allow running "konfig lint" without "konfig.yaml" in CWD
+
+### Patch Changes
+
+- Updated dependencies [[`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb), [`7f82ce28`](https://github.com/konfig-dev/konfig/commit/7f82ce28482db4bacabf20eb7283c4f4678729bb)]:
+  - konfig-lib@1.34.0
+
 ## 3.0.149
 
 ### Patch Changes
