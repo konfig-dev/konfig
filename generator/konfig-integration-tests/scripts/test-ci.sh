@@ -33,7 +33,7 @@ echo "Navigate to the following URL to view the test results:"
 URL="https://konfig-integration-test-reports.s3.us-west-1.amazonaws.com/$DATE_VAR/index.html#/"
 
 # Echoing the URL in a dynamically sized box
-echo $URL
+echo [KITR]: $URL
 
 # Exit with the exit code of vitest
 exit $vitest_exit_code
