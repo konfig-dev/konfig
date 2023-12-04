@@ -32,14 +32,8 @@ echo "Navigate to the following URL to view the test results:"
 # Constructing the URL
 URL="https://konfig-integration-test-reports.s3.us-west-1.amazonaws.com/$DATE_VAR/index.html#/"
 
-# Calculate the length of the URL for the box size
-len=$((${#URL} + 2))  # Adding 2 for the spaces around the URL
-border=$(printf '%*s' "$len" | tr ' ' '-')
-
 # Echoing the URL in a dynamically sized box
-echo "+$border+"
-echo "| $URL |"
-echo "+$border+"
+echo $URL
 
 # Exit with the exit code of vitest
 exit $vitest_exit_code
