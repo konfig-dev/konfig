@@ -116,6 +116,14 @@ export async function e2e(
   ) as KonfigYamlType;
   const parsedKonfigYaml = KonfigYaml.parse(loadedKonfigYaml);
 
+  // Tests will just timeout if you have requiredEnvironmentVariables,
+  // so we throw an error here so you don't waste time debugging
+  if (parsedKonfigYaml.requiredEnvironmentVariables !== undefined) {
+    throw new Error(
+      "requiredEnvironmentVariables is not supported in e2e tests"
+    );
+  }
+
   const generators: (
     | KonfigYamlGeneratorConfig
     | KonfigYamlAdditionalGeneratorConfig
