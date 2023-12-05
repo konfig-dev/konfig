@@ -1,0 +1,5088 @@
+openapi: 3.0.2
+info:
+  contact:
+    email: maksym@newscatcherapi.com
+    name: Maksym Sugonyaka
+  description: <img src='https://uploads-ssl.webflow.com/6429857b17973b636c2195c5/646c6f1eb774ff2f2997bec5_newscatcher_.svg'
+    width='286' height='35' /> <br>  <br>Visit our website  <a href='https://newscatcherapi.com'>https://newscatcherapi.com</a>
+  termsOfService: https://newscatcherapi.com/terms-of-service
+  title: NewsCatcher-V3 Production API
+  version: Beta-3.0.0
+  x-konfig-has-globally-required-security: true
+servers:
+- url: https://v3-api.newscatcherapi.com/
+tags:
+- name: Search
+- name: LatestHeadlines
+- name: Authors
+- name: SearchSimilar
+- name: Sources
+- name: Subscription
+paths:
+  /api/search:
+    get:
+      description: "This endpoint allows you to search for articles. You can search\
+        \ for articles by keyword, language, country, source, and more."
+      operationId: Search_get
+      parameters:
+      - explode: true
+        in: query
+        name: q
+        required: true
+        schema:
+          title: Q
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: search_in
+        required: false
+        schema:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-1-schema
+        style: form
+      - explode: true
+        in: query
+        name: predefined_sources
+        required: false
+        schema:
+          title: Predefined Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sources
+        required: false
+        schema:
+          title: Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_sources
+        required: false
+        schema:
+          title: Not Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          title: Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_lang
+        required: false
+        schema:
+          title: Not Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: countries
+        required: false
+        schema:
+          title: Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_countries
+        required: false
+        schema:
+          title: Not Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_
+        required: false
+        schema:
+          $ref: '#/components/schemas/From_'
+        style: form
+      - explode: true
+        in: query
+        name: to_
+        required: false
+        schema:
+          $ref: '#/components/schemas/To_'
+        style: form
+      - explode: true
+        in: query
+        name: published_date_precision
+        required: false
+        schema:
+          title: Published Date Precision
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: by_parse_date
+        required: false
+        schema:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-12-schema
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-13-schema
+        style: form
+      - explode: true
+        in: query
+        name: ranked_only
+        required: false
+        schema:
+          title: Ranked Only
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_rank
+        required: false
+        schema:
+          title: From Rank
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: to_rank
+        required: false
+        schema:
+          title: To Rank
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: is_headline
+        required: false
+        schema:
+          title: Is Headline
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: is_paid_content
+        required: false
+        schema:
+          title: Is Paid Content
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: parent_url
+        required: false
+        schema:
+          title: Parent Url
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_links
+        required: false
+        schema:
+          title: All Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_domain_links
+        required: false
+        schema:
+          title: All Domain Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: word_count_min
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: word_count_max
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-24-schema
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-25-schema
+        style: form
+      - explode: true
+        in: query
+        name: clustering_enabled
+        required: false
+        schema:
+          title: Clustering Enabled
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: clustering_threshold
+        required: false
+        schema:
+          title: Clustering Threshold
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: clustering_variable
+        required: false
+        schema:
+          title: Clustering Variable
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: include_nlp_data
+        required: false
+        schema:
+          title: Include Nlp Data
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: has_nlp
+        required: false
+        schema:
+          title: Has Nlp
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: theme
+        required: false
+        schema:
+          title: Theme
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ORG_entity_name
+        required: false
+        schema:
+          title: Org Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: PER_entity_name
+        required: false
+        schema:
+          title: Per Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: LOC_entity_name
+        required: false
+        schema:
+          title: Loc Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: MISC_entity_name
+        required: false
+        schema:
+          title: Misc Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_min
+        required: false
+        schema:
+          title: Title Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_max
+        required: false
+        schema:
+          title: Title Sentiment Max
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_min
+        required: false
+        schema:
+          title: Content Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_max
+        required: false
+        schema:
+          title: Content Sentiment Max
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchGetResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Get] Search For Articles Request"
+      tags:
+      - Search
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-search
+    post:
+      description: "This endpoint allows you to search for articles. You can search\
+        \ for articles by keyword, language, country, source, and more."
+      operationId: Search_post
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchPostResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Post] Search For Articles Request"
+      tags:
+      - Search
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-search
+  /api/latest_headlines:
+    get:
+      description: "This endpoint allows you to get latest headlines. You need to\
+        \ specify since when you want to get the latest headlines. You can also filter\
+        \ by language, country, source, and more."
+      operationId: LatestHeadlines_get
+      parameters:
+      - explode: true
+        in: query
+        name: when
+        required: false
+        schema:
+          default: 7d
+          example: 7d
+          title: When
+          type: string
+          x-konfig-original-example: 7d
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-0-schema
+        style: form
+      - explode: true
+        in: query
+        name: by_parse_date
+        required: false
+        schema:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-1-schema
+        style: form
+      - explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          title: Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_lang
+        required: false
+        schema:
+          title: Not Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: countries
+        required: false
+        schema:
+          title: Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_countries
+        required: false
+        schema:
+          title: Not Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sources
+        required: false
+        schema:
+          title: Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: predefined_sources
+        required: false
+        schema:
+          title: Predefined Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_sources
+        required: false
+        schema:
+          title: Not Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ranked_only
+        required: false
+        schema:
+          title: Ranked Only
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: is_headline
+        required: false
+        schema:
+          title: Is Headline
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: is_paid_content
+        required: false
+        schema:
+          title: Is Paid Content
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: parent_url
+        required: false
+        schema:
+          title: Parent Url
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: theme
+        required: false
+        schema:
+          title: Theme
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_links
+        required: false
+        schema:
+          title: All Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_domain_links
+        required: false
+        schema:
+          title: All Domain Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: word_count_min
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: word_count_max
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-18-schema
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-19-schema
+        style: form
+      - explode: true
+        in: query
+        name: clustering_enabled
+        required: false
+        schema:
+          title: Clustering Enabled
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: clustering_threshold
+        required: false
+        schema:
+          title: Clustering Threshold
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: clustering_variable
+        required: false
+        schema:
+          title: Clustering Variable
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: include_nlp_data
+        required: false
+        schema:
+          title: Include Nlp Data
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: has_nlp
+        required: false
+        schema:
+          title: Has Nlp
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: ORG_entity_name
+        required: false
+        schema:
+          title: Org Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: PER_entity_name
+        required: false
+        schema:
+          title: Per Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: LOC_entity_name
+        required: false
+        schema:
+          title: Loc Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: MISC_entity_name
+        required: false
+        schema:
+          title: Misc Entity Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_min
+        required: false
+        schema:
+          title: Title Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_max
+        required: false
+        schema:
+          title: Title Sentiment Max
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_min
+        required: false
+        schema:
+          title: Content Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_max
+        required: false
+        schema:
+          title: Content Sentiment Max
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatestHeadlinesGetResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Get] Search For Latest Headlines Request"
+      tags:
+      - LatestHeadlines
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-latest_headlines
+    post:
+      description: "This endpoint allows you to get latest headlines. You need to\
+        \ specify since when you want to get the latest headlines. You can also filter\
+        \ by language, country, source, and more."
+      operationId: LatestHeadlines_post
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LatestHeadlinesRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatestHeadlinesPostResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Post] Search For Latest Headlines Request"
+      tags:
+      - LatestHeadlines
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-latest_headlines
+  /api/authors:
+    get:
+      description: "This endpoint allows you to search for articles by author. You\
+        \ need to specify the author name. You can also filter by language, country,\
+        \ source, and more."
+      operationId: Authors_get
+      parameters:
+      - explode: true
+        in: query
+        name: author_name
+        required: true
+        schema:
+          title: Author Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sources
+        required: false
+        schema:
+          title: Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: predefined_sources
+        required: false
+        schema:
+          title: Predefined Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_sources
+        required: false
+        schema:
+          title: Not Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          title: Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_lang
+        required: false
+        schema:
+          title: Not Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: countries
+        required: false
+        schema:
+          title: Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_countries
+        required: false
+        schema:
+          title: Not Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_
+        required: false
+        schema:
+          $ref: '#/components/schemas/From_'
+        style: form
+      - explode: true
+        in: query
+        name: to_
+        required: false
+        schema:
+          $ref: '#/components/schemas/To_'
+        style: form
+      - explode: true
+        in: query
+        name: published_date_precision
+        required: false
+        schema:
+          title: Published Date Precision
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: by_parse_date
+        required: false
+        schema:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-11-schema
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-12-schema
+        style: form
+      - explode: true
+        in: query
+        name: ranked_only
+        required: false
+        schema:
+          title: Ranked Only
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_rank
+        required: false
+        schema:
+          title: From Rank
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: to_rank
+        required: false
+        schema:
+          title: To Rank
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: is_headline
+        required: false
+        schema:
+          title: Is Headline
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: is_paid_content
+        required: false
+        schema:
+          title: Is Paid Content
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: parent_url
+        required: false
+        schema:
+          title: Parent Url
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_links
+        required: false
+        schema:
+          title: All Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_domain_links
+        required: false
+        schema:
+          title: All Domain Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: word_count_min
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: word_count_max
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-23-schema
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-24-schema
+        style: form
+      - explode: true
+        in: query
+        name: include_nlp_data
+        required: false
+        schema:
+          title: Include Nlp Data
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: has_nlp
+        required: false
+        schema:
+          title: Has Nlp
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: theme
+        required: false
+        schema:
+          title: Theme
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ner_name
+        required: false
+        schema:
+          title: Ner Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_min
+        required: false
+        schema:
+          title: Title Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_max
+        required: false
+        schema:
+          title: Title Sentiment Max
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_min
+        required: false
+        schema:
+          title: Content Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_max
+        required: false
+        schema:
+          title: Content Sentiment Max
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorsGetResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Get] Search By Author Request"
+      tags:
+      - Authors
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-authors
+    post:
+      description: "This endpoint allows you to search for articles by author. You\
+        \ need to specify the author name. You can also filter by language, country,\
+        \ source, and more."
+      operationId: Authors_post
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorSearchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorsPostResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Post] Search By Author Request"
+      tags:
+      - Authors
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-authors
+  /api/search_similar:
+    get:
+      description: This endpoint returns a list of articles that are similar to the
+        query provided. You also have the option to get similar articles for the results
+        of a search.
+      operationId: SearchSimilar_get
+      parameters:
+      - explode: true
+        in: query
+        name: q
+        required: true
+        schema:
+          title: Q
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: search_in
+        required: false
+        schema:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-1-schema
+        style: form
+      - explode: true
+        in: query
+        name: include_similar_documents
+        required: false
+        schema:
+          default: false
+          example: false
+          title: Include Similar Documents
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-2-schema
+        style: form
+      - explode: true
+        in: query
+        name: similar_documents_number
+        required: false
+        schema:
+          default: 5
+          example: 5
+          minimum: 0
+          title: Similar Documents Number
+          type: integer
+          x-konfig-original-example: 5
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-3-schema
+        style: form
+      - explode: true
+        in: query
+        name: similar_documents_fields
+        required: false
+        schema:
+          default: "title,content"
+          example: "title,content"
+          title: Similar Documents Fields
+          type: string
+          x-konfig-original-example: "title,content"
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-4-schema
+        style: form
+      - explode: true
+        in: query
+        name: predefined_sources
+        required: false
+        schema:
+          title: Predefined Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sources
+        required: false
+        schema:
+          title: Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_sources
+        required: false
+        schema:
+          title: Not Sources
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          title: Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_lang
+        required: false
+        schema:
+          title: Not Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: countries
+        required: false
+        schema:
+          title: Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: not_countries
+        required: false
+        schema:
+          title: Not Countries
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_
+        required: false
+        schema:
+          $ref: '#/components/schemas/From_'
+        style: form
+      - explode: true
+        in: query
+        name: to_
+        required: false
+        schema:
+          $ref: '#/components/schemas/To_'
+        style: form
+      - explode: true
+        in: query
+        name: by_parse_date
+        required: false
+        schema:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-14-schema
+        style: form
+      - explode: true
+        in: query
+        name: published_date_precision
+        required: false
+        schema:
+          title: Published Date Precision
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-16-schema
+        style: form
+      - explode: true
+        in: query
+        name: ranked_only
+        required: false
+        schema:
+          title: Ranked Only
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_rank
+        required: false
+        schema:
+          title: From Rank
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: to_rank
+        required: false
+        schema:
+          title: To Rank
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: is_headline
+        required: false
+        schema:
+          title: Is Headline
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: is_paid_content
+        required: false
+        schema:
+          title: Is Paid Content
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: parent_url
+        required: false
+        schema:
+          title: Parent Url
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_links
+        required: false
+        schema:
+          title: All Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: all_domain_links
+        required: false
+        schema:
+          title: All Domain Links
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: word_count_min
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: word_count_max
+        required: false
+        schema:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-27-schema
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-28-schema
+        style: form
+      - explode: true
+        in: query
+        name: include_nlp_data
+        required: false
+        schema:
+          title: Include Nlp Data
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: has_nlp
+        required: false
+        schema:
+          title: Has Nlp
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: theme
+        required: false
+        schema:
+          title: Theme
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ner_name
+        required: false
+        schema:
+          title: Ner Name
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_min
+        required: false
+        schema:
+          title: Title Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: title_sentiment_max
+        required: false
+        schema:
+          title: Title Sentiment Max
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_min
+        required: false
+        schema:
+          title: Content Sentiment Min
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: content_sentiment_max
+        required: false
+        schema:
+          title: Content Sentiment Max
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSimilarGetResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Get] Search For Similar Articles Request"
+      tags:
+      - SearchSimilar
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-search_similar
+    post:
+      description: This endpoint returns a list of articles that are similar to the
+        query provided. You also have the option to get similar articles for the results
+        of a search.
+      operationId: SearchSimilar_post
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoreLikeThisRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSimilarPostResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Post] Search For Similar Articles Request"
+      tags:
+      - SearchSimilar
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-search_similar
+  /api/sources:
+    get:
+      description: "This endpoint allows you to get the list of sources that are available\
+        \ in the database. You can filter the sources by language and country. The\
+        \ maximum number of sources displayed is set according to your plan. You can\
+        \ find the list of plans and their features here: https://newscatcherapi.com/news-api#news-api-pricing"
+      operationId: Sources_get
+      parameters:
+      - explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          title: Lang
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: countries
+        required: false
+        schema:
+          title: Countries
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Get] Search For Sources Request"
+      tags:
+      - Sources
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-sources
+    post:
+      description: "This endpoint allows you to get the list of sources that are available\
+        \ in the database. You can filter the sources by language and country. The\
+        \ maximum number of sources displayed is set according to your plan. You can\
+        \ find the list of plans and their features here: https://newscatcherapi.com/news-api#news-api-pricing"
+      operationId: Sources_post
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourcesRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Post] Search For Sources Request"
+      tags:
+      - Sources
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-sources
+  /api/subscription:
+    get:
+      description: This endpoint allows you to get info about your subscription plan.
+      operationId: Subscription_get
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Get] Get My Plan Info"
+      tags:
+      - Subscription
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-subscription
+    post:
+      description: This endpoint allows you to get info about your subscription plan.
+      operationId: Subscription_post
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: "[Post] Get My Plan Info"
+      tags:
+      - Subscription
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-subscription
+components:
+  schemas:
+    AuthorSearchRequest:
+      example:
+        author_name: author_name
+        has_nlp: true
+        sources: sources
+        to_: null
+        sort_by: relevancy
+        all_domain_links: all_domain_links
+        word_count_max: 0
+        all_links: all_links
+        content_sentiment_max: 9.301444243932576
+        title_sentiment_max: 2.3021358869347655
+        theme: theme
+        lang: lang
+        to_rank: 6
+        not_countries: not_countries
+        word_count_min: 0
+        page_size: 100
+        by_parse_date: false
+        ner_name: ner_name
+        content_sentiment_min: 7.061401241503109
+        not_sources: not_sources
+        from_: null
+        countries: countries
+        predefined_sources: predefined_sources
+        not_lang: not_lang
+        from_rank: 0
+        title_sentiment_min: 5.637376656633329
+        is_headline: true
+        parent_url: parent_url
+        published_date_precision: published_date_precision
+        ranked_only: ranked_only
+        include_nlp_data: true
+        is_paid_content: true
+        page: 1
+      properties:
+        author_name:
+          title: Author Name
+          type: string
+        sources:
+          title: Sources
+          type: string
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          $ref: '#/components/schemas/From_'
+        to_:
+          $ref: '#/components/schemas/To_'
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-by_parse_date
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-sort_by
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-page_size
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ner_name:
+          title: Ner Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - author_name
+      title: AuthorSearchRequest
+      type: object
+    Cluster:
+      properties:
+        cluster_id:
+          title: Cluster Id
+          type: string
+        cluster_size:
+          title: Cluster Size
+          type: integer
+        articles:
+          items:
+            type: object
+          title: Articles
+          type: array
+      required:
+      - articles
+      - cluster_id
+      - cluster_size
+      title: Cluster
+      type: object
+    ClusteringSearchResponse:
+      properties:
+        status:
+          default: ok
+          example: ok
+          title: Status
+          type: string
+          x-konfig-original-example: ok
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ClusteringSearchResponse-properties-status
+        total_hits:
+          title: Total Hits
+          type: integer
+        page:
+          title: Page
+          type: integer
+        total_pages:
+          title: Total Pages
+          type: integer
+        page_size:
+          title: Page Size
+          type: integer
+        clusters_count:
+          title: Clusters Count
+          type: integer
+        clusters:
+          items:
+            $ref: '#/components/schemas/Cluster'
+          title: Clusters
+          type: array
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - clusters
+      - clusters_count
+      - page
+      - page_size
+      - total_hits
+      - total_pages
+      - user_input
+      title: ClusteringSearchResponse
+      type: object
+    FailedLatestHeadlinesResponse:
+      properties:
+        status:
+          default: No Matches for your search
+          example: No Matches for your search
+          title: Status
+          type: string
+          x-konfig-original-example: No Matches for your search
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-status
+        total_hits:
+          default: 0
+          example: 0
+          title: Total Hits
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-total_hits
+        page:
+          default: 0
+          example: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-page
+        total_pages:
+          default: 0
+          example: 0
+          title: Total Pages
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-total_pages
+        page_size:
+          default: 0
+          example: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-page_size
+        articles:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/dto__responses__LatestHeadlinesResponse__ArticleResult'
+          title: Articles
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-articles
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - user_input
+      title: FailedLatestHeadlinesResponse
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    LatestHeadlinesRequest:
+      example:
+        has_nlp: true
+        sources: sources
+        clustering_variable: clustering_variable
+        ORG_entity_name: ORG_entity_name
+        all_domain_links: all_domain_links
+        clustering_threshold: 1.4658129805029452
+        when: 7d
+        word_count_max: 0
+        all_links: all_links
+        content_sentiment_max: 7.061401241503109
+        title_sentiment_max: 5.637376656633329
+        theme: theme
+        lang: lang
+        not_countries: not_countries
+        word_count_min: 0
+        page_size: 100
+        by_parse_date: false
+        content_sentiment_min: 2.3021358869347655
+        LOC_entity_name: LOC_entity_name
+        MISC_entity_name: MISC_entity_name
+        not_sources: not_sources
+        countries: countries
+        not_lang: not_lang
+        predefined_sources: predefined_sources
+        title_sentiment_min: 5.962133916683182
+        is_headline: true
+        parent_url: parent_url
+        clustering_enabled: true
+        ranked_only: ranked_only
+        include_nlp_data: true
+        is_paid_content: true
+        PER_entity_name: PER_entity_name
+        page: 1
+      properties:
+        when:
+          default: 7d
+          example: 7d
+          title: When
+          type: string
+          x-konfig-original-example: 7d
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-when
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-by_parse_date
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        sources:
+          title: Sources
+          type: string
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        ranked_only:
+          title: Ranked Only
+          type: string
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        theme:
+          title: Theme
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-page_size
+        clustering_enabled:
+          title: Clustering Enabled
+          type: boolean
+        clustering_threshold:
+          title: Clustering Threshold
+          type: number
+        clustering_variable:
+          title: Clustering Variable
+          type: string
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        ORG_entity_name:
+          title: Org Entity Name
+          type: string
+        PER_entity_name:
+          title: Per Entity Name
+          type: string
+        LOC_entity_name:
+          title: Loc Entity Name
+          type: string
+        MISC_entity_name:
+          title: Misc Entity Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      title: LatestHeadlinesRequest
+      type: object
+    LatestHeadlinesResponse:
+      properties:
+        status:
+          default: ok
+          example: ok
+          title: Status
+          type: string
+          x-konfig-original-example: ok
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesResponse-properties-status
+        total_hits:
+          title: Total Hits
+          type: integer
+        page:
+          title: Page
+          type: integer
+        total_pages:
+          title: Total Pages
+          type: integer
+        page_size:
+          title: Page Size
+          type: integer
+        articles:
+          items:
+            type: object
+          title: Articles
+          type: array
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - articles
+      - page
+      - page_size
+      - total_hits
+      - total_pages
+      - user_input
+      title: LatestHeadlinesResponse
+      type: object
+    MoreLikeThisRequest:
+      example:
+        has_nlp: true
+        sources: sources
+        to_: null
+        sort_by: relevancy
+        all_domain_links: all_domain_links
+        word_count_max: 0
+        include_similar_documents: false
+        all_links: all_links
+        content_sentiment_max: 9.301444243932576
+        title_sentiment_max: 2.3021358869347655
+        theme: theme
+        lang: lang
+        to_rank: 6
+        not_countries: not_countries
+        word_count_min: 0
+        page_size: 100
+        search_in: title_content
+        by_parse_date: false
+        ner_name: ner_name
+        content_sentiment_min: 7.061401241503109
+        not_sources: not_sources
+        from_: null
+        similar_documents_fields: "title,content"
+        countries: countries
+        predefined_sources: predefined_sources
+        not_lang: not_lang
+        from_rank: 0
+        title_sentiment_min: 5.637376656633329
+        is_headline: true
+        q: q
+        similar_documents_number: 5
+        parent_url: parent_url
+        published_date_precision: published_date_precision
+        ranked_only: ranked_only
+        include_nlp_data: true
+        is_paid_content: true
+        page: 1
+      properties:
+        q:
+          title: Q
+          type: string
+        search_in:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-search_in
+        include_similar_documents:
+          default: false
+          example: false
+          title: Include Similar Documents
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-include_similar_documents
+        similar_documents_number:
+          default: 5
+          example: 5
+          minimum: 0
+          title: Similar Documents Number
+          type: integer
+          x-konfig-original-example: 5
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-similar_documents_number
+        similar_documents_fields:
+          default: "title,content"
+          example: "title,content"
+          title: Similar Documents Fields
+          type: string
+          x-konfig-original-example: "title,content"
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-similar_documents_fields
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        sources:
+          title: Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          $ref: '#/components/schemas/From_'
+        to_:
+          $ref: '#/components/schemas/To_'
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-by_parse_date
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-sort_by
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-page_size
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ner_name:
+          title: Ner Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - q
+      title: MoreLikeThisRequest
+      type: object
+    SearchRequest:
+      example:
+        has_nlp: true
+        sources: sources
+        to_: null
+        clustering_variable: clustering_variable
+        ORG_entity_name: ORG_entity_name
+        sort_by: relevancy
+        all_domain_links: all_domain_links
+        clustering_threshold: 5.637376656633329
+        word_count_max: 0
+        all_links: all_links
+        content_sentiment_max: 3.616076749251911
+        title_sentiment_max: 7.061401241503109
+        theme: theme
+        lang: lang
+        to_rank: 6
+        not_countries: not_countries
+        word_count_min: 0
+        page_size: 100
+        search_in: title_content
+        by_parse_date: false
+        content_sentiment_min: 9.301444243932576
+        LOC_entity_name: LOC_entity_name
+        MISC_entity_name: MISC_entity_name
+        not_sources: not_sources
+        from_: null
+        countries: countries
+        predefined_sources: predefined_sources
+        not_lang: not_lang
+        from_rank: 0
+        title_sentiment_min: 2.3021358869347655
+        is_headline: true
+        q: q
+        parent_url: parent_url
+        clustering_enabled: true
+        published_date_precision: published_date_precision
+        ranked_only: ranked_only
+        include_nlp_data: true
+        is_paid_content: true
+        PER_entity_name: PER_entity_name
+        page: 1
+      properties:
+        q:
+          title: Q
+          type: string
+        search_in:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-search_in
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        sources:
+          title: Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          $ref: '#/components/schemas/From_'
+        to_:
+          $ref: '#/components/schemas/To_'
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-by_parse_date
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-sort_by
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-page_size
+        clustering_enabled:
+          title: Clustering Enabled
+          type: boolean
+        clustering_threshold:
+          title: Clustering Threshold
+          type: number
+        clustering_variable:
+          title: Clustering Variable
+          type: string
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ORG_entity_name:
+          title: Org Entity Name
+          type: string
+        PER_entity_name:
+          title: Per Entity Name
+          type: string
+        LOC_entity_name:
+          title: Loc Entity Name
+          type: string
+        MISC_entity_name:
+          title: Misc Entity Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - q
+      title: SearchRequest
+      type: object
+    SimilarDocument:
+      properties:
+        title:
+          title: Title
+          type: string
+        id:
+          title: Id
+          type: string
+        score:
+          title: Score
+          type: number
+        link:
+          title: Link
+          type: string
+      required:
+      - id
+      - link
+      - score
+      - title
+      title: SimilarDocument
+      type: object
+    SourceResponse:
+      example:
+        sources:
+        - sources
+        - sources
+        user_input:
+          countries: null
+          lang: null
+        message: message
+      properties:
+        message:
+          title: Message
+          type: string
+        sources:
+          items:
+            type: string
+          title: Sources
+          type: array
+        user_input:
+          $ref: '#/components/schemas/UserInput'
+      required:
+      - message
+      - sources
+      - user_input
+      title: SourceResponse
+      type: object
+    SourcesRequest:
+      example:
+        countries: countries
+        lang: lang
+      properties:
+        lang:
+          title: Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+      title: SourcesRequest
+      type: object
+    SubscriptionResponse:
+      example:
+        usage_remaining_calls: 1
+        usage_assigned_calls: 6
+        historical_days: 5
+        active: true
+        calls_per_seconds: 0
+        plan_name: plan_name
+      properties:
+        active:
+          title: Active
+          type: boolean
+        calls_per_seconds:
+          title: Calls Per Seconds
+          type: integer
+        plan_name:
+          title: Plan Name
+          type: string
+        usage_assigned_calls:
+          title: Usage Assigned Calls
+          type: integer
+        usage_remaining_calls:
+          title: Usage Remaining Calls
+          type: integer
+        historical_days:
+          title: Historical Days
+          type: integer
+      required:
+      - active
+      - plan_name
+      title: SubscriptionResponse
+      type: object
+    UserInput:
+      example:
+        countries: null
+        lang: null
+      properties:
+        lang:
+          $ref: '#/components/schemas/Lang_Property'
+        countries:
+          $ref: '#/components/schemas/Countries_Property'
+      title: UserInput
+      type: object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_Property_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    dto__responses__AuthorSearchResponse__ArticleResult:
+      properties:
+        title:
+          title: Title
+          type: string
+        description:
+          title: Description
+          type: string
+        author:
+          title: Author
+          type: string
+        authors:
+          $ref: '#/components/schemas/Authors_Property'
+        journalists:
+          $ref: '#/components/schemas/Journalists_Property'
+        published_date:
+          title: Published Date
+          type: string
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        updated_date:
+          title: Updated Date
+          type: string
+        updated_date_precision:
+          title: Updated Date Precision
+          type: string
+        parse_date:
+          title: Parse Date
+          type: string
+        link:
+          title: Link
+          type: string
+        domain_url:
+          title: Domain Url
+          type: string
+        full_domain_url:
+          title: Full Domain Url
+          type: string
+        name_source:
+          title: Name Source
+          type: string
+        is_headline:
+          title: Is Headline
+          type: string
+        paid_content:
+          title: Paid Content
+          type: boolean
+        extraction_data:
+          title: Extraction Data
+          type: string
+        country:
+          title: Country
+          type: string
+        rights:
+          title: Rights
+          type: string
+        rank:
+          title: Rank
+          type: integer
+        media:
+          title: Media
+          type: string
+        language:
+          title: Language
+          type: string
+        content:
+          title: Content
+          type: string
+        word_count:
+          default: 0
+          example: 0
+          title: Word Count
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__ArticleResult-properties-word_count
+        is_opinion:
+          title: Is Opinion
+          type: boolean
+        twitter_account:
+          title: Twitter Account
+          type: string
+        all_links:
+          $ref: '#/components/schemas/All_Links_Property'
+        all_domain_links:
+          $ref: '#/components/schemas/All_Domain_Links_Property'
+        nlp:
+          default: {}
+          example: {}
+          title: Nlp
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__ArticleResult-properties-nlp
+        id:
+          title: Id
+          type: string
+        score:
+          title: Score
+          type: number
+      required:
+      - content
+      - domain_url
+      - extraction_data
+      - full_domain_url
+      - id
+      - link
+      - rank
+      - score
+      - title
+      title: ArticleResult
+      type: object
+    dto__responses__AuthorSearchResponse__FailedSearchResponse:
+      properties:
+        status:
+          default: No Matches for your search
+          example: No Matches for your search
+          title: Status
+          type: string
+          x-konfig-original-example: No Matches for your search
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-status
+        total_hits:
+          default: 0
+          example: 0
+          title: Total Hits
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-total_hits
+        page:
+          default: 0
+          example: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-page
+        total_pages:
+          default: 0
+          example: 0
+          title: Total Pages
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-total_pages
+        page_size:
+          default: 0
+          example: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-page_size
+        articles:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/dto__responses__AuthorSearchResponse__ArticleResult'
+          title: Articles
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-articles
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - user_input
+      title: FailedSearchResponse
+      type: object
+    dto__responses__AuthorSearchResponse__SearchResponse:
+      properties:
+        status:
+          default: ok
+          example: ok
+          title: Status
+          type: string
+          x-konfig-original-example: ok
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__SearchResponse-properties-status
+        total_hits:
+          title: Total Hits
+          type: integer
+        page:
+          title: Page
+          type: integer
+        total_pages:
+          title: Total Pages
+          type: integer
+        page_size:
+          title: Page Size
+          type: integer
+        articles:
+          items:
+            type: object
+          title: Articles
+          type: array
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - articles
+      - page
+      - page_size
+      - total_hits
+      - total_pages
+      - user_input
+      title: SearchResponse
+      type: object
+    dto__responses__LatestHeadlinesResponse__ArticleResult:
+      properties:
+        title:
+          title: Title
+          type: string
+        description:
+          title: Description
+          type: string
+        author:
+          title: Author
+          type: string
+        authors:
+          $ref: '#/components/schemas/Authors_Property'
+        journalists:
+          $ref: '#/components/schemas/Journalists_Property'
+        published_date:
+          title: Published Date
+          type: string
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        updated_date:
+          title: Updated Date
+          type: string
+        updated_date_precision:
+          title: Updated Date Precision
+          type: string
+        parse_date:
+          title: Parse Date
+          type: string
+        link:
+          title: Link
+          type: string
+        domain_url:
+          title: Domain Url
+          type: string
+        full_domain_url:
+          title: Full Domain Url
+          type: string
+        name_source:
+          title: Name Source
+          type: string
+        is_headline:
+          title: Is Headline
+          type: string
+        paid_content:
+          title: Paid Content
+          type: boolean
+        extraction_data:
+          title: Extraction Data
+          type: string
+        country:
+          title: Country
+          type: string
+        rights:
+          title: Rights
+          type: string
+        rank:
+          title: Rank
+          type: integer
+        media:
+          title: Media
+          type: string
+        language:
+          title: Language
+          type: string
+        content:
+          title: Content
+          type: string
+        word_count:
+          default: 0
+          example: 0
+          title: Word Count
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__LatestHeadlinesResponse__ArticleResult-properties-word_count
+        is_opinion:
+          title: Is Opinion
+          type: boolean
+        twitter_account:
+          title: Twitter Account
+          type: string
+        all_links:
+          $ref: '#/components/schemas/All_Links_Property'
+        all_domain_links:
+          $ref: '#/components/schemas/All_Domain_Links_Property'
+        nlp:
+          default: {}
+          example: {}
+          title: Nlp
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__LatestHeadlinesResponse__ArticleResult-properties-nlp
+        id:
+          title: Id
+          type: string
+        score:
+          title: Score
+          type: number
+      required:
+      - domain_url
+      - extraction_data
+      - full_domain_url
+      - id
+      - link
+      - rank
+      - score
+      - title
+      title: ArticleResult
+      type: object
+    dto__responses__MoreLikeThisResponse__ArticleResult:
+      properties:
+        title:
+          title: Title
+          type: string
+        description:
+          title: Description
+          type: string
+        author:
+          title: Author
+          type: string
+        authors:
+          $ref: '#/components/schemas/Authors_Property'
+        journalists:
+          $ref: '#/components/schemas/Journalists_Property'
+        published_date:
+          title: Published Date
+          type: string
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        updated_date:
+          title: Updated Date
+          type: string
+        updated_date_precision:
+          title: Updated Date Precision
+          type: string
+        parse_date:
+          title: Parse Date
+          type: string
+        link:
+          title: Link
+          type: string
+        domain_url:
+          title: Domain Url
+          type: string
+        full_domain_url:
+          title: Full Domain Url
+          type: string
+        name_source:
+          title: Name Source
+          type: string
+        is_headline:
+          title: Is Headline
+          type: string
+        paid_content:
+          title: Paid Content
+          type: boolean
+        extraction_data:
+          title: Extraction Data
+          type: string
+        country:
+          title: Country
+          type: string
+        rights:
+          title: Rights
+          type: string
+        rank:
+          title: Rank
+          type: integer
+        media:
+          title: Media
+          type: string
+        language:
+          title: Language
+          type: string
+        content:
+          title: Content
+          type: string
+        word_count:
+          default: 0
+          example: 0
+          title: Word Count
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__ArticleResult-properties-word_count
+        is_opinion:
+          title: Is Opinion
+          type: boolean
+        twitter_account:
+          title: Twitter Account
+          type: string
+        all_links:
+          $ref: '#/components/schemas/All_Links_Property'
+        all_domain_links:
+          $ref: '#/components/schemas/All_Domain_Links_Property'
+        nlp:
+          default: {}
+          example: {}
+          title: Nlp
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__ArticleResult-properties-nlp
+        id:
+          title: Id
+          type: string
+        score:
+          title: Score
+          type: number
+        similar_documents:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/SimilarDocument'
+          title: Similar Documents
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__ArticleResult-properties-similar_documents
+      required:
+      - content
+      - domain_url
+      - extraction_data
+      - full_domain_url
+      - id
+      - link
+      - rank
+      - score
+      - title
+      title: ArticleResult
+      type: object
+    dto__responses__MoreLikeThisResponse__FailedSearchResponse:
+      properties:
+        status:
+          default: No Matches for your search
+          example: No Matches for your search
+          title: Status
+          type: string
+          x-konfig-original-example: No Matches for your search
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-status
+        total_hits:
+          default: 0
+          example: 0
+          title: Total Hits
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-total_hits
+        page:
+          default: 0
+          example: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-page
+        total_pages:
+          default: 0
+          example: 0
+          title: Total Pages
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-total_pages
+        page_size:
+          default: 0
+          example: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-page_size
+        articles:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/dto__responses__MoreLikeThisResponse__ArticleResult'
+          title: Articles
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-articles
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - user_input
+      title: FailedSearchResponse
+      type: object
+    dto__responses__MoreLikeThisResponse__SearchResponse:
+      properties:
+        status:
+          default: ok
+          example: ok
+          title: Status
+          type: string
+          x-konfig-original-example: ok
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__SearchResponse-properties-status
+        total_hits:
+          title: Total Hits
+          type: integer
+        page:
+          title: Page
+          type: integer
+        total_pages:
+          title: Total Pages
+          type: integer
+        page_size:
+          title: Page Size
+          type: integer
+        articles:
+          items:
+            type: object
+          title: Articles
+          type: array
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - articles
+      - page
+      - page_size
+      - total_hits
+      - total_pages
+      - user_input
+      title: SearchResponse
+      type: object
+    dto__responses__SearchResponse__ArticleResult:
+      properties:
+        title:
+          title: Title
+          type: string
+        description:
+          title: Description
+          type: string
+        author:
+          title: Author
+          type: string
+        authors:
+          $ref: '#/components/schemas/Authors_Property'
+        journalists:
+          $ref: '#/components/schemas/Journalists_Property'
+        published_date:
+          title: Published Date
+          type: string
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        updated_date:
+          title: Updated Date
+          type: string
+        updated_date_precision:
+          title: Updated Date Precision
+          type: string
+        parse_date:
+          title: Parse Date
+          type: string
+        link:
+          title: Link
+          type: string
+        domain_url:
+          title: Domain Url
+          type: string
+        full_domain_url:
+          title: Full Domain Url
+          type: string
+        name_source:
+          title: Name Source
+          type: string
+        is_headline:
+          title: Is Headline
+          type: string
+        paid_content:
+          title: Paid Content
+          type: boolean
+        extraction_data:
+          title: Extraction Data
+          type: string
+        country:
+          title: Country
+          type: string
+        rights:
+          title: Rights
+          type: string
+        rank:
+          title: Rank
+          type: integer
+        media:
+          title: Media
+          type: string
+        language:
+          title: Language
+          type: string
+        content:
+          title: Content
+          type: string
+        word_count:
+          default: 0
+          example: 0
+          title: Word Count
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__ArticleResult-properties-word_count
+        is_opinion:
+          title: Is Opinion
+          type: boolean
+        twitter_account:
+          title: Twitter Account
+          type: string
+        all_links:
+          $ref: '#/components/schemas/All_Links_Property'
+        all_domain_links:
+          $ref: '#/components/schemas/All_Domain_Links_Property'
+        nlp:
+          default: {}
+          example: {}
+          title: Nlp
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__ArticleResult-properties-nlp
+        id:
+          title: Id
+          type: string
+        score:
+          title: Score
+          type: number
+      required:
+      - domain_url
+      - extraction_data
+      - full_domain_url
+      - id
+      - link
+      - rank
+      - score
+      - title
+      title: ArticleResult
+      type: object
+    dto__responses__SearchResponse__FailedSearchResponse:
+      properties:
+        status:
+          default: No Matches for your search
+          example: No Matches for your search
+          title: Status
+          type: string
+          x-konfig-original-example: No Matches for your search
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-status
+        total_hits:
+          default: 0
+          example: 0
+          title: Total Hits
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-total_hits
+        page:
+          default: 0
+          example: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-page
+        total_pages:
+          default: 0
+          example: 0
+          title: Total Pages
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-total_pages
+        page_size:
+          default: 0
+          example: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-page_size
+        articles:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/dto__responses__SearchResponse__ArticleResult'
+          title: Articles
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-articles
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - user_input
+      title: FailedSearchResponse
+      type: object
+    dto__responses__SearchResponse__SearchResponse:
+      properties:
+        status:
+          default: ok
+          example: ok
+          title: Status
+          type: string
+          x-konfig-original-example: ok
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-dto__responses__SearchResponse__SearchResponse-properties-status
+        total_hits:
+          title: Total Hits
+          type: integer
+        page:
+          title: Page
+          type: integer
+        total_pages:
+          title: Total Pages
+          type: integer
+        page_size:
+          title: Page Size
+          type: integer
+        articles:
+          items:
+            type: object
+          title: Articles
+          type: array
+        user_input:
+          title: User Input
+          type: object
+      required:
+      - articles
+      - page
+      - page_size
+      - total_hits
+      - total_pages
+      - user_input
+      title: SearchResponse
+      type: object
+    SearchGetResponse:
+      anyOf:
+      - $ref: '#/components/schemas/dto__responses__SearchResponse__SearchResponse'
+      - $ref: '#/components/schemas/dto__responses__SearchResponse__FailedSearchResponse'
+      - $ref: '#/components/schemas/ClusteringSearchResponse'
+      title: Response Search Get
+    SearchPostResponse:
+      anyOf:
+      - $ref: '#/components/schemas/dto__responses__SearchResponse__SearchResponse'
+      - $ref: '#/components/schemas/dto__responses__SearchResponse__FailedSearchResponse'
+      - $ref: '#/components/schemas/ClusteringSearchResponse'
+      title: Response Search Post
+    LatestHeadlinesGetResponse:
+      anyOf:
+      - $ref: '#/components/schemas/ClusteringSearchResponse'
+      - $ref: '#/components/schemas/LatestHeadlinesResponse'
+      - $ref: '#/components/schemas/FailedLatestHeadlinesResponse'
+      title: Response Latestheadlines Get
+    LatestHeadlinesPostResponse:
+      anyOf:
+      - $ref: '#/components/schemas/ClusteringSearchResponse'
+      - $ref: '#/components/schemas/LatestHeadlinesResponse'
+      - $ref: '#/components/schemas/FailedLatestHeadlinesResponse'
+      title: Response Latestheadlines Post
+    AuthorsGetResponse:
+      anyOf:
+      - $ref: '#/components/schemas/dto__responses__AuthorSearchResponse__SearchResponse'
+      - $ref: '#/components/schemas/dto__responses__AuthorSearchResponse__FailedSearchResponse'
+      title: Response Authors Get
+    AuthorsPostResponse:
+      anyOf:
+      - $ref: '#/components/schemas/dto__responses__AuthorSearchResponse__SearchResponse'
+      - $ref: '#/components/schemas/dto__responses__AuthorSearchResponse__FailedSearchResponse'
+      title: Response Authors Post
+    SearchSimilarGetResponse:
+      anyOf:
+      - $ref: '#/components/schemas/dto__responses__MoreLikeThisResponse__SearchResponse'
+      - $ref: '#/components/schemas/dto__responses__MoreLikeThisResponse__FailedSearchResponse'
+      title: Response Searchsimilar Get
+    SearchSimilarPostResponse:
+      anyOf:
+      - $ref: '#/components/schemas/dto__responses__MoreLikeThisResponse__SearchResponse'
+      - $ref: '#/components/schemas/dto__responses__MoreLikeThisResponse__FailedSearchResponse'
+      title: Response Searchsimilar Post
+    konfig-generated-schema-paths--api-search-get-parameters-1-schema:
+      example: title_content
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search-get-parameters-12-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search-get-parameters-13-schema:
+      example: relevancy
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search-get-parameters-24-schema:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search-get-parameters-25-schema:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-latest_headlines-get-parameters-0-schema:
+      example: 7d
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-latest_headlines-get-parameters-1-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-latest_headlines-get-parameters-18-schema:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-latest_headlines-get-parameters-19-schema:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-authors-get-parameters-11-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-authors-get-parameters-12-schema:
+      example: relevancy
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-authors-get-parameters-23-schema:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-authors-get-parameters-24-schema:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-1-schema:
+      example: title_content
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-2-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-3-schema:
+      example: 5
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-4-schema:
+      example: "title,content"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-14-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-16-schema:
+      example: relevancy
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-27-schema:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-search_similar-get-parameters-28-schema:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-by_parse_date:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-sort_by:
+      example: relevancy
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-page_size:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ClusteringSearchResponse-properties-status:
+      example: ok
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-status:
+      example: No Matches for your search
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-total_hits:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-page:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-total_pages:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-page_size:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FailedLatestHeadlinesResponse-properties-articles:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-when:
+      example: 7d
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-by_parse_date:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-page_size:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-LatestHeadlinesResponse-properties-status:
+      example: ok
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-search_in:
+      example: title_content
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-include_similar_documents:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-similar_documents_number:
+      example: 5
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-similar_documents_fields:
+      example: "title,content"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-by_parse_date:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-sort_by:
+      example: relevancy
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-page_size:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SearchRequest-properties-search_in:
+      example: title_content
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SearchRequest-properties-by_parse_date:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SearchRequest-properties-sort_by:
+      example: relevancy
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SearchRequest-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SearchRequest-properties-page_size:
+      example: 100
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__ArticleResult-properties-word_count:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__ArticleResult-properties-nlp:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-status:
+      example: No Matches for your search
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-total_hits:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-page:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-total_pages:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-page_size:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__FailedSearchResponse-properties-articles:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__AuthorSearchResponse__SearchResponse-properties-status:
+      example: ok
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__LatestHeadlinesResponse__ArticleResult-properties-word_count:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__LatestHeadlinesResponse__ArticleResult-properties-nlp:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__ArticleResult-properties-word_count:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__ArticleResult-properties-nlp:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__ArticleResult-properties-similar_documents:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-status:
+      example: No Matches for your search
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-total_hits:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-page:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-total_pages:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-page_size:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__FailedSearchResponse-properties-articles:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__MoreLikeThisResponse__SearchResponse-properties-status:
+      example: ok
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__ArticleResult-properties-word_count:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__ArticleResult-properties-nlp:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-status:
+      example: No Matches for your search
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-total_hits:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-page:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-total_pages:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-page_size:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__FailedSearchResponse-properties-articles:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-dto__responses__SearchResponse__SearchResponse-properties-status:
+      example: ok
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-single-parameter-schema-get--api-search:
+      properties:
+        q:
+          title: Q
+          type: string
+        search_in:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-1-schema
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        sources:
+          title: Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'From '
+        to_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'To '
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-12-schema
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-13-schema
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-24-schema
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search-get-parameters-25-schema
+        clustering_enabled:
+          title: Clustering Enabled
+          type: boolean
+        clustering_threshold:
+          title: Clustering Threshold
+          type: number
+        clustering_variable:
+          title: Clustering Variable
+          type: string
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ORG_entity_name:
+          title: Org Entity Name
+          type: string
+        PER_entity_name:
+          title: Per Entity Name
+          type: string
+        LOC_entity_name:
+          title: Loc Entity Name
+          type: string
+        MISC_entity_name:
+          title: Misc Entity Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - q
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - q
+      - search_in
+      - predefined_sources
+      - sources
+      - not_sources
+      - lang
+      - not_lang
+      - countries
+      - not_countries
+      - from_
+      - to_
+      - published_date_precision
+      - by_parse_date
+      - sort_by
+      - ranked_only
+      - from_rank
+      - to_rank
+      - is_headline
+      - is_paid_content
+      - parent_url
+      - all_links
+      - all_domain_links
+      - word_count_min
+      - word_count_max
+      - page
+      - page_size
+      - clustering_enabled
+      - clustering_threshold
+      - clustering_variable
+      - include_nlp_data
+      - has_nlp
+      - theme
+      - ORG_entity_name
+      - PER_entity_name
+      - LOC_entity_name
+      - MISC_entity_name
+      - title_sentiment_min
+      - title_sentiment_max
+      - content_sentiment_min
+      - content_sentiment_max
+    konfig-generated-schema-single-parameter-schema-post--api-search:
+      properties:
+        q:
+          title: Q
+          type: string
+        search_in:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-search_in
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        sources:
+          title: Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'From '
+        to_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'To '
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-by_parse_date
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-sort_by
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SearchRequest-properties-page_size
+        clustering_enabled:
+          title: Clustering Enabled
+          type: boolean
+        clustering_threshold:
+          title: Clustering Threshold
+          type: number
+        clustering_variable:
+          title: Clustering Variable
+          type: string
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ORG_entity_name:
+          title: Org Entity Name
+          type: string
+        PER_entity_name:
+          title: Per Entity Name
+          type: string
+        LOC_entity_name:
+          title: Loc Entity Name
+          type: string
+        MISC_entity_name:
+          title: Misc Entity Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - q
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--api-latest_headlines:
+      properties:
+        when:
+          default: 7d
+          example: 7d
+          title: When
+          type: string
+          x-konfig-original-example: 7d
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-0-schema
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-1-schema
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        sources:
+          title: Sources
+          type: string
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        ranked_only:
+          title: Ranked Only
+          type: string
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        theme:
+          title: Theme
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-18-schema
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-latest_headlines-get-parameters-19-schema
+        clustering_enabled:
+          title: Clustering Enabled
+          type: boolean
+        clustering_threshold:
+          title: Clustering Threshold
+          type: number
+        clustering_variable:
+          title: Clustering Variable
+          type: string
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        ORG_entity_name:
+          title: Org Entity Name
+          type: string
+        PER_entity_name:
+          title: Per Entity Name
+          type: string
+        LOC_entity_name:
+          title: Loc Entity Name
+          type: string
+        MISC_entity_name:
+          title: Misc Entity Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - when
+      - by_parse_date
+      - lang
+      - not_lang
+      - countries
+      - not_countries
+      - sources
+      - predefined_sources
+      - not_sources
+      - ranked_only
+      - is_headline
+      - is_paid_content
+      - parent_url
+      - theme
+      - all_links
+      - all_domain_links
+      - word_count_min
+      - word_count_max
+      - page
+      - page_size
+      - clustering_enabled
+      - clustering_threshold
+      - clustering_variable
+      - include_nlp_data
+      - has_nlp
+      - ORG_entity_name
+      - PER_entity_name
+      - LOC_entity_name
+      - MISC_entity_name
+      - title_sentiment_min
+      - title_sentiment_max
+      - content_sentiment_min
+      - content_sentiment_max
+    konfig-generated-schema-single-parameter-schema-post--api-latest_headlines:
+      properties:
+        when:
+          default: 7d
+          example: 7d
+          title: When
+          type: string
+          x-konfig-original-example: 7d
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-when
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-by_parse_date
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        sources:
+          title: Sources
+          type: string
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        ranked_only:
+          title: Ranked Only
+          type: string
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        theme:
+          title: Theme
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LatestHeadlinesRequest-properties-page_size
+        clustering_enabled:
+          title: Clustering Enabled
+          type: boolean
+        clustering_threshold:
+          title: Clustering Threshold
+          type: number
+        clustering_variable:
+          title: Clustering Variable
+          type: string
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        ORG_entity_name:
+          title: Org Entity Name
+          type: string
+        PER_entity_name:
+          title: Per Entity Name
+          type: string
+        LOC_entity_name:
+          title: Loc Entity Name
+          type: string
+        MISC_entity_name:
+          title: Misc Entity Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--api-authors:
+      properties:
+        author_name:
+          title: Author Name
+          type: string
+        sources:
+          title: Sources
+          type: string
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'From '
+        to_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'To '
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-11-schema
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-12-schema
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-23-schema
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-authors-get-parameters-24-schema
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ner_name:
+          title: Ner Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - author_name
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - author_name
+      - sources
+      - predefined_sources
+      - not_sources
+      - lang
+      - not_lang
+      - countries
+      - not_countries
+      - from_
+      - to_
+      - published_date_precision
+      - by_parse_date
+      - sort_by
+      - ranked_only
+      - from_rank
+      - to_rank
+      - is_headline
+      - is_paid_content
+      - parent_url
+      - all_links
+      - all_domain_links
+      - word_count_min
+      - word_count_max
+      - page
+      - page_size
+      - include_nlp_data
+      - has_nlp
+      - theme
+      - ner_name
+      - title_sentiment_min
+      - title_sentiment_max
+      - content_sentiment_min
+      - content_sentiment_max
+    konfig-generated-schema-single-parameter-schema-post--api-authors:
+      properties:
+        author_name:
+          title: Author Name
+          type: string
+        sources:
+          title: Sources
+          type: string
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'From '
+        to_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'To '
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-by_parse_date
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-sort_by
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AuthorSearchRequest-properties-page_size
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ner_name:
+          title: Ner Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - author_name
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--api-search_similar:
+      properties:
+        q:
+          title: Q
+          type: string
+        search_in:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-1-schema
+        include_similar_documents:
+          default: false
+          example: false
+          title: Include Similar Documents
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-2-schema
+        similar_documents_number:
+          default: 5
+          example: 5
+          minimum: 0
+          title: Similar Documents Number
+          type: integer
+          x-konfig-original-example: 5
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-3-schema
+        similar_documents_fields:
+          default: "title,content"
+          example: "title,content"
+          title: Similar Documents Fields
+          type: string
+          x-konfig-original-example: "title,content"
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-4-schema
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        sources:
+          title: Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'From '
+        to_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'To '
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-14-schema
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-16-schema
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-27-schema
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-search_similar-get-parameters-28-schema
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ner_name:
+          title: Ner Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - q
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - q
+      - search_in
+      - include_similar_documents
+      - similar_documents_number
+      - similar_documents_fields
+      - predefined_sources
+      - sources
+      - not_sources
+      - lang
+      - not_lang
+      - countries
+      - not_countries
+      - from_
+      - to_
+      - by_parse_date
+      - published_date_precision
+      - sort_by
+      - ranked_only
+      - from_rank
+      - to_rank
+      - is_headline
+      - is_paid_content
+      - parent_url
+      - all_links
+      - all_domain_links
+      - word_count_min
+      - word_count_max
+      - page
+      - page_size
+      - include_nlp_data
+      - has_nlp
+      - theme
+      - ner_name
+      - title_sentiment_min
+      - title_sentiment_max
+      - content_sentiment_min
+      - content_sentiment_max
+    konfig-generated-schema-single-parameter-schema-post--api-search_similar:
+      properties:
+        q:
+          title: Q
+          type: string
+        search_in:
+          default: title_content
+          example: title_content
+          title: Search In
+          type: string
+          x-konfig-original-example: title_content
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-search_in
+        include_similar_documents:
+          default: false
+          example: false
+          title: Include Similar Documents
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-include_similar_documents
+        similar_documents_number:
+          default: 5
+          example: 5
+          minimum: 0
+          title: Similar Documents Number
+          type: integer
+          x-konfig-original-example: 5
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-similar_documents_number
+        similar_documents_fields:
+          default: "title,content"
+          example: "title,content"
+          title: Similar Documents Fields
+          type: string
+          x-konfig-original-example: "title,content"
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-similar_documents_fields
+        predefined_sources:
+          title: Predefined Sources
+          type: string
+        sources:
+          title: Sources
+          type: string
+        not_sources:
+          title: Not Sources
+          type: string
+        lang:
+          title: Lang
+          type: string
+        not_lang:
+          title: Not Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+        not_countries:
+          title: Not Countries
+          type: string
+        from_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'From '
+        to_:
+          anyOf:
+          - type: string
+          - format: date-time
+            type: string
+          title: 'To '
+        by_parse_date:
+          default: false
+          example: false
+          title: By Parse Date
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-by_parse_date
+        published_date_precision:
+          title: Published Date Precision
+          type: string
+        sort_by:
+          default: relevancy
+          example: relevancy
+          title: Sort By
+          type: string
+          x-konfig-original-example: relevancy
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-sort_by
+        ranked_only:
+          title: Ranked Only
+          type: string
+        from_rank:
+          title: From Rank
+          type: integer
+        to_rank:
+          title: To Rank
+          type: integer
+        is_headline:
+          title: Is Headline
+          type: boolean
+        is_paid_content:
+          title: Is Paid Content
+          type: boolean
+        parent_url:
+          title: Parent Url
+          type: string
+        all_links:
+          title: All Links
+          type: string
+        all_domain_links:
+          title: All Domain Links
+          type: string
+        word_count_min:
+          minimum: 0
+          title: Word Count Min
+          type: integer
+        word_count_max:
+          minimum: 0
+          title: Word Count Max
+          type: integer
+        page:
+          default: 1
+          example: 1
+          minimum: 0
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-page
+        page_size:
+          default: 100
+          example: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-MoreLikeThisRequest-properties-page_size
+        include_nlp_data:
+          title: Include Nlp Data
+          type: boolean
+        has_nlp:
+          title: Has Nlp
+          type: boolean
+        theme:
+          title: Theme
+          type: string
+        ner_name:
+          title: Ner Name
+          type: string
+        title_sentiment_min:
+          title: Title Sentiment Min
+          type: number
+        title_sentiment_max:
+          title: Title Sentiment Max
+          type: number
+        content_sentiment_min:
+          title: Content Sentiment Min
+          type: number
+        content_sentiment_max:
+          title: Content Sentiment Max
+          type: number
+      required:
+      - q
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--api-sources:
+      properties:
+        lang:
+          title: Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - lang
+      - countries
+    konfig-generated-schema-single-parameter-schema-post--api-sources:
+      properties:
+        lang:
+          title: Lang
+          type: string
+        countries:
+          title: Countries
+          type: string
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--api-subscription:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--api-subscription:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    From_:
+      anyOf:
+      - type: string
+      - format: date-time
+        type: string
+      title: 'From '
+    To_:
+      anyOf:
+      - type: string
+      - format: date-time
+        type: string
+      title: 'To '
+    Lang_Property:
+      anyOf:
+      - items:
+          type: string
+        type: array
+      - type: string
+      title: Lang
+    Countries_Property:
+      anyOf:
+      - items:
+          type: string
+        type: array
+      - type: string
+      title: Countries
+    Location_Property_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    Authors_Property:
+      anyOf:
+      - items:
+          type: string
+        type: array
+      - type: string
+      title: Authors
+    Journalists_Property:
+      anyOf:
+      - items:
+          type: string
+        type: array
+      - type: string
+      title: Journalists
+    All_Links_Property:
+      anyOf:
+      - items:
+          type: string
+        type: array
+      - type: string
+      example: []
+      title: All Links
+      x-konfig-original-example: []
+    All_Domain_Links_Property:
+      anyOf:
+      - items:
+          type: string
+        type: array
+      - type: string
+      example: []
+      title: All Domain Links
+      x-konfig-original-example: []
+  securitySchemes:
+    apiKey:
+      in: header
+      name: x-api-token
+      type: apiKey
+      x-konfig-globally-required-security: true
