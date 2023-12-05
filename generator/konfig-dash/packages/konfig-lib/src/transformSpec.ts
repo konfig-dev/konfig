@@ -36,7 +36,6 @@ import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
 import { orderOpenApiSpecification } from './util/order-openapi-specification'
 import { convertAnyOfSchemasToAny } from './convert-any-of-schemas-to-any'
 import { generateEncapsulatingName } from './generate-encapsulating-name'
-import { any } from 'zod'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -803,7 +802,6 @@ export const transformSpec = async ({
   }
 
   if (generator === 'go') {
-    // Comment here explaining this
     recurseObject(spec.spec, ({ value: schema }) => {
       if (schema === null) return
       if (typeof schema !== 'object') return
