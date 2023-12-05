@@ -1,0 +1,76 @@
+// {{classname}} {{{description}}}{{^description}}struct for {{{classname}}}{{/description}}
+type {{classname}} struct {
+	{{#anyOfNames}}
+	{{{name}}} *{{{datatype}}}
+	{{/anyOfNames}}
+}
+
+// Unmarshal JSON data into any of the pointers in the struct
+func (dst *{{classname}}) UnmarshalJSON(data []byte) error {
+	var err error
+	{{#isNullable}}
+	// this object is nullable so check if the payload is null or empty string
+	if string(data) == "" || string(data) == "{}" {
+		return nil
+	}
+
+	{{/isNullable}}
+	{{#discriminator}}
+	{{#mappedModels}}
+	{{#-first}}
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = json.Unmarshal(data, &jsonDict)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	{{/-first}}
+	// check if the discriminator value is '{{{mappingName}}}'
+	if jsonDict["{{{propertyBaseName}}}"] == "{{{mappingName}}}" {
+		// try to unmarshal JSON data into {{{modelName}}}
+		err = json.Unmarshal(data, &dst.{{{modelName}}});
+		if err == nil {
+			json{{{modelName}}}, _ := json.Marshal(dst.{{{modelName}}})
+			if string(json{{{modelName}}}) == "{}" { // empty struct
+				dst.{{{modelName}}} = nil
+			} else {
+				return nil // data stored in dst.{{{modelName}}}, return on the first match
+			}
+		} else {
+			dst.{{{modelName}}} = nil
+		}
+	}
+
+	{{/mappedModels}}
+	{{/discriminator}}
+	{{#anyOfNames}}
+	// try to unmarshal JSON data into {{{datatype}}}
+	err = json.Unmarshal(data, &dst.{{{name}}});
+	if err == nil {
+		json{{{name}}}, _ := json.Marshal(dst.{{{name}}})
+		if string(json{{{name}}}) == "{}" { // empty struct
+			dst.{{{name}}} = nil
+		} else {
+			return nil // data stored in dst.{{{name}}}, return on the first match
+		}
+	} else {
+		dst.{{{name}}} = nil
+	}
+
+	{{/anyOfNames}}
+	return fmt.Errorf("data failed to match schemas in anyOf({{classname}})")
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src *{{classname}}) MarshalJSON() ([]byte, error) {
+{{#anyOfNames}}
+	if src.{{{name}}} != nil {
+		return json.Marshal(&src.{{{name}}})
+	}
+
+{{/anyOfNames}}
+	return nil, nil // no data in anyOf schemas
+}
+
+{{>nullable_model}}

@@ -36,6 +36,7 @@ import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
 import { orderOpenApiSpecification } from './util/order-openapi-specification'
 import { convertAnyOfSchemasToAny } from './convert-any-of-schemas-to-any'
 import { generateEncapsulatingName } from './generate-encapsulating-name'
+import { any } from 'zod'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -799,6 +800,27 @@ export const transformSpec = async ({
 
   if (generator === 'dart') {
     convertOneOfSchemasToAny({ spec: spec.spec })
+  }
+
+  if (generator === 'go') {
+    // Comment here explaining this
+    recurseObject(spec.spec, ({ value: schema }) => {
+      if (schema === null) return
+      if (typeof schema !== 'object') return
+      if (schema['anyOf'] === undefined) return
+      if (!Array.isArray(schema['anyOf'])) return
+
+      // remove default if it is {} or []
+      if (
+        schema['default'] !== undefined &&
+        schema['default'] !== null &&
+        ((typeof schema['default'] === 'object' &&
+          Object.keys(schema['default']).length === 0) ||
+          (Array.isArray(schema['default']) && schema['default'].length === 0))
+      ) {
+        delete schema['default']
+      }
+    })
   }
 
   // remove invalid escape sequence "\*" for Python from any descriptions in a schema component in the spec

@@ -207,6 +207,26 @@ public class CodegenModel implements IJsonSchemaValidationProperties {
         return this.composedSchemas.getAllOf() != null || this.composedSchemas.getAnyOf() != null || this.composedSchemas.getOneOf() != null;
     }
 
+    public static class AnyOf {
+        public final String name;
+        public final String datatype;
+
+        public AnyOf(String name, String datatype) {
+            this.name = name;
+            this.datatype = datatype;
+        }
+    }
+    public List<AnyOf> anyOfNames() {
+        List<AnyOf> names = new ArrayList<>();
+        for (String type : anyOf) {
+            String name = type.startsWith("[]") ? type.substring(2) + "Array" : type;
+            name = name.replace(".", "_");
+            name = name.substring(0, 1).toUpperCase() + name.substring(1);
+            names.add(new AnyOf(name, type));
+        }
+        return names;
+    }
+
     @Override
     public CodegenProperty getContains() {
         return contains;
