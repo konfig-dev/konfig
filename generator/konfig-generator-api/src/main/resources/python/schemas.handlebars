@@ -3,8 +3,8 @@
 {{>partial_header}}
 
 from collections import defaultdict
-from datetime import date, datetime, timedelta  # noqa: F401
-import pydantic
+from datetime import date, datetime, timedelta  # noqa: F401{{#if prstv2}}
+import pydantic{{/if}}
 import functools
 import decimal
 import io
@@ -1800,9 +1800,9 @@ def cast_to_allowed_types(
     elif isinstance(arg, bytes):
         return bytes(arg)
     elif isinstance(arg, (io.FileIO, io.BufferedReader)):
-        return FileIO(arg)
+        return FileIO(arg){{#if prstv2}}
     elif isinstance(arg, pydantic.BaseModel):
-        return cast_to_allowed_types({ k:v for k, v in dict(arg).items() if v is not None }, from_server, validated_path_to_schemas, path_to_item)
+        return cast_to_allowed_types({ k:v for k, v in dict(arg).items() if v is not None }, from_server, validated_path_to_schemas, path_to_item){{/if}}
     raise ValueError('Invalid type passed in got input={} type={}'.format(arg, type(arg)))
 
 
