@@ -13,8 +13,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 /**
- * Fuse.js needs an array of objects to index. This is the base type for the
- * objects that will be indexed.
+ * Fuse.js needs an array of objects to index. Include any properties you might
+ * need to display or use in the search results.
  */
 type SearchRecord = {
   id: string;
@@ -56,7 +56,7 @@ function createFuseInstance(content: SearchRecord[]) {
 
 /**
  * Checkout Mantine's Spotlight component for inspiration on how to implement
- * search:  * https://mantine.dev/others/spotlight/
+ * search: https://mantine.dev/others/spotlight/
  */
 function Search({ fuse }: { fuse: Fuse<SearchRecord> }) {
   return; // ...implement UI for search
