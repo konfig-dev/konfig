@@ -52,7 +52,8 @@ try:
     # Attack a monster
     attack_monster_response = (
         pythonpydanticresponseasparamclient.adventure.attack_monster(
-            weapon={},
+            monster=\\"string_example\\",
+            sword={},
         )
     )
     print(attack_monster_response)
@@ -87,7 +88,8 @@ async def main():
         # Attack a monster
         attack_monster_response = (
             await pythonpydanticresponseasparamclient.adventure.aattack_monster(
-                weapon={},
+                monster=\\"string_example\\",
+                sword={},
             )
         )
         print(attack_monster_response)
@@ -122,7 +124,8 @@ try:
     # Attack a monster
     attack_monster_response = (
         pythonpydanticresponseasparamclient.adventure.raw.attack_monster(
-            weapon={},
+            monster=\\"string_example\\",
+            sword={},
         )
     )
     pprint(attack_monster_response.body)
@@ -149,23 +152,28 @@ Attack a monster with the (pydantic) sword from your equipment
 
 \`\`\`python
 attack_monster_response = pythonpydanticresponseasparamclient.adventure.attack_monster(
-    weapon={},
+    monster=\\"string_example\\",
+    sword={},
 )
 \`\`\`
 
 #### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
 
-##### weapon: \`Sword\`<a id=\\"weapon-sword\\"></a>
+##### monster: \`str\`<a id=\\"monster-str\\"></a>
 
-Weapon used to attack the monster
+##### sword: [\`Sword\`](./python_pydantic_response_as_param/type/sword.py)<a id=\\"sword-swordpython_pydantic_response_as_paramtypeswordpy\\"></a>
 
+
+#### ⚙️ Request Body<a id=\\"⚙️-request-body\\"></a>
+
+[\`Attack\`](./python_pydantic_response_as_param/type/attack.py)
 #### 🔄 Return<a id=\\"🔄-return\\"></a>
 
 [\`AttackResult\`](./python_pydantic_response_as_param/pydantic/attack_result.py)
 
 #### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
 
-\`/attack-monster\` \`get\`
+\`/attack-monster\` \`post\`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
