@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: python-pydantic-response-as-param API
+  description: A simple API based for testing python-pydantic-response-as-param.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://python-pydantic-response-as-param.konfigthis.com
+tags:
+  - name: Adventure
+paths:
+  /retrieve-equipment:
+    get:
+      tags:
+        - Adventure
+      summary: Retrieve your equipment
+      operationId: Adventure_retrieve_equipment
+      description: Receive a pydantic response which will subsequently be used as a parameter in another endpoint.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Equipment'
+  /attack-monster:
+    post:
+      tags:
+        - Adventure
+      summary: Attack a monster
+      operationId: Adventure_attack_monster
+      description: Attack a monster with the (pydantic) sword from your equipment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attack'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttackResult'
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    Equipment:
+      type: object
+      properties:
+        sword:
+          $ref: '#/components/schemas/Sword'
+        armor:
+          type: string
+    Sword:
+      type: object
+      properties:
+        name:
+          type: string
+        damage:
+          type: integer
+          format: int32
+    Attack:
+      type: object
+      properties:
+        monster:
+          type: string
+        sword:
+          $ref: '#/components/schemas/Sword'
+    AttackResult:
+      type: object
+      properties:
+        message:
+          type: string
+
+security:
+  - ApiKey: []

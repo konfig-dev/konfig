@@ -1,0 +1,202 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`python-pydantic-response-as-param 1`] = `
+"# python-pydantic-response-as-param<a id=\\"python-pydantic-response-as-param\\"></a>
+
+A simple API based for testing python-pydantic-response-as-param.
+
+
+[![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/python-pydantic-response-as-param/1.0.0)
+[![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/konfig/tree/main/python#readme)
+[![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
+
+## Table of Contents<a id=\\"table-of-contents\\"></a>
+
+<!-- toc -->
+
+- [Requirements](#requirements)
+- [Installing](#installing)
+- [Getting Started](#getting-started)
+- [Async](#async)
+- [Raw HTTP Response](#raw-http-response)
+- [Reference](#reference)
+  * [\`pythonpydanticresponseasparamclient.adventure.attack_monster\`](#pythonpydanticresponseasparamclientadventureattack_monster)
+  * [\`pythonpydanticresponseasparamclient.adventure.retrieve_equipment\`](#pythonpydanticresponseasparamclientadventureretrieve_equipment)
+
+<!-- tocstop -->
+
+## Requirements<a id=\\"requirements\\"></a>
+
+Python >=3.7
+
+## Installing<a id=\\"installing\\"></a>
+
+\`\`\`sh
+pip install python-pydantic-response-as-param==1.0.0
+\`\`\`
+
+## Getting Started<a id=\\"getting-started\\"></a>
+
+\`\`\`python
+from pprint import pprint
+from python_pydantic_response_as_param import (
+    PythonPydanticResponseAsParamClient,
+    ApiException,
+)
+
+pythonpydanticresponseasparamclient = PythonPydanticResponseAsParamClient(
+    api_key=\\"YOUR_API_KEY\\",
+)
+
+try:
+    # Attack a monster
+    attack_monster_response = (
+        pythonpydanticresponseasparamclient.adventure.attack_monster(
+            weapon={},
+        )
+    )
+    print(attack_monster_response)
+except ApiException as e:
+    print(\\"Exception when calling AdventureApi.attack_monster: %s\\\\n\\" % e)
+    pprint(e.body)
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
+\`\`\`
+
+## Async<a id=\\"async\\"></a>
+
+\`async\` support is available by prepending \`a\` to any method.
+
+\`\`\`python
+import asyncio
+from pprint import pprint
+from python_pydantic_response_as_param import (
+    PythonPydanticResponseAsParamClient,
+    ApiException,
+)
+
+pythonpydanticresponseasparamclient = PythonPydanticResponseAsParamClient(
+    api_key=\\"YOUR_API_KEY\\",
+)
+
+
+async def main():
+    try:
+        # Attack a monster
+        attack_monster_response = (
+            await pythonpydanticresponseasparamclient.adventure.aattack_monster(
+                weapon={},
+            )
+        )
+        print(attack_monster_response)
+    except ApiException as e:
+        print(\\"Exception when calling AdventureApi.attack_monster: %s\\\\n\\" % e)
+        pprint(e.body)
+        pprint(e.headers)
+        pprint(e.status)
+        pprint(e.reason)
+        pprint(e.round_trip_time)
+
+
+asyncio.run(main())
+\`\`\`
+
+## Raw HTTP Response<a id=\\"raw-http-response\\"></a>
+
+To access raw HTTP response values, use the \`.raw\` namespace.
+
+\`\`\`python
+from pprint import pprint
+from python_pydantic_response_as_param import (
+    PythonPydanticResponseAsParamClient,
+    ApiException,
+)
+
+pythonpydanticresponseasparamclient = PythonPydanticResponseAsParamClient(
+    api_key=\\"YOUR_API_KEY\\",
+)
+
+try:
+    # Attack a monster
+    attack_monster_response = (
+        pythonpydanticresponseasparamclient.adventure.raw.attack_monster(
+            weapon={},
+        )
+    )
+    pprint(attack_monster_response.body)
+    pprint(attack_monster_response.body[\\"message\\"])
+    pprint(attack_monster_response.headers)
+    pprint(attack_monster_response.status)
+    pprint(attack_monster_response.round_trip_time)
+except ApiException as e:
+    print(\\"Exception when calling AdventureApi.attack_monster: %s\\\\n\\" % e)
+    pprint(e.body)
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
+\`\`\`
+
+
+## Reference<a id=\\"reference\\"></a>
+### \`pythonpydanticresponseasparamclient.adventure.attack_monster\`<a id=\\"pythonpydanticresponseasparamclientadventureattack_monster\\"></a>
+
+Attack a monster with the (pydantic) sword from your equipment
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+attack_monster_response = pythonpydanticresponseasparamclient.adventure.attack_monster(
+    weapon={},
+)
+\`\`\`
+
+#### ⚙️ Parameters<a id=\\"⚙️-parameters\\"></a>
+
+##### weapon: \`Sword\`<a id=\\"weapon-sword\\"></a>
+
+Weapon used to attack the monster
+
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`AttackResult\`](./python_pydantic_response_as_param/pydantic/attack_result.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/attack-monster\` \`get\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### \`pythonpydanticresponseasparamclient.adventure.retrieve_equipment\`<a id=\\"pythonpydanticresponseasparamclientadventureretrieve_equipment\\"></a>
+
+Receive a pydantic response which will subsequently be used as a parameter in another endpoint.
+
+#### 🛠️ Usage<a id=\\"🛠️-usage\\"></a>
+
+\`\`\`python
+retrieve_equipment_response = (
+    pythonpydanticresponseasparamclient.adventure.retrieve_equipment()
+)
+\`\`\`
+
+#### 🔄 Return<a id=\\"🔄-return\\"></a>
+
+[\`Equipment\`](./python_pydantic_response_as_param/pydantic/equipment.py)
+
+#### 🌐 Endpoint<a id=\\"🌐-endpoint\\"></a>
+
+\`/retrieve-equipment\` \`get\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+## Author<a id=\\"author\\"></a>
+This Python package is automatically generated by [Konfig](https://konfigthis.com)
+"
+`;
