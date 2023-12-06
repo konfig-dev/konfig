@@ -14,12 +14,12 @@ image: ./implementing-search-assets/banner.png
 
 <Admonition type="info">
 This article teaches you how to implement free, fast, and local search using
-Fuse.js in Next.js. If you are looking for an API docs provider with great
+Fuse.js in Next.js with SSR. If you are looking for an API docs provider with great
 out-of-the-box search functionality, consider using [Konfig](/#docs) to host
 your API docs.
 </Admonition>
 
-#### The Problem
+## The Problem
 
 Most websites worth its salt have a search bar. It's a great way to help users
 find the content they need quickly. To migrate one of our customers at
@@ -27,16 +27,13 @@ find the content they need quickly. To migrate one of our customers at
 product](/#docs), we needed to reach feature parity with ReadMe's product, which
 meant adding search functionality.
 
-To summarize, we needed the ability to search documents and operations for your API
-in our docs product.
-
 {/* TRUNCATE */}
 
 ## What we built
 
 A fast, and local-first search bar with fuzzy search, highlighting. Oh, and it's
-**free** to host and **depends on 0 external services**. The experience is slick
-and **fast**.
+**free** to host and **depends on 0 external services** making the experience
+**fast**.
 
 **[Try it out for yourself at our customer SnapTrade's
 Docs](https://docs.snaptrade.com).**
@@ -66,7 +63,7 @@ actively maintained. Great library, I highly recommend it.
 In our case, the requirements were as follows:
 
 1. Cheap/free
-1. Simple, preferably local-first / no external dependency
+1. Simple, preferably local-first/no external dependency
 1. Fast, it should feel snappy
 1. Error-prone, typos should be handled gracefully
 1. Supports custom indexing of markdown files and JSON data (for OpenAPI generated docs)
@@ -104,8 +101,8 @@ this tutorial.
 
 The code in this tutorial is a pseudo-code implementation of the search
 functionality we built for our [Docs product](/#docs). It is not a copy-paste
-solution. You can use the provided code as a guide but will need to modify the
-code to fit your application.
+solution. **You should use the provided code as a guide but will need to modify the
+code to fit your application.**
 
 </Admonition>
 
@@ -177,9 +174,9 @@ following content:
 1. Markdown files
 1. JSON files that represent [OpenAPI Specifications](https://swagger.io/specification/)
 
-In most cases, all your content should contain information from pages other than
-the currently rendered page. For example, if you are on the page `/foo`, you
-will want to aggregate the content from `/bar` and `/baz` as well.
+The returned content should contain information from pages other than the
+currently rendered page. For example, if you are on the page `/foo`, you will
+want to aggregate the content from `/bar` and `/baz` as well.
 
 Once you decide what to index, you should pull that information from whatever
 data source you are using. In our case, we are using the file system to store
@@ -236,8 +233,9 @@ the index. This is the fun part. You can use Fuse.js to make queries on the
 index and then render the results however you want.
 
 We used [Mantine's Spotlight Component](https://mantine.dev/others/spotlight/)
-which made it incredibly easy to create a good-looking search bar.
-
+which made it incredibly easy to create a good-looking search bar. We added some
+extra functionality for highlighting exact substring search matches as you type
+and configuring the CMD + K and CTRL + K keyboard shortcuts.
 
 ```tsx pages/[myPage].tsx focus=57:69
 ```
@@ -255,4 +253,4 @@ Fuse.js with Next.js SSR. We did this by following three main steps:
 
 Let us know what you think of this tutorial and if you have any questions or
 comments, feel free to reach out to me at
-[dylan@konfigthis.com](mailto:dylan@konfigthis.com)
+[dylan@konfigthis.com](mailto:dylan@konfigthis.com).
