@@ -12,6 +12,7 @@
 
 from collections import defaultdict
 from datetime import date, datetime, timedelta  # noqa: F401
+import pydantic
 import functools
 import decimal
 import io
@@ -1808,6 +1809,8 @@ def cast_to_allowed_types(
         return bytes(arg)
     elif isinstance(arg, (io.FileIO, io.BufferedReader)):
         return FileIO(arg)
+    elif isinstance(arg, pydantic.BaseModel):
+        return cast_to_allowed_types({ k:v for k, v in dict(arg).items() if v is not None }, from_server, validated_path_to_schemas, path_to_item)
     raise ValueError('Invalid type passed in got input={} type={}'.format(arg, type(arg)))
 
 
