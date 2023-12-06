@@ -15,7 +15,10 @@ export default class Mock extends Command {
     })
     try {
       execa.sync(pathToPrism, ['mock', ...argv], { stdio: 'inherit' })
-    } catch {
+    } catch (e) {
+      if (e instanceof Error) {
+        this.error(e.message)
+      }
       process.exit(1)
     }
   }
