@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: typescript-multipart-form-data-array-request API
+  description: A simple API based for testing typescript-multipart-form-data-array-request.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://typescript-multipart-form-data-array-request.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /upload-files:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_uploadFiles
+      description: Provide an input parameter to receive a JSON value with properties.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadFileRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    UploadFileRequest:
+      type: array
+      items:
+        type: object
+        properties:
+          file:
+            type: string
+            format: binary
+          metadata:
+            type: object
+    TestFetchResponse:
+      type: object
+security:
+  - ApiKey: []
