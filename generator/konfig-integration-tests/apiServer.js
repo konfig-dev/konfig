@@ -17,7 +17,16 @@ const startServer = (port, routes) => {
     if (route.isMultipartFormData) {
       app[route.method](route.path, upload.any(), (req, res) => {
         if (route.response === "echo") {
-          res.status(200).json(route.response);
+          const response = {
+            files: req.files,
+            params: req.params,
+            query: req.query,
+            headers: req.headers,
+            body: req.body,
+            url: req.url,
+            hostname: req.hostname,
+          };
+          res.status(200).json(response);
         } else {
           res.status(200).json(route.response);
         }

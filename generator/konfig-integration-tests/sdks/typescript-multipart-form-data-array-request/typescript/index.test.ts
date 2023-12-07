@@ -14,5 +14,12 @@ describe("typescript-multipart-form-data-array-request", () => {
       },
     ]);
     expect(response).not.toBeNull();
+    const markdown = Buffer.from((response.data as any).files[0].buffer.data).toString(
+      "utf8"
+    );
+    const includesString = markdown.includes(
+      "typescript-multipart-form-data-array-request"
+    );
+    expect(includesString).toBe(true);
   });
 });
