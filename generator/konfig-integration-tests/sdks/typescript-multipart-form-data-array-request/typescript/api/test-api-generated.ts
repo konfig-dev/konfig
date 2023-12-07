@@ -16,7 +16,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, isBrowser } from '../common';
-import { fromBuffer } from "file-type/browser"
+import { fromBuffer as fromBufferBrowser } from "file-type/browser"
+import {fromBuffer as fromBufferNode } from "file-type"
 const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
@@ -47,12 +48,13 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
             const addFormParam = async (name: string, data: any, isBinary: boolean, isPrimitiveType: boolean) => {
                 if (isBinary) {
+                    const fromBuffer = isBrowser() ? fromBufferBrowser : fromBufferNode
                     if (data instanceof Uint8Array) {
                         // Handle Buffer data
                         const filetype = await fromBuffer(data)
@@ -96,6 +98,8 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (uploadFileRequestInner) {
                 for (const element of uploadFileRequestInner) {
+                    await addFormParam("file", element.file, true, true)
+                    await addFormParam("metadata", element.metadata, false, false)
                 }
             }
 
@@ -133,7 +137,7 @@ export const TestApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadFiles(requestParameters: TestApiUploadFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+        async uploadFiles(requestParameters: TestApiUploadFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UploadFileRequestInner>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFiles(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -154,7 +158,7 @@ export const TestApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadFiles(requestParameters: TestApiUploadFilesRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+        uploadFiles(requestParameters: TestApiUploadFilesRequest, options?: AxiosRequestConfig): AxiosPromise<Array<UploadFileRequestInner>> {
             return localVarFp.uploadFiles(requestParameters, options).then((request) => request(axios, basePath));
         },
     };

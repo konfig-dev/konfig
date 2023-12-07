@@ -18,7 +18,7 @@ tags:
   - name: Test
 paths:
   /upload-files:
-    get:
+    post:
       tags:
         - Test
       summary: Fetches a JSON value based on input parameter
@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TestFetchResponse'
+                $ref: '#/components/schemas/UploadFileRequest'
 components:
   securitySchemes:
     ApiKey:
@@ -53,7 +53,5 @@ components:
             format: binary
           metadata:
             type: object
-    TestFetchResponse:
-      type: object
 security:
   - ApiKey: []

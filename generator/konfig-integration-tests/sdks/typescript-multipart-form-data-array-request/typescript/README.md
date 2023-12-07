@@ -85,9 +85,13 @@ const uploadFilesResponse =
 
 [`UploadFileRequestInner`](./models/upload-file-request-inner.ts)[]
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UploadFileRequestInner](./models/upload-file-request-inner.ts)
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
-`/upload-files` `GET`
+`/upload-files` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

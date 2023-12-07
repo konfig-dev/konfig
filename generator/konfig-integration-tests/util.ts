@@ -152,7 +152,8 @@ export async function e2e(
 interface RouteConfig {
   path: string;
   method: "get" | "post" | "put" | "delet"; // Extend as needed
-  response: object;
+  isMultipartFormData?: boolean;
+  response: object | "echo";
 }
 
 type ServerConfigWithPort = ServerConfig & {
