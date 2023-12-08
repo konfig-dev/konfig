@@ -2522,7 +2522,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
      * @param innerProperty Codegen inner property of map or list
      */
     @Override
-    protected void updatePropertyForArray(CodegenProperty property, CodegenProperty innerProperty) {
+    protected void updatePropertyForArray(CodegenProperty property, CodegenProperty innerProperty, CodegenProperty innerPropertyDereferenced) {
         if (innerProperty == null) {
             if(LOGGER.isWarnEnabled()) {
                 LOGGER.warn("skipping invalid array property {}", Json.pretty(property));

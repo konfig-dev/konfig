@@ -251,16 +251,16 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             {{#../vendorExtensions.multipartFormData}}
             {{#isArray}}
             if ({{> requestPropertyName}}) {
-                {{#items}}
+                {{#itemsDereferenced}}
                 for (const element of {{> requestPropertyName}}) {
                 {{#vars}}
-                    await addFormParam('{{name}}', element.{{name}}, {{isBinary}}, {{isPrimitiveType}})
+                    await addFormParam('{{baseName}}', element.{{baseName}}, {{isBinary}}, {{isPrimitiveType}})
                 {{/vars}}
                 {{^isModel}}
                     await addFormParam('{{name}}', element, {{isBinary}}, {{isPrimitiveType}})
                 {{/isModel}}
                 }
-                {{/items}}
+                {{/itemsDereferenced}}
             }
             {{/isArray}}
             {{/../vendorExtensions.multipartFormData}}

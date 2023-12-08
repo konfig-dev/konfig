@@ -183,6 +183,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     // If 'additionalProperties' is set to a type or refers to a type, 'items' provides the type information for
     // the undeclared properties.
     public CodegenProperty items;
+    public CodegenProperty itemsDereferenced;
     public CodegenProperty additionalProperties;
     public List<CodegenProperty> vars = new ArrayList<CodegenProperty>(); // all properties (without parent's properties)
     public List<CodegenProperty> requiredVars = new ArrayList<>();

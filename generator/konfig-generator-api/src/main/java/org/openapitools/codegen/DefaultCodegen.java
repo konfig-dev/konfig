@@ -4151,7 +4151,9 @@ public class DefaultCodegen implements CodegenConfig {
             ArraySchema arraySchema = (ArraySchema) p;
             Schema innerSchema = unaliasSchema(getSchemaItems(arraySchema));
             CodegenProperty cp = fromProperty(itemName, innerSchema, false);
-            updatePropertyForArray(property, cp);
+            Schema innerSchemaDereferenced = ModelUtils.getReferencedSchema(this.openAPI, innerSchema);
+            CodegenProperty cpDereferenced = fromProperty(itemName, innerSchemaDereferenced, false);
+            updatePropertyForArray(property, cp, cpDereferenced);
         } else if (ModelUtils.isTypeObjectSchema(p)) {
             updatePropertyForObject(property, p);
         } else if (ModelUtils.isAnyType(p)) {
@@ -4211,7 +4213,7 @@ public class DefaultCodegen implements CodegenConfig {
      * @param property      Codegen property
      * @param innerProperty Codegen inner property of map or list
      */
-    protected void updatePropertyForArray(CodegenProperty property, CodegenProperty innerProperty) {
+    protected void updatePropertyForArray(CodegenProperty property, CodegenProperty innerProperty, CodegenProperty innerPropertyDereferenced) {
         if (innerProperty == null) {
             if (LOGGER.isWarnEnabled()) {
                 LOGGER.warn("skipping invalid array property {}", Json.pretty(property));
@@ -4225,6 +4227,7 @@ public class DefaultCodegen implements CodegenConfig {
             property.isPrimitiveType = true;
         }
         property.items = innerProperty;
+        property.itemsDereferenced = innerPropertyDereferenced;
         property.mostInnerItems = getMostInnerItems(innerProperty);
         // inner item is Enum
         if (isPropertyInnerMostEnum(property)) {
@@ -7620,6 +7623,7 @@ public class DefaultCodegen implements CodegenConfig {
 
             codegenParameter.paramName = toArrayModelParamName(codegenParameter.baseName);
             codegenParameter.items = codegenProperty.items;
+            codegenParameter.itemsDereferenced = codegenProperty.itemsDereferenced;
             codegenParameter.mostInnerItems = codegenProperty.mostInnerItems;
             codegenParameter.dataType = getTypeDeclaration(arraySchema);
             codegenParameter.baseType = getSchemaType(inner);

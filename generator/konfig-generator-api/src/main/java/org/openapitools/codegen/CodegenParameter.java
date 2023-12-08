@@ -97,6 +97,7 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
     public List<String> _enum;
     public Map<String, Object> allowableValues;
     public CodegenProperty items;
+    public CodegenProperty itemsDereferenced;
     public CodegenProperty additionalProperties;
     public List<CodegenProperty> vars = new ArrayList<CodegenProperty>(); // all properties (without parent's properties)
     public List<CodegenProperty> requiredVars = new ArrayList<CodegenProperty>();
