@@ -100,7 +100,16 @@ export async function e2e(
     if (pid !== null) {
       // kill the server
       console.log("Killing server with pid", pid);
-      process.kill(pid);
+      try {
+        process.kill(pid);
+      } catch (e) {
+        if (isSigTermError(e)) {
+          console.log("Process was successfully killed");
+        } else {
+          // error is not a process termination error
+          throw e;
+        }
+      }
     }
   }
 
@@ -183,7 +192,11 @@ const spawnServer = (config: ServerConfigWithPort): number => {
 
   // Handling potential errors
   serverProcess.catch((error) => {
-    console.error("Failed to spawn server process:", error);
+    if (isSigTermError(error)) {
+      // do nothing
+    } else {
+      console.error("Failed to spawn server process:", error);
+    }
   });
 
   const pid = serverProcess.pid;
@@ -212,4 +225,13 @@ function normalizeDocumentation(readme: string) {
   // matches [GitHub last commit] to the end of the line
   const pattern = /\[!\[GitHub last commit\].*$\n?/gm;
   return readme.replace(pattern, "");
+}
+
+function isSigTermError(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "signal" in error &&
+    error.signal === "SIGTERM"
+  );
 }
