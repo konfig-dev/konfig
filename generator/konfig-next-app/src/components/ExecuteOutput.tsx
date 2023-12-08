@@ -44,7 +44,7 @@ export function ExecuteOutput({
         //   // Not a URL, do nothing special
         // }
 
-        if (text.startsWith('"') && text.endsWith('"') && text.length > 1) {
+        if (text?.startsWith('"') && text.endsWith('"') && text.length > 1) {
           text = text.slice(1, -1)
         }
 
