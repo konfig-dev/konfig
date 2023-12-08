@@ -11,6 +11,14 @@ describe("typescript-multipart-form-data-free-form-object", () => {
       {
         file: fs.readFileSync(__dirname + "/README.md"),
         metadata: {
+          name: "1",
+          fileType: "markdown",
+        },
+      },
+      {
+        file: fs.readFileSync(__dirname + "/README.md"),
+        metadata: {
+          name: "2",
           fileType: "markdown",
         },
       },
@@ -21,6 +29,12 @@ describe("typescript-multipart-form-data-free-form-object", () => {
     ).toString("utf8");
     const includesString = markdown.includes(
       "typescript-multipart-form-data-free-form-object"
+    );
+    expect(JSON.parse((response.data as any).body.metadata[0]).name).toEqual(
+      "1"
+    );
+    expect(JSON.parse((response.data as any).body.metadata[1]).name).toEqual(
+      "2"
     );
     expect(includesString).toBe(true);
   });
