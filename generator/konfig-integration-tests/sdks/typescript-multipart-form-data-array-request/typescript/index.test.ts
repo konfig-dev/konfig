@@ -10,13 +10,13 @@ describe("typescript-multipart-form-data-array-request", () => {
     const response = await client.test.uploadFiles([
       {
         file: fs.readFileSync(__dirname + "/README.md"),
-        metadata: { type: "markdown" },
+        metadata: { fileType: "markdown" },
       },
     ]);
     expect(response).not.toBeNull();
-    const markdown = Buffer.from((response.data as any).files[0].buffer.data).toString(
-      "utf8"
-    );
+    const markdown = Buffer.from(
+      (response.data as any).files[0].buffer.data
+    ).toString("utf8");
     const includesString = markdown.includes(
       "typescript-multipart-form-data-array-request"
     );
