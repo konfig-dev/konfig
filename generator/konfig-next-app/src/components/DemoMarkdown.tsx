@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
 import remarkGfm from 'remark-gfm'
@@ -172,6 +173,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
         <ReactMarkdown
           className={classes.markdown}
           remarkPlugins={[remarkGfm, remarkDirective, remarkDirectiveRehype]}
+          rehypePlugins={[rehypeRaw]}
           components={{
             a: DemoAnchor,
             p({ node, children, siblingCount, ...props }) {
