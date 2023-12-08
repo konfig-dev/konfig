@@ -11,9 +11,9 @@ groundx = Groundx(
 response = groundx.documents.upload_local([{
     \\"blob\\": open(\\"file.txt\\", \\"rb\\"),
     \\"metadata\\": {
-        \\"bucket_id\\": 321,
-        \\"file_name\\": \\"321\\",
-        \\"file_type\\": \\"docx\\"
+        \\"bucketId\\": 321,
+        \\"fileName\\": \\"321\\",
+        \\"fileType\\": \\"docx\\"
     }
 }])
 pprint(response.body)"
@@ -88,6 +88,22 @@ response = snaptrade.options.get_option_strategy()
 pprint(response.body)"
 `;
 
+exports[`nested object property names should not be converted to snake_case 1`] = `
+"from pprint import pprint
+from groundx import Groundx
+
+groundx = Groundx(
+    api_key=\\"api_key\\"
+)
+
+response = groundx.documents.upload_local([{
+    \\"metadata\\": {
+        \\"bucketId\\": 321321
+    }
+}])
+pprint(response.body)"
+`;
+
 exports[`nested objects does not have empty properties 1`] = `
 "from pprint import pprint
 from groundx import Groundx
@@ -99,7 +115,7 @@ groundx = Groundx(
 response = groundx.documents.upload_remote(
     documents=[
         {
-            \\"bucket_id\\": 1
+            \\"bucketId\\": 1
         }
     ]
 )
@@ -117,18 +133,18 @@ groundx = Groundx(
 response = groundx.documents.upload_local([{
     \\"blob\\": open(\\"file_1.txt\\", \\"rb\\"),
     \\"metadata\\": {
-        \\"bucket_id\\": 321,
-        \\"file_name\\": \\"321\\",
-        \\"file_type\\": \\"txt\\",
-        \\"callback_data\\": \\"321\\",
-        \\"callback_url\\": \\"3213\\"
+        \\"bucketId\\": 321,
+        \\"fileName\\": \\"321\\",
+        \\"fileType\\": \\"txt\\",
+        \\"callbackData\\": \\"321\\",
+        \\"callbackUrl\\": \\"3213\\"
     }
 }, {
     \\"blob\\": open(\\"file_2.txt\\", \\"rb\\"),
     \\"metadata\\": {
-        \\"bucket_id\\": 321,
-        \\"file_name\\": \\"321\\",
-        \\"file_type\\": \\"txt\\"
+        \\"bucketId\\": 321,
+        \\"fileName\\": \\"321\\",
+        \\"fileType\\": \\"txt\\"
     }
 }])
 pprint(response.body)"

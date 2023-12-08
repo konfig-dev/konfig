@@ -108,9 +108,10 @@ from ${this.packageName} import ${this.clientName}`
     if (typeof obj === 'object' && obj !== null) {
       const entries = Object.entries(obj).map(
         ([key, value]) =>
-          `${nextIndent}${JSON.stringify(
-            this.snake_case(key)
-          )}: ${this.toPythonLiteralString(value, indentLevel + 1)}`
+          `${nextIndent}${JSON.stringify(key)}: ${this.toPythonLiteralString(
+            value,
+            indentLevel + 1
+          )}`
       )
       return `{\n${entries.join(',\n')}\n${currentIndent}}`
     }

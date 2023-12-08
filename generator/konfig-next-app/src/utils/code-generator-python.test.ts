@@ -8,6 +8,125 @@ const gitConfig = {
   path: '',
 }
 
+test('nested object property names should not be converted to snake_case', async () => {
+  const args: CodeGeneratorConstructorArgs = {
+    contentType: 'multipart/form-data',
+    httpMethod: HttpMethodsEnum.POST,
+    path: '/v1/ingest/documents/local',
+    parameters: [],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        type: 'array',
+        items: {
+          type: 'object',
+          required: ['blob', 'metadata'],
+          properties: {
+            blob: {
+              description: 'The actual file being uploaded.',
+              type: 'string',
+              format: 'binary',
+            },
+            metadata: {
+              type: 'object',
+              required: ['bucketId', 'fileName', 'fileType'],
+              properties: {
+                bucketId: {
+                  description:
+                    'the bucketId of the bucket which this local file will be uploaded to.',
+                  type: 'integer',
+                  example: 1234,
+                },
+                fileName: {
+                  description: 'The name of the file being uploaded',
+                  type: 'string',
+                  example: 'my_file.txt',
+                },
+                fileType: {
+                  description:
+                    'The type of document (one of the seven currently supported file types)',
+                  type: 'string',
+                  enum: ['txt', 'docx', 'pptx', 'xlsx', 'pdf', 'png', 'jpg'],
+                },
+                searchData: {
+                  description:
+                    "Custom metadata which can be used to influence GroundX's search functionality. This data can be used to further hone GroundX search.",
+                  type: 'object',
+                  example: {
+                    key: 'value',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      isRequestBody: true,
+    },
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-API-Key',
+      },
+    },
+    formData: {
+      parameters: {
+        documents: '',
+      },
+      security: {
+        ApiKeyAuth: {
+          type: 'apiKey',
+          in: 'header',
+          key: 'X-API-Key',
+          value: 'api_key',
+        },
+      },
+      requestBody: [
+        {
+          blob: '',
+          metadata: {
+            bucketId: 321321,
+            fileName: '',
+            fileType: '',
+            searchData: '',
+          },
+        },
+      ],
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Groundx',
+        packageName: 'groundx-typescript-sdk',
+        git: {
+          owner: 'groundxai',
+          path: 'groundx-sdks/tree/main/sdks/typescript',
+        },
+      },
+      python: {
+        clientName: 'Groundx',
+        packageName: 'groundx',
+        projectName: 'groundx-python-sdk',
+        git: {
+          owner: 'groundxai',
+          path: 'groundx-sdks/tree/main/sdks/python',
+        },
+      },
+    },
+    servers: ['https://api.groundx.ai/api'],
+    operationId: 'Document_uploadLocal',
+    tag: 'Documents',
+    basePath: 'https://api.groundx.ai/api',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: false,
+    mode: 'copy',
+  }
+  const code = await new CodeGeneratorPython(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 test('deeply nested objects with file', async () => {
   const args: CodeGeneratorConstructorArgs = {
     httpMethod: HttpMethodsEnum.POST,
