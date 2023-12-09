@@ -85,7 +85,7 @@
 {{#if async}}
     **kwargs,
 {{/if}}
-){{#unless omitReturnType}} -> {{#if isMappedArgs}}api_client.MappedArgs{{else}}typing.Union[
+){{#unless omitReturnType}} -> {{#if pydanticReturnTypeHint}}{{> endpoint_return_type_hint}}{{else}}{{#if isMappedArgs}}api_client.MappedArgs{{else}}typing.Union[
     {{#each responses}}
         {{#if isDefault}}
     ApiResponseForDefault{{#if async}}Async{{/if}},
@@ -99,4 +99,4 @@
     {{#if async}}
     AsyncGeneratorResponse,
     {{/if}}
-]{{/if}}{{/unless}}:
+]{{/if}}{{/if}}{{/unless}}:
