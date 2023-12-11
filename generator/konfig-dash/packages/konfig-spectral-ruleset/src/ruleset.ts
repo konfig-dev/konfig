@@ -40,6 +40,7 @@ import { noParameterNamedRequestBody } from './functions/noParameterNamedRequest
 import { missingDataTimeFormat } from './functions/missingDateTimeFormat'
 import { missingDateFormat } from './functions/missingDateFormat '
 import { invalidRequiredPropertySyntax } from './functions/invalidRequiredPropertySyntax'
+import { duplicateSdkMethodName } from './functions/duplicateSdkMethodName'
 
 export default {
   extends: oas,
@@ -83,6 +84,16 @@ export default {
         function: noParameterNamedRequestBody,
       },
       severity: DiagnosticSeverity.Error,
+    },
+    'duplicate-sdk-method-name': {
+      given: '#OperationObject',
+      then: [
+        {
+          field: 'operationId',
+          function: duplicateSdkMethodName,
+        },
+      ],
+      severity: DiagnosticSeverity.Warning,
     },
     'duplicate-tag-names': {
       given: rulesetJsonPaths.Tags,
