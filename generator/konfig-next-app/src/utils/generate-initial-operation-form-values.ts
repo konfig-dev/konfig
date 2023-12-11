@@ -94,7 +94,6 @@ type GenerateInitialFormValuesInput = {
 export function generateInitialFormValues(
   input: Omit<GenerateInitialFormValuesInput, 'owner' | 'repo'>
 ): FormValues {
-  console.log(input)
   return generateFormInputValues(input)
 }
 
