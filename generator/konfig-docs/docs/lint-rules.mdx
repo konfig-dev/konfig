@@ -19,6 +19,53 @@ This is reference documentation for Konfig's linting rules for [Konfig's OAS Lin
 | Information         | Something to inform about but not a problem                                 |
 | Hint                | Something to hint to a better way of doing it, like proposing a refactoring |
 
+## duplicate-sdk-method-name
+
+Severity: Warning
+
+#### Example
+
+```
+Duplicate case-insensitive SDK method name "find" detected. Please rename one of the operations.
+```
+
+#### Explanation
+
+SDK methods are generated from operation names. If two operations have the same
+name then the SDK method names will conflict. This is a warning because it is
+possible that the operations are the same and the developer should
+consider renaming the operation to be more descriptive.
+
+For example, if you have two operations with the same name "find" then the SDK
+method names will conflict. You should consider renaming one of the operations
+to be more descriptive such as "findOne" and "findMultiple".
+
+```yaml
+paths:
+  /pets:
+    get:
+      operationId: Pet_find
+      summary: "Finds all pets"
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Pet"
+  /pets/{id}:
+    get:
+      operationId: Pet_find
+      summary: "Finds one pet by id"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Pet"
+```
+
+---
+
 ## invalid-required-property-syntax
 
 Severity: Warning
