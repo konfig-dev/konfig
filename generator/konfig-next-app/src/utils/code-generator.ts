@@ -10,6 +10,7 @@ import {
   OAUTH2_CLIENT_ID_PROPERTY,
   OAUTH2_CLIENT_SECRET_PROPERTY,
   PARAMETER_FORM_NAME_PREFIX,
+  REQUEST_BODY_FORM_NAME_PREFIX,
   SECURITY_FORM_NAME_PREFIX,
 } from './generate-initial-operation-form-values'
 import { ReferencePageProps } from './generate-props-for-reference-page'
@@ -198,7 +199,9 @@ export abstract class CodeGenerator {
    * is passed as a separate argument.
    */
   requestBodyValue(): FormInputValue {
-    return this.recursivelyRemoveEmptyValues(this._formData['requestBody'])
+    return this.recursivelyRemoveEmptyValues(
+      this._formData[REQUEST_BODY_FORM_NAME_PREFIX]
+    )
   }
 
   /**

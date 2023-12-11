@@ -6,6 +6,7 @@ import { isNotEmpty } from './is-not-empty'
 import localforage from 'localforage'
 import { ReferencePageProps } from './generate-props-for-reference-page'
 import { isUUID } from './is-uuid'
+import { NonArraySchemaObject } from 'konfig-lib'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   owner,
@@ -43,7 +44,15 @@ export type FormInputValues = {
 
 export type FormDataType = {
   [PARAMETER_FORM_NAME_PREFIX]: FormInputValues
+
+  /**
+   * For unnamed request body parameters like scalar (string or number) / array type schema
+   * request body parameters, we use the key `requestBody` to store the value. We do this because
+   * there is no name for the parameter, so we can't use the parameter name as the key for the
+   * PARAMETER_FORM_NAME_PREFIX object.
+   */
   [REQUEST_BODY_FORM_NAME_PREFIX]: FormInputValue
+
   [SECURITY_FORM_NAME_PREFIX]: Record<
     string,
     | {
@@ -85,6 +94,7 @@ type GenerateInitialFormValuesInput = {
 export function generateInitialFormValues(
   input: Omit<GenerateInitialFormValuesInput, 'owner' | 'repo'>
 ): FormValues {
+  console.log(input)
   return generateFormInputValues(input)
 }
 
@@ -128,18 +138,12 @@ function generateFormInputValues({
   let validate: FormValues['validate'] = {}
   for (const parameter of parameters) {
     if (parameter.schema.type === 'object' && parameter.schema.properties) {
-      const parameters: GenerateFormInputValuesInput['parameters'] =
-        Object.entries(parameter.schema.properties).map(([name, schema]) => {
-          return {
-            name,
-            in: 'body',
-            required: parameter.schema.required?.includes(name) ?? false,
-            schema,
-            example: parameter.example,
-          }
-        })
+      const properties = generatePropertiesForSchemaObject({
+        schema: parameter.schema,
+        example: parameter.example,
+      })
       const innerInput: GenerateFormInputValuesInput = {
-        parameters,
+        parameters: properties,
         securitySchemes: {},
         hideSecurity,
         clientState,
@@ -152,6 +156,32 @@ function generateFormInputValues({
       initialValues.parameters[parameter.name] =
         innerInitialValues.initialValues.parameters
 
+      const validation: FormValues['validate'] = {
+        parameters: {
+          [parameter.name]: (innerInitialValues.validate as any).parameters,
+        },
+      }
+      validate = deepmerge(validation, validate)
+    } else if (
+      parameter.schema.type === 'array' &&
+      !('$ref' in parameter.schema.items) &&
+      parameter.schema.items?.type === 'object'
+    ) {
+      // If the array is an array of objects, we want to populate the array with at least one object
+      const properties = generatePropertiesForSchemaObject({
+        schema: parameter.schema.items,
+        example: parameter.schema.items.example,
+      })
+      const innerInput: GenerateFormInputValuesInput = {
+        parameters: properties,
+        securitySchemes: {},
+        hideSecurity,
+        clientState,
+      }
+      const innerInitialValues = generateFormInputValues(innerInput)
+      initialValues.parameters[parameter.name] = [
+        innerInitialValues.initialValues.parameters,
+      ]
       const validation: FormValues['validate'] = {
         parameters: {
           [parameter.name]: (innerInitialValues.validate as any).parameters,
@@ -268,4 +298,26 @@ function generateFormInputValues({
     }
   }
   return { initialValues, validate }
+}
+
+function generatePropertiesForSchemaObject({
+  schema,
+  example,
+}: {
+  schema: NonArraySchemaObject
+  example?: any
+}) {
+  if (schema.properties == undefined) throw new Error('No properties')
+  const properties: GenerateFormInputValuesInput['parameters'] = Object.entries(
+    schema.properties
+  ).map(([name, schema]) => {
+    return {
+      name,
+      in: 'body',
+      required: schema.required?.includes(name) ?? false,
+      schema,
+      example,
+    }
+  })
+  return properties
 }
