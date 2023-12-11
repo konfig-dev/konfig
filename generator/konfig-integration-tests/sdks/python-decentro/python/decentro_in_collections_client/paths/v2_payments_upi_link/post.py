@@ -429,7 +429,7 @@ class GeneratePaymentLink(BaseApi):
         generate_uri: typing.Optional[int] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> GeneratePaymentLinkResponsePydantic:
         raw_response = await self.raw.agenerate_payment_link(
             body=body,
             reference_id=reference_id,
@@ -459,7 +459,7 @@ class GeneratePaymentLink(BaseApi):
         customized_qr_with_logo: typing.Optional[int] = None,
         generate_uri: typing.Optional[int] = None,
         validate: bool = False,
-    ):
+    ) -> GeneratePaymentLinkResponsePydantic:
         raw_response = self.raw.generate_payment_link(
             body=body,
             reference_id=reference_id,

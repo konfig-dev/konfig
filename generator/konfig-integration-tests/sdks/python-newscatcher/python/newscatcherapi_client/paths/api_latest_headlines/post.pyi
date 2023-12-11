@@ -611,7 +611,7 @@ class Post(BaseApi):
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> LatestHeadlinesPostResponsePydantic:
         raw_response = await self.raw.apost(
             when=when,
             by_parse_date=by_parse_date,
@@ -689,7 +689,7 @@ class Post(BaseApi):
         content_sentiment_min: typing.Optional[typing.Union[int, float]] = None,
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> LatestHeadlinesPostResponsePydantic:
         raw_response = self.raw.post(
             when=when,
             by_parse_date=by_parse_date,

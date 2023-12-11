@@ -401,7 +401,7 @@ class IssueCollectRequest(BaseApi):
         expiry_time: typing.Optional[int] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> IssueCollectRequestResponsePydantic:
         raw_response = await self.raw.aissue_collect_request(
             body=body,
             reference_id=reference_id,
@@ -427,7 +427,7 @@ class IssueCollectRequest(BaseApi):
         purpose_message: typing.Optional[str] = None,
         expiry_time: typing.Optional[int] = None,
         validate: bool = False,
-    ):
+    ) -> IssueCollectRequestResponsePydantic:
         raw_response = self.raw.issue_collect_request(
             body=body,
             reference_id=reference_id,

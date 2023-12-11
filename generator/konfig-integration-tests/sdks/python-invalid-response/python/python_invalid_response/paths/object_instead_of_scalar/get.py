@@ -272,7 +272,7 @@ class ObjectInsteadOfScalar(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> str:
         raw_response = await self.raw.aobject_instead_of_scalar(
             **kwargs,
         )
@@ -284,7 +284,7 @@ class ObjectInsteadOfScalar(BaseApi):
     def object_instead_of_scalar(
         self,
         validate: bool = False,
-    ):
+    ) -> str:
         raw_response = self.raw.object_instead_of_scalar(
         )
         if validate:

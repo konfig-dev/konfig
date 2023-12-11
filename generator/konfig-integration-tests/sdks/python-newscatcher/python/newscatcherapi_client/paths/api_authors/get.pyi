@@ -1036,7 +1036,7 @@ class Get(BaseApi):
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> AuthorsGetResponsePydantic:
         raw_response = await self.raw.aget(
             author_name=author_name,
             sources=sources,
@@ -1114,7 +1114,7 @@ class Get(BaseApi):
         content_sentiment_min: typing.Optional[typing.Union[int, float]] = None,
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> AuthorsGetResponsePydantic:
         raw_response = self.raw.get(
             author_name=author_name,
             sources=sources,

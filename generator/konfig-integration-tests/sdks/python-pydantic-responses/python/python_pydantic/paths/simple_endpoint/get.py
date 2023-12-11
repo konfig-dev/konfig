@@ -398,7 +398,7 @@ class Fetch(BaseApi):
         input_parameter: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> TestFetchResponsePydantic:
         raw_response = await self.raw.afetch(
             input_parameter=input_parameter,
             **kwargs,
@@ -412,7 +412,7 @@ class Fetch(BaseApi):
         self,
         input_parameter: str,
         validate: bool = False,
-    ):
+    ) -> TestFetchResponsePydantic:
         raw_response = self.raw.fetch(
             input_parameter=input_parameter,
         )

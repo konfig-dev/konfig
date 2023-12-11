@@ -267,7 +267,7 @@ class OnlyOnePropertyIsInvalid(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> OnlyOnePropertyIsInvalidPydantic:
         raw_response = await self.raw.aonly_one_property_is_invalid(
             **kwargs,
         )
@@ -279,7 +279,7 @@ class OnlyOnePropertyIsInvalid(BaseApi):
     def only_one_property_is_invalid(
         self,
         validate: bool = False,
-    ):
+    ) -> OnlyOnePropertyIsInvalidPydantic:
         raw_response = self.raw.only_one_property_is_invalid(
         )
         if validate:

@@ -269,7 +269,7 @@ class RetrieveEquipment(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EquipmentPydantic:
         raw_response = await self.raw.aretrieve_equipment(
             **kwargs,
         )
@@ -281,7 +281,7 @@ class RetrieveEquipment(BaseApi):
     def retrieve_equipment(
         self,
         validate: bool = False,
-    ):
+    ) -> EquipmentPydantic:
         raw_response = self.raw.retrieve_equipment(
         )
         if validate:

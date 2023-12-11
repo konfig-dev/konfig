@@ -275,7 +275,7 @@ class InvalidObject(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> InvalidObjectPydantic:
         raw_response = await self.raw.ainvalid_object(
             **kwargs,
         )
@@ -287,7 +287,7 @@ class InvalidObject(BaseApi):
     def invalid_object(
         self,
         validate: bool = False,
-    ):
+    ) -> InvalidObjectPydantic:
         raw_response = self.raw.invalid_object(
         )
         if validate:

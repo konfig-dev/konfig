@@ -390,7 +390,7 @@ class Get(BaseApi):
         countries: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> SourceResponsePydantic:
         raw_response = await self.raw.aget(
             lang=lang,
             countries=countries,
@@ -406,7 +406,7 @@ class Get(BaseApi):
         lang: typing.Optional[str] = None,
         countries: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> SourceResponsePydantic:
         raw_response = self.raw.get(
             lang=lang,
             countries=countries,

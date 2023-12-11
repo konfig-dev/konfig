@@ -267,7 +267,7 @@ class InvalidArray(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> InvalidArrayPydantic:
         raw_response = await self.raw.ainvalid_array(
             **kwargs,
         )
@@ -279,7 +279,7 @@ class InvalidArray(BaseApi):
     def invalid_array(
         self,
         validate: bool = False,
-    ):
+    ) -> InvalidArrayPydantic:
         raw_response = self.raw.invalid_array(
         )
         if validate:

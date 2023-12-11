@@ -611,7 +611,7 @@ class Post(BaseApi):
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> AuthorsPostResponsePydantic:
         raw_response = await self.raw.apost(
             author_name=author_name,
             sources=sources,
@@ -689,7 +689,7 @@ class Post(BaseApi):
         content_sentiment_min: typing.Optional[typing.Union[int, float]] = None,
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> AuthorsPostResponsePydantic:
         raw_response = self.raw.post(
             author_name=author_name,
             sources=sources,

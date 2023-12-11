@@ -293,7 +293,7 @@ class Post(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> SubscriptionResponsePydantic:
         raw_response = await self.raw.apost(
             **kwargs,
         )
@@ -305,7 +305,7 @@ class Post(BaseApi):
     def post(
         self,
         validate: bool = False,
-    ):
+    ) -> SubscriptionResponsePydantic:
         raw_response = self.raw.post(
         )
         if validate:

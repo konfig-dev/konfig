@@ -363,7 +363,7 @@ class Post(BaseApi):
         countries: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> SourceResponsePydantic:
         raw_response = await self.raw.apost(
             lang=lang,
             countries=countries,
@@ -379,7 +379,7 @@ class Post(BaseApi):
         lang: typing.Optional[str] = None,
         countries: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> SourceResponsePydantic:
         raw_response = self.raw.post(
             lang=lang,
             countries=countries,

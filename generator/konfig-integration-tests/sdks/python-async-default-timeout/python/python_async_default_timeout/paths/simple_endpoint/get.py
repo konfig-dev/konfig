@@ -274,7 +274,7 @@ class Fetch(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> Dictionary:
         raw_response = await self.raw.afetch(
             **kwargs,
         )
@@ -286,7 +286,7 @@ class Fetch(BaseApi):
     def fetch(
         self,
         validate: bool = False,
-    ):
+    ) -> Dictionary:
         raw_response = self.raw.fetch(
         )
         if validate:

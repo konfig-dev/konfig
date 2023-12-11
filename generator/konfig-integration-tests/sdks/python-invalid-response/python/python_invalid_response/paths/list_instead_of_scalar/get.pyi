@@ -264,7 +264,7 @@ class ListInsteadOfScalar(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> str:
         raw_response = await self.raw.alist_instead_of_scalar(
             **kwargs,
         )
@@ -276,7 +276,7 @@ class ListInsteadOfScalar(BaseApi):
     def list_instead_of_scalar(
         self,
         validate: bool = False,
-    ):
+    ) -> str:
         raw_response = self.raw.list_instead_of_scalar(
         )
         if validate:

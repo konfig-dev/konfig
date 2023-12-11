@@ -389,7 +389,7 @@ class ValidateUpiHandle(BaseApi):
         type: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ValidateUpiHandleResponsePydantic:
         raw_response = await self.raw.avalidate_upi_handle(
             body=body,
             reference_id=reference_id,
@@ -409,7 +409,7 @@ class ValidateUpiHandle(BaseApi):
         upi_id: typing.Optional[str] = None,
         type: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> ValidateUpiHandleResponsePydantic:
         raw_response = self.raw.validate_upi_handle(
             body=body,
             reference_id=reference_id,

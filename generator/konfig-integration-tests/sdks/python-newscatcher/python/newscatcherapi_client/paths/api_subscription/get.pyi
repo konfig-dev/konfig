@@ -293,7 +293,7 @@ class Get(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> SubscriptionResponsePydantic:
         raw_response = await self.raw.aget(
             **kwargs,
         )
@@ -305,7 +305,7 @@ class Get(BaseApi):
     def get(
         self,
         validate: bool = False,
-    ):
+    ) -> SubscriptionResponsePydantic:
         raw_response = self.raw.get(
         )
         if validate:

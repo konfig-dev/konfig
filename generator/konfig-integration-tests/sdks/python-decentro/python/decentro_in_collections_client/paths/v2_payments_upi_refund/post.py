@@ -397,7 +397,7 @@ class IssueUpiRefund(BaseApi):
         purpose_message: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> IssueUpiRefundResponsePydantic:
         raw_response = await self.raw.aissue_upi_refund(
             body=body,
             reference_id=reference_id,
@@ -419,7 +419,7 @@ class IssueUpiRefund(BaseApi):
         bank_reference_number: typing.Optional[str] = None,
         purpose_message: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> IssueUpiRefundResponsePydantic:
         raw_response = self.raw.issue_upi_refund(
             body=body,
             reference_id=reference_id,

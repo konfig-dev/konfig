@@ -345,7 +345,7 @@ class AttackMonster(BaseApi):
         sword: typing.Optional[Sword] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> AttackResultPydantic:
         raw_response = await self.raw.aattack_monster(
             monster=monster,
             sword=sword,
@@ -361,7 +361,7 @@ class AttackMonster(BaseApi):
         monster: typing.Optional[str] = None,
         sword: typing.Optional[Sword] = None,
         validate: bool = False,
-    ):
+    ) -> AttackResultPydantic:
         raw_response = self.raw.attack_monster(
             monster=monster,
             sword=sword,

@@ -267,7 +267,7 @@ class DictInsteadOfListOrScalar(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> DictInsteadOfListOrScalarPydantic:
         raw_response = await self.raw.adict_instead_of_list_or_scalar(
             **kwargs,
         )
@@ -279,7 +279,7 @@ class DictInsteadOfListOrScalar(BaseApi):
     def dict_instead_of_list_or_scalar(
         self,
         validate: bool = False,
-    ):
+    ) -> DictInsteadOfListOrScalarPydantic:
         raw_response = self.raw.dict_instead_of_list_or_scalar(
         )
         if validate:

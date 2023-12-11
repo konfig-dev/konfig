@@ -269,7 +269,7 @@ class Fetch(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ResponsePydantic:
         raw_response = await self.raw.afetch(
             **kwargs,
         )
@@ -281,7 +281,7 @@ class Fetch(BaseApi):
     def fetch(
         self,
         validate: bool = False,
-    ):
+    ) -> ResponsePydantic:
         raw_response = self.raw.fetch(
         )
         if validate:

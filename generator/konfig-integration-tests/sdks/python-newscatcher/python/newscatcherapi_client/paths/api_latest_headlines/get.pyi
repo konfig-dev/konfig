@@ -959,7 +959,7 @@ class Get(BaseApi):
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> LatestHeadlinesGetResponsePydantic:
         raw_response = await self.raw.aget(
             when=when,
             by_parse_date=by_parse_date,
@@ -1037,7 +1037,7 @@ class Get(BaseApi):
         content_sentiment_min: typing.Optional[typing.Union[int, float]] = None,
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> LatestHeadlinesGetResponsePydantic:
         raw_response = self.raw.get(
             when=when,
             by_parse_date=by_parse_date,

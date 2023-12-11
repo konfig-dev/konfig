@@ -676,7 +676,7 @@ class Post(BaseApi):
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> SearchPostResponsePydantic:
         raw_response = await self.raw.apost(
             q=q,
             search_in=search_in,
@@ -768,7 +768,7 @@ class Post(BaseApi):
         content_sentiment_min: typing.Optional[typing.Union[int, float]] = None,
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> SearchPostResponsePydantic:
         raw_response = self.raw.post(
             q=q,
             search_in=search_in,

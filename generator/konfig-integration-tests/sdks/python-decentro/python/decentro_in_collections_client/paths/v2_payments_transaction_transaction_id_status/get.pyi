@@ -357,7 +357,7 @@ class GetTransactionStatus(BaseApi):
         path_params: typing.Optional[dict] = {},
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> GetTransactionStatusResponsePydantic:
         raw_response = await self.raw.aget_transaction_status(
             path_params=path_params,
             transaction_id=transaction_id,
@@ -373,7 +373,7 @@ class GetTransactionStatus(BaseApi):
         transaction_id: typing.Optional[str] = None,
         path_params: typing.Optional[dict] = {},
         validate: bool = False,
-    ):
+    ) -> GetTransactionStatusResponsePydantic:
         raw_response = self.raw.get_transaction_status(
             path_params=path_params,
             transaction_id=transaction_id,

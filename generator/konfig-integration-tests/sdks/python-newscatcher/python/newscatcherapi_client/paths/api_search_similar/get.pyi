@@ -1113,7 +1113,7 @@ class Get(BaseApi):
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> SearchSimilarGetResponsePydantic:
         raw_response = await self.raw.aget(
             q=q,
             search_in=search_in,
@@ -1199,7 +1199,7 @@ class Get(BaseApi):
         content_sentiment_min: typing.Optional[typing.Union[int, float]] = None,
         content_sentiment_max: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> SearchSimilarGetResponsePydantic:
         raw_response = self.raw.get(
             q=q,
             search_in=search_in,

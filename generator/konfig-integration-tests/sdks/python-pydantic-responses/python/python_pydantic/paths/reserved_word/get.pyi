@@ -267,7 +267,7 @@ class ReservedWord(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> TestReservedWordPydantic:
         raw_response = await self.raw.areserved_word(
             **kwargs,
         )
@@ -279,7 +279,7 @@ class ReservedWord(BaseApi):
     def reserved_word(
         self,
         validate: bool = False,
-    ):
+    ) -> TestReservedWordPydantic:
         raw_response = self.raw.reserved_word(
         )
         if validate:

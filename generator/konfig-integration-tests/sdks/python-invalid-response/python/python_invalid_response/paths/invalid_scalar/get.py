@@ -275,7 +275,7 @@ class InvalidScalar(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> InvalidScalarPydantic:
         raw_response = await self.raw.ainvalid_scalar(
             **kwargs,
         )
@@ -287,7 +287,7 @@ class InvalidScalar(BaseApi):
     def invalid_scalar(
         self,
         validate: bool = False,
-    ):
+    ) -> InvalidScalarPydantic:
         raw_response = self.raw.invalid_scalar(
         )
         if validate:
