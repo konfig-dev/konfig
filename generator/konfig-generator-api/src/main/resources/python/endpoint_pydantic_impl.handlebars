@@ -1,6 +1,6 @@
 {{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
 {{/if}}async def a{{operationId}}(
-{{#if prstv2}}{{> endpoint_args async=true skipDeserialization="null" contentType="null" interface=true validateArg=true pydanticReturnTypeHint=true}}{{else}}{{> endpoint_args async=true skipDeserialization="null" contentType="null" interface=true validateArg=true}}{{/if}}
+{{> endpoint_args async=true skipDeserialization="null" contentType="null" interface=true validateArg=true pydanticReturnTypeHint=prstv2}}
     raw_response = await self.raw.a{{operationId}}(
         {{> endpoint_args_call_mapped_args async=true}}
     )
@@ -9,7 +9,7 @@
 
 {{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
 {{/if}}def {{operationId}}(
-{{#if prstv2}}{{> endpoint_args skipDeserialization="null" contentType="null" interface=true validateArg=true pydanticReturnTypeHint=true}}{{else}}{{> endpoint_args skipDeserialization="null" contentType="null" interface=true validateArg=true}}{{/if}}
+{{> endpoint_args skipDeserialization="null" contentType="null" interface=true validateArg=true pydanticReturnTypeHint=prstv2}}
     raw_response = self.raw.{{operationId}}(
         {{> endpoint_args_call_mapped_args}}
     )
