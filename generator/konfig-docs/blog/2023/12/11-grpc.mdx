@@ -1,0 +1,364 @@
+---
+slug: i-reviewed-1000s-of-opinions-ongrpc
+title: 'I Reviewed 1,000s of Opinions on gRPC'
+description: >-
+  GitHub Copilot has recently taken the software engineering world by storm,
+  hitting a milestone of $100M ARR. This achievement alone qualifies it to be a
+  publicly listed company. Meanwhile, funding continues to flow into
+  code-focused LLM use cases. But what do developers actually think about GitHub
+  Copilot?
+authors: dylan
+tags:
+  - Engineering
+image: ./github-copilot-assets/banner.png
+---
+
+import Head from '@docusaurus/Head';
+
+<Head>
+  <title>I Reviewed 1,000s of Opinions on gRPC</title>
+  <meta property="og:title" content="I Reviewed 1,000s of Opinions on gRPC"/>
+</Head>
+
+<Figure caption="What do developers really think about gRPC?">
+![Banner](./grpc-assets/banner.png)
+</Figure>
+
+It is no secret that [gRPC](https://grpc.io/about/) is used in large software
+companies.
+[Uber](https://www.uber.com/blog/ubers-next-gen-push-platform-on-grpc/) and
+[Netflix](https://netflixtechblog.com/practical-api-design-at-netflix-part-1-using-protobuf-fieldmask-35cfdc606518),
+who are heavy microservices organizations, heavily adopted gRPC. I haven't
+personally used gRPC, but I have colleagues who adore it. **But what do the
+majority of developers think about gRPC?**
+
+To find out, I went to where developers live: Reddit, Twitter, Hacker News, and
+YouTube. I parsed 1,000s of discussions and synthesized my findings in this
+article, striving to present only thought-provoking opinions. I also made a
+[post](https://www.reddit.com/r/grpc/comments/18e0m6r/whats_your_review_of_grpc/)
+to [r/grpc](https://www.reddit.com/r/grpc/) to gather expert opinions from the
+community.
+
+<Figure caption='Funnel for gathering through-provoking opinions'>
+![funnel](../08/serverless-assets/funnel.png)
+</Figure>
+
+{/* TRUNCATE */}
+
+Next, I transcribed these discussions onto a whiteboard, organizing them into
+"Anti-Copilot" (👎), "Pro-Copilot" (👍), or "Neutral" (🧐) categories, and then clustering them
+into distinct opinions. Each section in this post showcases an opinion while
+referencing pertinent discussions.
+
+<Figure caption='Whiteboard of opinions'>
+  ![Whiteboard](./github-copilot-assets/whiteboard.png)
+</Figure>
+
+## 👎 Copilot produces bad results
+
+LLMs operate as probabilistic models, implying they aren't always correct. This
+is especially true for Copilot, which is trained on a corpus of code that may
+not be representative of the code that a developer writes. As a result, Copilot
+can
+produce consistently bad results.
+
+<Carousel.Wrapper>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/ProgrammerHumor/comments/15h0rpl/comment/julph3k/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![job-worry](./github-copilot-assets/slides/after/bad-results/job-worry.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/programming/comments/vhnvlm/comment/id90t4a/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![clippy](./github-copilot-assets/slides/after/bad-results/clippy.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31827065">Hacker News</a>}>
+        ![disaster](./github-copilot-assets/slides/after/bad-results/disaster.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/xk8lal/comment/ipcgmex/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![decades](./github-copilot-assets/slides/after/bad-results/decades.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.youtube.com/watch?v=RDd71IUIgpg&lc=UgwVzIvvMrJ4c_01xsd4AaABAg">YouTube</a>}>
+        ![months-bugs](./github-copilot-assets/slides/after/bad-results/months-bugs.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/14lylhu/comment/jpyu6gy/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![lying](./github-copilot-assets/slides/after/bad-results/lying.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31827656">Hacker News</a>}>
+        ![90-percent](./github-copilot-assets/slides/after/bad-results/90-percent.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/14lylhu/am_i_alone_in_just_not_getting_github_copilot/">Reddit</a>}>
+        ![fall-short](./github-copilot-assets/slides/after/bad-results/fall-short.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/Unity3D/comments/16ww6rd/comment/k2z87ms/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![far-worse](./github-copilot-assets/slides/after/bad-results/far-worse.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31827556">Hacker News</a>}>
+        ![incorrect](./github-copilot-assets/slides/after/bad-results/incorrect.png)
+      </Figure>
+  </Carousel.Slide>
+</Carousel.Wrapper>
+
+#### Key Takeaway 🔑
+
+Developers expect reliability from their tools.
+
+Copilot is not reliable, and therefore, certain developers have a tough time
+wrestling with its output. Copilot lies or produces bad results for a vast
+majority of the time. This can be exceedingly frustrating for developers who are
+expecting Copilot to deliver on its promise of writing code for you. After some
+bad experiences, some developers have even stopped using Copilot altogether.
+
+
+For people who worry about job security, fear nothing, because Copilot is not
+going to replace you anytime soon.
+
+
+## 👎 Copilot creates more problems than solutions
+
+Copilot is a tool that is supposed to help developers write code. However, its
+unreliable results creates more problems than solutions.
+
+<Carousel.Wrapper>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.youtube.com/watch?v=RDd71IUIgpg&lc=UgwnC6wQIW_0R3jVRgJ4AaABAg">YouTube</a>}>
+        ![screwed](./github-copilot-assets/slides/after/more-problems/screwed.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/11hmsqp/comment/jav6ncb/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![subtle-bugs](./github-copilot-assets/slides/after/more-problems/subtle-bugs.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/xk8lal/comment/ipcgrah/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![hassle](./github-copilot-assets/slides/after/more-problems/hassle.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31828276">Hacker News</a>}>
+        ![caused-more-problems](./github-copilot-assets/slides/after/more-problems/caused-more-problems.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/zc726g/comment/iyw1u5a/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![interferes](./github-copilot-assets/slides/after/more-problems/interferes.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.youtube.com/watch?v=RDd71IUIgpg&lc=UgwVzIvvMrJ4c_01xsd4AaABAg">YouTube</a>}>
+        ![junior-dev](./github-copilot-assets/slides/after/more-problems/junior-dev.png)
+      </Figure>
+  </Carousel.Slide>
+</Carousel.Wrapper>
+
+#### Key Takeaway 🔑
+
+Copilot can waste your time.
+
+ Code requires 100% accuracy, and inaccuracy can lead you down a rabbit hole of
+ debugging. Often wasting time or flat out breaking your code.  In some cases,
+ this is frustrating enough for developers to stop using Copilot altogether.
+ Just like managing a junior developer, Copilot requires a lot of oversight.
+ Sometimes subtle bugs can take more time to debug and fix than writing the code
+ yourself. For some developers who find the output to be too inaccurate, Copilot
+ becomes an interference and ultimately doesn't save them any time.
+
+## 👍 Copilot helps you write software faster
+
+Despite the inaccuracy of LLMs, if you treat Copilot as a tool that can help
+take care of the boring stuff, it can be a powerful tool.
+
+<Carousel.Wrapper>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/zc726g/comment/iyv62x3/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![twice-as-fast](./github-copilot-assets/slides/after/faster-software/twice-as-fast.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31826614">Hacker News</a>}>
+        ![10-20-pct](./github-copilot-assets/slides/after/faster-software/10-20-pct.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/11hmsqp/comment/jau80h8/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![worth-it](./github-copilot-assets/slides/after/faster-software/worth-it.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/11hmsqp/comment/jaueocf/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![30-line-test](./github-copilot-assets/slides/after/faster-software/30-line-test.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.youtube.com/watch?v=_KjSkGgaJ1k">YouTube</a>}>
+        ![boring-stuff](./github-copilot-assets/slides/after/faster-software/boring-stuff.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31826890">Hacker News</a>}>
+        ![mundane](./github-copilot-assets/slides/after/faster-software/mundane.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/14lylhu/comment/jpyu6pq/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![tedium](./github-copilot-assets/slides/after/faster-software/tedium.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/zc726g/comment/iyvlk2m/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![hours-to-minutes](./github-copilot-assets/slides/after/faster-software/hours-to-minutes.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/xk8lal/github_copilot_scares_me/">Reddit</a>}>
+        ![near-perfect](./github-copilot-assets/slides/after/faster-software/near-perfect.png)
+      </Figure>
+  </Carousel.Slide>
+</Carousel.Wrapper>
+
+#### Key Takeaway 🔑
+
+Copilot increases productivity.
+
+Often, developers face mundane and repetitive tasks. Given enough context,
+Copilot can do these tasks for you with sufficient accuracy. For some
+developers, these tasks can be a significant time sink, and Copilot can help you
+get that time back.
+
+Based on the mentioned 10-20% increase in productivity, such an improvement is
+substantial. For the sake of a conservative analysis, let's consider the lower
+bound: if we assume an engineer is paid $100k/yr and becomes just 5% more
+productive (half of the 10% reference), then with a yearly cost of
+[$100](https://github.com/features/copilot#pricing) for Copilot, the tool brings
+in an added value of $4900 for the company.
+
+## 👍 Copilot helps you write better software
+
+Copilot can be a great learning tool for junior developers, giving tech leads
+more time to focus on higher-level tasks. Ultimately leading to better software
+and happier developers.
+
+<Carousel.Wrapper>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=27676845">Hacker News</a>}>
+        ![better-code-docs-tests](./github-copilot-assets/slides/after/better-software/better-code-docs-tests.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/xk8lal/comment/ipcybk8/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![test-coverage](./github-copilot-assets/slides/after/better-software/test-coverage.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31830789">Hacker News</a>}>
+        ![higher-level](./github-copilot-assets/slides/after/better-software/higher-level.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://news.ycombinator.com/item?id=31826524">Hacker News</a>}>
+        ![really-super-powers](./github-copilot-assets/slides/after/better-software/really-super-powers.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://x.com/scoumbourdis/status/1532613467567423492?s=20">x.com</a>}>
+        ![super-power](./github-copilot-assets/slides/after/better-software/super-power.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.youtube.com/watch?v=IavOJI5OV7g&lc=UgxLwkWPAAYQvBcak7J4AaABAg">YouTube</a>}>
+        ![amazing](./github-copilot-assets/slides/after/better-software/amazing.png)
+      </Figure>
+  </Carousel.Slide>
+</Carousel.Wrapper>
+
+#### Key Takeaway 🔑
+
+Copilot has enough intelligence to help you write better software.
+
+This holds especially true for junior developers still learning the ropes.  It
+can drastically make mundane tasks like documentation and testing easier, giving
+developers more time to focus on the bigger picture while maintaining a high
+standard of code quality. Multiplying this effect across an engineering team
+leads to a higher quality codebase—the ultimate dream for engineering leaders.
+
+## 🧐 Copilot is like a calculator
+
+Copilot is a tool that can help you solve problems faster, but it is not a
+replacement for your brain. You still need to know how to solve problems, and
+you still need to know how to write code.
+
+<Carousel.Wrapper>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://x.com/kelseyhightower/status/1412855977452490755?s=20">x.com</a>}>
+        ![calculator](./github-copilot-assets/slides/after/calculator/calculator.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/xk8lal/comment/ipcrmg5/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![cheating-math](./github-copilot-assets/slides/after/calculator/cheating-math.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.youtube.com/watch?v=RDd71IUIgpg&lc=Ugzyhhcfmliu0fZbngR4AaABAg">YouTube</a>}>
+        ![corner-drag](./github-copilot-assets/slides/after/calculator/corner-drag.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.youtube.com/watch?v=RDd71IUIgpg&lc=UgzLBXWrgjrk9U-gdB14AaABAg">YouTube</a>}>
+        ![interns](./github-copilot-assets/slides/after/calculator/interns.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/webdev/comments/zc726g/comment/iyv3b6e/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![not-equally-good](./github-copilot-assets/slides/after/calculator/not-equally-good.png)
+      </Figure>
+  </Carousel.Slide>
+  <Carousel.Slide>
+      <Figure caption={<a href="https://www.reddit.com/r/programming/comments/156s33l/comment/jt1erb4/?utm_source=share&utm_medium=web2x&context=3">Reddit</a>}>
+        ![pros-cons](./github-copilot-assets/slides/after/calculator/pros-cons.png)
+      </Figure>
+  </Carousel.Slide>
+</Carousel.Wrapper>
+
+#### Key Takeaway 🔑
+
+Just as calculators enable mathematicians to solve problems more quickly,
+Copilot spares developers from focusing on repetitive tasks.
+
+However, just like calculators, Copilot does not help you make sense of the
+problem. You still need to know how to solve problems, and you still need to
+know how to write code.
+
+# Conclusion
+
+Opinions on Copilot vary; some see it as a blessing, while others regard it as a
+curse. For its proponents, Copilot is a valuable tool that enhances coding speed
+and quality. However, critics argue it introduces more issues than it resolves.
+
+I suspect that the complexity of a task makes a big difference in the quality of
+output. Working on tasks that require more context will inevitably lead to worse
+results. Yet, when viewed simply as a tool to handle the mundane aspects of
+coding, Copilot reveals its potential.
+
+<Admonition type="info">
+This article focuses on gRPC but often API companies publish their APIs in the form of a REST API.
+If you are building a REST API and need docs and SDKs for your API, consider using
+[Konfig](/) to easily generate docs and SDKs for your API.
+</Admonition>
