@@ -190,6 +190,20 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
                 </Text>
               )
             },
+            ul({ node, children, siblingCount, ...props }) {
+              return (
+                <ul className="list-disc pl-6 my-5" role="list">
+                  {children}
+                </ul>
+              )
+            },
+            ol({ node, children, siblingCount, ...props }) {
+              return (
+                <ol className="list-decimal pl-6 my-5" role="list">
+                  {children}
+                </ol>
+              )
+            },
             li({ node, children, siblingCount, ...props }) {
               return (
                 <li

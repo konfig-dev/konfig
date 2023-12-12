@@ -30,7 +30,7 @@ const _DemoPre: Components['pre'] = ({
     >
       {(styles) => {
         return (
-          <pre style={styles} {...props}>
+          <pre className="my-5" style={styles} {...props}>
             {children}
           </pre>
         )
