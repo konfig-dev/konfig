@@ -2,7 +2,7 @@ import { Box, Flex, Group, Menu, clsx, useMantineTheme } from '@mantine/core'
 import { HeaderTab } from './HeaderTab'
 import { useBasePath } from '@/utils/use-base-path'
 import { HeaderButton, TABS, Tab } from './HeaderButton'
-import { IconMenu } from '@tabler/icons-react'
+import { IconSelector } from '@tabler/icons-react'
 import Link from 'next/link'
 import { getClickableStyles } from '@/utils/get-clickable-styles'
 import { Search } from './Search'
@@ -74,7 +74,7 @@ export function HeaderTabs({
                 hasLightDarkMode={hasLightAndDarkLogo}
                 tab={currentTab}
               />
-              <IconMenu
+              <IconSelector
                 color={
                   hasLightAndDarkLogo
                     ? theme.colorScheme === 'dark'
