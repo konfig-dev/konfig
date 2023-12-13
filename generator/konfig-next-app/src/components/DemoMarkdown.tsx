@@ -218,10 +218,7 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
             iframe: ({ node, children, siblingCount, ...props }) => {
               return (
                 <div className="max-w-full w-fit aspect-video">
-                  <iframe
-                    className="max-w-full aspect-video max-h-full"
-                    {...props}
-                  />
+                  <iframe className="max-w-full max-h-full" {...props} />
                 </div>
               )
             },
