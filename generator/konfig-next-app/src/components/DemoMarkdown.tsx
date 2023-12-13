@@ -215,6 +215,16 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
                 </li>
               )
             },
+            iframe: ({ node, children, siblingCount, ...props }) => {
+              return (
+                <div className="max-w-full w-fit aspect-video">
+                  <iframe
+                    className="max-w-full aspect-video max-h-full"
+                    {...props}
+                  />
+                </div>
+              )
+            },
             table: DemoMarkdownTable,
             pre: DemoPre,
             form: DemoForm,
