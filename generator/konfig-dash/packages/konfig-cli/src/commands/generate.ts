@@ -1072,6 +1072,10 @@ export default class Deploy extends Command {
                 outputDirectory,
                 generatorConfig: body.generators.swift,
               })
+              fs.writeFileSync(
+                path.join(outputDirectory, 'LICENSE'),
+                generateLicense()
+              )
               CliUx.ux.action.stop()
             }
           }
