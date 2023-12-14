@@ -122,7 +122,7 @@ export function HeroBullets() {
             >
               Effortlessly Generate{" "}
             </Text>
-            SDKs, Docs, Demos & Tutorials for your REST API
+            SDKs, Docs, Demos & Tutorials for your API
           </Title>
 
           <Container p={0} size={700}>

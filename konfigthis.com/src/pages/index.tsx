@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <Head>
         <title>
-          Konfig | Generate SDKs, Docs, Demos, and Tutorials for your REST API
+          Konfig | Generate SDKs, Docs, Demos, and Tutorials for your API
         </title>
         <meta
           name="description"
