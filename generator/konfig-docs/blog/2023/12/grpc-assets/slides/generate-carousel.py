@@ -42,7 +42,7 @@ def generate_string(folder_path):
             slide = f"""
   <Carousel.Slide>
       <Figure caption={{<a href="{comment}">{source_website}</a>}}>
-        ![{file_name_without_ext}](./github-copilot-assets/slides/after/{folder_name}/{file_name})
+        ![{file_name_without_ext}](./grpc-assets/slides/after/{folder_name}/{file_name})
       </Figure>
   </Carousel.Slide>"""
             output_str += slide
