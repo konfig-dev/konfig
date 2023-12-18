@@ -4,6 +4,7 @@ import {
   API_KEY_NAME_PROPERTY,
   SECURITY_TYPE_PROPERTY,
 } from './generate-initial-operation-form-values'
+import { recursivelyRemoveEmptyValues } from './recursively-remove-empty-values'
 
 export class CodeGeneratorPython extends CodeGenerator {
   protected async format(code: string): Promise<string> {
@@ -120,9 +121,7 @@ from ${this.packageName} import ${this.clientName}`
 
   get args(): string {
     if (this.isArrayRequestBody()) {
-      const arrayValue = this.recursivelyRemoveEmptyValues(
-        this.requestBodyValue()
-      )
+      const arrayValue = recursivelyRemoveEmptyValues(this.requestBodyValue())
       if (Array.isArray(arrayValue)) {
         return `[${arrayValue
           .map((v) => this.toPythonLiteralString(v))

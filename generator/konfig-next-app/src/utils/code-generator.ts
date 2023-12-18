@@ -15,6 +15,8 @@ import {
 } from './generate-initial-operation-form-values'
 import { ReferencePageProps } from './generate-props-for-reference-page'
 import { HttpMethods } from 'konfig-lib'
+import { isNonEmpty } from './is-non-empty'
+import { recursivelyRemoveEmptyValues } from './recursively-remove-empty-values'
 
 type GitConfig = {
   owner: string
@@ -199,7 +201,7 @@ export abstract class CodeGenerator {
    * is passed as a separate argument.
    */
   requestBodyValue(): FormInputValue {
-    return this.recursivelyRemoveEmptyValues(
+    return recursivelyRemoveEmptyValues(
       this._formData[REQUEST_BODY_FORM_NAME_PREFIX]
     )
   }
@@ -217,12 +219,12 @@ export abstract class CodeGenerator {
         return this.isInThisOperation(name)
       })
       .filter(([_name, value]) => {
-        return this.isNonEmpty(value)
+        return isNonEmpty(value)
       })
       .map(([name, value]) => {
         return [
           { name, parameter: this.parameterStrict(name) },
-          this.recursivelyRemoveEmptyValues(value),
+          recursivelyRemoveEmptyValues(value),
         ]
       })
   }
@@ -240,65 +242,6 @@ export abstract class CodeGenerator {
 
   isInThisOperation(name: string): boolean {
     return this.parameter(name) !== undefined
-  }
-
-  /**
-   * Useful for pruning tree of argument values to only those that are
-   * significant when constructing the SDK method call
-   * @param object  The object to recursively remove empty values from
-   * @returns The object with empty values removed
-   */
-  recursivelyRemoveEmptyValues(
-    object: FormInputValues[string]
-  ): FormInputValues[string] {
-    if (typeof object !== 'object') return object
-
-    if (Array.isArray(object)) {
-      // remove all empty values from array and return
-      const filtered = (object as any)
-        .filter((p: any) => this.isNonEmpty(p))
-        .map((p: any) => this.recursivelyRemoveEmptyValues(p))
-      return filtered
-    }
-
-    if (object instanceof File) return object
-
-    const clone = { ...object }
-    Object.entries(object).forEach(([key, value]) => {
-      if (typeof value === 'object') {
-        clone[key] = this.recursivelyRemoveEmptyValues(value)
-        if (!this.isNonEmpty(clone[key])) delete clone[key]
-      } else if (!this.isNonEmpty(value)) {
-        delete clone[key]
-      }
-    })
-    return clone
-  }
-
-  /**
-   * Returns whether or not the parameter is non-empty (i.e. not undefined, not an empty string, not an empty array).
-   * Recursively checks if the parameter is an object and checks if any of the values are non-empty
-   * @param parameter The parameter to check
-   * @returns boolean
-   */
-  isNonEmpty(parameter: FormInputValues[string]): boolean {
-    if (parameter === undefined) return false
-    if (!Array.isArray(parameter)) {
-      if (parameter instanceof File) return true
-      if (typeof parameter === 'object') {
-        return (
-          Object.values(parameter).filter((p) => this.isNonEmpty(p)).length > 0
-        )
-      }
-      return parameter !== ''
-    }
-    // filter parameter for non-empty filters
-    const filtered: FormInputValues[string][] = []
-    for (const p of parameter) {
-      if (this.isNonEmpty(p)) filtered.push(p)
-    }
-
-    return filtered.length > 0
   }
 
   nonEmptySecurityMasked(): NonEmptySecurity {
