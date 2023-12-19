@@ -92,6 +92,7 @@ export function LinksGroup({
     return (
       <Box className={classes.linkWrapper} key={`${link.label}:${i}`}>
         <NavbarLink
+          className="flex-wrap"
           onClick={() => setNavbarOpen(false)}
           ref={ref}
           href={link.link}
