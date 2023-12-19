@@ -76,7 +76,15 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
                     }
                 } else {
                     if (isPrimitiveType) {
-                        localVarFormParams.append(name, data as any);
+                        /**
+                         * FormData can only accept string or Blob so we need to convert
+                         * non-string primitives to string. We also need to convert
+                         */
+                        if (typeof data === "object") {
+                          localVarFormParams.append(name, JSON.stringify(data));
+                        } else {
+                          localVarFormParams.append(name, data);
+                        }
                     } else {
                         if (isBrowser()) {
                             localVarFormParams.append(name, new Blob([JSON.stringify(data)], { type: "application/json" }))
