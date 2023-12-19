@@ -107,7 +107,10 @@ export async function generateInitialFormValuesWithStorage(
     const storedValue = await localforage.getItem(
       FORM_VALUES_LOCAL_STORAGE_KEY({ owner, repo })
     )
-    const pruned = recursivelyRemoveEmptyValues(storedValue as any)
+    const pruned =
+      storedValue !== null && storedValue !== undefined
+        ? recursivelyRemoveEmptyValues(storedValue as any)
+        : storedValue
     if (storedValue) {
       try {
         initialValues = deepmerge(initialValues, pruned as any)
@@ -183,6 +186,11 @@ function generateFormInputValues({
       initialValues.parameters[parameter.name] = [
         innerInitialValues.initialValues.parameters,
       ]
+      if (parameter.isRequestBody) {
+        initialValues.requestBody = [
+          innerInitialValues.initialValues.parameters,
+        ]
+      }
       const validation: FormValues['validate'] = {
         parameters: {
           [parameter.name]: (innerInitialValues.validate as any).parameters,
