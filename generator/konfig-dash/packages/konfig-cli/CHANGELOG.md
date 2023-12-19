@@ -1,5 +1,15 @@
 # konfig-cli
 
+## 1.36.0
+
+### Minor Changes
+
+- [#422](https://github.com/konfig-dev/konfig/pull/422) [`9f5bf701`](https://github.com/konfig-dev/konfig/commit/9f5bf70101475e081607b75a054a241eb33a283c) Thanks [@dphuang2](https://github.com/dphuang2)! - Fix broken "Documentation" link in generated top-level README.md for SDK repo
+
+- [#416](https://github.com/konfig-dev/konfig/pull/416) [`7b8d1fd6`](https://github.com/konfig-dev/konfig/commit/7b8d1fd6cb5a7b57e9d5004a7fe87f17b6aa01d9) Thanks [@dphuang2](https://github.com/dphuang2)! - write LICENSE file for Swift SDK
+
+- [#424](https://github.com/konfig-dev/konfig/pull/424) [`4b504ac2`](https://github.com/konfig-dev/konfig/commit/4b504ac2581052333d241ac36ecce3074ce82fea) Thanks [@dphuang2](https://github.com/dphuang2)! - validate Go SDK config / fix publishing for Go
+
 ## 1.35.0
 
 ### Minor Changes

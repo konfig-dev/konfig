@@ -1,5 +1,11 @@
 # konfig-spectral-ruleset
 
+## 1.4.0
+
+### Minor Changes
+
+- [#415](https://github.com/konfig-dev/konfig/pull/415) [`ff55a385`](https://github.com/konfig-dev/konfig/commit/ff55a385169b0598f20f875628a0743fc12bd70c) Thanks [@dphuang2](https://github.com/dphuang2)! - adds duplicate-sdk-method-name to warn against operation IDs that will produce conflicting method names
+
 ## 1.3.1
 
 ### Patch Changes
