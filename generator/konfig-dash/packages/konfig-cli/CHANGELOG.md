@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.36.1
+
+### Patch Changes
+
+- [#420](https://github.com/konfig-dev/konfig/pull/420) [`6e27b58d`](https://github.com/konfig-dev/konfig/commit/6e27b58d3bb3cab5c9616ebbe2275d85e9bf0cb4) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add maptags to transformspec
+
+- Updated dependencies [[`6e27b58d`](https://github.com/konfig-dev/konfig/commit/6e27b58d3bb3cab5c9616ebbe2275d85e9bf0cb4)]:
+  - konfig-openapi-spec@1.8.2
+  - konfig-lib@1.34.2
+  - konfig-postman-to-openapi@3.1.2
+
 ## 1.36.0
 
 ### Minor Changes

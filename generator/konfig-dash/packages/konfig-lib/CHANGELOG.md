@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.34.2
+
+### Patch Changes
+
+- [#420](https://github.com/konfig-dev/konfig/pull/420) [`6e27b58d`](https://github.com/konfig-dev/konfig/commit/6e27b58d3bb3cab5c9616ebbe2275d85e9bf0cb4) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add maptags to transformspec
+
 ## 1.34.1
 
 ### Patch Changes
