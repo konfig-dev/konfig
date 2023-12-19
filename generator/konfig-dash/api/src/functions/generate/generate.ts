@@ -107,6 +107,8 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
           'pagination' in generatorConfig
             ? generatorConfig.pagination
             : undefined,
+        mapTags:
+          'mapTags' in generatorConfig ? generatorConfig.mapTags : undefined,
         ...body,
       })
     }
@@ -960,6 +962,7 @@ async function queueTypeScriptGeneration({
         paginationConfig: generatorConfig.pagination,
         topLevelOperations: generatorConfig.topLevelOperations,
         removeRequiredProperties: generatorConfig.removeRequiredProperties,
+        mapTags: generatorConfig.mapTags,
       })
   if (process.env.NODE_ENV === 'development') {
     fs.ensureDirSync(DEBUG_TMP_FOLDER)

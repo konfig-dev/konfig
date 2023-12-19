@@ -436,6 +436,12 @@ export type CopyFilesType = z.infer<typeof copyFilesSchema>
 export const generatorCommonOptional = z
   .object({
     outputDirectory: z.string(),
+    mapTags: z
+      .record(z.string(), z.string())
+      .optional()
+      .describe(
+        'A JSON where the key is a tag name and the value is the new tag name. Allows you to modify tags by name.'
+      ),
     mockServerPort: z
       .number()
       .optional()

@@ -45,6 +45,7 @@ type Options = {
   paginationConfig?: PaginationConfig
   topLevelOperations?: TopLevelOperations
   removeRequiredProperties?: RemoveRequiredProperties
+  mapTags?: Record<string, string>
 } & Omit<KonfigYamlCommonType, 'defaultChangesetBumpType'>
 export const transformSpec = async ({
   specString,
@@ -55,6 +56,7 @@ export const transformSpec = async ({
   filterModels,
   filterRequestBodies,
   filterPaths,
+  mapTags,
   takeFirstTag,
   removeDefaultArrayValues,
   convertArrayDataTypesToAny,
@@ -264,6 +266,27 @@ export const transformSpec = async ({
         }
       }
     )
+  }
+
+  if (mapTags && spec.spec.tags) {
+    for (let i = 0; i < spec.spec.tags.length; i++) {
+      const tag = spec.spec.tags[i]
+      if (mapTags[tag.name]) {
+        spec.spec.tags[i].name = mapTags[tag.name]
+      }
+    }
+    for (const p of Object.values(spec.spec.paths)) {
+      const path = p as Record<string, any>
+      for (const m of Object.values(path)) {
+        const method = m as Record<string, any>
+        for (const i in method.tags) {
+          const tag = method.tags[i]
+          if (mapTags[tag]) {
+            method.tags[i] = mapTags[tag]
+          }
+        }
+      }
+    }
   }
 
   if (removeDefaultArrayValues) {

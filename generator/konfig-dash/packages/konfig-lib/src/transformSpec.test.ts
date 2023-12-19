@@ -908,6 +908,37 @@ describe('transformSpec', () => {
     })
   })
 
+  describe('generator config', () => {
+    it('map tags typescript', async () => {
+      const input: OpenAPIV3.Document = {
+        openapi: '3.0.0',
+        info: {
+          title: 'Test',
+          version: '1.0.0',
+        },
+        tags: [{ name: 'A' }],
+        paths: {
+          '/': {
+            get: {
+              tags: ['A'],
+              responses: {},
+            },
+            post: {
+              tags: ['A'],
+              responses: {},
+            },
+          },
+        },
+      }
+      const transformedSpec = await transformSpec({
+        specString: JSON.stringify(input),
+        generator: 'typescript',
+        mapTags: { A: 'a' },
+      })
+      expect(transformedSpec).toMatchSnapshot()
+    })
+  })
+
   describe('x-konfig-pagination', () => {
     it('allOf-with-single-array-schema-reference', async () => {
       const specPath = path.join(
