@@ -74,13 +74,12 @@ export async function generateReadme({
           `${language}`,
           version,
           `[${packageManagerName}](${packageManagerUrl})`,
-          `[Documentation](${documentationUrl})`,
-          `[Source](${sourceUrl})`,
+          `[Documentation](${sourceUrl})`,
         ].join('|')}|`
       }
     )
     .join('\n')
-  return `# ${name}\n\n|Language|Version|Package Manager|Documentation|Source|\n|-|-|-|-|-|\n${languageSection}`
+  return `# ${name}\n\n|Language|Version|Package Manager|Documentation|\n|-|-|-|-|-|\n${languageSection}`
 }
 
 export async function getDocumentationUrl({
