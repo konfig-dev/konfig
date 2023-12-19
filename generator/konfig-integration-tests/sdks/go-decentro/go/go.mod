@@ -1,4 +1,4 @@
-module github.com/decentro-in/decentro-in-collections-sdk/tree/master/go
+module github.com/decentro-in/decentro-in-collections-sdk/go
 
 go 1.13
 

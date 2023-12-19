@@ -9,7 +9,7 @@ For more information, please visit [https://decentro.tech](https://decentro.tech
 Add to your project:
 
 ```shell
-go get github.com/decentro-in/decentro-in-collections-sdk/tree/master/go
+go get github.com/decentro-in/decentro-in-collections-sdk/go
 ```
 
 ## Getting Started
@@ -20,7 +20,7 @@ package main
 import (
     "fmt"
     "os"
-    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/tree/master/go"
+    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/go"
 )
 
 func main() {

@@ -8,7 +8,7 @@ Splitit's Web API
 Add to your project:
 
 ```shell
-go get github.com/konfig-dev/konfig/tree/main/go
+go get github.com/konfig-dev/splitit-go-sdk/go
 ```
 
 ## Getting Started
@@ -19,7 +19,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {

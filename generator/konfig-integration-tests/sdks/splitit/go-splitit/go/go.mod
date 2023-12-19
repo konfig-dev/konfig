@@ -1,4 +1,4 @@
-module github.com/konfig-dev/konfig/tree/main/go
+module github.com/konfig-dev/splitit-go-sdk/go
 
 go 1.13
 

@@ -13,7 +13,7 @@ import (
     "testing"
     // "github.com/stretchr/testify/assert"
     // "github.com/stretchr/testify/require"
-    // decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/tree/master/go"
+    // decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/go"
 )
 
 func Test_decentro_in_collections_CollectionsApiService(t *testing.T) {

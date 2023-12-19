@@ -29,7 +29,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -71,7 +71,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -123,7 +123,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -180,7 +180,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -252,7 +252,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -330,7 +330,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -384,7 +384,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -428,7 +428,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -481,7 +481,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {
@@ -529,7 +529,7 @@ package main
 import (
     "fmt"
     "os"
-    splitit "github.com/konfig-dev/konfig/tree/main/go"
+    splitit "github.com/konfig-dev/splitit-go-sdk/go"
 )
 
 func main() {

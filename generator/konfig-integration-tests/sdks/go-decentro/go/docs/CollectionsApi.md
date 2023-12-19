@@ -24,7 +24,7 @@ package main
 import (
     "fmt"
     "os"
-    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/tree/master/go"
+    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/go"
 )
 
 func main() {
@@ -85,7 +85,7 @@ package main
 import (
     "fmt"
     "os"
-    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/tree/master/go"
+    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/go"
 )
 
 func main() {
@@ -134,7 +134,7 @@ package main
 import (
     "fmt"
     "os"
-    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/tree/master/go"
+    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/go"
 )
 
 func main() {
@@ -192,7 +192,7 @@ package main
 import (
     "fmt"
     "os"
-    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/tree/master/go"
+    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/go"
 )
 
 func main() {
@@ -248,7 +248,7 @@ package main
 import (
     "fmt"
     "os"
-    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/tree/master/go"
+    decentro_in_collections "github.com/decentro-in/decentro-in-collections-sdk/go"
 )
 
 func main() {

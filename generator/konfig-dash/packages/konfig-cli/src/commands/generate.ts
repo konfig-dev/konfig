@@ -1567,10 +1567,13 @@ function constructGoGenerationRequest({
 }) {
   const { files, ...restOfConfig } = goGeneratorConfig
 
-  // Make sure that repoId has no subpath
-  if (restOfConfig.git.repoId.includes('/')) {
+  // Make sure that repoId is correct
+  if (
+    restOfConfig.git.repoId.includes('tree') ||
+    restOfConfig.git.repoId.includes('blob')
+  ) {
     CliUx.ux.error(
-      `go.git.repoId "${restOfConfig.git.repoId}" cannot have a subpath. For example, if your repo is located at https://github.com/username/repo, then your repoId should be "repo" and not "repo/tree/main/subpath".`
+      `Detected go.git.repoId containing "tree" or "blob": "${restOfConfig.git.repoId}". The repoId should either point to a submodule or only includes subpath (e.g. no "tree/master" or "tree/main" in repoId). For example, if your repo is located at https://github.com/username/repo, then your repoId should be "repo" and not "repo/tree/main/subpath".`
     )
   }
 
