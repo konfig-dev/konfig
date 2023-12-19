@@ -119,17 +119,29 @@ const publishScripts = {
     version,
     outputDirectory,
     isSubmodule,
+    owner,
+    repo,
+    gitHost,
+    skipTag,
   }: {
     version: string
     outputDirectory: string
     isSubmodule: boolean
+    owner: string
+    repo: string
+    gitHost: string
+    skipTag?: boolean
   }) => {
-    return generateGitTagCommands({
-      version,
-      generator: 'go',
-      outputDirectory,
-      isSubmodule,
-    })
+    return [
+      ...generateGitTagCommands({
+        version,
+        generator: 'go',
+        outputDirectory,
+        isSubmodule,
+        skipTag,
+      }),
+      `GOPROXY=proxy.golang.org go list -m ${gitHost}/${owner}/${repo}@v${version}`,
+    ]
   },
   npm: ({
     version,
@@ -484,6 +496,10 @@ export default class Publish extends Command {
             version: generatorConfig.version,
             outputDirectory: generatorConfig.outputDirectory,
             isSubmodule: goIsInSubmodule,
+            gitHost: generatorConfig.git.host,
+            owner: generatorConfig.git.userId,
+            repo: generatorConfig.git.repoName,
+            skipTag: flags.skipTag,
           }),
           cwd: goIsInSubmodule ? generatorConfig.outputDirectory : undefined,
         })
