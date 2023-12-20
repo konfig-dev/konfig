@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.36.2
+
+### Patch Changes
+
+- [`5343476d`](https://github.com/konfig-dev/konfig/commit/5343476d07bc2074cc80cd511ca18b417f1f0dac) Thanks [@eddiechayes](https://github.com/eddiechayes)! - use repoId instead of repoName for go publish
+
 ## 1.36.1
 
 ### Patch Changes
