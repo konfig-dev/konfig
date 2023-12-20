@@ -5,7 +5,7 @@ import { Humanloop, HumanloopError } from "./index";
 describe("client", () => {
   const humanloop = new Humanloop({
     apiKey: "HUMANLOOP_API_KEY",
-    basePath: "http://127.0.0.1:4060",
+    basePath: "http://127.0.0.1:4061",
     openaiApiKey: "OPENAI_TEST_KEY",
   });
   it("logs.delete", async () => {
