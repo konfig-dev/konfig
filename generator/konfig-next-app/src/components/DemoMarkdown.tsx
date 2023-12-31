@@ -176,6 +176,13 @@ const DemoMarkdown = observer(({ state }: { state: DemoState }) => {
           rehypePlugins={[rehypeRaw as any]}
           components={{
             a: DemoAnchor,
+            figure({ node, children, siblingCount, ...props }) {
+              return (
+                <figure className={classes.text} aria-label="world" {...props}>
+                  {children}
+                </figure>
+              )
+            },
             p({ node, children, siblingCount, ...props }) {
               return (
                 <Text
