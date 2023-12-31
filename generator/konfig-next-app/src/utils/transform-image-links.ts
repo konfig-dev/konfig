@@ -47,13 +47,45 @@ function transformLinks({
   return () => (tree) => {
     visit(tree, 'image', (node: ImageNode) => {
       if (isImageNode(node)) {
-        node.url = `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${path.join(
-          path.dirname(docPath),
-          node.url
-        )}`
+        node.url = generateRawGitHubUserContentLink({
+          owner,
+          repo,
+          defaultBranch,
+          docPath,
+          url: node.url,
+        })
+      }
+    })
+    visit(tree, 'html', (node: any) => {
+      if (node.value.includes('<img')) {
+        node.value = (node.value as string).replace(
+          /src="([^"]*)"/,
+          (_match, src) => {
+            return `src="${generateRawGitHubUserContentLink({
+              owner,
+              repo,
+              defaultBranch,
+              docPath,
+              url: src,
+            })}"`
+          }
+        )
       }
     })
   }
+}
+
+function generateRawGitHubUserContentLink({
+  owner,
+  repo,
+  defaultBranch,
+  docPath,
+  url,
+}: TransformLinksInput & { url: string }) {
+  return `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${path.join(
+    path.dirname(docPath),
+    url
+  )}`
 }
 
 function isImageNode(node: Node): node is ImageNode {
