@@ -4,7 +4,6 @@
 
 
 [![PyPI](https://img.shields.io/badge/PyPI-v6.0.1-blue)](https://pypi.org/project/newscatcherapi-python-sdk/6.0.1)
-[![GitHub last commit](https://img.shields.io/github/last-commit/konfig-dev/newscatcher-sdks.svg)](https://github.com/konfig-dev/newscatcher-sdks/commits)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/newscatcher-sdks/tree/main/v3/python#readme)
 
 ## Table of Contents<a id="table-of-contents"></a>

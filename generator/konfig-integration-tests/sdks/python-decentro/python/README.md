@@ -4,7 +4,6 @@ Collections
 
 
 [![PyPI](https://img.shields.io/badge/PyPI-v1.0.0-blue)](https://pypi.org/project/decentro-in-collections-python-sdk/1.0.0)
-[![GitHub last commit](https://img.shields.io/github/last-commit/decentro-in/decentro-in-collections-sdk.svg)](https://github.com/decentro-in/decentro-in-collections-sdk/commits)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/decentro-in/decentro-in-collections-sdk/tree/master/python#readme)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](https://decentro.tech)
 
