@@ -5,15 +5,15 @@ import isMergeableObjectDefault from 'is-mergeable-object'
  * Wraps deepmerge to ensure arrays are always overwritten
  */
 
-const overwriteMerge = (
+function overwriteMerge(
   destinationArray: any[],
   sourceArray: any[],
   options: dm.ArrayMergeOptions
-) => {
+) {
   return sourceArray
 }
 
-const customMerge = (key: string, options?: dm.Options) => {
+function customMerge(key: string, options?: dm.Options) {
   return (x: any, y: any) => {
     if (x === '') {
       return y
@@ -22,16 +22,25 @@ const customMerge = (key: string, options?: dm.Options) => {
       return x
     }
     // For other cases, default merging
-    return dm.default(x, y, options)
+    return dm.default(x, y, {
+      ...optionModifier,
+      ...options,
+    })
   }
 }
 
-const isMergeableObject = (value: any) => {
+function isMergeableObject(value: any) {
   if (value === '') {
     return true
   }
   return isMergeableObjectDefault(value)
 }
+
+const optionModifier = {
+  arrayMerge: overwriteMerge,
+  customMerge,
+  isMergeableObject,
+} as const
 
 export const deepmerge = <T>(
   x: Partial<T>,
@@ -39,8 +48,6 @@ export const deepmerge = <T>(
   options?: dm.Options
 ): T =>
   dm.default(x, y, {
-    arrayMerge: overwriteMerge,
-    customMerge,
-    isMergeableObject,
+    ...optionModifier,
     ...options,
   })
