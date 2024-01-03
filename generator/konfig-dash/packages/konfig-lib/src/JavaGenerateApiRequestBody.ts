@@ -27,6 +27,7 @@ const additionalProperties = z
     gitRepoName: z.string().optional(),
     gitLabProjectId: z.string().optional(),
     invokerPackage: z.string().optional(),
+    useAiohttp3_8: z.boolean().optional(),
     useSecurityKeyParamNameAsPropertyName: z.boolean().optional(),
     dependencies: z.record(z.string(), z.string()).optional(),
     objectPropertyNamingConvention: z.string().optional(),

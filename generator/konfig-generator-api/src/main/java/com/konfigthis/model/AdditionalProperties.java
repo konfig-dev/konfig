@@ -83,6 +83,9 @@ public class AdditionalProperties {
   @JsonProperty("pubVersion")
   private String pubVersion;
 
+  @JsonProperty("useAiohttp3_8")
+  private Boolean useAiohttp38;
+
   @JsonProperty("readmeOperation")
   private AdditionalPropertiesReadmeOperation readmeOperation;
 
@@ -588,6 +591,25 @@ public class AdditionalProperties {
 
   public void setPubVersion(String pubVersion) {
     this.pubVersion = pubVersion;
+  }
+
+  public AdditionalProperties useAiohttp38(Boolean useAiohttp38) {
+    this.useAiohttp38 = useAiohttp38;
+    return this;
+  }
+
+  /**
+   * Get useAiohttp38
+   * @return useAiohttp38
+  */
+  
+  @Schema(name = "useAiohttp3_8", required = false)
+  public Boolean getUseAiohttp38() {
+    return useAiohttp38;
+  }
+
+  public void setUseAiohttp38(Boolean useAiohttp38) {
+    this.useAiohttp38 = useAiohttp38;
   }
 
   public AdditionalProperties readmeOperation(AdditionalPropertiesReadmeOperation readmeOperation) {
@@ -1739,6 +1761,7 @@ public class AdditionalProperties {
         Objects.equals(this.pubPublishTo, additionalProperties.pubPublishTo) &&
         Objects.equals(this.pubRepository, additionalProperties.pubRepository) &&
         Objects.equals(this.pubVersion, additionalProperties.pubVersion) &&
+        Objects.equals(this.useAiohttp38, additionalProperties.useAiohttp38) &&
         Objects.equals(this.readmeOperation, additionalProperties.readmeOperation) &&
         Objects.equals(this.moduleName, additionalProperties.moduleName) &&
         Objects.equals(this.gitLabProjectId, additionalProperties.gitLabProjectId) &&
@@ -1800,7 +1823,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1824,6 +1847,7 @@ public class AdditionalProperties {
     sb.append("    pubPublishTo: ").append(toIndentedString(pubPublishTo)).append("\n");
     sb.append("    pubRepository: ").append(toIndentedString(pubRepository)).append("\n");
     sb.append("    pubVersion: ").append(toIndentedString(pubVersion)).append("\n");
+    sb.append("    useAiohttp38: ").append(toIndentedString(useAiohttp38)).append("\n");
     sb.append("    readmeOperation: ").append(toIndentedString(readmeOperation)).append("\n");
     sb.append("    moduleName: ").append(toIndentedString(moduleName)).append("\n");
     sb.append("    gitLabProjectId: ").append(toIndentedString(gitLabProjectId)).append("\n");

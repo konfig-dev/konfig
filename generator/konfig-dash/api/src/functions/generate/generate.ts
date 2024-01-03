@@ -555,6 +555,7 @@ export const myHandler = async (event: APIGatewayEvent, context: Context) => {
           pythonResponseTypeVersion: generatorConfig.responseTypeVersion,
           readmeOperation: body.readmeOperation,
           projectName: generatorConfig.projectName,
+          useAiohttp3_8: generatorConfig.useAiohttp3_8,
           disallowAdditionalPropertiesIfNotPresent: false,
           packageVersion: generatorConfig.version,
           readmeSnippet: generatorConfig.readmeSnippet,

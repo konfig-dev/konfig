@@ -62,6 +62,7 @@ async function getLineCountForGenerator({
       directory,
       'debug-line-counts.json'
     )
+    console.log('counting lines for directory:', directory)
     console.log('debugFilePath', debugFilePath)
     fs.ensureDirSync(path.dirname(debugFilePath))
     fs.writeFileSync(debugFilePath, JSON.stringify(debugLineCounts, null, 2))
@@ -86,15 +87,24 @@ function isSubPath(from: string, to: string) {
 async function readGitTrackedFiles(directory: string, root: string) {
   const fileContents: Record<string, string> = {}
 
+  if (process.env.DEBUG) {
+    console.log('readGitTrackedFiles', { directory, root })
+  }
+
   // Use globby to get all files tracked by git
   const files = await globby(`**/*`, {
     cwd: directory,
     absolute: true,
     onlyFiles: true,
     dot: true,
-    // ignore .git
-    ignore: ['**/.git/**'],
+    gitignore: true,
+    // always ignore .git, node_modules
+    ignore: ['**/.git/**', '**/node_modules/**'],
   })
+
+  if (process.env.DEBUG) {
+    console.log('readGitTrackedFiles', { files })
+  }
 
   const ig = await collectIgnores([root, directory])
 

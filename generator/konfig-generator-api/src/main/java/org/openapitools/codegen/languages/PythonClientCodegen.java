@@ -499,12 +499,20 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         dependencies.add(new PythonDependency("typing_extensions", "4.3.0", "~=", "^"));
         dependencies.add(new PythonDependency("urllib3", "1.26.18", "~=", "^"));
         dependencies.add(new PythonDependency("frozendict", "2.3.4", "~=", "^"));
-        dependencies.add(new PythonDependency("aiohttp", "3.8.4", "~=", "^"));
+        if (additionalProperties.get("useAiohttp38") != null && (boolean) additionalProperties.get("useAiohttp38")) {
+            dependencies.add(new PythonDependency("aiohttp", "3.8.4", "~=", "^"));
+        } else {
+            dependencies.add(new PythonDependency("aiohttp", "3.9.1", "~=", "^"));
+        }
         if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
             dependencies.add(new PythonDependency("pydantic", "2.4.2", "~=", "^"));
         }
         ArrayList<PythonDependency> poetryDependencies = new ArrayList<>();
-        poetryDependencies.add(new PythonDependency("python", "3.7", "N/A", "^"));
+        if (additionalProperties.get("useAiohttp38") != null && (boolean) additionalProperties.get("useAiohttp38")) {
+            poetryDependencies.add(new PythonDependency("python", "3.7", "N/A", "^"));
+        } else {
+            poetryDependencies.add(new PythonDependency("python", "3.8", "N/A", "^"));
+        }
         poetryDependencies.addAll(dependencies);
         // join dependencies with newline
         additionalProperties.put("poetryDependencies", String.join("\n", poetryDependencies.stream().map(PythonDependency::poetry).collect(Collectors.toList())));

@@ -214,6 +214,12 @@ export const pythonConfig = z.object({
   removeKonfigBranding,
   pypiApiTokenEnvironmentVariable: z.string().optional(),
   gitlabRepositoryId: z.string().optional(),
+  useAiohttp3_8: z
+    .boolean()
+    .optional()
+    .describe(
+      'Use aiohttp 3.8.4 instead of the latest version. This is useful if you want to continue publishing your Python SDK with Python 3.7 compatability since the next version of aiohttp requires Python 3.8.'
+    ),
   asyncReadmeSnippet: z.string().optional(),
   objectPropertyNamingConvention:
     objectPropertyNamingConvention.default('snake_case'),
