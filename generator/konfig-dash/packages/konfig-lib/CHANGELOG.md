@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.34.3
+
+### Patch Changes
+
+- [#431](https://github.com/konfig-dev/konfig/pull/431) [`5de1be39`](https://github.com/konfig-dev/konfig/commit/5de1be39ded180f26cec84b36cbf2860d66d07b5) Thanks [@dphuang2](https://github.com/dphuang2)! - fix generation of STATISTICS.md hanging
+
 ## 1.34.2
 
 ### Patch Changes

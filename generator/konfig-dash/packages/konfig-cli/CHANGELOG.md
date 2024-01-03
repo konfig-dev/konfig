@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.36.3
+
+### Patch Changes
+
+- [#431](https://github.com/konfig-dev/konfig/pull/431) [`5de1be39`](https://github.com/konfig-dev/konfig/commit/5de1be39ded180f26cec84b36cbf2860d66d07b5) Thanks [@dphuang2](https://github.com/dphuang2)! - fix generation of STATISTICS.md hanging
+
+- Updated dependencies [[`5de1be39`](https://github.com/konfig-dev/konfig/commit/5de1be39ded180f26cec84b36cbf2860d66d07b5)]:
+  - konfig-openapi-spec@1.8.3
+  - konfig-lib@1.34.3
+  - konfig-postman-to-openapi@3.1.3
+
 ## 1.36.2
 
 ### Patch Changes
