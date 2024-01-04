@@ -7067,6 +7067,9 @@ public class DefaultCodegen implements CodegenConfig {
             if (!existingMediaTypes.contains(encodedKey)) {
                 Map<String, String> mediaType = new HashMap<>();
                 mediaType.put("mediaType", encodedKey);
+                if (codegenOperation.requestBodyContentType == null) {
+                    codegenOperation.requestBodyContentType = encodedKey;
+                }
                 codegenOperation.produces.add(mediaType);
                 codegenOperation.hasProduces = Boolean.TRUE;
             }

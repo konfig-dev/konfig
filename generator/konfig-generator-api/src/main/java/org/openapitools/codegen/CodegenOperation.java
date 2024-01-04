@@ -46,6 +46,7 @@ public class CodegenOperation {
             returnContainer, summary, unescapedNotes, notes, baseName, defaultResponse;
     public CodegenDiscriminator discriminator;
     public List<Map<String, String>> consumes, produces, prioritizedContentTypes;
+    public String requestBodyContentType;
     public List<CodegenServer> servers = new ArrayList<CodegenServer>();
     public CodegenParameter bodyParam;
     public CodegenModel returnModel;
@@ -214,6 +215,10 @@ public class CodegenOperation {
      */
     public boolean getHasExamples() {
         return nonEmpty(examples);
+    }
+
+    public boolean getHasRequestBodyContentType() {
+        return requestBodyContentType != null;
     }
 
     /**
