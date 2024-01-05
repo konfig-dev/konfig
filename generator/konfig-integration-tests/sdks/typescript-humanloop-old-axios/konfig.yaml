@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+outputDirectory: /tmp/humanloop-v4-sdks-out
+specRemotePath: https://neostaging.humanloop.ml/v4/openapi.json
+specInputPath: openapi.json
+specPath: openapi-fixed.json
+omitInfoDescription: true
+defaultChangesetBumpType: prerelease
+readmeHeader:
+  image: ./header.png
+  title: Humanloop
+  url: https://humanloop.com
+fixConfig:
+  modify:
+    $.info.x-konfig-ignore:
+      object-with-no-properties: true
+  update:
+    $.components.schemas.ModelConfigCompletionRequest:
+      required:
+        - model
+        - prompt_template
+    $.components.schemas.ModelConfigCompletionRequest.properties.prompt_template:
+      example: '{{question}}'
+    $.:
+      openapi: 3.0.2
+generators:
+  typescript:
+    version: 0.5.0-alpha.41
+    clientName: Humanloop
+    useDescriptionInOperationTableDocumentation: true
+    npmName: humanloop
+    outputDirectory: typescript
+    readmeDescriptionSnippet: snippets/typescriptReadmeDescriptionSnippet.md
+    readmeSnippet: snippets/typescriptReadmeGettingStartedSnippet.ts
+    useAxios0_27_2: true
+    dependencies:
+      openai: ^4.10.0
+    git:
+      userId: humanloop
+      repoId: humanloop-node
+    removeRequiredProperties:
+      - provider_api_keys
+    includeFetchAdapter: true
+    includeEventSourceParser: true
+    clientState:
+      - openaiApiKey
+      - openaiAzureApiKey
+      - openaiAzureEndpointApiKey
+      - cohereApiKey
+      - ai21ApiKey
+      - mockApiKey
+      - anthropicApiKey
+    topLevelOperations:
+      - operationId: Chats_create
+        methodName: chat
+      - operationId: Chats_createDeployed
+        methodName: chatDeployed
+      - operationId: Chats_createExperiment
+        methodName: chatExperiment
+      - operationId: Chats_createModelConfig
+        methodName: chatModelConfig
+      - operationId: Completions_create
+        methodName: complete
+      - operationId: Completions_createDeployed
+        methodName: completeDeployed
+      - operationId: Completions_createExperiment
+        methodName: completeExperiment
+      - operationId: Completions_createModelConfig
+        methodName: completeModelConfiguration
+      - operationId: Feedback_feedback
+        methodName: feedback
+      - operationId: Logs_log
+        methodName: log
+    pagination:
+      parameters:
+        - page
+        - size
+      response:
+        - page
+        - size
+        - total

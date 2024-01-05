@@ -1,0 +1,333 @@
+examples: {}
+examples_2:
+  /apps:
+    get: {}
+  /apps/{id}:
+    get: {}
+  /apps/{id}/sessions:
+    get: {}
+  /projects/{id}/evaluation-functions:
+    post: {}
+  /projects/{id}/feedback-types:
+    patch: {}
+  /projects/{project_id}/deployed-config/{environment_id}:
+    delete: {}
+  /sessions/{id}:
+    get: {}
+  /sessions/{id}/events:
+    get: {}
+examples_3:
+  /projects/{project_id}/deployed-config/{environment_id}:
+    delete:
+      '200':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /apps:
+    get: Apps_list
+  /apps/{id}:
+    get: Apps_get
+  /apps/{id}/sessions:
+    get: Apps_getSessions
+  /chat:
+    post: Chats_response
+  /chat-deployed:
+    post: Chats_responseDeployed
+  /chat-experiment:
+    post: Chats_responseExperiment
+  /chat-model-config:
+    post: Chats_responseModelConfiguration
+  /completion:
+    post: Completions_create
+  /completion-deployed:
+    post: Completions_createDeployed
+  /completion-experiment:
+    post: Completions_createExperiment
+  /completion-model-config:
+    post: Completions_createModelConfiguration
+  /evaluation-runs/{id}:
+    get: Evaluations_getEvaluationRun
+  /evaluation-runs/{id}/testcases:
+    get: Evaluations_getEvaluationRunTestcases
+  /evaluations/{id}:
+    get: Evaluations_get
+  /experiments/{experiment_id}:
+    delete: Experiments_delete
+    patch: Experiments_update
+  /experiments/{experiment_id}/model-config:
+    get: Experiments_getModelConfig
+  /feedback:
+    post: Feedback_submit
+  /logs:
+    patch: Logs_updateByReferenceId
+    post: Logs_log
+  /logs/{id}:
+    patch: Logs_update
+  /model-configs:
+    post: Modelconfigs_register
+  /model-configs/{id}:
+    get: Modelconfigs_get
+  /organizations/{id}:
+    get: Organizations_get
+    patch: Organizations_update
+  /organizations/{id}/api-keys:
+    get: Organizations_getApiKeys
+  /organizations/{id}/subscriptions:
+    get: Organizations_getSubscriptions
+  /organizations/{id}/tools:
+    get: Organizations_getTools
+    post: Organizations_createTool
+  /organizations/{id}/tools/{tool_id}:
+    patch: Organizations_updateTool
+  /organizations/{id}/users/{user_id}:
+    delete: Organizations_removeUser
+  /organizations/{id}/users/{user_id}/role:
+    put: Organizations_updateUserRole
+  /projects:
+    get: Projects_list
+    post: Projects_create
+  /projects/{id}:
+    get: Projects_get
+    patch: Projects_update
+  /projects/{id}/active-config:
+    delete: Projects_deactivateActiveConfig
+    get: Projects_getConfig
+  /projects/{id}/active-experiment:
+    delete: Projects_deleteActiveExperiment
+  /projects/{id}/active-model-config:
+    delete: Projects_deleteActiveModelConfig
+  /projects/{id}/configs:
+    get: Projects_getConfigs
+  /projects/{id}/deployed-configs:
+    get: Projects_getDeployedConfigs
+  /projects/{id}/evaluation-functions:
+    post: Projects_activateAndDeactivateEvaluationFunctions
+  /projects/{id}/evaluation-runs:
+    get: Projects_getEvaluationRuns
+    post: Projects_createEvaluationRun
+  /projects/{id}/evaluation-testsets:
+    get: Projects_getEvaluationTestsets
+  /projects/{id}/export:
+    post: Projects_exportDatapoints
+  /projects/{id}/feedback-types:
+    patch: Projects_updateFeedbackTypes
+  /projects/{id}/model-config:
+    get: Projects_getModelConfig
+  /projects/{id}/model-configs:
+    get: Projects_getModelConfigs
+  /projects/{project_id}/deploy-config:
+    patch: Projects_deployConfigToEnvironments
+  /projects/{project_id}/deployed-config/{environment_id}:
+    delete: Projects_deleteDeployedConfig
+  /projects/{project_id}/evaluations:
+    get: Evaluations_getForProject
+    post: Evaluations_createForProject
+  /projects/{project_id}/experiments:
+    get: Experiments_list
+    post: Experiments_create
+  /projects/{project_id}/metrics:
+    get: Metrics_list
+    post: Metrics_create
+  /projects/{project_id}/metrics/{metric_id}:
+    delete: Metrics_delete
+    patch: Metrics_update
+  /projects/{project_id}/testsets:
+    get: Testsets_getForProject
+    post: Testsets_createForProject
+  /sessions:
+    get: Sessions_list
+    post: Sessions_create
+  /sessions/{id}:
+    get: Sessions_get
+  /sessions/{id}/events:
+    get: Sessions_getEvents
+  /testcases:
+    delete: Testsets_deleteTestcase
+  /testcases/{id}:
+    get: Testsets_getTestcase
+    patch: Testsets_updateTestcase
+  /testsets/{id}:
+    delete: Testsets_delete
+    get: Testsets_get
+    patch: Testsets_updateForProject
+  /testsets/{testset_id}/testcases:
+    get: Testsets_getTestcases
+    post: Testsets_createTestcase
+  /tools:
+    get: Tools_getSpecs
+  /traces:
+    post: Traces_create
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /datapoints:
+    delete:
+      application/json: DatapointsDeleteRequest
+  /datasets/{dataset_id}/datapoints:
+    post:
+      application/json: DatasetsCreateDatapointRequest
+  /feedback:
+    post:
+      application/json: FeedbackSubmitRequest
+  /logs:
+    post:
+      application/json: LogDatapointRequest
+  /model-configs/serialize:
+    post:
+      application/json: ModelConfigsSerializeRequest
+  /projects/{id}/feedback-types:
+    patch:
+      application/json: ProjectsUpdateFeedbackTypesRequest
+  /testcases:
+    delete:
+      application/json: TestsetsDeleteTestcaseRequest
+  /testsets/{testset_id}/testcases:
+    post:
+      application/json: TestsetsCreateTestcaseRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /apps:
+    get:
+      '200':
+        application/json: AppsListResponse
+  /apps/{id}:
+    get:
+      '200':
+        application/json: AppsGetResponse
+  /apps/{id}/sessions:
+    get:
+      '200':
+        application/json: AppsGetSessionsResponse
+  /datasets/{dataset_id}/datapoints:
+    post:
+      '201':
+        application/json: DatasetsCreateDatapointResponse
+  /evaluators:
+    get:
+      '200':
+        application/json: EvaluatorsListResponse
+  /feedback:
+    post:
+      '200':
+        application/json: FeedbackSubmitResponse
+  /logs:
+    post:
+      '200':
+        application/json: LogsLogResponse
+  /model-configs/serialize:
+    post:
+      '200':
+        application/json: ModelConfigsSerializeResponse
+  /model-configs/{id}/export:
+    post:
+      '200':
+        application/json: ModelConfigsExportResponse
+        text/prompt: ModelConfigsExport200Response
+  /projects/{id}/configs:
+    get:
+      '200':
+        application/json: ProjectsGetConfigsResponse
+  /projects/{id}/deployed-configs:
+    get:
+      '200':
+        application/json: ProjectsGetDeployedConfigsResponse
+  /projects/{id}/evaluation-functions:
+    post:
+      '200':
+        application/json: ProjectsActivateAndDeactivateEvaluationFunctionsResponse
+  /projects/{id}/evaluation-runs:
+    get:
+      '200':
+        application/json: ProjectsGetEvaluationRunsResponse
+  /projects/{id}/evaluation-testsets:
+    get:
+      '200':
+        application/json: ProjectsGetEvaluationTestsetsResponse
+  /projects/{id}/feedback-types:
+    patch:
+      '200':
+        application/json: ProjectsUpdateFeedbackTypesResponse
+  /projects/{id}/model-configs:
+    get:
+      '200':
+        application/json: ProjectsGetModelConfigsResponse
+  /projects/{project_id}/datasets:
+    get:
+      '200':
+        application/json: DatasetsListAllForProjectResponse
+  /projects/{project_id}/deploy-config:
+    patch:
+      '200':
+        application/json: ProjectsDeployConfigToEnvironmentsResponse
+  /projects/{project_id}/deployed-config/{environment_id}:
+    delete:
+      '200':
+        application/json: ProjectsDeleteDeployedConfigResponse
+  /projects/{project_id}/evaluations:
+    get:
+      '200':
+        application/json: EvaluationsGetForProjectResponse
+  /projects/{project_id}/experiments:
+    get:
+      '200':
+        application/json: ExperimentsListResponse
+  /projects/{project_id}/finetunes:
+    get:
+      '200':
+        application/json: FinetunesListAllForProjectResponse
+  /projects/{project_id}/testsets:
+    get:
+      '200':
+        application/json: TestsetsGetForProjectResponse
+  /sessions/{id}:
+    get:
+      '200':
+        application/json: SessionsGetResponse
+  /sessions/{id}/events:
+    get:
+      '200':
+        application/json: SessionsGetEventsResponse
+  /testsets/{testset_id}/testcases:
+    post:
+      '201':
+        application/json: TestsetsCreateTestcaseResponse
+securityParameters:
+  end_date:
+    query: false
+  environment:
+    query: false
+  evaluation_aggregates:
+    query: false
+  evaluation_function_aggregates:
+    query: false
+  evaluator_aggregates:
+    query: false
+  filter:
+    query: false
+  id:
+    query: false
+  metadata_search:
+    query: false
+  order:
+    query: false
+  organization_id:
+    query: false
+  page:
+    query: false
+  project_id:
+    query: false
+  reference_id:
+    query: false
+  search:
+    query: false
+  size:
+    query: false
+  sort_by:
+    query: false
+  start_date:
+    query: false
+  user_filter:
+    query: false
+  x-humanloop-active-organization:
+    header: false
+validServerUrls: {}
