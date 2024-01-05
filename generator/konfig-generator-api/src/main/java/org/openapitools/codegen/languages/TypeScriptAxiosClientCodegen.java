@@ -321,7 +321,7 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
             dependencies.add("\"eventsource-parser\": \"^1.0.0\"");
         if ((Boolean) bundle.getOrDefault("includeFetchAdapter", false)) {
             if (additionalProperties.get("useAxios0272") != null && (boolean) additionalProperties.get("useAxios0272")) {
-                dependencies.add("\"konfig-axios-fetch-adapter\": \"^1.0.9\"");
+                dependencies.add("\"konfig-axios-fetch-adapter\": \"1.0.9\"");
             } else {
                 dependencies.add("\"konfig-axios-fetch-adapter\": \"1.6.4\"");
             }
