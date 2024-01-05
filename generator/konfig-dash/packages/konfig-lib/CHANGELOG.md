@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.35.0
+
+### Minor Changes
+
+- [#435](https://github.com/konfig-dev/konfig/pull/435) [`dcbb96d0`](https://github.com/konfig-dev/konfig/commit/dcbb96d0886c811f7271c4a8db3c69f9f6e1c833) Thanks [@dphuang2](https://github.com/dphuang2)! - Adds useAxios0_27_2 to TypeScript SDK configuration
+
 ## 1.34.3
 
 ### Patch Changes
