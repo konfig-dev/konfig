@@ -312,11 +312,20 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
 
         // construct dependencies as string
         List<String> dependencies = new ArrayList<>();
-        dependencies.add("    \"axios\": \"0.27.2\"");
+        if (additionalProperties.get("useAxios0272") != null && (boolean) additionalProperties.get("useAxios0272")) {
+            dependencies.add("    \"axios\": \"0.27.2\"");
+        } else {
+            dependencies.add("    \"axios\": \"1.6.4\"");
+        }
         if ((Boolean) bundle.getOrDefault("includeEventSourceParser", false))
             dependencies.add("\"eventsource-parser\": \"^1.0.0\"");
-        if ((Boolean) bundle.getOrDefault("includeFetchAdapter", false))
-            dependencies.add("\"konfig-axios-fetch-adapter\": \"^1.0.9\"");
+        if ((Boolean) bundle.getOrDefault("includeFetchAdapter", false)) {
+            if (additionalProperties.get("useAxios0272") != null && (boolean) additionalProperties.get("useAxios0272")) {
+                dependencies.add("\"konfig-axios-fetch-adapter\": \"^1.0.9\"");
+            } else {
+                dependencies.add("\"konfig-axios-fetch-adapter\": \"1.6.4\"");
+            }
+        }
         Map infoExtensions = (Map) bundle.get("infoExtensions");
         if (infoExtensions != null && (Boolean) infoExtensions.getOrDefault("x-konfig-uses-multipart-form-data", false)) {
             dependencies.add("\"buffer\": \"^6.0.3\"");

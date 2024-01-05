@@ -987,6 +987,7 @@ async function queueTypeScriptGeneration({
         npmName: generatorConfig.npmName,
         npmVersion: generatorConfig.version,
         dependencies: generatorConfig.dependencies,
+        useAxios0_27_2: generatorConfig.useAxios0_27_2,
         useDescriptionInOperationTableDocumentation:
           generatorConfig.useDescriptionInOperationTableDocumentation,
         disallowAdditionalPropertiesIfNotPresent: false,

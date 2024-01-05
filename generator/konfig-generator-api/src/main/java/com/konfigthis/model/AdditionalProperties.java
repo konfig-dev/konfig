@@ -83,6 +83,9 @@ public class AdditionalProperties {
   @JsonProperty("pubVersion")
   private String pubVersion;
 
+  @JsonProperty("useAxios0_27_2")
+  private Boolean useAxios0272;
+
   @JsonProperty("useAiohttp3_8")
   private Boolean useAiohttp38;
 
@@ -591,6 +594,25 @@ public class AdditionalProperties {
 
   public void setPubVersion(String pubVersion) {
     this.pubVersion = pubVersion;
+  }
+
+  public AdditionalProperties useAxios0272(Boolean useAxios0272) {
+    this.useAxios0272 = useAxios0272;
+    return this;
+  }
+
+  /**
+   * Get useAxios0272
+   * @return useAxios0272
+  */
+  
+  @Schema(name = "useAxios0_27_2", required = false)
+  public Boolean getUseAxios0272() {
+    return useAxios0272;
+  }
+
+  public void setUseAxios0272(Boolean useAxios0272) {
+    this.useAxios0272 = useAxios0272;
   }
 
   public AdditionalProperties useAiohttp38(Boolean useAiohttp38) {
@@ -1761,6 +1783,7 @@ public class AdditionalProperties {
         Objects.equals(this.pubPublishTo, additionalProperties.pubPublishTo) &&
         Objects.equals(this.pubRepository, additionalProperties.pubRepository) &&
         Objects.equals(this.pubVersion, additionalProperties.pubVersion) &&
+        Objects.equals(this.useAxios0272, additionalProperties.useAxios0272) &&
         Objects.equals(this.useAiohttp38, additionalProperties.useAiohttp38) &&
         Objects.equals(this.readmeOperation, additionalProperties.readmeOperation) &&
         Objects.equals(this.moduleName, additionalProperties.moduleName) &&
@@ -1823,7 +1846,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1847,6 +1870,7 @@ public class AdditionalProperties {
     sb.append("    pubPublishTo: ").append(toIndentedString(pubPublishTo)).append("\n");
     sb.append("    pubRepository: ").append(toIndentedString(pubRepository)).append("\n");
     sb.append("    pubVersion: ").append(toIndentedString(pubVersion)).append("\n");
+    sb.append("    useAxios0272: ").append(toIndentedString(useAxios0272)).append("\n");
     sb.append("    useAiohttp38: ").append(toIndentedString(useAiohttp38)).append("\n");
     sb.append("    readmeOperation: ").append(toIndentedString(readmeOperation)).append("\n");
     sb.append("    moduleName: ").append(toIndentedString(moduleName)).append("\n");

@@ -306,6 +306,12 @@ export type RemoveRequiredProperties = z.infer<
 export const typescriptConfig = z.object({
   useDescriptionInOperationTableDocumentation,
   language: z.literal('typescript').default('typescript'),
+  useAxios0_27_2: z
+    .boolean()
+    .optional()
+    .describe(
+      'Use axios 0.27.2 instead of the latest version. This is useful if you want to continue publishing your TypeScript SDK without making breaking changes since the next version of axios has some interface differences as described here: https://github.com/bmuenzenmeyer/axios-1.0.0-migration-guide.'
+    ),
   dependencies: z
     .record(z.string(), z.string())
     .optional()
