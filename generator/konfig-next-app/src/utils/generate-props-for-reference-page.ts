@@ -152,7 +152,7 @@ export async function generatePropsForReferencePage({
         throw Error('Spec should be dereferenced')
       contentType = mediaType
       requestBodyParameter = {
-        name: '',
+        name: 'konfig-request-body',
         in: 'body',
         schema: mediaTypeObject.schema,
         isRequestBody: true,
