@@ -159,7 +159,8 @@ export function OperationReferenceMain({
 
   useEffect(() => {
     if (formValues.initialValues) {
-      form.setValues(deepmerge(formValues.initialValues, form.values))
+      const merged = deepmerge(form.values, formValues.initialValues)
+      form.setValues(merged)
     }
     setResult(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
