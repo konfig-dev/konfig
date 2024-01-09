@@ -167,6 +167,7 @@ function generateFormInputValues({
       }
       validate = deepmerge(validation, validate)
     } else if (
+      // Checks if the parameter's schema is an array of objects
       parameter.schema.type === 'array' &&
       !('$ref' in parameter.schema.items) &&
       parameter.schema.items?.type === 'object'
@@ -198,6 +199,7 @@ function generateFormInputValues({
       }
       validate = deepmerge(validation, validate)
     } else {
+      // If the parameter is not an array of objects, we want to populate the parameter with an empty string
       const validation: FormValues['validate'] = {
         parameters: {
           [parameter.name]: (value) => {
@@ -208,7 +210,11 @@ function generateFormInputValues({
               if (checkRequired) return checkRequired
             }
             if (parameter.schema.format === 'uuid') {
-              if (typeof value === 'string' && !isUUID(value))
+              // Ensures that the value is a valid UUID. Other that are considered:
+              // Note that in case of empty string, we don't want to validate
+              // it, empty string validation should be handled by the required
+              // check.
+              if (typeof value === 'string' && value !== '' && !isUUID(value))
                 return `${parameter.name} is not a valid UUID`
             }
             return false
