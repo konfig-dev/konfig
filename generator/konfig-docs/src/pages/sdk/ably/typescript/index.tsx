@@ -20,7 +20,10 @@ export default function AblyTypeScriptSdk() {
     >
       <div className="py-8 mx-4 lg:mx-auto lg:w-[960px] xl:w-[1152px]">
         <div className="mb-2">
-          <h3 className="mb-1">ably-typescript-sdk</h3>
+          <h3 className="mb-1 flex gap-2">
+            <span>ably-typescript-sdk</span>
+            <TsIcon className="h-5 w-5" />
+          </h3>
           <div className="flex items-center gap-3">
             <div className="font-mono text-gray-500">1.0.0</div>
             <Dot />
@@ -32,8 +35,8 @@ export default function AblyTypeScriptSdk() {
           </div>
         </div>
         <Tabs />
-        <div className="flex gap-10 justify-between">
-          <div className="grow">
+        <div className="flex flex-col md:flex-row gap-10 justify-between">
+          <div className="grow pb-4 border-b md:border-none">
             <SignupForm />
             <h4 className="text-gray-600">Description</h4>
             <Description />
@@ -146,13 +149,20 @@ function Tab({
 
 function SignupForm() {
   return (
-    <form className="p-6 rounded-md shadow-md bg-green-100 mb-6">
-      <div className="grow flex flex-col gap-2">
-        <div className="text-gray-800 text-lg font-semibold">
+    <form className="p-8 rounded-md shadow-md bg-green-100 mb-8">
+      <div className="grow flex flex-col">
+        <div className="text-gray-700 text-lg font-bold">
           Using TypeScript to integrate Ably's API?
         </div>
+        <p className="mb-2 text-sm text-gray-600">
+          <a href="https://konfigthis.com" target="_blank">
+            Konfig
+          </a>{" "}
+          maintains high-quality SDKs for APIs to make it easy for developers to
+          integrate
+        </p>
         <input
-          className="border rounded-md px-2 py-1 w-full"
+          className="border rounded-md px-2 py-1 w-full mb-1"
           placeholder="Email"
         />
         <button className="w-full font-medium text-center px-3 py-2 text-white bg-[var(--ifm-color-primary)] hover:bg-[var(--ifm-color-primary-darker)] rounded-md text-sm">
@@ -172,36 +182,46 @@ function Sidebar() {
           <SidebarSectionContent>Platform API</SidebarSectionContent>
         </SidebarSection>
         <SidebarSection>
-          <SidebarSectionTitle>Base URL</SidebarSectionTitle>
+          <SidebarSectionTitle>API Base URL</SidebarSectionTitle>
           <SidebarSectionContent>
-            <a>https://rest.ably.io</a>
+            <a href="https://rest.ably.io" target="_blank">
+              https://rest.ably.io
+            </a>
           </SidebarSectionContent>
         </SidebarSection>
         <SidebarSection>
           <SidebarSectionTitle>Homepage</SidebarSectionTitle>
           <SidebarSectionContent>
-            <a>https://ably.com/</a>
+            <a href="https://ably.com/" target="_blank">
+              https://ably.com/
+            </a>
           </SidebarSectionContent>
         </SidebarSection>
         <SidebarSection>
           <SidebarSectionTitle>Contact URL</SidebarSectionTitle>
           <SidebarSectionContent>
-            <a>https://www.ably.io/contact</a>
+            <a href="https://www.ably.io/contact" target="_blank">
+              https://www.ably.io/contact
+            </a>
           </SidebarSectionContent>
         </SidebarSection>
         <SidebarSection>
           <SidebarSectionTitle>Contact Email</SidebarSectionTitle>
           <SidebarSectionContent>
-            <a>support@ably.io</a>
+            <a href="mailto:support@ably.io">support@ably.io</a>
           </SidebarSectionContent>
         </SidebarSection>
         <SidebarSection>
           <SidebarSectionTitle>
             <div className="flex items-end gap-1">
               <div>Difficulty</div>
-              <div className="text-xs font-normal text-gray-500">
+              <a
+                target="_blank"
+                href="/sdk-difficulty"
+                className="text-xs font-normal"
+              >
                 (What is this?)
-              </div>
+              </a>
             </div>
           </SidebarSectionTitle>
           <SidebarSectionContent>
@@ -246,7 +266,7 @@ function SidebarSection({
   noBorder,
 }: PropsWithChildren<{ noBorder?: boolean }>) {
   return (
-    <div className={clsx("pb-2 mb-2", { "border-b": !noBorder })}>
+    <div className={clsx("py-3 mb-2", { "border-b": !noBorder })}>
       {children}
     </div>
   );
@@ -269,4 +289,16 @@ function SidebarSectionContent({ children }: PropsWithChildren<{}>) {
 
 function Dot() {
   return <div className="h-[3px] w-[3px] bg-gray-300 rounded-full" />;
+}
+
+function TsIcon(props: React.ComponentProps<"svg">) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" {...props}>
+      <path fill="#1976d2" d="M6 6h36v36H6z" />
+      <path
+        fill="#fff"
+        d="M27.49 22H14.227v3.264h4.757V40h3.769V25.264h4.737zM39.194 26.084s-1.787-1.192-3.807-1.192-2.747.96-2.747 1.986c0 2.648 7.381 2.383 7.381 7.712 0 8.209-11.254 4.568-11.254 4.568V35.22s2.152 1.622 4.733 1.622 2.483-1.688 2.483-1.92c0-2.449-7.315-2.449-7.315-7.878 0-7.381 10.658-4.469 10.658-4.469l-.132 3.509z"
+      />
+    </svg>
+  );
 }
