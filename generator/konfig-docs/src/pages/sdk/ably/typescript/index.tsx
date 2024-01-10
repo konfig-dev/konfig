@@ -5,6 +5,12 @@ import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
 import clsx from "clsx";
+import {
+  IconCode,
+  IconFileCode2,
+  IconInfoCircle,
+  TablerIconsProps,
+} from "@tabler/icons-react";
 
 export default function AblyTypeScriptSdk() {
   return (
@@ -102,40 +108,57 @@ function Chip({ children }: PropsWithChildren<{}>) {
 function Tabs() {
   return (
     <div className="border-b flex mb-4">
-      <Tab active={true}>About</Tab>
-      <Tab active={false}>OpenAPI Specification</Tab>
+      <Tab Icon={IconInfoCircle} active={true}>
+        About
+      </Tab>
+      <Tab Icon={IconFileCode2} active={false}>
+        OpenAPI Specification
+      </Tab>
+      <Tab Icon={IconCode} active={false}>
+        Code
+      </Tab>
     </div>
   );
 }
 
-function Tab({ children, active }: PropsWithChildren<{ active: boolean }>) {
+function Tab({
+  children,
+  active,
+  Icon,
+}: PropsWithChildren<{
+  active: boolean;
+  Icon: (props: TablerIconsProps) => JSX.Element;
+}>) {
   return (
     <button
-      className={clsx("p-4 font-semibold mb-[-1px]", {
+      className={clsx("p-4 font-semibold items-center flex gap-2 mb-[-1px]", {
         "border-b-2 border-[var(--ifm-menu-color-active)] bg-blue-50 rounded-t-lg text-[var(--ifm-menu-color-active)]":
           active,
         "text-gray-400 transition-all hover:text-[var(--ifm-menu-color-active)]":
           !active,
       })}
     >
-      {children}
+      <Icon />
+      <span>{children}</span>
     </button>
   );
 }
 
 function SignupForm() {
   return (
-    <form className="mb-6 flex flex-col gap-1">
-      <div className="text-gray-800 text-lg font-semibold">
-        Using TypeScript to integrate Ably's API?
+    <form className="p-6 rounded-md shadow-md bg-green-100 mb-6">
+      <div className="grow flex flex-col gap-2">
+        <div className="text-gray-800 text-lg font-semibold">
+          Using TypeScript to integrate Ably's API?
+        </div>
+        <input
+          className="border rounded-md px-2 py-1 w-full"
+          placeholder="Email"
+        />
+        <button className="w-full font-medium text-center px-3 py-2 text-white bg-[var(--ifm-color-primary)] hover:bg-[var(--ifm-color-primary-darker)] rounded-md text-sm">
+          Sign up for access to Ably's TypeScript SDK
+        </button>
       </div>
-      <input
-        className="border rounded-md px-2 py-1 w-full"
-        placeholder="Email"
-      />
-      <button className="w-full font-medium text-center px-3 py-2 text-white bg-[var(--ifm-color-primary)] hover:bg-[var(--ifm-color-primary-darker)] rounded-md text-sm">
-        Sign up for access to Ably's TypeScript SDK
-      </button>
     </form>
   );
 }
