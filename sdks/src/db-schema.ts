@@ -19,8 +19,8 @@ export const dbSchema = z.object({
       spec: z.object({
         raw: z.string(),
       }),
-      contactUrl: z.string(),
-      contactEmail: z.string(),
+      contactUrl: z.string().optional(),
+      contactEmail: z.string().optional(),
       numberOfEndpoints: z.number(),
       numberOfOperations: z.number(),
       numberOfSchemas: z.number(),

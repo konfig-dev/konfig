@@ -40,6 +40,16 @@ function getVersion(spec: Spec): string {
   return info.version;
 }
 
+function getInfoContactUrl(spec: Spec): string | undefined {
+  const info = spec.spec.info;
+  return info.contact?.url;
+}
+
+function getInfoContactEmail(spec: Spec): string | undefined {
+  const info = spec.spec.info;
+  return info.contact?.email;
+}
+
 function getKey(spec: Spec): string {
   return `${getProviderName(spec)}-${getServiceName(spec)}-${getVersion(spec)}`;
 }
@@ -105,6 +115,8 @@ async function main() {
       numberOfOperations: getNumberOfOperations(spec),
       numberOfSchemas: getNumberOfSchemas(spec),
       numberOfParameters: getNumberOfParameters(spec),
+      contactUrl: getInfoContactUrl(spec),
+      contactEmail: getInfoContactEmail(spec),
     };
   }
 
