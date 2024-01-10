@@ -216,7 +216,7 @@ async function createConfig() {
               position: "left",
             },
             { to: "/schedule-demo", label: "Schedule Demo", position: "right" },
-            { to: "/sdk", label: "SDKs", position: "right" },
+            // { to: "/sdk", label: "SDKs", position: "right" },
             { to: "/blog", label: "Blog", position: "right" },
           ],
         },
