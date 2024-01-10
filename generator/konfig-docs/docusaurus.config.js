@@ -216,8 +216,8 @@ async function createConfig() {
               position: "left",
             },
             { to: "/schedule-demo", label: "Schedule Demo", position: "right" },
+            { to: "/sdk", label: "SDKs", position: "right" },
             { to: "/blog", label: "Blog", position: "right" },
-            { to: "/about", label: "About", position: "right" },
           ],
         },
         api: {
@@ -230,6 +230,7 @@ async function createConfig() {
             {
               title: "Links",
               items: [
+                { to: "/about", label: "About" },
                 {
                   label: "Website",
                   to: "https://konfigthis.com",

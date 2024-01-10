@@ -1,4 +1,12 @@
 import { z } from "zod";
+
+const securityScheme = z.union([
+  z.object({
+    type: z.literal("apiKey"),
+    description: z.string(),
+  }),
+  z.object({}),
+]);
 export const dbSchema = z.object({
   specifications: z.record(
     z.object({
@@ -11,6 +19,8 @@ export const dbSchema = z.object({
       spec: z.object({
         raw: z.string(),
       }),
+      contactUrl: z.string(),
+      contactEmail: z.string(),
       numberOfEndpoints: z.number(),
       numberOfOperations: z.number(),
       numberOfSchemas: z.number(),
