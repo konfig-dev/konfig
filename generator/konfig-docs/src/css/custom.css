@@ -9,10 +9,22 @@
   ul {
     @apply list-disc;
   }
+
 }
 
 @tailwind components;
 @tailwind utilities;
+
+
+/* I don't know why border's don't have this styling by default:
+ * https://tailwindcss.com/docs/preflight#border-styles-are-reset-globally */
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: theme('borderColor.DEFAULT', currentColor);
+}
 
 a[data-footnote-ref="true"] {
   scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);

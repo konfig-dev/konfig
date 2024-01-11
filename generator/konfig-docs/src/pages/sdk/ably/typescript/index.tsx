@@ -39,6 +39,7 @@ export default function AblyTypeScriptSdk() {
               <img
                 className="h-6 mb-4"
                 src="https://voltaire.ably.com/static/ably-logo-46433d9937b94509fc62ef6dd6d94ff1.png"
+                alt="Ably Logo"
               />
               <h3 className="flex gap-2 mb-2">
                 <span>ably-typescript-sdk</span>
@@ -159,19 +160,19 @@ function SdkMethod({
   return (
     <div
       className={clsx(
-        "border rounded-md block w-full overflow-x-auto px-6 py-4",
+        "ring-1 rounded-md block w-full overflow-x-auto px-3 py-2",
         {
-          "border-green-100 bg-green-50/20": color === "green",
-          "border-blue-100 bg-blue-50/20": color === "blue",
-          "border-red-100 bg-red-50/20": color === "red",
-          "border-yellow-100 bg-yellow-50/20": color === "yellow",
-          "border-slate-100 bg-slate-50/20": color === "slate",
+          "ring-green-100 bg-green-50/20": color === "green",
+          "ring-blue-100 bg-blue-50/20": color === "blue",
+          "ring-red-100 bg-red-50/20": color === "red",
+          "ring-yellow-100 bg-yellow-50/20": color === "yellow",
+          "ring-slate-100 bg-slate-50/20": color === "slate",
         }
       )}
     >
-      <div className="flex w-fit gap-4">
+      <div className="flex w-fit gap-2">
         <IconBraces
-          className={clsx("shrink-0 mt-1 h-4", {
+          className={clsx("shrink-0 h-4", {
             "text-green-400": color === "green",
             "text-blue-400": color === "blue",
             "text-red-400": color === "red",
