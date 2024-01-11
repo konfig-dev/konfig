@@ -8,7 +8,12 @@ export function Figure({
   return (
     <figure className="flex flex-col items-center">
       {/* w-full is to ensure putting a code block inside figure doesn't overflow off the page */}
-      {<div className="w-full">{child ? child : children}</div>}
+      {/* flex flex-col items-center is to center the inner div */}
+      {
+        <div className="w-full flex flex-col items-center">
+          {child ? child : children}
+        </div>
+      }
       <b>
         <figcaption className="text-center font-light text-sm">
           {caption}
