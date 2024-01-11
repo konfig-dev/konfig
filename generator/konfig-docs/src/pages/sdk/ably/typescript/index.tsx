@@ -25,7 +25,7 @@ export default function AblyTypeScriptSdk() {
       <Head>
         <link rel="icon" href="https://ably.com/favicon.ico" />
       </Head>
-      <div className="bg-slate-100">
+      <div className="bg-slate-100 border-b">
         <div className="py-8 bg-gradient-to-tl from-[var(--ifm-color-primary-darkest)] to-[var(--ifm-color-primary)]">
           <BigSection>
             <div className="p-8 w-fit bg-gradient-to-t border border-slate-400 from-white to-slate-100 relative top-20 bg-white rounded-md shadow-xl">
