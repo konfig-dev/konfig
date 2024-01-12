@@ -159,7 +159,9 @@ export function OperationReferenceMain({
 
   useEffect(() => {
     if (formValues.initialValues) {
-      const merged = deepmerge(form.values, formValues.initialValues)
+      // initialValues has to come first because it has stored values from
+      // browser storage that was saved in requests from other operations
+      const merged = deepmerge(formValues.initialValues, form.values)
       form.setValues(merged)
     }
     setResult(null)
