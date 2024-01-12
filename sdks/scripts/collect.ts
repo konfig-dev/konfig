@@ -1,7 +1,7 @@
 import * as path from "path";
 import { Spec, getOperations, parseSpec } from "konfig-lib";
 import * as fs from "fs";
-import { Db } from "../src/db-schema";
+import * as glob from "glob";
 
 type Paths = { path: string }[];
 
@@ -12,16 +12,8 @@ function collectOasFilePaths(): Paths {
     "APIs"
   );
   const paths: Paths = [];
-  const ablyIo = {
-    path: path.join(
-      apiDirectory,
-      "ably.io",
-      "platform",
-      "1.1.0",
-      "openapi.yaml"
-    ),
-  };
-  paths.push(ablyIo);
+  const pattern = path.join(apiDirectory, "**", "openapi.yaml");
+  glob.sync(pattern).forEach((path) => paths.push({ path }));
   return paths;
 }
 
@@ -94,23 +86,27 @@ function getNumberOfParameters(spec: Spec): number {
 async function main() {
   const paths = collectOasFilePaths();
   const dbFilePath = path.join(path.dirname(__dirname), "db", "data.json");
-  const db: Db = { specifications: {} };
+  fs.truncateSync(dbFilePath);
+  const writeStream = fs.createWriteStream(dbFilePath, { flags: "a" });
+  writeStream.write('{"specifications": {');
+  let i = 0;
+  // These ones stall on parseSpec
+  const skip = [179, 286, 424, 425, 898, 1220];
 
   for (const { path } of paths) {
+    console.log(`Processing path ${i}/${paths.length}`);
+    if (skip.includes(++i)) continue;
     const oas = fs.readFileSync(path, "utf-8");
     const spec = await parseSpec(oas);
     const key = getKey(spec);
-    if (key in db.specifications) {
-      continue;
-    }
-    db.specifications[key] = {
+
+    const data = {
       providerName: getProviderName(spec),
       serviceName: getServiceName(spec),
       version: getVersion(spec),
       servers: spec.spec.servers,
       description: spec.spec.info.description,
       title: spec.spec.info.title,
-      spec: { raw: oas },
       numberOfEndpoints: getNumberOfEndpoints(spec),
       numberOfOperations: getNumberOfOperations(spec),
       numberOfSchemas: getNumberOfSchemas(spec),
@@ -118,9 +114,10 @@ async function main() {
       contactUrl: getInfoContactUrl(spec),
       contactEmail: getInfoContactEmail(spec),
     };
+    writeStream.write(`"${key}": ${JSON.stringify(data, null, 2)},`);
   }
-
-  fs.writeFileSync(dbFilePath, JSON.stringify(db, null, 2));
+  writeStream.write("}}");
+  writeStream.end();
 }
 
 main();
