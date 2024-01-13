@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { FormEventHandler, PropsWithChildren, useState } from "react";
 import Layout from "@theme/Layout";
 import type { HttpMethods } from "konfig-lib";
 import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
@@ -42,11 +42,11 @@ export default function AblyTypeScriptSdk() {
                 alt="Ably Logo"
               />
               <h1 className="flex gap-2 text-2xl lg:text-3xl mb-2">
-                <span>ably-typescript-sdk</span>
+                <span>ably-platform-typescript-sdk</span>
                 <TsIcon className="h-5 w-5" />
               </h1>
               <div className="flex flex-wrap gap-x-3 gap-y-1 items-center text-xs sm:text-sm md:text-base">
-                <div className="font-mono text-slate-500">1.0.0</div>
+                <div className="font-mono text-slate-500">1.1.0</div>
                 <Dot />
                 <div className="font-mono">
                   <a href="https://konfigthis.com" target="_blank">
@@ -245,33 +245,88 @@ function AboutTitle({ children }: PropsWithChildren<{}>) {
 }
 
 function SignupForm() {
+  const [email, setEmail] = useState("");
+  const [signedUp, setSignedUp] = useState(false);
+  const [signedUpEmail, setSignedUpEmail] = useState("");
+
+  const handleSubmit: FormEventHandler = async (event) => {
+    event.preventDefault();
+
+    const url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:8911/sdkSignupForm"
+        : "https://api.konfigthis.com/sdkSignupForm";
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        company: "Ably",
+        service: "platform",
+        language: "TypeScript",
+      }),
+    });
+
+    if (!response.ok) {
+      // handle error
+    }
+
+    setSignedUp(true);
+    setSignedUpEmail(email);
+  };
+
   return (
     <form
+      onSubmit={handleSubmit}
       id="signup"
       className="p-8 rounded-md bg-emerald-50 ring-1 ring-emerald-300 transition-all hover:scale-[1.01] hover:shadow-lg shadow-md mb-8"
     >
       <div className="flex flex-col">
-        <h2 className="text-xl text-emerald-900 font-bold mb-3">
-          Need a TypeScript SDK for Ably's API?
-        </h2>
-        <input
-          type="email"
-          pattern="[^@\s]+@[^@\s]+"
-          name="email"
-          autoFocus
-          className="border rounded-md px-2 py-1 w-full mb-2"
-          placeholder="Email"
-        />
-        <button
-          type="submit"
-          className="font-medium group flex gap-3 hover:gap-2 items-center transition-all bg-gradient-to-br text-white w-fit text-center px-3 py-2 from-emerald-600 to-emerald-800 rounded-md text-sm"
+        <h2
+          className={clsx("text-lg lg:text-xl text-emerald-900 font-bold", {
+            "mb-3": !signedUp,
+          })}
         >
-          <div>Sign up for access to Ably's TypeScript SDK</div>
-          <IconPencil
-            size="1rem"
-            className="transition-all group-hover:text-emerald-50 text-emerald-300"
+          {signedUp
+            ? "Thanks for signing up for access to Ably's TypeScript SDK!"
+            : "Need a TypeScript SDK for Ably's API?"}
+        </h2>
+        {signedUp ? (
+          <>
+            <p>{`Your email, ${signedUpEmail}, has been successfully registered for access to the TypeScript SDK. We will notify you as soon as it is available.`}</p>
+            <p className="mb-0">
+              For inquiries or support, please contact us at{" "}
+              <a href="mailto:sdks@konfigthis.com">sdks@konfigthis.com</a>
+            </p>
+          </>
+        ) : null}
+        {signedUp ? null : (
+          <input
+            type="email"
+            pattern="[^@\s]+@[^@\s]+"
+            name="email"
+            autoFocus
+            className="border rounded-md px-2 py-1 w-full mb-2"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-        </button>
+        )}
+        {signedUp ? null : (
+          <button
+            type="submit"
+            className="font-medium group flex gap-3 hover:gap-2 items-center transition-all bg-gradient-to-br text-white w-fit text-center px-3 py-2 from-emerald-600 to-emerald-800 rounded-md text-sm"
+          >
+            <div>Sign up for access to Ably's TypeScript SDK</div>
+            <IconPencil
+              size="1rem"
+              className="transition-all group-hover:text-emerald-50 text-emerald-300"
+            />
+          </button>
+        )}
       </div>
     </form>
   );
@@ -286,6 +341,10 @@ function Sidebar() {
       </div>
       <div className="bg-white ring-1 ring-slate-200 shadow-md p-8 lg:py-4 lg:px-6 rounded-md">
         <SidebarSection>
+          <SidebarSectionTitle>Service Name</SidebarSectionTitle>
+          <SidebarSectionContent>platform</SidebarSectionContent>
+        </SidebarSection>
+        <SidebarSection>
           <SidebarSectionTitle>API Title</SidebarSectionTitle>
           <SidebarSectionContent>Platform API</SidebarSectionContent>
         </SidebarSection>
@@ -299,7 +358,7 @@ function Sidebar() {
         </SidebarSection>
         <SidebarSection>
           <SidebarSectionTitle>API Version</SidebarSectionTitle>
-          <SidebarSectionContent>1.1.14</SidebarSectionContent>
+          <SidebarSectionContent>1.1.0</SidebarSectionContent>
         </SidebarSection>
         <SidebarSection>
           <div className="flex justify-between">

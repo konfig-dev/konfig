@@ -23,12 +23,30 @@ import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   logger.info('Invoked sdkSignupForm function')
 
+  const origin = event.headers.origin || event.headers.Origin
+  const allowedOrigins = ['http://localhost:3000', 'https://konfigthis.com']
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin':
+      typeof origin !== 'undefined' && allowedOrigins.includes(origin)
+        ? origin
+        : '',
+    'Access-Control-Allow-Credentials': true,
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
+
+  // Handle OPTIONS
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers,
+    }
+  }
+
   if (event.body === null) {
     return {
       statusCode: 400,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify({
         error: 'Missing body',
       }),
@@ -41,9 +59,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
 
   return {
     statusCode: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers,
     body: JSON.stringify(page),
   }
 }
@@ -51,12 +67,9 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
 async function createPageInDatabase({
   email,
   company,
+  service,
   language,
-}: {
-  email: string
-  company: string
-  language: 'TypeScript' | 'Python'
-}) {
+}: SdkSignupForm) {
   const properties: CreatePageParameters['properties'] = {
     [databaseProperties.Email.name]: {
       email: email,
@@ -87,6 +100,19 @@ async function createPageInDatabase({
       },
     },
   }
+  if (service !== undefined) {
+    properties[databaseProperties.Service.name] = {
+      rich_text: [
+        {
+          type: 'text',
+          text: {
+            content: service,
+          },
+        },
+      ],
+    }
+  }
+
   const parent = DATABASE_ID
 
   const notion = new Client({
@@ -139,6 +165,12 @@ const databaseProperties = {
       ],
     },
   },
+  Service: {
+    id: 'UUo%5B',
+    name: 'Service',
+    type: 'rich_text',
+    rich_text: {},
+  },
   Website: {
     id: '_PE%3E',
     name: 'Website',
@@ -165,5 +197,8 @@ const databaseProperties = {
 const sdkSignupFormSchema = z.object({
   email: z.string().email(),
   company: z.string(),
+  service: z.string().optional(),
   language: z.union([z.literal('TypeScript'), z.literal('Python')]),
 })
+
+type SdkSignupForm = z.infer<typeof sdkSignupFormSchema>
