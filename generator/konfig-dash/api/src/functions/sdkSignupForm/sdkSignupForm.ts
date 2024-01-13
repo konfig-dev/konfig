@@ -1,7 +1,7 @@
 import type { APIGatewayEvent, Context } from 'aws-lambda'
 import { logger } from 'src/lib/logger'
 import { z } from 'zod'
-import Notion from '@notionhq/client'
+import { Client } from '@notionhq/client'
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints'
 
 /**
@@ -37,14 +37,14 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
 
   const body = sdkSignupFormSchema.parse(JSON.parse(event.body))
 
+  const page = await createPageInDatabase(body)
+
   return {
     statusCode: 200,
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      data: 'sdkSignupForm function',
-    }),
+    body: JSON.stringify(page),
   }
 }
 
@@ -71,6 +71,16 @@ async function createPageInDatabase({
         },
       ],
     },
+    [databaseProperties.Name.name]: {
+      title: [
+        {
+          type: 'text',
+          text: {
+            content: 'New SDK Signup',
+          },
+        },
+      ],
+    },
     [databaseProperties.Language.name]: {
       select: {
         name: language,
@@ -79,7 +89,7 @@ async function createPageInDatabase({
   }
   const parent = DATABASE_ID
 
-  const notion = new Notion.Client({
+  const notion = new Client({
     auth: process.env.NOTION_API_KEY,
   })
 
@@ -94,9 +104,6 @@ async function createPageInDatabase({
 }
 
 const DATABASE_ID = 'a1637383be734577b5241af543670d35'
-
-type DatabaseProperty =
-  typeof databaseProperties[keyof typeof databaseProperties]
 
 const databaseProperties = {
   Email: {
