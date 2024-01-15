@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: csharp-nullable-ref-using-all-of-schema API
+  description: A simple API based for testing csharp-nullable-ref-using-all-of-schema.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://csharp-nullable-ref-using-all-of-schema.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestFetchRequestWithAllOf'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetchResponse'
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    TestFetchRequestDataType:
+      type: number
+    TestFetchRequestWithAllOf:
+      type: object
+      properties:
+        input:
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/TestFetchRequestDataType'
+    TestFetchResponse:
+      type: object
+security:
+  - ApiKey: []
