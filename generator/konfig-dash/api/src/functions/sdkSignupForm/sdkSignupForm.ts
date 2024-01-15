@@ -195,7 +195,7 @@ const databaseProperties = {
 } as const
 
 const sdkSignupFormSchema = z.object({
-  email: z.string().email(),
+  email: z.string(),
   company: z.string(),
   service: z.string().optional(),
   language: z.union([z.literal('TypeScript'), z.literal('Python')]),
