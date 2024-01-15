@@ -1,4 +1,4 @@
-import { transformSpec } from "../src/transformSpec";
+import { transformSpec } from "../src/transformSpec-old";
 import fs from "fs";
 
 transformSpec({
@@ -7,6 +7,6 @@ transformSpec({
   filterTags: [],
   allObjectsHaveAdditionalProperties: false,
 }).then((processed) => {
-  console.log(processed)
+  console.log(processed);
   fs.writeFileSync(`${process.cwd()}/api.yaml`, processed);
 });
