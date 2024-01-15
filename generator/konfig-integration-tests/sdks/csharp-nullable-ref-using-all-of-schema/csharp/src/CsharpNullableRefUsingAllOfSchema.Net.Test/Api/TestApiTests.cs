@@ -50,7 +50,7 @@ namespace CsharpNullableRefUsingAllOfSchema.Net.Test.Api
         [Fact]
         public void FetchTest()
         {
-            var input = "input_example";
+            var input = default(double?);
             
             var testFetchRequestWithAllOf = new TestFetchRequestWithAllOf(
                 input

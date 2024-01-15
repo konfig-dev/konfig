@@ -607,6 +607,8 @@ export const transformSpec = async ({
       if (schema['format'] !== 'uuid') return
       delete schema['format']
     })
+
+    handleAllOfWithNullable({ spec: spec })
   }
 
   if (generator === 'java') {

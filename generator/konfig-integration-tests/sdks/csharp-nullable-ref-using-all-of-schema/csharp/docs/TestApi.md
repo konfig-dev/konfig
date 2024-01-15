@@ -31,7 +31,7 @@ namespace Example
             // Configure API key authorization: ApiKey
             client.SetApiKey("YOUR_API_KEY");
 
-            var input = "input_example";
+            var input = default(double?);
             
             var testFetchRequestWithAllOf = new TestFetchRequestWithAllOf(
                 input
