@@ -66,6 +66,15 @@ public class TestFetchRequestWithAllOf {
     return this;
   }
 
+  public TestFetchRequestWithAllOf input(Integer input) {
+    
+    
+    
+    
+    this.input = input.doubleValue();
+    return this;
+  }
+
    /**
    * Get input
    * @return input
@@ -205,10 +214,6 @@ public class TestFetchRequestWithAllOf {
         if (!TestFetchRequestWithAllOf.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TestFetchRequestWithAllOf is not found in the empty JSON string", TestFetchRequestWithAllOf.openapiRequiredFields.toString()));
         }
-      }
-      // validate the optional field `input`
-      if (jsonObj.get("input") != null && !jsonObj.get("input").isJsonNull()) {
-        Double.validateJsonObject(jsonObj.getAsJsonObject("input"));
       }
   }
 

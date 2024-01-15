@@ -49,12 +49,11 @@ components:
       type: number
     TestFetchRequestWithAllOf:
       example:
-        input: ""
+        input: 0.8008281904610115
       properties:
         input:
-          allOf:
-          - $ref: '#/components/schemas/TestFetchRequestDataType'
           nullable: true
+          type: number
       type: object
     TestFetchResponse:
       type: object
@@ -62,12 +61,13 @@ components:
     konfig-generated-schema-single-parameter-schema-get--simple-endpoint:
       properties:
         input:
-          allOf:
-          - $ref: '#/components/schemas/TestFetchRequestDataType'
-          nullable: true
+          $ref: '#/components/schemas/TestFetchRequestDataTypeNullable'
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    TestFetchRequestDataTypeNullable:
+      nullable: true
+      type: number
   securitySchemes:
     ApiKey:
       in: header

@@ -157,6 +157,17 @@ public class TestApiGenerated {
             return this;
         }
         
+
+        /**
+         * Set input
+         * @param input  (optional)
+         * @return FetchRequestBuilder
+         */
+        public FetchRequestBuilder input(Integer input) {
+            this.input = input.doubleValue();
+            return this;
+        }
+        
         /**
          * Build call for fetch
          * @param _callback ApiCallback API callback
