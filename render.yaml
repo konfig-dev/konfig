@@ -266,11 +266,12 @@ services:
         value: 8080
 
   - type: web
-    env: static
+    env: node
     name: konfig-docs
     rootDir: generator/konfig-docs
     buildCommand: yarn install; yarn build
-    staticPublishPath: ./build
+    startCommand: yarn serve;
+    plan: starter
     repo: https://github.com/konfig-dev/konfig
     domains:
       - docs.konfigthis.com
