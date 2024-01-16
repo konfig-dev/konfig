@@ -32,17 +32,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for BrokerageSymbolSymbol
+ * Model tests for UniversalSymbolNullable
  */
-public class BrokerageSymbolSymbolTest {
-    private final BrokerageSymbolSymbol model = new BrokerageSymbolSymbol();
+public class UniversalSymbolNullableTest {
+    private final UniversalSymbolNullable model = new UniversalSymbolNullable();
 
     /**
-     * Model tests for BrokerageSymbolSymbol
+     * Model tests for UniversalSymbolNullable
      */
     @Test
-    public void testBrokerageSymbolSymbol() {
-        // TODO: test BrokerageSymbolSymbol
+    public void testUniversalSymbolNullable() {
+        // TODO: test UniversalSymbolNullable
     }
 
     /**

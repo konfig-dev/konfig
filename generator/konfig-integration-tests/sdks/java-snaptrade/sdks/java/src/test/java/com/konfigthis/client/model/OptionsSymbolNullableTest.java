@@ -27,17 +27,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for BrokerageSymbolOptionSymbol
+ * Model tests for OptionsSymbolNullable
  */
-public class BrokerageSymbolOptionSymbolTest {
-    private final BrokerageSymbolOptionSymbol model = new BrokerageSymbolOptionSymbol();
+public class OptionsSymbolNullableTest {
+    private final OptionsSymbolNullable model = new OptionsSymbolNullable();
 
     /**
-     * Model tests for BrokerageSymbolOptionSymbol
+     * Model tests for OptionsSymbolNullable
      */
     @Test
-    public void testBrokerageSymbolOptionSymbol() {
-        // TODO: test BrokerageSymbolOptionSymbol
+    public void testOptionsSymbolNullable() {
+        // TODO: test OptionsSymbolNullable
     }
 
     /**

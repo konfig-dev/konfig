@@ -1,7 +1,8 @@
 
 
-# BrokerageSymbolSymbol
+# UniversalSymbolNullable
 
+Universal symbol
 
 ## Properties
 

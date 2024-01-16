@@ -1,4 +1,5 @@
-# SnapTrade.Net.Model.OptionsPositionCurrency
+# SnapTrade.Net.Model.CurrencyNullable
+Currency
 
 ## Properties
 

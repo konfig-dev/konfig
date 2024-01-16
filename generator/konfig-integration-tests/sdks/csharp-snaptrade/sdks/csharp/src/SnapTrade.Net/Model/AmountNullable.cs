@@ -27,41 +27,33 @@ using OpenAPIDateConverter = SnapTrade.Net.Client.OpenAPIDateConverter;
 namespace SnapTrade.Net.Model
 {
     /// <summary>
-    /// OptionsPositionCurrency
+    /// Total Value of the account
     /// </summary>
-    [DataContract(Name = "OptionsPosition_currency")]
-    public partial class OptionsPositionCurrency : IEquatable<OptionsPositionCurrency>, IValidatableObject
+    [DataContract(Name = "AmountNullable")]
+    public partial class AmountNullable : IEquatable<AmountNullable>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OptionsPositionCurrency" /> class.
+        /// Initializes a new instance of the <see cref="AmountNullable" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="code">code.</param>
-        /// <param name="name">name.</param>
-        public OptionsPositionCurrency(string id = default(string), string code = default(string), string name = default(string))
+        /// <param name="amount">amount.</param>
+        /// <param name="currency">currency.</param>
+        public AmountNullable(double amount = default(double), string currency = default(string))
         {
-            this.Id = id;
-            this.Code = code;
-            this.Name = name;
+            this.Amount = amount;
+            this.Currency = currency;
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
+        public double Amount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        [DataMember(Name = "currency", EmitDefaultValue = false)]
+        public string Currency { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +62,9 @@ namespace SnapTrade.Net.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class OptionsPositionCurrency {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("class AmountNullable {\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +85,15 @@ namespace SnapTrade.Net.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as OptionsPositionCurrency);
+            return this.Equals(input as AmountNullable);
         }
 
         /// <summary>
-        /// Returns true if OptionsPositionCurrency instances are equal
+        /// Returns true if AmountNullable instances are equal
         /// </summary>
-        /// <param name="input">Instance of OptionsPositionCurrency to be compared</param>
+        /// <param name="input">Instance of AmountNullable to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(OptionsPositionCurrency input)
+        public bool Equals(AmountNullable input)
         {
             if (input == null)
             {
@@ -110,19 +101,13 @@ namespace SnapTrade.Net.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Amount == input.Amount ||
+                    this.Amount.Equals(input.Amount)
                 ) && 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
                 );
         }
 
@@ -135,17 +120,10 @@ namespace SnapTrade.Net.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Currency != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
-                if (this.Code != null)
-                {
-                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
-                }
-                if (this.Name != null)
-                {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
                 return hashCode;
             }

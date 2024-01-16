@@ -26,17 +26,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for OptionsPositionCurrency
+ * Model tests for CurrencyNullable
  */
-public class OptionsPositionCurrencyTest {
-    private final OptionsPositionCurrency model = new OptionsPositionCurrency();
+public class CurrencyNullableTest {
+    private final CurrencyNullable model = new CurrencyNullable();
 
     /**
-     * Model tests for OptionsPositionCurrency
+     * Model tests for CurrencyNullable
      */
     @Test
-    public void testOptionsPositionCurrency() {
-        // TODO: test OptionsPositionCurrency
+    public void testCurrencyNullable() {
+        // TODO: test CurrencyNullable
     }
 
     /**

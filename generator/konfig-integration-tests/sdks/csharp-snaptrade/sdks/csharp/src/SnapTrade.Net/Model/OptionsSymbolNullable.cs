@@ -27,10 +27,10 @@ using OpenAPIDateConverter = SnapTrade.Net.Client.OpenAPIDateConverter;
 namespace SnapTrade.Net.Model
 {
     /// <summary>
-    /// BrokerageSymbolOptionSymbol
+    /// Options Symbol
     /// </summary>
-    [DataContract(Name = "BrokerageSymbol_option_symbol")]
-    public partial class BrokerageSymbolOptionSymbol : IEquatable<BrokerageSymbolOptionSymbol>, IValidatableObject
+    [DataContract(Name = "OptionsSymbolNullable")]
+    public partial class OptionsSymbolNullable : IEquatable<OptionsSymbolNullable>, IValidatableObject
     {
         /// <summary>
         /// Defines OptionType
@@ -59,12 +59,15 @@ namespace SnapTrade.Net.Model
         [DataMember(Name = "option_type", IsRequired = true, EmitDefaultValue = true)]
         public OptionTypeEnum OptionType { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="BrokerageSymbolOptionSymbol" /> class.
+        /// Initializes a new instance of the <see cref="OptionsSymbolNullable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BrokerageSymbolOptionSymbol() { }
+        protected OptionsSymbolNullable()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
         /// <summary>
-        /// Initializes a new instance of the <see cref="BrokerageSymbolOptionSymbol" /> class.
+        /// Initializes a new instance of the <see cref="OptionsSymbolNullable" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="ticker">ticker (required).</param>
@@ -75,18 +78,18 @@ namespace SnapTrade.Net.Model
         /// <param name="underlyingSymbol">underlyingSymbol (required).</param>
         /// <param name="localId">localId.</param>
         /// <param name="exchangeId">exchangeId.</param>
-        public BrokerageSymbolOptionSymbol(string id = default(string), string ticker = default(string), OptionTypeEnum optionType = default(OptionTypeEnum), double strikePrice = default(double), string expirationDate = default(string), bool isMiniOption = default(bool), UnderlyingSymbol underlyingSymbol = default(UnderlyingSymbol), string localId = default(string), string exchangeId = default(string))
+        public OptionsSymbolNullable(string id = default(string), string ticker = default(string), OptionTypeEnum optionType = default(OptionTypeEnum), double strikePrice = default(double), string expirationDate = default(string), bool isMiniOption = default(bool), UnderlyingSymbol underlyingSymbol = default(UnderlyingSymbol), string localId = default(string), string exchangeId = default(string)) : base()
         {
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new ArgumentNullException("id is a required property for BrokerageSymbolOptionSymbol and cannot be null");
+                throw new ArgumentNullException("id is a required property for OptionsSymbolNullable and cannot be null");
             }
             this.Id = id;
             // to ensure "ticker" is required (not null)
             if (ticker == null)
             {
-                throw new ArgumentNullException("ticker is a required property for BrokerageSymbolOptionSymbol and cannot be null");
+                throw new ArgumentNullException("ticker is a required property for OptionsSymbolNullable and cannot be null");
             }
             this.Ticker = ticker;
             this.OptionType = optionType;
@@ -94,18 +97,19 @@ namespace SnapTrade.Net.Model
             // to ensure "expirationDate" is required (not null)
             if (expirationDate == null)
             {
-                throw new ArgumentNullException("expirationDate is a required property for BrokerageSymbolOptionSymbol and cannot be null");
+                throw new ArgumentNullException("expirationDate is a required property for OptionsSymbolNullable and cannot be null");
             }
             this.ExpirationDate = expirationDate;
             // to ensure "underlyingSymbol" is required (not null)
             if (underlyingSymbol == null)
             {
-                throw new ArgumentNullException("underlyingSymbol is a required property for BrokerageSymbolOptionSymbol and cannot be null");
+                throw new ArgumentNullException("underlyingSymbol is a required property for OptionsSymbolNullable and cannot be null");
             }
             this.UnderlyingSymbol = underlyingSymbol;
             this.IsMiniOption = isMiniOption;
             this.LocalId = localId;
             this.ExchangeId = exchangeId;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -157,13 +161,20 @@ namespace SnapTrade.Net.Model
         public string ExchangeId { get; set; }
 
         /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class BrokerageSymbolOptionSymbol {\n");
+            sb.Append("class OptionsSymbolNullable {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Ticker: ").Append(Ticker).Append("\n");
             sb.Append("  OptionType: ").Append(OptionType).Append("\n");
@@ -173,6 +184,7 @@ namespace SnapTrade.Net.Model
             sb.Append("  UnderlyingSymbol: ").Append(UnderlyingSymbol).Append("\n");
             sb.Append("  LocalId: ").Append(LocalId).Append("\n");
             sb.Append("  ExchangeId: ").Append(ExchangeId).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -181,7 +193,7 @@ namespace SnapTrade.Net.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -193,63 +205,64 @@ namespace SnapTrade.Net.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BrokerageSymbolOptionSymbol);
+            return this.Equals(input as OptionsSymbolNullable);
         }
 
         /// <summary>
-        /// Returns true if BrokerageSymbolOptionSymbol instances are equal
+        /// Returns true if OptionsSymbolNullable instances are equal
         /// </summary>
-        /// <param name="input">Instance of BrokerageSymbolOptionSymbol to be compared</param>
+        /// <param name="input">Instance of OptionsSymbolNullable to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BrokerageSymbolOptionSymbol input)
+        public bool Equals(OptionsSymbolNullable input)
         {
             if (input == null)
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Ticker == input.Ticker ||
                     (this.Ticker != null &&
                     this.Ticker.Equals(input.Ticker))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.OptionType == input.OptionType ||
                     this.OptionType.Equals(input.OptionType)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.StrikePrice == input.StrikePrice ||
                     this.StrikePrice.Equals(input.StrikePrice)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.ExpirationDate == input.ExpirationDate ||
                     (this.ExpirationDate != null &&
                     this.ExpirationDate.Equals(input.ExpirationDate))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.IsMiniOption == input.IsMiniOption ||
                     this.IsMiniOption.Equals(input.IsMiniOption)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.UnderlyingSymbol == input.UnderlyingSymbol ||
                     (this.UnderlyingSymbol != null &&
                     this.UnderlyingSymbol.Equals(input.UnderlyingSymbol))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.LocalId == input.LocalId ||
                     (this.LocalId != null &&
                     this.LocalId.Equals(input.LocalId))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.ExchangeId == input.ExchangeId ||
                     (this.ExchangeId != null &&
                     this.ExchangeId.Equals(input.ExchangeId))
-                );
+                )
+                && (this.AdditionalProperties.Count == input.AdditionalProperties.Count && !this.AdditionalProperties.Except(input.AdditionalProperties).Any());
         }
 
         /// <summary>
@@ -260,7 +273,7 @@ namespace SnapTrade.Net.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
@@ -287,6 +300,10 @@ namespace SnapTrade.Net.Model
                 if (this.ExchangeId != null)
                 {
                     hashCode = (hashCode * 59) + this.ExchangeId.GetHashCode();
+                }
+                if (this.AdditionalProperties != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdditionalProperties.GetHashCode();
                 }
                 return hashCode;
             }

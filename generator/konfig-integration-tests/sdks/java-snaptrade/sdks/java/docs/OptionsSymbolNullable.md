@@ -1,7 +1,8 @@
 
 
-# BrokerageSymbolOptionSymbol
+# OptionsSymbolNullable
 
+Options Symbol
 
 ## Properties
 

@@ -1,7 +1,8 @@
 
 
-# OptionsPositionCurrency
+# CurrencyNullable
 
+Currency
 
 ## Properties
 

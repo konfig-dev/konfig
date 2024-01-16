@@ -36,6 +36,8 @@ public class GettingStartedTest {
                 List<TargetAsset> targetAsset = new ArrayList<>();
                 targetAsset.add(new TargetAsset().symbol(new UniversalSymbol().symbol("AAPL")).percent(90));
                 snaptrade.authentication.deleteSnapTradeUser(userIDandSecret.getUserId()).execute();
+
+                snaptrade.trading.getOrderImpact("test", "test").units()
         }
 
         @Test

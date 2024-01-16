@@ -1,4 +1,5 @@
-# SnapTrade.Net.Model.BrokerageSymbolSymbol
+# SnapTrade.Net.Model.UniversalSymbolNullable
+Universal symbol
 
 ## Properties
 

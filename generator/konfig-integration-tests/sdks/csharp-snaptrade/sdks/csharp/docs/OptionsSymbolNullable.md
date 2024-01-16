@@ -1,4 +1,5 @@
-# SnapTrade.Net.Model.BrokerageSymbolOptionSymbol
+# SnapTrade.Net.Model.OptionsSymbolNullable
+Options Symbol
 
 ## Properties
 

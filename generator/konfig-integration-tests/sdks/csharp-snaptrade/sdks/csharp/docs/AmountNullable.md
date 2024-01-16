@@ -1,5 +1,5 @@
-# SnapTrade.Net.Model.AccountBalanceTotal
-Total value of this account (includes cash, equity, fixed income, etc)
+# SnapTrade.Net.Model.AmountNullable
+Total Value of the account
 
 ## Properties
 

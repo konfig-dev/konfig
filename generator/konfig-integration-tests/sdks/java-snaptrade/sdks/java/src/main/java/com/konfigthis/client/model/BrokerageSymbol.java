@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.client.model.BrokerageAuthorization;
-import com.konfigthis.client.model.BrokerageSymbolOptionSymbol;
-import com.konfigthis.client.model.BrokerageSymbolSymbol;
+import com.konfigthis.client.model.OptionsSymbolNullable;
+import com.konfigthis.client.model.UniversalSymbolNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class BrokerageSymbol {
 
   public static final String SERIALIZED_NAME_SYMBOL = "symbol";
   @SerializedName(SERIALIZED_NAME_SYMBOL)
-  private BrokerageSymbolSymbol symbol;
+  private UniversalSymbolNullable symbol;
 
   public static final String SERIALIZED_NAME_BROKERAGE_AUTHORIZATION = "brokerage_authorization";
   @SerializedName(SERIALIZED_NAME_BROKERAGE_AUTHORIZATION)
@@ -77,7 +77,7 @@ public class BrokerageSymbol {
 
   public static final String SERIALIZED_NAME_OPTION_SYMBOL = "option_symbol";
   @SerializedName(SERIALIZED_NAME_OPTION_SYMBOL)
-  private BrokerageSymbolOptionSymbol optionSymbol;
+  private OptionsSymbolNullable optionSymbol;
 
   public BrokerageSymbol() {
   }
@@ -111,7 +111,7 @@ public class BrokerageSymbol {
   }
 
 
-  public BrokerageSymbol symbol(BrokerageSymbolSymbol symbol) {
+  public BrokerageSymbol symbol(UniversalSymbolNullable symbol) {
     
     
     
@@ -127,12 +127,12 @@ public class BrokerageSymbol {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BrokerageSymbolSymbol getSymbol() {
+  public UniversalSymbolNullable getSymbol() {
     return symbol;
   }
 
 
-  public void setSymbol(BrokerageSymbolSymbol symbol) {
+  public void setSymbol(UniversalSymbolNullable symbol) {
     
     
     
@@ -227,7 +227,7 @@ public class BrokerageSymbol {
   }
 
 
-  public BrokerageSymbol optionSymbol(BrokerageSymbolOptionSymbol optionSymbol) {
+  public BrokerageSymbol optionSymbol(OptionsSymbolNullable optionSymbol) {
     
     
     
@@ -243,12 +243,12 @@ public class BrokerageSymbol {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BrokerageSymbolOptionSymbol getOptionSymbol() {
+  public OptionsSymbolNullable getOptionSymbol() {
     return optionSymbol;
   }
 
 
-  public void setOptionSymbol(BrokerageSymbolOptionSymbol optionSymbol) {
+  public void setOptionSymbol(OptionsSymbolNullable optionSymbol) {
     
     
     
@@ -396,7 +396,7 @@ public class BrokerageSymbol {
       }
       // validate the optional field `symbol`
       if (jsonObj.get("symbol") != null && !jsonObj.get("symbol").isJsonNull()) {
-        BrokerageSymbolSymbol.validateJsonObject(jsonObj.getAsJsonObject("symbol"));
+        UniversalSymbolNullable.validateJsonObject(jsonObj.getAsJsonObject("symbol"));
       }
       // validate the optional field `brokerage_authorization`
       if (jsonObj.get("brokerage_authorization") != null && !jsonObj.get("brokerage_authorization").isJsonNull()) {
@@ -407,7 +407,7 @@ public class BrokerageSymbol {
       }
       // validate the optional field `option_symbol`
       if (jsonObj.get("option_symbol") != null && !jsonObj.get("option_symbol").isJsonNull()) {
-        BrokerageSymbolOptionSymbol.validateJsonObject(jsonObj.getAsJsonObject("option_symbol"));
+        OptionsSymbolNullable.validateJsonObject(jsonObj.getAsJsonObject("option_symbol"));
       }
   }
 
