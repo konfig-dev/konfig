@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.0
+
+### Minor Changes
+
+- [#450](https://github.com/konfig-dev/konfig/pull/450) [`c002b6f3`](https://github.com/konfig-dev/konfig/commit/c002b6f337801ea3eb71acfef6d49c9f2d8a84d0) Thanks [@dphuang2](https://github.com/dphuang2)! - Handle nullable schema using allOf and $ref
+
 ## 1.35.0
 
 ### Minor Changes
