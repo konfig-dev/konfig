@@ -3,17 +3,35 @@ import { Spec, getOperations, parseSpec } from "konfig-lib";
 import * as fs from "fs";
 import * as glob from "glob";
 
-type Paths = { path: string }[];
+type Paths = { oasPath: string }[];
+
+const dbFile = path.join(path.dirname(__dirname), "db", "data.json");
+const apiDirectory = path.join(
+  path.dirname(__dirname),
+  "openapi-directory",
+  "APIs"
+);
+
+// Some paths hang on parsing, even with a timeout, so we hardcode them here to skip them
+const skip: string[] = [
+  "stripe.com/2022-11-15/openapi.yaml",
+  "presalytics.io/ooxml/0.1.0/openapi.yaml",
+  "microsoft.com/graph-beta/1.0.1/openapi.yaml",
+  "microsoft.com/graph/1.0.1/openapi.yaml",
+  "bungie.net/2.18.0/openapi.yaml",
+];
+
+function timeout(ms: number, promise: Promise<any>) {
+  const timeoutPromise = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error("Timeout")), ms)
+  );
+  return Promise.race([promise, timeoutPromise]);
+}
 
 function collectOasFilePaths(): Paths {
-  const apiDirectory = path.join(
-    path.dirname(__dirname),
-    "openapi-directory",
-    "APIs"
-  );
   const paths: Paths = [];
-  const pattern = path.join(apiDirectory, "**", "openapi.yaml");
-  glob.sync(pattern).forEach((path) => paths.push({ path }));
+  const pattern = path.join(apiDirectory, "**", "*(openapi|swagger).yaml");
+  glob.sync(pattern).forEach((oasPath) => paths.push({ oasPath }));
   return paths;
 }
 
@@ -43,7 +61,10 @@ function getInfoContactEmail(spec: Spec): string | undefined {
 }
 
 function getKey(spec: Spec): string {
-  return `${getProviderName(spec)}-${getServiceName(spec)}-${getVersion(spec)}`;
+  const serviceName = getServiceName(spec);
+  if (serviceName === undefined)
+    return `${getProviderName(spec)}-${getVersion(spec)}`;
+  return `${getProviderName(spec)}-${serviceName}-${getVersion(spec)}`;
 }
 
 function getNumberOfEndpoints(spec: Spec): number {
@@ -83,21 +104,34 @@ function getNumberOfParameters(spec: Spec): number {
   return numberOfParameters;
 }
 
+function writeSkipped(writeStream: fs.WriteStream) {
+  writeStream.write('"skipped": [');
+  for (let i = 0; i < skip.length; i++) {
+    writeStream.write(`"${skip[i]}"` + (i < skip.length - 1 ? "," : ""));
+  }
+  writeStream.write("]");
+}
+
 async function main() {
   const paths = collectOasFilePaths();
-  const dbFilePath = path.join(path.dirname(__dirname), "db", "data.json");
-  fs.truncateSync(dbFilePath);
-  const writeStream = fs.createWriteStream(dbFilePath, { flags: "a" });
+  fs.truncateSync(dbFile);
+  const writeStream = fs.createWriteStream(dbFile, { flags: "a" });
   writeStream.write('{"specifications": {');
   let i = 0;
-  // These ones stall on parseSpec
-  const skip = [179, 286, 424, 425, 898, 1220];
 
-  for (const { path } of paths) {
-    console.log(`Processing path ${i}/${paths.length}`);
-    if (skip.includes(++i)) continue;
-    const oas = fs.readFileSync(path, "utf-8");
-    const spec = await parseSpec(oas);
+  for (const { oasPath } of paths) {
+    const cleanPath = path.relative(apiDirectory, oasPath);
+    console.log(`Processing path ${++i}/${paths.length}: ${cleanPath}`);
+    if (skip.includes(cleanPath)) continue;
+    const oas = fs.readFileSync(oasPath, "utf-8");
+    let spec;
+    try {
+      spec = await timeout(5000, parseSpec(oas));
+    } catch (error) {
+      skip.push(cleanPath);
+      console.log(`❌ Skipping ${cleanPath} due to error or timeout.`);
+      continue;
+    }
     const key = getKey(spec);
 
     const data = {
@@ -114,9 +148,14 @@ async function main() {
       contactUrl: getInfoContactUrl(spec),
       contactEmail: getInfoContactEmail(spec),
     };
-    writeStream.write(`"${key}": ${JSON.stringify(data, null, 2)},`);
+    writeStream.write(
+      `"${key}": ${JSON.stringify(data, null, 2)}` +
+        (i < paths.length ? "," : "")
+    );
   }
-  writeStream.write("}}");
+  writeStream.write("},");
+  writeSkipped(writeStream);
+  writeStream.write("}");
   writeStream.end();
 }
 
