@@ -316,7 +316,6 @@ function SignupForm() {
           <input
             type="email"
             name="email"
-            autoFocus
             className="border rounded-md px-2 py-1 w-full mb-2"
             placeholder="Email"
             value={email}
