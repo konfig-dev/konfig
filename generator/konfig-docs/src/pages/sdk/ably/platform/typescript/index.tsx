@@ -319,7 +319,7 @@ function SdkMethodSection({
   Icon: (props: TablerIconsProps) => JSX.Element;
 }>) {
   return (
-    <div className="flex w-full gap-2 mt-4">
+    <div className="flex w-full gap-2 mt-6">
       <Icon className={clsx("shrink-0 h-4 text-slate-500")} />
       <div className="flex flex-col grow items-start">
         <SdkMethodHeader className="font-semibold font-sans mb-2 uppercase">
