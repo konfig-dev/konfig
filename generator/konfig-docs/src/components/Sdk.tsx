@@ -31,6 +31,16 @@ type Response = {
   description?: string;
 };
 
+type Method = {
+  tag: string;
+  method: string;
+  description: string;
+  parameters: Parameter[];
+  responses: Response[];
+  url: string;
+  httpMethod: HttpMethods;
+};
+
 export function Sdk({
   metaDescription,
   company,
@@ -63,15 +73,7 @@ export function Sdk({
   logo: string;
   homepage: string;
   lastUpdated: Date;
-  methods: {
-    tag: string;
-    method: string;
-    description: string;
-    parameters: Parameter[];
-    responses: Response[];
-    url: string;
-    httpMethod: HttpMethods;
-  }[];
+  methods: Method[];
   serviceName: string;
   apiTitle: string;
   apiBaseUrl: string;
