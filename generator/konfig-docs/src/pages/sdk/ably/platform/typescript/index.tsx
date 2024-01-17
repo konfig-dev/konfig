@@ -9,12 +9,17 @@ import GettingStarted from "./_getting-started.mdx";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
 import {
+  IconAdjustments,
   IconApi,
   IconBraces,
+  IconChevronDown,
   IconCodeDots,
+  IconCube,
   IconInfoCircle,
+  IconLink,
   IconPencil,
   IconPlayerPlay,
+  TablerIconsProps,
 } from "@tabler/icons-react";
 
 export default function AblyTypeScriptSdk() {
@@ -31,6 +36,11 @@ export default function AblyTypeScriptSdk() {
           content="https://voltaire.ably.com/static/ably-generic@2x-53a7dd8e38ba16fd0190ec91150dad0a.jpeg"
         />
         <meta property="og:description" content={metaDescription} />
+        <style>
+          {`p {
+            margin-bottom: 0px;
+          }`}
+        </style>
       </Head>
       <div className="bg-slate-100 border-b">
         <div className="py-8 bg-gradient-to-tl from-[var(--ifm-color-primary-darkest)] to-[var(--ifm-color-primary)]">
@@ -157,72 +167,174 @@ function SdkMethod({
   description: string;
 }) {
   const color = httpMethodColor(httpMethod);
+  const [expanded, setExpanded] = useState(false);
   return (
     <div
       className={clsx(
-        "ring-1 rounded-md block w-full overflow-x-auto px-3 py-2",
+        "ring-1 rounded-md block w-full overflow-x-auto px-3 py-2 transition-all text-xs lg:text-sm",
         {
-          "ring-green-100 bg-green-50/20": color === "green",
-          "ring-blue-100 bg-blue-50/20": color === "blue",
-          "ring-red-100 bg-red-50/20": color === "red",
-          "ring-yellow-100 bg-yellow-50/20": color === "yellow",
-          "ring-slate-100 bg-slate-50/20": color === "slate",
+          "ring-green-100 bg-green-50/20 hover:bg-green-50": color === "green",
+          "ring-blue-100 bg-blue-50/20 hover:bg-blue-50": color === "blue",
+          "ring-red-100 bg-red-50/20 hover:bg-red-50": color === "red",
+          "ring-yellow-100 bg-yellow-50/20 hover:bg-yellow-50":
+            color === "yellow",
+          "ring-slate-100 bg-slate-50/20 hover:bg-slate-50": color === "slate",
+        },
+        {
+          "bg-green-50": color === "green" && expanded,
+          "bg-blue-50": color === "blue" && expanded,
+          "bg-red-50": color === "red" && expanded,
+          "bg-yellow-50": color === "yellow" && expanded,
+          "bg-slate-50": color === "slate" && expanded,
+        },
+        {
+          "text-green-700": color === "green",
+          "text-blue-700": color === "blue",
+          "text-red-700": color === "red",
+          "text-yellow-700": color === "yellow",
+          "text-slate-700": color === "slate",
+        },
+        {
+          "scale-[1.01] shadow-xl": expanded,
         }
       )}
     >
-      <div className="flex w-fit gap-2">
-        <IconBraces
-          className={clsx("shrink-0 h-4", {
-            "text-green-400": color === "green",
-            "text-blue-400": color === "blue",
-            "text-red-400": color === "red",
-            "text-yellow-400": color === "yellow",
-            "text-slate-400": color === "slate",
+      <button
+        className="w-full flex items-center"
+        onClick={() => {
+          setExpanded(!expanded);
+        }}
+      >
+        <div className="flex w-fit gap-2 grow">
+          <IconBraces
+            className={clsx("shrink-0 h-4", {
+              "text-green-400": color === "green",
+              "text-blue-400": color === "blue",
+              "text-red-400": color === "red",
+              "text-yellow-400": color === "yellow",
+              "text-slate-400": color === "slate",
+            })}
+          />
+          <div className="flex flex-col items-start">
+            <SdkMethodHeader color={color}>{`${method}()`}</SdkMethodHeader>
+            <p className={clsx("mb-0")}>{description}</p>
+          </div>
+        </div>
+        <IconChevronDown
+          className={clsx("h-4 transition-transform", {
+            "text-green-700": color === "green",
+            "text-blue-700": color === "blue",
+            "text-red-700": color === "red",
+            "text-yellow-700": color === "yellow",
+            "text-slate-700": color === "slate",
+            "rotate-180": expanded,
           })}
         />
-        <div>
-          <div
-            className={clsx(
-              "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono",
-              {
-                "text-green-800": color === "green",
-                "text-blue-800": color === "blue",
-                "text-red-800": color === "red",
-                "text-yellow-800": color === "yellow",
-                "text-slate-800": color === "slate",
-              }
-            )}
+      </button>
+      {expanded && (
+        <div className="text-left w-full">
+          <SdkMethodSection
+            Icon={IconAdjustments}
+            color={color}
+            header="Parameters"
           >
-            {`${method}()`}
-          </div>
-          <div className="flex items-center gap-2 mb-3">
-            <div
-              className={clsx("font-medium font-mono text-xs", {
-                "text-green-500": color === "green",
-                "text-blue-500": color === "blue",
-                "text-red-500": color === "red",
-                "text-yellow-500": color === "yellow",
-                "text-slate-500": color === "slate",
-              })}
-            >
-              {url}
+            <span className="font-semibold">prefix</span>
+            <p className="mb-1">
+              Optionally limits the query to only those channels whose name
+              starts with the given prefix
+            </p>
+            <span className="font-semibold">by</span>
+            <p>
+              optionally specifies whether to return just channel names (by=id)
+              or ChannelDetails (by=value)
+            </p>
+          </SdkMethodSection>
+          <SdkMethodSection header="Response" color={color} Icon={IconCube}>
+            <span className="font-semibold">2XX</span>
+            <p className="mb-1">
+              Optionally limits the query to only those channels whose name
+              starts with the given prefix
+            </p>
+            <span className="font-semibold">default</span>
+            <p>Returned error from failed REST.</p>
+          </SdkMethodSection>
+          <SdkMethodSection header="Endpoint" color={color} Icon={IconLink}>
+            <div className="flex items-center gap-2 mb-3">
+              <div
+                className={clsx("font-mono", {
+                  "text-green-700": color === "green",
+                  "text-blue-700": color === "blue",
+                  "text-red-700": color === "red",
+                  "text-yellow-700": color === "yellow",
+                  "text-slate-700": color === "slate",
+                })}
+              >
+                {url}
+              </div>
+              <HttpMethodBadge httpMethod={httpMethod} />
             </div>
-            <HttpMethodBadge httpMethod={httpMethod} />
-          </div>
-          <p
-            className={clsx("text-xs lg:text-sm mb-0", {
-              "text-green-700": color === "green",
-              "text-blue-700": color === "blue",
-              "text-red-700": color === "red",
-              "text-yellow-700": color === "yellow",
-              "text-slate-700": color === "slate",
-            })}
-          >
-            {description}
-          </p>
+          </SdkMethodSection>
         </div>
+      )}
+    </div>
+  );
+}
+
+function SdkMethodSection({
+  header,
+  color,
+  children,
+  Icon,
+}: PropsWithChildren<{
+  header: string;
+  color: ReturnType<typeof httpMethodColor>;
+  Icon: (props: TablerIconsProps) => JSX.Element;
+}>) {
+  return (
+    <div className="flex w-fit gap-2 grow mt-4">
+      <Icon
+        className={clsx("shrink-0 h-4", {
+          "text-green-400": color === "green",
+          "text-blue-400": color === "blue",
+          "text-red-400": color === "red",
+          "text-yellow-400": color === "yellow",
+          "text-slate-400": color === "slate",
+        })}
+      />
+      <div className="flex flex-col items-start">
+        <SdkMethodHeader className="font-semibold font-sans mb-2" color={color}>
+          {header}
+        </SdkMethodHeader>
+        <div className="text-xs">{children}</div>
       </div>
     </div>
+  );
+}
+
+function SdkMethodHeader({
+  children,
+  color,
+  className,
+}: PropsWithChildren<{
+  color: ReturnType<typeof httpMethodColor>;
+  className?: string;
+}>) {
+  return (
+    <h4
+      className={clsx(
+        "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono",
+        {
+          "text-green-800": color === "green",
+          "text-blue-800": color === "blue",
+          "text-red-800": color === "red",
+          "text-yellow-800": color === "yellow",
+          "text-slate-800": color === "slate",
+        },
+        className
+      )}
+    >
+      {children}
+    </h4>
   );
 }
 
