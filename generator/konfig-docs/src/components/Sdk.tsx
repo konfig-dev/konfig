@@ -17,6 +17,7 @@ import {
   IconPlayerPlay,
   TablerIconsProps,
 } from "@tabler/icons-react";
+import { Markdown } from "./Markdown";
 
 type Parameter = {
   name: string;
@@ -274,7 +275,9 @@ function SdkMethod({
             >
               {`${method}()`}
             </h4>
-            <p className={clsx("mb-0")}>{description}</p>
+            <p className={clsx("mb-0")}>
+              {<Markdown markdownText={description} />}
+            </p>
           </div>
         </div>
         <IconChevronDown
@@ -329,7 +332,9 @@ function SdkMethodResponse({
       })}
     >
       <span className="font-semibold">{statusCode}</span>
-      {description && <p className="mb-1">{description}</p>}
+      {description && (
+        <p className="mb-1">{<Markdown markdownText={description} />}</p>
+      )}
     </div>
   );
 }
@@ -347,7 +352,7 @@ function SdkMethodParameter({
         <SdkMethodParameterSchema>{schema}</SdkMethodParameterSchema>
         {required && <SdkMethodParameterRequired />}
       </div>
-      <p className="mt-1">{description}</p>
+      <p className="mt-1">{<Markdown markdownText={description} />}</p>
     </div>
   );
 }
