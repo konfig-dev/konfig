@@ -2,6 +2,8 @@ import * as path from "path";
 import { Spec, getOperations, parseSpec } from "konfig-lib";
 import * as fs from "fs";
 import * as glob from "glob";
+import * as math from "mathjs";
+import { Db } from "../src/db-schema";
 
 type Paths = { oasPath: string }[];
 
@@ -20,6 +22,13 @@ const skip: string[] = [
   "microsoft.com/graph/1.0.1/openapi.yaml",
   "bungie.net/2.18.0/openapi.yaml",
 ];
+
+function calculateZScores(numbers: number[]): number[] {
+  const mean = math.mean(numbers);
+  const stdDev = math.std(numbers) as unknown as number;
+
+  return numbers.map((num) => (num - mean) / stdDev);
+}
 
 function timeout(ms: number, promise: Promise<any>) {
   const timeoutPromise = new Promise((_, reject) =>
@@ -58,6 +67,15 @@ function getInfoContactUrl(spec: Spec): string | undefined {
 function getInfoContactEmail(spec: Spec): string | undefined {
   const info = spec.spec.info;
   return info.contact?.email;
+}
+
+function computeDifficultyScore(
+  numberOfEndpoints: number,
+  numberOfOperations: number,
+  numberOfSchemas: number,
+  numberOfParameters: number
+): number {
+  return numberOfOperations + 0.5 * numberOfSchemas + 0.25 * numberOfParameters;
 }
 
 function getKey(spec: Spec): string {
@@ -104,19 +122,29 @@ function getNumberOfParameters(spec: Spec): number {
   return numberOfParameters;
 }
 
-function writeSkipped(writeStream: fs.WriteStream) {
-  writeStream.write('"skipped": [');
-  for (let i = 0; i < skip.length; i++) {
-    writeStream.write(`"${skip[i]}"` + (i < skip.length - 1 ? "," : ""));
+async function writeData(db: Db) {
+  fs.truncateSync(dbFile);
+  const ws = fs.createWriteStream(dbFile, { flags: "a" });
+  ws.write('{"specifications": {');
+  let i = 0;
+  for (const [key, data] of Object.entries(db.specifications)) {
+    const isLast = i++ === Object.keys(db.specifications).length - 1;
+    ws.write(
+      `"${key}": ${JSON.stringify(data, null, 2)}` + (isLast ? "" : ",")
+    );
   }
-  writeStream.write("]");
+  ws.write('}, "skipped": [');
+  for (let i = 0; i < db.skipped.length; i++) {
+    const isLast = i === db.skipped.length - 1;
+    ws.write(`"${skip[i]}"` + (isLast ? "" : ","));
+  }
+  ws.write("]}");
+  ws.end();
 }
 
-async function main() {
+async function collectData(): Promise<Db> {
   const paths = collectOasFilePaths();
-  fs.truncateSync(dbFile);
-  const writeStream = fs.createWriteStream(dbFile, { flags: "a" });
-  writeStream.write('{"specifications": {');
+  const db: Db = { specifications: {}, skipped: [...skip] };
   let i = 0;
 
   for (const { oasPath } of paths) {
@@ -128,35 +156,61 @@ async function main() {
     try {
       spec = await timeout(5000, parseSpec(oas));
     } catch (error) {
-      skip.push(cleanPath);
+      db.skipped.push(cleanPath);
       console.log(`❌ Skipping ${cleanPath} due to error or timeout.`);
       continue;
     }
     const key = getKey(spec);
-
-    const data = {
+    const numberOfEndpoints = getNumberOfEndpoints(spec);
+    const numberOfOperations = getNumberOfOperations(spec);
+    const numberOfSchemas = getNumberOfSchemas(spec);
+    const numberOfParameters = getNumberOfParameters(spec);
+    db.specifications[key] = {
       providerName: getProviderName(spec),
       serviceName: getServiceName(spec),
       version: getVersion(spec),
       servers: spec.spec.servers,
       description: spec.spec.info.description,
       title: spec.spec.info.title,
-      numberOfEndpoints: getNumberOfEndpoints(spec),
-      numberOfOperations: getNumberOfOperations(spec),
-      numberOfSchemas: getNumberOfSchemas(spec),
-      numberOfParameters: getNumberOfParameters(spec),
+      numberOfEndpoints: numberOfEndpoints,
+      numberOfOperations: numberOfOperations,
+      numberOfSchemas: numberOfSchemas,
+      numberOfParameters: numberOfParameters,
       contactUrl: getInfoContactUrl(spec),
       contactEmail: getInfoContactEmail(spec),
+      difficultyScore: computeDifficultyScore(
+        numberOfEndpoints,
+        numberOfOperations,
+        numberOfSchemas,
+        numberOfParameters
+      ),
     };
-    writeStream.write(
-      `"${key}": ${JSON.stringify(data, null, 2)}` +
-        (i < paths.length ? "," : "")
-    );
   }
-  writeStream.write("},");
-  writeSkipped(writeStream);
-  writeStream.write("}");
-  writeStream.end();
+  return db;
+}
+
+async function addDifficulty(db: Db): Promise<Db> {
+  const difficultyScores = Object.values(db.specifications).map(
+    (specification) => specification.difficultyScore
+  );
+  const zScores = calculateZScores(difficultyScores);
+  let i = 0;
+  for (const spec of Object.values(db.specifications)) {
+    const z = zScores[i];
+    if (z > 1) spec.difficulty = "Very Hard";
+    else if (z > 0.1) spec.difficulty = "Hard";
+    else if (z > -0.1) spec.difficulty = "Medium";
+    else if (z > -0.3) spec.difficulty = "Easy";
+    else spec.difficulty = "Very Easy";
+    i++;
+  }
+  return db;
+}
+
+async function main() {
+  let db = await collectData();
+  db = await addDifficulty(db);
+  await writeData(db);
 }
 
 main();

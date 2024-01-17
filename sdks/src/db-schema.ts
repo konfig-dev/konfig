@@ -16,17 +16,19 @@ export const dbSchema = z.object({
       servers: z.array(z.object({ url: z.string() })).optional(),
       description: z.string().optional(),
       title: z.string(),
-      spec: z.object({
-        raw: z.string(),
-      }),
       contactUrl: z.string().optional(),
       contactEmail: z.string().optional(),
       numberOfEndpoints: z.number(),
       numberOfOperations: z.number(),
       numberOfSchemas: z.number(),
       numberOfParameters: z.number(),
+      difficultyScore: z.number(),
+      difficulty: z
+        .enum(["Very Easy", "Easy", "Medium", "Hard", "Very Hard"])
+        .optional(),
     })
   ),
+  skipped: z.array(z.string()),
 });
 
 export type Db = z.infer<typeof dbSchema>;
