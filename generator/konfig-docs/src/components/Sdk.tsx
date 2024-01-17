@@ -1,6 +1,5 @@
 import React, { FormEventHandler, PropsWithChildren, useState } from "react";
 import Layout from "@theme/Layout";
-import type { HttpMethods } from "konfig-lib";
 import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import moment from "moment";
 import clsx from "clsx";
@@ -18,27 +17,16 @@ import {
   TablerIconsProps,
 } from "@tabler/icons-react";
 import { Markdown } from "./Markdown";
+import type {
+  Props,
+  Parameter,
+  Method,
+  HttpMethods,
+} from "./SdkComponentProps";
 
-type Parameter = {
-  name: string;
-  schema: string;
-  required?: boolean;
-  description: string;
-};
-
-type Response = {
-  statusCode: string;
-  description?: string;
-};
-
-type Method = {
-  tag?: string;
-  method: string;
-  description: string;
-  parameters: Parameter[];
-  responses: Response[];
-  url: string;
-  httpMethod: HttpMethods;
+type ReactProps = {
+  GettingStarted: React.ComponentType;
+  Description: React.ComponentType;
 };
 
 export function Sdk({
@@ -66,32 +54,7 @@ export function Sdk({
   sdkName,
   GettingStarted,
   Description,
-}: {
-  metaDescription: string;
-  company: string;
-  favicon: string;
-  logo: string;
-  homepage: string;
-  lastUpdated: Date;
-  methods: Method[];
-  serviceName: string;
-  apiTitle: string;
-  apiBaseUrl: string;
-  apiVersion: string;
-  endpoints: number;
-  sdkMethods: number;
-  schemas: number;
-  parameters: number;
-  difficulty: string;
-  contactUrl: string;
-  contactEmail: string;
-  openApiRaw: string;
-  openApiUi: string;
-  previewLinkImage: string;
-  sdkName: string;
-  GettingStarted: React.ComponentType;
-  Description: React.ComponentType;
-}) {
+}: Props & ReactProps) {
   return (
     <Layout
       title={`${company} API - TypeScript SDK and OpenAPI Specification`}
