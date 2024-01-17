@@ -166,7 +166,7 @@ function SdkMethod({
   httpMethod: HttpMethods;
   description: string;
 }) {
-  const color = httpMethodColor(httpMethod);
+  const color = httpMethodColorOnlySlate(httpMethod);
   const [expanded, setExpanded] = useState(false);
   return (
     <div
@@ -205,18 +205,22 @@ function SdkMethod({
           setExpanded(!expanded);
         }}
       >
-        <div className="flex w-fit gap-2 grow">
-          <IconBraces
-            className={clsx("shrink-0 h-4", {
-              "text-green-400": color === "green",
-              "text-blue-400": color === "blue",
-              "text-red-400": color === "red",
-              "text-yellow-400": color === "yellow",
-              "text-slate-400": color === "slate",
-            })}
-          />
+        <div className="grow">
           <div className="flex flex-col items-start">
-            <SdkMethodHeader color={color}>{`${method}()`}</SdkMethodHeader>
+            <h4
+              className={clsx(
+                "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono",
+                {
+                  "text-green-800": color === "green",
+                  "text-blue-800": color === "blue",
+                  "text-red-800": color === "red",
+                  "text-yellow-800": color === "yellow",
+                  "text-slate-800": color === "slate",
+                }
+              )}
+            >
+              {`${method}()`}
+            </h4>
             <p className={clsx("mb-0")}>{description}</p>
           </div>
         </div>
@@ -236,27 +240,35 @@ function SdkMethod({
           <SdkMethodSection
             Icon={IconAdjustments}
             color={color}
-            header="Parameters"
+            header="Parameter"
           >
-            <span className="font-semibold">prefix</span>
-            <p className="mb-1">
-              Optionally limits the query to only those channels whose name
-              starts with the given prefix
-            </p>
-            <span className="font-semibold">by</span>
-            <p>
-              optionally specifies whether to return just channel names (by=id)
-              or ChannelDetails (by=value)
-            </p>
+            <div className="space-y-2">
+              <SdkMethodParameter
+                color={color}
+                name="prefix"
+                schema="string"
+                required
+                description="Optionally limits the query to only those channels whose name starts with the given prefix"
+              />
+              <SdkMethodParameter
+                color={color}
+                name="by"
+                schema="string"
+                description="optionally specifies whether to return just channel names (by=id) or ChannelDetails (by=value)"
+              />
+            </div>
           </SdkMethodSection>
           <SdkMethodSection header="Response" color={color} Icon={IconCube}>
-            <span className="font-semibold">2XX</span>
-            <p className="mb-1">
-              Optionally limits the query to only those channels whose name
-              starts with the given prefix
-            </p>
-            <span className="font-semibold">default</span>
-            <p>Returned error from failed REST.</p>
+            <div className="space-y-2 w-full">
+              <SdkMethodResponse
+                statusCode="2XX"
+                description="Optionally limits the query to only those channels whose name starts with the given prefix"
+              />
+              <SdkMethodResponse
+                statusCode="default"
+                description="Returned error from failed REST."
+              />
+            </div>
           </SdkMethodSection>
           <SdkMethodSection header="Endpoint" color={color} Icon={IconLink}>
             <div className="flex items-center gap-2 mb-3">
@@ -280,6 +292,83 @@ function SdkMethod({
   );
 }
 
+function SdkMethodResponse({
+  statusCode,
+  description,
+}: {
+  statusCode: string;
+  description: string;
+}) {
+  return (
+    <div
+      className={clsx("p-2 w-full border rounded-md", {
+        "bg-green-100 border-green-200 text-green-800":
+          statusCode.startsWith("2"),
+        "bg-red-100 border-red-200 text-red-800": !statusCode.startsWith("2"),
+      })}
+    >
+      <span className="font-semibold">{statusCode}</span>
+      <p className="mb-1">{description}</p>
+    </div>
+  );
+}
+
+function SdkMethodParameter({
+  name,
+  schema,
+  required,
+  description,
+  color,
+}: PropsWithChildren<{
+  name: string;
+  schema: string;
+  required?: boolean;
+  description: string;
+  color: ReturnType<typeof httpMethodColor>;
+}>) {
+  return (
+    <div>
+      <div className="flex flex-wrap gap-x-2 items-center">
+        <SdkMethodParameterName color={color}>{name}</SdkMethodParameterName>
+        <SdkMethodParameterSchema>{schema}</SdkMethodParameterSchema>
+        {required && <SdkMethodParameterRequired />}
+      </div>
+      <p className="mt-1">{description}</p>
+    </div>
+  );
+}
+
+function SdkMethodParameterRequired() {
+  return (
+    <span className="font-mono text-red-600 p-1 rounded-md border-red-300 bg-red-100">
+      required
+    </span>
+  );
+}
+
+function SdkMethodParameterName({
+  children,
+  color,
+}: PropsWithChildren<{ color: ReturnType<typeof httpMethodColor> }>) {
+  return (
+    <span
+      className={clsx("font-semibold p-1 rounded-md border font-mono", {
+        "bg-green-200 text-green-700 border-green-400": color === "green",
+        "bg-blue-200 text-blue-700 border-blue-400": color === "blue",
+        "bg-red-200 text-red-700 border-red-400": color === "red",
+        "bg-yellow-200 text-yellow-700 border-yellow-400": color === "yellow",
+        "bg-slate-200 text-slate-700 border-slate-400": color === "slate",
+      })}
+    >
+      {children}
+    </span>
+  );
+}
+
+function SdkMethodParameterSchema({ children }: PropsWithChildren<{}>) {
+  return <span className="font-mono">{children}</span>;
+}
+
 function SdkMethodSection({
   header,
   color,
@@ -291,21 +380,24 @@ function SdkMethodSection({
   Icon: (props: TablerIconsProps) => JSX.Element;
 }>) {
   return (
-    <div className="flex w-fit gap-2 grow mt-4">
+    <div className="flex w-full gap-2 mt-4">
       <Icon
         className={clsx("shrink-0 h-4", {
-          "text-green-400": color === "green",
-          "text-blue-400": color === "blue",
-          "text-red-400": color === "red",
-          "text-yellow-400": color === "yellow",
-          "text-slate-400": color === "slate",
+          "text-green-500": color === "green",
+          "text-blue-500": color === "blue",
+          "text-red-500": color === "red",
+          "text-yellow-500": color === "yellow",
+          "text-slate-500": color === "slate",
         })}
       />
-      <div className="flex flex-col items-start">
-        <SdkMethodHeader className="font-semibold font-sans mb-2" color={color}>
+      <div className="flex flex-col grow items-start">
+        <SdkMethodHeader
+          className="font-semibold font-sans mb-2 uppercase"
+          color={color}
+        >
           {header}
         </SdkMethodHeader>
-        <div className="text-xs">{children}</div>
+        <div className="text-xs w-full">{children}</div>
       </div>
     </div>
   );
@@ -320,21 +412,21 @@ function SdkMethodHeader({
   className?: string;
 }>) {
   return (
-    <h4
+    <h5
       className={clsx(
-        "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono",
+        "font-bold whitespace-nowrap mb-1 text-xs font-mono",
         {
-          "text-green-800": color === "green",
-          "text-blue-800": color === "blue",
-          "text-red-800": color === "red",
-          "text-yellow-800": color === "yellow",
-          "text-slate-800": color === "slate",
+          "text-green-600": color === "green",
+          "text-blue-600": color === "blue",
+          "text-red-600": color === "red",
+          "text-yellow-600": color === "yellow",
+          "text-slate-600": color === "slate",
         },
         className
       )}
     >
       {children}
-    </h4>
+    </h5>
   );
 }
 
@@ -660,5 +752,11 @@ function httpMethodColor(
   if (method === HttpMethodsEnum.PATCH) return "yellow";
   if (method === HttpMethodsEnum.OPTIONS) return "yellow";
   if (method === HttpMethodsEnum.TRACE) return "yellow";
+  return "slate";
+}
+
+function httpMethodColorOnlySlate(
+  method: HttpMethods
+): "green" | "blue" | "red" | "yellow" | "slate" {
   return "slate";
 }
