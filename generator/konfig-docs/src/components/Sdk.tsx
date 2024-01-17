@@ -32,7 +32,7 @@ type Response = {
 };
 
 type Method = {
-  tag: string;
+  tag?: string;
   method: string;
   description: string;
   parameters: Parameter[];
@@ -191,15 +191,18 @@ export function Sdk({
                       httpMethod,
                       parameters,
                       responses,
+                      tag,
                     }) => {
                       return (
                         <SdkMethod
+                          tag={tag}
                           method={method}
                           url={url}
                           description={description}
                           httpMethod={httpMethod}
                           parameters={parameters}
                           responses={responses}
+                          company={company}
                         />
                       );
                     }
@@ -240,14 +243,11 @@ function SdkMethod({
   httpMethod,
   description,
   parameters,
+  tag,
   responses,
-}: {
-  method: string;
-  url: string;
-  httpMethod: HttpMethods;
-  description: string;
-  parameters: Parameter[];
-  responses: Response[];
+  company,
+}: Method & {
+  company: string;
 }) {
   const [expanded, setExpanded] = useState(false);
   return (
@@ -275,7 +275,9 @@ function SdkMethod({
                 "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono text-slate-800"
               )}
             >
-              {`${method}()`}
+              {tag !== undefined
+                ? `${company.toLowerCase()}.${tag}.${method}()`
+                : `${company.toLowerCase()}.${method}()`}
             </h4>
             <p className={clsx("mb-0")}>
               {<Markdown markdownText={description} />}
