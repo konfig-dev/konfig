@@ -11,7 +11,6 @@ import Head from "@docusaurus/Head";
 import {
   IconAdjustments,
   IconApi,
-  IconBraces,
   IconChevronDown,
   IconCodeDots,
   IconCube,
@@ -166,33 +165,13 @@ function SdkMethod({
   httpMethod: HttpMethods;
   description: string;
 }) {
-  const color = httpMethodColorOnlySlate(httpMethod);
   const [expanded, setExpanded] = useState(false);
   return (
     <div
       className={clsx(
-        "ring-1 rounded-md block w-full overflow-x-auto px-3 py-2 transition-all text-xs lg:text-sm",
+        "text-slate-700 ring-1 ring-slate-200  rounded-md block w-full overflow-x-auto px-3 py-2 transition-all text-xs lg:text-sm bg-slate-100 hover:bg-slate-50/50",
         {
-          "ring-green-100 bg-green-50/20 hover:bg-green-50": color === "green",
-          "ring-blue-100 bg-blue-50/20 hover:bg-blue-50": color === "blue",
-          "ring-red-100 bg-red-50/20 hover:bg-red-50": color === "red",
-          "ring-yellow-100 bg-yellow-50/20 hover:bg-yellow-50":
-            color === "yellow",
-          "ring-slate-100 bg-slate-50/20 hover:bg-slate-50": color === "slate",
-        },
-        {
-          "bg-green-50": color === "green" && expanded,
-          "bg-blue-50": color === "blue" && expanded,
-          "bg-red-50": color === "red" && expanded,
-          "bg-yellow-50": color === "yellow" && expanded,
-          "bg-slate-50": color === "slate" && expanded,
-        },
-        {
-          "text-green-700": color === "green",
-          "text-blue-700": color === "blue",
-          "text-red-700": color === "red",
-          "text-yellow-700": color === "yellow",
-          "text-slate-700": color === "slate",
+          "bg-slate-50/50": expanded,
         },
         {
           "scale-[1.01] shadow-xl": expanded,
@@ -209,14 +188,7 @@ function SdkMethod({
           <div className="flex flex-col items-start">
             <h4
               className={clsx(
-                "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono",
-                {
-                  "text-green-800": color === "green",
-                  "text-blue-800": color === "blue",
-                  "text-red-800": color === "red",
-                  "text-yellow-800": color === "yellow",
-                  "text-slate-800": color === "slate",
-                }
+                "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono text-slate-800"
               )}
             >
               {`${method}()`}
@@ -226,68 +198,47 @@ function SdkMethod({
         </div>
         <IconChevronDown
           className={clsx("h-4 transition-transform", {
-            "text-green-700": color === "green",
-            "text-blue-700": color === "blue",
-            "text-red-700": color === "red",
-            "text-yellow-700": color === "yellow",
-            "text-slate-700": color === "slate",
             "rotate-180": expanded,
           })}
         />
       </button>
-      {expanded && (
-        <div className="text-left w-full">
-          <SdkMethodSection
-            Icon={IconAdjustments}
-            color={color}
-            header="Parameter"
-          >
-            <div className="space-y-2">
-              <SdkMethodParameter
-                color={color}
-                name="prefix"
-                schema="string"
-                required
-                description="Optionally limits the query to only those channels whose name starts with the given prefix"
-              />
-              <SdkMethodParameter
-                color={color}
-                name="by"
-                schema="string"
-                description="optionally specifies whether to return just channel names (by=id) or ChannelDetails (by=value)"
-              />
-            </div>
-          </SdkMethodSection>
-          <SdkMethodSection header="Response" color={color} Icon={IconCube}>
-            <div className="space-y-2 w-full">
-              <SdkMethodResponse
-                statusCode="2XX"
-                description="Optionally limits the query to only those channels whose name starts with the given prefix"
-              />
-              <SdkMethodResponse
-                statusCode="default"
-                description="Returned error from failed REST."
-              />
-            </div>
-          </SdkMethodSection>
-          <SdkMethodSection header="Endpoint" color={color} Icon={IconLink}>
-            <div className="flex items-center gap-2 mb-3">
-              <div
-                className={clsx("font-mono", {
-                  "text-green-700": color === "green",
-                  "text-blue-700": color === "blue",
-                  "text-red-700": color === "red",
-                  "text-yellow-700": color === "yellow",
-                  "text-slate-700": color === "slate",
-                })}
-              >
-                {url}
-              </div>
-              <HttpMethodBadge httpMethod={httpMethod} />
-            </div>
-          </SdkMethodSection>
-        </div>
-      )}
+      <div
+        className={clsx("text-left w-full", {
+          "h-0 overflow-hidden": !expanded,
+          "h-auto": expanded,
+        })}
+      >
+        <SdkMethodSection Icon={IconAdjustments} header="Parameter">
+          <div className="space-y-2">
+            <SdkMethodParameter
+              name="prefix"
+              schema="string"
+              required
+              description="Optionally limits the query to only those channels whose name starts with the given prefix"
+            />
+            <SdkMethodParameter
+              name="by"
+              schema="string"
+              description="optionally specifies whether to return just channel names (by=id) or ChannelDetails (by=value)"
+            />
+          </div>
+        </SdkMethodSection>
+        <SdkMethodSection header="Response" Icon={IconCube}>
+          <div className="space-y-2 w-full">
+            <SdkMethodResponse statusCode="2XX" />
+            <SdkMethodResponse
+              statusCode="default"
+              description="Returned error from failed REST."
+            />
+          </div>
+        </SdkMethodSection>
+        <SdkMethodSection header="Endpoint" Icon={IconLink}>
+          <div className="flex items-center gap-2 mb-3">
+            <HttpMethodBadge httpMethod={httpMethod} />
+            <div className={clsx("font-mono")}>{url}</div>
+          </div>
+        </SdkMethodSection>
+      </div>
     </div>
   );
 }
@@ -297,18 +248,17 @@ function SdkMethodResponse({
   description,
 }: {
   statusCode: string;
-  description: string;
+  description?: string;
 }) {
   return (
     <div
       className={clsx("p-2 w-full border rounded-md", {
-        "bg-green-100 border-green-200 text-green-800":
-          statusCode.startsWith("2"),
-        "bg-red-100 border-red-200 text-red-800": !statusCode.startsWith("2"),
+        "bg-blue-50 border-blue-100 text-blue-600": statusCode.startsWith("2"),
+        "bg-red-50 border-red-100 text-red-600": !statusCode.startsWith("2"),
       })}
     >
       <span className="font-semibold">{statusCode}</span>
-      <p className="mb-1">{description}</p>
+      {description && <p className="mb-1">{description}</p>}
     </div>
   );
 }
@@ -318,18 +268,16 @@ function SdkMethodParameter({
   schema,
   required,
   description,
-  color,
 }: PropsWithChildren<{
   name: string;
   schema: string;
   required?: boolean;
   description: string;
-  color: ReturnType<typeof httpMethodColor>;
 }>) {
   return (
     <div>
       <div className="flex flex-wrap gap-x-2 items-center">
-        <SdkMethodParameterName color={color}>{name}</SdkMethodParameterName>
+        <SdkMethodParameterName>{name}</SdkMethodParameterName>
         <SdkMethodParameterSchema>{schema}</SdkMethodParameterSchema>
         {required && <SdkMethodParameterRequired />}
       </div>
@@ -346,19 +294,12 @@ function SdkMethodParameterRequired() {
   );
 }
 
-function SdkMethodParameterName({
-  children,
-  color,
-}: PropsWithChildren<{ color: ReturnType<typeof httpMethodColor> }>) {
+function SdkMethodParameterName({ children }: PropsWithChildren<{}>) {
   return (
     <span
-      className={clsx("font-semibold p-1 rounded-md border font-mono", {
-        "bg-green-200 text-green-700 border-green-400": color === "green",
-        "bg-blue-200 text-blue-700 border-blue-400": color === "blue",
-        "bg-red-200 text-red-700 border-red-400": color === "red",
-        "bg-yellow-200 text-yellow-700 border-yellow-400": color === "yellow",
-        "bg-slate-200 text-slate-700 border-slate-400": color === "slate",
-      })}
+      className={clsx(
+        "font-semibold p-1 rounded-md border font-mono bg-slate-200 text-slate-700 border-slate-400"
+      )}
     >
       {children}
     </span>
@@ -371,30 +312,17 @@ function SdkMethodParameterSchema({ children }: PropsWithChildren<{}>) {
 
 function SdkMethodSection({
   header,
-  color,
   children,
   Icon,
 }: PropsWithChildren<{
   header: string;
-  color: ReturnType<typeof httpMethodColor>;
   Icon: (props: TablerIconsProps) => JSX.Element;
 }>) {
   return (
     <div className="flex w-full gap-2 mt-4">
-      <Icon
-        className={clsx("shrink-0 h-4", {
-          "text-green-500": color === "green",
-          "text-blue-500": color === "blue",
-          "text-red-500": color === "red",
-          "text-yellow-500": color === "yellow",
-          "text-slate-500": color === "slate",
-        })}
-      />
+      <Icon className={clsx("shrink-0 h-4 text-slate-500")} />
       <div className="flex flex-col grow items-start">
-        <SdkMethodHeader
-          className="font-semibold font-sans mb-2 uppercase"
-          color={color}
-        >
+        <SdkMethodHeader className="font-semibold font-sans mb-2 uppercase">
           {header}
         </SdkMethodHeader>
         <div className="text-xs w-full">{children}</div>
@@ -405,23 +333,14 @@ function SdkMethodSection({
 
 function SdkMethodHeader({
   children,
-  color,
   className,
 }: PropsWithChildren<{
-  color: ReturnType<typeof httpMethodColor>;
   className?: string;
 }>) {
   return (
     <h5
       className={clsx(
-        "font-bold whitespace-nowrap mb-1 text-xs font-mono",
-        {
-          "text-green-600": color === "green",
-          "text-blue-600": color === "blue",
-          "text-red-600": color === "red",
-          "text-yellow-600": color === "yellow",
-          "text-slate-600": color === "slate",
-        },
+        "font-bold whitespace-nowrap mb-1 text-xs font-mono text-slate-600",
         className
       )}
     >
@@ -668,10 +587,17 @@ function Sidebar() {
           <SidebarSectionTitle>OpenAPI Specification</SidebarSectionTitle>
           <SidebarSectionContent>
             <a
+              href={`https://raw.githubusercontent.com/ably/open-specs/main/definitions/platform-v1.yaml`}
+              className="pr-4 mr-4 border-r-2"
+              target="_blank"
+            >
+              Raw
+            </a>
+            <a
               href={`https://elements-demo.stoplight.io/?spec=https://raw.githubusercontent.com/ably/open-specs/main/definitions/platform-v1.yaml`}
               target="_blank"
             >
-              Link
+              UI
             </a>
           </SidebarSectionContent>
         </SidebarSection>
@@ -752,11 +678,5 @@ function httpMethodColor(
   if (method === HttpMethodsEnum.PATCH) return "yellow";
   if (method === HttpMethodsEnum.OPTIONS) return "yellow";
   if (method === HttpMethodsEnum.TRACE) return "yellow";
-  return "slate";
-}
-
-function httpMethodColorOnlySlate(
-  method: HttpMethods
-): "green" | "blue" | "red" | "yellow" | "slate" {
   return "slate";
 }
