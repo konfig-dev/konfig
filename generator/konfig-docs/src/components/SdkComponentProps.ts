@@ -20,7 +20,7 @@ export type Method = {
   httpMethod: HttpMethods;
 };
 
-export type Props = {
+export type SdkPageProps = {
   metaDescription: string;
   company: string;
   favicon: string;

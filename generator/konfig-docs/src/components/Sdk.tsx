@@ -18,7 +18,7 @@ import {
 } from "@tabler/icons-react";
 import { Markdown } from "./Markdown";
 import type {
-  Props,
+  SdkPageProps,
   Parameter,
   Method,
   HttpMethods,
@@ -54,7 +54,7 @@ export function Sdk({
   sdkName,
   GettingStarted,
   Description,
-}: Props & ReactProps) {
+}: SdkPageProps & ReactProps) {
   return (
     <Layout
       title={`${company} API - TypeScript SDK and OpenAPI Specification`}
