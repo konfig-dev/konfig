@@ -3,10 +3,6 @@ import Layout from "@theme/Layout";
 import type { HttpMethods } from "konfig-lib";
 import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import moment from "moment";
-// @ts-ignore
-import Description from "./_description.mdx";
-// @ts-ignore
-import GettingStarted from "./_getting-started.mdx";
 import clsx from "clsx";
 import Head from "@docusaurus/Head";
 import {
@@ -34,7 +30,7 @@ type Response = {
   description?: string;
 };
 
-export default function ScriptSdk({
+export function Sdk({
   metaDescription,
   company,
   favicon,
@@ -57,6 +53,8 @@ export default function ScriptSdk({
   openApiUi,
   previewLinkImage,
   sdkName,
+  GettingStarted,
+  Description,
 }: {
   metaDescription: string;
   company: string;
@@ -88,6 +86,8 @@ export default function ScriptSdk({
   openApiUi: string;
   previewLinkImage: string;
   sdkName: string;
+  GettingStarted: React.ComponentType;
+  Description: React.ComponentType;
 }) {
   return (
     <Layout
