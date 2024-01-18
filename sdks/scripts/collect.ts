@@ -11,7 +11,9 @@ import type {
 type Paths = { oasPath: string }[];
 
 const dbFolder = path.join(path.dirname(__dirname), "db");
+
 const specFolder = path.join(dbFolder, "spec-data");
+
 const apiDirectory = path.join(
   path.dirname(__dirname),
   "openapi-directory",
@@ -85,10 +87,10 @@ function getKey(spec: Spec): string {
   const serviceName = getServiceName(spec);
   if (serviceName === undefined)
     return `${getProviderName(spec)}-${getVersion(spec)}`;
-  return `${getProviderName(spec)}-${serviceName}-${getVersion(spec)}`.replace(
-    "/",
-    "-"
-  );
+  return `${getProviderName(spec)}-${serviceName}-${getVersion(spec)}`
+    .replace("/", "-")
+    .replace("&", "")
+    .replace("--", "-");
 }
 
 function getNumberOfEndpoints(spec: Spec): number {
@@ -365,6 +367,10 @@ async function main() {
   let db = await processFiltered();
   console.log("Adding difficulty scores");
   db = await addDifficulty(db);
+  // delete specFolder if it exists
+  fs.rmdirSync(specFolder, { recursive: true });
+  // ensure specFolder exists
+  fs.mkdirSync(specFolder, { recursive: true });
   console.log("Writing data to disk");
   writeData(db);
   console.log("Writing last-updated.txt");
